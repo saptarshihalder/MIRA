@@ -1,2 +1,7 @@
 # Preserve exact bytes for source, locked environments and hash-verified artifacts.
 * -text
+# Whitespace in raw data, logs, vendored source and generated SVG is preserved.
+artifacts/** -whitespace
+experiments/** -whitespace
+infra/headroom.py -whitespace
+infra/tfm_mechanism.py -whitespace
