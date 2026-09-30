@@ -1,0 +1,34 @@
+development label_only: 12 tasks complete; 2.8s
+development joint_pair: 12 tasks complete; 6.7s
+development value_dependent: 12 tasks complete; 13.1s
+development sparse_pair: 12 tasks complete; 22.8s
+evaluation label_only: 48 tasks complete; 33.9s
+evaluation joint_pair: 48 tasks complete; 50.3s
+evaluation value_dependent: 48 tasks complete; 76.7s
+evaluation sparse_pair: 48 tasks complete; 116.6s
+{
+  "arguments": {
+    "out": "results",
+    "dev_tasks": 12,
+    "eval_tasks": 48,
+    "queries": 2048,
+    "eval_offset": 30000
+  },
+  "elapsed_seconds": 116.842440366745,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "sklearn": "1.8.0",
+  "gamma": 0.8,
+  "beta": 0.8,
+  "masks": "1 means missing",
+  "base": "analytic sigmoid(0.8 U), not a TFM",
+  "evaluation": "expected query log-loss integrates over true conditional label probability",
+  "limits": [
+    "high missingness, high signal, binary tasks only",
+    "fresh_target gives an oracle segment boundary",
+    "rolling_128 uses evaluator-indexed development method selection; not an online selector",
+    "finite_prior_reference knows family and gamma; not a learned adapter",
+    "TFM, XGBoost and Drift-Resilient TabPFN not run"
+  ]
+}

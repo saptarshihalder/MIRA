@@ -1,0 +1,14 @@
+{
+  "total_cap_usd": 26.0,
+  "initial_smoke_reservation_usd": 0.35,
+  "per_call_max_seconds": 900,
+  "gpu": "T4",
+  "gpu_rate_usd_second": 0.000164,
+  "cpu_physical_cores": 2,
+  "cpu_rate_usd_core_second": 0.0000131,
+  "memory_gib": 8,
+  "memory_rate_usd_gib_second": 0.00000222,
+  "rates_verified_date": "2026-10-01",
+  "rates_source": "https://modal.com/pricing",
+  "policy": "Reserve worst-case compute before every call. Include failed calls. Estimates are not provider invoices. No automatic retries. Keep at least $3 for reproduction. User-reported available funds have not been independently verified."
+}

@@ -1,0 +1,15 @@
+{
+  "package": "tabicl",
+  "version": "2.2.0",
+  "wheel_filename": "tabicl-2.2.0-py3-none-any.whl",
+  "wheel_url": "https://files.pythonhosted.org/packages/77/22/bbac2df399b8ed5a699bde38496ebb129a045c5d160fe52786727de932f3/tabicl-2.2.0-py3-none-any.whl",
+  "metadata_url": "https://pypi.org/pypi/tabicl/2.2.0/json",
+  "wheel_sha256_actual": "c80b8ec2719be26bc0bf1dd758a2361f58019d8f7877038b785529a425789ce4",
+  "wheel_sha256_pypi": "c80b8ec2719be26bc0bf1dd758a2361f58019d8f7877038b785529a425789ce4",
+  "sources_sha256": {
+    "tabicl/_sklearn/preprocessing.py": "2163a3bf6754127365a7aedac854d99a6f565545cc1ea7e63c68a596081b2976",
+    "tabicl/_sklearn/classifier.py": "64f5ef7ef88a920a3f7a5f6e2d9d8dc08769ec343e931f910acc2d9c4eaa5534"
+  },
+  "project_urls": null,
+  "method": "Downloaded with pip --no-deps; inspected exact wheel source without importing TabICL or running models."
+}

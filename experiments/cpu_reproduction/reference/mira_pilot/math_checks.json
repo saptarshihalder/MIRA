@@ -1,0 +1,18 @@
+{
+  "checked_sequences": 24,
+  "paths_per_sequence": 256,
+  "mixture_identity_max_error": 8.881784197001252e-16,
+  "minimum_path_bound_slack": 0.33299525407657526,
+  "analytic_oracle_max_error": 2.220446049250313e-16,
+  "finite_prior_max_error": 2.220446049250313e-16,
+  "illustrative_switch": {
+    "rounds": 256,
+    "shift_round": 129,
+    "baseline_loss": 177.445678223346,
+    "static_mixture_loss": 178.13882540390594,
+    "fixed_share_loss": 108.51641848166508,
+    "switching_comparator_loss": 102.20898511587475,
+    "baseline_regret_bound": 1.6911915074497057,
+    "one_switch_regret_bound": 7.232455052608132
+  }
+}

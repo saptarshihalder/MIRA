@@ -1,0 +1,2 @@
+# Preserve exact bytes for source, locked environments and hash-verified artifacts.
+* -text

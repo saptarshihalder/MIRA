@@ -1,0 +1,174 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,textwidth=5.5in,textheight=9in,centering]{geometry}
+\usepackage{times}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[breaklinks=true,colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\title{Missingness Representation in Frozen Tabular Predictors}
+\author{MIRA working manuscript\\Author list to be confirmed}
+\date{1 October 2026}
+
+\begin{document}
+\maketitle
+\begin{center}
+\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} The CPU pilot has been replicated and 270 development inference cells have run. Independent confirmation and real-data evaluation are pending. This document does not report a completed model contribution.}}
+\end{center}
+
+\begin{abstract}
+Missingness can carry predictive information when observation decisions depend on outcomes. An incomplete table already identifies which measurements are absent, yet a frozen tabular predictor may use that information differently when the same bits are appended as ordinary feature columns. We specify a controlled study using exact synthetic posteriors, matched inputs, shuffled-indicator controls, and semi-synthetic observation-policy interventions. The study separates behavioral differences from preprocessing and pretraining-prior explanations. A replicated CPU diagnostic shows that simple mask-aware corrections approach an oracle in several narrow high-signal families, motivating foundation-model evaluation before training a new adapter. Development compares Gaussian observed values to values deliberately colliding with the imputation constant; indicator effects differ across backbones. Independent confirmation remains pending. The intended evidence includes reproducible paired losses, task-level uncertainty, version-specific conclusions, and compute accounting.
+\end{abstract}
+
+\section{Question and scope}
+Tabular foundation models predict from labeled examples without updating their pretrained weights. Their treatment of missing data depends on architecture, preprocessing, and inference configuration. We ask whether representing missingness as explicit binary columns changes prediction when the raw statistical information is unchanged. An affirmative result would establish a useful behavioral limitation or opportunity, with scope determined by the tested models and mechanisms.
+
+The question concerns representation rather than imputation accuracy. It also differs from claiming that every missingness shift changes the optimal predictor. Previous work distinguishes ignorable shifts from non-ignorable changes that can alter the Bayes predictor~\cite{rockenschaub2024}. Observation-policy adaptation is already an established problem~\cite{zhou2023}. Our proposed contribution is therefore a controlled, reproducible characterization, conditional on the experiments supporting it.
+
+\section{Information equivalence}
+Let $X\in\mathbb{R}^{d}$ denote complete covariates, $Y\in\{0,1\}$ the outcome, and $M\in\{0,1\}^{d}$ a mask, with $M_j=1$ indicating an absent value. Write $\widetilde X$ for the table row in which missing entries carry a distinguished missing-value marker. The raw-input observation is $O=\widetilde X$, and $M=h(O)$ is measurable from it. Consequently,
+\begin{equation}
+ P(Y\mid O,M)=P(Y\mid O).
+ \label{eq:information}
+\end{equation}
+This elementary identity is not a new theorem. It says that appending the true mask adds no information to a fully retained incomplete input. It does not require a finite predictor to produce identical outputs.
+
+For a labeled context $C$, compare a frozen predictor $F$ on native input and on the augmented representation:
+\begin{align}
+ p_{\rm nat} &= F(C,O),\\
+ p_{\rm ind} &= F(C^{+},[O,M]).
+\end{align}
+Here $C^{+}$ contains the same context rows and labels with their masks appended. Augmentation changes feature count and potentially feature grouping, embeddings, and preprocessing. Mean imputation may obscure a native marker internally; explicit columns may then restore accessible information. A performance difference alone cannot identify a pretraining-prior explanation, and comparing checkpoints is not a controlled intervention on that prior.
+
+\section{Controlled data and oracle}
+The initial synthetic diagnostic keeps an observed variable $U\in\{-1,+1\}$ balanced and uses
+\begin{equation}
+ P(Y=1\mid U)=\sigma(0.8U),
+\end{equation}
+where $\sigma$ is the logistic function. Independently generated Gaussian nuisance features receive masks with an outcome-associated mechanism. For a nonempty subset $A$ and $b\in\{0,1\}$, define
+\begin{align}
+ f(m,u)&=s u^{b}\prod_{j\in A}(2m_j-1),\\
+ P(M=m\mid Y=y,U=u)&=2^{-d}\bigl[1+\gamma(2y-1)f(m,u)\bigr],
+ \label{eq:mechanism}
+\end{align}
+where $s\in\{-1,+1\}$ and $0\leq\gamma<1$. The nonempty product makes this a normalized distribution. Its exact posterior is
+\begin{equation}
+ q^{\star}(u,m)=\sigma\left(0.8u+
+ \log\frac{1+\gamma f(m,u)}{1-\gamma f(m,u)}\right).
+ \label{eq:oracle}
+\end{equation}
+The mechanism supplies single-mask, pairwise, and value-dependent cases without multiplying a potentially mask-aware model posterior by an additional likelihood. At $\gamma=0$, the mask has no additional outcome signal given $U$. Holding the complete-data distribution fixed while changing the mechanism isolates the observation process.
+
+\section{Evaluation protocol}
+The first inference smoke test uses one accessible checkpoint, two signal strengths, and native versus augmented inputs to measure throughput. The development matrix then considers $\gamma\in\{0,0.25,0.5,0.75,0.9\}$, 256 context rows, 1,024 query rows, and three independent draws. Four ensemble members are the initial setting; any change must be recorded before confirmation.
+
+Each draw compares native incomplete inputs, native inputs with true indicators, and native inputs with independently shuffled indicator columns of identical width. Shuffling preserves per-column missingness rates while disrupting row correspondence, and never uses labels. A follow-up compares context-mean-imputed inputs with and without true indicators. Transform parameters are fitted on context rows only; all-missing columns are retained with a documented fallback. Context and query identifiers are disjoint.
+
+The backbone panel begins with explicitly pinned TabPFN v2 and TabICLv2. A current mask-aware TabPFN checkpoint is included if access and runtime permit. Native-NaN tree models provide an ordinary supervised comparison. Package versions, checkpoint filenames and hashes, ensemble settings, random seeds, preprocessing, elapsed time, and billed resources accompany every run. A blocked checkpoint is reported rather than silently replaced.
+
+The primary paired effect is
+\begin{equation}
+ G=L_{\rm nat}-L_{\rm ind},
+\end{equation}
+where positive $G$ favors indicators. Synthetic expected log-loss uses the exact query probability:
+\begin{equation}
+ L(p)=\frac{1}{N}\sum_{i=1}^{N}
+ \left[-q_i^{\star}\log p_i-(1-q_i^{\star})\log(1-p_i)\right].
+\end{equation}
+We report raw losses, oracle headroom, and task-level uncertainty. A headroom fraction is reported only when its denominator exceeds $10^{-4}$; negative effects remain visible. Queries within a task do not become independent experimental replicates. Confirmation uses fresh seeds after the configuration is frozen, targeting twenty independent draws when measured compute permits.
+
+Follow-ups vary label budgets, missingness rates, interactions, and values near imputation constants. A predeclared panel of six to eight real-covariate datasets will receive imposed observation mechanisms, with original and imposed masks tracked separately. This limited panel cannot establish universal performance.
+
+\section{Initial evidence}
+\subsection{Replicated CPU diagnostic}
+The supplied diagnostic uses an analytic mask-blind base, $\gamma=0.8$, twelve development draws, and forty-eight evaluation draws per family. It is not a TabPFN or TabICL experiment. Independent reproduction generated 31,680 raw rows and matched all selected methods; the maximum summary discrepancy was $2.22\times10^{-16}$. Recorded core package versions match, but the original hardware and BLAS environment are unknown. Table~\ref{tab:pilot} reports the replicated summaries for thirty-two target labels.
+
+\begin{table}[t]
+\centering\small
+\caption{Replicated CPU pilot: expected log-loss in nats. The gap is simple minus full-oracle loss.}
+\label{tab:pilot}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Family & Simple & Oracle & Gap\\
+\midrule
+Single mask & .3053 & .2979 & .0074\\
+Pair interaction & .3022 & .2973 & .0049\\
+Value-dependent & .3060 & .2987 & .0073\\
+Pair among 16 & .3403 & .2978 & .0425\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All four rows select a finite Bayesian mixture over candidate mask terms using development data. At 128 labels, reported gaps are below 0.001 nats. These findings weaken the case for an elaborate corrector within the tested families. At eight labels in the sparse-pair family, a reference that knows the family but must infer the mechanism has loss approximately 0.582, versus 0.298 for the full-mechanism oracle. Oracle headroom therefore includes uncertainty unavailable to a learner with the same labels.
+
+The fresh-target protocol supplies a known segment boundary. A separate rolling-context summary uses evaluator-indexed development selection and does not establish an operational unknown-shift selector. These CPU numbers cannot establish a TFM effect, neural-adapter advantage, or clinical benefit.
+
+\subsection{Development representation experiment}
+Two paired development matrices each contain three task seeds, five signal strengths, three predictors, and three representations, giving 270 executed cells. They use 256 support rows, 1024 queries, and four ensemble members for the TFMs. One matrix retains Gaussian nuisance values; the other replaces every observed nuisance value by zero while keeping $U,Y,M$, oracle probabilities, and row identities matched. Zero is also the context-mean imputation constant for those columns. This deliberately degenerate control diagnoses dependence on value representation; it does not establish realistic prevalence.
+
+In the Gaussian matrix, TabPFN v2's mean native-to-indicator gains range from 0.0013 to 0.0185 nats across the signal strengths; every three-task 95\% paired $t$ interval includes zero. TabICLv2 effects are close to zero. In the collision matrix, TabICLv2's gains grow with signal strength, whereas TabPFN v2 has no corresponding gain. At $\gamma=0.9$:
+\begin{table}[t]
+\centering\small
+\caption{Development indicator effect at $\gamma=0.9$, mean [95\% paired interval] in nats; three tasks. Confirmation pending.}
+\begin{tabular}{@{}lrr@{}}\toprule
+Predictor & Gaussian & Zero collision\\\midrule
+TabPFN v2 & 0.0185 & $-0.0055$\\
+ & $[-0.0172,0.0542]$ & $[-0.0095,-0.0015]$\\
+TabICLv2 & 0.0006 & 0.4274\\
+ & $[-0.0034,0.0045]$ & $[0.4079,0.4468]$\\
+XGBoost & 0.0000 & 0.0000\\\bottomrule
+\end{tabular}
+\end{table}
+XGBoost's predictions coincide for native and actual-indicator inputs in these matrices. All zero-signal TFM intervals include zero. These intervals are exploratory, unadjusted across conditions, and based on only three task draws; they are not final inferential evidence. The results motivate an exact preprocessing audit and mean-imputed controls, followed by frozen fresh-seed confirmation. They provide no support for a universal mask-blindness claim or immediate adapter training.
+
+Inspection of the exact TabICL 2.2.0 released wheel localizes a special-case information loss in its numeric array path: mean imputation without appended indicators maps missing entries and observed zeros to the same value, after which its unique-feature filter removes constant nuisance columns. Explicit mask columns remain nonconstant. Saved native collision predictions are bit-identical across all five signal strengths within each of the three seeds. Paired data checks verify identical $U$, labels, masks, oracle probabilities and disjoint row identifiers between the two value conditions. This explanation concerns the inspected preprocessing pipeline; it does not attribute the behavior to the pretraining prior. TabICLv2 itself is an established backbone~\cite{qu2026}.
+
+\section{Related work and limitations}
+TabPFN v2 demonstrates strong small-data prediction~\cite{hollmann2025}. Contemporary versions already encode missingness: TabPFN-3.5 explicitly inherits missing and infiniteness indicators~\cite{priorlabs2026}. Thus, native indicator encoding is compatible with our question, and a blanket claim that foundation models discard masks would be incorrect.
+
+PFN-Flow studies Bayesian prediction under structural missingness, with guarantees restricted to its specified prior~\cite{liang2026}. TFM-Retouche uses a lightweight residual input adapter through a frozen backbone and a held-out identity guard~\cite{nguyen2026}. These precedents prevent treating missingness-specific training or frozen residual adaptation alone as methodological novelty.
+
+Independent TFM confirmation remains pending. The CPU pilot is narrow, high-signal, and synthetic; its Monte Carlo variability does not describe generalization across real datasets. The zero-collision condition is deliberately extreme. A representation effect may disappear on current models or follow feature-count changes. TabPFN v3.5 inference was inaccessible because one-time license acceptance and a token were required; no checkpoint was substituted. Causal attribution to pretraining requires matched controlled training beyond this protocol. A neural branch requires held-out improvement beyond simple corrections and refreshed contexts with matched labels. Any online extension must predict before label release and retain original probabilities for scoring. This draft makes no acceptance, clinical, or universal-improvement claim.
+
+\begin{thebibliography}{9}
+\small
+\bibitem{qu2026}
+J. Qu, D. Holzm\"uller, G. Varoquaux, and M. Le Morvan.
+TabICLv2: A Better, Faster, Scalable, and Open Tabular Foundation Model.
+ICML, 2026.
+\url{https://proceedings.mlr.press/v306/qu26a.html}.
+\bibitem{zhou2023}
+H. Zhou, S. Balakrishnan, and Z. Lipton.
+Domain Adaptation under Missingness Shift.
+AISTATS, 2023.
+\url{https://proceedings.mlr.press/v206/zhou23b.html}.
+
+\bibitem{rockenschaub2024}
+P. Rockenschaub et al.
+Robust prediction under missingness shifts.
+arXiv:2406.16484, 2024.
+\url{https://arxiv.org/abs/2406.16484}.
+
+\bibitem{hollmann2025}
+N. Hollmann et al.
+Accurate predictions on small data with a tabular foundation model.
+Nature, 2025.
+\url{https://doi.org/10.1038/s41586-024-08328-6}.
+
+\bibitem{priorlabs2026}
+Prior Labs.
+TabPFN-3.5 technical report.
+arXiv:2609.17895v1, 2026.
+\url{https://arxiv.org/html/2609.17895v1}.
+
+\bibitem{liang2026}
+C. Liang et al.
+Nearly Optimal Bayesian Inference for Structural Missingness.
+arXiv:2601.18500, 2026.
+\url{https://arxiv.org/abs/2601.18500}.
+
+\bibitem{nguyen2026}
+D. Nguyen, M. Jawhar, and N. Chesneau.
+TFM-Retouche: A Lightweight Input-Space Adapter for Tabular Foundation Models.
+arXiv:2605.06047v1, 2026.
+\url{https://arxiv.org/html/2605.06047v1}.
+\end{thebibliography}
+\end{document}

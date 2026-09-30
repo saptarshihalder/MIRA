@@ -1,0 +1,62 @@
+{
+  "handoff_manifest": {
+    "mira_pilot/check_math.py": {
+      "expected": "16d3ab3d79f7e317f0c7ee52847ac6b2c0dc8b13e436cb7c08d77186bc935218",
+      "actual": "16d3ab3d79f7e317f0c7ee52847ac6b2c0dc8b13e436cb7c08d77186bc935218",
+      "match": true
+    },
+    "mira_pilot/headroom.py": {
+      "expected": "9d932f3c6f97d5496b09119914e40675d502daf79c9a520a7d54fe3ee321d35c",
+      "actual": "9d932f3c6f97d5496b09119914e40675d502daf79c9a520a7d54fe3ee321d35c",
+      "match": true
+    },
+    "mira_pilot/math_checks.json": {
+      "expected": "f42d679f37fccc9643e8719dc7b79e600243a40847f34d8ca7d3f6d376472a03",
+      "actual": "f42d679f37fccc9643e8719dc7b79e600243a40847f34d8ca7d3f6d376472a03",
+      "match": true
+    },
+    "mira_pilot/requirements-cpu.txt": {
+      "expected": "9065205926ce1cf97720f58b6ebdb76ef8f82a2669b18d861baf627f1a3e086d",
+      "actual": "9065205926ce1cf97720f58b6ebdb76ef8f82a2669b18d861baf627f1a3e086d",
+      "match": true
+    },
+    "mira_pilot/results_strong/summary.csv": {
+      "expected": "65b28639ccf4fe0a07ba69ee9b024ef5a7e1bbdacc66b68ce7307984b790e97f",
+      "actual": "65b28639ccf4fe0a07ba69ee9b024ef5a7e1bbdacc66b68ce7307984b790e97f",
+      "match": true
+    },
+    "mira_pilot/results_strong/summary.json": {
+      "expected": "a614ab712423e6bfcca722cfde045c36c989e4265aba28ab3efc877bff068488",
+      "actual": "a614ab712423e6bfcca722cfde045c36c989e4265aba28ab3efc877bff068488",
+      "match": true
+    },
+    "mira_pilot/results_strong/task_results.csv": {
+      "expected": "18837c0532f7effc335fd6297582635b66e0c987084880f48b18515290d07d59",
+      "actual": "18837c0532f7effc335fd6297582635b66e0c987084880f48b18515290d07d59",
+      "match": true
+    },
+    "mira_pilot/tfm_mechanism.py": {
+      "expected": "8ff8c519a4a7f0cfeb8747ca3c29eef396e2013455a612022d0f16f8d0e0b5f7",
+      "actual": "8ff8c519a4a7f0cfeb8747ca3c29eef396e2013455a612022d0f16f8d0e0b5f7",
+      "match": true
+    }
+  },
+  "source_copies": {
+    "check_math.py": {
+      "sha256": "16d3ab3d79f7e317f0c7ee52847ac6b2c0dc8b13e436cb7c08d77186bc935218",
+      "matches_preserved_original": true
+    },
+    "headroom.py": {
+      "sha256": "9d932f3c6f97d5496b09119914e40675d502daf79c9a520a7d54fe3ee321d35c",
+      "matches_preserved_original": true
+    },
+    "requirements-cpu.txt": {
+      "sha256": "9065205926ce1cf97720f58b6ebdb76ef8f82a2669b18d861baf627f1a3e086d",
+      "matches_preserved_original": true
+    },
+    "tfm_mechanism.py": {
+      "sha256": "8ff8c519a4a7f0cfeb8747ca3c29eef396e2013455a612022d0f16f8d0e0b5f7",
+      "matches_preserved_original": true
+    }
+  }
+}

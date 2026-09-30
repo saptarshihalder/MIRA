@@ -1,0 +1,54 @@
+[
+  {
+    "run_id": "smoke_tabpfn_v2",
+    "model": "tabpfn:v2",
+    "reserved_usd": 0.35,
+    "status": "completed",
+    "date": "2026-10-01",
+    "active_seconds": 16.140965567000002,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\smoke_tabpfn_v2"
+  },
+  {
+    "run_id": "smoke_tabicl_v2",
+    "model": "tabicl:v2",
+    "reserved_usd": 0.35,
+    "status": "completed",
+    "date": "2026-10-01",
+    "active_seconds": 19.227602083,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\smoke_tabicl_v2"
+  },
+  {
+    "run_id": "smoke_tabpfn_v35",
+    "model": "tabpfn:v3.5",
+    "reserved_usd": 0.35,
+    "status": "failed",
+    "date": "2026-10-01",
+    "active_seconds": 9.878121061,
+    "exit_code": 1,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\smoke_tabpfn_v35"
+  },
+  {
+    "run_id": "development_gaussian",
+    "model": "tabpfn:v2 tabicl:v2 xgboost",
+    "phase": "development",
+    "reserved_usd": 0.5,
+    "status": "completed",
+    "date": "2026-09-30T20:11:31.754652+00:00",
+    "active_seconds": 99.805382095,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\development_gaussian"
+  },
+  {
+    "run_id": "development_collision",
+    "model": "tabpfn:v2 tabicl:v2 xgboost",
+    "phase": "collision",
+    "reserved_usd": 0.5,
+    "status": "completed",
+    "date": "2026-09-30T20:14:45.980006+00:00",
+    "active_seconds": 87.034509533,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\development_collision"
+  }
+]

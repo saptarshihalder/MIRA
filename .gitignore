@@ -1,0 +1,16 @@
+.venv*/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.modal.toml
+.env*
+artifacts/runs/
+artifacts/checkpoints/
+*.ckpt
+*.pt
+*.pth
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.pdf

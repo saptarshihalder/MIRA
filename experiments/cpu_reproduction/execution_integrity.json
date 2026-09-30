@@ -1,0 +1,57 @@
+{
+  "handoff_manifest": {
+    "MIRA_Final_Plan.pdf": {
+      "expected": "ae9630999aebc0575707f5534a4f1c0e35652694068ad6f5432777838f7b2774",
+      "actual": "ae9630999aebc0575707f5534a4f1c0e35652694068ad6f5432777838f7b2774",
+      "match": true
+    },
+    "MIRA_Final_Plan.tex": {
+      "expected": "cf813e8836153c9d58f148e8c175b6aaf9da7431e09769000dd5c9e47534fcd9",
+      "actual": "cf813e8836153c9d58f148e8c175b6aaf9da7431e09769000dd5c9e47534fcd9",
+      "match": true
+    },
+    "CODEX_TASK.md": {
+      "expected": "48e0d1a9990b5cef2e157e0ba9bd3ca8049e48c426387a8bf4790984734d60dc",
+      "actual": "48e0d1a9990b5cef2e157e0ba9bd3ca8049e48c426387a8bf4790984734d60dc",
+      "match": true
+    },
+    "default_config.yaml": {
+      "expected": "449433101f5fe411377438b813bece302bcb232b0997bd2d088881f017ae42a9",
+      "actual": "449433101f5fe411377438b813bece302bcb232b0997bd2d088881f017ae42a9",
+      "match": true
+    },
+    "MIRA_Mechanism_Colab.ipynb": {
+      "expected": "c39d86ab9851b6fbce698ca9aa0846b28c676126761edb483c134d465b8d049d",
+      "actual": "c39d86ab9851b6fbce698ca9aa0846b28c676126761edb483c134d465b8d049d",
+      "match": true
+    },
+    "MIRA_Rebuilt_Research_Dossier.md": {
+      "expected": "3a59d7b0c846d962a6a0c6d6da3ef9fa1a851148ce52796e3e00fd3795a65f81",
+      "actual": "3a59d7b0c846d962a6a0c6d6da3ef9fa1a851148ce52796e3e00fd3795a65f81",
+      "match": true
+    },
+    "README.md": {
+      "expected": "dfba5e449abdedb5a0dffbf5f773d9e9962aaf85b3b0c1f6c01846e91f1c86b9",
+      "actual": "dfba5e449abdedb5a0dffbf5f773d9e9962aaf85b3b0c1f6c01846e91f1c86b9",
+      "match": true
+    }
+  },
+  "source_copies": {
+    "check_math.py": {
+      "sha256": "16d3ab3d79f7e317f0c7ee52847ac6b2c0dc8b13e436cb7c08d77186bc935218",
+      "matches_preserved_original": true
+    },
+    "headroom.py": {
+      "sha256": "9d932f3c6f97d5496b09119914e40675d502daf79c9a520a7d54fe3ee321d35c",
+      "matches_preserved_original": true
+    },
+    "requirements-cpu.txt": {
+      "sha256": "9065205926ce1cf97720f58b6ebdb76ef8f82a2669b18d861baf627f1a3e086d",
+      "matches_preserved_original": true
+    },
+    "tfm_mechanism.py": {
+      "sha256": "8ff8c519a4a7f0cfeb8747ca3c29eef396e2013455a612022d0f16f8d0e0b5f7",
+      "matches_preserved_original": true
+    }
+  }
+}

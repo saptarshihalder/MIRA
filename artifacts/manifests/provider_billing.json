@@ -1,0 +1,12 @@
+{
+  "retrieved_at": "2026-09-30T20:30:02.884019+00:00",
+  "scope": "provider-reported MIRA app charges; may lag; image-build attribution not independently audited",
+  "rows": [
+    "BillingReportItem(object_id='ap-0gxIvK3ACXtGFW0Zgo9smI', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 9, 30, 19, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.00207958'), cost_by_resource={'Memory': Decimal('0.00017779'), 'T4': Decimal('0.00163899'), 'CPU': Decimal('0.00026279')}, tags={})",
+    "BillingReportItem(object_id='ap-Cn2zflLYfBc8J6zfuoGUWA', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 9, 30, 20, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.01829925'), cost_by_resource={'Memory': Decimal('0.00156446'), 'T4': Decimal('0.01442233'), 'CPU': Decimal('0.00231246')}, tags={})",
+    "BillingReportItem(object_id='ap-O5AeTSP3M9XUBSWKmtPPME', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 9, 30, 19, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.00780190'), cost_by_resource={'Memory': Decimal('0.00045433'), 'T4': Decimal('0.00327789'), 'CPU': Decimal('0.00406968')}, tags={})",
+    "BillingReportItem(object_id='ap-OxkDlZNjhQBeM4RQFvYNEr', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 9, 30, 20, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.02162610'), cost_by_resource={'Memory': Decimal('0.00184888'), 'T4': Decimal('0.01704435'), 'CPU': Decimal('0.00273287')}, tags={})",
+    "BillingReportItem(object_id='ap-YxXeodVn0RKQ7KNA7oeY7a', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 9, 30, 19, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.00457858'), cost_by_resource={'Memory': Decimal('0.00039111'), 'T4': Decimal('0.00360552'), 'CPU': Decimal('0.00058195')}, tags={})"
+  ],
+  "reported_app_total_usd": 0.054385409999999995
+}

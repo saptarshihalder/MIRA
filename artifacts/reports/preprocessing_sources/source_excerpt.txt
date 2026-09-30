@@ -1,0 +1,61 @@
+Exact excerpts from tabicl-2.2.0-py3-none-any.whl; full-member hashes in provenance.json.
+
+preprocessing.py:100-105
+100: 
+101:         cat_tfm = OrdinalEncoder(
+102:             dtype=np.int64, handle_unknown="use_encoded_value", unknown_value=-1, encoded_missing_value=-1
+103:         )
+104:         num_tfm = SimpleImputer(keep_empty_features=True)
+105: 
+
+preprocessing.py:123-128
+123:                     f"but casting to float64 failed with: {e}. "
+124:                     "If your data contains categorical or string columns, pass it as a pandas "
+125:                     "DataFrame instead, so each column can be typed and preprocessed accordingly."
+126:                 ) from None
+127:             self.tfm_ = num_tfm
+128: 
+
+preprocessing.py:235-252
+235: 
+236:         # If there are very few samples, keep all features
+237:         if X.shape[0] <= self.threshold:
+238:             self.features_to_keep_ = np.ones(self.n_features_in_, dtype=bool)
+239:         else:
+240:             # For each feature, check if it has more than threshold unique values
+241:             self.features_to_keep_ = np.array(
+242:                 [len(np.unique(X[:, i])) > self.threshold for i in range(self.n_features_in_)]
+243:             )
+244: 
+245:             # Every feature is constant. Dropping all of them leaves a zero-column
+246:             # matrix that downstream steps cannot handle, so keep the first one: the
+247:             # model then sees a single uninformative feature and falls back to the
+248:             # marginal distribution of the target.
+249:             if not self.features_to_keep_.any():
+250:                 self.features_to_keep_[0] = True
+251: 
+252:         self.n_features_out_ = np.sum(self.features_to_keep_)
+
+preprocessing.py:1056-1062
+1056:                 self.norm_methods_ = self.norm_methods
+1057: 
+1058:         # Filter unique features
+1059:         self.unique_filter_ = UniqueFeatureFilter()
+1060:         X = self.unique_filter_.fit_transform(X)
+1061: 
+1062:         self.X_ = X
+
+classifier.py:501-505
+501: 
+502:         #  Transform input features
+503:         self.X_encoder_ = TransformToNumerical(verbose=self.verbose)
+504:         X = self.X_encoder_.fit_transform(X)
+505: 
+
+classifier.py:726-730
+726:         # Preserve DataFrame structure to retain column names and types for correct feature transformation
+727:         X = validate_data(self, X, reset=False, dtype=None, skip_check_array=True)
+728: 
+729:         X = self.X_encoder_.transform(X)
+730: 
+

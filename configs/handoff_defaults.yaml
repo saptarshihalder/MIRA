@@ -1,0 +1,77 @@
+specification_version: '1.0'
+status: proposed_adapter_untrained
+primary_branch: mechanism
+scope:
+  task: binary_classification
+  columns: numerical
+  max_features: 64
+  max_labeled_context: 128
+mechanism:
+  models: ['tabpfn:v2', 'tabicl:v2', 'xgboost']
+  modes: [native, native_indicators, native_shuffled]
+  followup_modes: [imputed, imputed_indicators]
+  gamma: [0.0, 0.25, 0.5, 0.75, 0.9]
+  context_rows: 256
+  query_rows: 1024
+  ensembles: 4
+  development_seed_start: 40000
+  development_seeds: 3
+  confirmation_seed_start: 60000
+  confirmation_seeds_target: 20
+  ratio_denominator_floor: 0.0001
+adapter:
+  activation: conditional_on_strong_baseline_headroom
+  width: 64
+  heads: 4
+  support_mlp: [4, 64, 64]
+  query_mlp: [15, 64, 64]
+  support_cross_attention_blocks: 1
+  column_self_attention_blocks: 2
+  feedforward_width: 128
+  dropout: 0.0
+  context_windows: [16, 64, 128]
+  marginal_beta_prior: 1.0
+  covariance_shrinkage_count: 8.0
+  covariance_diagonal: zero
+  covariance_min_class_count: 2
+  edge_mlp: [6, 32, 4]
+  output_mlp: [65, 64, 1]
+  output_initialization: zero_final_layer
+  feature_pool: masked_mean
+  absolute_column_embeddings: false
+  label_symmetry: shared_head_antisymmetrization
+  residual_cap: 4.0
+  probability_clip: 0.000001
+  max_parameters: 250000
+  standardization: observed_context_median_iqr
+  value_clip: 10.0
+  age: 'min(log1p(age)/log1p(predeclared_horizon), 1)'
+training:
+  initial_train_episodes: 512
+  development_episodes: 128
+  heldout_episodes: 256
+  expanded_train_episodes_target: 4096
+  query_rows: 16
+  episode_batch_size: 8
+  optimizer: AdamW
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  grad_norm_clip: 1.0
+  warmup_steps: 500
+  max_steps: 10000
+  validation_every_steps: 500
+  validation_patience: 4
+  objective: query_cross_entropy_without_aggregation
+  final_training_seeds: [11, 23, 37]
+  backbone_gradients: false
+online:
+  feedback: reveal_after_prediction
+  change_times_given_to_model: false
+  context_refresh_policy: matched_across_methods
+  cold_start: smoothed_class_prior_and_identity_corrector
+  aggregation: fixed_share
+  alpha: '1 / predeclared_total_horizon'
+  switch_convention: other_expert
+  delayed_feedback: ready_lanes_with_saved_predictions
+  probability_smoothing_epsilon: 0.000001
+  primary_metric: cumulative_log_loss

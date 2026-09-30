@@ -1,0 +1,70 @@
+{
+  "families": {
+    "label_only": {
+      "query_label_and_oracle_perturbation_max_prediction_change": 0.0,
+      "learner_methods_checked": 21,
+      "context_label_sensitivity": 0.6578652515982635,
+      "generic_methods_task_metadata_change": 0.0,
+      "transforms_query_label_and_oracle_invariant": {
+        "native": true,
+        "native_indicators": true,
+        "native_shuffled": true,
+        "imputed": true,
+        "imputed_indicators": true
+      },
+      "exhaustive_mask_normalization_max_error": 0.0,
+      "exhaustive_posterior_max_error": 2.220446049250313e-16,
+      "min_mask_likelihood": 0.09999999999999998
+    },
+    "joint_pair": {
+      "query_label_and_oracle_perturbation_max_prediction_change": 0.0,
+      "learner_methods_checked": 21,
+      "context_label_sensitivity": 0.7536251313329495,
+      "generic_methods_task_metadata_change": 0.0,
+      "transforms_query_label_and_oracle_invariant": {
+        "native": true,
+        "native_indicators": true,
+        "native_shuffled": true,
+        "imputed": true,
+        "imputed_indicators": true
+      },
+      "exhaustive_mask_normalization_max_error": 0.0,
+      "exhaustive_posterior_max_error": 2.220446049250313e-16,
+      "min_mask_likelihood": 0.012499999999999997
+    },
+    "value_dependent": {
+      "query_label_and_oracle_perturbation_max_prediction_change": 0.0,
+      "learner_methods_checked": 21,
+      "context_label_sensitivity": 0.6390441428780196,
+      "generic_methods_task_metadata_change": 0.0,
+      "transforms_query_label_and_oracle_invariant": {
+        "native": true,
+        "native_indicators": true,
+        "native_shuffled": true,
+        "imputed": true,
+        "imputed_indicators": true
+      },
+      "exhaustive_mask_normalization_max_error": 0.0,
+      "exhaustive_posterior_max_error": 2.220446049250313e-16,
+      "min_mask_likelihood": 0.0007812499999999998
+    },
+    "sparse_pair": {
+      "query_label_and_oracle_perturbation_max_prediction_change": 0.0,
+      "learner_methods_checked": 21,
+      "context_label_sensitivity": 0.6775856789169562,
+      "generic_methods_task_metadata_change": 0.0,
+      "transforms_query_label_and_oracle_invariant": {
+        "native": true,
+        "native_indicators": true,
+        "native_shuffled": true,
+        "imputed": true,
+        "imputed_indicators": true
+      },
+      "exhaustive_mask_normalization_max_error": 0.0,
+      "exhaustive_posterior_max_error": 2.220446049250313e-16,
+      "min_mask_likelihood": 3.0517578124999993e-06
+    }
+  },
+  "imputation_training_only_and_empty_column_fallback": true,
+  "scope": "Deterministic source-level perturbation audit; does not certify unexecuted TFM internals. mechanism_oracle intentionally reads query oracle for evaluation."
+}

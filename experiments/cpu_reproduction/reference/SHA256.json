@@ -1,0 +1,10 @@
+{
+  "mira_pilot/check_math.py": "16d3ab3d79f7e317f0c7ee52847ac6b2c0dc8b13e436cb7c08d77186bc935218",
+  "mira_pilot/headroom.py": "9d932f3c6f97d5496b09119914e40675d502daf79c9a520a7d54fe3ee321d35c",
+  "mira_pilot/math_checks.json": "f42d679f37fccc9643e8719dc7b79e600243a40847f34d8ca7d3f6d376472a03",
+  "mira_pilot/requirements-cpu.txt": "9065205926ce1cf97720f58b6ebdb76ef8f82a2669b18d861baf627f1a3e086d",
+  "mira_pilot/results_strong/summary.csv": "65b28639ccf4fe0a07ba69ee9b024ef5a7e1bbdacc66b68ce7307984b790e97f",
+  "mira_pilot/results_strong/summary.json": "a614ab712423e6bfcca722cfde045c36c989e4265aba28ab3efc877bff068488",
+  "mira_pilot/results_strong/task_results.csv": "18837c0532f7effc335fd6297582635b66e0c987084880f48b18515290d07d59",
+  "mira_pilot/tfm_mechanism.py": "8ff8c519a4a7f0cfeb8747ca3c29eef396e2013455a612022d0f16f8d0e0b5f7"
+}

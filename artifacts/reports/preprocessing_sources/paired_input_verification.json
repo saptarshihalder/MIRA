@@ -1,0 +1,342 @@
+{
+  "paired_task_count": 15,
+  "fields": [
+    "uc",
+    "yc",
+    "mc",
+    "uq",
+    "yq",
+    "mq",
+    "oracle",
+    "base",
+    "support_row_ids",
+    "query_row_ids"
+  ],
+  "all_exactly_equal": true,
+  "configuration_equal_except_value_distribution": true,
+  "source_hashes_identical": true,
+  "environment_hashes_identical": true,
+  "both_complete": true,
+  "gaussian_cells": 135,
+  "collision_cells": 135,
+  "manifest_sha256": {
+    "gaussian": "5e0f941e7636bd0dc70f460797620df639ac06e3c0545a7bbded095f771921eb",
+    "collision": "4c81004555e2125b7190eebee80091817b54ace0719325d911042e4467c148bd"
+  },
+  "pairs": [
+    {
+      "task_file": "label_only_seed40000_g0.25.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "7d83adaa789387ea00d636173895d76e757a6fe867195b6c7df9e1ab8d47b329",
+      "collision_sha256": "0b1f5199387524f21c8afe13902d68e6d73d49f69442a62179f60baa49a355c8",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40000_g0.5.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "d742c8cd09804335102eecb861350dfea6c083b125717592a7466f7d781a3771",
+      "collision_sha256": "d2333ffdc2ed2ea5043c85d67dded655f6f7ca71c42d6d83195379c024418aa7",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40000_g0.75.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "d1faf87a20d8f0e3333d906270c9c3d7f32cf5ce39044b533f2789228d8a8b85",
+      "collision_sha256": "a594bbec7813e4b1484f7cc71dcadab8c5d6d66003286a930738432b836f2308",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40000_g0.9.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "08f03b38dca9bbade7e858fcf2bb7708a6d5c544909a30850d68c743ab6468ed",
+      "collision_sha256": "5af10dae0aebbe0516501b3b339152dce6ac4dbb512c2df0bdd2e0c08dbb8dae",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40000_g0.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "8c1e0526587b8628b6bd4a9a10ce78517cba9d99f0d26a7a1298a3afc7c2ab42",
+      "collision_sha256": "bb817a8139533349656ccdce42d5f4117155dd2ba256a97e896312f349d5fa37",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40001_g0.25.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "c1240c938e7d5f61bee8acb6a452b78e5dc8893798916fe447ba508069d2ceae",
+      "collision_sha256": "b05d9e371bbe5f32d2163100544eaa39d1fb34a5f168a26df8b764b0d9a3bb80",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40001_g0.5.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "d00ab991f19ce33abecf74ad498eb4bee7f71d4a09e215f08d04e24c92ddd714",
+      "collision_sha256": "151a3579ec2c1d5a6e4b39cf9dfe3275ca25482124fd06682f50b33e53477a6c",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40001_g0.75.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "1a2f06a48a6db9329c10bc7381bdc1c96db8a8190ed0c8351c81156cbe493b93",
+      "collision_sha256": "7f29d637fef3750160fc1d87abcd635b2fd32f54141062e4ce8241c930833012",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40001_g0.9.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "4980ac034076cdaa3f375f2f9ba6887da2e64f5b75645c2c936c6503d294b270",
+      "collision_sha256": "82d0b51136f1c60ada566e42e8918dcd6b739aae12952c3e238db1f266965c93",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40001_g0.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "e4c15a774c3033fe688e5bde08cc5ab00a31c09bd276db0ccc99a0f1c27b88e8",
+      "collision_sha256": "324659e9d659518a9618d5452c2076c4a65ae16a8159a9b492733ef96e3a7e9b",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40002_g0.25.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "a1c8a81d538007cb22755a5ee85f5741c3adc165455e0966f9209a7add4454eb",
+      "collision_sha256": "788238a8b71c7cc772899ba670d875579e615dbb96b6b7ac74537d25503b7c58",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40002_g0.5.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "9775da0dd5d10675eaf1d4ae88bfa8493fbbc9eba4c85a04821d828979c12ff8",
+      "collision_sha256": "fb5c0f5446dd65c89f97c362134b504fc3216d9dd93c700428a4f47b895956a5",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40002_g0.75.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "cabc6ccc3615ad53db1f78664806ae533c11f7f21d3300cf9aeb79a3cce3ad0d",
+      "collision_sha256": "26c67af885d44bf725baca1ef1da7145b30f5ccc484f74c4e8e36918cee2fde9",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40002_g0.9.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "29354a729373a26f6a961b7ef0dee64177ae8ba6cd52b6cba1231f27f8e279f3",
+      "collision_sha256": "31931cff7a16762568d9e60acdc3f938d38e9eb84e4414f785a6c4e3897e0db4",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    },
+    {
+      "task_file": "label_only_seed40002_g0.npz",
+      "matched_fields": {
+        "uc": true,
+        "yc": true,
+        "mc": true,
+        "uq": true,
+        "yq": true,
+        "mq": true,
+        "oracle": true,
+        "base": true,
+        "support_row_ids": true,
+        "query_row_ids": true
+      },
+      "gaussian_sha256": "ccea1f3c7802e444e89e65470e9ee7d57a669a50086894c406bba837ec31c4e7",
+      "collision_sha256": "0a58cf74a1742c7964274e13056c9b121e79574f547630b58ab7e893e5fb2085",
+      "zero_collision_observed_values_exactly_zero": true,
+      "nan_patterns_identical": true,
+      "support_query_ids_disjoint": true
+    }
+  ],
+  "collision_native_tabicl_across_gamma": [
+    {
+      "seed": 40000,
+      "all_five_gamma_native_probability_arrays_bit_identical": true
+    },
+    {
+      "seed": 40001,
+      "all_five_gamma_native_probability_arrays_bit_identical": true
+    },
+    {
+      "seed": 40002,
+      "all_five_gamma_native_probability_arrays_bit_identical": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+✓ Initialized. View run at 
+https://modal.com/apps/saptarshihalder/main/ap-0gxIvK3ACXtGFW0Zgo9smI
+✓ Created objects.
+├── ✓ Uploaded C:\Users\HP\Documents\ChatGPT\Paper in 
+│   20days\MIRA\infra\modal_mechanism.py
+├── ✓ Uploaded C:\Users\HP\Documents\ChatGPT\Paper in 20days\MIRA\infra
+└── ✓ Created Function run_pilot.
+FAILED; remaining runs for this model will be skipped {'seed': 40000, 'gamma': 0.0, 'model': 'tabpfn:v3.5', 'mode': 'native', 'error': 'TabPFNLicenseError(\'TabPFN requires a one-time license acceptance to download\\nmodel weights for local inference, but no interactive terminal\\nis available.\\n\\nTo authenticate in a non-interactive environment:\\n  1. Open https://ux.priorlabs.ai in a browser and log in (or register)\\n  2. Accept the license on the Licenses tab\\n  3. Copy your API Key from https://ux.priorlabs.ai/account\\n  4. Set the environment variable: export TABPFN_TOKEN="<your-api-key>"\\n     or in Python (before calling .fit()): import os; os.environ["TABPFN_TOKEN"] = "<your-api-key>"\')'}
+One or more runs failed; inspect errors.json. No substitute model was used.
+{"run_id": "smoke_tabpfn_v35", "model": "tabpfn:v3.5", "reserved_usd": 0.35, "status": "failed", "date": "2026-10-01", "active_seconds": 9.878121061, "exit_code": 1}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/saptarshihalder/main/ap-0gxIvK3ACXtGFW0Zgo9smI
