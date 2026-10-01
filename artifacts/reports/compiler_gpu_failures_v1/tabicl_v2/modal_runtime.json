@@ -1,0 +1,22 @@
+{
+  "seconds": 3.2710746449999997,
+  "exit_code": 1,
+  "command": [
+    "/usr/local/bin/python",
+    "/opt/mira/experiments/mask_compiler/run_backbone.py",
+    "--protocol",
+    "/opt/mira/configs/trained_compiler_validation_v2.json",
+    "--model",
+    "tabicl:v2",
+    "--cache-root",
+    "/cache",
+    "--out",
+    "/tmp/mira_compiler_v2_m037nbz9"
+  ],
+  "gpu": "T4",
+  "max_seconds": 900,
+  "wrapper": "modal_compiler_v2",
+  "remote_root": "/opt/mira",
+  "estimated_active_compute_usd": 0.0006802526831741999,
+  "invoice_status": "estimate; excludes startup/build/provider rounding"
+}

@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/opt/mira/experiments/mask_compiler/run_backbone.py", line 359, in <module>
+    cli()
+  File "/opt/mira/experiments/mask_compiler/run_backbone.py", line 353, in cli
+    result = run(plan, digest, args.model, args.out, cache_root=args.cache_root)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/mira/experiments/mask_compiler/run_backbone.py", line 246, in run
+    raise ValueError("Preserve old outputs; a fresh invocation directory is required")
+ValueError: Preserve old outputs; a fresh invocation directory is required

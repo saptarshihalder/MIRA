@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "tests": 101,
+  "seconds": 29.09,
+  "command": "C:/Python311/python.exe -m pytest tests experiments/mask_compiler -q",
+  "log_sha256": "93635bc3789d21712e60bbf705e9f99e58167980195eb1230150b9cd719d83c8",
+  "scope": "Local suite before full CPU validation; mocked backbones do not establish successful cloud integration"
+}

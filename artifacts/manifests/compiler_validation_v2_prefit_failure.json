@@ -1,0 +1,15 @@
+{
+  "run_id": "compiler_validation_v2_tabicl",
+  "protocol_sha256": "bbd594ff7e8175c33490a908f07d3f95943d6a5a76afadf4c34a3507818caef4",
+  "stage": "runner_output_guard_before_inference",
+  "error": "Preserve old outputs; a fresh invocation directory is required",
+  "cause": "The wrapper opened runner.log in the output directory before invoking the child; the child correctly rejected a nonempty output directory",
+  "model_invocations": 0,
+  "prediction_files": 0,
+  "active_seconds": 3.2710746449999997,
+  "reserved_usd": 0.5,
+  "reservation_consumed": true,
+  "initial_paid_pilot_status": "Exhausted: two calls/$1 including both pre-inference failures. No additional paid attempts authorized for this pilot",
+  "preserved_artifacts": "artifacts/reports/compiler_gpu_failures_v1/tabicl_v2",
+  "repair": "Unexecuted v3 worker separates wrapper logs from the child output directory; CPU completion requires its own committed device/source override"
+}

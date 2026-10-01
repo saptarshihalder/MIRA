@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "cells": 162,
+  "seconds": 444.0469999999914,
+  "errors": 0,
+  "independent_saved_probability_score_maxdiff": 0.0,
+  "natural_trained_identity_bit_identical_pairs": 6,
+  "full_job_attempts": 1,
+  "paid_compute_jobs": 0,
+  "TabICL_CPU": "append-only package install completed; benchmark/inference/adaptor creation stopped on new user instruction; no core dependencies changed"
+}
