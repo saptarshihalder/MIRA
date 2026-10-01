@@ -1,0 +1,15 @@
+# Interpretation and continuation
+
+CPU-only development: 80 tasks, 480 saved predictions (400 initial plus 80 sparse controls); $0 paid. Five seeds 73000–73004 are now used for this extension. They are not untouched confirmation. Orders 1–4, supports 32/128, gamma 0/.9, four mask bits,512 queries. Context samples are not nested; queries are paired across support sizes. Gaussian nuisance values are saved but excluded from CPU predictor features (U plus mask codes).
+
+Exhaustive enumeration verifies all 16 binary masks,12 distinct self-inverse library matrices, exact round trips and unchanged uniform-mask coordinate marginals. Marginal invariance is not guaranteed for nonuniform or conditional mask distributions. Exact signal/sign checks pass. Two independent learner-boundary/algebra tests pass, including target/oracle perturbations and nonbinary rejection.
+
+At gamma.9/order 2/128labels, ordinary coordinate logistic has expected NLL .63519; support-selected coordinates .20426; oracle-aligned reference .20426; full-parity L1 .22175. This is improved expressibility for a restricted logistic class, not a TFM result or a new discovery about XOR. Known-active-set reference is privileged, excluded from operational claims.
+
+Compiler versus sparse full-parity controls is mixed: at 128 labels/highgamma the mean differences favor compiler by .0078–.0217, but at 32 labels sparse controls win on orders 1/3/4. Zero-signal selection can harm substantially (order 2/32: compiler .77901 versus identity .74022 and sparse parity .69315). No unconditional improvement or significance claim. Complete tables retain negative results.
+
+Candidate budgets differ: compiler 12bases×3Cs×3CVfolds=108 CV fits plus refit; identity/random/aligned and each full-parity baseline use 3Cs×3folds=9 fits plus refit. Full parity uses 15bits versus 4, while all reversible-coordinate arms have equal width. Preserve these costs/complexity differences. Operational selection receives support labels only; query targets/oracle are evaluator-only. Predictions persist before evaluation.
+
+Next: audit novelty and existing feature-engineering baselines; add a support-only guard using nested validation; match search budgets; implement/freeze isolated TFM runner before at most two $0.50 calls ($1 initial ceiling). Then test fresh development and only conditionally fresh confirmation. Current checkpoint access and independent real/natural-missingness validation remain pending. Keep previous frozen source/data files unchanged.
+
+Reproduction caveat: original sparse solver was unseeded (independent CV replay delta<=7.34e-5); saved prediction hashes and losses still verify exactly. Executed code snapshots preserve provenance. Future code seeds the solver and matches CV clipping. Replay CPU experiment into a new directory with `python experiments/mask_compiler/feasibility.py --out artifacts/runs/compiler_replay`, then `python experiments/mask_compiler/strong_baseline.py --out artifacts/runs/compiler_replay`. This rerun is development, not untouched confirmation. No rerun was required for the present saved-score audit.

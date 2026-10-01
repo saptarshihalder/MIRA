@@ -15,3 +15,7 @@ The real panel has no native missingness. Evaluator-imposed label association, d
 Reservations total $9.05 across nineteen calls, including one historical inaccessible-checkpoint failure; latest provider-reported app charges $0.50322492 may lag and do not independently audit image attribution. Keep the $3 reproduction reserve inside the $26 cap. The tested checkpoints, package/source/data hashes, query-label boundaries and negative results remain preserved.
 
 Next evidence gates: targeted label-budget/representation ablations frozen before new evaluation, contemporary-checkpoint access when available, clean reproduction and anonymous artifact packaging, official formatting/checklist, authorship and final readiness review. Native LaTeX compilation of the same saved manuscript still fails at the environment level; PDF is unverified. BrowserOS Pro critique was not verified. No email or manuscript submission is authorized for this sprint.
+
+## Coordinate extension decision
+
+Proceed with the cheap, gated reversible-coordinate study described in `docs/MASK_COMPILER_PLAN.md`; CPU results are exploratory and show ordinary restricted-logistic expressibility plus selection tradeoffs. Keep neural training inactive. A TFM/novel contribution requires direct fresh replication, matched-search strong baselines, a prediction of unseen failure and consequential external validation. The initial paid batch is capped at $1, conditional on a committed runnable freeze; existing caps/reserve remain. All unperformed gates stay pending.

@@ -1,0 +1,76 @@
+{
+  "status": "draft; not frozen or executed",
+  "date": "2026-10-01",
+  "cpu_completed": "artifacts/reports/mask_compiler_v0/interpretation.md",
+  "max_initial_paid_usd": 1.0,
+  "max_calls": 2,
+  "reservation_each_usd": 0.5,
+  "total_project_cap_usd": 26,
+  "reproduction_reserve_usd": 3,
+  "development_seeds": [
+    74000,
+    74001,
+    74002
+  ],
+  "confirmation_seeds_reserved": [
+    98000,
+    98001,
+    98002,
+    98003,
+    98004,
+    98005,
+    98006,
+    98007,
+    98008,
+    98009,
+    98010,
+    98011,
+    98012,
+    98013,
+    98014,
+    98015,
+    98016,
+    98017,
+    98018,
+    98019
+  ],
+  "context": 128,
+  "queries": 256,
+  "dimensions": 4,
+  "orders": [
+    2,
+    4
+  ],
+  "gammas": [
+    0,
+    0.9
+  ],
+  "models": [
+    "tabpfn:v2",
+    "tabicl:v2"
+  ],
+  "views": [
+    "native",
+    "identity_indicators",
+    "random_basis",
+    "oracle_aligned_reference",
+    "support_selected"
+  ],
+  "expected_pilot_cells": 120,
+  "primary_development_contrast": "identity indicators minus support-selected expectedNLL, gamma.9; native width differs and oracle map is privileged",
+  "practical_screen": "Precommit mean gain>=.01 and gamma-zero mean harm<=.01 versus identity; screen is development, not confirmation",
+  "before_paid": [
+    "novelty/related-work audit",
+    "nested support-only selection guard and matched-search simple baselines",
+    "isolated GPU runner, tests and source/checkpoint/data hashes",
+    "commit frozen protocol before scores",
+    "atomic reservations in existing ledger; finite timeouts/no retries"
+  ],
+  "conditional_confirmation": [
+    "new frozen contrast/multiplicity policy",
+    "fresh seeds98000\u201398019; untouched until frozen",
+    "accessible current checkpoint required for broad contemporary claim",
+    "independent saved-probability audit"
+  ],
+  "limits": "No TFM/compiler novelty or acceptance claim established by CPU results. Fixed basis library and parity families are narrow."
+}

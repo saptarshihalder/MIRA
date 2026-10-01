@@ -1,0 +1,52 @@
+{
+  "status": "complete",
+  "tasks": 80,
+  "predictions": 400,
+  "development_seeds": [
+    73000,
+    73001,
+    73002,
+    73003,
+    73004
+  ],
+  "matrices": 12,
+  "queries": 512,
+  "seconds": 34.921999999991385,
+  "paid_usd": 0,
+  "source_sha256": "67e95d8771178290fa7858e44311d479888e5c2a868357f854da3677bf541bf3",
+  "core_source_sha256": {
+    "pyproject.toml": "747b146b1c5477659441dedb13726032e359deeacb4ae6814151e348171ec318",
+    "scripts/report_mechanism.py": "2218143706805b6541ea0ed4febfda152ed880c628c41e81c8aa6ff800b5aa75",
+    "scripts/run_mechanism.py": "fbd2e3149e204a677282025d41fa4e84793264edd263c85250bffd1775e7b6b3",
+    "src/mira/__init__.py": "5be8f16be189846ddd147db33b2eb856c00786f373daa32f88979b9a90440f75",
+    "src/mira/artifacts.py": "a280e227cc603344ccae46115bd971029b9d90db5a0a5752259676d8e6b39b5e",
+    "src/mira/data.py": "767f037a35a443a78c06b4352e6f3368c4965fc3fa12dc7609f0a996064fd9dc",
+    "src/mira/metrics.py": "de02113cff14d264e09e11aa234985fe3994216e9efbfb765d528fd3741aaf53",
+    "src/mira/models.py": "fe485c44376b2e598e39fadda15b30c2c38551dd6f704bc660531d5d7c16242e",
+    "src/mira/panel_data.py": "9b3bc528e494599b88a182c2e5cdf5facefa3c0f7693fb19dc5341d08dfc1246",
+    "src/mira/panel_runner.py": "b9867b390ca3f98845f4fd13437413362b5597688f47744a1227d78474b5a6da",
+    "src/mira/reporting.py": "71f688b83c76131e02a1a28c31a1a92d046e7bf74bf4d6f267d8660aaa59cc81",
+    "src/mira/representations.py": "9503eb9241d9e9e9cd76e146cbe6d0c75b693872501c60a4634a7a0e8b755d45",
+    "src/mira/runner.py": "f911b15331784329310c6c23d9f137e654fb7114daca007cbe2b726b82be773d"
+  },
+  "environment": {
+    "python": "3.11.9",
+    "python_executable": "C:\\Python311\\python.exe",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.16.3",
+      "scikit-learn": "1.8.0",
+      "torch": "2.12.1",
+      "tabpfn": "not installed",
+      "tabicl": "not installed",
+      "xgboost": "not installed"
+    },
+    "dependency_lock_status": "captured",
+    "dependency_lock_sha256": "90da135010bf10e5fe6032b12ad715f3b9718975411ed74b1a43b08c33abb0dc"
+  },
+  "checks": "All16 masks bijective/round-trip; uniform marginals; exact oracle signal under aligned basis",
+  "scope": "CPU coordinate/logistic feasibility only. U+mask features; Gaussian nuisance values deliberately unused. No TFM/novelty/confirmation claim. Aligned basis uses known active set and is privileged. Full-parity baseline has15 mask features versus4; compiler searches12 distinct bases versus baseline one basis, common3 Cs/3 folds.",
+  "executed_source_snapshot": "feasibility_source.py",
+  "post_run_validation_change": "Reject fractional parity inputs before uint8 cast. Executed source snapshot preserves original SHA; valid binary computation unchanged."
+}

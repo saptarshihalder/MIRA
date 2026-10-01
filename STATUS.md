@@ -23,6 +23,10 @@ Conservative reservations **$9.05 across 19 calls** (18 complete, one historical
 
 Read `artifacts/reports/day4_8_completion.md`, `day4_8_readiness.md`, `strong_baselines/report.md`, and `real_panel_v1/report.md`. Panel regeneration: `python scripts/report_real_panel.py`, then `python scripts/plot_real_panel.py` using saved raw runs. CPU baseline reproduction: `python scripts/run_strong_baselines.py --help`. Raw GPU predictions/checkpoints remain locally under ignored `artifacts/runs/`; source, configurations, canonical public data, reports, figures, identities and cost records are tracked.
 
+## Newly authorized elevation extension
+
+CPU-only reversible-mask coordinate feasibility completed:80 exploratory tasks / 480 saved predictions; exhaustive binary round-trip/oracle-sign checks and two targeted tests passed. No paid calls; ledger stays $9.05 reserved. Sparse full-parity baselines give mixed comparisons, and zero-signal selection harms remain. This establishes only restricted-logistic feasibility, not a TFM result or novelty. Read `docs/MASK_COMPILER_PLAN.md`, `configs/mask_compiler_gate_v1.json` (draft), and `artifacts/reports/mask_compiler_v0/interpretation.md`. Used development seeds73000–73004; future74000–74002 and98000–98019 are pending. Next unresolved gate: novelty audit, nested support-only guard/matched-search baselines, isolated TFM runner and committed freeze before a maximum $1 initial paid batch. Keep $3 reproduction reserve. Three independent agents reviewed theory, baseline/leakage and plan; preserve their limits.
+
 ## Remaining Day 9–20 gates
 
 Freeze targeted label-budget/representation ablations before new evaluations; do not call reused confirmation tasks untouched. Resolve contemporary TabPFN v3.5 license/token access only when available; no substitution or repeated blind retries. Review official formatting/checklist, clean-command reproduction, curated anonymous prediction packaging and authorship before final readiness.

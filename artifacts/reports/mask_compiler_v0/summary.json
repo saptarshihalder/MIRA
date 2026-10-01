@@ -1,0 +1,194 @@
+[
+  {
+    "order": 1,
+    "context": 32,
+    "gamma": 0.0,
+    "losses": {
+      "identity": 0.6743299498901834,
+      "random_basis": 0.6753468398885548,
+      "oracle_aligned_reference": 0.6743299498901834,
+      "support_selected": 0.7232518945285294,
+      "full_parity_logistic": 0.7056214950192239
+    }
+  },
+  {
+    "order": 1,
+    "context": 32,
+    "gamma": 0.9,
+    "losses": {
+      "identity": 0.24635169029189075,
+      "random_basis": 0.24348685551086557,
+      "oracle_aligned_reference": 0.24635169029189075,
+      "support_selected": 0.23513763883434188,
+      "full_parity_logistic": 0.32723854783927797
+    }
+  },
+  {
+    "order": 1,
+    "context": 128,
+    "gamma": 0.0,
+    "losses": {
+      "identity": 0.6370230982616576,
+      "random_basis": 0.6406079107973176,
+      "oracle_aligned_reference": 0.6370230982616576,
+      "support_selected": 0.6465435707936911,
+      "full_parity_logistic": 0.6684812613433524
+    }
+  },
+  {
+    "order": 1,
+    "context": 128,
+    "gamma": 0.9,
+    "losses": {
+      "identity": 0.1993964753964986,
+      "random_basis": 0.2017898589663048,
+      "oracle_aligned_reference": 0.1993964753964986,
+      "support_selected": 0.20124317732294877,
+      "full_parity_logistic": 0.21374288389353505
+    }
+  },
+  {
+    "order": 2,
+    "context": 32,
+    "gamma": 0.0,
+    "losses": {
+      "identity": 0.7402221349057727,
+      "random_basis": 0.7175808981193639,
+      "oracle_aligned_reference": 0.7238052715335688,
+      "support_selected": 0.7790119281814567,
+      "full_parity_logistic": 0.7285870259454587
+    }
+  },
+  {
+    "order": 2,
+    "context": 32,
+    "gamma": 0.9,
+    "losses": {
+      "identity": 0.7240455669410569,
+      "random_basis": 0.720664839028631,
+      "oracle_aligned_reference": 0.23014799377169565,
+      "support_selected": 0.23014799377169565,
+      "full_parity_logistic": 0.33024812471377185
+    }
+  },
+  {
+    "order": 2,
+    "context": 128,
+    "gamma": 0.0,
+    "losses": {
+      "identity": 0.6518530749191621,
+      "random_basis": 0.6451174287661623,
+      "oracle_aligned_reference": 0.6414665467324758,
+      "support_selected": 0.6476718092445262,
+      "full_parity_logistic": 0.6588733966510286
+    }
+  },
+  {
+    "order": 2,
+    "context": 128,
+    "gamma": 0.9,
+    "losses": {
+      "identity": 0.6351853363769798,
+      "random_basis": 0.642724036336824,
+      "oracle_aligned_reference": 0.20425565738949691,
+      "support_selected": 0.20425565738949691,
+      "full_parity_logistic": 0.24062828463455466
+    }
+  },
+  {
+    "order": 3,
+    "context": 32,
+    "gamma": 0.0,
+    "losses": {
+      "identity": 0.676585959675204,
+      "random_basis": 0.6792675515814425,
+      "oracle_aligned_reference": 0.6746970239448827,
+      "support_selected": 0.7440440434249077,
+      "full_parity_logistic": 0.7659413751808343
+    }
+  },
+  {
+    "order": 3,
+    "context": 32,
+    "gamma": 0.9,
+    "losses": {
+      "identity": 0.6943357861016939,
+      "random_basis": 0.6130699783896612,
+      "oracle_aligned_reference": 0.23273426535081126,
+      "support_selected": 0.23273426535081126,
+      "full_parity_logistic": 0.30081420845804496
+    }
+  },
+  {
+    "order": 3,
+    "context": 128,
+    "gamma": 0.0,
+    "losses": {
+      "identity": 0.6423548749448272,
+      "random_basis": 0.6406235205613253,
+      "oracle_aligned_reference": 0.6458175009388057,
+      "support_selected": 0.646519928973885,
+      "full_parity_logistic": 0.6610070532591216
+    }
+  },
+  {
+    "order": 3,
+    "context": 128,
+    "gamma": 0.9,
+    "losses": {
+      "identity": 0.6449769064231525,
+      "random_basis": 0.5594910068228206,
+      "oracle_aligned_reference": 0.2166791606180242,
+      "support_selected": 0.2166791606180242,
+      "full_parity_logistic": 0.22960487688836176
+    }
+  },
+  {
+    "order": 4,
+    "context": 32,
+    "gamma": 0.0,
+    "losses": {
+      "identity": 0.6862490603400303,
+      "random_basis": 0.6895621273133022,
+      "oracle_aligned_reference": 0.6819746034427663,
+      "support_selected": 0.7239880092446234,
+      "full_parity_logistic": 0.7128383317282518
+    }
+  },
+  {
+    "order": 4,
+    "context": 32,
+    "gamma": 0.9,
+    "losses": {
+      "identity": 0.6721324146528606,
+      "random_basis": 0.6790922356209756,
+      "oracle_aligned_reference": 0.2581278105440826,
+      "support_selected": 0.2581278105440826,
+      "full_parity_logistic": 0.3229883822801775
+    }
+  },
+  {
+    "order": 4,
+    "context": 128,
+    "gamma": 0.0,
+    "losses": {
+      "identity": 0.6388731011365414,
+      "random_basis": 0.6392439992068081,
+      "oracle_aligned_reference": 0.6409109062343299,
+      "support_selected": 0.6433441965153956,
+      "full_parity_logistic": 0.6706889662292828
+    }
+  },
+  {
+    "order": 4,
+    "context": 128,
+    "gamma": 0.9,
+    "losses": {
+      "identity": 0.6307299474414457,
+      "random_basis": 0.6320825183874927,
+      "oracle_aligned_reference": 0.19580763693586287,
+      "support_selected": 0.19580763693586287,
+      "full_parity_logistic": 0.22209462592303114
+    }
+  }
+]

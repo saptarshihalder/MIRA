@@ -56,3 +56,7 @@ python scripts/run_strong_baselines.py --help
 ```
 
 Report regeneration requires saved raw runs. Canonical public CC BY 4.0 data/splits are tracked with source citations and hashes. Paid panel reproduction uses `infra/modal_real_panel.py::panel`, the frozen `configs/real_panel_v1.json` and a new run ID; all calls reserve cost before execution. Raw GPU predictions stay local pending final anonymous packaging. Reservations are $9.05, provider-reported app charges $0.50322492 may lag, and $3 remains reserved for reproduction within the $26 cap. The same manuscript was updated; native compilation still has an environment error, so PDF layout remains unverified.
+
+## Reversible-mask extension
+
+[Plan](docs/MASK_COMPILER_PLAN.md), [CPU development evidence](artifacts/reports/mask_compiler_v0/interpretation.md), [three-agent review](artifacts/reports/mask_compiler_v0/audit.md).80 tasks / 480 CPU predictions completed with no paid calls; same-width invertible coordinates can simplify a restricted logistic problem, with mixed sparse-baseline comparisons and zero-signal harms. TFM benefit/novelty are unestablished. Draft `configs/mask_compiler_gate_v1.json` limits initial paid feasibility to$1 after a runnable protocol freeze; fresh confirmation and external validation remain pending.
