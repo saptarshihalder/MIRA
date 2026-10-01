@@ -25,3 +25,20 @@ tracked. Confirmation is rejected by this development catalog.
 The first Day 3 dispatch stopped during local validation because this local
 environment lacked NumPy; installing the two validation dependencies resolved
 it before any GPU call or ledger reservation.
+
+## Frozen confirmation
+
+The pairwise v1 protocol was committed before inference. Its adjacent SHA256
+file is checked before the same bounded dispatch reserves $0.50. Execute a
+new run ID only under a genuinely frozen design:
+
+```powershell
+python -m modal run infra/modal_confirmation.py::confirm --run-id confirmation_pairwise_v1
+python scripts/report_mechanism.py --out artifacts/runs/confirmation_pairwise_v1 --report-out artifacts/reports/confirmation_pairwise_v1 --confidence .975
+python scripts/analyze_confirmation.py
+```
+
+The existing ID is already complete and cannot be reused. Regeneration needs
+only the latter two commands and saved raw artifacts. Analysis needs matplotlib
+in addition to NumPy/SciPy. The 20 reserved pairwise seeds are now used; changing
+the design cannot turn a rerun on them into fresh confirmation.

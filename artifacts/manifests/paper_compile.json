@@ -1,6 +1,6 @@
 {
   "path": "paper/main.tex",
-  "source_sha256": "9a48e7179b8a6f11063b5a21d13367b20824a8f7de2c765846dd218074fb3293",
+  "source_sha256": "8b3cd1f32a175eb3484add45b3410a6fa0c3402cbd19b992801b579949bb4cda",
   "compiler": "Codex native LaTeX",
   "result": "compile-failed",
   "diagnostic": "Unable to find standard directories for platform",

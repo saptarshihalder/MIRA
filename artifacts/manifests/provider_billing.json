@@ -1,5 +1,5 @@
 {
-  "retrieved_at_utc": "2026-10-01T10:25:02.248114+00:00",
+  "retrieved_at_utc": "2026-10-01T10:44:52.648128+00:00",
   "scope": "mira-mechanism app rows; billing may lag, image-build attribution not independently audited",
   "rows": [
     "BillingReportItem(object_id='ap-0gxIvK3ACXtGFW0Zgo9smI', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 9, 30, 19, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.00207958'), cost_by_resource={'Memory': Decimal('0.00017779'), 'T4': Decimal('0.00163899'), 'CPU': Decimal('0.00026279')}, tags={})",
@@ -14,7 +14,8 @@
     "BillingReportItem(object_id='ap-qidELUGzO6TT1B1KoZAiId', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 9, 30, 20, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.01580386'), cost_by_resource={'Memory': Decimal('0.00135112'), 'T4': Decimal('0.01245562'), 'CPU': Decimal('0.00199712')}, tags={})",
     "BillingReportItem(object_id='ap-qketZYlsgqTFqEhubaiEDo', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 9, 30, 20, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.01455617'), cost_by_resource={'Memory': Decimal('0.00124445'), 'T4': Decimal('0.01147227'), 'CPU': Decimal('0.00183945')}, tags={})",
     "BillingReportItem(object_id='ap-t3dvxkWY4V4uBo6Ym9NLbd', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 9, 30, 20, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.01871503'), cost_by_resource={'Memory': Decimal('0.00160000'), 'T4': Decimal('0.01475002'), 'CPU': Decimal('0.00236500')}, tags={})",
+    "BillingReportItem(object_id='ap-zFubqkegN8iE4QwcXSORx3', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 10, 1, 10, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.06420522'), cost_by_resource={'Memory': Decimal('0.00548909'), 'T4': Decimal('0.05060257'), 'CPU': Decimal('0.00811356')}, tags={})",
     "BillingReportItem(object_id='ap-zx9N3EiGQwGgJhcZsviOpj', description='mira-mechanism', environment_name='main', interval_start=datetime.datetime(2026, 9, 30, 21, 0, tzinfo=datetime.timezone.utc), cost=Decimal('0.03243931'), cost_by_resource={'Memory': Decimal('0.00277333'), 'T4': Decimal('0.02556665'), 'CPU': Decimal('0.00409933')}, tags={})"
   ],
-  "reported_app_total_usd": 0.22198885
+  "reported_app_total_usd": 0.28619406999999997
 }

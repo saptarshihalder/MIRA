@@ -47,3 +47,7 @@ Day 3 reallocates the internal ceilings to cover seven conservative $0.50 develo
 ## Continuation
 
 Read `STATUS.md` first, inspect ledger and existing outputs, then execute the next unresolved gate. Reuse results and exact dependencies. Update status/decision after meaningful evidence changes. Do not rerun confirmation after development changes without explicitly recording that it is no longer untouched. Preserve source attachments under the workspace `reference/handoff` directory.
+
+## Accelerated confirmation checkpoint
+
+At the user's instruction to continue toward a concrete output, confirmation_pairwise_v1 was frozen and committed before execution. Its 360 cells passed the two prespecified primary contrasts on 20 fresh tasks. Seeds 60000–60019 have now been used for this scoped panel. Read the confirmation decision before choosing the next gate; preserve outcome-independent protocol changes and keep later baseline/real-covariate claims separate.

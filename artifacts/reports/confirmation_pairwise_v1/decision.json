@@ -1,0 +1,49 @@
+{
+  "frozen_protocol_sha256": "633cac37b04b8cda3df8ba3036f05627de4784182a7caaf06ef838c3c817c7c4",
+  "primary_success": true,
+  "primary": [
+    {
+      "ci_high": 0.1280928907940804,
+      "ci_low": 0.07969487516742133,
+      "cold_start_tasks": 0,
+      "comparison": "native_to_indicators",
+      "empirical_gain_ci_high": 0.12332743979681829,
+      "empirical_gain_ci_low": 0.07213632625777713,
+      "empirical_gain_mean": 0.09773188302729771,
+      "family": "pairwise",
+      "fraction_mean": 0.7881282295395116,
+      "fraction_valid_tasks": 20,
+      "gamma": 0.9,
+      "mean": 0.10389388298075086,
+      "mean_baseline_to_oracle_gap": 0.12876938111115238,
+      "model": "tabpfn:v2",
+      "n_tasks": 20,
+      "protocol": "confirmation",
+      "se": 0.009944360950484935
+    },
+    {
+      "ci_high": 0.12836845210916137,
+      "ci_low": 0.06162014768892647,
+      "cold_start_tasks": 0,
+      "comparison": "shuffled_to_indicators",
+      "empirical_gain_ci_high": 0.12500579718164562,
+      "empirical_gain_ci_low": 0.05484632107609026,
+      "empirical_gain_mean": 0.08992605912886793,
+      "family": "pairwise",
+      "fraction_mean": 0.7576565065949326,
+      "fraction_valid_tasks": 20,
+      "gamma": 0.9,
+      "mean": 0.09499429989904393,
+      "mean_baseline_to_oracle_gap": 0.11986979802944542,
+      "model": "tabpfn:v2",
+      "n_tasks": 20,
+      "protocol": "confirmation",
+      "se": 0.013714802629677258
+    }
+  ],
+  "audited_tasks": 40,
+  "confirmation_cells": 360,
+  "audit": "passed: primary intervals recomputed, seeds/IDs/NaN masks/exact query oracle verified",
+  "scope": "Synthetic Gaussian pairwise family at256 labels; no current-checkpoint or real-data claim",
+  "secondary": "Gamma0 negative control and all TabICL/XGBoost contrasts are descriptive; no universal/model-selection claim"
+}

@@ -11,11 +11,11 @@
 \begin{document}
 \maketitle
 \begin{center}
-\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} The CPU pilot has been replicated and 1,296 development inference cells have run. Independent confirmation and real-data evaluation are pending. This document does not report a completed model contribution.}}
+\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} The CPU pilot has been replicated, 1,296 development cells have run, and one frozen pairwise hypothesis passed on 20 fresh tasks (360 confirmation cells). Real-data evaluation remains pending. This document does not report a completed model contribution.}}
 \end{center}
 
 \begin{abstract}
-Missingness can carry predictive information when observation decisions depend on outcomes. An incomplete table already identifies which measurements are absent, yet a frozen tabular predictor may use that information differently when the same bits are appended as ordinary feature columns. We specify a controlled study using exact synthetic posteriors, matched inputs, shuffled-indicator controls, and semi-synthetic observation-policy interventions. The study separates behavioral differences from preprocessing and pretraining-prior explanations. A replicated CPU diagnostic shows that simple mask-aware corrections approach an oracle in several narrow high-signal families, motivating foundation-model evaluation before training a new adapter. Development compares Gaussian observed values to values deliberately colliding with the imputation constant; indicator effects differ across backbones. Independent confirmation remains pending. The intended evidence includes reproducible paired losses, task-level uncertainty, version-specific conclusions, and compute accounting.
+Missingness can carry predictive information when observation decisions depend on outcomes. An incomplete table already identifies absent measurements, yet a frozen predictor can behave differently when those same bits are appended as feature columns. We evaluate this representation question with exact synthetic posteriors, paired inputs, and shuffled-indicator controls. After 1,296 development cells, a protocol committed before evaluation tests twenty fresh Gaussian pairwise-mask tasks with 256 context labels. TabPFN v2 gains 0.104 nats in expected log-loss over native inputs and 0.095 over same-width shuffled indicators. The two prespecified contrasts have positive multiplicity-adjusted intervals. A separate all-zero diagnostic localizes information loss to TabICL preprocessing; partial-zero controls do not reproduce its large failure. A replicated CPU pilot also shows that simple mask-aware corrections can approach an oracle in narrow families. These findings establish a scoped representation effect. Conclusions remain version- and mechanism-specific; real-covariate evaluation, current-checkpoint access, and broader baseline comparisons are pending.
 \end{abstract}
 
 \section{Question and scope}
@@ -73,7 +73,7 @@ where positive $G$ favors indicators. Synthetic expected log-loss uses the exact
  L(p)=\frac{1}{N}\sum_{i=1}^{N}
  \left[-q_i^{\star}\log p_i-(1-q_i^{\star})\log(1-p_i)\right].
 \end{equation}
-We report raw losses, oracle headroom, and task-level uncertainty. A headroom fraction is reported only when its denominator exceeds $10^{-4}$; negative effects remain visible. Queries within a task do not become independent experimental replicates. Confirmation uses fresh seeds after the configuration is frozen, targeting twenty independent draws when measured compute permits.
+We report raw losses, oracle headroom, and task-level uncertainty. A headroom fraction is reported only when its denominator exceeds $10^{-4}$; negative effects remain visible. Queries within a task do not become independent experimental replicates. The first confirmation protocol was committed before evaluation and used twenty fresh draws, seeds 60000--60019. Two prespecified TabPFN v2 contrasts at $\gamma=0.9$ use 97.5\% two-sided paired $t$ intervals, giving at least 95\% simultaneous coverage by Bonferroni. Success requires both lower bounds positive and a native-to-indicator mean gain of at least 0.01 nats. Gamma-zero and other backbones are descriptive controls. No outcome-based stopping or selection was used.
 
 Follow-ups vary label budgets, missingness rates, interactions, and values near imputation constants. A predeclared panel of six real-covariate datasets will receive imposed observation mechanisms, with original and imposed masks tracked separately. This limited panel cannot establish universal performance.
 
@@ -107,7 +107,7 @@ Two paired development matrices each contain three task seeds, five signal stren
 In the Gaussian matrix, TabPFN v2's mean native-to-indicator gains range from 0.0013 to 0.0185 nats across the signal strengths; every three-task 95\% paired $t$ interval includes zero. TabICLv2 effects are close to zero. In the collision matrix, TabICLv2's gains grow with signal strength, whereas TabPFN v2 has no corresponding gain. At $\gamma=0.9$:
 \begin{table}[t]
 \centering\small
-\caption{Development indicator effect at $\gamma=0.9$, mean [95\% paired interval] in nats; three tasks. Confirmation pending.}
+\caption{Development indicator effect at $\gamma=0.9$, mean [95\% paired interval] in nats; three tasks. Development only.}
 \begin{tabular}{@{}lrr@{}}\toprule
 Predictor & Gaussian & Zero collision\\\midrule
 TabPFN v2 & 0.0185 & $-0.0055$\\
@@ -131,14 +131,33 @@ Observed zeros in the partial controls are not necessarily collisions with the e
 \subsection{Interaction development}
 A separate Gaussian-value panel evaluates all four families at the three development signal strengths with three tasks per condition (324 cells). At $\gamma=0.9$, TabPFN v2's native-to-indicator gain is 0.07654 [0.04555, 0.10753] nats for pairwise masks and 0.03159 [0.00933, 0.05386] for value-dependent masks. The corresponding true-versus-shuffled indicator gains are 0.07436 [0.03485, 0.11386] and 0.01649 [0.00046, 0.03252], supporting follow-up beyond an added-width explanation. TabICLv2's pairwise and value-dependent intervals include zero. Sparse-pair native-to-indicator gains are large on average (0.34015 for TabPFN and 0.25372 for TabICL), but both three-task intervals include zero and are very wide. XGBoost's native/indicator predictions coincide throughout this panel. These development results motivate a frozen interaction-focused confirmation design; selection and multiplicity prevent interpreting these intervals as confirmatory evidence.
 
-A further baseline-rate-$0.1$ panel contains 243 cells over single-mask, pairwise, and value-dependent families. At $\gamma=0.9$, TabPFN native-to-indicator effects are 0.03329 [0.00697, 0.05960], $-0.00006$ [$-0.00212$, 0.00200], and 0.03935 [0.02040, 0.05831]; TabICL value-dependent gain is 0.04167 [0.00894, 0.07439]. Equal signal-strength parameters across rates do not give equal oracle headroom. Across the original and expanded panels, 1,296 development cells completed; twelve engineering smoke cells are excluded. Sixty local tests and a saved-data audit pass. Independent confirmation remains untouched.
+A further baseline-rate-$0.1$ panel contains 243 cells over single-mask, pairwise, and value-dependent families. At $\gamma=0.9$, TabPFN native-to-indicator effects are 0.03329 [0.00697, 0.05960], $-0.00006$ [$-0.00212$, 0.00200], and 0.03935 [0.02040, 0.05831]; TabICL value-dependent gain is 0.04167 [0.00894, 0.07439]. Equal signal-strength parameters across rates do not give equal oracle headroom. Across the original and expanded panels, 1,296 development cells completed; twelve engineering smoke cells are excluded. Sixty local tests and a saved-data audit pass. At the end of development, confirmation remained untouched.
+
+\section{Frozen pairwise confirmation}
+The strongest development lead was evaluated under a committed, hash-frozen protocol on twenty fresh tasks in the Gaussian pairwise family, with $\gamma\in\{0,0.9\}$ and unchanged label/query/ensemble budgets. All 360 requested cells completed. The primary native-to-indicator gain for TabPFN v2 at $\gamma=0.9$ is 0.10389 nats [0.07969, 0.12809]; the true-versus-shuffled indicator gain is 0.09499 [0.06162, 0.12837]. These are the prespecified 97.5\% intervals for the two primary contrasts; both meet the frozen success rule. Table~\ref{tab:confirmation} provides the corresponding losses.
+
+\begin{table}[t]
+\centering\small
+\caption{Mean expected log-loss on twenty fresh Gaussian pairwise tasks at $\gamma=0.9$. All models receive 256 identical context labels and 1,024 identical queries per task. Mean exact-oracle loss is 0.18443 nats. Only the two TabPFN contrasts are primary.}
+\label{tab:confirmation}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Predictor & Native & True indicators & Shuffled indicators\\\midrule
+TabPFN v2 & 0.31320 & 0.20931 & 0.30430\\
+TabICLv2 & 0.21004 & 0.20390 & 0.21503\\
+XGBoost & 0.31465 & 0.31465 & 0.32521\\\bottomrule
+\end{tabular}
+\end{table}
+
+The TabPFN zero-signal native-to-indicator effect is $-0.00254$ [$-0.00545$, 0.00038] nats; its descriptive interval includes zero. TabICLv2's high-signal effect is much smaller, 0.00614 [0.00282, 0.00947], and is a secondary result. XGBoost's native and true-indicator predictions coincide. The evidence supports the specified TabPFN representation contrast, without attributing it to a pretraining prior or establishing adapter superiority. Synthetic-task uncertainty does not establish variation across real datasets.
+
+An independent audit recomputed both primary intervals and verified all forty saved task files: reserved seeds, disjoint context/query identifiers, native NaN/mask alignment and the exact query posterior. Predictions, source/checkpoint/environment identities and configuration hashes remain saved. The confirmation protocol and decision are separate from development reports. These seeds are now consumed for this panel; changed configurations cannot treat the same panel as untouched confirmation.
 
 \section{Related work and limitations}
 TabPFN v2 demonstrates strong small-data prediction~\cite{hollmann2025}. Contemporary versions already encode missingness: TabPFN-3.5 explicitly inherits missing and infiniteness indicators~\cite{priorlabs2026}. Thus, native indicator encoding is compatible with our question, and a blanket claim that foundation models discard masks would be incorrect.
 
 PFN-Flow studies Bayesian prediction under structural missingness, with guarantees restricted to its specified prior~\cite{liang2026}. TFM-Retouche uses a lightweight residual input adapter through a frozen backbone and a held-out identity guard~\cite{nguyen2026}. These precedents prevent treating missingness-specific training or frozen residual adaptation alone as methodological novelty.
 
-Independent TFM confirmation remains pending. The CPU pilot is narrow, high-signal, and synthetic; its Monte Carlo variability does not describe generalization across real datasets. The zero-collision condition is deliberately extreme. A representation effect may disappear on current models or follow feature-count changes. TabPFN v3.5 inference was inaccessible because one-time license acceptance and a token were required; no checkpoint was substituted. Causal attribution to pretraining requires matched controlled training beyond this protocol. A neural branch requires held-out improvement beyond simple corrections and refreshed contexts with matched labels. Any online extension must predict before label release and retain original probabilities for scoring. This draft makes no acceptance, clinical, or universal-improvement claim.
+The specified pairwise TabPFN contrast has fresh-task confirmation; other families and real-covariate generalization remain pending. The CPU pilot is narrow, high-signal, and synthetic; its Monte Carlo variability does not describe generalization across real datasets. The zero-collision condition is deliberately extreme. A representation effect may disappear on current models or follow feature-count changes. TabPFN v3.5 inference was inaccessible because one-time license acceptance and a token were required; no checkpoint was substituted. Causal attribution to pretraining requires matched controlled training beyond this protocol. A neural branch requires held-out improvement beyond simple corrections and refreshed contexts with matched labels. Any online extension must predict before label release and retain original probabilities for scoring. This draft makes no acceptance, clinical, or universal-improvement claim.
 
 \begin{thebibliography}{9}
 \small
