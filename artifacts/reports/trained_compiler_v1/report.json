@@ -1,0 +1,34 @@
+{
+  "status": "trained CPU prototype",
+  "parameters": 6092,
+  "train_tasks": 2048,
+  "validation_tasks": 256,
+  "heldout_development_tasks": 256,
+  "epochs": 80,
+  "train_seeds": [
+    81000,
+    83047
+  ],
+  "validation_seeds": [
+    85000,
+    85255
+  ],
+  "heldout_development_seeds": [
+    87000,
+    87255
+  ],
+  "rng_namespace": 777,
+  "seconds": 3.7809999999881256,
+  "paid_usd": 0,
+  "validation_teacher_accuracy": 0.78515625,
+  "raw_teacher_accuracy": 0.82421875,
+  "guarded_teacher_accuracy": 0.78125,
+  "identity_teacher_accuracy": 0.4609375,
+  "moment_heuristic_teacher_accuracy": 0.78125,
+  "guarded_nonidentity_fraction": 0.33984375,
+  "checkpoint_sha256": "da8accd2f5b84f895e6effd61f908097a4960527b84731dd75268b620b65496f",
+  "source_sha256": "e5da3c92e6ee0f5825ff9472212bd630653b68c2f2c53f014b5021a7801b9fde",
+  "torch": "2.9.0+cpu",
+  "feature_encoding": "Fixed permutation-invariant15 absolute parity/label moments,U-label moment,log-context size; learned6092-parameter MLP selector, not learned raw-row encoder.",
+  "limits": "Privileged active/gamma teacher during synthetic pretraining; teacher recovery is not downstream loss, calibration, novelty, TFM benefit or external generalization. Confidence fallback has no no-harm guarantee. All new seeds are now used development. Frozen backbone integration and pretraining-budget-matched trained baselines pending."
+}

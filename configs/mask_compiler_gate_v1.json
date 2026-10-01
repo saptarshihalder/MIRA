@@ -1,5 +1,5 @@
 {
-  "status": "draft; not frozen or executed",
+  "status": "superseded historical draft; do not execute as trained-model protocol",
   "date": "2026-10-01",
   "cpu_completed": "artifacts/reports/mask_compiler_v0/interpretation.md",
   "max_initial_paid_usd": 1.0,
@@ -64,7 +64,8 @@
     "nested support-only selection guard and matched-search simple baselines",
     "isolated GPU runner, tests and source/checkpoint/data hashes",
     "commit frozen protocol before scores",
-    "atomic reservations in existing ledger; finite timeouts/no retries"
+    "atomic reservations in existing ledger; finite timeouts/no retries",
+    "new trained-model protocol with fixedcheckpoint and matched-pretraining baselines"
   ],
   "conditional_confirmation": [
     "new frozen contrast/multiplicity policy",
@@ -72,5 +73,6 @@
     "accessible current checkpoint required for broad contemporary claim",
     "independent saved-probability audit"
   ],
-  "limits": "No TFM/compiler novelty or acceptance claim established by CPU results. Fixed basis library and parity families are narrow."
+  "limits": "No TFM/compiler novelty or acceptance claim established by CPU results. Fixed basis library and parity families are narrow.",
+  "trained_candidate": "artifacts/reports/trained_compiler_v1/model_config.json"
 }

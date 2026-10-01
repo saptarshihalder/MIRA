@@ -1,0 +1,6 @@
+{
+  "status": "failed before optimization",
+  "diagnostic": "Windows numpy integer defaultint32; torchCrossEntropy requiresint64",
+  "source_sha256": "17b9e744e5cf268f05e98ad19edd91824dd066f1becc0982ef1d088ea790cf1b",
+  "paid_usd": 0
+}

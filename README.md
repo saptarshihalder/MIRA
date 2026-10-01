@@ -60,3 +60,13 @@ Report regeneration requires saved raw runs. Canonical public CC BY 4.0 data/spl
 ## Reversible-mask extension
 
 [Plan](docs/MASK_COMPILER_PLAN.md), [CPU development evidence](artifacts/reports/mask_compiler_v0/interpretation.md), [three-agent review](artifacts/reports/mask_compiler_v0/audit.md).80 tasks / 480 CPU predictions completed with no paid calls; same-width invertible coordinates can simplify a restricted logistic problem, with mixed sparse-baseline comparisons and zero-signal harms. TFM benefit/novelty are unestablished. Draft `configs/mask_compiler_gate_v1.json` limits initial paid feasibility to$1 after a runnable protocol freeze; fresh confirmation and external validation remain pending.
+
+## Trained model candidate
+
+[CPU training report](artifacts/reports/trained_compiler_v1/report.md) and [model configuration](artifacts/reports/trained_compiler_v1/model_config.json): a6092-parameter MIRA-Compiler prototype selects reversible coordinates from labeled support statistics. Learned weights and held-out predictions are tracked. Synthetic teacher recovery is not frozen-TFM usefulness or novelty. The trained-model direction is now primary; direct validation and matched-pretraining baselines are next.
+
+```powershell
+python experiments/mask_compiler/train_selector.py --out artifacts/runs/trained_compiler_replay
+```
+
+The chosen directory must be new; existing checkpoints/results are preserved.

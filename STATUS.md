@@ -23,7 +23,13 @@ Conservative reservations **$9.05 across 19 calls** (18 complete, one historical
 
 Read `artifacts/reports/day4_8_completion.md`, `day4_8_readiness.md`, `strong_baselines/report.md`, and `real_panel_v1/report.md`. Panel regeneration: `python scripts/report_real_panel.py`, then `python scripts/plot_real_panel.py` using saved raw runs. CPU baseline reproduction: `python scripts/run_strong_baselines.py --help`. Raw GPU predictions/checkpoints remain locally under ignored `artifacts/runs/`; source, configurations, canonical public data, reports, figures, identities and cost records are tracked.
 
-## Newly authorized elevation extension
+## Primary direction: trained MIRA-Compiler
+
+User now requires a trained-model contribution. CPU prototype trained:6092 parameters,2048 meta-training tasks,256 validation/256 held-out development tasks. Rawteacher basis accuracy82.42% versus heuristic78.12%; confidence fallback78.12%, so practical superiority is unestablished. These are synthetic teacher metrics, not TFM/query-loss gains. Privileged active/gamma teacher is pretraining-only; inference accepts support data only. Checkpoint reloading and one additional boundary/invariance test pass. Report/config/weights/predictions: `artifacts/reports/trained_compiler_v1/`. Retained failed dtype attempt cost$0; successful training also$0. New seed ranges81000–83047,85000–85255,87000–87255 are used development, distinct namespace777. Prototype uses fixed support moments plus learned MLP, not a learned raw-row encoder.
+
+Next unresolved gate: equally pretrained learned baselines, fair CV/L1 controls, isolated frozen-backbone runner and committed trained-model protocol before the maximum$1 paid feasibility batch. Existing geometry study supports this candidate; method novelty and usefulness must be established by new evidence. Daily automation updated to this trained-model direction. Previous caps, $3 reserve and confirmation separation persist.
+
+## Supporting elevation evidence
 
 CPU-only reversible-mask coordinate feasibility completed:80 exploratory tasks / 480 saved predictions; exhaustive binary round-trip/oracle-sign checks and two targeted tests passed. No paid calls; ledger stays $9.05 reserved. Sparse full-parity baselines give mixed comparisons, and zero-signal selection harms remain. This establishes only restricted-logistic feasibility, not a TFM result or novelty. Read `docs/MASK_COMPILER_PLAN.md`, `configs/mask_compiler_gate_v1.json` (draft), and `artifacts/reports/mask_compiler_v0/interpretation.md`. Used development seeds73000–73004; future74000–74002 and98000–98019 are pending. Next unresolved gate: novelty audit, nested support-only guard/matched-search baselines, isolated TFM runner and committed freeze before a maximum $1 initial paid batch. Keep $3 reproduction reserve. Three independent agents reviewed theory, baseline/leakage and plan; preserve their limits.
 

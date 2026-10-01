@@ -19,3 +19,9 @@ Next evidence gates: targeted label-budget/representation ablations frozen befor
 ## Coordinate extension decision
 
 Proceed with the cheap, gated reversible-coordinate study described in `docs/MASK_COMPILER_PLAN.md`; CPU results are exploratory and show ordinary restricted-logistic expressibility plus selection tradeoffs. Keep neural training inactive. A TFM/novel contribution requires direct fresh replication, matched-search strong baselines, a prediction of unseen failure and consequential external validation. The initial paid batch is capped at $1, conditional on a committed runnable freeze; existing caps/reserve remain. All unperformed gates stay pending.
+
+## Trained-model direction supersedes study-only endpoint
+
+The user requires a trained contribution. Primary candidate is MIRA-Compiler, a learned support-conditioned selector of reversible mask bases for a frozen tabular predictor. A6092-parameter CPU prototype is actually trained; saved evidence lives in `artifacts/reports/trained_compiler_v1/`. Rawteacher recovery82.42%, guard78.12% (ties the78.12% heuristic); this does not establish downstream efficacy. Privileged synthetic supervision is disclosed and never supplied at inference. Existing study remains supporting evidence. Substantial residual-adapter training remains conditional; small compiler pretraining is now authorized.
+
+Next gates: matched-pretraining learned baselines and strong existing CPU/CV controls; frozen-backbone validation with actual query losses and null harms; commit runnable protocol/checkpoint hashes before at most$1 paid pilot; then conditional fresh confirmation and external evaluation. Novelty/acceptance remain unestablished. Use current named checkpoints honestly, preserve$3 reserve, and do not reuse trained/development seed ranges as untouched confirmation. Daily continuation now follows this primary direction.
