@@ -1,0 +1,96 @@
+✓ Initialized. View run at 
+https://modal.com/apps/saptarshihalder/main/ap-qketZYlsgqTFqEhubaiEDo
+✓ Created objects.
+├── ✓ Uploaded C:\Users\HP\Documents\ChatGPT\Paper in 
+│   20days\MIRA\infra\modal_mechanism.py
+├── ✓ Uploaded C:\Users\HP\Documents\ChatGPT\Paper in 
+│   20days\MIRA\pyproject.toml
+├── ✓ Uploaded C:\Users\HP\Documents\ChatGPT\Paper in 20days\MIRA\scripts
+├── ✓ Uploaded C:\Users\HP\Documents\ChatGPT\Paper in 20days\MIRA\infra
+├── ✓ Uploaded C:\Users\HP\Documents\ChatGPT\Paper in 20days\MIRA\src
+└── ✓ Created Function run_pilot.
+{"cell_id": "label_only_seed40030_g0_tabpfn_v2_native", "expected_nll": 0.6219600881343217, "cold_start": false, "seconds": 8.353464847}
+{"cell_id": "label_only_seed40030_g0_tabpfn_v2_native_indicators", "expected_nll": 0.6217424551670923, "cold_start": false, "seconds": 0.5300514559999989}
+{"cell_id": "label_only_seed40030_g0_tabpfn_v2_native_shuffled", "expected_nll": 0.6222335265032084, "cold_start": false, "seconds": 0.4232567980000006}
+{"cell_id": "label_only_seed40030_g0_tabicl_v2_native", "expected_nll": 0.6243129289044209, "cold_start": false, "seconds": 1.3643006020000001}
+{"cell_id": "label_only_seed40030_g0_tabicl_v2_native_indicators", "expected_nll": 0.6243504116884004, "cold_start": false, "seconds": 1.3705570949999988}
+{"cell_id": "label_only_seed40030_g0_tabicl_v2_native_shuffled", "expected_nll": 0.6244255929502961, "cold_start": false, "seconds": 1.1930794709999972}
+{"cell_id": "label_only_seed40030_g0_xgboost_native", "expected_nll": 0.7014655244660182, "cold_start": false, "seconds": 0.19826941399999853}
+{"cell_id": "label_only_seed40030_g0_xgboost_native_indicators", "expected_nll": 0.7014655244660182, "cold_start": false, "seconds": 0.12688348600000054}
+{"cell_id": "label_only_seed40030_g0_xgboost_native_shuffled", "expected_nll": 0.7030008506606717, "cold_start": false, "seconds": 0.13024121099999775}
+{"cell_id": "label_only_seed40030_g0.5_tabpfn_v2_native", "expected_nll": 0.5238809682698973, "cold_start": false, "seconds": 0.3547459260000032}
+{"cell_id": "label_only_seed40030_g0.5_tabpfn_v2_native_indicators", "expected_nll": 0.5084771222968326, "cold_start": false, "seconds": 0.4031128869999989}
+{"cell_id": "label_only_seed40030_g0.5_tabpfn_v2_native_shuffled", "expected_nll": 0.5224908780561696, "cold_start": false, "seconds": 0.39672629100000023}
+{"cell_id": "label_only_seed40030_g0.5_tabicl_v2_native", "expected_nll": 0.5083605519235499, "cold_start": false, "seconds": 0.9783405649999999}
+{"cell_id": "label_only_seed40030_g0.5_tabicl_v2_native_indicators", "expected_nll": 0.5062283151297113, "cold_start": false, "seconds": 0.8859625010000016}
+{"cell_id": "label_only_seed40030_g0.5_tabicl_v2_native_shuffled", "expected_nll": 0.5067150102313684, "cold_start": false, "seconds": 0.9878835009999989}
+{"cell_id": "label_only_seed40030_g0.5_xgboost_native", "expected_nll": 0.5900730901331275, "cold_start": false, "seconds": 0.10230050900000265}
+{"cell_id": "label_only_seed40030_g0.5_xgboost_native_indicators", "expected_nll": 0.5900730901331275, "cold_start": false, "seconds": 0.10214728400000084}
+{"cell_id": "label_only_seed40030_g0.5_xgboost_native_shuffled", "expected_nll": 0.6013143271948778, "cold_start": false, "seconds": 0.10689552800000257}
+{"cell_id": "label_only_seed40030_g0.9_tabpfn_v2_native", "expected_nll": 0.2051074049985652, "cold_start": false, "seconds": 0.3321471040000006}
+{"cell_id": "label_only_seed40030_g0.9_tabpfn_v2_native_indicators", "expected_nll": 0.18823528637320247, "cold_start": false, "seconds": 0.43606282700000065}
+{"cell_id": "label_only_seed40030_g0.9_tabpfn_v2_native_shuffled", "expected_nll": 0.20642261956475827, "cold_start": false, "seconds": 0.442145086}
+{"cell_id": "label_only_seed40030_g0.9_tabicl_v2_native", "expected_nll": 0.19069616074796814, "cold_start": false, "seconds": 1.0538186739999986}
+{"cell_id": "label_only_seed40030_g0.9_tabicl_v2_native_indicators", "expected_nll": 0.18879433551635383, "cold_start": false, "seconds": 1.2568956470000003}
+{"cell_id": "label_only_seed40030_g0.9_tabicl_v2_native_shuffled", "expected_nll": 0.1909823702011549, "cold_start": false, "seconds": 0.8852294100000009}
+{"cell_id": "label_only_seed40030_g0.9_xgboost_native", "expected_nll": 0.24221815774501354, "cold_start": false, "seconds": 0.10865105299999911}
+{"cell_id": "label_only_seed40030_g0.9_xgboost_native_indicators", "expected_nll": 0.24221815774501354, "cold_start": false, "seconds": 0.10964272000000008}
+{"cell_id": "label_only_seed40030_g0.9_xgboost_native_shuffled", "expected_nll": 0.24220445524805798, "cold_start": false, "seconds": 0.10602589800000217}
+{"cell_id": "label_only_seed40031_g0_tabpfn_v2_native", "expected_nll": 0.6270597832825531, "cold_start": false, "seconds": 0.3674443089999997}
+{"cell_id": "label_only_seed40031_g0_tabpfn_v2_native_indicators", "expected_nll": 0.6274171452833763, "cold_start": false, "seconds": 0.48539051799999555}
+{"cell_id": "label_only_seed40031_g0_tabpfn_v2_native_shuffled", "expected_nll": 0.6279822643309593, "cold_start": false, "seconds": 0.4460916499999996}
+{"cell_id": "label_only_seed40031_g0_tabicl_v2_native", "expected_nll": 0.6263551005883743, "cold_start": false, "seconds": 0.858516078000001}
+{"cell_id": "label_only_seed40031_g0_tabicl_v2_native_indicators", "expected_nll": 0.6298733886570991, "cold_start": false, "seconds": 0.9777613259999995}
+{"cell_id": "label_only_seed40031_g0_tabicl_v2_native_shuffled", "expected_nll": 0.6272266169460505, "cold_start": false, "seconds": 1.0747785119999946}
+{"cell_id": "label_only_seed40031_g0_xgboost_native", "expected_nll": 0.7258807318628084, "cold_start": false, "seconds": 0.10877625299999494}
+{"cell_id": "label_only_seed40031_g0_xgboost_native_indicators", "expected_nll": 0.7258807318628084, "cold_start": false, "seconds": 0.11223458499999595}
+{"cell_id": "label_only_seed40031_g0_xgboost_native_shuffled", "expected_nll": 0.7248531962019824, "cold_start": false, "seconds": 0.11193666999999863}
+{"cell_id": "label_only_seed40031_g0.5_tabpfn_v2_native", "expected_nll": 0.5510283597966013, "cold_start": false, "seconds": 0.31639134800000335}
+{"cell_id": "label_only_seed40031_g0.5_tabpfn_v2_native_indicators", "expected_nll": 0.5144745773027344, "cold_start": false, "seconds": 0.4559509580000025}
+{"cell_id": "label_only_seed40031_g0.5_tabpfn_v2_native_shuffled", "expected_nll": 0.5402719870473558, "cold_start": false, "seconds": 0.40827649599999916}
+{"cell_id": "label_only_seed40031_g0.5_tabicl_v2_native", "expected_nll": 0.5223100977501898, "cold_start": false, "seconds": 1.1021300230000008}
+{"cell_id": "label_only_seed40031_g0.5_tabicl_v2_native_indicators", "expected_nll": 0.5161492096056823, "cold_start": false, "seconds": 0.8316789650000018}
+{"cell_id": "label_only_seed40031_g0.5_tabicl_v2_native_shuffled", "expected_nll": 0.5180170168691921, "cold_start": false, "seconds": 0.9921517120000019}
+{"cell_id": "label_only_seed40031_g0.5_xgboost_native", "expected_nll": 0.6008470227653185, "cold_start": false, "seconds": 0.11255139599999353}
+{"cell_id": "label_only_seed40031_g0.5_xgboost_native_indicators", "expected_nll": 0.6008470227653185, "cold_start": false, "seconds": 0.11821088499999632}
+{"cell_id": "label_only_seed40031_g0.5_xgboost_native_shuffled", "expected_nll": 0.5973643286875009, "cold_start": false, "seconds": 0.10813533500000005}
+{"cell_id": "label_only_seed40031_g0.9_tabpfn_v2_native", "expected_nll": 0.20554515592711045, "cold_start": false, "seconds": 0.411121756}
+{"cell_id": "label_only_seed40031_g0.9_tabpfn_v2_native_indicators", "expected_nll": 0.19534122632890255, "cold_start": false, "seconds": 0.45202705199999826}
+{"cell_id": "label_only_seed40031_g0.9_tabpfn_v2_native_shuffled", "expected_nll": 0.2015525404833724, "cold_start": false, "seconds": 0.4551614310000005}
+{"cell_id": "label_only_seed40031_g0.9_tabicl_v2_native", "expected_nll": 0.1931000858497793, "cold_start": false, "seconds": 0.8792046609999957}
+{"cell_id": "label_only_seed40031_g0.9_tabicl_v2_native_indicators", "expected_nll": 0.19165046709094863, "cold_start": false, "seconds": 0.8718658559999994}
+{"cell_id": "label_only_seed40031_g0.9_tabicl_v2_native_shuffled", "expected_nll": 0.19361755158789648, "cold_start": false, "seconds": 0.9104858589999978}
+{"cell_id": "label_only_seed40031_g0.9_xgboost_native", "expected_nll": 0.22500888879614567, "cold_start": false, "seconds": 0.12057754399999965}
+{"cell_id": "label_only_seed40031_g0.9_xgboost_native_indicators", "expected_nll": 0.22500888879614567, "cold_start": false, "seconds": 0.10744957400000033}
+{"cell_id": "label_only_seed40031_g0.9_xgboost_native_shuffled", "expected_nll": 0.22108989653599018, "cold_start": false, "seconds": 0.1062797780000011}
+{"cell_id": "label_only_seed40032_g0_tabpfn_v2_native", "expected_nll": 0.6228880701267374, "cold_start": false, "seconds": 0.343827902000001}
+{"cell_id": "label_only_seed40032_g0_tabpfn_v2_native_indicators", "expected_nll": 0.6233290502227102, "cold_start": false, "seconds": 0.48672245399999525}
+{"cell_id": "label_only_seed40032_g0_tabpfn_v2_native_shuffled", "expected_nll": 0.6268262228810013, "cold_start": false, "seconds": 0.4964917339999957}
+{"cell_id": "label_only_seed40032_g0_tabicl_v2_native", "expected_nll": 0.6254809382874029, "cold_start": false, "seconds": 0.8425413739999996}
+{"cell_id": "label_only_seed40032_g0_tabicl_v2_native_indicators", "expected_nll": 0.6253383565463395, "cold_start": false, "seconds": 1.0213272490000023}
+{"cell_id": "label_only_seed40032_g0_tabicl_v2_native_shuffled", "expected_nll": 0.6268238774646013, "cold_start": false, "seconds": 0.9502344780000058}
+{"cell_id": "label_only_seed40032_g0_xgboost_native", "expected_nll": 0.7399051228133118, "cold_start": false, "seconds": 0.11147613099999631}
+{"cell_id": "label_only_seed40032_g0_xgboost_native_indicators", "expected_nll": 0.7399051228133118, "cold_start": false, "seconds": 0.11610043799999659}
+{"cell_id": "label_only_seed40032_g0_xgboost_native_shuffled", "expected_nll": 0.7414682820329763, "cold_start": false, "seconds": 0.11990329400000377}
+{"cell_id": "label_only_seed40032_g0.5_tabpfn_v2_native", "expected_nll": 0.5368720313402524, "cold_start": false, "seconds": 0.36440465599999783}
+{"cell_id": "label_only_seed40032_g0.5_tabpfn_v2_native_indicators", "expected_nll": 0.5160926752143414, "cold_start": false, "seconds": 0.39797157099999936}
+{"cell_id": "label_only_seed40032_g0.5_tabpfn_v2_native_shuffled", "expected_nll": 0.5298078227491674, "cold_start": false, "seconds": 0.43064097999999973}
+{"cell_id": "label_only_seed40032_g0.5_tabicl_v2_native", "expected_nll": 0.5186839036133795, "cold_start": false, "seconds": 0.745832539999995}
+{"cell_id": "label_only_seed40032_g0.5_tabicl_v2_native_indicators", "expected_nll": 0.5137596858447377, "cold_start": false, "seconds": 0.8661766130000004}
+{"cell_id": "label_only_seed40032_g0.5_tabicl_v2_native_shuffled", "expected_nll": 0.5120832580369314, "cold_start": false, "seconds": 0.8716115889999969}
+{"cell_id": "label_only_seed40032_g0.5_xgboost_native", "expected_nll": 0.6133268670119101, "cold_start": false, "seconds": 0.11480568800000412}
+{"cell_id": "label_only_seed40032_g0.5_xgboost_native_indicators", "expected_nll": 0.6133268670119101, "cold_start": false, "seconds": 0.12220036200000095}
+{"cell_id": "label_only_seed40032_g0.5_xgboost_native_shuffled", "expected_nll": 0.6088692413355519, "cold_start": false, "seconds": 0.1296389239999982}
+{"cell_id": "label_only_seed40032_g0.9_tabpfn_v2_native", "expected_nll": 0.22211005571796283, "cold_start": false, "seconds": 0.35663015899999806}
+{"cell_id": "label_only_seed40032_g0.9_tabpfn_v2_native_indicators", "expected_nll": 0.19784940870338194, "cold_start": false, "seconds": 0.4619099590000033}
+{"cell_id": "label_only_seed40032_g0.9_tabpfn_v2_native_shuffled", "expected_nll": 0.20125035467659588, "cold_start": false, "seconds": 0.4640072520000018}
+{"cell_id": "label_only_seed40032_g0.9_tabicl_v2_native", "expected_nll": 0.2000615296922461, "cold_start": false, "seconds": 0.8155083660000031}
+{"cell_id": "label_only_seed40032_g0.9_tabicl_v2_native_indicators", "expected_nll": 0.20143959404649306, "cold_start": false, "seconds": 1.0494984400000007}
+{"cell_id": "label_only_seed40032_g0.9_tabicl_v2_native_shuffled", "expected_nll": 0.1988862857985626, "cold_start": false, "seconds": 1.1112576809999979}
+{"cell_id": "label_only_seed40032_g0.9_xgboost_native", "expected_nll": 0.24048930208195435, "cold_start": false, "seconds": 0.11975833500000022}
+{"cell_id": "label_only_seed40032_g0.9_xgboost_native_indicators", "expected_nll": 0.24048930208195435, "cold_start": false, "seconds": 0.12217547599999534}
+{"cell_id": "label_only_seed40032_g0.9_xgboost_native_shuffled", "expected_nll": 0.23956483337382625, "cold_start": false, "seconds": 0.12820872999999722}
+{"run_id": "day3_partial_collision_010", "status": "completed", "active_seconds": 65.389497936, "exit_code": 0}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/saptarshihalder/main/ap-qketZYlsgqTFqEhubaiEDo

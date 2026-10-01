@@ -1,8 +1,9 @@
 """Exact synthetic mechanisms adapted from the supplied headroom.py pilot.
 
-P(M=m | Y=y,U=u) = 2^-d [1 + gamma (2y-1) f(m,u)],
-f = sign * product(2 M_active-1) * U^value_dependent.
-Observed Gaussian values are nuisance variables; U is always observed.
+P(M=m | Y=y,U=u) = Bernoulli_r(m) [1 + gamma (2y-1) f(m,u)],
+f = sign * product((M_active-r)/max(r,1-r)) * U^value_dependent.
+At r=.5 this is the original pilot law and sampling stream. Observed values
+are outcome-independent nuisance variables; U is always observed.
 """
 from __future__ import annotations
 
@@ -20,7 +21,7 @@ FAMILIES: Mapping[str, tuple[int, int, bool]] = {
     "value_dependent": (8, 1, True),
     "sparse_pair": (16, 2, False),
 }
-VALUE_DISTRIBUTIONS = ("gaussian", "zero_collision")
+VALUE_DISTRIBUTIONS = ("gaussian", "zero_collision", "partial_collision", "quantized")
 
 
 def _readonly(value: Array, dtype: object) -> Array:
@@ -112,6 +113,10 @@ class Mechanism:
     gamma: float
     beta: float = 0.8
     value_dependent: bool = False
+    missing_rate: float = 0.5
+    value_distribution: str = "gaussian"
+    collision_probability: float = 0.5
+    quantization_step: float = 1.0
 
     def __post_init__(self) -> None:
         if not 0 <= self.gamma < 1 or not np.isfinite(self.beta):
@@ -120,9 +125,20 @@ class Mechanism:
             raise ValueError("Require nonempty distinct active columns and sign +/-1")
         if min(self.active) < 0 or max(self.active) >= self.dimensions:
             raise ValueError("Active columns outside feature dimensions")
+        if not 0 < self.missing_rate < 1:
+            raise ValueError("Require 0 < missing_rate < 1")
+        if self.value_distribution not in VALUE_DISTRIBUTIONS:
+            raise ValueError(f"Unknown value distribution: {self.value_distribution}")
+        if not 0 <= self.collision_probability <= 1:
+            raise ValueError("Require 0 <= collision_probability <= 1")
+        if not np.isfinite(self.quantization_step) or self.quantization_step <= 0:
+            raise ValueError("Require finite positive quantization_step")
 
     def signal(self, mask: Array, u: Array) -> Array:
-        value = self.sign * np.prod(2 * np.asarray(mask, dtype=float)[:, self.active] - 1, axis=1)
+        bits = np.asarray(mask, dtype=float)[:, self.active]
+        centered = (2 * bits - 1 if self.missing_rate == 0.5
+                    else (bits - self.missing_rate) / max(self.missing_rate, 1 - self.missing_rate))
+        value = self.sign * np.prod(centered, axis=1)
         return value * u if self.value_dependent else value
 
     def posterior(self, mask: Array, u: Array) -> Array:
@@ -130,7 +146,12 @@ class Mechanism:
         return expit(self.beta * u + np.log1p(signal) - np.log1p(-signal))
 
     def mask_likelihood(self, mask: Array, labels: Array, u: Array) -> Array:
-        return 2.0 ** (-self.dimensions) * (1 + self.gamma * (2 * labels - 1) * self.signal(mask, u))
+        if self.missing_rate == 0.5:
+            baseline = 2.0 ** (-self.dimensions)
+        else:
+            missing = np.asarray(mask, dtype=float).sum(axis=1)
+            baseline = self.missing_rate ** missing * (1 - self.missing_rate) ** (self.dimensions - missing)
+        return baseline * (1 + self.gamma * (2 * np.asarray(labels, dtype=float) - 1) * self.signal(mask, u))
 
 
 @dataclass(frozen=True)
@@ -164,49 +185,72 @@ def canonical_family(family: str) -> str:
     return family
 
 
-def make_mechanism(family: str, seed: int, gamma: float, beta: float = 0.8) -> Mechanism:
+def make_mechanism(family: str, seed: int, gamma: float, beta: float = 0.8,
+                   missing_rate: float = 0.5, value_distribution: str = "gaussian",
+                   collision_probability: float = 0.5, quantization_step: float = 1.0) -> Mechanism:
     family = canonical_family(family)
     dimensions, degree, value = FAMILIES[family]
     rng = np.random.default_rng(np.random.SeedSequence([seed, list(FAMILIES).index(family), 0]))
     active = tuple(sorted(int(index) for index in rng.choice(dimensions, degree, replace=False)))
-    return Mechanism(family, dimensions, active, int(rng.choice([-1, 1])), gamma, beta, value)
+    return Mechanism(family, dimensions, active, int(rng.choice([-1, 1])), gamma, beta, value,
+                     missing_rate, value_distribution, collision_probability, quantization_step)
 
 
 def _sample(task: Mechanism, n: int, rng: np.random.Generator,
-            value_distribution: str) -> tuple[Observations, EvaluationTargets]:
+            value_rng: np.random.Generator) -> tuple[Observations, EvaluationTargets]:
     u = rng.choice([-1.0, 1.0], size=n)
     base = expit(task.beta * u)
     labels = (rng.random(n) < base).astype(np.int64)
-    mask = rng.integers(0, 2, size=(n, task.dimensions))
-    rest = np.prod(2 * mask[:, task.active[:-1]] - 1, axis=1)
+    if task.missing_rate == 0.5:
+        # Preserve all random draws and arithmetic from the original pilot.
+        mask = rng.integers(0, 2, size=(n, task.dimensions))
+        rest = np.prod(2 * mask[:, task.active[:-1]] - 1, axis=1)
+    else:
+        mask = (rng.random((n, task.dimensions)) < task.missing_rate).astype(np.int64)
+        denominator = max(task.missing_rate, 1 - task.missing_rate)
+        rest = np.prod((mask[:, task.active[:-1]] - task.missing_rate) / denominator, axis=1)
     if task.value_dependent:
         rest = rest * u
-    missing_probability = (1 + task.gamma * task.sign * (2 * labels - 1) * rest) / 2
+    if task.missing_rate == 0.5:
+        missing_probability = (1 + task.gamma * task.sign * (2 * labels - 1) * rest) / 2
+    else:
+        # Summing the final centered bit against Bernoulli(r) gives zero;
+        # all other bits keep their independent baseline distribution.
+        modulation = task.gamma * task.sign * (2 * labels - 1) * rest
+        missing_probability = task.missing_rate * (1 + modulation * (1 - task.missing_rate) / denominator)
     mask[:, task.active[-1]] = rng.random(n) < missing_probability
     oracle = task.posterior(mask, u)
     values = rng.normal(size=mask.shape)
-    if value_distribution == "zero_collision":
+    if task.value_distribution == "zero_collision":
         # Deliberate collision with mean imputation. Consume the same random
         # draws so masks, outcomes, and the oracle are paired across variants.
         values[:] = 0
+    elif task.value_distribution == "partial_collision":
+        values[value_rng.random(values.shape) < task.collision_probability] = 0
+    elif task.value_distribution == "quantized":
+        values = np.round(values / task.quantization_step) * task.quantization_step
     values[mask == 1] = np.nan
     return Observations(u, values, mask), EvaluationTargets(labels, oracle, base)
 
 
 def generate_episode(family: str, seed: int, gamma: float, context: int = 256,
                      queries: int = 1024, beta: float = 0.8,
-                     value_distribution: str = "gaussian") -> Episode:
+                     value_distribution: str = "gaussian", missing_rate: float = 0.5,
+                     collision_probability: float = 0.5, quantization_step: float = 1.0) -> Episode:
     if context < 0 or queries < 1 or seed < 0:
         raise ValueError("Require context >= 0, queries >= 1, seed >= 0")
     if value_distribution not in VALUE_DISTRIBUTIONS:
         raise ValueError(f"Unknown value distribution: {value_distribution}")
-    task = make_mechanism(family, seed, gamma, beta)
+    task = make_mechanism(family, seed, gamma, beta, missing_rate, value_distribution,
+                          collision_probability, quantization_step)
     family_id = list(FAMILIES).index(task.family)
     # Disjoint random streams: changing context length cannot change query rows.
     context_rng = np.random.default_rng(np.random.SeedSequence([seed, family_id, 1]))
     query_rng = np.random.default_rng(np.random.SeedSequence([seed, family_id, 2]))
-    observations, support_targets = _sample(task, context, context_rng, value_distribution)
-    query, targets = _sample(task, queries, query_rng, value_distribution)
+    context_values_rng = np.random.default_rng(np.random.SeedSequence([seed, family_id, 3]))
+    query_values_rng = np.random.default_rng(np.random.SeedSequence([seed, family_id, 4]))
+    observations, support_targets = _sample(task, context, context_rng, context_values_rng)
+    query, targets = _sample(task, queries, query_rng, query_values_rng)
     support_ids = np.array([f"{task.family}:{seed}:support:{index}" for index in range(context)], dtype=str)
     query_ids = np.array([f"{task.family}:{seed}:query:{index}" for index in range(queries)], dtype=str)
     return Episode(Support(observations, support_targets.labels), QueryInputs(query), targets, task, seed,

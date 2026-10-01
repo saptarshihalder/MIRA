@@ -34,13 +34,15 @@ Conditional track: MIRA-Shift. Activate only after development demonstrates usef
 
 | Purpose | USD |
 |---|---:|
-| Setup, compatibility and development | 3 |
-| Confirmation | 10 |
+| Setup, compatibility and development | 6 |
+| Confirmation | 8 |
 | Real-covariate panel | 5 |
-| Essential ablations | 5 |
+| Essential ablations | 4 |
 | Clean reproduction reserve | 3 |
 
 Modal calls must reserve cost in `artifacts/manifests/compute_ledger.json` before execution, have finite timeouts, one GPU container and no automatic retries. Include failed calls, image builds and provider usage when available. The user-reported remaining $26 is a spending ceiling; credit balance is not yet independently verified. No subscription purchase, additional funds, manuscript submission or messages to third parties are needed for this phase.
+
+Day 3 reallocates the internal ceilings to cover seven conservative $0.50 development reservations. The total remains $26, including a $3 reproduction reserve; reservations are larger than measured active-compute charges and must not be described as invoices.
 
 ## Continuation
 

@@ -57,6 +57,12 @@ def _configuration(args: argparse.Namespace) -> dict[str, Any]:
         raise ValueError("Require 0 <= gamma < 1")
     if args.width_control_columns is not None and args.width_control_columns < 1:
         raise ValueError("Require positive width-control-columns")
+    if not 0 < args.missing_rate < 1:
+        raise ValueError("Require 0 < missing-rate < 1")
+    if not 0 <= args.collision_probability <= 1:
+        raise ValueError("Require 0 <= collision-probability <= 1")
+    if not 0 < args.quantization_step < float("inf"):
+        raise ValueError("Require finite positive quantization-step")
     families = [canonical_family(family) for family in args.families]
     for key, values in (("families", families), ("gammas", args.gammas),
                         ("models", args.models), ("modes", args.modes)):
@@ -71,9 +77,12 @@ def _configuration(args: argparse.Namespace) -> dict[str, Any]:
         "gammas": args.gammas, "seeds": selected, "context": args.context, "queries": args.queries,
         "ensembles": args.ensembles, "device": args.device, "beta": args.beta,
         "value_distribution": args.value_distribution,
+        "missing_rate": args.missing_rate, "collision_probability": args.collision_probability,
+        "quantization_step": args.quantization_step,
+        "missing_rate_semantics": "baseline Bernoulli rate; outcome/value modulation can change marginal rates",
         "width_control_columns": args.width_control_columns,
         "checkpoint_dirs": [str(Path(directory).expanduser().resolve()) for directory in args.checkpoint_dirs],
-        "generator": "pilot exact low-order mask likelihood; label_only has 8 nuisance columns",
+        "generator": "exact centered-bit mask likelihood over Bernoulli(r); label_only has 8 nuisance columns",
         "oracle_information": "evaluator only; query labels/oracle/active mechanism excluded from predictor",
         "cold_start": "Laplace (n1+1)/(n+2) when context has fewer than two classes; explicitly marked",
         "interval_unit": "independent synthetic task (seed within family/gamma), not query row",
@@ -145,7 +154,8 @@ def run(args: argparse.Namespace,
                 for gamma in configuration["gammas"]:
                     task_id = _task_id(family, seed, gamma)
                     episode = generate_episode(family, seed, gamma, args.context, args.queries, args.beta,
-                                               args.value_distribution)
+                                               args.value_distribution, args.missing_rate,
+                                               args.collision_probability, args.quantization_step)
                     data_path = out / "data" / f"{task_id}.npz"
                     if not data_path.exists():
                         save_episode(data_path, episode)
@@ -257,6 +267,10 @@ def parser() -> argparse.ArgumentParser:
     command.add_argument("--device", default="cuda")
     command.add_argument("--beta", type=float, default=0.8)
     command.add_argument("--value-distribution", choices=VALUE_DISTRIBUTIONS, default="gaussian")
+    command.add_argument("--missing-rate", type=float, default=0.5,
+                         help="Baseline independent Bernoulli mask rate, e.g. .1 or .5")
+    command.add_argument("--collision-probability", type=float, default=0.5)
+    command.add_argument("--quantization-step", type=float, default=1.0)
     command.add_argument("--width-control-columns", type=int)
     command.add_argument("--checkpoint-dirs", nargs="*", default=[])
     command.add_argument("--out", default="experiments/mechanism_development")

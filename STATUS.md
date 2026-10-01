@@ -1,46 +1,32 @@
 # MIRA status — October 1, 2026
 
-User target: NeurIPS-quality draft by October 20; token conservation; $26 total compute cap.
+Target: NeurIPS-quality draft by October 20; $26 compute cap; conserve tokens. **Day 1–3 execution is complete for accessible checkpoints.** The paper is a working draft, with independent confirmation and real-covariate evaluation pending.
 
-## Completed
+## Completed evidence
 
-- Cloned the user's empty GitHub repository into `MIRA/`; working branch `codex/mira-research`.
-- Preserved and hash-verified handoff in workspace `reference/handoff`. Supplied and bundled PDFs have identical extracted text despite different binary hashes.
-- Reproduced full CPU pilot with Python 3.12.14 and exact core dependency pins: 31,680 raw result rows, 24 summary cells, 116.84 seconds. Maximum summary discrepancy 2.22e-16, raw NLL discrepancy 3.79e-11. Original hardware/BLAS not known.
-- Math and predictor-information checks pass: query labels/oracles cannot alter the 21 non-oracle predictors; context labels can. Reports and exact commands are in workspace `experiments/cpu_reproduction/` and `artifacts/reports/cpu_audit.md`.
-- Verified live released-package APIs: TabPFN 9.0.0 and TabICL 2.2.0. Modal uses Torch 2.8.0 and records full transitive locks.
-- Successful Modal T4 inference smoke for TabPFN v2 and TabICL v2, each 6 model/representation cells, one development seed, gamma 0/.8. Checkpoint hashes and raw predictions saved under `artifacts/runs/`. No adapter trained.
-- TabPFN v2 smoke active duration 16.14 seconds; first provider-reported app cost $0.00364287 (billing may lag). This differs from the $0.35 conservative reservation; ledger reserves failed and successful attempts against the cap.
-- Sprint calendar and budget documented; early manuscript source opened in native editor.
-- Typed experiment runner and saved-prediction reporter completed; 29 tests pass. Support/query row IDs are saved and verified disjoint, evaluator targets are separated from predictor inputs, and resume checks hashes.
-- Completed and independently regenerated two 135-cell development matrices (Gaussian and exact-zero collision). Each contains 3 seeds × 5 gamma values × 3 models × 3 modes. Exact code/dependency/checkpoint identities and predictions are saved.
-- Exact TabICL 2.2.0 preprocessing audit and all 15 paired-input checks completed. Native collision predictions are identical across gamma within each task seed.
-- Six-dataset real-covariate panel predeclared in `configs/real_covariate_panel.md`; no data downloaded yet.
-- Generated and visually checked `artifacts/figures/development_representation.png` and SVG from verified summaries.
-- Provider-reported MIRA app charges total $0.05438541 at the latest retrieval; this may lag and image-build attribution is not separately audited. Conservative ledger reservations total $2.05 across five calls, including the failed checkpoint attempt. $26 cap and $3 reproduction reserve remain in force.
+- CPU pilot reproduced: 31,680 raw rows, 24 summaries; maximum summary discrepancy 2.22e-16. Eight fresh-clone hash checks pass. Original hardware/BLAS unknown. Portable reproduction is in experiments/cpu_reproduction/.
+- Accessible TabPFN v2 and TabICL v2 GPU smoke passed; 12 smoke cells excluded from development counts. TabPFN v3.5 access failed with a license/token requirement; no substitution.
+- Initial Gaussian/exact-zero development matrices: 270 cells. Seven Day 3 controls: 1,026 cells. **1,296 development cells total**, three independent tasks per condition, 256 support rows, 1,024 queries, four TFM ensembles; TabPFN v2, TabICL v2 and XGBoost.
+- All seven new manifests complete with no unresolved failures. Reports regenerated from saved probabilities and hash/row checks. Final data audit passes: exact paired U/Y/M/oracle/base/IDs, source/environment identity checks, disjoint support/query IDs, and independent posterior recomputation. Confirmation seeds 60000–60019 remain unused.
+- Extended exact generator supports baseline missing rates, partial-zero point masses and quantization; default sampling retains prior arrays. **60 local tests pass**; source whitespace check passes. Modal reservations are locked/atomic, crash reservations retained, warm-container outputs isolated, jobs bounded with no retries.
+- Exact TabICL 2.2.0 preprocessing source audit, original scientific plot, six-dataset real-covariate declaration and updated manuscript are saved.
 
-## Current evidence
+## Scientific decision
 
-At gamma .8 and seed 40000, TabPFN v2 expected log-loss was .316867 native, .312093 with indicators, .313516 with shuffled indicators; oracle .302073. TabICL v2 was .312419/.312220/.310282 respectively. Gamma zero indicator gains were negative in both models. These are engineering observations from one task, not evidence of a repeatable gain. Both native models captured most informative-mask signal here.
+Continue the representation study; keep substantial adapter training inactive. Exact-zero native TabICL loses masks during mean imputation/constant filtering. That large effect does not extend to the tested partial-zero controls; observed zeros generally do not equal fitted means. Explicit all-zero imputation loses information for all three models, so restoring indicators is an ordinary imputation result.
 
-Gaussian observed nuisance values versus imputed constants may let a model recover masks indirectly. Test deliberate value/imputation collisions and compare preprocessing pathways before interpreting the native/indicator difference.
+A stronger development lead is interaction structure: at gamma .9, TabPFN v2 pairwise native-to-indicator gain is .07654 nats [.04555,.10753], and true-versus-same-width-shuffled gain is .07436 [.03485,.11386]. Value-dependent gain is .03159 [.00933,.05386]. Sparse-pair intervals are wide. Low baseline rate .1 produces selected single/value-dependent gains but changes oracle headroom; it is not an equal-signal comparison. These three-task, unadjusted intervals are exploratory. See artifacts/reports/day3_summary.md and day3_data_audit.md.
 
-Collision development established a narrow deterministic preprocessing failure: TabICL mean-imputes native nuisance columns to constant zeros, then drops them. Its indicator gain at gamma .9 is .42735 nats (three-task exploratory 95% interval [.40787,.44682]). Gaussian gain is .00056 [-.00339,.00451]. TabPFN v2 does not show this failure; its collision indicator gain is -.00548 [-.00951,-.00145]. XGBoost native/indicator predictions match. These are development-only results under a deliberately degenerate control, not enough for a NeurIPS-quality final claim.
+## Budget and next gate
 
-## Next work
+Conservative reservations total **$5.55** across twelve calls, including the failed checkpoint smoke; $3 reproduction reserve retained within $26. Latest provider-reported MIRA app cost is **$0.22198885**; billing may lag and image-build attribution is not independently audited. Reservations are not invoices. Internal allocations were rebalanced, without increasing the cap.
 
-1. TabPFN v3.5 access smoke failed: requires one-time license acceptance and a token from https://ux.priorlabs.ai. No substitute was made. Continue accessible models until user restores this access.
-2. Run matched imputed/indicator controls and extend development to partial value collisions/quantization, interaction families and lower missingness. Preserve exact-zero and Gaussian matched controls. Do not rerun completed matrices without a concrete need.
-3. Freeze confirmation hypotheses/configuration after development; keep seeds 60000–60019 unused until then. No hypothesis has been confirmed yet.
-4. Implement ingestion/evaluation for the predeclared small real-covariate panel, with group/duplicate splits and separate native/imposed masks; evaluate cost before expanding.
-5. Keep paper tied to saved evidence and compile source in native editor.
+Next: freeze an interaction-focused confirmation design, primary contrasts and multiplicity policy before using fresh seeds; include simple mask-aware baselines and matched label budgets. Implement the predeclared real-covariate panel. A generic residual adapter is not established novelty, and current development does not activate that branch.
 
-## Access and continuation
+## Access and artifact limits
 
-Modal CLI authenticated successfully using existing local credentials. BrowserOS Neo initially refused connections. Launched its installed BrowserClaw executable in the background, then connected to MCP successfully and verified a signed-in ChatGPT page. An independent critique was prepared in a research tab, but no assistant answer was obtained; the prompt stayed in the composer. Do not claim a completed Pro critique. Temporary RPC transport/debug files are outside the repository under workspace `tmp/`; reconnect through exposed BrowserOS tools on a later run. No email sent or manuscript submitted. Daily autonomous continuation is authorized and scheduled at 10:00 IST through October 20, automation ID `mira-research-sprint`. Repository code, reports, portable CPU reproduction and early manuscript were pushed to GitHub branch `codex/mira-research`. Raw GPU runs remain local and are ignored by Git.
+BrowserOS connected to signed-in ChatGPT, but no verified Pro critique was obtained; attempts are logged in artifacts/reports/pro_critique.md. No email sent or manuscript submitted. TabPFN v3.5 needs license acceptance/token. Raw GPU predictions are local under ignored artifacts/runs/; reports, hashes, exact configurations and code are tracked. Preserve raw files for final artifact packaging.
 
-The manuscript source `paper/main.tex` is opened in the native editor. Compilation failed with an environment diagnostic, `Unable to find standard directories for platform`; no source error was reported. No terminal TeX installation is available. Preserve the source and retry native compilation on a later session; do not claim a verified PDF.
+The same manuscript source is paper/main.tex, opened in the native editor. Native compilation has an environment failure: `Unable to find standard directories for platform`; a PDF is unverified. Exact official NeurIPS formatting/checklist and final readiness review remain pending. No terminal TeX/plugin installation is needed. First three smoke estimates mistakenly labeled two physical cores as two vCPUs; use corrected rates/provider billing, preserving original records.
 
-Draft layout is standalone single-column, 10pt, 5.5-inch text width. Exact official NeurIPS style and checklist integration remain a final readiness gate; official 2026 template is https://media.neurips.cc/Conferences/NeurIPS2026/Formatting_Instructions_For_NeurIPS_2026.zip. Do not describe today's draft as submission ready.
-
-Accounting correction: the first three smoke runtime JSON files label `cpu_vcpu: 2` and estimate one physical core. Modal `cpu=2` requests two physical cores. Their saved raw estimates are underestimates; use provider billing or the corrected two-core rate in budget.json. Reservations of $0.35 per smoke remain conservative. Future calls bound CPU and memory explicitly.
+Daily autonomous continuation is scheduled at 10 AM IST through October 20, automation mira-research-sprint. An agent reached the account usage limit at final sign-off; the executable saved-data audit was run directly and passed. Avoid additional agents/reruns without an unresolved gate.

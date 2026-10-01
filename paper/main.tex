@@ -11,7 +11,7 @@
 \begin{document}
 \maketitle
 \begin{center}
-\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} The CPU pilot has been replicated and 270 development inference cells have run. Independent confirmation and real-data evaluation are pending. This document does not report a completed model contribution.}}
+\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} The CPU pilot has been replicated and 1,296 development inference cells have run. Independent confirmation and real-data evaluation are pending. This document does not report a completed model contribution.}}
 \end{center}
 
 \begin{abstract}
@@ -45,17 +45,17 @@ The initial synthetic diagnostic keeps an observed variable $U\in\{-1,+1\}$ bala
 \end{equation}
 where $\sigma$ is the logistic function. Independently generated Gaussian nuisance features receive masks with an outcome-associated mechanism. For a nonempty subset $A$ and $b\in\{0,1\}$, define
 \begin{align}
- f(m,u)&=s u^{b}\prod_{j\in A}(2m_j-1),\\
- P(M=m\mid Y=y,U=u)&=2^{-d}\bigl[1+\gamma(2y-1)f(m,u)\bigr],
+ f_r(m,u)&=s u^{b}\prod_{j\in A}\frac{m_j-r}{\max(r,1-r)},\\
+ P(M=m\mid Y=y,U=u)&=B_r(m)\bigl[1+\gamma(2y-1)f_r(m,u)\bigr],
  \label{eq:mechanism}
 \end{align}
-where $s\in\{-1,+1\}$ and $0\leq\gamma<1$. The nonempty product makes this a normalized distribution. Its exact posterior is
+where $B_r$ is the product Bernoulli distribution with baseline rate $r\in(0,1)$, $s\in\{-1,+1\}$ and $0\leq\gamma<1$. Each centered factor has baseline mean zero and absolute value at most one, making the law normalized and nonnegative. At $r=0.5$ it equals the original balanced-mask diagnostic. The baseline rate need not equal each marginal rate after modulation. Its exact posterior is
 \begin{equation}
  q^{\star}(u,m)=\sigma\left(0.8u+
- \log\frac{1+\gamma f(m,u)}{1-\gamma f(m,u)}\right).
+ \log\frac{1+\gamma f_r(m,u)}{1-\gamma f_r(m,u)}\right).
  \label{eq:oracle}
 \end{equation}
-The mechanism supplies single-mask, pairwise, and value-dependent cases without multiplying a potentially mask-aware model posterior by an additional likelihood. At $\gamma=0$, the mask has no additional outcome signal given $U$. Holding the complete-data distribution fixed while changing the mechanism isolates the observation process.
+The mechanism supplies single-mask, pairwise, and value-dependent cases without multiplying a potentially mask-aware model posterior by an additional likelihood. At $\gamma=0$, the mask has no additional outcome signal given $U$. Holding the complete-data distribution fixed while changing the mechanism isolates the observation process. Additional value controls replace a fraction of nuisance entries by zero or round them to a fixed grid using independent random streams; labels, masks, and exact posteriors remain paired. Changing $r$ also changes signal strength, so equal $\gamma$ across rates is not equal oracle headroom.
 
 \section{Evaluation protocol}
 The first inference smoke test uses one accessible checkpoint, two signal strengths, and native versus augmented inputs to measure throughput. The development matrix then considers $\gamma\in\{0,0.25,0.5,0.75,0.9\}$, 256 context rows, 1,024 query rows, and three independent draws. Four ensemble members are the initial setting; any change must be recorded before confirmation.
@@ -75,7 +75,7 @@ where positive $G$ favors indicators. Synthetic expected log-loss uses the exact
 \end{equation}
 We report raw losses, oracle headroom, and task-level uncertainty. A headroom fraction is reported only when its denominator exceeds $10^{-4}$; negative effects remain visible. Queries within a task do not become independent experimental replicates. Confirmation uses fresh seeds after the configuration is frozen, targeting twenty independent draws when measured compute permits.
 
-Follow-ups vary label budgets, missingness rates, interactions, and values near imputation constants. A predeclared panel of six to eight real-covariate datasets will receive imposed observation mechanisms, with original and imposed masks tracked separately. This limited panel cannot establish universal performance.
+Follow-ups vary label budgets, missingness rates, interactions, and values near imputation constants. A predeclared panel of six real-covariate datasets will receive imposed observation mechanisms, with original and imposed masks tracked separately. This limited panel cannot establish universal performance.
 
 \section{Initial evidence}
 \subsection{Replicated CPU diagnostic}
@@ -121,6 +121,18 @@ XGBoost's predictions coincide for native and actual-indicator inputs in these m
 
 Inspection of the exact TabICL 2.2.0 released wheel localizes a special-case information loss in its numeric array path: mean imputation without appended indicators maps missing entries and observed zeros to the same value, after which its unique-feature filter removes constant nuisance columns. Explicit mask columns remain nonconstant. Saved native collision predictions are bit-identical across all five signal strengths within each of the three seeds. Paired data checks verify identical $U$, labels, masks, oracle probabilities and disjoint row identifiers between the two value conditions. This explanation concerns the inspected preprocessing pipeline; it does not attribute the behavior to the pretraining prior. TabICLv2 itself is an established backbone~\cite{qu2026}.
 
+\subsection{Value and imputation controls}
+Additional development controls use three new task seeds per condition, $\gamma\in\{0,0.5,0.9\}$, and the same context/query and ensemble budgets. Partial collisions set independently selected fractions 0.1 or 0.5 of observed nuisance values to zero. A quantized control rounds Gaussian values to a unit grid; these three value conditions have identical $U,Y,M$, oracles, and row identifiers. At $\gamma=0.9$, TabICLv2's native-to-indicator effects are 0.00066 [$-0.00376$, 0.00507], 0.00111 [$-0.00544$, 0.00766], and 0.00341 [0.00245, 0.00436] nats respectively. The large all-zero failure therefore does not generalize to these partial collisions; the small quantized effect needs independent confirmation. TabPFN v2's effects are 0.01711, 0.02152, and 0.01697, with all three intervals including zero. XGBoost's native and indicator predictions coincide.
+
+Matched context-only imputation controls make the information distinction explicit. At $\gamma=0.9$ with all-zero observed nuisance values, adding indicators after mean imputation improves expected loss by 0.45021 [0.43058, 0.46984] for TabICLv2, 0.44677 [0.43428, 0.45926] for TabPFN v2, and 0.42049 [0.39539, 0.44559] for XGBoost. This is ordinary information restoration after a lossy transformation, whereas the original native marker already identifies the mask. TabICLv2's all-zero native and explicitly imputed predictions coincide exactly in all nine matched tasks. Gaussian imputed-input gains at $\gamma=0.9$ have intervals including zero for all three models. A separate stress control appends sixteen independently shuffled columns; it differs in width from the eight true indicators and is not an exact feature-count isolation. Its all-zero effects at $\gamma=0.9$ all have intervals including zero. At $\gamma=0$, all-zero imputed indicators harm XGBoost by 0.0835 nats on average, underscoring that retained information does not guarantee a finite-sample gain.
+
+Observed zeros in the partial controls are not necessarily collisions with the estimated imputation constant: the observed-entry exact collision fraction under independently recomputed float64 support means is zero for both partial panels and about 2.90\% for the quantized panel. This reference calculation does not instrument the model's internal floating-point preprocessing. These controls test zero mass and discretization, not a calibrated dose of exact mean collisions.
+
+\subsection{Interaction development}
+A separate Gaussian-value panel evaluates all four families at the three development signal strengths with three tasks per condition (324 cells). At $\gamma=0.9$, TabPFN v2's native-to-indicator gain is 0.07654 [0.04555, 0.10753] nats for pairwise masks and 0.03159 [0.00933, 0.05386] for value-dependent masks. The corresponding true-versus-shuffled indicator gains are 0.07436 [0.03485, 0.11386] and 0.01649 [0.00046, 0.03252], supporting follow-up beyond an added-width explanation. TabICLv2's pairwise and value-dependent intervals include zero. Sparse-pair native-to-indicator gains are large on average (0.34015 for TabPFN and 0.25372 for TabICL), but both three-task intervals include zero and are very wide. XGBoost's native/indicator predictions coincide throughout this panel. These development results motivate a frozen interaction-focused confirmation design; selection and multiplicity prevent interpreting these intervals as confirmatory evidence.
+
+A further baseline-rate-$0.1$ panel contains 243 cells over single-mask, pairwise, and value-dependent families. At $\gamma=0.9$, TabPFN native-to-indicator effects are 0.03329 [0.00697, 0.05960], $-0.00006$ [$-0.00212$, 0.00200], and 0.03935 [0.02040, 0.05831]; TabICL value-dependent gain is 0.04167 [0.00894, 0.07439]. Equal signal-strength parameters across rates do not give equal oracle headroom. Across the original and expanded panels, 1,296 development cells completed; twelve engineering smoke cells are excluded. Sixty local tests and a saved-data audit pass. Independent confirmation remains untouched.
+
 \section{Related work and limitations}
 TabPFN v2 demonstrates strong small-data prediction~\cite{hollmann2025}. Contemporary versions already encode missingness: TabPFN-3.5 explicitly inherits missing and infiniteness indicators~\cite{priorlabs2026}. Thus, native indicator encoding is compatible with our question, and a blanket claim that foundation models discard masks would be incorrect.
 
@@ -154,8 +166,8 @@ Nature, 2025.
 \url{https://doi.org/10.1038/s41586-024-08328-6}.
 
 \bibitem{priorlabs2026}
-Prior Labs.
-TabPFN-3.5 technical report.
+B. J\"ager et al.
+TabPFN-3.5: Technical Report.
 arXiv:2609.17895v1, 2026.
 \url{https://arxiv.org/html/2609.17895v1}.
 
