@@ -1,0 +1,44 @@
+{
+  "all_24_prediction_files_present": true,
+  "episodes": [
+    {
+      "episode": "natural_hepatitis_f0",
+      "evaluator_episode_rejected_by_infer": true,
+      "outer_row_and_group_ids_disjoint": true,
+      "query_label_inversion_predictions_exact": true
+    },
+    {
+      "episode": "natural_hepatitis_f1",
+      "evaluator_episode_rejected_by_infer": true,
+      "outer_row_and_group_ids_disjoint": true,
+      "query_label_inversion_predictions_exact": true
+    },
+    {
+      "episode": "natural_hepatitis_f2",
+      "evaluator_episode_rejected_by_infer": true,
+      "outer_row_and_group_ids_disjoint": true,
+      "query_label_inversion_predictions_exact": true
+    },
+    {
+      "episode": "natural_horse_colic_f0",
+      "evaluator_episode_rejected_by_infer": true,
+      "outer_row_and_group_ids_disjoint": true,
+      "query_label_inversion_predictions_exact": true
+    },
+    {
+      "episode": "natural_horse_colic_f1",
+      "evaluator_episode_rejected_by_infer": true,
+      "outer_row_and_group_ids_disjoint": true,
+      "query_label_inversion_predictions_exact": true
+    },
+    {
+      "episode": "natural_horse_colic_f2",
+      "evaluator_episode_rejected_by_infer": true,
+      "outer_row_and_group_ids_disjoint": true,
+      "query_label_inversion_predictions_exact": true
+    }
+  ],
+  "learner_signature": "(inputs, groups, kind, seed)",
+  "protocol_sha256": "7d0f7719304763ce7d5d9d40a575aa6fdeaeffa7e47ac1ad9493b6f349624ed4",
+  "source_sha256": "87ab30b27c8947bf5d08279fbd7374f9adc328f48b183f196284178cdefeb7fc"
+}

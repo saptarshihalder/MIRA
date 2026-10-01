@@ -1,0 +1,48 @@
+{
+  "hepatitis": [
+    {
+      "fold": 0,
+      "queries": 52,
+      "query_groups": 52,
+      "support": 64,
+      "support_groups": 64
+    },
+    {
+      "fold": 1,
+      "queries": 52,
+      "query_groups": 52,
+      "support": 64,
+      "support_groups": 64
+    },
+    {
+      "fold": 2,
+      "queries": 51,
+      "query_groups": 51,
+      "support": 64,
+      "support_groups": 64
+    }
+  ],
+  "horse_colic": [
+    {
+      "fold": 0,
+      "queries": 118,
+      "query_groups": 114,
+      "support": 128,
+      "support_groups": 124
+    },
+    {
+      "fold": 1,
+      "queries": 118,
+      "query_groups": 114,
+      "support": 128,
+      "support_groups": 126
+    },
+    {
+      "fold": 2,
+      "queries": 117,
+      "query_groups": 113,
+      "support": 128,
+      "support_groups": 126
+    }
+  ]
+}

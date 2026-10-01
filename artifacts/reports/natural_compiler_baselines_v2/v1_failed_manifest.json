@@ -1,0 +1,20 @@
+{
+  "errors": [
+    {
+      "dataset": "hepatitis",
+      "error": "ValueError('Require five fixed folds')",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\experiments\\mask_compiler\\real_baselines_v2.py\", line 105, in run\n    validate_splits(panel, splits)\n  File \"C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\src\\mira\\panel_data.py\", line 158, in validate_splits\n    raise ValueError(\"Require five fixed folds\")\nValueError: Require five fixed folds\n"
+    },
+    {
+      "dataset": "horse_colic",
+      "error": "ValueError('Require five fixed folds')",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\experiments\\mask_compiler\\real_baselines_v2.py\", line 105, in run\n    validate_splits(panel, splits)\n  File \"C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\src\\mira\\panel_data.py\", line 158, in validate_splits\n    raise ValueError(\"Require five fixed folds\")\nValueError: Require five fixed folds\n"
+    }
+  ],
+  "evidence": "Replay of the frozen v1 validator on unchanged native data; original failed output directory is retained.",
+  "paid_usd": 0,
+  "predictions": 0,
+  "protocol_sha256": "7d0f7719304763ce7d5d9d40a575aa6fdeaeffa7e47ac1ad9493b6f349624ed4",
+  "status": "failed_before_fitting",
+  "v1_source_sha256": "c93fc4999c5e2b9204151c2b36b30299eee163c41d9fb36f7c426db5087bedf1"
+}

@@ -1,0 +1,18 @@
+{
+  "run_id": "compiler_validation_v1_tabpfn",
+  "protocol_file": "configs/trained_compiler_validation_v1.json",
+  "protocol_sha256": "7d0f7719304763ce7d5d9d40a575aa6fdeaeffa7e47ac1ad9493b6f349624ed4",
+  "app_id": "ap-lQtXFyZxX4GjloVp7kSOGo",
+  "stage": "container_hydration",
+  "error": "ModuleNotFoundError: No module named 'infra' while importing /root/modal_compiler.py, before the remote function body",
+  "model_invocations": 0,
+  "prediction_files": 0,
+  "app_stopped": true,
+  "stop_command_exit_code": 0,
+  "reserved_usd": 0.5,
+  "reservation_consumed": true,
+  "provider_invoice_status": "Not yet refreshed; reservation is retained including failure and startup attempts",
+  "policy": "No retry of this paid TabPFN call. A corrected successor can use the one remaining reservation for the different, previously unreserved TabICL backbone. Local CPU completion is separate and must disclose device/environment differences.",
+  "log_file": "artifacts/manifests/compiler_validation_v1_hydration.log",
+  "log_sha256": "032e0bad228d9daedfe32029595f84184c18edb02d6bfc5a338ed6ce5f95e082"
+}

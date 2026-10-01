@@ -556,5 +556,22 @@
     "active_seconds": 113.14284195,
     "exit_code": 0,
     "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_statlog_heart"
+  },
+  {
+    "run_id": "compiler_validation_v1_tabpfn",
+    "phase": "mask_compiler_backbone",
+    "model": "tabpfn:v2",
+    "reserved_usd": 0.5,
+    "status": "failed",
+    "max_seconds": 900,
+    "protocol_sha256": "7d0f7719304763ce7d5d9d40a575aa6fdeaeffa7e47ac1ad9493b6f349624ed4",
+    "protocol_version": "trained_compiler_validation_v1",
+    "date": "2026-10-01T19:29:09.985143+00:00",
+    "error": "RemoteError('')",
+    "failure_stage": "container_hydration",
+    "app_id": "ap-lQtXFyZxX4GjloVp7kSOGo",
+    "app_stopped": true,
+    "model_invocations": 0,
+    "evidence_file": "artifacts/manifests/compiler_validation_v1_startup_failure.json"
   }
 ]

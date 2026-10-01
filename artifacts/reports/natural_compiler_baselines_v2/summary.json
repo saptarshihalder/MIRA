@@ -1,0 +1,66 @@
+[
+  {
+    "dataset": "hepatitis",
+    "folds": 3,
+    "mode": "native",
+    "model": "logistic",
+    "queries": 155,
+    "query_weighted_nll": 0.46154640176877165
+  },
+  {
+    "dataset": "hepatitis",
+    "folds": 3,
+    "mode": "identity",
+    "model": "logistic",
+    "queries": 155,
+    "query_weighted_nll": 0.4045324005835335
+  },
+  {
+    "dataset": "hepatitis",
+    "folds": 3,
+    "mode": "native",
+    "model": "histgb",
+    "queries": 155,
+    "query_weighted_nll": 0.5630259805473443
+  },
+  {
+    "dataset": "hepatitis",
+    "folds": 3,
+    "mode": "identity",
+    "model": "histgb",
+    "queries": 155,
+    "query_weighted_nll": 0.5630259805473443
+  },
+  {
+    "dataset": "horse_colic",
+    "folds": 3,
+    "mode": "native",
+    "model": "logistic",
+    "queries": 353,
+    "query_weighted_nll": 0.5556089940609399
+  },
+  {
+    "dataset": "horse_colic",
+    "folds": 3,
+    "mode": "identity",
+    "model": "logistic",
+    "queries": 353,
+    "query_weighted_nll": 0.5609360515705935
+  },
+  {
+    "dataset": "horse_colic",
+    "folds": 3,
+    "mode": "native",
+    "model": "histgb",
+    "queries": 353,
+    "query_weighted_nll": 0.7533559319910126
+  },
+  {
+    "dataset": "horse_colic",
+    "folds": 3,
+    "mode": "identity",
+    "model": "histgb",
+    "queries": 353,
+    "query_weighted_nll": 0.7533559319910126
+  }
+]

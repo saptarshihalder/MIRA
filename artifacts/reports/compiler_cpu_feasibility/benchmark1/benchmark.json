@@ -1,0 +1,78 @@
+{
+  "status": "complete",
+  "scope": "one synthetic native-view development CPU episode; no complete validation",
+  "device": "cpu",
+  "paid_jobs_dispatched": 0,
+  "time_utc": "2026-10-01T19:50:29.287634+00:00",
+  "python_platform_change": "Windows Python3.11 CPU; original GPU image Linux Python3.12",
+  "protocol_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\configs\\trained_compiler_validation_v1.json",
+  "protocol_sha256": "7d0f7719304763ce7d5d9d40a575aa6fdeaeffa7e47ac1ad9493b6f349624ed4",
+  "runner_sha256": "98304a9f0cc355bc8bd23b378c2295a704881b121ec7a1e737f5b34b3f89d32f",
+  "threads": 2,
+  "ensembles": 4,
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "executable": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Scripts\\python.exe",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "packages": {
+      "tabpfn": {
+        "metadata": "9.0.0",
+        "actual": "9.0.0",
+        "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Lib\\site-packages\\tabpfn\\__init__.py"
+      },
+      "torch": {
+        "metadata": "2.8.0+cpu",
+        "actual": "2.8.0+cpu",
+        "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Lib\\site-packages\\torch\\__init__.py"
+      },
+      "numpy": {
+        "metadata": "2.3.5",
+        "actual": "2.3.5",
+        "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Lib\\site-packages\\numpy\\__init__.py"
+      },
+      "scikit-learn": {
+        "metadata": "1.8.0",
+        "actual": "1.8.0",
+        "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Lib\\site-packages\\sklearn\\__init__.py"
+      },
+      "scipy": {
+        "metadata": "1.17.0",
+        "actual": "1.17.0",
+        "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Lib\\site-packages\\scipy\\__init__.py"
+      }
+    }
+  },
+  "source_sha256": {
+    "experiments/mask_compiler/run_cpu_backbone.py": "98304a9f0cc355bc8bd23b378c2295a704881b121ec7a1e737f5b34b3f89d32f",
+    "experiments/mask_compiler/run_backbone.py": "77162b27d582a96e2b9b9149389e7492914cd30ac6584d0f2683194f58f10542",
+    "experiments/mask_compiler/matched_training.py": "cbd3337c10b0d9493a36b821d639bdb471e6e267cb17bf8399a28647c964206a",
+    "src/mira/models.py": "fe485c44376b2e598e39fadda15b30c2c38551dd6f704bc660531d5d7c16242e"
+  },
+  "checkpoint_sha256": {
+    "tabpfn/tabpfn-v2-classifier-finetuned-zk73skhh.ckpt": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49",
+    "huggingface/hub/blobs/45/45c13f180e7197fbc11b24a9cf5e3be795902967bcc61e2223dc19245559a934": "bdc7dbd5e4ff21f8f0456fcf90c6b7cdf72dbea960f2d05b19bec19f9b3d4ed0"
+  },
+  "checkpoint_bytes": {
+    "tabpfn/tabpfn-v2-classifier-finetuned-zk73skhh.ckpt": 29009539,
+    "huggingface/hub/blobs/45/45c13f180e7197fbc11b24a9cf5e3be795902967bcc61e2223dc19245559a934": 110368038
+  },
+  "episode_id": "synthetic_k2_g0.9_s74000",
+  "support_shape": [
+    128,
+    5
+  ],
+  "query_shape": [
+    256,
+    5
+  ],
+  "create_seconds": 0.062000000005355105,
+  "fit_seconds": 0.23499999998603016,
+  "predict_seconds": 2.01500000001397,
+  "total_inference_seconds": 2.312000000005355,
+  "empirical_nll": 0.41407183735526154,
+  "expected_nll": 0.4252710410258371,
+  "warnings": [],
+  "inputs_sha256": "977a186cc64001ff719656404e363fd7e55e4230af536555691815cbe7c7eddd",
+  "predictions_sha256": "f800dbc834dea0918a8f003301dd9ddecfc423ccbdc9408a8f88a391530c6686",
+  "numerical_equivalence_to_GPU": "not established; this timing is one small synthetic view only"
+}
