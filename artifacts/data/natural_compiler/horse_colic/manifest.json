@@ -1,0 +1,167 @@
+{
+  "artifact_sha256": {
+    "dataset.npz": "12cf6cda306885c43f817d9551321b34bd9788d04a8e24d76b316202e0e6e3a5",
+    "row_maps.json": "9bc394d730e26f338ab1b851cd89c98c465e7e1d75eda532b6829115ad782392",
+    "splits.json": "85cf96c8d226ee23b8bbb890f95b824b5d177392d69c732f9b722deb66d20e89"
+  },
+  "canonical_rows": 353,
+  "citation": "McLeish, M. & Cecile, M. (1989). Horse Colic [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C58W23",
+  "class_counts": [
+    220,
+    133
+  ],
+  "compiler_U_proxy": "zero only inside restricted selector observations; full native X remains backbone input",
+  "configuration": {
+    "archive": "https://archive.ics.uci.edu/static/public/47/horse+colic.zip",
+    "archive_sha256": "e4a2d4e77573e521057b75ce00992060f2f002a1658d5a8e430138b60c3c8053",
+    "citation": "McLeish, M. & Cecile, M. (1989). Horse Colic [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C58W23",
+    "csv": "https://archive.ics.uci.edu/static/public/47/data.csv",
+    "csv_sha256": "7cad77c51181c532babb5c08db40dff35d3edb39797ea2f5291468a3e35d1efd",
+    "data_members": [
+      "horse-colic.data",
+      "horse-colic.test"
+    ],
+    "documentation": [
+      "horse-colic.names",
+      "horse-colic.names.original"
+    ],
+    "doi": "10.24432/C58W23",
+    "excluded_1based": {
+      "1": "completed surgery/treatment decision",
+      "23": "outcome target",
+      "24": "retrospective surgical lesion",
+      "25": "lesion field",
+      "26": "lesion field",
+      "27": "lesion field",
+      "28": "pathology-data availability flag",
+      "3": "hospital case identifier: grouping only"
+    },
+    "limitations": [
+      "Original300 train/68 test records are pooled before new grouped CV; this is not the original benchmark split.",
+      "Hospital number may recur across treatments; supplied IDs and identical-X groups are isolated, but unknown dependencies remain.",
+      "Death and euthanasia are combined; these outcomes have different causes and treatment decisions.",
+      "Observation timing is unavailable; some measurements follow interventions. No prospective, causal, or clinical claim.",
+      "Original age values include9 despite documentation describing young code2; preserve raw codes without recoding."
+    ],
+    "page": "https://archive.ics.uci.edu/dataset/47/horse+colic",
+    "retained_1based": [
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "rows": 368,
+    "source_columns": 28,
+    "subject_1based": 3,
+    "support_size": 128,
+    "target_1based": 23,
+    "target_map": {
+      "1": 0,
+      "2": 1,
+      "3": 1
+    },
+    "uci_id": 47
+  },
+  "conflicting_label_groups": 3,
+  "dataset": "horse_colic",
+  "duplicates_removed": 13,
+  "excluded_missing_outcomes": 2,
+  "features": [
+    "age",
+    "rectal_temperature",
+    "pulse",
+    "respiratory_rate",
+    "temperature_of_extremities",
+    "peripheral_pulse",
+    "mucous_membranes",
+    "capillary_refill_time",
+    "pain",
+    "peristalsis",
+    "abdominal_distension",
+    "nasogastric_tube",
+    "nasogastric_reflux",
+    "nasogastric_reflux_ph",
+    "rectal_examination_feces",
+    "abdomen",
+    "packed_cell_volume",
+    "total_protein",
+    "abdominocentesis_appearance",
+    "abdominocentesis_total_protein"
+  ],
+  "features_count": 20,
+  "groups": 341,
+  "imposed_masks": false,
+  "labeled_rows": 366,
+  "license": {
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "verification": "Official UCI dataset page, license section, verified 2026-10-02"
+  },
+  "native_missing_cells": 1836,
+  "native_missing_fraction": 0.26005665722379606,
+  "original_rows": 368,
+  "predictor_encoding": "Continuous values and original binary/ordinal/nominal codes kept numeric; no one-hot, scaling or imputation. Numeric nominal codes imply artificial geometry; no clinical claim.",
+  "selection_sha256": "3cacff9581fbf0c5163ac85f507c6f133fa0dc8177a3c7980c29f16d355902a9",
+  "source_csv_archive_agreement": "Every numeric field and native NaN equals original archive, in source order",
+  "source_files": {
+    "archive.zip": {
+      "bytes": 14785,
+      "sha256": "e4a2d4e77573e521057b75ce00992060f2f002a1658d5a8e430138b60c3c8053",
+      "url": "https://archive.ics.uci.edu/static/public/47/horse+colic.zip"
+    },
+    "horse-colic.data": {
+      "bytes": 25437,
+      "sha256": "270db486c78796143ffa84b4808118b3d4b96d1bd0f70bf22b3bb0bfca21e547",
+      "url": "https://archive.ics.uci.edu/static/public/47/horse+colic.zip"
+    },
+    "horse-colic.names": {
+      "bytes": 9045,
+      "sha256": "36d88c8c17fb621153fa42ba8addd50b0c97a74af79da3dddae15ed697b9bef4",
+      "url": "https://archive.ics.uci.edu/static/public/47/horse+colic.zip"
+    },
+    "horse-colic.names.original": {
+      "bytes": 9599,
+      "sha256": "b95e8efc11ba05f301319851fc947296b61afed7d0977b868db6f233f201b8b5",
+      "url": "https://archive.ics.uci.edu/static/public/47/horse+colic.zip"
+    },
+    "horse-colic.test": {
+      "bytes": 5807,
+      "sha256": "2c14b28c71da2a4778a6f161819804e032545a1c13f73fddf5d5b220c7ae3853",
+      "url": "https://archive.ics.uci.edu/static/public/47/horse+colic.zip"
+    },
+    "metadata.json": {
+      "bytes": 13665,
+      "sha256": "a10b4167e652dce5b60a0791c36d9cbbb653aa9968830b6ba396b6ab4187daa4",
+      "url": "https://archive.ics.uci.edu/api/dataset?id=47"
+    },
+    "official.csv": {
+      "bytes": 30610,
+      "sha256": "7cad77c51181c532babb5c08db40dff35d3edb39797ea2f5291468a3e35d1efd",
+      "url": "https://archive.ics.uci.edu/static/public/47/data.csv"
+    },
+    "official_page.html": {
+      "bytes": 149785,
+      "sha256": "59d41bd280413b5e5ab50f84b1d9e16b1c2ce1f096817c0718f1a936fd9246a7",
+      "url": "https://archive.ics.uci.edu/dataset/47/horse+colic"
+    }
+  },
+  "split_validation": "three-fold validator in prepare_natural.py; legacy validate_splits requires five folds",
+  "status": "complete",
+  "uci_id": 47
+}

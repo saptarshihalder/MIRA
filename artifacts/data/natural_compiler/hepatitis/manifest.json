@@ -1,0 +1,142 @@
+{
+  "artifact_sha256": {
+    "dataset.npz": "f50ebc3e74e47c915619e6638e269df3a1111da8533ffa2982a78b19ae2b5fe6",
+    "row_maps.json": "84fa10e8d255b4e79deefaa3d60dea554fa12c814abbf13d2788679ac7db25a5",
+    "splits.json": "7600648568d8dbf17e0b13a926415868e86e4dc616bffe53f9b1c16776b1cec8"
+  },
+  "canonical_rows": 155,
+  "citation": "Hepatitis [Dataset]. (1983). UCI Machine Learning Repository. https://doi.org/10.24432/C5Q59J",
+  "class_counts": [
+    123,
+    32
+  ],
+  "compiler_U_proxy": "zero only inside restricted selector observations; full native X remains backbone input",
+  "configuration": {
+    "archive": "https://archive.ics.uci.edu/static/public/46/hepatitis.zip",
+    "archive_sha256": "8573c2898714fb32ef8162291dcabd483a1ba9701123cab262f5acace3112d87",
+    "citation": "Hepatitis [Dataset]. (1983). UCI Machine Learning Repository. https://doi.org/10.24432/C5Q59J",
+    "csv": "https://archive.ics.uci.edu/static/public/46/data.csv",
+    "csv_sha256": "79377934000c89e8ec579cb22486f236d96e37b57e179ec849ee790816cb8fe6",
+    "data_members": [
+      "hepatitis.data"
+    ],
+    "documentation": [
+      "hepatitis.names"
+    ],
+    "doi": "10.24432/C5Q59J",
+    "excluded_1based": {
+      "1": "target: die1/live2"
+    },
+    "limitations": [
+      "No subject identifiers or observation timestamps supplied; duplicate grouping cannot establish patient independence.",
+      "Treatment and histology variables are retained as historical benchmark covariates; no prospective clinical interpretation."
+    ],
+    "page": "https://archive.ics.uci.edu/dataset/46/hepatitis",
+    "retained_1based": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "rows": 155,
+    "source_columns": 20,
+    "subject_1based": null,
+    "support_size": 64,
+    "target_1based": 1,
+    "target_map": {
+      "1": 1,
+      "2": 0
+    },
+    "uci_id": 46
+  },
+  "conflicting_label_groups": 0,
+  "dataset": "hepatitis",
+  "duplicates_removed": 0,
+  "excluded_missing_outcomes": 0,
+  "features": [
+    "Age",
+    "Sex",
+    "Steroid",
+    "Antivirals",
+    "Fatigue",
+    "Malaise",
+    "Anorexia",
+    "Liver Big",
+    "Liver Firm",
+    "Spleen Palpable",
+    "Spiders",
+    "Ascites",
+    "Varices",
+    "Bilirubin",
+    "Alk Phosphate",
+    "Sgot",
+    "Albumin",
+    "Protime",
+    "Histology"
+  ],
+  "features_count": 19,
+  "groups": 155,
+  "imposed_masks": false,
+  "labeled_rows": 155,
+  "license": {
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "verification": "Official UCI dataset page, license section, verified 2026-10-02"
+  },
+  "native_missing_cells": 167,
+  "native_missing_fraction": 0.0567062818336163,
+  "original_rows": 155,
+  "predictor_encoding": "Continuous values and original binary/ordinal/nominal codes kept numeric; no one-hot, scaling or imputation. Numeric nominal codes imply artificial geometry; no clinical claim.",
+  "selection_sha256": "3cacff9581fbf0c5163ac85f507c6f133fa0dc8177a3c7980c29f16d355902a9",
+  "source_csv_archive_agreement": "Every numeric field and native NaN equals original archive, in source order",
+  "source_files": {
+    "archive.zip": {
+      "bytes": 6235,
+      "sha256": "8573c2898714fb32ef8162291dcabd483a1ba9701123cab262f5acace3112d87",
+      "url": "https://archive.ics.uci.edu/static/public/46/hepatitis.zip"
+    },
+    "hepatitis.data": {
+      "bytes": 7545,
+      "sha256": "9971f9d18abb4fc9dd6749eefb0f864b36fa7bdd59f54188c0b148a5c28214bc",
+      "url": "https://archive.ics.uci.edu/static/public/46/hepatitis.zip"
+    },
+    "hepatitis.names": {
+      "bytes": 3098,
+      "sha256": "d8ada8cb753e2cbba61ba7254c5a4f25a316e3f38cc77011a1ea6007c1c86e95",
+      "url": "https://archive.ics.uci.edu/static/public/46/hepatitis.zip"
+    },
+    "metadata.json": {
+      "bytes": 5183,
+      "sha256": "9cf2ba8fd949f4a6d69b19b3e81dd279f8628f3d11751c21fa3917623c0240b0",
+      "url": "https://archive.ics.uci.edu/api/dataset?id=46"
+    },
+    "official.csv": {
+      "bytes": 8053,
+      "sha256": "79377934000c89e8ec579cb22486f236d96e37b57e179ec849ee790816cb8fe6",
+      "url": "https://archive.ics.uci.edu/static/public/46/data.csv"
+    },
+    "official_page.html": {
+      "bytes": 110423,
+      "sha256": "428b76c9784192b3175f5d3bc923e30e2db79930da4a0aa9f46fe3264e2d3398",
+      "url": "https://archive.ics.uci.edu/dataset/46/hepatitis"
+    }
+  },
+  "split_validation": "three-fold validator in prepare_natural.py; legacy validate_splits requires five folds",
+  "status": "complete",
+  "uci_id": 46
+}

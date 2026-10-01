@@ -1,0 +1,35 @@
+{
+  "status": "complete",
+  "predictions": 3584,
+  "tasks": 512,
+  "development_seeds": [
+    90000,
+    90063
+  ],
+  "support": 128,
+  "queries": 256,
+  "beta": 0.8,
+  "orders": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "gammas": [
+    0.0,
+    0.9
+  ],
+  "namespace": 902,
+  "solver_seed": 91,
+  "C_grid": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "confidence": 0.8,
+  "heuristic_threshold": 0.3,
+  "seconds": 194.125,
+  "paid_usd": 0,
+  "source_sha256": "cbd3337c10b0d9493a36b821d639bdb471e6e267cb17bf8399a28647c964206a",
+  "scope": "New used development tasks, CPU U+encoded-mask logistic only. No TFM, blind confirmation, causal-prior or novelty claim. Full-parity L1 has15 mask features versus4 and CV compiler searches12 bases."
+}

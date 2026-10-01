@@ -1,0 +1,9 @@
+{
+  "task_count": 512,
+  "prediction_count": 3584,
+  "support_query_id_disjoint_all_tasks": true,
+  "prototype_heuristic_gamma09_exact_probability_matches": 256,
+  "gamma09_tasks": 256,
+  "errors": [],
+  "source_sha256": "cbd3337c10b0d9493a36b821d639bdb471e6e267cb17bf8399a28647c964206a"
+}

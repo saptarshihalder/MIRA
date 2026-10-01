@@ -1,0 +1,32 @@
+{
+  "audit_utc": "2026-10-01T19:24:18.437531+00:00",
+  "status": "pass",
+  "paid_calls": 0,
+  "predictions": 3584,
+  "tasks": 512,
+  "prediction_file_hashes_verified": 3584,
+  "all_expected_empirical_oracle_nll_recomputed": true,
+  "maximum_score_or_summary_discrepancy": 0.0,
+  "independent_numpy_selector_decisions": "Prototype, linear, DeepSets and heuristic replayed on every saved support; all3584 mappings/teacher diagnostics verified; no learner refit",
+  "max_numpy_vs_torch_selection_confidence_discrepancy": 7.748603820800781e-07,
+  "coincidence": {
+    "0.0": {
+      "tasks": 256,
+      "prototype_vs_heuristic_equal_selected_basis": 255,
+      "prototype_vs_heuristic_exact_probability_arrays": 255,
+      "prototype_is_identity_basis": 256,
+      "prototype_equals_identity_probabilities": 256,
+      "prototype_vs_heuristic_max_abs_probability_difference": 0.1565448753006362
+    },
+    "0.9": {
+      "tasks": 256,
+      "prototype_vs_heuristic_equal_selected_basis": 256,
+      "prototype_vs_heuristic_exact_probability_arrays": 256,
+      "prototype_is_identity_basis": 64,
+      "prototype_equals_identity_probabilities": 64,
+      "prototype_vs_heuristic_max_abs_probability_difference": 0.0
+    }
+  },
+  "limitations": "Saved CPU predictions audited; sklearn estimator fits not independently refitted. Synthetic active columns are evaluator-only diagnostics. Development evidence cannot establish blind confirmation, native benefit or novelty.",
+  "record_sha256": "c06e097ab7df6cbe310bf38e55f6fa1d9fe649863ec798d0a89c32349e8ff3ae"
+}

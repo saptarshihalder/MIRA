@@ -1,0 +1,18 @@
+# Frozen natural-missingness compiler inputs — 2 October 2026
+
+Choice fixed before model scores: [UCI Hepatitis](https://archive.ics.uci.edu/dataset/46/hepatitis), DOI [10.24432/C5Q59J](https://doi.org/10.24432/C5Q59J), and [UCI Horse Colic](https://archive.ics.uci.edu/dataset/47/horse+colic), DOI [10.24432/C58W23](https://doi.org/10.24432/C58W23). Both official pages state [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Metadata, page HTML, original ZIP, original documentation, original records, and official CSV are cached under each dataset's `source/`. Every numeric cell and native NaN agrees between the official CSV and ZIP records. All source hashes and citations are in dataset manifests; `selection.json` freezes the choice and exclusions; `summary.json` lists final artifact hashes.
+
+| Dataset | Original/labeled/canonical rows | Features | Native missingness | Support labels | Query rows in three folds |
+|---|---|---:|---:|---:|---|
+| Hepatitis | 155/155/155 | 19 | 5.6706% | 64 | 52,52,51 |
+| Horse Colic | 368/366/353 | 20 | 26.0057% | 128 | 118,118,117 |
+
+Hepatitis positive label is death (original 1); negative is live (original 2). All 19 documented covariates are retained. No subject identifiers/timestamps are supplied; identical-X grouping cannot establish patient independence. Treatment/histology fields remain historical benchmark covariates, without a prospective interpretation.
+
+Horse positive is died/euthanized (original 2/3), negative is alive (original 1). Retain original age field 2 and measurement fields4–22. Exclude completed surgery/treatment field 1, hospital ID 3, outcome 23, retrospective surgical lesion 24, lesion fields 25–27, and pathology-data availability 28. Documentation defines these fields on the official UCI page and cached original names files. The original 300 training/68 test records are pooled before new grouped CV. Missing outcomes at original training line 133/test line 9 are excluded; 13 exact retained-X/label duplicates are removed. Multiplicities, original source membership, and hospital identifiers are preserved. Canonical Horse data has 341 groups and 3 conflicting-label groups; all identical-X/hospital components remain isolated across folds. Inner CV must also preserve support groups.
+
+Raw binary, ordinal, and nominal codes are treated numerically without one-hot encoding, scaling, or imputation. This creates artificial geometry for nominal variables; the source warns against treating pain as ordered. Preserve raw age code 9 despite the documented young code 2. No causal, prospective, clinical, or general natural-missingness claim follows from these two retrospective tasks.
+
+No masks are imposed. Native NaNs stay untouched in full backbone inputs. Each split selects four columns by descending support missingness, breaking ties by retained column index. Query scores/labels do not select columns. Hepatitis indices are 17,14,16,7 in each fold; Horse indices are 13,19,18 plus 15/12/11 by fold, respectively (zero-based). Zero-U is an explicitly out-of-distribution selector proxy, not a new backbone feature.
+
+Dataset NPZ uses the prior panel keys and loads with `mira.panel_data.load_panel`. The legacy `validate_splits` requires five folds; use `prepare_natural.validate_natural_splits` for this three-fold design. Five meaningful CPU tests pass; offline ingestion replay verifies identical frozen bytes/hashes. Reproduce with `python -m pytest -q experiments/mask_compiler/test_natural.py` and `python experiments/mask_compiler/prepare_natural.py --offline`. No inference or paid service was used.

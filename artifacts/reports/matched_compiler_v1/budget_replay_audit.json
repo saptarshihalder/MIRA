@@ -1,0 +1,21 @@
+{
+  "original_prototype_exact_weight_reproduction": {
+    "net.0.weight": true,
+    "net.0.bias": true,
+    "net.2.weight": true,
+    "net.2.bias": true,
+    "net.4.weight": true,
+    "net.4.bias": true
+  },
+  "all_minibatches_exact": true,
+  "updates": 1280,
+  "train_tasks": 2048,
+  "checkpoint_sha256": "da8accd2f5b84f895e6effd61f908097a4960527b84731dd75268b620b65496f",
+  "source_sha256": "cbd3337c10b0d9493a36b821d639bdb471e6e267cb17bf8399a28647c964206a",
+  "input_hashes": {
+    "train_inputs.npz": "1d59168ce130eee65526749a6704289a2b40156b3d25b63ede9d820d5ca77a9c",
+    "validation_inputs.npz": "1c8a2b2fec1db7f0d023b1e7240d6168209a3ba97e596787e0932ebb03b21c1b",
+    "heldout_inputs.npz": "4eaea85cbe349b652d5e8c158f84851a55cea22fcfe685852c726485009295d7"
+  },
+  "torch": "2.9.0+cpu"
+}

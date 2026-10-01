@@ -1,0 +1,93 @@
+{
+  "datasets": [
+    {
+      "artifact_sha256": {
+        "dataset.npz": "f50ebc3e74e47c915619e6638e269df3a1111da8533ffa2982a78b19ae2b5fe6",
+        "row_maps.json": "84fa10e8d255b4e79deefaa3d60dea554fa12c814abbf13d2788679ac7db25a5",
+        "splits.json": "7600648568d8dbf17e0b13a926415868e86e4dc616bffe53f9b1c16776b1cec8"
+      },
+      "class_counts": [
+        123,
+        32
+      ],
+      "dataset": "hepatitis",
+      "manifest_sha256": "67d86127f6389f091172167c2fb1b2d092b947da1a21208cd537c43107a52fd4",
+      "native_missing_fraction": 0.0567062818336163,
+      "query_sizes": [
+        52,
+        52,
+        51
+      ],
+      "selected_columns": [
+        [
+          17,
+          14,
+          16,
+          7
+        ],
+        [
+          17,
+          14,
+          16,
+          7
+        ],
+        [
+          17,
+          14,
+          16,
+          7
+        ]
+      ],
+      "shape": [
+        155,
+        19
+      ],
+      "support_size": 64
+    },
+    {
+      "artifact_sha256": {
+        "dataset.npz": "12cf6cda306885c43f817d9551321b34bd9788d04a8e24d76b316202e0e6e3a5",
+        "row_maps.json": "9bc394d730e26f338ab1b851cd89c98c465e7e1d75eda532b6829115ad782392",
+        "splits.json": "85cf96c8d226ee23b8bbb890f95b824b5d177392d69c732f9b722deb66d20e89"
+      },
+      "class_counts": [
+        220,
+        133
+      ],
+      "dataset": "horse_colic",
+      "manifest_sha256": "f2c9fed36ffb0469ce5f019d9fb12d40dfcc7ede022430f9916657e3366af227",
+      "native_missing_fraction": 0.26005665722379606,
+      "query_sizes": [
+        118,
+        118,
+        117
+      ],
+      "selected_columns": [
+        [
+          13,
+          19,
+          18,
+          15
+        ],
+        [
+          13,
+          19,
+          18,
+          12
+        ],
+        [
+          13,
+          19,
+          18,
+          11
+        ]
+      ],
+      "shape": [
+        353,
+        20
+      ],
+      "support_size": 128
+    }
+  ],
+  "no_model_scores": true
+}

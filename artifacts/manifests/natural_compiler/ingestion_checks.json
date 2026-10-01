@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "paid_calls": 0,
+  "models_fitted": 0,
+  "tests": "5passed",
+  "offline_replay": "all source/output bytes and hashes identical",
+  "commands": [
+    "python -m pytest -q experiments/mask_compiler/test_natural.py",
+    "python experiments/mask_compiler/prepare_natural.py --offline"
+  ],
+  "code_sha256": {
+    "experiments/mask_compiler/prepare_natural.py": "66a13c01c33839f37adf001c2116a0814f5d1c929606202faf8dfaaee9bb9b1b",
+    "experiments/mask_compiler/test_natural.py": "578a82c8a8445606d54721c58208806b39f78df549da8c789c3c9cb20147a773"
+  }
+}

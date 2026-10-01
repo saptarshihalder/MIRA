@@ -1,0 +1,134 @@
+{
+  "datasets": {
+    "hepatitis": {
+      "archive": "https://archive.ics.uci.edu/static/public/46/hepatitis.zip",
+      "archive_sha256": "8573c2898714fb32ef8162291dcabd483a1ba9701123cab262f5acace3112d87",
+      "citation": "Hepatitis [Dataset]. (1983). UCI Machine Learning Repository. https://doi.org/10.24432/C5Q59J",
+      "csv": "https://archive.ics.uci.edu/static/public/46/data.csv",
+      "csv_sha256": "79377934000c89e8ec579cb22486f236d96e37b57e179ec849ee790816cb8fe6",
+      "data_members": [
+        "hepatitis.data"
+      ],
+      "documentation": [
+        "hepatitis.names"
+      ],
+      "doi": "10.24432/C5Q59J",
+      "excluded_1based": {
+        "1": "target: die1/live2"
+      },
+      "limitations": [
+        "No subject identifiers or observation timestamps supplied; duplicate grouping cannot establish patient independence.",
+        "Treatment and histology variables are retained as historical benchmark covariates; no prospective clinical interpretation."
+      ],
+      "page": "https://archive.ics.uci.edu/dataset/46/hepatitis",
+      "retained_1based": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "rows": 155,
+      "source_columns": 20,
+      "subject_1based": null,
+      "support_size": 64,
+      "target_1based": 1,
+      "target_map": {
+        "1": 1,
+        "2": 0
+      },
+      "uci_id": 46
+    },
+    "horse_colic": {
+      "archive": "https://archive.ics.uci.edu/static/public/47/horse+colic.zip",
+      "archive_sha256": "e4a2d4e77573e521057b75ce00992060f2f002a1658d5a8e430138b60c3c8053",
+      "citation": "McLeish, M. & Cecile, M. (1989). Horse Colic [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C58W23",
+      "csv": "https://archive.ics.uci.edu/static/public/47/data.csv",
+      "csv_sha256": "7cad77c51181c532babb5c08db40dff35d3edb39797ea2f5291468a3e35d1efd",
+      "data_members": [
+        "horse-colic.data",
+        "horse-colic.test"
+      ],
+      "documentation": [
+        "horse-colic.names",
+        "horse-colic.names.original"
+      ],
+      "doi": "10.24432/C58W23",
+      "excluded_1based": {
+        "1": "completed surgery/treatment decision",
+        "23": "outcome target",
+        "24": "retrospective surgical lesion",
+        "25": "lesion field",
+        "26": "lesion field",
+        "27": "lesion field",
+        "28": "pathology-data availability flag",
+        "3": "hospital case identifier: grouping only"
+      },
+      "limitations": [
+        "Original300 train/68 test records are pooled before new grouped CV; this is not the original benchmark split.",
+        "Hospital number may recur across treatments; supplied IDs and identical-X groups are isolated, but unknown dependencies remain.",
+        "Death and euthanasia are combined; these outcomes have different causes and treatment decisions.",
+        "Observation timing is unavailable; some measurements follow interventions. No prospective, causal, or clinical claim.",
+        "Original age values include9 despite documentation describing young code2; preserve raw codes without recoding."
+      ],
+      "page": "https://archive.ics.uci.edu/dataset/47/horse+colic",
+      "retained_1based": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "rows": 368,
+      "source_columns": 28,
+      "subject_1based": 3,
+      "support_size": 128,
+      "target_1based": 23,
+      "target_map": {
+        "1": 0,
+        "2": 1,
+        "3": 1
+      },
+      "uci_id": 47
+    }
+  },
+  "frozen_before_scores": true,
+  "license": {
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "verification": "Official UCI dataset page, license section, verified 2026-10-02"
+  },
+  "missingness": "Native question marks/empty CSV entries become NaN; no imposed masks or label-based column choice.",
+  "predictor_encoding": "Continuous values and original binary/ordinal/nominal codes kept numeric; no one-hot, scaling or imputation. Numeric nominal codes imply artificial geometry; no clinical claim.",
+  "replacement_policy": "No silent replacement; record acquisition/validation failure",
+  "version": 1
+}

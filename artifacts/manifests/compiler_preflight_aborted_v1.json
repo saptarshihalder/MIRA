@@ -1,0 +1,135 @@
+{
+  "frozen": true,
+  "protocol_version": "trained_compiler_validation_v1",
+  "frozen_local_date": "2026-10-02",
+  "phase": "development; no confirmation or venue-readiness claim",
+  "models": [
+    "tabpfn:v2",
+    "tabicl:v2"
+  ],
+  "ensembles": 4,
+  "synthetic": {
+    "orders": [
+      2,
+      4
+    ],
+    "gammas": [
+      0,
+      0.9
+    ],
+    "seeds": [
+      74000,
+      74001,
+      74002
+    ],
+    "context": 128,
+    "queries": 256
+  },
+  "real": [
+    {
+      "directory": "artifacts/data/natural_compiler/hepatitis",
+      "folds": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "directory": "artifacts/data/natural_compiler/horse_colic",
+      "folds": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "views": [
+    "native",
+    "identity",
+    "trained",
+    "heuristic",
+    "matched_linear",
+    "cv_basis",
+    "random_basis",
+    "deepsets",
+    "shuffled"
+  ],
+  "compiler_checkpoint": "artifacts/reports/matched_compiler_v1/prototype_selector.npz",
+  "linear_checkpoint": "artifacts/reports/matched_compiler_v1/linear_selector.npz",
+  "deepsets_checkpoint": "artifacts/reports/matched_compiler_v1/deepsets_selector.npz",
+  "decision_gate": {
+    "primary_comparison": "identity minus trained expected NLL; average orders within each of three seed units",
+    "minimum_high_signal_gain": 0.01,
+    "maximum_null_harm": 0.01,
+    "advance_requires": "Numerical screen plus substantive evidence beyond fixed heuristic, equally informed learned selectors and support-CV controls. No fresh confirmation if simple controls explain the result.",
+    "natural_scope": "Two fixed datasets; query-weighted folds within dataset; descriptive only. Native NaNs retained; support-only choice of four mask columns; zero U proxy outside pretraining distribution; categorical codes treated numerically.",
+    "known_before_freeze": "512 CPU development tasks already show prototype/heuristic equality on all256 informative tasks. These GPU seeds are development, not untouched confirmation."
+  },
+  "budgets": {
+    "paid_call_reservation_usd": 0.5,
+    "max_calls_including_failures": 2,
+    "initial_total_usd": 1,
+    "project_cap_usd": 26,
+    "reproduction_reserve_usd": 3,
+    "automatic_retries": 0
+  },
+  "checkpoint_sha256": {
+    "tabpfn/tabpfn-v2-classifier-finetuned-zk73skhh.ckpt": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49",
+    "huggingface/hub/blobs/45/45c13f180e7197fbc11b24a9cf5e3be795902967bcc61e2223dc19245559a934": "bdc7dbd5e4ff21f8f0456fcf90c6b7cdf72dbea960f2d05b19bec19f9b3d4ed0"
+  },
+  "file_sha256": {
+    "artifacts/data/natural_compiler/hepatitis/dataset.npz": "f50ebc3e74e47c915619e6638e269df3a1111da8533ffa2982a78b19ae2b5fe6",
+    "artifacts/data/natural_compiler/hepatitis/manifest.json": "67d86127f6389f091172167c2fb1b2d092b947da1a21208cd537c43107a52fd4",
+    "artifacts/data/natural_compiler/hepatitis/row_maps.json": "84fa10e8d255b4e79deefaa3d60dea554fa12c814abbf13d2788679ac7db25a5",
+    "artifacts/data/natural_compiler/hepatitis/source/archive.zip": "8573c2898714fb32ef8162291dcabd483a1ba9701123cab262f5acace3112d87",
+    "artifacts/data/natural_compiler/hepatitis/source/hepatitis.data": "9971f9d18abb4fc9dd6749eefb0f864b36fa7bdd59f54188c0b148a5c28214bc",
+    "artifacts/data/natural_compiler/hepatitis/source/hepatitis.names": "d8ada8cb753e2cbba61ba7254c5a4f25a316e3f38cc77011a1ea6007c1c86e95",
+    "artifacts/data/natural_compiler/hepatitis/source/metadata.json": "9cf2ba8fd949f4a6d69b19b3e81dd279f8628f3d11751c21fa3917623c0240b0",
+    "artifacts/data/natural_compiler/hepatitis/source/official.csv": "79377934000c89e8ec579cb22486f236d96e37b57e179ec849ee790816cb8fe6",
+    "artifacts/data/natural_compiler/hepatitis/source/official_page.html": "428b76c9784192b3175f5d3bc923e30e2db79930da4a0aa9f46fe3264e2d3398",
+    "artifacts/data/natural_compiler/hepatitis/splits.json": "7600648568d8dbf17e0b13a926415868e86e4dc616bffe53f9b1c16776b1cec8",
+    "artifacts/data/natural_compiler/horse_colic/dataset.npz": "12cf6cda306885c43f817d9551321b34bd9788d04a8e24d76b316202e0e6e3a5",
+    "artifacts/data/natural_compiler/horse_colic/manifest.json": "f2c9fed36ffb0469ce5f019d9fb12d40dfcc7ede022430f9916657e3366af227",
+    "artifacts/data/natural_compiler/horse_colic/row_maps.json": "9bc394d730e26f338ab1b851cd89c98c465e7e1d75eda532b6829115ad782392",
+    "artifacts/data/natural_compiler/horse_colic/source/archive.zip": "e4a2d4e77573e521057b75ce00992060f2f002a1658d5a8e430138b60c3c8053",
+    "artifacts/data/natural_compiler/horse_colic/source/horse-colic.data": "270db486c78796143ffa84b4808118b3d4b96d1bd0f70bf22b3bb0bfca21e547",
+    "artifacts/data/natural_compiler/horse_colic/source/horse-colic.names": "36d88c8c17fb621153fa42ba8addd50b0c97a74af79da3dddae15ed697b9bef4",
+    "artifacts/data/natural_compiler/horse_colic/source/horse-colic.names.original": "b95e8efc11ba05f301319851fc947296b61afed7d0977b868db6f233f201b8b5",
+    "artifacts/data/natural_compiler/horse_colic/source/horse-colic.test": "2c14b28c71da2a4778a6f161819804e032545a1c13f73fddf5d5b220c7ae3853",
+    "artifacts/data/natural_compiler/horse_colic/source/metadata.json": "a10b4167e652dce5b60a0791c36d9cbbb653aa9968830b6ba396b6ab4187daa4",
+    "artifacts/data/natural_compiler/horse_colic/source/official.csv": "7cad77c51181c532babb5c08db40dff35d3edb39797ea2f5291468a3e35d1efd",
+    "artifacts/data/natural_compiler/horse_colic/source/official_page.html": "59d41bd280413b5e5ab50f84b1d9e16b1c2ce1f096817c0718f1a936fd9246a7",
+    "artifacts/data/natural_compiler/horse_colic/splits.json": "85cf96c8d226ee23b8bbb890f95b824b5d177392d69c732f9b722deb66d20e89",
+    "artifacts/reports/matched_compiler_v1/deepsets_selector.npz": "c850b5c0c7f07b98815f8cd0be5c4149d7ffde937e3eeba3035f17c0f52a4ff1",
+    "artifacts/reports/matched_compiler_v1/linear_selector.npz": "47a9ca5582cf15860daaa90b030dbc7bb19536662ba02558637cc4ca0d9ce956",
+    "artifacts/reports/matched_compiler_v1/prototype_selector.npz": "da8accd2f5b84f895e6effd61f908097a4960527b84731dd75268b620b65496f",
+    "experiments/mask_compiler/analyze_validation.py": "688dec833aba9f1f8243ba71c8150cf6104dc4dc48b865f00268f064fdfb0035",
+    "experiments/mask_compiler/feasibility.py": "bc1b36d34cbac6dd6100e7d26a7d104370f559f66b61e220b3063beb0923d5c4",
+    "experiments/mask_compiler/freeze_protocol.py": "e0c12fe78d6d03c550b84413c5a2078a2edaae9f3577f53e85b717cdf602e096",
+    "experiments/mask_compiler/matched_training.py": "cbd3337c10b0d9493a36b821d639bdb471e6e267cb17bf8399a28647c964206a",
+    "experiments/mask_compiler/prepare_natural.py": "66a13c01c33839f37adf001c2116a0814f5d1c929606202faf8dfaaee9bb9b1b",
+    "experiments/mask_compiler/real_baselines.py": "c93fc4999c5e2b9204151c2b36b30299eee163c41d9fb36f7c426db5087bedf1",
+    "experiments/mask_compiler/run_backbone.py": "77162b27d582a96e2b9b9149389e7492914cd30ac6584d0f2683194f58f10542",
+    "experiments/mask_compiler/stress_selector.py": "3ade8333a5de39a8dd3658084c555061e92df6e85a33c449bb543c624ba1d383",
+    "experiments/mask_compiler/strong_baseline.py": "8d7baba99f82105d3529278951f33e491a80499c177ca6a51d332a2d017c91a8",
+    "experiments/mask_compiler/test_backbone.py": "4f97815bb3b1020e96fa91fd6962f8d07b925e88e6c80aed3fce8b7550c9a128",
+    "experiments/mask_compiler/test_feasibility.py": "f6a319c580dd8b03b565eb7d9147628280a200c9550c32db8e526cc592903f4e",
+    "experiments/mask_compiler/test_matched_training.py": "190bca15e5dbd77156666cf0d9fd2d5bd3f67a9f640e5fe266236cae8016f025",
+    "experiments/mask_compiler/test_natural.py": "578a82c8a8445606d54721c58208806b39f78df549da8c789c3c9cb20147a773",
+    "experiments/mask_compiler/test_trained_selector.py": "bb1a75c4f5e17879f7faa0694218b5b2c641420ca091fcaea3131579815ba70f",
+    "experiments/mask_compiler/train_selector.py": "e5da3c92e6ee0f5825ff9472212bd630653b68c2f2c53f014b5021a7801b9fde",
+    "infra/modal_compiler.py": "aae8498e7c88f06a6c12786e175b87185f0fd7d9b0e78569747deb7972d74241",
+    "infra/modal_mechanism.py": "47c59d7025fbfe85d5c6eab92fb9390afec70a731730ee19f4bcdb8d9884848e",
+    "pyproject.toml": "747b146b1c5477659441dedb13726032e359deeacb4ae6814151e348171ec318",
+    "src/mira/__init__.py": "5be8f16be189846ddd147db33b2eb856c00786f373daa32f88979b9a90440f75",
+    "src/mira/artifacts.py": "a280e227cc603344ccae46115bd971029b9d90db5a0a5752259676d8e6b39b5e",
+    "src/mira/data.py": "767f037a35a443a78c06b4352e6f3368c4965fc3fa12dc7609f0a996064fd9dc",
+    "src/mira/metrics.py": "de02113cff14d264e09e11aa234985fe3994216e9efbfb765d528fd3741aaf53",
+    "src/mira/models.py": "fe485c44376b2e598e39fadda15b30c2c38551dd6f704bc660531d5d7c16242e",
+    "src/mira/panel_data.py": "9b3bc528e494599b88a182c2e5cdf5facefa3c0f7693fb19dc5341d08dfc1246",
+    "src/mira/panel_runner.py": "b9867b390ca3f98845f4fd13437413362b5597688f47744a1227d78474b5a6da",
+    "src/mira/reporting.py": "71f688b83c76131e02a1a28c31a1a92d046e7bf74bf4d6f267d8660aaa59cc81",
+    "src/mira/representations.py": "9503eb9241d9e9e9cd76e146cbe6d0c75b693872501c60a4634a7a0e8b755d45",
+    "src/mira/runner.py": "f911b15331784329310c6c23d9f137e654fb7114daca007cbe2b726b82be773d"
+  }
+}

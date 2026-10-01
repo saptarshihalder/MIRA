@@ -1,0 +1,177 @@
+{
+  "status": "complete",
+  "paid_usd": 0,
+  "tasks": 900,
+  "used_development_seeds": [
+    96000,
+    96049
+  ],
+  "rng_namespace": 778,
+  "source_sha256": "3ade8333a5de39a8dd3658084c555061e92df6e85a33c449bb543c624ba1d383",
+  "checkpoint_sha256": "da8accd2f5b84f895e6effd61f908097a4960527b84731dd75268b620b65496f",
+  "conditions": [
+    {
+      "prevalence": 0.2,
+      "missing_rate": 0.1,
+      "policy": "independent",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.1,
+      "guarded_nonidentity_fraction": 0.02,
+      "mean_max_probability": 0.6612905859947205
+    },
+    {
+      "prevalence": 0.2,
+      "missing_rate": 0.1,
+      "policy": "shared_block",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.0,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.4709092676639557
+    },
+    {
+      "prevalence": 0.2,
+      "missing_rate": 0.5,
+      "policy": "independent",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.04,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.7981588840484619
+    },
+    {
+      "prevalence": 0.2,
+      "missing_rate": 0.5,
+      "policy": "shared_block",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 1.0,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.44257625937461853
+    },
+    {
+      "prevalence": 0.2,
+      "missing_rate": 0.9,
+      "policy": "independent",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.08,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.6351463794708252
+    },
+    {
+      "prevalence": 0.2,
+      "missing_rate": 0.9,
+      "policy": "shared_block",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.02,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.4810270667076111
+    },
+    {
+      "prevalence": 0.5,
+      "missing_rate": 0.1,
+      "policy": "independent",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.0,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.8244104981422424
+    },
+    {
+      "prevalence": 0.5,
+      "missing_rate": 0.1,
+      "policy": "shared_block",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.02,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.87359619140625
+    },
+    {
+      "prevalence": 0.5,
+      "missing_rate": 0.5,
+      "policy": "independent",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.08,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.7372393608093262
+    },
+    {
+      "prevalence": 0.5,
+      "missing_rate": 0.5,
+      "policy": "shared_block",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.12,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.8389006853103638
+    },
+    {
+      "prevalence": 0.5,
+      "missing_rate": 0.9,
+      "policy": "independent",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.02,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.8300824165344238
+    },
+    {
+      "prevalence": 0.5,
+      "missing_rate": 0.9,
+      "policy": "shared_block",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.0,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.8896340131759644
+    },
+    {
+      "prevalence": 0.8,
+      "missing_rate": 0.1,
+      "policy": "independent",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.06,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.6658077239990234
+    },
+    {
+      "prevalence": 0.8,
+      "missing_rate": 0.1,
+      "policy": "shared_block",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.0,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.5018445253372192
+    },
+    {
+      "prevalence": 0.8,
+      "missing_rate": 0.5,
+      "policy": "independent",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.02,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.814900815486908
+    },
+    {
+      "prevalence": 0.8,
+      "missing_rate": 0.5,
+      "policy": "shared_block",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 1.0,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.431169331073761
+    },
+    {
+      "prevalence": 0.8,
+      "missing_rate": 0.9,
+      "policy": "independent",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.08,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.6704229712486267
+    },
+    {
+      "prevalence": 0.8,
+      "missing_rate": 0.9,
+      "policy": "shared_block",
+      "tasks": 50,
+      "raw_nonidentity_fraction": 0.0,
+      "guarded_nonidentity_fraction": 0.0,
+      "mean_max_probability": 0.4727955758571625
+    }
+  ],
+  "interpretation": "Masks generated independently of labels, including correlated acquisition blocks. Nonidentity selection is not a downstream harm estimate; confidence is not a safety guarantee. U proxyzero is explicitlyOOD."
+}
