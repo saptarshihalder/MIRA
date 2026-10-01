@@ -28,6 +28,11 @@ image = (
     .add_local_dir(ROOT / "scripts", "/opt/mira/scripts")
     .add_local_file(ROOT / "pyproject.toml", "/opt/mira/pyproject.toml")
 )
+if (ROOT / "artifacts/data/real_panel").exists():
+    image = image.add_local_dir(ROOT / "artifacts/data/real_panel", "/opt/mira/panel")
+if (ROOT / "configs/real_panel_v1.json").exists():
+    image = image.add_local_file(ROOT / "configs/real_panel_v1.json", "/opt/mira/panel_protocol.json")
+    image = image.add_local_file(ROOT / "configs/real_panel_v1.sha256", "/opt/mira/panel_protocol.sha256")
 
 @app.function(image=image, gpu="T4", cpu=(2, 2), memory=(8192, 8192), timeout=900,
               max_containers=1, scaledown_window=2, retries=0, volumes={"/cache": cache})
@@ -37,13 +42,14 @@ def run_pilot(argv: list[str], engine: str = "pilot") -> dict:
     import subprocess
     import sys
     import zipfile
-    if engine not in {"pilot", "core"}:
+    if engine not in {"pilot", "core", "panel"}:
         raise ValueError("Unknown experiment engine")
     # A warm Modal container may execute multiple calls; never reuse previous data.
     out = Path(tempfile.mkdtemp(prefix="mira_result_"))
     start = time.monotonic()
     os.environ["PYTHONPATH"] = "/opt/mira/src"
-    script = "/opt/pilot/tfm_mechanism.py" if engine == "pilot" else "/opt/mira/scripts/run_mechanism.py"
+    script = {"pilot": "/opt/pilot/tfm_mechanism.py", "core": "/opt/mira/scripts/run_mechanism.py",
+              "panel": "/opt/mira/scripts/run_real_panel.py"}[engine]
     command = [sys.executable, script, *argv,
                "--device", "cuda", "--checkpoint-dirs", "/cache", "--out", str(out)]
     try:

@@ -1,0 +1,1446 @@
+{
+  "source_results_sha256": "f558f961d40decfb36ed3744b9735ed6f9d6959fd0f77ec75dcecff9ad3610b8",
+  "method": "Predictor row timings are incremental in a shared pool. Fitted-base mixture standalone time adds its matching U-only CV+refit+prediction time. Total task wall time includes the pool once. Setup before task timer is excluded. These CPU timings are not a controlled GPU-versus-CPU cost comparison.",
+  "standalone_timings": [
+    {
+      "task_id": "pairwise_seed60000_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.026444900024216622,
+      "standalone_seconds": 0.026444900024216622
+    },
+    {
+      "task_id": "pairwise_seed60000_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03762650000862777,
+      "standalone_seconds": 0.03762650000862777
+    },
+    {
+      "task_id": "pairwise_seed60000_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.01784719998249784,
+      "standalone_seconds": 0.01784719998249784
+    },
+    {
+      "task_id": "pairwise_seed60000_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 1.679363800009014,
+      "standalone_seconds": 1.679363800009014
+    },
+    {
+      "task_id": "pairwise_seed60000_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0030263999942690134,
+      "standalone_seconds": 0.029471300018485636
+    },
+    {
+      "task_id": "pairwise_seed60000_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.002075099997455254,
+      "standalone_seconds": 0.002075099997455254
+    },
+    {
+      "task_id": "pairwise_seed60000_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.023571600002469495,
+      "standalone_seconds": 0.023571600002469495
+    },
+    {
+      "task_id": "pairwise_seed60000_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.06006319998414256,
+      "standalone_seconds": 0.06006319998414256
+    },
+    {
+      "task_id": "pairwise_seed60000_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.04607449998729862,
+      "standalone_seconds": 0.04607449998729862
+    },
+    {
+      "task_id": "pairwise_seed60000_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.10875300000770949,
+      "standalone_seconds": 0.10875300000770949
+    },
+    {
+      "task_id": "pairwise_seed60000_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0032786999945528805,
+      "standalone_seconds": 0.026850299997022375
+    },
+    {
+      "task_id": "pairwise_seed60000_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0016720000130590051,
+      "standalone_seconds": 0.0016720000130590051
+    },
+    {
+      "task_id": "pairwise_seed60001_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.03470020001986995,
+      "standalone_seconds": 0.03470020001986995
+    },
+    {
+      "task_id": "pairwise_seed60001_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.04876720000174828,
+      "standalone_seconds": 0.04876720000174828
+    },
+    {
+      "task_id": "pairwise_seed60001_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.029678399994736537,
+      "standalone_seconds": 0.029678399994736537
+    },
+    {
+      "task_id": "pairwise_seed60001_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.15855019999435171,
+      "standalone_seconds": 0.15855019999435171
+    },
+    {
+      "task_id": "pairwise_seed60001_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0022706000017933547,
+      "standalone_seconds": 0.03697080002166331
+    },
+    {
+      "task_id": "pairwise_seed60001_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0014970000192988664,
+      "standalone_seconds": 0.0014970000192988664
+    },
+    {
+      "task_id": "pairwise_seed60001_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.029526400001486763,
+      "standalone_seconds": 0.029526400001486763
+    },
+    {
+      "task_id": "pairwise_seed60001_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.06547659999341704,
+      "standalone_seconds": 0.06547659999341704
+    },
+    {
+      "task_id": "pairwise_seed60001_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.06868750002468005,
+      "standalone_seconds": 0.06868750002468005
+    },
+    {
+      "task_id": "pairwise_seed60001_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.13226090001990087,
+      "standalone_seconds": 0.13226090001990087
+    },
+    {
+      "task_id": "pairwise_seed60001_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0024231999996118248,
+      "standalone_seconds": 0.03194960000109859
+    },
+    {
+      "task_id": "pairwise_seed60001_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.002001299988478422,
+      "standalone_seconds": 0.002001299988478422
+    },
+    {
+      "task_id": "pairwise_seed60002_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.027317100000800565,
+      "standalone_seconds": 0.027317100000800565
+    },
+    {
+      "task_id": "pairwise_seed60002_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03890879999380559,
+      "standalone_seconds": 0.03890879999380559
+    },
+    {
+      "task_id": "pairwise_seed60002_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.023377400008030236,
+      "standalone_seconds": 0.023377400008030236
+    },
+    {
+      "task_id": "pairwise_seed60002_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.1290261000103783,
+      "standalone_seconds": 0.1290261000103783
+    },
+    {
+      "task_id": "pairwise_seed60002_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0025576000043656677,
+      "standalone_seconds": 0.029874700005166233
+    },
+    {
+      "task_id": "pairwise_seed60002_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.001736000005621463,
+      "standalone_seconds": 0.001736000005621463
+    },
+    {
+      "task_id": "pairwise_seed60002_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.029873999999836087,
+      "standalone_seconds": 0.029873999999836087
+    },
+    {
+      "task_id": "pairwise_seed60002_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.055306099995505065,
+      "standalone_seconds": 0.055306099995505065
+    },
+    {
+      "task_id": "pairwise_seed60002_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.16728169997804798,
+      "standalone_seconds": 0.16728169997804798
+    },
+    {
+      "task_id": "pairwise_seed60002_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.13652709999587387,
+      "standalone_seconds": 0.13652709999587387
+    },
+    {
+      "task_id": "pairwise_seed60002_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0026359999901615083,
+      "standalone_seconds": 0.032509999989997596
+    },
+    {
+      "task_id": "pairwise_seed60002_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0022080999915488064,
+      "standalone_seconds": 0.0022080999915488064
+    },
+    {
+      "task_id": "pairwise_seed60003_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.032812199991894886,
+      "standalone_seconds": 0.032812199991894886
+    },
+    {
+      "task_id": "pairwise_seed60003_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.034023000014713034,
+      "standalone_seconds": 0.034023000014713034
+    },
+    {
+      "task_id": "pairwise_seed60003_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.02101789999869652,
+      "standalone_seconds": 0.02101789999869652
+    },
+    {
+      "task_id": "pairwise_seed60003_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.13134459999855608,
+      "standalone_seconds": 0.13134459999855608
+    },
+    {
+      "task_id": "pairwise_seed60003_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0017908000154420733,
+      "standalone_seconds": 0.03460300000733696
+    },
+    {
+      "task_id": "pairwise_seed60003_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0015715000045020133,
+      "standalone_seconds": 0.0015715000045020133
+    },
+    {
+      "task_id": "pairwise_seed60003_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.026215200021397322,
+      "standalone_seconds": 0.026215200021397322
+    },
+    {
+      "task_id": "pairwise_seed60003_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.05503119999775663,
+      "standalone_seconds": 0.05503119999775663
+    },
+    {
+      "task_id": "pairwise_seed60003_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.12070929998299107,
+      "standalone_seconds": 0.12070929998299107
+    },
+    {
+      "task_id": "pairwise_seed60003_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.11889059998793527,
+      "standalone_seconds": 0.11889059998793527
+    },
+    {
+      "task_id": "pairwise_seed60003_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.003910900006303564,
+      "standalone_seconds": 0.030126100027700886
+    },
+    {
+      "task_id": "pairwise_seed60003_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0023292000114452094,
+      "standalone_seconds": 0.0023292000114452094
+    },
+    {
+      "task_id": "pairwise_seed60004_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.05371360000572167,
+      "standalone_seconds": 0.05371360000572167
+    },
+    {
+      "task_id": "pairwise_seed60004_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.04847179999342188,
+      "standalone_seconds": 0.04847179999342188
+    },
+    {
+      "task_id": "pairwise_seed60004_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.03293759998632595,
+      "standalone_seconds": 0.03293759998632595
+    },
+    {
+      "task_id": "pairwise_seed60004_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.13200169999618083,
+      "standalone_seconds": 0.13200169999618083
+    },
+    {
+      "task_id": "pairwise_seed60004_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0019517000182531774,
+      "standalone_seconds": 0.05566530002397485
+    },
+    {
+      "task_id": "pairwise_seed60004_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0037583000084850937,
+      "standalone_seconds": 0.0037583000084850937
+    },
+    {
+      "task_id": "pairwise_seed60004_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.02629109998815693,
+      "standalone_seconds": 0.02629109998815693
+    },
+    {
+      "task_id": "pairwise_seed60004_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.06102890000329353,
+      "standalone_seconds": 0.06102890000329353
+    },
+    {
+      "task_id": "pairwise_seed60004_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.07999779999954626,
+      "standalone_seconds": 0.07999779999954626
+    },
+    {
+      "task_id": "pairwise_seed60004_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.11750860000029206,
+      "standalone_seconds": 0.11750860000029206
+    },
+    {
+      "task_id": "pairwise_seed60004_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0022849999950267375,
+      "standalone_seconds": 0.028576099983183667
+    },
+    {
+      "task_id": "pairwise_seed60004_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.00208609999390319,
+      "standalone_seconds": 0.00208609999390319
+    },
+    {
+      "task_id": "pairwise_seed60005_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.028036799980327487,
+      "standalone_seconds": 0.028036799980327487
+    },
+    {
+      "task_id": "pairwise_seed60005_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03761620001750998,
+      "standalone_seconds": 0.03761620001750998
+    },
+    {
+      "task_id": "pairwise_seed60005_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.01828300001216121,
+      "standalone_seconds": 0.01828300001216121
+    },
+    {
+      "task_id": "pairwise_seed60005_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.11143789999186993,
+      "standalone_seconds": 0.11143789999186993
+    },
+    {
+      "task_id": "pairwise_seed60005_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0026037000061478466,
+      "standalone_seconds": 0.030640499986475334
+    },
+    {
+      "task_id": "pairwise_seed60005_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.002260500012198463,
+      "standalone_seconds": 0.002260500012198463
+    },
+    {
+      "task_id": "pairwise_seed60005_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.02075590001186356,
+      "standalone_seconds": 0.02075590001186356
+    },
+    {
+      "task_id": "pairwise_seed60005_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.04783480000332929,
+      "standalone_seconds": 0.04783480000332929
+    },
+    {
+      "task_id": "pairwise_seed60005_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.05321810001623817,
+      "standalone_seconds": 0.05321810001623817
+    },
+    {
+      "task_id": "pairwise_seed60005_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.10062240000115708,
+      "standalone_seconds": 0.10062240000115708
+    },
+    {
+      "task_id": "pairwise_seed60005_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0019020999898202717,
+      "standalone_seconds": 0.02265800000168383
+    },
+    {
+      "task_id": "pairwise_seed60005_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0013500999775715172,
+      "standalone_seconds": 0.0013500999775715172
+    },
+    {
+      "task_id": "pairwise_seed60006_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.02906139998231083,
+      "standalone_seconds": 0.02906139998231083
+    },
+    {
+      "task_id": "pairwise_seed60006_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.04016150001552887,
+      "standalone_seconds": 0.04016150001552887
+    },
+    {
+      "task_id": "pairwise_seed60006_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.022344600001815706,
+      "standalone_seconds": 0.022344600001815706
+    },
+    {
+      "task_id": "pairwise_seed60006_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.14462929998990148,
+      "standalone_seconds": 0.14462929998990148
+    },
+    {
+      "task_id": "pairwise_seed60006_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0027273000159766525,
+      "standalone_seconds": 0.031788699998287484
+    },
+    {
+      "task_id": "pairwise_seed60006_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0022280999983195215,
+      "standalone_seconds": 0.0022280999983195215
+    },
+    {
+      "task_id": "pairwise_seed60006_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.028597600001376122,
+      "standalone_seconds": 0.028597600001376122
+    },
+    {
+      "task_id": "pairwise_seed60006_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.057647000008728355,
+      "standalone_seconds": 0.057647000008728355
+    },
+    {
+      "task_id": "pairwise_seed60006_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.04728440000326373,
+      "standalone_seconds": 0.04728440000326373
+    },
+    {
+      "task_id": "pairwise_seed60006_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.12371090002125129,
+      "standalone_seconds": 0.12371090002125129
+    },
+    {
+      "task_id": "pairwise_seed60006_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.002246399992145598,
+      "standalone_seconds": 0.03084399999352172
+    },
+    {
+      "task_id": "pairwise_seed60006_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.002594599995063618,
+      "standalone_seconds": 0.002594599995063618
+    },
+    {
+      "task_id": "pairwise_seed60007_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.029482899990398437,
+      "standalone_seconds": 0.029482899990398437
+    },
+    {
+      "task_id": "pairwise_seed60007_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.04038070002570748,
+      "standalone_seconds": 0.04038070002570748
+    },
+    {
+      "task_id": "pairwise_seed60007_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.02486599999247119,
+      "standalone_seconds": 0.02486599999247119
+    },
+    {
+      "task_id": "pairwise_seed60007_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.13522850000299513,
+      "standalone_seconds": 0.13522850000299513
+    },
+    {
+      "task_id": "pairwise_seed60007_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0020895999914500862,
+      "standalone_seconds": 0.03157249998184852
+    },
+    {
+      "task_id": "pairwise_seed60007_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.00230089999968186,
+      "standalone_seconds": 0.00230089999968186
+    },
+    {
+      "task_id": "pairwise_seed60007_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.03834239998832345,
+      "standalone_seconds": 0.03834239998832345
+    },
+    {
+      "task_id": "pairwise_seed60007_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.06973610000568442,
+      "standalone_seconds": 0.06973610000568442
+    },
+    {
+      "task_id": "pairwise_seed60007_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.06591340000159107,
+      "standalone_seconds": 0.06591340000159107
+    },
+    {
+      "task_id": "pairwise_seed60007_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.14656389999436215,
+      "standalone_seconds": 0.14656389999436215
+    },
+    {
+      "task_id": "pairwise_seed60007_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0021813000203110278,
+      "standalone_seconds": 0.04052370000863448
+    },
+    {
+      "task_id": "pairwise_seed60007_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0020986000017728657,
+      "standalone_seconds": 0.0020986000017728657
+    },
+    {
+      "task_id": "pairwise_seed60008_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.04139929998200387,
+      "standalone_seconds": 0.04139929998200387
+    },
+    {
+      "task_id": "pairwise_seed60008_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.05180469999322668,
+      "standalone_seconds": 0.05180469999322668
+    },
+    {
+      "task_id": "pairwise_seed60008_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.024597999989055097,
+      "standalone_seconds": 0.024597999989055097
+    },
+    {
+      "task_id": "pairwise_seed60008_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.1389097000064794,
+      "standalone_seconds": 0.1389097000064794
+    },
+    {
+      "task_id": "pairwise_seed60008_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.002903400018112734,
+      "standalone_seconds": 0.0443027000001166
+    },
+    {
+      "task_id": "pairwise_seed60008_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.003484999993816018,
+      "standalone_seconds": 0.003484999993816018
+    },
+    {
+      "task_id": "pairwise_seed60008_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.030771699995966628,
+      "standalone_seconds": 0.030771699995966628
+    },
+    {
+      "task_id": "pairwise_seed60008_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.05573809999623336,
+      "standalone_seconds": 0.05573809999623336
+    },
+    {
+      "task_id": "pairwise_seed60008_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.05509650000021793,
+      "standalone_seconds": 0.05509650000021793
+    },
+    {
+      "task_id": "pairwise_seed60008_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.1354006999754347,
+      "standalone_seconds": 0.1354006999754347
+    },
+    {
+      "task_id": "pairwise_seed60008_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0017896000063046813,
+      "standalone_seconds": 0.03256130000227131
+    },
+    {
+      "task_id": "pairwise_seed60008_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0017754000145941973,
+      "standalone_seconds": 0.0017754000145941973
+    },
+    {
+      "task_id": "pairwise_seed60009_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.0258138999924995,
+      "standalone_seconds": 0.0258138999924995
+    },
+    {
+      "task_id": "pairwise_seed60009_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.04415579998749308,
+      "standalone_seconds": 0.04415579998749308
+    },
+    {
+      "task_id": "pairwise_seed60009_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.025214499997673556,
+      "standalone_seconds": 0.025214499997673556
+    },
+    {
+      "task_id": "pairwise_seed60009_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.12313890000223182,
+      "standalone_seconds": 0.12313890000223182
+    },
+    {
+      "task_id": "pairwise_seed60009_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0017579999985173345,
+      "standalone_seconds": 0.027571899991016835
+    },
+    {
+      "task_id": "pairwise_seed60009_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.001585899997735396,
+      "standalone_seconds": 0.001585899997735396
+    },
+    {
+      "task_id": "pairwise_seed60009_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.028554299991810694,
+      "standalone_seconds": 0.028554299991810694
+    },
+    {
+      "task_id": "pairwise_seed60009_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.06885290000354871,
+      "standalone_seconds": 0.06885290000354871
+    },
+    {
+      "task_id": "pairwise_seed60009_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.04731339999125339,
+      "standalone_seconds": 0.04731339999125339
+    },
+    {
+      "task_id": "pairwise_seed60009_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.12570779997622594,
+      "standalone_seconds": 0.12570779997622594
+    },
+    {
+      "task_id": "pairwise_seed60009_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0025001000030897558,
+      "standalone_seconds": 0.03105439999490045
+    },
+    {
+      "task_id": "pairwise_seed60009_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0015242999943438917,
+      "standalone_seconds": 0.0015242999943438917
+    },
+    {
+      "task_id": "pairwise_seed60010_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.027150000008987263,
+      "standalone_seconds": 0.027150000008987263
+    },
+    {
+      "task_id": "pairwise_seed60010_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03888490001554601,
+      "standalone_seconds": 0.03888490001554601
+    },
+    {
+      "task_id": "pairwise_seed60010_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.021374800009652972,
+      "standalone_seconds": 0.021374800009652972
+    },
+    {
+      "task_id": "pairwise_seed60010_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.13936800000374205,
+      "standalone_seconds": 0.13936800000374205
+    },
+    {
+      "task_id": "pairwise_seed60010_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0022462999913841486,
+      "standalone_seconds": 0.02939630000037141
+    },
+    {
+      "task_id": "pairwise_seed60010_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0020161000138614327,
+      "standalone_seconds": 0.0020161000138614327
+    },
+    {
+      "task_id": "pairwise_seed60010_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.02756680001039058,
+      "standalone_seconds": 0.02756680001039058
+    },
+    {
+      "task_id": "pairwise_seed60010_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.077886800019769,
+      "standalone_seconds": 0.077886800019769
+    },
+    {
+      "task_id": "pairwise_seed60010_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.05584790001739748,
+      "standalone_seconds": 0.05584790001739748
+    },
+    {
+      "task_id": "pairwise_seed60010_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.1268623999785632,
+      "standalone_seconds": 0.1268623999785632
+    },
+    {
+      "task_id": "pairwise_seed60010_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0017577999969944358,
+      "standalone_seconds": 0.029324600007385015
+    },
+    {
+      "task_id": "pairwise_seed60010_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.001429299998562783,
+      "standalone_seconds": 0.001429299998562783
+    },
+    {
+      "task_id": "pairwise_seed60011_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.030317199998535216,
+      "standalone_seconds": 0.030317199998535216
+    },
+    {
+      "task_id": "pairwise_seed60011_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03937189999851398,
+      "standalone_seconds": 0.03937189999851398
+    },
+    {
+      "task_id": "pairwise_seed60011_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.024352499982342124,
+      "standalone_seconds": 0.024352499982342124
+    },
+    {
+      "task_id": "pairwise_seed60011_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.14476180000929162,
+      "standalone_seconds": 0.14476180000929162
+    },
+    {
+      "task_id": "pairwise_seed60011_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0023369999835267663,
+      "standalone_seconds": 0.03265419998206198
+    },
+    {
+      "task_id": "pairwise_seed60011_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0037874999979976565,
+      "standalone_seconds": 0.0037874999979976565
+    },
+    {
+      "task_id": "pairwise_seed60011_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.030118599999696016,
+      "standalone_seconds": 0.030118599999696016
+    },
+    {
+      "task_id": "pairwise_seed60011_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.05281490000197664,
+      "standalone_seconds": 0.05281490000197664
+    },
+    {
+      "task_id": "pairwise_seed60011_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.04027110000606626,
+      "standalone_seconds": 0.04027110000606626
+    },
+    {
+      "task_id": "pairwise_seed60011_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.12819170000148006,
+      "standalone_seconds": 0.12819170000148006
+    },
+    {
+      "task_id": "pairwise_seed60011_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0026188999763689935,
+      "standalone_seconds": 0.03273749997606501
+    },
+    {
+      "task_id": "pairwise_seed60011_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.002282799978274852,
+      "standalone_seconds": 0.002282799978274852
+    },
+    {
+      "task_id": "pairwise_seed60012_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.03575660000205971,
+      "standalone_seconds": 0.03575660000205971
+    },
+    {
+      "task_id": "pairwise_seed60012_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.04008609999436885,
+      "standalone_seconds": 0.04008609999436885
+    },
+    {
+      "task_id": "pairwise_seed60012_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.01593920000595972,
+      "standalone_seconds": 0.01593920000595972
+    },
+    {
+      "task_id": "pairwise_seed60012_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.11854119997587986,
+      "standalone_seconds": 0.11854119997587986
+    },
+    {
+      "task_id": "pairwise_seed60012_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0024225999950431287,
+      "standalone_seconds": 0.03817919999710284
+    },
+    {
+      "task_id": "pairwise_seed60012_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0013122999807819724,
+      "standalone_seconds": 0.0013122999807819724
+    },
+    {
+      "task_id": "pairwise_seed60012_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.020852699992246926,
+      "standalone_seconds": 0.020852699992246926
+    },
+    {
+      "task_id": "pairwise_seed60012_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.052843699988443404,
+      "standalone_seconds": 0.052843699988443404
+    },
+    {
+      "task_id": "pairwise_seed60012_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.04818279997562058,
+      "standalone_seconds": 0.04818279997562058
+    },
+    {
+      "task_id": "pairwise_seed60012_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.09682380000595003,
+      "standalone_seconds": 0.09682380000595003
+    },
+    {
+      "task_id": "pairwise_seed60012_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0025046999799087644,
+      "standalone_seconds": 0.02335739997215569
+    },
+    {
+      "task_id": "pairwise_seed60012_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0015543999907094985,
+      "standalone_seconds": 0.0015543999907094985
+    },
+    {
+      "task_id": "pairwise_seed60013_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.027235599991399795,
+      "standalone_seconds": 0.027235599991399795
+    },
+    {
+      "task_id": "pairwise_seed60013_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.041736300016054884,
+      "standalone_seconds": 0.041736300016054884
+    },
+    {
+      "task_id": "pairwise_seed60013_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.025980399979744107,
+      "standalone_seconds": 0.025980399979744107
+    },
+    {
+      "task_id": "pairwise_seed60013_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.12853369998629205,
+      "standalone_seconds": 0.12853369998629205
+    },
+    {
+      "task_id": "pairwise_seed60013_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.002030100004049018,
+      "standalone_seconds": 0.029265699995448813
+    },
+    {
+      "task_id": "pairwise_seed60013_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0021844000148121268,
+      "standalone_seconds": 0.0021844000148121268
+    },
+    {
+      "task_id": "pairwise_seed60013_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.026336699986131862,
+      "standalone_seconds": 0.026336699986131862
+    },
+    {
+      "task_id": "pairwise_seed60013_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.07197520000045188,
+      "standalone_seconds": 0.07197520000045188
+    },
+    {
+      "task_id": "pairwise_seed60013_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.058864699996775016,
+      "standalone_seconds": 0.058864699996775016
+    },
+    {
+      "task_id": "pairwise_seed60013_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.1255939999828115,
+      "standalone_seconds": 0.1255939999828115
+    },
+    {
+      "task_id": "pairwise_seed60013_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0022085000236984342,
+      "standalone_seconds": 0.028545200009830296
+    },
+    {
+      "task_id": "pairwise_seed60013_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0032398000184912235,
+      "standalone_seconds": 0.0032398000184912235
+    },
+    {
+      "task_id": "pairwise_seed60014_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.024048399995081127,
+      "standalone_seconds": 0.024048399995081127
+    },
+    {
+      "task_id": "pairwise_seed60014_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03391410000040196,
+      "standalone_seconds": 0.03391410000040196
+    },
+    {
+      "task_id": "pairwise_seed60014_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.026226899994071573,
+      "standalone_seconds": 0.026226899994071573
+    },
+    {
+      "task_id": "pairwise_seed60014_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.11674920000950806,
+      "standalone_seconds": 0.11674920000950806
+    },
+    {
+      "task_id": "pairwise_seed60014_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0025390000082552433,
+      "standalone_seconds": 0.02658740000333637
+    },
+    {
+      "task_id": "pairwise_seed60014_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0013866999943275005,
+      "standalone_seconds": 0.0013866999943275005
+    },
+    {
+      "task_id": "pairwise_seed60014_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.028518300008727238,
+      "standalone_seconds": 0.028518300008727238
+    },
+    {
+      "task_id": "pairwise_seed60014_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.04803069998160936,
+      "standalone_seconds": 0.04803069998160936
+    },
+    {
+      "task_id": "pairwise_seed60014_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.0377405000035651,
+      "standalone_seconds": 0.0377405000035651
+    },
+    {
+      "task_id": "pairwise_seed60014_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.1325819000194315,
+      "standalone_seconds": 0.1325819000194315
+    },
+    {
+      "task_id": "pairwise_seed60014_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.003458499995758757,
+      "standalone_seconds": 0.031976800004485995
+    },
+    {
+      "task_id": "pairwise_seed60014_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0013427000085357577,
+      "standalone_seconds": 0.0013427000085357577
+    },
+    {
+      "task_id": "pairwise_seed60015_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.03316890000132844,
+      "standalone_seconds": 0.03316890000132844
+    },
+    {
+      "task_id": "pairwise_seed60015_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03907699999399483,
+      "standalone_seconds": 0.03907699999399483
+    },
+    {
+      "task_id": "pairwise_seed60015_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.01674829999683425,
+      "standalone_seconds": 0.01674829999683425
+    },
+    {
+      "task_id": "pairwise_seed60015_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.10604199999943376,
+      "standalone_seconds": 0.10604199999943376
+    },
+    {
+      "task_id": "pairwise_seed60015_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.001537699979962781,
+      "standalone_seconds": 0.03470659998129122
+    },
+    {
+      "task_id": "pairwise_seed60015_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0013794999977108091,
+      "standalone_seconds": 0.0013794999977108091
+    },
+    {
+      "task_id": "pairwise_seed60015_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.02126690000295639,
+      "standalone_seconds": 0.02126690000295639
+    },
+    {
+      "task_id": "pairwise_seed60015_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.05434380000224337,
+      "standalone_seconds": 0.05434380000224337
+    },
+    {
+      "task_id": "pairwise_seed60015_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.049256600002991036,
+      "standalone_seconds": 0.049256600002991036
+    },
+    {
+      "task_id": "pairwise_seed60015_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.11338939997949637,
+      "standalone_seconds": 0.11338939997949637
+    },
+    {
+      "task_id": "pairwise_seed60015_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0016856000002007931,
+      "standalone_seconds": 0.022952500003157184
+    },
+    {
+      "task_id": "pairwise_seed60015_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0013421000039670616,
+      "standalone_seconds": 0.0013421000039670616
+    },
+    {
+      "task_id": "pairwise_seed60016_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.02376949999597855,
+      "standalone_seconds": 0.02376949999597855
+    },
+    {
+      "task_id": "pairwise_seed60016_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03364859998691827,
+      "standalone_seconds": 0.03364859998691827
+    },
+    {
+      "task_id": "pairwise_seed60016_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.016514199989615008,
+      "standalone_seconds": 0.016514199989615008
+    },
+    {
+      "task_id": "pairwise_seed60016_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.10803279999527149,
+      "standalone_seconds": 0.10803279999527149
+    },
+    {
+      "task_id": "pairwise_seed60016_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0015181999769993126,
+      "standalone_seconds": 0.025287699972977862
+    },
+    {
+      "task_id": "pairwise_seed60016_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0013968000130262226,
+      "standalone_seconds": 0.0013968000130262226
+    },
+    {
+      "task_id": "pairwise_seed60016_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.02133509999839589,
+      "standalone_seconds": 0.02133509999839589
+    },
+    {
+      "task_id": "pairwise_seed60016_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.06111879998934455,
+      "standalone_seconds": 0.06111879998934455
+    },
+    {
+      "task_id": "pairwise_seed60016_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.08605419998639263,
+      "standalone_seconds": 0.08605419998639263
+    },
+    {
+      "task_id": "pairwise_seed60016_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.1336987999966368,
+      "standalone_seconds": 0.1336987999966368
+    },
+    {
+      "task_id": "pairwise_seed60016_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.002896099991630763,
+      "standalone_seconds": 0.024231199990026653
+    },
+    {
+      "task_id": "pairwise_seed60016_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.001970100012840703,
+      "standalone_seconds": 0.001970100012840703
+    },
+    {
+      "task_id": "pairwise_seed60017_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.029444399988278747,
+      "standalone_seconds": 0.029444399988278747
+    },
+    {
+      "task_id": "pairwise_seed60017_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03667669999413192,
+      "standalone_seconds": 0.03667669999413192
+    },
+    {
+      "task_id": "pairwise_seed60017_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.02143600000999868,
+      "standalone_seconds": 0.02143600000999868
+    },
+    {
+      "task_id": "pairwise_seed60017_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.12634970000362955,
+      "standalone_seconds": 0.12634970000362955
+    },
+    {
+      "task_id": "pairwise_seed60017_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0026433999883010983,
+      "standalone_seconds": 0.032087799976579845
+    },
+    {
+      "task_id": "pairwise_seed60017_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.002656800003023818,
+      "standalone_seconds": 0.002656800003023818
+    },
+    {
+      "task_id": "pairwise_seed60017_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.023920800013002008,
+      "standalone_seconds": 0.023920800013002008
+    },
+    {
+      "task_id": "pairwise_seed60017_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.04406319998088293,
+      "standalone_seconds": 0.04406319998088293
+    },
+    {
+      "task_id": "pairwise_seed60017_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.032836099999258295,
+      "standalone_seconds": 0.032836099999258295
+    },
+    {
+      "task_id": "pairwise_seed60017_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.09518629999365658,
+      "standalone_seconds": 0.09518629999365658
+    },
+    {
+      "task_id": "pairwise_seed60017_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0020260000019334257,
+      "standalone_seconds": 0.025946800014935434
+    },
+    {
+      "task_id": "pairwise_seed60017_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.002015600010054186,
+      "standalone_seconds": 0.002015600010054186
+    },
+    {
+      "task_id": "pairwise_seed60018_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.03037150000454858,
+      "standalone_seconds": 0.03037150000454858
+    },
+    {
+      "task_id": "pairwise_seed60018_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03415710001718253,
+      "standalone_seconds": 0.03415710001718253
+    },
+    {
+      "task_id": "pairwise_seed60018_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.023242499999469146,
+      "standalone_seconds": 0.023242499999469146
+    },
+    {
+      "task_id": "pairwise_seed60018_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.12811469999724068,
+      "standalone_seconds": 0.12811469999724068
+    },
+    {
+      "task_id": "pairwise_seed60018_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.002250399993499741,
+      "standalone_seconds": 0.03262189999804832
+    },
+    {
+      "task_id": "pairwise_seed60018_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0028808999923057854,
+      "standalone_seconds": 0.0028808999923057854
+    },
+    {
+      "task_id": "pairwise_seed60018_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.027114099997561425,
+      "standalone_seconds": 0.027114099997561425
+    },
+    {
+      "task_id": "pairwise_seed60018_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.06741940000210889,
+      "standalone_seconds": 0.06741940000210889
+    },
+    {
+      "task_id": "pairwise_seed60018_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.06123749999096617,
+      "standalone_seconds": 0.06123749999096617
+    },
+    {
+      "task_id": "pairwise_seed60018_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.13108789999387227,
+      "standalone_seconds": 0.13108789999387227
+    },
+    {
+      "task_id": "pairwise_seed60018_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0022224000131245703,
+      "standalone_seconds": 0.029336500010685995
+    },
+    {
+      "task_id": "pairwise_seed60018_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0015061000012792647,
+      "standalone_seconds": 0.0015061000012792647
+    },
+    {
+      "task_id": "pairwise_seed60019_g0",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.028169299999717623,
+      "standalone_seconds": 0.028169299999717623
+    },
+    {
+      "task_id": "pairwise_seed60019_g0",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.03858729999046773,
+      "standalone_seconds": 0.03858729999046773
+    },
+    {
+      "task_id": "pairwise_seed60019_g0",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.023750799999106675,
+      "standalone_seconds": 0.023750799999106675
+    },
+    {
+      "task_id": "pairwise_seed60019_g0",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.1257913000008557,
+      "standalone_seconds": 0.1257913000008557
+    },
+    {
+      "task_id": "pairwise_seed60019_g0",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0018061000155285,
+      "standalone_seconds": 0.029975400015246123
+    },
+    {
+      "task_id": "pairwise_seed60019_g0",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0019369000219739974,
+      "standalone_seconds": 0.0019369000219739974
+    },
+    {
+      "task_id": "pairwise_seed60019_g0.9",
+      "method": "u_logistic_cv",
+      "incremental_seconds": 0.02912089999881573,
+      "standalone_seconds": 0.02912089999881573
+    },
+    {
+      "task_id": "pairwise_seed60019_g0.9",
+      "method": "interaction_l2_logistic_cv",
+      "incremental_seconds": 0.05684770000516437,
+      "standalone_seconds": 0.05684770000516437
+    },
+    {
+      "task_id": "pairwise_seed60019_g0.9",
+      "method": "interaction_l1_logistic_cv",
+      "incremental_seconds": 0.025082600011955947,
+      "standalone_seconds": 0.025082600011955947
+    },
+    {
+      "task_id": "pairwise_seed60019_g0.9",
+      "method": "histgb_native_indicators",
+      "incremental_seconds": 0.12232120000408031,
+      "standalone_seconds": 0.12232120000408031
+    },
+    {
+      "task_id": "pairwise_seed60019_g0.9",
+      "method": "sparse_mixture_fitted_base",
+      "incremental_seconds": 0.0018489000212866813,
+      "standalone_seconds": 0.03096980002010241
+    },
+    {
+      "task_id": "pairwise_seed60019_g0.9",
+      "method": "pilot_mixture_known_beta_reference",
+      "incremental_seconds": 0.0016963000234682113,
+      "standalone_seconds": 0.0016963000234682113
+    }
+  ]
+}

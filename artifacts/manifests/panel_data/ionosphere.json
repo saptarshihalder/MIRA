@@ -1,0 +1,160 @@
+{
+  "artifact_sha256": {
+    "dataset.npz": "070ccd8c12903fbc670fc7510d10885cdeff9b94928d43cd3fbec6a7cebe49ba",
+    "row_maps.json": "e20c2a24321077b129632b81f622668aa7f3cb2d9a3e87798de04ed7781084e0",
+    "splits.json": "65c620eb078328644a62f2c97b3636ed9e79ffe5969bf28965aef9a101e310b8"
+  },
+  "canonical_rows": 350,
+  "changes": "Retain declared numeric features, encode declared positive as 1, remove exact selected-X/label duplicates, group identical X and supplied source IDs; no scaling or zero imputation.",
+  "citation": "Sigillito, V., Wing, S., Hutton, L., & Baker, K. (1989). Ionosphere [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5W01B.",
+  "class_counts_canonical": [
+    125,
+    225
+  ],
+  "class_counts_raw": [
+    126,
+    225
+  ],
+  "conflicting_label_groups": 0,
+  "data_url": "https://archive.ics.uci.edu/static/public/52/data.csv",
+  "dataset_id": 52,
+  "declared_native_missing": "no",
+  "doi": "10.24432/C5W01B",
+  "exact_xy_duplicates_removed": 1,
+  "feature_names": [
+    "Attribute1",
+    "Attribute2",
+    "Attribute3",
+    "Attribute4",
+    "Attribute5",
+    "Attribute6",
+    "Attribute7",
+    "Attribute8",
+    "Attribute9",
+    "Attribute10",
+    "Attribute11",
+    "Attribute12",
+    "Attribute13",
+    "Attribute14",
+    "Attribute15",
+    "Attribute16",
+    "Attribute17",
+    "Attribute18",
+    "Attribute19",
+    "Attribute20",
+    "Attribute21",
+    "Attribute22",
+    "Attribute23",
+    "Attribute24",
+    "Attribute25",
+    "Attribute26",
+    "Attribute27",
+    "Attribute28",
+    "Attribute29",
+    "Attribute30",
+    "Attribute31",
+    "Attribute32",
+    "Attribute33",
+    "Attribute34"
+  ],
+  "features": 34,
+  "fold_sizes": [
+    {
+      "fold": 0,
+      "query": 70,
+      "query_class_counts": [
+        25,
+        45
+      ],
+      "support": 128,
+      "support_class_counts": [
+        46,
+        82
+      ]
+    },
+    {
+      "fold": 1,
+      "query": 70,
+      "query_class_counts": [
+        25,
+        45
+      ],
+      "support": 128,
+      "support_class_counts": [
+        46,
+        82
+      ]
+    },
+    {
+      "fold": 2,
+      "query": 70,
+      "query_class_counts": [
+        25,
+        45
+      ],
+      "support": 128,
+      "support_class_counts": [
+        46,
+        82
+      ]
+    },
+    {
+      "fold": 3,
+      "query": 70,
+      "query_class_counts": [
+        25,
+        45
+      ],
+      "support": 128,
+      "support_class_counts": [
+        46,
+        82
+      ]
+    },
+    {
+      "fold": 4,
+      "query": 70,
+      "query_class_counts": [
+        25,
+        45
+      ],
+      "support": 128,
+      "support_class_counts": [
+        46,
+        82
+      ]
+    }
+  ],
+  "groups": 350,
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "limitations": "Unavailable object/acquisition/source groups cannot be reconstructed. Sonar repeated-object views and Spambase personalized collection may remain correlated. Dataset is the aggregation unit.",
+  "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=52",
+  "model_scores_inspected": false,
+  "native_missing_deviation": false,
+  "native_missing_values_canonical": 0,
+  "native_missing_values_raw": 0,
+  "negative_label": "b",
+  "observed_zeros_canonical": 1389,
+  "observed_zeros_raw": 1421,
+  "official_name": "Ionosphere",
+  "positive_label": "g",
+  "prepared_date": "2026-10-01",
+  "query_cap": 1024,
+  "raw_rows": 351,
+  "runtime": {
+    "numpy": "2.3.5",
+    "python": "3.12.14",
+    "sklearn": "1.8.0"
+  },
+  "schema_version": 1,
+  "slug": "ionosphere",
+  "source_page": "https://archive.ics.uci.edu/dataset/52/ionosphere",
+  "source_sha256": {
+    "data.csv": "04f2023ba4b9ff438d76d4d236762981795772d4f75f3bca1c8db0fcf26c83c1",
+    "metadata.json": "b9659d2e4129196c80a56587b9b14932c1d3b2e988925b51fe0e31f867862ae9",
+    "source_page.html": "8ab8d8872236d5f2b541dc60cf017f244bd6fa99cb3e1042a7dffc1ccad29296"
+  },
+  "splitter_seed": 61052,
+  "support_size": 128
+}

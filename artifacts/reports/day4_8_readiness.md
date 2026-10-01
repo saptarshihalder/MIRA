@@ -1,0 +1,37 @@
+# Day 4–8 independent readiness audit — 1 October 2026
+
+Status: preliminary; `panel_data.py` and the initial `panel_runner.py` have been reviewed, while new tests/results and final runner revisions are pending. The frozen twenty-task pairwise confirmation supports its two prespecified TabPFN v2 contrasts. It does not activate an adapter or establish general benefit on real covariates.
+
+## Actionable requirements
+
+1. Freeze the six-dataset **complete five-fold** panel configuration, runner identity, seed derivation, exact dependencies/checkpoints, and aggregation policy before viewing performance. Root added generic logistic regression before performance. Expected matrix: 6 datasets × 5 folds × 2 baseline rates × 2 gammas × 4 models × 3 representations = **1,440 cells** (240/dataset). Preserve all requested cells, failures, and fallback status; do not select datasets/folds after scores.
+2. Deduplicate before splitting and keep all identical-feature groups, including conflicting labels, on one side of each split. Drop identifiers from predictors while retaining any usable acquisition/patient IDs for grouping. Support/query identifiers and groups must be disjoint. Unknown Sonar/Spambase source groups limit generalization even when exact duplicate checks pass.
+3. Query labels may create imposed masks only in the evaluator's retrospective generator. Predictor objects must exclude labels, generator-selected active columns, oracle information, and other mechanism metadata. Save original values, native masks, imposed masks, final masks, and row/split identities separately. Preserve valid numeric zeros. Fit imputation/scaling on support only.
+4. Use identical support labels and realized masks for all models/views; cache a single draw per dataset/fold/rate/gamma. Query-label changes after mask construction must not change predictions. Explain that outcome-associated imposed missingness is a controlled synthetic association on real covariates, not evidence of natural missingness or a source-to-target observation-policy shift.
+5. Compute paired effects within each dataset and then aggregate **six dataset effects**. Overlapping supports and repeated conditions make thirty folds or thousands of rows inappropriate independent replicates. Report all six effects, equal-dataset summaries, and limited uncertainty; predeclare primary contrasts and multiplicity if making inferential claims. Use empirical log-loss/Brier/AUROC; no exact real-data oracle is available.
+6. Report class-conditional and pooled realized missingness. With the declared mask law, rates are .02/.18 at r=.1 and gamma=.8, versus .1/.9 at r=.5. Pooled rates depend on class prevalence. These are not matched-information/headroom conditions. Do not pool them as interchangeable independent datasets.
+7. Strong saved-task baselines must receive the same labels and row IDs. Exclude query oracle probabilities/labels from fitted predictors. Clearly mark baselines using known full-data logits, mechanism families, or a generator-informed likelihood prior as privileged. Any residual learner using fitted support probabilities needs out-of-fold or previously issued predictions. Match budgets and select regularization/window choices on development only.
+   The proposed generic logistic baseline selects C using three-fold support-only CV over an imputation/scaling/logistic pipeline. Each inner fold must fit its own imputer/scaler, and final refitting uses the same 128 support labels. Freeze the C grid, CV seed, score, solver, iteration cap, and absent-class fallback; record warnings/selected C. Query rows must never enter inner-CV transforms or C selection. The beta-informed mixture is outside the fair baseline pool.
+   Inner CV should also retain support groups together (e.g. three-fold StratifiedGroupKFold), because canonicalization preserves conflicting-label identical-X rows and unions source IDs. Ordinary stratified inner CV remains query-isolated but can make its selection score optimistic through repeated groups; document this limitation if used.
+8. Keep the adapter inactive unless equally informed simple baselines and refreshed-context TFMs leave useful reproducible headroom, with a feasible cache/training bill. A representation gain, an exact-oracle gap, or a wrapper-only gain is insufficient. Sparse-pair uncertainty and generic frozen-adapter prior art remain relevant.
+
+## Final gate checklist
+
+- [ ] Panel code/tests reviewed; ingestion, grouped splits, masks, support-only preprocessing, and predictor/evaluator separation verified.
+- [ ] Protocol/code/config frozen before performance; all 1,440 requested cells complete or explicit exclusions/failures recorded.
+- [ ] Saved-probability reports independently regenerated; dataset-level effects and all controls retained.
+- [ ] Generic and privileged simple-baseline results distinguished; matched-label comparisons audited.
+- [ ] Budget and provider billing updated separately; raw predictions/checkpoints/environment provenance preserved.
+- [ ] Decision/manuscript limits reflect tested versions, retrospective interventions, six datasets, and current access/compilation limits.
+
+No additional browsing, paid compute, or manuscript edits were performed by this audit.
+
+## Reviewed ingestion/split code
+
+`panel_data.py` constructs immutable aligned arrays, rejects nonbinary labels/infinities, preserves exact NaN masks and positive duplicate multiplicities, and normalizes signed-zero/NaN payloads for duplicate keys. Canonicalization removes exact `(X,y)` duplicates and forms connected components of identical X and supplied source identifiers, including conflicting labels. Five-fold validation checks complete partitions, group isolation, exactly 128 support rows, both classes, saved row/group-ID agreement, and each row held out once. This is consistent with the predeclared outer-split requirements. Download integrity/schema handling, inner-CV behavior, mask generation, resume identity checks, and matching predictions across views remain runner/test audit gates.
+
+## Initial runner review
+
+The learner boundary accepts support labels, observable query values, and masks only. `prepare` copies arrays; `predict_binary` fits on context and scores query probabilities before evaluator loss/AUROC access. A single mask draw is shared across models/views. Actual and shuffled indicators have the same feature width, and shuffling uses separate support/query seeds without labels. Generic logistic uses a Pipeline and **group-isolated support-only three-fold CV**, addressing the inner-group concern above; selected C and CV score are recorded. Results preserve probabilities/hashes and incomplete runs are not marked complete.
+
+Two actionable checks remain before execution: (1) invoke `load_panel`/`validate_splits` and verify serialized data/split hashes against the ingestion manifest or frozen protocol, rather than merely recording their current hashes; the initial runner only checks context length, support classes, and support/query group intersection, leaving duplicate indices, row-ID agreement, mask alignment, and changed frozen splits unchecked at this boundary; (2) preserve logistic convergence/CV warnings with the cell record or saved logs. Full ingestion checks may already exist upstream, but the runner should reject accidental artifact drift independently. Tests and final code review remain pending.

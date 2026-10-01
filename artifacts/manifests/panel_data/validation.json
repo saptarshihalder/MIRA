@@ -1,0 +1,21 @@
+{
+  "code_sha256": {
+    "src/mira/panel_data.py": "9b3bc528e494599b88a182c2e5cdf5facefa3c0f7693fb19dc5341d08dfc1246",
+    "scripts/prepare_real_panel.py": "e23599ec99bee77d97e8e1380a12b42fd1b0eaebfe8695593f0d71a6d34f82ab",
+    "tests/test_panel_data.py": "58c5b3e4d539288a8894f7e31be04454bb3edf64e77d09b13e0455059969cf0f",
+    "configs/panel_sources.json": "a5deacfc6e7a3e682d5d57f73bd339a5ae2d098bce7f34130d4871db45233b73"
+  },
+  "dataset_sha256": {
+    "breast_cancer_wisconsin_diagnostic": "8fb8fdfff454cd0457c9c2d91ce8c3fe7d01ea464d23fcd7845c54b8cb146755",
+    "ionosphere": "070ccd8c12903fbc670fc7510d10885cdeff9b94928d43cd3fbec6a7cebe49ba",
+    "banknote_authentication": "77dcdbc948ef6e6e223ded2b9cc808b9aa52ea721a9195cc29b8928812243299",
+    "spambase": "774d3a5baf87180b9be5a9726b586e00fc95defca19d639286d5b266ba02ba5f",
+    "sonar": "2eab7f235a5c9386cf758acdf324d8371fbfd1d6d0675549a4da665010983f6d",
+    "statlog_heart": "cbcc6f4b1ba5e1f8963de40189202ab5244c0e91a0f6581c70ce2c875f2f3564"
+  },
+  "dataset_catalog_fingerprint_sha256": "21538986c2f9104bb068af228f1bd084b1063eca2c932baac98b4260b319707e",
+  "checked_folds": 30,
+  "tests": "10 passed",
+  "model_scores_inspected": false,
+  "replay": "second preparation pass reproduced all frozen bytes"
+}

@@ -1,0 +1,35 @@
+{
+  "analysis_status": "post-confirmation descriptive follow-up; no new blind confirmation",
+  "c_grid": [
+    0.03,
+    0.3,
+    3.0,
+    30.0
+  ],
+  "completed_predictions": 240,
+  "features": "U, all centered mask singles/pairs, U interactions; no active/family/gamma inputs",
+  "mixture_limitations": "Pilot gamma prior {0,.4,.8} omits true .9; fitted-base variant is plug-in and generator-informed. Known-beta variant excluded from operational decisions.",
+  "operational_methods": [
+    "u_logistic_cv",
+    "interaction_l2_logistic_cv",
+    "interaction_l1_logistic_cv",
+    "histgb_native_indicators",
+    "sparse_mixture_fitted_base"
+  ],
+  "packages": {
+    "numpy": "1.26.4",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.16.3"
+  },
+  "parameter_informed_reference": "pilot_mixture_known_beta_reference",
+  "pilot_source_sha256": "9d932f3c6f97d5496b09119914e40675d502daf79c9a520a7d54fe3ee321d35c",
+  "python": "3.11.9",
+  "python_executable": "C:\\Python311\\python.exe",
+  "script_sha256": "13f448019b45887b47a6339cb3b0119f5f6ea89749df845855f32014f25476b5",
+  "source_manifest_sha256": "375978735c9c85e529a7ff49d690252241988b4df33905c6bbed5538c46a3337",
+  "source_run": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1",
+  "status": "complete",
+  "support_cv": "3-fold stratified shuffled, seed42; full-support refit; ties favor smaller C",
+  "tasks": 40,
+  "total_task_seconds": 15.974841100047342
+}

@@ -1,0 +1,282 @@
+{
+  "pairwise_seed60000_g0": {
+    "query_ids_sha256": "f697f664bd86a27f998faa35fd89fc0b26391ce76cac8a81e55f6eb337487d13",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60000_g0.npz",
+    "source_sha256": "46630cd63103177b4166bb4628c9882d5f0c51a8c789e8df902d7c92426eecf6",
+    "support_ids_sha256": "2913cf4b15fb72003b5eec0330ca917bd9d9a2c168db1ea4174d25d3b5cc5335",
+    "task_seconds": 1.9141051000042353
+  },
+  "pairwise_seed60000_g0.9": {
+    "query_ids_sha256": "f697f664bd86a27f998faa35fd89fc0b26391ce76cac8a81e55f6eb337487d13",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60000_g0.9.npz",
+    "source_sha256": "4d7fc8e57606aa7ea20c2e2aeac88f62ac73c0292093072267dc91878cab174e",
+    "support_ids_sha256": "2913cf4b15fb72003b5eec0330ca917bd9d9a2c168db1ea4174d25d3b5cc5335",
+    "task_seconds": 0.3762600000191014
+  },
+  "pairwise_seed60001_g0": {
+    "query_ids_sha256": "ecb7430dcfe493e32311203fe62f679405f964f6dc6bd92b5a979794c3c938d6",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60001_g0.npz",
+    "source_sha256": "f525902fa1de9beace1bf68750bf131e3191f6fe270be917126c83b84ac9d246",
+    "support_ids_sha256": "868fa2abd50e69e79c31006ac98b7a6cbfabd86727d2a3ba73383a5d2cbf5ec8",
+    "task_seconds": 0.3939300999918487
+  },
+  "pairwise_seed60001_g0.9": {
+    "query_ids_sha256": "ecb7430dcfe493e32311203fe62f679405f964f6dc6bd92b5a979794c3c938d6",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60001_g0.9.npz",
+    "source_sha256": "724342742bb91a087c32ac4eaebe944a28fd1e12368504cc1d0a10972045b767",
+    "support_ids_sha256": "868fa2abd50e69e79c31006ac98b7a6cbfabd86727d2a3ba73383a5d2cbf5ec8",
+    "task_seconds": 0.3957679999875836
+  },
+  "pairwise_seed60002_g0": {
+    "query_ids_sha256": "2fe7120334fdfe371c5a97b41a0857a5bd41ffe98258dd3b533473e16842bc1a",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60002_g0.npz",
+    "source_sha256": "6b21bdd9ee14a4d3b166c4a89402ec7d982f0122b50ae3fb27b9aafcf6b2a644",
+    "support_ids_sha256": "c3f20d913e99196f6b5ab0b8cba87c204223b31784346d7a200272aff3ac5fd7",
+    "task_seconds": 0.338283599994611
+  },
+  "pairwise_seed60002_g0.9": {
+    "query_ids_sha256": "2fe7120334fdfe371c5a97b41a0857a5bd41ffe98258dd3b533473e16842bc1a",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60002_g0.9.npz",
+    "source_sha256": "3a8f6f6b8ddf89b6c78ad9f76926fd59de70eae967070c54d4639de15d603839",
+    "support_ids_sha256": "c3f20d913e99196f6b5ab0b8cba87c204223b31784346d7a200272aff3ac5fd7",
+    "task_seconds": 0.5019138999923598
+  },
+  "pairwise_seed60003_g0": {
+    "query_ids_sha256": "df1935283761b01fba042380da078bfc2332337abcbd2c2f39fe9581a7a044df",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60003_g0.npz",
+    "source_sha256": "57323d0a90bb06206ee52614ca191a0f386776f2db262fd2e30442b440298cba",
+    "support_ids_sha256": "1636857920168244d67f65342a6c9eb302a7eac984fcbc41d4d850349257036a",
+    "task_seconds": 0.34372990002157167
+  },
+  "pairwise_seed60003_g0.9": {
+    "query_ids_sha256": "df1935283761b01fba042380da078bfc2332337abcbd2c2f39fe9581a7a044df",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60003_g0.9.npz",
+    "source_sha256": "8b76b140c1d4d21f52535af37c22acc667023fc7e8954211b15c4cc53aa35f3b",
+    "support_ids_sha256": "1636857920168244d67f65342a6c9eb302a7eac984fcbc41d4d850349257036a",
+    "task_seconds": 0.4347604000067804
+  },
+  "pairwise_seed60004_g0": {
+    "query_ids_sha256": "caad5bcb3a6774fdc2e44135ca09efddc91cff56292a5f7eb23bcc72277f573b",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60004_g0.npz",
+    "source_sha256": "1f9ac3869c9ff477cc54c94340cbc98f586cf9a58ab961d848c20f5130b85fc9",
+    "support_ids_sha256": "484605df27d26fd074555500a67572c7fb6dbc7decd7b20e79fff6fa25d79489",
+    "task_seconds": 0.38869930000510067
+  },
+  "pairwise_seed60004_g0.9": {
+    "query_ids_sha256": "caad5bcb3a6774fdc2e44135ca09efddc91cff56292a5f7eb23bcc72277f573b",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60004_g0.9.npz",
+    "source_sha256": "ce074c5a1e555c93ed02d8d36568394b00ccb9a7366a2be6b87d9944706d21b7",
+    "support_ids_sha256": "484605df27d26fd074555500a67572c7fb6dbc7decd7b20e79fff6fa25d79489",
+    "task_seconds": 0.39516610000282526
+  },
+  "pairwise_seed60005_g0": {
+    "query_ids_sha256": "5aff8a42f1a9544e1d68eeb70779bdda97267d86172cc6f56da5bef5378a8979",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60005_g0.npz",
+    "source_sha256": "5c8ff6a04511a121c3a889d2dc9e9879a0ccc2733976aaa939137d6b2a4d8bc8",
+    "support_ids_sha256": "d91ab319084fb77926e6da2331070f0d679f023bada901a20099d95f54594c66",
+    "task_seconds": 0.3143362000118941
+  },
+  "pairwise_seed60005_g0.9": {
+    "query_ids_sha256": "5aff8a42f1a9544e1d68eeb70779bdda97267d86172cc6f56da5bef5378a8979",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60005_g0.9.npz",
+    "source_sha256": "2e381a8da9f05df891e0f6ba9096ec82b509d6e2fae0a986e9ba4e5f0650791d",
+    "support_ids_sha256": "d91ab319084fb77926e6da2331070f0d679f023bada901a20099d95f54594c66",
+    "task_seconds": 0.3175780000165105
+  },
+  "pairwise_seed60006_g0": {
+    "query_ids_sha256": "3e276eaa430c9a38d82127fb2cd12d0fdf1d136c00568cb84b1df93be1cc6b0f",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60006_g0.npz",
+    "source_sha256": "ba510a2d5f28f48efb4241268f297f6766dbbe4bbc0737a15b13ef5a517e3e12",
+    "support_ids_sha256": "8ec934c876dae5223c3748cf9b65e37fbd57ff8542ed1256dab5b998b5baa288",
+    "task_seconds": 0.3601695999968797
+  },
+  "pairwise_seed60006_g0.9": {
+    "query_ids_sha256": "3e276eaa430c9a38d82127fb2cd12d0fdf1d136c00568cb84b1df93be1cc6b0f",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60006_g0.9.npz",
+    "source_sha256": "e8610a358c6f083efc6d072588772df18bf2c0f36574c8b1adf6622a4aa43e11",
+    "support_ids_sha256": "8ec934c876dae5223c3748cf9b65e37fbd57ff8542ed1256dab5b998b5baa288",
+    "task_seconds": 0.36499499998171814
+  },
+  "pairwise_seed60007_g0": {
+    "query_ids_sha256": "953e94e0727daca4e84898c95eba049dd878a20dfbdc1187a823de974c43ded7",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60007_g0.npz",
+    "source_sha256": "a4be28acfa14278a8e93588c36c78fab42a7824ab40839e24a4f5a4dedcf77be",
+    "support_ids_sha256": "4ff366d6b448d98330972c9b47594e7b0bc4778b09c3473a3c4d2654edc81b47",
+    "task_seconds": 0.3425714000186417
+  },
+  "pairwise_seed60007_g0.9": {
+    "query_ids_sha256": "953e94e0727daca4e84898c95eba049dd878a20dfbdc1187a823de974c43ded7",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60007_g0.9.npz",
+    "source_sha256": "84356c74603018885994c109d92a14fd8e4faecd9e72481ce3b86a5a8c2e3ac9",
+    "support_ids_sha256": "4ff366d6b448d98330972c9b47594e7b0bc4778b09c3473a3c4d2654edc81b47",
+    "task_seconds": 0.44885399998747744
+  },
+  "pairwise_seed60008_g0": {
+    "query_ids_sha256": "3ec1a1d37862c26ddc9aab15849da45484b5ab3c6307635efacc0baf9ef5115b",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60008_g0.npz",
+    "source_sha256": "dffcf7087df69ead544963f9fdd598e7b47668cb044e0da4e9063261ef02187f",
+    "support_ids_sha256": "6b42cbfb9c146b66bc7b150942c779269d8d86a7b5b76008ddf267a93f1afa4f",
+    "task_seconds": 0.3880428000120446
+  },
+  "pairwise_seed60008_g0.9": {
+    "query_ids_sha256": "3ec1a1d37862c26ddc9aab15849da45484b5ab3c6307635efacc0baf9ef5115b",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60008_g0.9.npz",
+    "source_sha256": "bf1c716881690cf9bd4c51007ed131a29c76669d748e364b83538006b1fa8735",
+    "support_ids_sha256": "6b42cbfb9c146b66bc7b150942c779269d8d86a7b5b76008ddf267a93f1afa4f",
+    "task_seconds": 0.3829025999875739
+  },
+  "pairwise_seed60009_g0": {
+    "query_ids_sha256": "479ebfe9683f293398a3a99592a327a58f615502f4aa70679f38127253362476",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60009_g0.npz",
+    "source_sha256": "45e6b32724f7246706e2087f4f3cf66a0a3a136627a73d7ae6ad0b2d1c9eba8b",
+    "support_ids_sha256": "f08b70eaa0398686b9f02324aac4eae3393aecda1c50dc2cfa5c6fbc92f6f2e2",
+    "task_seconds": 0.3295889000000898
+  },
+  "pairwise_seed60009_g0.9": {
+    "query_ids_sha256": "479ebfe9683f293398a3a99592a327a58f615502f4aa70679f38127253362476",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60009_g0.9.npz",
+    "source_sha256": "630b4443ce39b150ec42ea99c08b3a9947d0bf17c1f568eed17eab5d9b7f1180",
+    "support_ids_sha256": "f08b70eaa0398686b9f02324aac4eae3393aecda1c50dc2cfa5c6fbc92f6f2e2",
+    "task_seconds": 0.3760486000101082
+  },
+  "pairwise_seed60010_g0": {
+    "query_ids_sha256": "be6dd91343a031eda8c91952bc83cf50bd54977f9038b8a059279dbc8083eca5",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60010_g0.npz",
+    "source_sha256": "85ed7efc183e489df3e76a085df8b17c0d761dbe5bea916be0f451ec671e5a88",
+    "support_ids_sha256": "c7265b0fd9e5f60a2e0bc896c5cbb3c3d09250cb09ae4c8d60085fd9f5d30e5e",
+    "task_seconds": 0.34092359998612665
+  },
+  "pairwise_seed60010_g0.9": {
+    "query_ids_sha256": "be6dd91343a031eda8c91952bc83cf50bd54977f9038b8a059279dbc8083eca5",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60010_g0.9.npz",
+    "source_sha256": "1e3f8f8e3fa0ecdee98d91d15b0f159190ec6f6c98ef096cd8677f7d58cad6f6",
+    "support_ids_sha256": "c7265b0fd9e5f60a2e0bc896c5cbb3c3d09250cb09ae4c8d60085fd9f5d30e5e",
+    "task_seconds": 0.39610710000852123
+  },
+  "pairwise_seed60011_g0": {
+    "query_ids_sha256": "827dccc463dfe0c9032f00cc64a3a4f6bf40d60d402eded9cb7c5f04e091a5f4",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60011_g0.npz",
+    "source_sha256": "8df5f8914c30416f0634255d2157df192f1e507febec18a3fe1baa7605d80173",
+    "support_ids_sha256": "88b3ba1226dcd079e234999016905701c3c9ceb7470ad7b0d69c9427334bf60a",
+    "task_seconds": 0.36194929998600855
+  },
+  "pairwise_seed60011_g0.9": {
+    "query_ids_sha256": "827dccc463dfe0c9032f00cc64a3a4f6bf40d60d402eded9cb7c5f04e091a5f4",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60011_g0.9.npz",
+    "source_sha256": "5cfc0c3fae2d22744e5514faff515bf2e307e4b9269732f3996e409182bededc",
+    "support_ids_sha256": "88b3ba1226dcd079e234999016905701c3c9ceb7470ad7b0d69c9427334bf60a",
+    "task_seconds": 0.36945030000060797
+  },
+  "pairwise_seed60012_g0": {
+    "query_ids_sha256": "5892eeb4e1ffd671915fd4c9c38b5516ac9e45d8abfe7b4ebaf3e74a60b9a241",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60012_g0.npz",
+    "source_sha256": "d159e35ca32f48764bdac81e27a4b11eef4b622a3c8346ba7454e5e4aae1903f",
+    "support_ids_sha256": "b9f5f8fac7ab94b53765c9fdcd4282fbb6971abd83ac1c0a2d8433496558e956",
+    "task_seconds": 0.3257710999750998
+  },
+  "pairwise_seed60012_g0.9": {
+    "query_ids_sha256": "5892eeb4e1ffd671915fd4c9c38b5516ac9e45d8abfe7b4ebaf3e74a60b9a241",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60012_g0.9.npz",
+    "source_sha256": "3ed450dd27bb39359b3889441ffed2aa6002061537323cf168f563322885f6cf",
+    "support_ids_sha256": "b9f5f8fac7ab94b53765c9fdcd4282fbb6971abd83ac1c0a2d8433496558e956",
+    "task_seconds": 0.3196363000024576
+  },
+  "pairwise_seed60013_g0": {
+    "query_ids_sha256": "d1af253b03731d94741b62789a15de6e82b446d872a7614a963b10d4f1cb3a62",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60013_g0.npz",
+    "source_sha256": "409cd026e17abb9ca44973198a32520824398934af60b3cd3318dc2df3d0110b",
+    "support_ids_sha256": "c3f3d92c9d6eefa975beaa7a21efe7e3d066b5225e80b6e2a9e0e1e9a4be0718",
+    "task_seconds": 0.33228660002350807
+  },
+  "pairwise_seed60013_g0.9": {
+    "query_ids_sha256": "d1af253b03731d94741b62789a15de6e82b446d872a7614a963b10d4f1cb3a62",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60013_g0.9.npz",
+    "source_sha256": "b3a0ac15d8d934f0ca825257a9c9be7ad27261b39176fda1b8094dbff8a7e876",
+    "support_ids_sha256": "c3f3d92c9d6eefa975beaa7a21efe7e3d066b5225e80b6e2a9e0e1e9a4be0718",
+    "task_seconds": 0.3904577000066638
+  },
+  "pairwise_seed60014_g0": {
+    "query_ids_sha256": "35ffb114484b2d2e5887d002e9a5dd13ab33c2af027acf0bd63f29f73fb9437e",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60014_g0.npz",
+    "source_sha256": "2212a3b9a53a84e31c3d3a435ea1c414a4d760c9f3c41445abdaebcff2948b95",
+    "support_ids_sha256": "f7309b54d4d1abe1bebebc2a21b651083a60a96b1ad27a50cb4cfca5c9eb4d87",
+    "task_seconds": 0.30261739998240955
+  },
+  "pairwise_seed60014_g0.9": {
+    "query_ids_sha256": "35ffb114484b2d2e5887d002e9a5dd13ab33c2af027acf0bd63f29f73fb9437e",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60014_g0.9.npz",
+    "source_sha256": "be48150df108acf578b3f07195773703734721598b53a83e60a3023b527ae303",
+    "support_ids_sha256": "f7309b54d4d1abe1bebebc2a21b651083a60a96b1ad27a50cb4cfca5c9eb4d87",
+    "task_seconds": 0.34451580001041293
+  },
+  "pairwise_seed60015_g0": {
+    "query_ids_sha256": "1108aab846b113fe6e3e0e0682a6410cf4cc48efa286507e202b7ead5a1a5a6f",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60015_g0.npz",
+    "source_sha256": "46c41d067dfe5eb77fe606d2967caaed688e0f9943c2ae1055b095d2d4fbb36e",
+    "support_ids_sha256": "bbfcba7131971053cafc373cd51c9207b2c99a695404a68832cc73f048eecc8f",
+    "task_seconds": 0.3100976000132505
+  },
+  "pairwise_seed60015_g0.9": {
+    "query_ids_sha256": "1108aab846b113fe6e3e0e0682a6410cf4cc48efa286507e202b7ead5a1a5a6f",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60015_g0.9.npz",
+    "source_sha256": "4c2a7d581f08230ee757b33062f6a6b808c8c86724c591658e6cabbb5ff5634c",
+    "support_ids_sha256": "bbfcba7131971053cafc373cd51c9207b2c99a695404a68832cc73f048eecc8f",
+    "task_seconds": 0.34948450000956655
+  },
+  "pairwise_seed60016_g0": {
+    "query_ids_sha256": "ec5d4e49fba20d38ee67bbe1c24a9ddbd2fb35643391cea11c035bd768de04e5",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60016_g0.npz",
+    "source_sha256": "0e6cd866d8eca0a4adaad8e0a9b427cb8caaa4e27ead81ea1e03c54984b58c71",
+    "support_ids_sha256": "f38a304d4b37c57ab9a461cf44484c534bfd144ca181f533fb4411028cbfbedf",
+    "task_seconds": 0.28438339999411255
+  },
+  "pairwise_seed60016_g0.9": {
+    "query_ids_sha256": "ec5d4e49fba20d38ee67bbe1c24a9ddbd2fb35643391cea11c035bd768de04e5",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60016_g0.9.npz",
+    "source_sha256": "51d837ccea4b3ff0503da3b2be67a0743d7fa44afd155a98b106264ae918260c",
+    "support_ids_sha256": "f38a304d4b37c57ab9a461cf44484c534bfd144ca181f533fb4411028cbfbedf",
+    "task_seconds": 0.40690070000709966
+  },
+  "pairwise_seed60017_g0": {
+    "query_ids_sha256": "00ac753361271512c56c8e5d0118afee490f17229a7e8a1dc8b81528deeee7c7",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60017_g0.npz",
+    "source_sha256": "152e978931e44cefb0b55b77d8bc56512192fef1d6b672bb4d339d793907ad33",
+    "support_ids_sha256": "fdd016d0d5ae1b46b28d5f61c668236bf45e8bf19a413a99cd86cd2fdc18253e",
+    "task_seconds": 0.3317158999852836
+  },
+  "pairwise_seed60017_g0.9": {
+    "query_ids_sha256": "00ac753361271512c56c8e5d0118afee490f17229a7e8a1dc8b81528deeee7c7",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60017_g0.9.npz",
+    "source_sha256": "fb02e4e0a92dedf9a70082efe1150300336fc51c3f374de2caab2ab0375c5e43",
+    "support_ids_sha256": "fdd016d0d5ae1b46b28d5f61c668236bf45e8bf19a413a99cd86cd2fdc18253e",
+    "task_seconds": 0.29800999999861233
+  },
+  "pairwise_seed60018_g0": {
+    "query_ids_sha256": "0f033438cdc83e07740c07f4d5bf42e24fbc014fc7015d0dec3ec4658557f476",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60018_g0.npz",
+    "source_sha256": "a5fcf9fa08dbaa65d2eac839a69b352c04852696be43d5be7eba6585d07e16f1",
+    "support_ids_sha256": "4ece3f6ad25ad111923d7084018f17cd5d3091796c3a98b724b6cb2fb98b2e77",
+    "task_seconds": 0.3384860999940429
+  },
+  "pairwise_seed60018_g0.9": {
+    "query_ids_sha256": "0f033438cdc83e07740c07f4d5bf42e24fbc014fc7015d0dec3ec4658557f476",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60018_g0.9.npz",
+    "source_sha256": "5ed0ddc1f28c9c125c313aa4e1ec977b2534347ce6e40ce5afd2a54f356c3981",
+    "support_ids_sha256": "4ece3f6ad25ad111923d7084018f17cd5d3091796c3a98b724b6cb2fb98b2e77",
+    "task_seconds": 0.3967566000064835
+  },
+  "pairwise_seed60019_g0": {
+    "query_ids_sha256": "69504b66b2e3dfd723f928e66f771693057d3923b45f02c4ee69ffaeca457ede",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60019_g0.npz",
+    "source_sha256": "29352832538a90534a7f90c718f16aed93c96a0474eb12f3481dc2e214f03532",
+    "support_ids_sha256": "875a65f4d493701d322879b7d7ac8e16f81ea812a6b152e6ea465486159659df",
+    "task_seconds": 0.3318958999880124
+  },
+  "pairwise_seed60019_g0.9": {
+    "query_ids_sha256": "69504b66b2e3dfd723f928e66f771693057d3923b45f02c4ee69ffaeca457ede",
+    "source_file": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1\\data\\pairwise_seed60019_g0.9.npz",
+    "source_sha256": "86d3e1acf0f1a09f9688ac0b02a50c914ea427f9e4778b997ce4f2ad6156f5de",
+    "support_ids_sha256": "875a65f4d493701d322879b7d7ac8e16f81ea812a6b152e6ea465486159659df",
+    "task_seconds": 0.3356917000201065
+  }
+}

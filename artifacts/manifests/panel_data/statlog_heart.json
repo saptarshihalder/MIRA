@@ -1,0 +1,131 @@
+{
+  "artifact_sha256": {
+    "dataset.npz": "cbcc6f4b1ba5e1f8963de40189202ab5244c0e91a0f6581c70ce2c875f2f3564",
+    "row_maps.json": "05fa9bed86e5142814f90486ff22eaadc10426a07dcaafa3722010b06b0f0653",
+    "splits.json": "4fabf650ee39c1c958703519708820957aeaf3c16e8fd1c1b655b5431ad9b3fb"
+  },
+  "canonical_rows": 270,
+  "changes": "Retain declared numeric features, encode declared positive as 1, remove exact selected-X/label duplicates, group identical X and supplied source IDs; no scaling or zero imputation.",
+  "citation": "Statlog (Heart) [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C57303.",
+  "class_counts_canonical": [
+    150,
+    120
+  ],
+  "class_counts_raw": [
+    150,
+    120
+  ],
+  "conflicting_label_groups": 0,
+  "data_url": "https://archive.ics.uci.edu/static/public/145/data.csv",
+  "dataset_id": 145,
+  "declared_native_missing": "no",
+  "doi": "10.24432/C57303",
+  "exact_xy_duplicates_removed": 0,
+  "feature_names": [
+    "age",
+    "rest-bp",
+    "serum-chol",
+    "max-heart-rate",
+    "oldpeak"
+  ],
+  "features": 5,
+  "fold_sizes": [
+    {
+      "fold": 0,
+      "query": 54,
+      "query_class_counts": [
+        30,
+        24
+      ],
+      "support": 128,
+      "support_class_counts": [
+        71,
+        57
+      ]
+    },
+    {
+      "fold": 1,
+      "query": 54,
+      "query_class_counts": [
+        30,
+        24
+      ],
+      "support": 128,
+      "support_class_counts": [
+        71,
+        57
+      ]
+    },
+    {
+      "fold": 2,
+      "query": 54,
+      "query_class_counts": [
+        30,
+        24
+      ],
+      "support": 128,
+      "support_class_counts": [
+        71,
+        57
+      ]
+    },
+    {
+      "fold": 3,
+      "query": 54,
+      "query_class_counts": [
+        30,
+        24
+      ],
+      "support": 128,
+      "support_class_counts": [
+        71,
+        57
+      ]
+    },
+    {
+      "fold": 4,
+      "query": 54,
+      "query_class_counts": [
+        30,
+        24
+      ],
+      "support": 128,
+      "support_class_counts": [
+        71,
+        57
+      ]
+    }
+  ],
+  "groups": 270,
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "limitations": "Unavailable object/acquisition/source groups cannot be reconstructed. Sonar repeated-object views and Spambase personalized collection may remain correlated. Dataset is the aggregation unit.",
+  "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=145",
+  "model_scores_inspected": false,
+  "native_missing_deviation": false,
+  "native_missing_values_canonical": 0,
+  "native_missing_values_raw": 0,
+  "negative_label": "1",
+  "observed_zeros_canonical": 85,
+  "observed_zeros_raw": 85,
+  "official_name": "Statlog (Heart)",
+  "positive_label": "2",
+  "prepared_date": "2026-10-01",
+  "query_cap": 1024,
+  "raw_rows": 270,
+  "runtime": {
+    "numpy": "2.3.5",
+    "python": "3.12.14",
+    "sklearn": "1.8.0"
+  },
+  "schema_version": 1,
+  "slug": "statlog_heart",
+  "source_page": "https://archive.ics.uci.edu/dataset/145/statlog+heart",
+  "source_sha256": {
+    "data.csv": "440ab32cedbc4c3e0587439e48cccf1792a99323df35611b17f33adb140f6baf",
+    "metadata.json": "dbde49a99761aeabefeeb58b9166b2859ad2ebeff4f51ac91c1202902c42e6e4",
+    "source_page.html": "a555cc196a589787e4a7c8153228cbcb00f32699bfd8d26e49e828e5201428f5"
+  },
+  "splitter_seed": 61145,
+  "support_size": 128
+}

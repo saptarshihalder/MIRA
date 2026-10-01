@@ -1,0 +1,156 @@
+{
+  "artifact_sha256": {
+    "dataset.npz": "8fb8fdfff454cd0457c9c2d91ce8c3fe7d01ea464d23fcd7845c54b8cb146755",
+    "row_maps.json": "910181f2b6ef356ab83e9c143befe67c42394b32aec9ef7899dde69fb359f837",
+    "splits.json": "6be414deaf79ef2f5eae0ceacd73345237a70f0aa54eb7c43159fe2680986503"
+  },
+  "canonical_rows": 569,
+  "changes": "Retain declared numeric features, encode declared positive as 1, remove exact selected-X/label duplicates, group identical X and supplied source IDs; no scaling or zero imputation.",
+  "citation": "Wolberg, W., Mangasarian, O., Street, N., & Street, W. (1993). Breast Cancer Wisconsin (Diagnostic) [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5DW2B.",
+  "class_counts_canonical": [
+    357,
+    212
+  ],
+  "class_counts_raw": [
+    357,
+    212
+  ],
+  "conflicting_label_groups": 0,
+  "data_url": "https://archive.ics.uci.edu/static/public/17/data.csv",
+  "dataset_id": 17,
+  "declared_native_missing": "no",
+  "doi": "10.24432/C5DW2B",
+  "exact_xy_duplicates_removed": 0,
+  "feature_names": [
+    "radius1",
+    "texture1",
+    "perimeter1",
+    "area1",
+    "smoothness1",
+    "compactness1",
+    "concavity1",
+    "concave_points1",
+    "symmetry1",
+    "fractal_dimension1",
+    "radius2",
+    "texture2",
+    "perimeter2",
+    "area2",
+    "smoothness2",
+    "compactness2",
+    "concavity2",
+    "concave_points2",
+    "symmetry2",
+    "fractal_dimension2",
+    "radius3",
+    "texture3",
+    "perimeter3",
+    "area3",
+    "smoothness3",
+    "compactness3",
+    "concavity3",
+    "concave_points3",
+    "symmetry3",
+    "fractal_dimension3"
+  ],
+  "features": 30,
+  "fold_sizes": [
+    {
+      "fold": 0,
+      "query": 114,
+      "query_class_counts": [
+        72,
+        42
+      ],
+      "support": 128,
+      "support_class_counts": [
+        80,
+        48
+      ]
+    },
+    {
+      "fold": 1,
+      "query": 114,
+      "query_class_counts": [
+        71,
+        43
+      ],
+      "support": 128,
+      "support_class_counts": [
+        80,
+        48
+      ]
+    },
+    {
+      "fold": 2,
+      "query": 114,
+      "query_class_counts": [
+        72,
+        42
+      ],
+      "support": 128,
+      "support_class_counts": [
+        80,
+        48
+      ]
+    },
+    {
+      "fold": 3,
+      "query": 113,
+      "query_class_counts": [
+        71,
+        42
+      ],
+      "support": 128,
+      "support_class_counts": [
+        80,
+        48
+      ]
+    },
+    {
+      "fold": 4,
+      "query": 114,
+      "query_class_counts": [
+        71,
+        43
+      ],
+      "support": 128,
+      "support_class_counts": [
+        80,
+        48
+      ]
+    }
+  ],
+  "groups": 569,
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "limitations": "Unavailable object/acquisition/source groups cannot be reconstructed. Sonar repeated-object views and Spambase personalized collection may remain correlated. Dataset is the aggregation unit.",
+  "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=17",
+  "model_scores_inspected": false,
+  "native_missing_deviation": false,
+  "native_missing_values_canonical": 0,
+  "native_missing_values_raw": 0,
+  "negative_label": "B",
+  "observed_zeros_canonical": 78,
+  "observed_zeros_raw": 78,
+  "official_name": "Breast Cancer Wisconsin (Diagnostic)",
+  "positive_label": "M",
+  "prepared_date": "2026-10-01",
+  "query_cap": 1024,
+  "raw_rows": 569,
+  "runtime": {
+    "numpy": "2.3.5",
+    "python": "3.12.14",
+    "sklearn": "1.8.0"
+  },
+  "schema_version": 1,
+  "slug": "breast_cancer_wisconsin_diagnostic",
+  "source_page": "https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic",
+  "source_sha256": {
+    "data.csv": "3487b754ff02c93cdc8a18afafe223961d9cfbfdb932e57483e52581042767d7",
+    "metadata.json": "c129484733a4d262158c583e69afba393e0e5909b9e7dad228c438a7b62830f9",
+    "source_page.html": "57c6d0316fbb2d14e1dee2280f89b2cc7bc71db6ad62e3808d5f968a06e3aa1c"
+  },
+  "splitter_seed": 61017,
+  "support_size": 128
+}

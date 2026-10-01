@@ -1,0 +1,186 @@
+{
+  "artifact_sha256": {
+    "dataset.npz": "2eab7f235a5c9386cf758acdf324d8371fbfd1d6d0675549a4da665010983f6d",
+    "row_maps.json": "a51659d8876fabc6dd0328a23ef4952cca1ae5096d658f13f3d7bb29fc217883",
+    "splits.json": "d66fe5ca17da01137e4660ff84d21779a7f8dab1fb6bc7e5d869996e043a20c8"
+  },
+  "canonical_rows": 208,
+  "changes": "Retain declared numeric features, encode declared positive as 1, remove exact selected-X/label duplicates, group identical X and supplied source IDs; no scaling or zero imputation.",
+  "citation": "Sejnowski, T. & Gorman, R. (1988). Connectionist Bench (Sonar, Mines vs. Rocks) [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5T01Q.",
+  "class_counts_canonical": [
+    97,
+    111
+  ],
+  "class_counts_raw": [
+    97,
+    111
+  ],
+  "conflicting_label_groups": 0,
+  "data_url": "https://archive.ics.uci.edu/static/public/151/data.csv",
+  "dataset_id": 151,
+  "declared_native_missing": "no",
+  "doi": "10.24432/C5T01Q",
+  "exact_xy_duplicates_removed": 0,
+  "feature_names": [
+    "Attribute1",
+    "Attribute2",
+    "Attribute3",
+    "Attribute4",
+    "Attribute5",
+    "Attribute6",
+    "Attribute7",
+    "Attribute8",
+    "Attribute9",
+    "Attribute10",
+    "Attribute11",
+    "Attribute12",
+    "Attribute13",
+    "Attribute14",
+    "Attribute15",
+    "Attribute16",
+    "Attribute17",
+    "Attribute18",
+    "Attribute19",
+    "Attribute20",
+    "Attribute21",
+    "Attribute22",
+    "Attribute23",
+    "Attribute24",
+    "Attribute25",
+    "Attribute26",
+    "Attribute27",
+    "Attribute28",
+    "Attribute29",
+    "Attribute30",
+    "Attribute31",
+    "Attribute32",
+    "Attribute33",
+    "Attribute34",
+    "Attribute35",
+    "Attribute36",
+    "Attribute37",
+    "Attribute38",
+    "Attribute39",
+    "Attribute40",
+    "Attribute41",
+    "Attribute42",
+    "Attribute43",
+    "Attribute44",
+    "Attribute45",
+    "Attribute46",
+    "Attribute47",
+    "Attribute48",
+    "Attribute49",
+    "Attribute50",
+    "Attribute51",
+    "Attribute52",
+    "Attribute53",
+    "Attribute54",
+    "Attribute55",
+    "Attribute56",
+    "Attribute57",
+    "Attribute58",
+    "Attribute59",
+    "Attribute60"
+  ],
+  "features": 60,
+  "fold_sizes": [
+    {
+      "fold": 0,
+      "query": 42,
+      "query_class_counts": [
+        20,
+        22
+      ],
+      "support": 128,
+      "support_class_counts": [
+        59,
+        69
+      ]
+    },
+    {
+      "fold": 1,
+      "query": 42,
+      "query_class_counts": [
+        19,
+        23
+      ],
+      "support": 128,
+      "support_class_counts": [
+        60,
+        68
+      ]
+    },
+    {
+      "fold": 2,
+      "query": 42,
+      "query_class_counts": [
+        20,
+        22
+      ],
+      "support": 128,
+      "support_class_counts": [
+        59,
+        69
+      ]
+    },
+    {
+      "fold": 3,
+      "query": 41,
+      "query_class_counts": [
+        19,
+        22
+      ],
+      "support": 128,
+      "support_class_counts": [
+        60,
+        68
+      ]
+    },
+    {
+      "fold": 4,
+      "query": 41,
+      "query_class_counts": [
+        19,
+        22
+      ],
+      "support": 128,
+      "support_class_counts": [
+        60,
+        68
+      ]
+    }
+  ],
+  "groups": 208,
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "limitations": "Unavailable object/acquisition/source groups cannot be reconstructed. Sonar repeated-object views and Spambase personalized collection may remain correlated. Dataset is the aggregation unit.",
+  "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=151",
+  "model_scores_inspected": false,
+  "native_missing_deviation": false,
+  "native_missing_values_canonical": 0,
+  "native_missing_values_raw": 0,
+  "negative_label": "R",
+  "observed_zeros_canonical": 9,
+  "observed_zeros_raw": 9,
+  "official_name": "Connectionist Bench (Sonar, Mines vs. Rocks)",
+  "positive_label": "M",
+  "prepared_date": "2026-10-01",
+  "query_cap": 1024,
+  "raw_rows": 208,
+  "runtime": {
+    "numpy": "2.3.5",
+    "python": "3.12.14",
+    "sklearn": "1.8.0"
+  },
+  "schema_version": 1,
+  "slug": "sonar",
+  "source_page": "https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks",
+  "source_sha256": {
+    "data.csv": "1a0efd0f67d20d6f487ea01dcb9d87e5c67c510d9b1b5d249d357588b6293ae9",
+    "metadata.json": "be5817e5b3220132138882326ebc295ae3b5fb08a3ad008b91d4cf4246a7bc4f",
+    "source_page.html": "93b3e1e8807ffcf7d1e2b2cca478e154c4a2df7c9d757d14f5ad3580e8515a25"
+  },
+  "splitter_seed": 61151,
+  "support_size": 128
+}

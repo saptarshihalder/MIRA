@@ -1,0 +1,97 @@
+{
+  "frozen": true,
+  "version": 1,
+  "date": "2026-10-01",
+  "selection": "Six datasets fixed before scores in real_covariate_panel.md; no replacements or model tuning on panel outcomes",
+  "datasets": [
+    "breast_cancer_wisconsin_diagnostic",
+    "ionosphere",
+    "banknote_authentication",
+    "spambase",
+    "sonar",
+    "statlog_heart"
+  ],
+  "data_sha256": {
+    "breast_cancer_wisconsin_diagnostic": {
+      "dataset.npz": "8fb8fdfff454cd0457c9c2d91ce8c3fe7d01ea464d23fcd7845c54b8cb146755",
+      "splits.json": "6be414deaf79ef2f5eae0ceacd73345237a70f0aa54eb7c43159fe2680986503",
+      "manifest.json": "2454c049a7534e5fb6d97540f08dc76c531bf9a4accb21e1bfb8a3535e5d7bc3",
+      "row_maps.json": "910181f2b6ef356ab83e9c143befe67c42394b32aec9ef7899dde69fb359f837"
+    },
+    "ionosphere": {
+      "dataset.npz": "070ccd8c12903fbc670fc7510d10885cdeff9b94928d43cd3fbec6a7cebe49ba",
+      "splits.json": "65c620eb078328644a62f2c97b3636ed9e79ffe5969bf28965aef9a101e310b8",
+      "manifest.json": "dd4e67b734b295dea7d8a2d8e328e41f914c82ebe90e4a5d6a314df7515c7360",
+      "row_maps.json": "e20c2a24321077b129632b81f622668aa7f3cb2d9a3e87798de04ed7781084e0"
+    },
+    "banknote_authentication": {
+      "dataset.npz": "77dcdbc948ef6e6e223ded2b9cc808b9aa52ea721a9195cc29b8928812243299",
+      "splits.json": "92f0353a70d774b83ebbb5f768706745748a45b33af7067fa08833def84c10d1",
+      "manifest.json": "0306f4bba110e83bf86beeca85b2150f2525e2b35c6aa09443e9a1884776dee3",
+      "row_maps.json": "fe1d808c92b2e48e531290d496735d687485def45e0680c93fe3c0e047856e46"
+    },
+    "spambase": {
+      "dataset.npz": "774d3a5baf87180b9be5a9726b586e00fc95defca19d639286d5b266ba02ba5f",
+      "splits.json": "7487a17b83795fb441a90c683ce4e0f17bd261f40e562d434fede8a874487e87",
+      "manifest.json": "f9c6ede6e4dc38c7138c34f427f8464cd67db3bcd4127ddee23e4873c01616b5",
+      "row_maps.json": "3412af6efdd8c9f5ff6508fb61df8e72ac3bef556764acf1130dbcc5f203e267"
+    },
+    "sonar": {
+      "dataset.npz": "2eab7f235a5c9386cf758acdf324d8371fbfd1d6d0675549a4da665010983f6d",
+      "splits.json": "d66fe5ca17da01137e4660ff84d21779a7f8dab1fb6bc7e5d869996e043a20c8",
+      "manifest.json": "37347e4a77b0fa447cc50a7df5fb83ce91bca5707d7d10c41284efa4a206af50",
+      "row_maps.json": "a51659d8876fabc6dd0328a23ef4952cca1ae5096d658f13f3d7bb29fc217883"
+    },
+    "statlog_heart": {
+      "dataset.npz": "cbcc6f4b1ba5e1f8963de40189202ab5244c0e91a0f6581c70ce2c875f2f3564",
+      "splits.json": "4fabf650ee39c1c958703519708820957aeaf3c16e8fd1c1b655b5431ad9b3fb",
+      "manifest.json": "e2392733ed126e79fb3f092353267dc5581d78626cf3445025117334ac1733ea",
+      "row_maps.json": "05fa9bed86e5142814f90486ff22eaadc10426a07dcaafa3722010b06b0f0653"
+    }
+  },
+  "source_catalog_sha256": "a5deacfc6e7a3e682d5d57f73bd339a5ae2d098bce7f34130d4871db45233b73",
+  "runner_source_sha256": {
+    "pyproject.toml": "747b146b1c5477659441dedb13726032e359deeacb4ae6814151e348171ec318",
+    "scripts/report_mechanism.py": "2218143706805b6541ea0ed4febfda152ed880c628c41e81c8aa6ff800b5aa75",
+    "scripts/run_mechanism.py": "fbd2e3149e204a677282025d41fa4e84793264edd263c85250bffd1775e7b6b3",
+    "src/mira/__init__.py": "5be8f16be189846ddd147db33b2eb856c00786f373daa32f88979b9a90440f75",
+    "src/mira/artifacts.py": "a280e227cc603344ccae46115bd971029b9d90db5a0a5752259676d8e6b39b5e",
+    "src/mira/data.py": "767f037a35a443a78c06b4352e6f3368c4965fc3fa12dc7609f0a996064fd9dc",
+    "src/mira/metrics.py": "de02113cff14d264e09e11aa234985fe3994216e9efbfb765d528fd3741aaf53",
+    "src/mira/models.py": "fe485c44376b2e598e39fadda15b30c2c38551dd6f704bc660531d5d7c16242e",
+    "src/mira/panel_data.py": "9b3bc528e494599b88a182c2e5cdf5facefa3c0f7693fb19dc5341d08dfc1246",
+    "src/mira/panel_runner.py": "b9867b390ca3f98845f4fd13437413362b5597688f47744a1227d78474b5a6da",
+    "src/mira/reporting.py": "71f688b83c76131e02a1a28c31a1a92d046e7bf74bf4d6f267d8660aaa59cc81",
+    "src/mira/representations.py": "9503eb9241d9e9e9cd76e146cbe6d0c75b693872501c60a4634a7a0e8b755d45",
+    "src/mira/runner.py": "f911b15331784329310c6c23d9f137e654fb7114daca007cbe2b726b82be773d"
+  },
+  "folds": 5,
+  "context": 128,
+  "query_cap": 1024,
+  "rates": [
+    0.1,
+    0.5
+  ],
+  "gammas": [
+    0,
+    0.8
+  ],
+  "models": [
+    "tabpfn:v2",
+    "tabicl:v2",
+    "xgboost",
+    "logistic"
+  ],
+  "modes": [
+    "native",
+    "native_indicators",
+    "native_shuffled"
+  ],
+  "ensembles": 4,
+  "mask_seed_base": 73000,
+  "mask": "One active column selected by seeded RNG per dataset/fold, never by performance; sign+1 and P(M=1|y)=r*(1+gamma*(2y-1)). Other columns Bernoulli(r). Shared uniform draws across conditions; native/imposed masks saved separately. Retrospective label association, not acquisition-policy causality.",
+  "logistic": "Mean imputation+StandardScaler inside each CV Pipeline; group-isolated stratified3-fold context-only C selection from[.01,.1,1,10], max_iter2000; exactly128 support labels. Record chosenC, CVscore and solver warnings.",
+  "analysis": "Empirical log-loss primary descriptive score, Brier/AUROC saved. Query-weighted paired losses within each dataset over5 overlapping training folds; equally weight6 datasets for panel estimates. Unadjusted nominal95% t intervals across6 dataset effects are descriptive for a fixed nonrepresentative panel. No oracle or universal/natural missingness claim.",
+  "expected_cells": 1440,
+  "failure": "Bounded240-cell calls, no retry/substitution/outcome-based truncation; preserve partial artifacts and all failures."
+}

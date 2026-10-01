@@ -1,0 +1,183 @@
+{
+  "artifact_sha256": {
+    "dataset.npz": "774d3a5baf87180b9be5a9726b586e00fc95defca19d639286d5b266ba02ba5f",
+    "row_maps.json": "3412af6efdd8c9f5ff6508fb61df8e72ac3bef556764acf1130dbcc5f203e267",
+    "splits.json": "7487a17b83795fb441a90c683ce4e0f17bd261f40e562d434fede8a874487e87"
+  },
+  "canonical_rows": 4210,
+  "changes": "Retain declared numeric features, encode declared positive as 1, remove exact selected-X/label duplicates, group identical X and supplied source IDs; no scaling or zero imputation.",
+  "citation": "Hopkins, M., Reeber, E., Forman, G., & Suermondt, J. (1999). Spambase [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C53G6X.",
+  "class_counts_canonical": [
+    2531,
+    1679
+  ],
+  "class_counts_raw": [
+    2788,
+    1813
+  ],
+  "conflicting_label_groups": 3,
+  "data_url": "https://archive.ics.uci.edu/static/public/94/data.csv",
+  "dataset_id": 94,
+  "declared_native_missing": "no",
+  "doi": "10.24432/C53G6X",
+  "exact_xy_duplicates_removed": 391,
+  "feature_names": [
+    "word_freq_make",
+    "word_freq_address",
+    "word_freq_all",
+    "word_freq_3d",
+    "word_freq_our",
+    "word_freq_over",
+    "word_freq_remove",
+    "word_freq_internet",
+    "word_freq_order",
+    "word_freq_mail",
+    "word_freq_receive",
+    "word_freq_will",
+    "word_freq_people",
+    "word_freq_report",
+    "word_freq_addresses",
+    "word_freq_free",
+    "word_freq_business",
+    "word_freq_email",
+    "word_freq_you",
+    "word_freq_credit",
+    "word_freq_your",
+    "word_freq_font",
+    "word_freq_000",
+    "word_freq_money",
+    "word_freq_hp",
+    "word_freq_hpl",
+    "word_freq_george",
+    "word_freq_650",
+    "word_freq_lab",
+    "word_freq_labs",
+    "word_freq_telnet",
+    "word_freq_857",
+    "word_freq_data",
+    "word_freq_415",
+    "word_freq_85",
+    "word_freq_technology",
+    "word_freq_1999",
+    "word_freq_parts",
+    "word_freq_pm",
+    "word_freq_direct",
+    "word_freq_cs",
+    "word_freq_meeting",
+    "word_freq_original",
+    "word_freq_project",
+    "word_freq_re",
+    "word_freq_edu",
+    "word_freq_table",
+    "word_freq_conference",
+    "char_freq_;",
+    "char_freq_(",
+    "char_freq_[",
+    "char_freq_!",
+    "char_freq_$",
+    "char_freq_#",
+    "capital_run_length_average",
+    "capital_run_length_longest",
+    "capital_run_length_total"
+  ],
+  "features": 57,
+  "fold_sizes": [
+    {
+      "fold": 0,
+      "query": 843,
+      "query_class_counts": [
+        507,
+        336
+      ],
+      "support": 128,
+      "support_class_counts": [
+        77,
+        51
+      ]
+    },
+    {
+      "fold": 1,
+      "query": 841,
+      "query_class_counts": [
+        506,
+        335
+      ],
+      "support": 128,
+      "support_class_counts": [
+        77,
+        51
+      ]
+    },
+    {
+      "fold": 2,
+      "query": 841,
+      "query_class_counts": [
+        506,
+        335
+      ],
+      "support": 128,
+      "support_class_counts": [
+        77,
+        51
+      ]
+    },
+    {
+      "fold": 3,
+      "query": 842,
+      "query_class_counts": [
+        506,
+        336
+      ],
+      "support": 128,
+      "support_class_counts": [
+        77,
+        51
+      ]
+    },
+    {
+      "fold": 4,
+      "query": 843,
+      "query_class_counts": [
+        506,
+        337
+      ],
+      "support": 128,
+      "support_class_counts": [
+        77,
+        51
+      ]
+    }
+  ],
+  "groups": 4207,
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "limitations": "Unavailable object/acquisition/source groups cannot be reconstructed. Sonar repeated-object views and Spambase personalized collection may remain correlated. Dataset is the aggregation unit.",
+  "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=94",
+  "model_scores_inspected": false,
+  "native_missing_deviation": false,
+  "native_missing_values_canonical": 0,
+  "native_missing_values_raw": 0,
+  "negative_label": "0",
+  "observed_zeros_canonical": 184444,
+  "observed_zeros_raw": 203026,
+  "official_name": "Spambase",
+  "positive_label": "1",
+  "prepared_date": "2026-10-01",
+  "query_cap": 1024,
+  "raw_rows": 4601,
+  "runtime": {
+    "numpy": "2.3.5",
+    "python": "3.12.14",
+    "sklearn": "1.8.0"
+  },
+  "schema_version": 1,
+  "slug": "spambase",
+  "source_page": "https://archive.ics.uci.edu/dataset/94/spambase",
+  "source_sha256": {
+    "data.csv": "d86711ceadadd177f09ca816fffa79d82edf5007b585a836c112462e2c217c0d",
+    "metadata.json": "ed4b9c3f86284700629c350508f341a3690b4941768351956a41089d1ff793f2",
+    "source_page.html": "65804e30c796f4fa055f84c7ebf319fd311921699e38bab935fbed7226b63f74"
+  },
+  "splitter_seed": 61094,
+  "support_size": 128
+}

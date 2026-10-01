@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "verified_date": "2026-10-01",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "datasets": [
+    {
+      "id": 17,
+      "slug": "breast_cancer_wisconsin_diagnostic",
+      "rows": 569,
+      "features": 30,
+      "positive": "M",
+      "negative": "B",
+      "doi": "10.24432/C5DW2B",
+      "page": "https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic",
+      "citation": "Wolberg, W., Mangasarian, O., Street, N., & Street, W. (1993). Breast Cancer Wisconsin (Diagnostic) [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5DW2B.",
+      "data_sha256": "3487b754ff02c93cdc8a18afafe223961d9cfbfdb932e57483e52581042767d7"
+    },
+    {
+      "id": 52,
+      "slug": "ionosphere",
+      "rows": 351,
+      "features": 34,
+      "positive": "g",
+      "negative": "b",
+      "doi": "10.24432/C5W01B",
+      "page": "https://archive.ics.uci.edu/dataset/52/ionosphere",
+      "citation": "Sigillito, V., Wing, S., Hutton, L., & Baker, K. (1989). Ionosphere [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5W01B.",
+      "data_sha256": "04f2023ba4b9ff438d76d4d236762981795772d4f75f3bca1c8db0fcf26c83c1"
+    },
+    {
+      "id": 267,
+      "slug": "banknote_authentication",
+      "rows": 1372,
+      "features": 4,
+      "positive": "1",
+      "negative": "0",
+      "doi": "10.24432/C55P57",
+      "page": "https://archive.ics.uci.edu/dataset/267/banknote+authentication",
+      "citation": "Lohweg, V. (2012). Banknote Authentication [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C55P57.",
+      "data_sha256": "0787e50299c198e919276660edf98dd5dcb94951ad81435b3ab61afb666936c9"
+    },
+    {
+      "id": 94,
+      "slug": "spambase",
+      "rows": 4601,
+      "features": 57,
+      "positive": "1",
+      "negative": "0",
+      "doi": "10.24432/C53G6X",
+      "page": "https://archive.ics.uci.edu/dataset/94/spambase",
+      "citation": "Hopkins, M., Reeber, E., Forman, G., & Suermondt, J. (1999). Spambase [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C53G6X.",
+      "data_sha256": "d86711ceadadd177f09ca816fffa79d82edf5007b585a836c112462e2c217c0d"
+    },
+    {
+      "id": 151,
+      "slug": "sonar",
+      "rows": 208,
+      "features": 60,
+      "positive": "M",
+      "negative": "R",
+      "doi": "10.24432/C5T01Q",
+      "page": "https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks",
+      "citation": "Sejnowski, T. & Gorman, R. (1988). Connectionist Bench (Sonar, Mines vs. Rocks) [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5T01Q.",
+      "data_sha256": "1a0efd0f67d20d6f487ea01dcb9d87e5c67c510d9b1b5d249d357588b6293ae9"
+    },
+    {
+      "id": 145,
+      "slug": "statlog_heart",
+      "rows": 270,
+      "features": 5,
+      "positive": "2",
+      "negative": "1",
+      "selected_features": [
+        "age",
+        "rest-bp",
+        "serum-chol",
+        "max-heart-rate",
+        "oldpeak"
+      ],
+      "doi": "10.24432/C57303",
+      "page": "https://archive.ics.uci.edu/dataset/145/statlog+heart",
+      "citation": "Statlog (Heart) [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C57303.",
+      "data_sha256": "440ab32cedbc4c3e0587439e48cccf1792a99323df35611b17f33adb140f6baf"
+    }
+  ]
+}

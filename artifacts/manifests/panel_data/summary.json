@@ -1,0 +1,472 @@
+{
+  "data_root": "artifacts/data/real_panel",
+  "dataset_count": 6,
+  "datasets": [
+    {
+      "canonical_rows": 569,
+      "conflicting_label_groups": 0,
+      "dataset_id": 17,
+      "exact_xy_duplicates_removed": 0,
+      "features": 30,
+      "fold_sizes": [
+        {
+          "fold": 0,
+          "query": 114,
+          "query_class_counts": [
+            72,
+            42
+          ],
+          "support": 128,
+          "support_class_counts": [
+            80,
+            48
+          ]
+        },
+        {
+          "fold": 1,
+          "query": 114,
+          "query_class_counts": [
+            71,
+            43
+          ],
+          "support": 128,
+          "support_class_counts": [
+            80,
+            48
+          ]
+        },
+        {
+          "fold": 2,
+          "query": 114,
+          "query_class_counts": [
+            72,
+            42
+          ],
+          "support": 128,
+          "support_class_counts": [
+            80,
+            48
+          ]
+        },
+        {
+          "fold": 3,
+          "query": 113,
+          "query_class_counts": [
+            71,
+            42
+          ],
+          "support": 128,
+          "support_class_counts": [
+            80,
+            48
+          ]
+        },
+        {
+          "fold": 4,
+          "query": 114,
+          "query_class_counts": [
+            71,
+            43
+          ],
+          "support": 128,
+          "support_class_counts": [
+            80,
+            48
+          ]
+        }
+      ],
+      "groups": 569,
+      "raw_rows": 569,
+      "slug": "breast_cancer_wisconsin_diagnostic"
+    },
+    {
+      "canonical_rows": 350,
+      "conflicting_label_groups": 0,
+      "dataset_id": 52,
+      "exact_xy_duplicates_removed": 1,
+      "features": 34,
+      "fold_sizes": [
+        {
+          "fold": 0,
+          "query": 70,
+          "query_class_counts": [
+            25,
+            45
+          ],
+          "support": 128,
+          "support_class_counts": [
+            46,
+            82
+          ]
+        },
+        {
+          "fold": 1,
+          "query": 70,
+          "query_class_counts": [
+            25,
+            45
+          ],
+          "support": 128,
+          "support_class_counts": [
+            46,
+            82
+          ]
+        },
+        {
+          "fold": 2,
+          "query": 70,
+          "query_class_counts": [
+            25,
+            45
+          ],
+          "support": 128,
+          "support_class_counts": [
+            46,
+            82
+          ]
+        },
+        {
+          "fold": 3,
+          "query": 70,
+          "query_class_counts": [
+            25,
+            45
+          ],
+          "support": 128,
+          "support_class_counts": [
+            46,
+            82
+          ]
+        },
+        {
+          "fold": 4,
+          "query": 70,
+          "query_class_counts": [
+            25,
+            45
+          ],
+          "support": 128,
+          "support_class_counts": [
+            46,
+            82
+          ]
+        }
+      ],
+      "groups": 350,
+      "raw_rows": 351,
+      "slug": "ionosphere"
+    },
+    {
+      "canonical_rows": 1348,
+      "conflicting_label_groups": 0,
+      "dataset_id": 267,
+      "exact_xy_duplicates_removed": 24,
+      "features": 4,
+      "fold_sizes": [
+        {
+          "fold": 0,
+          "query": 270,
+          "query_class_counts": [
+            148,
+            122
+          ],
+          "support": 128,
+          "support_class_counts": [
+            70,
+            58
+          ]
+        },
+        {
+          "fold": 1,
+          "query": 270,
+          "query_class_counts": [
+            148,
+            122
+          ],
+          "support": 128,
+          "support_class_counts": [
+            70,
+            58
+          ]
+        },
+        {
+          "fold": 2,
+          "query": 270,
+          "query_class_counts": [
+            148,
+            122
+          ],
+          "support": 128,
+          "support_class_counts": [
+            70,
+            58
+          ]
+        },
+        {
+          "fold": 3,
+          "query": 269,
+          "query_class_counts": [
+            147,
+            122
+          ],
+          "support": 128,
+          "support_class_counts": [
+            70,
+            58
+          ]
+        },
+        {
+          "fold": 4,
+          "query": 269,
+          "query_class_counts": [
+            147,
+            122
+          ],
+          "support": 128,
+          "support_class_counts": [
+            70,
+            58
+          ]
+        }
+      ],
+      "groups": 1348,
+      "raw_rows": 1372,
+      "slug": "banknote_authentication"
+    },
+    {
+      "canonical_rows": 4210,
+      "conflicting_label_groups": 3,
+      "dataset_id": 94,
+      "exact_xy_duplicates_removed": 391,
+      "features": 57,
+      "fold_sizes": [
+        {
+          "fold": 0,
+          "query": 843,
+          "query_class_counts": [
+            507,
+            336
+          ],
+          "support": 128,
+          "support_class_counts": [
+            77,
+            51
+          ]
+        },
+        {
+          "fold": 1,
+          "query": 841,
+          "query_class_counts": [
+            506,
+            335
+          ],
+          "support": 128,
+          "support_class_counts": [
+            77,
+            51
+          ]
+        },
+        {
+          "fold": 2,
+          "query": 841,
+          "query_class_counts": [
+            506,
+            335
+          ],
+          "support": 128,
+          "support_class_counts": [
+            77,
+            51
+          ]
+        },
+        {
+          "fold": 3,
+          "query": 842,
+          "query_class_counts": [
+            506,
+            336
+          ],
+          "support": 128,
+          "support_class_counts": [
+            77,
+            51
+          ]
+        },
+        {
+          "fold": 4,
+          "query": 843,
+          "query_class_counts": [
+            506,
+            337
+          ],
+          "support": 128,
+          "support_class_counts": [
+            77,
+            51
+          ]
+        }
+      ],
+      "groups": 4207,
+      "raw_rows": 4601,
+      "slug": "spambase"
+    },
+    {
+      "canonical_rows": 208,
+      "conflicting_label_groups": 0,
+      "dataset_id": 151,
+      "exact_xy_duplicates_removed": 0,
+      "features": 60,
+      "fold_sizes": [
+        {
+          "fold": 0,
+          "query": 42,
+          "query_class_counts": [
+            20,
+            22
+          ],
+          "support": 128,
+          "support_class_counts": [
+            59,
+            69
+          ]
+        },
+        {
+          "fold": 1,
+          "query": 42,
+          "query_class_counts": [
+            19,
+            23
+          ],
+          "support": 128,
+          "support_class_counts": [
+            60,
+            68
+          ]
+        },
+        {
+          "fold": 2,
+          "query": 42,
+          "query_class_counts": [
+            20,
+            22
+          ],
+          "support": 128,
+          "support_class_counts": [
+            59,
+            69
+          ]
+        },
+        {
+          "fold": 3,
+          "query": 41,
+          "query_class_counts": [
+            19,
+            22
+          ],
+          "support": 128,
+          "support_class_counts": [
+            60,
+            68
+          ]
+        },
+        {
+          "fold": 4,
+          "query": 41,
+          "query_class_counts": [
+            19,
+            22
+          ],
+          "support": 128,
+          "support_class_counts": [
+            60,
+            68
+          ]
+        }
+      ],
+      "groups": 208,
+      "raw_rows": 208,
+      "slug": "sonar"
+    },
+    {
+      "canonical_rows": 270,
+      "conflicting_label_groups": 0,
+      "dataset_id": 145,
+      "exact_xy_duplicates_removed": 0,
+      "features": 5,
+      "fold_sizes": [
+        {
+          "fold": 0,
+          "query": 54,
+          "query_class_counts": [
+            30,
+            24
+          ],
+          "support": 128,
+          "support_class_counts": [
+            71,
+            57
+          ]
+        },
+        {
+          "fold": 1,
+          "query": 54,
+          "query_class_counts": [
+            30,
+            24
+          ],
+          "support": 128,
+          "support_class_counts": [
+            71,
+            57
+          ]
+        },
+        {
+          "fold": 2,
+          "query": 54,
+          "query_class_counts": [
+            30,
+            24
+          ],
+          "support": 128,
+          "support_class_counts": [
+            71,
+            57
+          ]
+        },
+        {
+          "fold": 3,
+          "query": 54,
+          "query_class_counts": [
+            30,
+            24
+          ],
+          "support": 128,
+          "support_class_counts": [
+            71,
+            57
+          ]
+        },
+        {
+          "fold": 4,
+          "query": 54,
+          "query_class_counts": [
+            30,
+            24
+          ],
+          "support": 128,
+          "support_class_counts": [
+            71,
+            57
+          ]
+        }
+      ],
+      "groups": 270,
+      "raw_rows": 270,
+      "slug": "statlog_heart"
+    }
+  ],
+  "model_scores_inspected": false,
+  "prepared_date": "2026-10-01",
+  "schema_version": 1,
+  "source_catalog_sha256": "a5deacfc6e7a3e682d5d57f73bd339a5ae2d098bce7f34130d4871db45233b73"
+}
