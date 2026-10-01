@@ -442,5 +442,119 @@
     "active_seconds": 295.93225386499995,
     "exit_code": 0,
     "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1"
+  },
+  {
+    "phase": "real_covariate_panel",
+    "dataset": "breast_cancer_wisconsin_diagnostic",
+    "model": "tabpfn:v2 tabicl:v2 xgboost logistic",
+    "frozen_protocol_sha256": "e2058edaf9cb246a691f98659157e573ad94b74c237a53c33b505c711c45fcac",
+    "argv": [
+      "--dataset",
+      "breast_cancer_wisconsin_diagnostic"
+    ],
+    "engine": "panel",
+    "max_seconds": 900,
+    "run_id": "real_panel_v1_breast_cancer_wisconsin_diagnostic",
+    "reserved_usd": 0.5,
+    "status": "completed",
+    "date": "2026-10-01T11:19:30.699531+00:00",
+    "active_seconds": 180.139208755,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_breast_cancer_wisconsin_diagnostic"
+  },
+  {
+    "phase": "real_covariate_panel",
+    "dataset": "ionosphere",
+    "model": "tabpfn:v2 tabicl:v2 xgboost logistic",
+    "frozen_protocol_sha256": "e2058edaf9cb246a691f98659157e573ad94b74c237a53c33b505c711c45fcac",
+    "argv": [
+      "--dataset",
+      "ionosphere"
+    ],
+    "engine": "panel",
+    "max_seconds": 900,
+    "run_id": "real_panel_v1_ionosphere",
+    "reserved_usd": 0.5,
+    "status": "completed",
+    "date": "2026-10-01T11:24:07.464418+00:00",
+    "active_seconds": 174.142285093,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_ionosphere"
+  },
+  {
+    "phase": "real_covariate_panel",
+    "dataset": "banknote_authentication",
+    "model": "tabpfn:v2 tabicl:v2 xgboost logistic",
+    "frozen_protocol_sha256": "e2058edaf9cb246a691f98659157e573ad94b74c237a53c33b505c711c45fcac",
+    "argv": [
+      "--dataset",
+      "banknote_authentication"
+    ],
+    "engine": "panel",
+    "max_seconds": 900,
+    "run_id": "real_panel_v1_banknote_authentication",
+    "reserved_usd": 0.5,
+    "status": "completed",
+    "date": "2026-10-01T11:27:26.683988+00:00",
+    "active_seconds": 103.978087117,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_banknote_authentication"
+  },
+  {
+    "phase": "real_covariate_panel",
+    "dataset": "spambase",
+    "model": "tabpfn:v2 tabicl:v2 xgboost logistic",
+    "frozen_protocol_sha256": "e2058edaf9cb246a691f98659157e573ad94b74c237a53c33b505c711c45fcac",
+    "argv": [
+      "--dataset",
+      "spambase"
+    ],
+    "engine": "panel",
+    "max_seconds": 900,
+    "run_id": "real_panel_v1_spambase",
+    "reserved_usd": 0.5,
+    "status": "completed",
+    "date": "2026-10-01T11:29:34.855657+00:00",
+    "active_seconds": 246.350770022,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_spambase"
+  },
+  {
+    "phase": "real_covariate_panel",
+    "dataset": "sonar",
+    "model": "tabpfn:v2 tabicl:v2 xgboost logistic",
+    "frozen_protocol_sha256": "e2058edaf9cb246a691f98659157e573ad94b74c237a53c33b505c711c45fcac",
+    "argv": [
+      "--dataset",
+      "sonar"
+    ],
+    "engine": "panel",
+    "max_seconds": 900,
+    "run_id": "real_panel_v1_sonar",
+    "reserved_usd": 0.5,
+    "status": "completed",
+    "date": "2026-10-01T11:34:15.031253+00:00",
+    "active_seconds": 184.904503528,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_sonar"
+  },
+  {
+    "phase": "real_covariate_panel",
+    "dataset": "statlog_heart",
+    "model": "tabpfn:v2 tabicl:v2 xgboost logistic",
+    "frozen_protocol_sha256": "e2058edaf9cb246a691f98659157e573ad94b74c237a53c33b505c711c45fcac",
+    "argv": [
+      "--dataset",
+      "statlog_heart"
+    ],
+    "engine": "panel",
+    "max_seconds": 900,
+    "run_id": "real_panel_v1_statlog_heart",
+    "reserved_usd": 0.5,
+    "status": "completed",
+    "date": "2026-10-01T11:37:44.647103+00:00",
+    "active_seconds": 113.14284195,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_statlog_heart"
   }
 ]

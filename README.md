@@ -2,7 +2,7 @@
 
 Controlled experiments on missingness representation in frozen tabular predictors.
 
-**Status:** research in progress. The analytic CPU pilot has been reproduced, and 1,296 TFM/tree development cells have completed. A frozen pairwise hypothesis passed on 20 fresh tasks; real-covariate evaluation remains pending; no adapter or clinical result is claimed.
+**Status:** research evidence through Day 8 completed for accessible checkpoints: 1,296 development cells, 360 frozen confirmation cells, 240 CPU baseline predictions and 1,440 frozen real-covariate cells. The confirmed synthetic effect is scoped; dataset-balanced TFM gains on the six-dataset panel are small and uncertain. Adapter training remains inactive.
 
 Start with [STATUS.md](STATUS.md), [SPRINT.md](SPRINT.md) and [decision.md](decision.md). The manuscript is `paper/main.tex`, edited in Codex's built-in LaTeX panel; compilation currently has an environment error. The original repository was empty when cloned on October 1, 2026; this checkout is the implementation workspace.
 
@@ -40,3 +40,19 @@ A protocol committed before evaluation completed 360 confirmation cells. On 20 f
 ![Fresh-task confirmation](artifacts/figures/confirmation_pairwise.png)
 
 [Protocol](configs/confirmation_pairwise_v1.json), [decision and audit](artifacts/reports/confirmation_pairwise_v1/decision.md), [full report](artifacts/reports/confirmation_pairwise_v1/report.md). Regenerate reports with confidence .975, then run `python scripts/analyze_confirmation.py`; raw predictions must be present locally.
+
+## Day 4–8 evidence
+
+[Completion record](artifacts/reports/day4_8_completion.md), [independent audit](artifacts/reports/day4_8_readiness.md), [strong operational baselines](artifacts/reports/strong_baselines/report.md), and [full real-covariate panel](artifacts/reports/real_panel_v1/report.md).
+
+The support-trained L1 mask-interaction baseline nearly closes the synthetic oracle gap. The frozen six-dataset panel includes all 1,440 cells and negative/control outcomes. It imposes retrospective missingness on real covariates; six datasets are uncertainty units. Native-input TFM improvements remain uncertain, while imputed logistic gains at high imposed association and loses at zero association.
+
+![Fixed real-covariate panel](artifacts/figures/real_panel_v1.png)
+
+```powershell
+python scripts/report_real_panel.py
+python scripts/plot_real_panel.py
+python scripts/run_strong_baselines.py --help
+```
+
+Report regeneration requires saved raw runs. Canonical public CC BY 4.0 data/splits are tracked with source citations and hashes. Paid panel reproduction uses `infra/modal_real_panel.py::panel`, the frozen `configs/real_panel_v1.json` and a new run ID; all calls reserve cost before execution. Raw GPU predictions stay local pending final anonymous packaging. Reservations are $9.05, provider-reported app charges $0.50322492 may lag, and $3 remains reserved for reproduction within the $26 cap. The same manuscript was updated; native compilation still has an environment error, so PDF layout remains unverified.

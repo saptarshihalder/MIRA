@@ -51,3 +51,11 @@ Read `STATUS.md` first, inspect ledger and existing outputs, then execute the ne
 ## Accelerated confirmation checkpoint
 
 At the user's instruction to continue toward a concrete output, confirmation_pairwise_v1 was frozen and committed before execution. Its 360 cells passed the two prespecified primary contrasts on 20 fresh tasks. Seeds 60000–60019 have now been used for this scoped panel. Read the confirmation decision before choosing the next gate; preserve outcome-independent protocol changes and keep later baseline/real-covariate claims separate.
+
+## Accelerated Day 4–8 checkpoint
+
+Completed on October 1 at the user's request: strong support-trained baselines (240 CPU predictions), complete data/source/protocol freeze before scores (dbda963), evidence-based decision to leave the conditional adapter inactive, the previously frozen fresh-task pairwise confirmation (360 cells), and all 1,440 cells of the six-dataset/five-fold panel. Independent saved-probability/episode/aggregation audit passes; 76 local tests pass. Full details are in `artifacts/reports/day4_8_completion.md`.
+
+There was no need to wait for calendar dates or repeat completed confirmation. The six-dataset results narrow transfer claims; the paper records all controls/negative effects. Day 9 onward concerns targeted label-budget/representation ablations, contemporary access, reproduction/anonymous packaging and manuscript readiness. Keep confirmation separation: previously used seeds are not untouched. Native compiler environment failure still prevents PDF verification; official formatting/authorship/final readiness remain open.
+
+Reservations now total $9.05 across nineteen calls, including failures, with $3 reproduction reserve retained. Provider-reported app charges $0.50322492 may lag and image-build attribution remains unverified. Continue from saved evidence, not additional broad exploratory reruns.

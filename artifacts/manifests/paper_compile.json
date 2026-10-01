@@ -1,9 +1,10 @@
 {
   "path": "paper/main.tex",
-  "source_sha256": "ea9ab45ba96ad34158aad611b6cf9002ececd702a95651d8d171dca85bf822c0",
+  "source_sha256": "f158be8422f076faa11cf345ee978c0f823941412dbd8dd267b4753609e98f34",
   "compiler": "Codex native LaTeX",
   "result": "compile-failed",
   "diagnostic": "Unable to find standard directories for platform",
   "pdf_verified": false,
+  "structural_checks": "balanced environments and resolved citations; not a compiler substitute",
   "date": "2026-10-01"
 }

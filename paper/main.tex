@@ -11,11 +11,11 @@
 \begin{document}
 \maketitle
 \begin{center}
-\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} The CPU pilot has been replicated, 1,296 development cells have run, and one frozen pairwise hypothesis passed on 20 fresh tasks (360 confirmation cells). Real-data evaluation remains pending. This document does not report a completed model contribution.}}
+\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} The CPU pilot, 1,296 development cells, 360 frozen confirmation cells, 240 CPU baseline predictions and a 1,440-cell six-dataset real-covariate panel are complete. The contribution is a scoped representation study; adapter training remains inactive. Manuscript production and current-checkpoint evaluation remain incomplete.}}
 \end{center}
 
 \begin{abstract}
-Missingness can carry predictive information when observation decisions depend on outcomes. An incomplete table already identifies absent measurements, yet a frozen predictor can behave differently when those same bits are appended as feature columns. We evaluate this representation question with exact synthetic posteriors, paired inputs, and shuffled-indicator controls. After 1,296 development cells, a protocol committed before evaluation tests twenty fresh Gaussian pairwise-mask tasks with 256 context labels. TabPFN v2 gains 0.104 nats in expected log-loss over native inputs and 0.095 over same-width shuffled indicators. The two prespecified contrasts have positive multiplicity-adjusted intervals. A separate all-zero diagnostic localizes information loss to TabICL preprocessing; partial-zero controls do not reproduce its large failure. A replicated CPU pilot also shows that simple mask-aware corrections can approach an oracle in narrow families. These findings establish a scoped representation effect. Conclusions remain version- and mechanism-specific; real-covariate evaluation, current-checkpoint access, and broader baseline comparisons are pending.
+Missingness can carry predictive information when observation decisions depend on outcomes. An incomplete table already identifies absent measurements, yet a frozen predictor can behave differently when those bits are appended as feature columns. We study this representation question with exact synthetic posteriors, paired inputs, and shuffled-indicator controls. After 1,296 development cells, a protocol committed before evaluation tests twenty fresh Gaussian pairwise-mask tasks with 256 context labels. TabPFN v2 gains 0.104 nats in expected log-loss over native inputs and 0.095 over same-width shuffled indicators; both prespecified contrasts have positive multiplicity-adjusted intervals. However, a support-trained L1 mask-interaction logistic baseline attains loss 0.193, only 0.009 above the oracle. A separate all-zero diagnostic localizes information loss to TabICL preprocessing; partial-zero controls do not reproduce its large failure. A second frozen protocol evaluates six real-covariate datasets in 1,440 cells with 128 labels. Under imposed outcome-associated missingness, dataset-balanced TabPFN gains are small with intervals including zero, whereas logistic regression benefits in the high-missingness condition. These findings support a version- and mechanism-specific representation effect and limit the case for a new adapter. The real-covariate intervention does not establish natural-missingness, clinical, or universal benefit; contemporary-checkpoint access remains unresolved.
 \end{abstract}
 
 \section{Question and scope}
@@ -75,7 +75,11 @@ where positive $G$ favors indicators. Synthetic expected log-loss uses the exact
 \end{equation}
 We report raw losses, oracle headroom, and task-level uncertainty. A headroom fraction is reported only when its denominator exceeds $10^{-4}$; negative effects remain visible. Queries within a task do not become independent experimental replicates. The first confirmation protocol was committed before evaluation and used twenty fresh draws, seeds 60000--60019. Two prespecified TabPFN v2 contrasts at $\gamma=0.9$ use 97.5\% two-sided paired $t$ intervals, giving nominal 95\% simultaneous coverage by Bonferroni. Success requires both lower bounds positive and a native-to-indicator mean gain of at least 0.01 nats. Gamma-zero and other backbones are descriptive controls. No outcome-based stopping or selection was used.
 
-Follow-ups vary label budgets, missingness rates, interactions, and values near imputation constants. A predeclared panel of six real-covariate datasets will receive imposed observation mechanisms, with original and imposed masks tracked separately. This limited panel cannot establish universal performance.
+Follow-ups vary label budgets, missingness rates, interactions, and values near imputation constants. The real-covariate protocol fixes six public UCI binary datasets: Wisconsin Diagnostic, Ionosphere, Banknote Authentication, Spambase, Sonar, and Statlog Heart~\cite{wdbc,ionosphere,banknote,spambase,sonar,heart}. Heart retains five continuous features. Exact $(X,y)$ duplicates are removed with multiplicities retained; identical feature vectors, including conflicting labels, share groups. Provided source identifiers also constrain grouping and are excluded from predictors. The resulting 6,955 rows enter five group-isolated outer folds per dataset. Each fold uses exactly 128 stratified support labels and at most 1,024 held-out queries. These are within-dataset tests; unavailable acquisition groups remain a limitation.
+
+Native masks are verified absent in these datasets. We separately save an imposed mask with baseline rate $r\in\{0.1,0.5\}$. One active column is chosen per fold by seeded randomness without inspecting performance; its missing probability is $r[1+\gamma(2y-1)]$, for $\gamma\in\{0,0.8\}$, while other columns have rate $r$. This retrospective intervention uses query labels only in the evaluator's mask generator. The predictor receives the resulting observation, never query targets or the active-column identity. Shared uniform streams pair conditions; original values, native masks, imposed masks, and row/group identities remain saved.
+
+The panel compares TabPFN v2, TabICLv2, XGBoost and generic imputed/scaled logistic regression under the same three representations. Logistic regularization is chosen inside a support-only three-fold stratified group CV pipeline. The complete protocol, runner source and input hashes were committed before any panel scores. Empirical clipped log-loss, Brier score and AUROC are retained; there is no real-data oracle. Within each dataset we average paired fold losses using query counts, then give each of the six datasets equal weight. Nominal unadjusted 95\% $t$ intervals use six dataset effects, not thirty overlapping folds or individual rows. This fixed, nonrepresentative panel cannot establish universal or natural-missingness performance.
 
 \section{Initial evidence}
 \subsection{Replicated CPU diagnostic}
@@ -152,14 +156,72 @@ The TabPFN zero-signal native-to-indicator effect is $-0.00254$ [$-0.00545$, 0.0
 
 An independent audit recomputed both primary intervals and verified all forty saved task files: reserved seeds, disjoint context/query identifiers, native NaN/mask alignment and the exact query posterior. Predictions, source/checkpoint/environment identities and configuration hashes remain saved. The confirmation protocol and decision are separate from development reports. These seeds are now consumed for this panel; changed configurations cannot treat the same panel as untouched confirmation.
 
+\section{Strong operational baselines}
+After the frozen confirmation, a descriptive follow-up evaluates six CPU methods on its forty saved tasks, producing 240 saved predictions. Each operational method uses the identical 256 support labels and query observations. Regularization is selected by support-only three-fold cross-validation and the final predictor refits the full context. The interaction logistic models use $U$, all individual masks, all mask pairs and their interactions with $U$; they do not receive the generator's active columns, sign, true signal strength or query targets. Query targets and oracle probabilities enter scoring only after predictions are saved. A native-value/indicator histogram boosting baseline supplies a generic nonlinear comparator.
+
+At $\gamma=0.9$, the L1 interaction logistic model has expected loss 0.19336, only 0.00893 above the exact oracle. It descriptively improves over indicator-augmented TabPFN v2 by 0.01595 [0.00662, 0.02527] nats and over TabICLv2 by 0.01053 [0.00357, 0.01750]. These follow-up intervals are unadjusted and do not constitute a new blind confirmation. The fitted-base sparse mixture estimates its base probabilities using a support-fitted $U$ logistic model and uses a declared sparse mask-term/gamma prior. It does not receive the true active term or gamma. Table~\ref{tab:strong} summarizes the operational comparisons.
+
+\begin{table}[t]
+\centering\small
+\caption{Post-confirmation descriptive CPU follow-up, twenty tasks per signal level. All operational methods use the same 256 labels. Oracle losses are 0.61912 at zero signal and 0.18443 at high signal.}
+\label{tab:strong}
+\begin{tabular}{@{}lrr@{}}\toprule
+Operational method & $\gamma=0$ & $\gamma=0.9$\\\midrule
+$U$ logistic, context CV & 0.62348 & 0.62531\\
+L1 mask-interaction logistic, context CV & 0.64415 & 0.19336\\
+L2 mask-interaction logistic, context CV & 0.64493 & 0.21123\\
+Sparse mixture, fitted base & 0.62348 & 0.20229\\
+Native/indicator histogram boosting & 0.83326 & 0.28386\\\bottomrule
+\end{tabular}
+\end{table}
+
+The sparse-mixture degree/gamma prior supplies a structural assumption that is reported explicitly. A separate mixture using the true $\beta=0.8$ is a parameter-informed reference and is excluded from the fair operational pool. At zero signal, the interaction logistic models lose to the $U$-only baseline, retaining a finite-label tradeoff rather than an unconditional indicator recommendation. The strong simple baseline leaves little oracle headroom in this family, so substantial adapter training remains inactive pending evidence beyond these comparisons.
+
+\section{Frozen real-covariate panel}
+All six declared datasets and thirty grouped outer folds completed, producing 1,440 cells under the committed protocol. Every predictor receives the same 128 support labels, held-out queries and realized observation masks within a condition. No datasets were replaced or models tuned after panel scores. Independent reconstruction verifies all 120 episodes, input/source identities, mask seeds and distributions, saved probability row identities, empirical log-loss, Brier scores and AUROC. All 48 paired dataset-level contrasts and six-unit intervals reproduce to numerical precision; no fit/predict warnings were recorded.
+
+Table~\ref{tab:realpanel} shows every native-to-indicator panel contrast, including negative results. At $\gamma=0.8$, TabPFN v2 gains 0.00964 nats at $r=0.1$ and 0.00382 at $r=0.5$; both six-dataset intervals include zero. TabICLv2 effects are near zero or negative. These outcomes provide no clear dataset-balanced TFM gain on this fixed single-active-mask panel, while leaving uncertainty about smaller effects and untested settings. They do not refute the confirmed pairwise synthetic result: the observation mechanism, covariates and label budget differ.
+
+\begin{table}[t]
+\centering\small
+\caption{Frozen real-covariate panel: native minus true-indicator empirical log-loss, in nats. Positive gains favor indicators. Each of six datasets receives equal weight after query-weighted averaging of five paired folds. Intervals are descriptive, unadjusted nominal 95\% $t$ intervals over six dataset effects.}
+\label{tab:realpanel}
+\begin{tabular}{@{}rrlrr@{}}\toprule
+$r$ & $\gamma$ & Predictor & Gain & 95\% interval\\\midrule
+0.1 & 0.0 & TabPFN v2 & $-0.00205$ & $[-0.01495,0.01086]$\\
+0.1 & 0.0 & TabICLv2 & $-0.00307$ & $[-0.01591,0.00977]$\\
+0.1 & 0.0 & XGBoost & $0.00000$ & $[0.00000,0.00000]$\\
+0.1 & 0.0 & Logistic & $-0.02067$ & $[-0.04213,0.00080]$\\
+0.1 & 0.8 & TabPFN v2 & $0.00964$ & $[-0.01014,0.02943]$\\
+0.1 & 0.8 & TabICLv2 & $0.00034$ & $[-0.01490,0.01558]$\\
+0.1 & 0.8 & XGBoost & $0.00000$ & $[0.00000,0.00000]$\\
+0.1 & 0.8 & Logistic & $-0.00052$ & $[-0.02636,0.02531]$\\
+0.5 & 0.0 & TabPFN v2 & $-0.00947$ & $[-0.02187,0.00293]$\\
+0.5 & 0.0 & TabICLv2 & $-0.00982$ & $[-0.02613,0.00649]$\\
+0.5 & 0.0 & XGBoost & $0.00000$ & $[0.00000,0.00000]$\\
+0.5 & 0.0 & Logistic & $-0.03373$ & $[-0.06461,-0.00286]$\\
+0.5 & 0.8 & TabPFN v2 & $0.00382$ & $[-0.00221,0.00985]$\\
+0.5 & 0.8 & TabICLv2 & $-0.00417$ & $[-0.00968,0.00133]$\\
+0.5 & 0.8 & XGBoost & $0.00000$ & $[0.00000,0.00000]$\\
+0.5 & 0.8 & Logistic & $0.17141$ & $[0.07418,0.26864]$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Generic logistic regression uses mean-imputed covariates, so its explicit indicators can restore distinctions obscured by that transformation. At $r=0.5,\gamma=0.8$, its gain is 0.17141 [0.07418,0.26863] nats, but at $\gamma=0$ the same augmentation harms it by 0.03373 [0.00286,0.06461]. This is a finite-label tradeoff under imposed label association, not evidence for a neural adapter. XGBoost's native and true-indicator probabilities are bit-identical throughout; shuffled indicators can change its predictions. Full shuffled contrasts remain reported. At $r=0.1,\gamma=0.8$, TabICLv2's true-versus-shuffled gain is 0.01333 [0.00228,0.02437], despite its native-to-indicator interval including zero. A shuffled-view advantage alone therefore does not establish improvement over native inputs.
+
+A support-fitted SimpleImputer reference finds no observed active-column values equal to its fitted mean in either support or query rows, and no context-constant active column across all six datasets. Ionosphere has an inactive constant column; Spambase has rare inactive columns constant in some contexts. This panel therefore does not reproduce the deliberate informative-mask erasure in the all-zero diagnostic. The calculation uses saved float32 inputs and the declared imputer; it does not instrument every downstream model operation.
+
+The labels used to impose retrospective missingness are evaluator-only. Class-conditional probabilities on the active column are 0.02/0.18 at $r=0.1$ and 0.1/0.9 at $r=0.5$ when $\gamma=0.8$; realized rates and all original/imposed masks are retained. Native missingness is absent. Unknown acquisition groups, numerical feature selection, small context budgets, six nonrepresentative datasets and overlapping training folds limit interpretation. This is controlled evaluation on real covariates, not validation of a natural observation policy.
+
 \section{Related work and limitations}
 TabPFN v2 demonstrates strong small-data prediction~\cite{hollmann2025}. Contemporary versions already encode missingness: TabPFN-3.5 explicitly inherits missing and infiniteness indicators~\cite{priorlabs2026}. Thus, native indicator encoding is compatible with our question, and a blanket claim that foundation models discard masks would be incorrect.
 
 PFN-Flow studies Bayesian prediction under structural missingness, with guarantees restricted to its specified prior~\cite{liang2026}. TFM-Retouche uses a lightweight residual input adapter through a frozen backbone and a held-out identity guard~\cite{nguyen2026}. These precedents prevent treating missingness-specific training or frozen residual adaptation alone as methodological novelty.
 
-The specified pairwise TabPFN contrast has fresh-task confirmation; other families and real-covariate generalization remain pending. The CPU pilot is narrow, high-signal, and synthetic; its Monte Carlo variability does not describe generalization across real datasets. The zero-collision condition is deliberately extreme. A representation effect may disappear on current models or follow feature-count changes. TabPFN v3.5 inference was inaccessible because one-time license acceptance and a token were required; no checkpoint was substituted. Causal attribution to pretraining requires matched controlled training beyond this protocol. A neural branch requires held-out improvement beyond simple corrections and refreshed contexts with matched labels. Any online extension must predict before label release and retain original probabilities for scoring. This draft makes no acceptance, clinical, or universal-improvement claim.
+The specified pairwise TabPFN contrast has fresh-task confirmation; other synthetic families remain exploratory. The completed six-dataset imposed-missingness panel gives small, uncertain TFM gains rather than evidence of a general native-input limitation. The CPU pilot is narrow, high-signal, and synthetic; its Monte Carlo variability does not describe generalization across real datasets. The zero-collision condition is deliberately extreme. A representation effect may disappear on current models or follow feature-count changes. TabPFN v3.5 inference was inaccessible because one-time license acceptance and a token were required; no checkpoint was substituted. Causal attribution to pretraining requires matched controlled training beyond this protocol. A neural branch requires held-out improvement beyond simple corrections and refreshed contexts with matched labels. Any online extension must predict before label release and retain original probabilities for scoring. This draft makes no acceptance, clinical, or universal-improvement claim.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \small
 \bibitem{qu2026}
 J. Qu, D. Holzm\"uller, G. Varoquaux, and M. Le Morvan.
@@ -201,5 +263,27 @@ D. Nguyen, M. Jawhar, and N. Chesneau.
 TFM-Retouche: A Lightweight Input-Space Adapter for Tabular Foundation Models.
 arXiv:2605.06047v1, 2026.
 \url{https://arxiv.org/html/2605.06047v1}.
+\bibitem{wdbc}
+W. Wolberg, O. Mangasarian, N. Street, and W. Street.
+Breast Cancer Wisconsin (Diagnostic). UCI Machine Learning Repository, 1993.
+\url{https://doi.org/10.24432/C5DW2B}.
+\bibitem{ionosphere}
+V. Sigillito, S. Wing, L. Hutton, and K. Baker.
+Ionosphere. UCI Machine Learning Repository, 1989.
+\url{https://doi.org/10.24432/C5W01B}.
+\bibitem{banknote}
+V. Lohweg. Banknote Authentication. UCI Machine Learning Repository, 2012.
+\url{https://doi.org/10.24432/C55P57}.
+\bibitem{spambase}
+M. Hopkins, E. Reeber, G. Forman, and J. Suermondt.
+Spambase. UCI Machine Learning Repository, 1999.
+\url{https://doi.org/10.24432/C53G6X}.
+\bibitem{sonar}
+T. Sejnowski and R. Gorman.
+Connectionist Bench (Sonar, Mines vs. Rocks). UCI Machine Learning Repository, 1988.
+\url{https://doi.org/10.24432/C5T01Q}.
+\bibitem{heart}
+Statlog (Heart). UCI Machine Learning Repository.
+\url{https://doi.org/10.24432/C57303}.
 \end{thebibliography}
 \end{document}
