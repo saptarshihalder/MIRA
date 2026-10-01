@@ -1,0 +1,53 @@
+{
+  "frozen": true,
+  "version": 1,
+  "development_commit": "b6e8d8f",
+  "selection_basis": "Day3 pairwise TabPFN v2 effect beyond same-width shuffled indicators; selected on development only",
+  "primary": {
+    "model": "tabpfn:v2",
+    "family": "pairwise",
+    "gamma": 0.9,
+    "comparisons": [
+      "native_to_indicators",
+      "shuffled_to_indicators"
+    ],
+    "confidence_per_contrast": 0.975,
+    "multiplicity": "Two prespecified primary contrasts; Bonferroni familywise95% coverage",
+    "success": "Both lower confidence bounds >0 and native-to-indicator mean >=0.01 nats",
+    "practical_threshold_nats": 0.01
+  },
+  "secondary": "Gamma0 negative control and all TabICL/XGBoost contrasts are descriptive; no universal/model-selection claim",
+  "analysis": "Expected log-loss, paired Student-t intervals over20 independent tasks; preserve empirical loss, oracle gaps and failures; no early stop/selection/retry on outcomes",
+  "scope": "Synthetic Gaussian pairwise family at256 labels; no current-checkpoint or real-data claim",
+  "argv": [
+    "--models",
+    "tabpfn:v2",
+    "tabicl:v2",
+    "xgboost",
+    "--families",
+    "pairwise",
+    "--modes",
+    "native",
+    "native_indicators",
+    "native_shuffled",
+    "--gammas",
+    "0",
+    ".9",
+    "--seeds",
+    "20",
+    "--seed-start",
+    "60000",
+    "--protocol",
+    "confirmation",
+    "--context",
+    "256",
+    "--queries",
+    "1024",
+    "--ensembles",
+    "4",
+    "--value-distribution",
+    "gaussian",
+    "--missing-rate",
+    ".5"
+  ]
+}
