@@ -33,7 +33,7 @@ Daily autonomous continuation is scheduled at 10 AM IST through October 20, auto
 
 ## Frozen confirmation completed after Day 3
 
-Protocol 7ffb13d was committed/pushed before evaluation. The Gaussian pairwise panel completed 360/360 cells on 20 new tasks (seeds 60000–60019), including gamma 0 and .9 controls. The two prespecified TabPFN v2 primary contrasts passed: native-to-indicators .10389 [.07969,.12809] and shuffled-to-indicators .09499 [.06162,.12837] nats. Intervals are 97.5% each (Bonferroni familywise at least 95% for two primary contrasts); other results are descriptive. The mean-loss table and validated figure are in artifacts/reports/confirmation_pairwise_v1/ and artifacts/figures/confirmation_pairwise.png.
+Protocol 7ffb13d was committed/pushed before evaluation. The Gaussian pairwise panel completed 360/360 cells on 20 new tasks (seeds 60000–60019), including gamma 0 and .9 controls. The two prespecified TabPFN v2 primary contrasts passed: native-to-indicators .10389 [.07969,.12809] and shuffled-to-indicators .09499 [.06162,.12837] nats. Intervals are 97.5% each (Bonferroni nominal familywise 95% for two primary contrasts); other results are descriptive. The mean-loss table and validated figure are in artifacts/reports/confirmation_pairwise_v1/ and artifacts/figures/confirmation_pairwise.png.
 
 Independent analysis recomputed primary intervals and audited all 40 task files for seed identity, disjoint row IDs, NaN-mask alignment and exact query posterior. No fallback/failure occurred. Updated manuscript source is saved in the same editor; native compilation still reports an environment failure, so no PDF is verified.
 

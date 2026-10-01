@@ -35,7 +35,7 @@ Day 1–3 checkpoint: [development summary](artifacts/reports/day3_summary.md), 
 
 ## Confirmed scoped result
 
-A protocol committed before evaluation completed 360 confirmation cells. On 20 fresh Gaussian pairwise-mask tasks, TabPFN v2's indicator gain is **0.10389 nats** [0.07969,0.12809]; actual versus same-width shuffled gain is **0.09499** [0.06162,0.12837]. These 97.5% paired intervals cover the two prespecified primary contrasts with Bonferroni familywise coverage of at least 95%. Scope: 256 labels, named checkpoint, specified synthetic generator. No real-data or adapter claim.
+A protocol committed before evaluation completed 360 confirmation cells. On 20 fresh Gaussian pairwise-mask tasks, TabPFN v2's indicator gain is **0.10389 nats** [0.07969,0.12809]; actual versus same-width shuffled gain is **0.09499** [0.06162,0.12837]. These 97.5% paired intervals cover the two prespecified primary contrasts with Bonferroni nominal familywise coverage of 95%. Scope: 256 labels, named checkpoint, specified synthetic generator. No real-data or adapter claim.
 
 ![Fresh-task confirmation](artifacts/figures/confirmation_pairwise.png)
 

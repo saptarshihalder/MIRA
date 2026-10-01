@@ -2,7 +2,7 @@
 
 Primary decision: **passed**.
 
-Twenty fresh independent tasks; 360 cells including zero-signal and secondary-backbone controls. Two prespecified TabPFN v2 contrasts at gamma .9 use 97.5% two-sided task-level t intervals, giving Bonferroni familywise coverage of at least 95%. The plan was committed before evaluation. No outcome-based stopping or selection occurred.
+Twenty fresh independent tasks; 360 cells including zero-signal and secondary-backbone controls. Two prespecified TabPFN v2 contrasts at gamma .9 use 97.5% two-sided task-level t intervals, giving Bonferroni nominal familywise coverage of 95%. The plan was committed before evaluation. No outcome-based stopping or selection occurred.
 
 | Primary comparison | Gain (nats) | 97.5% interval |
 |---|---:|---| 
