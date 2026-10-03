@@ -1,0 +1,27 @@
+{
+  "observed_at_utc": "2026-10-03T11:35:46.106424+00:00",
+  "report_start": "2026-09-30",
+  "report_end_exclusive": "2026-10-04",
+  "method": "Modal billing report --show-resources --json and app list --json; BrowserOS cost-summary cross-check",
+  "provider_reported_all_apps_usd": 0.66106067,
+  "invoice_verified": false,
+  "changes": [
+    {
+      "run_id": "large_native_a100_v1",
+      "previous_provision": 4.0,
+      "provider_resource_cost": 0.03959208,
+      "retained_provision": 0.5
+    },
+    {
+      "run_id": "large_native_a100_v2",
+      "previous_provision": 1.5,
+      "provider_resource_cost": 0.0240377,
+      "retained_provision": 0.5
+    }
+  ],
+  "previous_provisions_usd": 16.95,
+  "provisions_after_usd": 12.45,
+  "reproduction_reserve_usd": 3,
+  "total_cap_usd": 20,
+  "rationale": "Stopped failures have no outstanding tasks and metered CPU, memory and GPU costs below $.04/$.025. Retain $.50 each (over ten times reported costs) for pending attribution; release only unused job-duration provision. Older calls remain conservatively reserved."
+}

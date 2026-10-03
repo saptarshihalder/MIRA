@@ -653,7 +653,7 @@
   {
     "run_id": "large_native_a100_v1",
     "phase": "large_native_a100",
-    "reserved_usd": 4.0,
+    "reserved_usd": 0.5,
     "status": "failed",
     "date": "2026-10-03",
     "model": "CUDA XGBoost plus native neural/linear/calibration controls",
@@ -678,12 +678,15 @@
     "app_id": "ap-29sdBNwyGIJse79T72LRNz",
     "failure": "Calibration baseline L-BFGS-B ABNORMAL line search; partial CUDA checkpoints/predictions preserved",
     "provider_display_usd": 0.04,
-    "provider_cost_status": "rounded/pending final invoice; full reservation retained"
+    "provider_cost_status": "Resource-level billing report reconciled; final invoice unverified; $.50 retained per stopped failure including pending-charge contingency",
+    "original_reserved_usd": 4.0,
+    "provider_reported_resource_cost_usd": 0.03959208,
+    "reconciliation_manifest": "artifacts/manifests/bridge_budget_reconciliation.json"
   },
   {
     "run_id": "large_native_a100_v2",
     "phase": "large_native_a100_repair",
-    "reserved_usd": 1.5,
+    "reserved_usd": 0.5,
     "status": "failed",
     "date": "2026-10-03",
     "model": "Same large native CUDA protocol; numerical calibration repair",
@@ -702,7 +705,10 @@
     "provider_charge_status": "Failed GPU startup counted; reservation retained",
     "app_id": "ap-FGMu0nPPjGLxIT7Ds63p70",
     "provider_display_usd": 0.02,
-    "provider_cost_status": "rounded/pending final invoice; full reservation retained"
+    "provider_cost_status": "Resource-level billing report reconciled; final invoice unverified; $.50 retained per stopped failure including pending-charge contingency",
+    "original_reserved_usd": 1.5,
+    "provider_reported_resource_cost_usd": 0.0240377,
+    "reconciliation_manifest": "artifacts/manifests/bridge_budget_reconciliation.json"
   },
   {
     "run_id": "large_native_a100_v3",
@@ -732,5 +738,26 @@
     "app_id": "ap-raKw2bH4mQsaJMMJXkJwvJ",
     "provider_display_usd": 0.05,
     "provider_cost_status": "rounded/pending final invoice; full reservation retained"
+  },
+  {
+    "run_id": "bridge_v1_a100",
+    "phase": "bridge_architecture_development",
+    "date": "2026-10-03T11:45:11.564708+00:00",
+    "status": "reserved",
+    "reserved_usd": 0.8,
+    "model": "Bridge20801/Generic20769/linear13 and separately trained ablations",
+    "protocol_sha256": "96a4cb0c77f9c0aaa80aee896e54f336ea896a4ce9c9c1fb6f81063e740662d9",
+    "gpu": "A100-40GB",
+    "max_calls": 1,
+    "retries": 0,
+    "timeout_seconds": 600,
+    "startup_timeout_seconds": 60,
+    "child_timeout_seconds": 540,
+    "cpu_physical_cores": 2,
+    "memory_gib": 8,
+    "actual_charged_usd": null,
+    "authorization": "Human requested implementing MIRA-Bridge and GPU wherever needed; totalcap20 and reproduction reserve3 preserved",
+    "maximum_resource_compute_usd": 0.4151,
+    "charge_status": "Worst-case resource plus >$.38 contingency reserved before deployment/dispatch"
   }
 ]
