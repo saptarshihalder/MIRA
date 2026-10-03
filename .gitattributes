@@ -1,5 +1,7 @@
 # Preserve exact bytes for source, locked environments and hash-verified artifacts.
 * -text
+# Generated JSON may use Windows CRLF; retain bytes while checking other whitespace.
+*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Whitespace in raw data, logs, vendored source and generated SVG is preserved.
 artifacts/** -whitespace
 experiments/** -whitespace
