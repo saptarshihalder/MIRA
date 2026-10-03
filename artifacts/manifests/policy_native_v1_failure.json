@@ -1,0 +1,10 @@
+{
+  "phase": "policy_native_v1_cpu",
+  "date": "2026-10-03",
+  "status": "failed",
+  "exit_code": 1,
+  "paid_usd": 0,
+  "reason": "Support-CV baseline L-BFGS stopped at150iterations; preserve incomplete predictions and originalsource",
+  "completed_episode_files": 2,
+  "scope": "Failure prevents a fullnative score claim; newGPU native protocol has separately frozencontrols"
+}

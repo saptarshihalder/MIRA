@@ -1,0 +1,43 @@
+{
+  "version": "user_authorized_policy_native_gpu_v1",
+  "authorization": "October3 user explicitly requests real GPU viaColabPro orModal after the failedCPU gate; CUDA engineering/native-training feasibility only",
+  "raw_csv_sha256": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97",
+  "pretrained_sha256": "e8f8554ef6684b27baec660690c237e3c132155145b918e37c842466d57d887d",
+  "backbone_labels": 4096,
+  "source_labels": 128,
+  "target_labels": 64,
+  "queries": 256,
+  "train_episodes": 32,
+  "validation_episodes": 16,
+  "development_episodes": 32,
+  "epochs": 100,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "training_seed": 1955,
+  "cv_seed": 1952,
+  "guard_grid": [
+    0.0,
+    0.01,
+    0.03,
+    0.05,
+    0.1
+  ],
+  "paid_phase_cap_usd": 0.5,
+  "max_calls": 1,
+  "timeout_seconds": 900,
+  "retries": 0,
+  "checkpoint": "fixed final epoch; no development-label selection",
+  "partitions": "source60%/validation20%/development20% by label-independent hashed patient order; one eligible encounter perpatient; sourcefit/context/meta-train disjoint",
+  "primary_model": "native_finetuned",
+  "scope": "CPU gates remain failed; separate user-requested CUDA native-training development, no confirmation/safety/novelty claim",
+  "file_sha256": {
+    "experiments/policy_adapter_v1/pilot.py": "bb4785fadf2a3c9173ce68d3883031ea1116bdac83e89460f73d8590d8d77546",
+    "experiments/policy_adapter_v1/mixture.py": "1dbc5c2041bd11e5eb8e98ff1849c51b7b0a59920060f3c1e7deff7d09006be0",
+    "experiments/policy_adapter_v1/native.py": "bfb1ced2d9819bc2f4f14caa20dc6f5ee4158da72c13b6fe436fe239432443ec",
+    "experiments/policy_adapter_v1/gpu_native.py": "b8c25382e47f6df074911f06065d8e5f0a3c613fee69259cbc4fc2fd78b8ea90",
+    "infra/modal_policy_gpu.py": "d9cb29267cc6800e34a8cc49b334620fd613d6132e2d276886195a1b2bd74bab",
+    "infra/modal_mechanism.py": "47c59d7025fbfe85d5c6eab92fb9390afec70a731730ee19f4bcdb8d9884848e",
+    "artifacts/reports/policy_mixture_v1/neural_mixture.npz": "e8f8554ef6684b27baec660690c237e3c132155145b918e37c842466d57d887d",
+    "artifacts/runs/diabetes_native_raw/diabetic_data.csv": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97"
+  }
+}
