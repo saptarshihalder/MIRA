@@ -1,0 +1,2164 @@
+{
+  "scope": "Post-development diagnostic on used query outcomes; no model/threshold/label-boundary change",
+  "rows": [
+    {
+      "task": "road_ksi",
+      "initialization": 760001,
+      "group": "group14",
+      "frozen_nll": 0.6598920949844246,
+      "target_platt_nll": 0.6519483604878096,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.6595740359668935,
+          "hard_nll": 0.6598920947742035,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.659830804639794,
+          "hard_nll": 0.6598920947742035,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.6595808572644959,
+          "hard_nll": 0.6598920947742035,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760001,
+      "group": "group34",
+      "frozen_nll": 0.5423665234404715,
+      "target_platt_nll": 0.5459480171590169,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.5423850981596281,
+          "hard_nll": 0.5423665226706987,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.5423752389755047,
+          "hard_nll": 0.5423665226706987,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.5423851053024932,
+          "hard_nll": 0.5423665226706987,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760001,
+      "group": "group4",
+      "frozen_nll": 0.6434205499126295,
+      "target_platt_nll": 0.6393476928197808,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.6432093323899197,
+          "hard_nll": 0.6434205499086931,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.6433841279358186,
+          "hard_nll": 0.6434205499086931,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.6432163611763926,
+          "hard_nll": 0.6434205499086931,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760001,
+      "group": "group44",
+      "frozen_nll": 0.573185131800942,
+      "target_platt_nll": 0.57688230551183,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.5729067763120298,
+          "hard_nll": 0.5731851317607202,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.5731196524217214,
+          "hard_nll": 0.5731851317607202,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.5729053179061567,
+          "hard_nll": 0.5731851317607202,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760001,
+      "group": "group54",
+      "frozen_nll": 0.5401990182460708,
+      "target_platt_nll": 0.5400616479006958,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.5400140531382509,
+          "hard_nll": 0.5401173530606104,
+          "accepted_branches": 1,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.5401654544419221,
+          "hard_nll": 0.5401990188931727,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.5400165522567967,
+          "hard_nll": 0.540118754157916,
+          "accepted_branches": 1,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760001,
+      "group": "group99",
+      "frozen_nll": 0.7201012261863162,
+      "target_platt_nll": 0.6751997630588651,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.7192151055273533,
+          "hard_nll": 0.7192151055273533,
+          "accepted_branches": 2,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.7196169615518881,
+          "hard_nll": 0.7196169615518881,
+          "accepted_branches": 2,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.7192063214768719,
+          "hard_nll": 0.7192063214768719,
+          "accepted_branches": 2,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760002,
+      "group": "group14",
+      "frozen_nll": 0.6598920949844246,
+      "target_platt_nll": 0.6519483604878096,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.6596371467869233,
+          "hard_nll": 0.6598920947742035,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.659829794001911,
+          "hard_nll": 0.6598920947742035,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.6596437060933398,
+          "hard_nll": 0.6598920947742035,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760002,
+      "group": "group34",
+      "frozen_nll": 0.5423665234404715,
+      "target_platt_nll": 0.5459480171590169,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.542385576644186,
+          "hard_nll": 0.5423665226706987,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.5423753722173484,
+          "hard_nll": 0.5423665226706987,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.542384527663402,
+          "hard_nll": 0.5423665226706987,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760002,
+      "group": "group4",
+      "frozen_nll": 0.6434205499126295,
+      "target_platt_nll": 0.6393476928197808,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.6432562194025641,
+          "hard_nll": 0.6434205499086931,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.6433834720329352,
+          "hard_nll": 0.6434205499086931,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.6432609918473553,
+          "hard_nll": 0.6434205499086931,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760002,
+      "group": "group44",
+      "frozen_nll": 0.573185131800942,
+      "target_platt_nll": 0.57688230551183,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.5728476304996885,
+          "hard_nll": 0.5731851317607202,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.5731196032441088,
+          "hard_nll": 0.5731851317607202,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.5728416801841933,
+          "hard_nll": 0.5731851317607202,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760002,
+      "group": "group54",
+      "frozen_nll": 0.5401990182460708,
+      "target_platt_nll": 0.5400616479006958,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.5399525438706132,
+          "hard_nll": 0.5400951305712735,
+          "accepted_branches": 1,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.5401658837974874,
+          "hard_nll": 0.5401990188931727,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.5399574325099955,
+          "hard_nll": 0.5400980225053572,
+          "accepted_branches": 1,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760002,
+      "group": "group99",
+      "frozen_nll": 0.7201012261863162,
+      "target_platt_nll": 0.6751997630588651,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.7191840281246479,
+          "hard_nll": 0.7191840281246479,
+          "accepted_branches": 2,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.7196157188240995,
+          "hard_nll": 0.7196157188240995,
+          "accepted_branches": 2,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.7192201157121884,
+          "hard_nll": 0.7192201157121884,
+          "accepted_branches": 2,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760003,
+      "group": "group14",
+      "frozen_nll": 0.6598920949844246,
+      "target_platt_nll": 0.6519483604878096,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.6596309383206737,
+          "hard_nll": 0.6598920947742035,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.6598328608636292,
+          "hard_nll": 0.6598920947742035,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.6596350483912488,
+          "hard_nll": 0.6598920947742035,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760003,
+      "group": "group34",
+      "frozen_nll": 0.5423665234404715,
+      "target_platt_nll": 0.5459480171590169,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.5423824131659036,
+          "hard_nll": 0.5423665226706987,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.5423747569220863,
+          "hard_nll": 0.5423665226706987,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.5423816057529349,
+          "hard_nll": 0.5423665226706987,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760003,
+      "group": "group4",
+      "frozen_nll": 0.6434205499126295,
+      "target_platt_nll": 0.6393476928197808,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.6432462810295133,
+          "hard_nll": 0.6434205499086931,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.6433852995209897,
+          "hard_nll": 0.6434205499086931,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.64324980971571,
+          "hard_nll": 0.6434205499086931,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760003,
+      "group": "group44",
+      "frozen_nll": 0.573185131800942,
+      "target_platt_nll": 0.57688230551183,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.5728800896309125,
+          "hard_nll": 0.5731851317607202,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.5731231681580895,
+          "hard_nll": 0.5731851317607202,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.5728562944906294,
+          "hard_nll": 0.5731851317607202,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760003,
+      "group": "group54",
+      "frozen_nll": 0.5401990182460708,
+      "target_platt_nll": 0.5400616479006958,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.5399824185762276,
+          "hard_nll": 0.5401018735258066,
+          "accepted_branches": 1,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.5401665095596174,
+          "hard_nll": 0.5401990188931727,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.539978319995553,
+          "hard_nll": 0.5401006808551113,
+          "accepted_branches": 1,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "road_ksi",
+      "initialization": 760003,
+      "group": "group99",
+      "frozen_nll": 0.7201012261863162,
+      "target_platt_nll": 0.6751997630588651,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.7192590877751088,
+          "hard_nll": 0.7192590877751088,
+          "accepted_branches": 2,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.7196506073005642,
+          "hard_nll": 0.7196506073005642,
+          "accepted_branches": 2,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.7192788158885522,
+          "hard_nll": 0.7192788158885522,
+          "accepted_branches": 2,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760001,
+      "group": "group19",
+      "frozen_nll": 0.34420406165459705,
+      "target_platt_nll": 0.3434980809510636,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.34526814712565274,
+          "hard_nll": 0.34420406195763664,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.34435841802533784,
+          "hard_nll": 0.34420406195763664,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3468051376615541,
+          "hard_nll": 0.34420406195763664,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760001,
+      "group": "group24",
+      "frozen_nll": 0.38578200587622735,
+      "target_platt_nll": 0.3858699573527653,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3880575312005244,
+          "hard_nll": 0.38578200536680857,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3870022731817597,
+          "hard_nll": 0.38578200536680857,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.38804680198741426,
+          "hard_nll": 0.38578200536680857,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760001,
+      "group": "group29",
+      "frozen_nll": 0.37630133559036827,
+      "target_platt_nll": 0.3775800270038101,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.37671428752724445,
+          "hard_nll": 0.37630133515120345,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.37651941926289434,
+          "hard_nll": 0.37630133515120345,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.37759387110643994,
+          "hard_nll": 0.37630133515120345,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760001,
+      "group": "group34",
+      "frozen_nll": 0.37848138259529884,
+      "target_platt_nll": 0.38023142005979776,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3808243784285565,
+          "hard_nll": 0.37848138260524977,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.38013496992969364,
+          "hard_nll": 0.37848138260524977,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3801304174295329,
+          "hard_nll": 0.37848138260524977,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760001,
+      "group": "group39",
+      "frozen_nll": 0.3794743841964073,
+      "target_platt_nll": 0.3782093114574372,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3812546126783652,
+          "hard_nll": 0.3794743844571109,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3807452907124035,
+          "hard_nll": 0.3794743844571109,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.38078393581950354,
+          "hard_nll": 0.3794743844571109,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760001,
+      "group": "group4",
+      "frozen_nll": 0.39308152410355235,
+      "target_platt_nll": 0.3939502055487397,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.39558610349180057,
+          "hard_nll": 0.39308152344494074,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.39561395395043475,
+          "hard_nll": 0.39308152344494074,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.39651899603884133,
+          "hard_nll": 0.39308152344494074,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760001,
+      "group": "group44",
+      "frozen_nll": 0.42797984541788964,
+      "target_platt_nll": 0.42723921302511086,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.42996281147972776,
+          "hard_nll": 0.42797984607494133,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.4289202450153877,
+          "hard_nll": 0.42797984607494133,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.43579740070723166,
+          "hard_nll": 0.42797984607494133,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760001,
+      "group": "group49",
+      "frozen_nll": 0.4334416871385772,
+      "target_platt_nll": 0.4375365104620177,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.4351351219683703,
+          "hard_nll": 0.43344168694210194,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.43461524518283023,
+          "hard_nll": 0.43344168694210194,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.4367501703771823,
+          "hard_nll": 0.43344168694210194,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760001,
+      "group": "group54",
+      "frozen_nll": 0.4156267521604737,
+      "target_platt_nll": 0.41623802642787017,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.4192391970625764,
+          "hard_nll": 0.4156267526662108,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.4186978770760247,
+          "hard_nll": 0.4156267526662108,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.4178940869655261,
+          "hard_nll": 0.4156267526662108,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760001,
+      "group": "group9",
+      "frozen_nll": 0.3983496575287475,
+      "target_platt_nll": 0.40243449948751453,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.4005550724020527,
+          "hard_nll": 0.39834965702392655,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3992043116370094,
+          "hard_nll": 0.39834965702392655,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.4029372271299212,
+          "hard_nll": 0.39834965702392655,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760001,
+      "group": "group19",
+      "frozen_nll": 0.31478272153160763,
+      "target_platt_nll": 0.31492411211931187,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.31702650369712815,
+          "hard_nll": 0.3147827213348859,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.31588887099334106,
+          "hard_nll": 0.3147827213348859,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3160471263215153,
+          "hard_nll": 0.3147827213348859,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760001,
+      "group": "group24",
+      "frozen_nll": 0.3542320248324218,
+      "target_platt_nll": 0.3541075222788032,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.35457782558031514,
+          "hard_nll": 0.35423202488025674,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3547145108708233,
+          "hard_nll": 0.35423202488025674,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3548413533723669,
+          "hard_nll": 0.35423202488025674,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760001,
+      "group": "group29",
+      "frozen_nll": 0.3122232512715156,
+      "target_platt_nll": 0.3137168624283477,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.31483813284482376,
+          "hard_nll": 0.3122232512318591,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3146247553939783,
+          "hard_nll": 0.3122232512318591,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3139944799226444,
+          "hard_nll": 0.3122232512318591,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760001,
+      "group": "group34",
+      "frozen_nll": 0.30842974363268144,
+      "target_platt_nll": 0.3082311738914864,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3108833264319138,
+          "hard_nll": 0.30842974337775375,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.31108091750064387,
+          "hard_nll": 0.30842974337775375,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.30896727947079916,
+          "hard_nll": 0.30842974337775375,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760001,
+      "group": "group39",
+      "frozen_nll": 0.3781953129852787,
+      "target_platt_nll": 0.377993372237571,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3791179747486114,
+          "hard_nll": 0.3781953127482883,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3797866642112597,
+          "hard_nll": 0.3781953127482883,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.378131022983969,
+          "hard_nll": 0.3781953127482883,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760001,
+      "group": "group4",
+      "frozen_nll": 0.3615526986111559,
+      "target_platt_nll": 0.3620753872923693,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3664514994485232,
+          "hard_nll": 0.3615526981145498,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3654328666386408,
+          "hard_nll": 0.3615526981145498,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3650075267499684,
+          "hard_nll": 0.3615526981145498,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760001,
+      "group": "group44",
+      "frozen_nll": 0.33409068709166134,
+      "target_platt_nll": 0.34798657808138106,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3359755530001477,
+          "hard_nll": 0.3340906870626313,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.33614577367951093,
+          "hard_nll": 0.3340906870626313,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.33717873400309106,
+          "hard_nll": 0.3340906870626313,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760001,
+      "group": "group49",
+      "frozen_nll": 0.25910275892542967,
+      "target_platt_nll": 0.25723945501260137,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.257549719181,
+          "hard_nll": 0.25910275837557806,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.2580046334030975,
+          "hard_nll": 0.25910275837557806,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.25792726124165377,
+          "hard_nll": 0.25910275837557806,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760001,
+      "group": "group54",
+      "frozen_nll": 0.4076610679078362,
+      "target_platt_nll": 0.41124667222566513,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.4122732960783112,
+          "hard_nll": 0.4076610679109523,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.41252536206903306,
+          "hard_nll": 0.4076610679109523,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.4099652020579577,
+          "hard_nll": 0.4076610679109523,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760001,
+      "group": "group9",
+      "frozen_nll": 0.29302086395130167,
+      "target_platt_nll": 0.29209551160311276,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.2926444752309603,
+          "hard_nll": 0.2930208637773467,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.29205507685677323,
+          "hard_nll": 0.2930208637773467,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.2931904643396474,
+          "hard_nll": 0.2930208637773467,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760002,
+      "group": "group19",
+      "frozen_nll": 0.34420406165459705,
+      "target_platt_nll": 0.3434980809510636,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3450868230785113,
+          "hard_nll": 0.34420406195763664,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.34450957517748537,
+          "hard_nll": 0.34420406195763664,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.34647737130266815,
+          "hard_nll": 0.34420406195763664,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760002,
+      "group": "group24",
+      "frozen_nll": 0.38578200587622735,
+      "target_platt_nll": 0.3858699573527653,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.387382996137035,
+          "hard_nll": 0.38578200536680857,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3873462516527515,
+          "hard_nll": 0.38578200536680857,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.38739855607739504,
+          "hard_nll": 0.38578200536680857,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760002,
+      "group": "group29",
+      "frozen_nll": 0.37630133559036827,
+      "target_platt_nll": 0.3775800270038101,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3767513008394553,
+          "hard_nll": 0.37630133515120345,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3765014460306857,
+          "hard_nll": 0.37630133515120345,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3773008158096597,
+          "hard_nll": 0.37630133515120345,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760002,
+      "group": "group34",
+      "frozen_nll": 0.37848138259529884,
+      "target_platt_nll": 0.38023142005979776,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.37993586032367355,
+          "hard_nll": 0.37848138260524977,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.38091450297538687,
+          "hard_nll": 0.37848138260524977,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3799034566208932,
+          "hard_nll": 0.37848138260524977,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760002,
+      "group": "group39",
+      "frozen_nll": 0.3794743841964073,
+      "target_platt_nll": 0.3782093114574372,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.38122495572940995,
+          "hard_nll": 0.3794743844571109,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3810725034574557,
+          "hard_nll": 0.3794743844571109,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.380762813960169,
+          "hard_nll": 0.3794743844571109,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760002,
+      "group": "group4",
+      "frozen_nll": 0.39308152410355235,
+      "target_platt_nll": 0.3939502055487397,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.39561803640228266,
+          "hard_nll": 0.39308152344494074,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.39605137869260226,
+          "hard_nll": 0.39308152344494074,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3960730341551482,
+          "hard_nll": 0.39308152344494074,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760002,
+      "group": "group44",
+      "frozen_nll": 0.42797984541788964,
+      "target_platt_nll": 0.42723921302511086,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.4295420365291787,
+          "hard_nll": 0.42797984607494133,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.4289863166113008,
+          "hard_nll": 0.42797984607494133,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.4358009280135692,
+          "hard_nll": 0.42797984607494133,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760002,
+      "group": "group49",
+      "frozen_nll": 0.4334416871385772,
+      "target_platt_nll": 0.4375365104620177,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.4353335144595043,
+          "hard_nll": 0.43344168694210194,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.4348244873767467,
+          "hard_nll": 0.43344168694210194,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.43672932139281545,
+          "hard_nll": 0.43344168694210194,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760002,
+      "group": "group54",
+      "frozen_nll": 0.4156267521604737,
+      "target_platt_nll": 0.41623802642787017,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.4188470502516015,
+          "hard_nll": 0.4156267526662108,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.4189049480717545,
+          "hard_nll": 0.4156267526662108,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.4177114277338482,
+          "hard_nll": 0.4156267526662108,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760002,
+      "group": "group9",
+      "frozen_nll": 0.3983496575287475,
+      "target_platt_nll": 0.40243449948751453,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.4001428267634137,
+          "hard_nll": 0.39834965702392655,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.39983364482510236,
+          "hard_nll": 0.39834965702392655,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.402423016506898,
+          "hard_nll": 0.39834965702392655,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760002,
+      "group": "group19",
+      "frozen_nll": 0.31478272153160763,
+      "target_platt_nll": 0.31492411211931187,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3158413573014962,
+          "hard_nll": 0.3147827213348859,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.31605505481988927,
+          "hard_nll": 0.3147827213348859,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.31573751477268885,
+          "hard_nll": 0.3147827213348859,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760002,
+      "group": "group24",
+      "frozen_nll": 0.3542320248324218,
+      "target_platt_nll": 0.3541075222788032,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3544657519726919,
+          "hard_nll": 0.35423202488025674,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3550234621205871,
+          "hard_nll": 0.35423202488025674,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3548107897446825,
+          "hard_nll": 0.35423202488025674,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760002,
+      "group": "group29",
+      "frozen_nll": 0.3122232512715156,
+      "target_platt_nll": 0.3137168624283477,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.31398950894607114,
+          "hard_nll": 0.3122232512318591,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3149750322082225,
+          "hard_nll": 0.3122232512318591,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.313361659651451,
+          "hard_nll": 0.3122232512318591,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760002,
+      "group": "group34",
+      "frozen_nll": 0.30842974363268144,
+      "target_platt_nll": 0.3082311738914864,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3111295972627249,
+          "hard_nll": 0.30842974337775375,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3116487607009847,
+          "hard_nll": 0.30842974337775375,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.30895916778653865,
+          "hard_nll": 0.30842974337775375,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760002,
+      "group": "group39",
+      "frozen_nll": 0.3781953129852787,
+      "target_platt_nll": 0.377993372237571,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3792453759829594,
+          "hard_nll": 0.3781953127482883,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3805577529903549,
+          "hard_nll": 0.3781953127482883,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3780901728210797,
+          "hard_nll": 0.3781953127482883,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760002,
+      "group": "group4",
+      "frozen_nll": 0.3615526986111559,
+      "target_platt_nll": 0.3620753872923693,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.36557436178859387,
+          "hard_nll": 0.3615526981145498,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3655549394400114,
+          "hard_nll": 0.3615526981145498,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.36476041269069015,
+          "hard_nll": 0.3615526981145498,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760002,
+      "group": "group44",
+      "frozen_nll": 0.33409068709166134,
+      "target_platt_nll": 0.34798657808138106,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3356901796010643,
+          "hard_nll": 0.3340906870626313,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.33628819119078956,
+          "hard_nll": 0.3340906870626313,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.33699780831313264,
+          "hard_nll": 0.3340906870626313,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760002,
+      "group": "group49",
+      "frozen_nll": 0.25910275892542967,
+      "target_platt_nll": 0.25723945501260137,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.2577729438416666,
+          "hard_nll": 0.25910275837557806,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.2578678234371554,
+          "hard_nll": 0.25910275837557806,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.2579193072867663,
+          "hard_nll": 0.25910275837557806,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760002,
+      "group": "group54",
+      "frozen_nll": 0.4076610679078362,
+      "target_platt_nll": 0.41124667222566513,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.4121490083709999,
+          "hard_nll": 0.4076610679109523,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.4134146156809694,
+          "hard_nll": 0.4076610679109523,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.4096433846354364,
+          "hard_nll": 0.4076610679109523,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760002,
+      "group": "group9",
+      "frozen_nll": 0.29302086395130167,
+      "target_platt_nll": 0.29209551160311276,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.29253878738926764,
+          "hard_nll": 0.2930208637773467,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.29224224466710097,
+          "hard_nll": 0.2930208637773467,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.2930021677415845,
+          "hard_nll": 0.2930208637773467,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760003,
+      "group": "group19",
+      "frozen_nll": 0.34420406165459705,
+      "target_platt_nll": 0.3434980809510636,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.34481243413541907,
+          "hard_nll": 0.34420406195763664,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3443750838349681,
+          "hard_nll": 0.34420406195763664,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.34656712333310685,
+          "hard_nll": 0.34420406195763664,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760003,
+      "group": "group24",
+      "frozen_nll": 0.38578200587622735,
+      "target_platt_nll": 0.3858699573527653,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3876793274708174,
+          "hard_nll": 0.38578200536680857,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.38697827357071196,
+          "hard_nll": 0.38578200536680857,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3877611557877265,
+          "hard_nll": 0.38578200536680857,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760003,
+      "group": "group29",
+      "frozen_nll": 0.37630133559036827,
+      "target_platt_nll": 0.3775800270038101,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.37646263457464474,
+          "hard_nll": 0.37630133515120345,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.37641725225504535,
+          "hard_nll": 0.37630133515120345,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3775767787500992,
+          "hard_nll": 0.37630133515120345,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760003,
+      "group": "group34",
+      "frozen_nll": 0.37848138259529884,
+      "target_platt_nll": 0.38023142005979776,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3806792885359263,
+          "hard_nll": 0.37848138260524977,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.3800535884438022,
+          "hard_nll": 0.37848138260524977,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.38026882256827443,
+          "hard_nll": 0.37848138260524977,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760003,
+      "group": "group39",
+      "frozen_nll": 0.3794743841964073,
+      "target_platt_nll": 0.3782093114574372,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.38075581747306486,
+          "hard_nll": 0.3794743844571109,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.38050722012800997,
+          "hard_nll": 0.3794743844571109,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3811964242439682,
+          "hard_nll": 0.3794743844571109,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760003,
+      "group": "group4",
+      "frozen_nll": 0.39308152410355235,
+      "target_platt_nll": 0.3939502055487397,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3952230386116391,
+          "hard_nll": 0.39308152344494074,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.39522399848971923,
+          "hard_nll": 0.39308152344494074,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3962595428458466,
+          "hard_nll": 0.39308152344494074,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760003,
+      "group": "group44",
+      "frozen_nll": 0.42797984541788964,
+      "target_platt_nll": 0.42723921302511086,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.42918045711522934,
+          "hard_nll": 0.42797984607494133,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.4286706757010109,
+          "hard_nll": 0.42797984607494133,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.43638718318087777,
+          "hard_nll": 0.42797984607494133,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760003,
+      "group": "group49",
+      "frozen_nll": 0.4334416871385772,
+      "target_platt_nll": 0.4375365104620177,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.43442599370668794,
+          "hard_nll": 0.43344168694210194,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.4343292685378187,
+          "hard_nll": 0.43344168694210194,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.43721081459338795,
+          "hard_nll": 0.43344168694210194,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760003,
+      "group": "group54",
+      "frozen_nll": 0.4156267521604737,
+      "target_platt_nll": 0.41623802642787017,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.41890223415585376,
+          "hard_nll": 0.4156267526662108,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.41853583194171023,
+          "hard_nll": 0.4156267526662108,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.4178025388554132,
+          "hard_nll": 0.4156267526662108,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_asthma3",
+      "initialization": 760003,
+      "group": "group9",
+      "frozen_nll": 0.3983496575287475,
+      "target_platt_nll": 0.40243449948751453,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.399507216802379,
+          "hard_nll": 0.39834965702392655,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.39897581028631823,
+          "hard_nll": 0.39834965702392655,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.40258790258149213,
+          "hard_nll": 0.39834965702392655,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760003,
+      "group": "group19",
+      "frozen_nll": 0.31478272153160763,
+      "target_platt_nll": 0.31492411211931187,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.31660862854773786,
+          "hard_nll": 0.3147827213348859,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.31593254503537294,
+          "hard_nll": 0.3147827213348859,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.31592084589186326,
+          "hard_nll": 0.3147827213348859,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760003,
+      "group": "group24",
+      "frozen_nll": 0.3542320248324218,
+      "target_platt_nll": 0.3541075222788032,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3544685113225562,
+          "hard_nll": 0.35423202488025674,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.35459238025479706,
+          "hard_nll": 0.35423202488025674,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.35501261956827557,
+          "hard_nll": 0.35423202488025674,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760003,
+      "group": "group29",
+      "frozen_nll": 0.3122232512715156,
+      "target_platt_nll": 0.3137168624283477,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.31453487756437604,
+          "hard_nll": 0.3122232512318591,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.314613536664067,
+          "hard_nll": 0.3122232512318591,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3134638775622596,
+          "hard_nll": 0.3122232512318591,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760003,
+      "group": "group34",
+      "frozen_nll": 0.30842974363268144,
+      "target_platt_nll": 0.3082311738914864,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.31093137784725744,
+          "hard_nll": 0.30842974337775375,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.31119969172776074,
+          "hard_nll": 0.30842974337775375,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3092486635516871,
+          "hard_nll": 0.30842974337775375,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760003,
+      "group": "group39",
+      "frozen_nll": 0.3781953129852787,
+      "target_platt_nll": 0.377993372237571,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.3792723366873583,
+          "hard_nll": 0.3781953127482883,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.37980197555060063,
+          "hard_nll": 0.3781953127482883,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3781663387966735,
+          "hard_nll": 0.3781953127482883,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760003,
+      "group": "group4",
+      "frozen_nll": 0.3615526986111559,
+      "target_platt_nll": 0.3620753872923693,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.36581106236486993,
+          "hard_nll": 0.3615526981145498,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.36513557090893656,
+          "hard_nll": 0.3615526981145498,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.365108860764875,
+          "hard_nll": 0.3615526981145498,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760003,
+      "group": "group44",
+      "frozen_nll": 0.33409068709166134,
+      "target_platt_nll": 0.34798657808138106,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.33591487078435156,
+          "hard_nll": 0.3340906870626313,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.33600786831078533,
+          "hard_nll": 0.3340906870626313,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.3374283254220535,
+          "hard_nll": 0.3340906870626313,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760003,
+      "group": "group49",
+      "frozen_nll": 0.25910275892542967,
+      "target_platt_nll": 0.25723945501260137,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.25782793480381405,
+          "hard_nll": 0.25910275837557806,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.2579927563505733,
+          "hard_nll": 0.25910275837557806,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.25789455175893483,
+          "hard_nll": 0.25910275837557806,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760003,
+      "group": "group54",
+      "frozen_nll": 0.4076610679078362,
+      "target_platt_nll": 0.41124667222566513,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.41252164535757563,
+          "hard_nll": 0.4076610679109523,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.412550485141435,
+          "hard_nll": 0.4076610679109523,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.40995140613898723,
+          "hard_nll": 0.4076610679109523,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    },
+    {
+      "task": "brfss_diabete4",
+      "initialization": 760003,
+      "group": "group9",
+      "frozen_nll": 0.29302086395130167,
+      "target_platt_nll": 0.29209551160311276,
+      "models": {
+        "query": {
+          "unguarded_nll": 0.29231691664017334,
+          "hard_nll": 0.2930208637773467,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "task_scalar": {
+          "unguarded_nll": 0.29197248284883603,
+          "hard_nll": 0.2930208637773467,
+          "accepted_branches": 0,
+          "branches": 2
+        },
+        "support_head": {
+          "unguarded_nll": 0.29308358570613025,
+          "hard_nll": 0.2930208637773467,
+          "accepted_branches": 0,
+          "branches": 2
+        }
+      }
+    }
+  ],
+  "summary": {
+    "brfss_asthma3": {
+      "query": {
+        "unguarded_nll": 0.39500303688201993,
+        "hard_nll": 0.39327226356901307,
+        "accepted_branches": 0
+      },
+      "task_scalar": {
+        "unguarded_nll": 0.39462746873447213,
+        "hard_nll": 0.39327226356901307,
+        "accepted_branches": 0
+      },
+      "support_head": {
+        "unguarded_nll": 0.3962485691178802,
+        "hard_nll": 0.39327226356901307,
+        "accepted_branches": 0
+      }
+    },
+    "brfss_diabete4": {
+      "query": {
+        "unguarded_nll": 0.333998111353978,
+        "hard_nll": 0.3323291128814102,
+        "accepted_branches": 0
+      },
+      "task_scalar": {
+        "unguarded_nll": 0.3341228867222111,
+        "hard_nll": 0.3323291128814102,
+        "accepted_branches": 0
+      },
+      "support_head": {
+        "unguarded_nll": 0.3334603970356468,
+        "hard_nll": 0.3323291128814102,
+        "accepted_branches": 0
+      }
+    },
+    "road_ksi": {
+      "query": {
+        "unguarded_nll": 0.612886043073391,
+        "hard_nll": 0.6130314153293193,
+        "accepted_branches": 9
+      },
+      "task_scalar": {
+        "unguarded_nll": 0.6130841825783063,
+        "hard_nll": 0.6131151800943899,
+        "accepted_branches": 6
+      },
+      "support_head": {
+        "unguarded_nll": 0.6128888257571283,
+        "hard_nll": 0.6130342004410525,
+        "accepted_branches": 9
+      }
+    }
+  }
+}

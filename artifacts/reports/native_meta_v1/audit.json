@@ -1,0 +1,203 @@
+{
+  "passed": true,
+  "scope": "Independent audit of used native family-transfer development; no confirmation claim",
+  "cells": 78,
+  "checkpoints": 18,
+  "initializations": [
+    760001,
+    760002,
+    760003
+  ],
+  "parameters_per_model": 370,
+  "updates_per_model": 500,
+  "family_separation_verified": true,
+  "freeze_verified_files": 140,
+  "prepared_input_hashes": 125,
+  "raw_replay_audit_sha256": "f9738115c3d0a8fe91f92f987a5594190d3770805487c36cf292babd72d79316",
+  "max_saved_metric_error": 0.0,
+  "max_checkpoint_prediction_error": 0.0,
+  "max_control_prediction_error": 0.0,
+  "decisions_replayed": true,
+  "task_means": {
+    "brfss_diabete4": {
+      "frozen": 0.3323291130740891,
+      "target_platt": 0.333961664717065,
+      "support_logistic": 0.41513983227366763,
+      "query": 0.3323291128814102,
+      "task_scalar": 0.3323291128814102,
+      "support_head": 0.3323291128814102,
+      "guarded_logistic": 0.3323291130740891,
+      "native_linear_converged": 0.3336782335252796,
+      "global_platt": 0.33230948852667136,
+      "global_simplex": 0.3321049330595752
+    },
+    "brfss_asthma3": {
+      "frozen": 0.3932722636262139,
+      "target_platt": 0.39427872517761264,
+      "support_logistic": 0.4360272050218718,
+      "query": 0.39327226356901307,
+      "task_scalar": 0.39327226356901307,
+      "support_head": 0.39327226356901307,
+      "guarded_logistic": 0.3932722636262139,
+      "native_linear_converged": 0.3930319711435854,
+      "global_platt": 0.3932413497819296,
+      "global_simplex": 0.3927972238250587
+    },
+    "road_ksi": {
+      "frozen": 0.6131940907618091,
+      "target_platt": 0.6048979644896664,
+      "support_logistic": 0.614293252458634,
+      "query": 0.6130314153293193,
+      "task_scalar": 0.6131151800943899,
+      "support_head": 0.6130342004410525,
+      "guarded_logistic": 0.6131940907618091,
+      "native_linear_converged": 0.6127459880550045,
+      "global_platt": 0.6130911325991186,
+      "global_simplex": 0.604697984615569
+    }
+  },
+  "task_brier": {
+    "brfss_diabete4": {
+      "frozen": 0.10368106739171062,
+      "target_platt": 0.10382115483540524,
+      "support_logistic": 0.125371988320108,
+      "query": 0.10368106735825311,
+      "task_scalar": 0.10368106735825311,
+      "support_head": 0.10368106735825311,
+      "guarded_logistic": 0.10368106739171062,
+      "native_linear_converged": 0.10404108396039065,
+      "global_platt": 0.10365763469417674,
+      "global_simplex": 0.10359294144679163
+    },
+    "brfss_asthma3": {
+      "frozen": 0.1197824805066679,
+      "target_platt": 0.11991693010883658,
+      "support_logistic": 0.1328133600948431,
+      "query": 0.11978248048979125,
+      "task_scalar": 0.11978248048979125,
+      "support_head": 0.11978248048979125,
+      "guarded_logistic": 0.1197824805066679,
+      "native_linear_converged": 0.11972170615532703,
+      "global_platt": 0.11975995258408825,
+      "global_simplex": 0.11961796892834346
+    },
+    "road_ksi": {
+      "frozen": 0.21087304896896278,
+      "target_platt": 0.20758301593406053,
+      "support_logistic": 0.211498429320423,
+      "query": 0.21080887580893004,
+      "task_scalar": 0.21084148483608012,
+      "support_head": 0.21081018665750315,
+      "guarded_logistic": 0.21087304896896278,
+      "native_linear_converged": 0.2109084252182208,
+      "global_platt": 0.21109598847060937,
+      "global_simplex": 0.20752444835185369
+    }
+  },
+  "initialization_nll": {
+    "brfss_diabete4": {
+      "760001": 0.3323291128814102,
+      "760002": 0.3323291128814102,
+      "760003": 0.3323291128814102
+    },
+    "brfss_asthma3": {
+      "760001": 0.393272263569013,
+      "760002": 0.393272263569013,
+      "760003": 0.393272263569013
+    },
+    "road_ksi": {
+      "760001": 0.6130327929503799,
+      "760002": 0.6130239096350395,
+      "760003": 0.6130375434025385
+    }
+  },
+  "gains": {
+    "brfss_diabete4": {
+      "frozen": 1.9267887285678853e-10,
+      "target_platt": 0.0016325518356548052,
+      "support_logistic": 0.08281071939225743,
+      "query": 0.0,
+      "task_scalar": 0.0,
+      "support_head": 0.0,
+      "guarded_logistic": 1.9267887285678853e-10,
+      "native_linear_converged": 0.0013491206438693837,
+      "global_platt": -1.9624354738845273e-05,
+      "global_simplex": -0.00022417982183497998
+    },
+    "brfss_asthma3": {
+      "frozen": 5.7200855163586084e-11,
+      "target_platt": 0.0010064616085995737,
+      "support_logistic": 0.04275494145285874,
+      "query": 0.0,
+      "task_scalar": 0.0,
+      "support_head": 0.0,
+      "guarded_logistic": 5.7200855163586084e-11,
+      "native_linear_converged": -0.00024029242542766838,
+      "global_platt": -3.091378708347525e-05,
+      "global_simplex": -0.000475039743954353
+    },
+    "road_ksi": {
+      "frozen": 0.00016267543248982275,
+      "target_platt": -0.00813345083965289,
+      "support_logistic": 0.0012618371293147135,
+      "query": 0.0,
+      "task_scalar": 8.376476507065966e-05,
+      "support_head": 2.785111733238921e-06,
+      "guarded_logistic": 0.00016267543248982275,
+      "native_linear_converged": -0.00028542727431479786,
+      "global_platt": 5.97172697993642e-05,
+      "global_simplex": -0.008333430713750256
+    }
+  },
+  "realized_group_harm": {
+    "brfss_diabete4": {
+      "groups": 10,
+      "harmed_groups": 2,
+      "worst_group_gain": -4.783495821669703e-11,
+      "mean_group_gain": 1.926787951411768e-10
+    },
+    "brfss_asthma3": {
+      "groups": 10,
+      "harmed_groups": 5,
+      "worst_group_gain": -6.570516908332991e-10,
+      "mean_group_gain": 5.720084961247096e-11
+    },
+    "road_ksi": {
+      "groups": 6,
+      "harmed_groups": 0,
+      "worst_group_gain": 3.936406756110955e-12,
+      "mean_group_gain": 0.0001626754324898166
+    }
+  },
+  "adaptation_half_coverage": {
+    "query": 0.057692307692307696,
+    "task_scalar": 0.038461538461538464,
+    "support_head": 0.057692307692307696,
+    "guarded_logistic": 0.0
+  },
+  "development_gate": false,
+  "checkpoint_sha256": {
+    "brfss_760001_query": "c962e690af36bbb90ff98b09537c94e3702f1934fe781e8316873ed5b916e735",
+    "brfss_760001_support_head": "54e5d015b110b52e7fed1aded6464eb58d84bf12a69eba1ed2c0ae572f1f8038",
+    "brfss_760001_task_scalar": "758a874607d8edc248d3cc7b7d3837d64074ea8a2ec34a781ead8d96e0423e07",
+    "brfss_760002_query": "50b3d44798940be5d550b294a3d4004173584e52b06fd220b2bacfa204cfabed",
+    "brfss_760002_support_head": "56b96f1ced0492f43973183c3f21000c25996c16fe39b97306a97a8e4fbbd0b5",
+    "brfss_760002_task_scalar": "add3c58ae92040950473c47f5c3c04afa0d091e943cc7f94365b6640a31ef53a",
+    "brfss_760003_query": "1ccc338c4561e27aaa58003fd0bc2d4aaf8bd5bc54da737e2b19849383e837dd",
+    "brfss_760003_support_head": "fce316ea04e5463adacf8e3d561206aeab89243350a611546772a729d23f04be",
+    "brfss_760003_task_scalar": "19059ca185eb701d7a33563a7f7849655aef866f712a92242712fedbf0e0a9e9",
+    "road_760001_query": "1756e84c87264a5f3408c25876212c44a6122a3924f7af205745a6f7e19138ec",
+    "road_760001_support_head": "ca71b82fe15fce2a4ea436e055a08cba5f079b85751bd8111f898be58358b745",
+    "road_760001_task_scalar": "bd92e75b7f3de3ccf02d624ca1b77fba23fd24204920fa56aadc1dfde6e0e88b",
+    "road_760002_query": "5e134c0079589ed37a350c85c5cb20d67e6a69cf696e2bbaa931daa917e4b413",
+    "road_760002_support_head": "5a312e51c9ac366d6a67dc8120f898db390ec0e5a9cfd685c4a865e9cf6087d0",
+    "road_760002_task_scalar": "025ba9405b4c36a1dbc58a35ee9f6198ecc448dc26803b386ef6c5ca957eb98d",
+    "road_760003_query": "89b895dd53881928c2c70435eb8380e3025a2150e7b9cb8dcc3001204ec07505",
+    "road_760003_support_head": "143695c06596b87fe3e77b34aeddad5c332a87f5d1f5043205e0ba19b0ac6d24",
+    "road_760003_task_scalar": "d3b5195a6c29bd8c0b1685582be27a0a633adefb5a692d99bd0299fe2af1650d"
+  },
+  "freeze_sha256": "3210736b0ba3e81309fa6c29aea8ba730c5c3fdc40e655f30de9c47fa3176cb4",
+  "auditor_source_sha256": "b4ed133a108bcb5fda4e28c56117765257bb4563ecab9b37a1fb43caf64a347e",
+  "auditor_frozen_before_training": false,
+  "seconds": 7.20299999999952
+}

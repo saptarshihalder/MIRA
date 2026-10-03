@@ -1,0 +1,8 @@
+{
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "numpy": "2.3.5",
+  "torch": "2.8.0+cpu",
+  "scipy": "1.17.0",
+  "sklearn": "1.8.0",
+  "device": "cpu"
+}

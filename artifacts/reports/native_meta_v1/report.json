@@ -1,0 +1,6811 @@
+{
+  "scope": "Two dataset-family meta-learner holdouts, USED development cohorts; target backbones/source context and support remain labeled",
+  "rows": [
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.6598920949844246,
+          "brier": 0.23136975391034248
+        },
+        "target_platt": {
+          "nll": 0.6519483604878096,
+          "brier": 0.22841443360544406
+        },
+        "support_logistic": {
+          "nll": 0.650896845556103,
+          "brier": 0.22875065536801567
+        },
+        "query": {
+          "nll": 0.6598920947742035,
+          "brier": 0.2313697538237336
+        },
+        "task_scalar": {
+          "nll": 0.6598920947742035,
+          "brier": 0.2313697538237336
+        },
+        "support_head": {
+          "nll": 0.6598920947742035,
+          "brier": 0.2313697538237336
+        },
+        "guarded_logistic": {
+          "nll": 0.6598920949844246,
+          "brier": 0.23136975391034248
+        },
+        "native_linear_converged": {
+          "nll": 0.6545760253398917,
+          "brier": 0.2294090301113695
+        },
+        "global_platt": {
+          "nll": 0.6583985117407187,
+          "brier": 0.23117692872502943
+        },
+        "global_simplex": {
+          "nll": 0.6517286970993149,
+          "brier": 0.22833813272271938
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760001_road_ksi_development_group14.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0695684749272303e-14,
+          "objective_gap_upper": 3.646189605258839e-27,
+          "iterations": 4,
+          "weights": [
+            0.003851885998610838,
+            0.10088052729432186
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 7,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760001,
+      "task": "road_ksi",
+      "group": "group14",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group14.npz",
+      "input_sha256": "8ba70169f79a28ec61c386c9a1f8814e251dcedcd5131026c2f662241bc8e218"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.5423665234404715,
+          "brier": 0.17908050734800218
+        },
+        "target_platt": {
+          "nll": 0.5459480171590169,
+          "brier": 0.1805194333408853
+        },
+        "support_logistic": {
+          "nll": 0.5560486620318273,
+          "brier": 0.1842876834921622
+        },
+        "query": {
+          "nll": 0.5423665226706987,
+          "brier": 0.17908050709763026
+        },
+        "task_scalar": {
+          "nll": 0.5423665226706987,
+          "brier": 0.17908050709763026
+        },
+        "support_head": {
+          "nll": 0.5423665226706987,
+          "brier": 0.17908050709763026
+        },
+        "guarded_logistic": {
+          "nll": 0.5423665234404715,
+          "brier": 0.17908050734800218
+        },
+        "native_linear_converged": {
+          "nll": 0.5443953985531765,
+          "brier": 0.17991216014362063
+        },
+        "global_platt": {
+          "nll": 0.5423416309063581,
+          "brier": 0.1790525541414072
+        },
+        "global_simplex": {
+          "nll": 0.5453851995287436,
+          "brier": 0.18031775365831326
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760001_road_ksi_development_group34.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0070898068547116e-12,
+          "objective_gap_upper": 3.2293037738870134e-23,
+          "iterations": 4,
+          "weights": [
+            -0.05645798743017816,
+            0.09484928989045714
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 7,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760001,
+      "task": "road_ksi",
+      "group": "group34",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group34.npz",
+      "input_sha256": "b780e23479186252737ea2605c57629ec1aea4d9e22775a6f5691b47940dbc89"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.6434205499126295,
+          "brier": 0.22460823406985536
+        },
+        "target_platt": {
+          "nll": 0.6393476928197808,
+          "brier": 0.22304985909408778
+        },
+        "support_logistic": {
+          "nll": 0.6434316116869646,
+          "brier": 0.22499847414159063
+        },
+        "query": {
+          "nll": 0.6434205499086931,
+          "brier": 0.2246082340854904
+        },
+        "task_scalar": {
+          "nll": 0.6434205499086931,
+          "brier": 0.2246082340854904
+        },
+        "support_head": {
+          "nll": 0.6434205499086931,
+          "brier": 0.2246082340854904
+        },
+        "guarded_logistic": {
+          "nll": 0.6434205499126295,
+          "brier": 0.22460823406985536
+        },
+        "native_linear_converged": {
+          "nll": 0.6407204947052583,
+          "brier": 0.22359529784854548
+        },
+        "global_platt": {
+          "nll": 0.6426684255089815,
+          "brier": 0.22450041699658177
+        },
+        "global_simplex": {
+          "nll": 0.6383220878253193,
+          "brier": 0.22268141123522703
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760001_road_ksi_development_group4.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.717376241217039e-16,
+          "objective_gap_upper": 2.613547119844241e-31,
+          "iterations": 4,
+          "weights": [
+            0.031057220934829304,
+            0.08691362223319245
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 6,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760001,
+      "task": "road_ksi",
+      "group": "group4",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group4.npz",
+      "input_sha256": "b70b70a8e98234f019f245e0a5c53d606421d73d9b31e7441c53f1ed3816e196"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.573185131800942,
+          "brier": 0.1917722936605688
+        },
+        "target_platt": {
+          "nll": 0.57688230551183,
+          "brier": 0.1940583602482852
+        },
+        "support_logistic": {
+          "nll": 0.5840311796470563,
+          "brier": 0.19698519442026582
+        },
+        "query": {
+          "nll": 0.5731851317607202,
+          "brier": 0.19177229362334358
+        },
+        "task_scalar": {
+          "nll": 0.5731851317607202,
+          "brier": 0.19177229362334358
+        },
+        "support_head": {
+          "nll": 0.5731851317607202,
+          "brier": 0.19177229362334358
+        },
+        "guarded_logistic": {
+          "nll": 0.573185131800942,
+          "brier": 0.1917722936605688
+        },
+        "native_linear_converged": {
+          "nll": 0.5793985561801381,
+          "brier": 0.19522877073739908
+        },
+        "global_platt": {
+          "nll": 0.5704768951595875,
+          "brier": 0.19097763206513502
+        },
+        "global_simplex": {
+          "nll": 0.5752448623520419,
+          "brier": 0.19334824860827318
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760001_road_ksi_development_group44.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.3877787807814457e-17,
+          "objective_gap_upper": 1.023150282955719e-33,
+          "iterations": 5,
+          "weights": [
+            -0.17079787240039143,
+            0.2204768916635901
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760001,
+      "task": "road_ksi",
+      "group": "group44",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group44.npz",
+      "input_sha256": "cc3dbf7ce1d3b22028cca441b84feab076267e17835750a8db7e9d7193a2064d"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.5401990182460708,
+          "brier": 0.17837015746116558
+        },
+        "target_platt": {
+          "nll": 0.5400616479006958,
+          "brier": 0.17833651687672863
+        },
+        "support_logistic": {
+          "nll": 0.5667732812838097,
+          "brier": 0.18824102943372686
+        },
+        "query": {
+          "nll": 0.5401173530606104,
+          "brier": 0.178342411421371
+        },
+        "task_scalar": {
+          "nll": 0.5401990188931727,
+          "brier": 0.17837015777480558
+        },
+        "support_head": {
+          "nll": 0.540118754157916,
+          "brier": 0.17834344099675076
+        },
+        "guarded_logistic": {
+          "nll": 0.5401990182460708,
+          "brier": 0.17837015746116558
+        },
+        "native_linear_converged": {
+          "nll": 0.5395311613357796,
+          "brier": 0.17815807943701706
+        },
+        "global_platt": {
+          "nll": 0.540527045867988,
+          "brier": 0.17852406892440578
+        },
+        "global_simplex": {
+          "nll": 0.5394986256806574,
+          "brier": 0.1781442475566224
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          true
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          true
+        ]
+      },
+      "prediction_file": "predictions/brfss_760001_road_ksi_development_group54.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.9081958235744878e-17,
+          "objective_gap_upper": 3.325238419606087e-33,
+          "iterations": 4,
+          "weights": [
+            -0.07554496498841601,
+            -0.09369959993532498
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760001,
+      "task": "road_ksi",
+      "group": "group54",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group54.npz",
+      "input_sha256": "f78b71d48da74cd56d42c6e711fab48a600788fafcfb794e01989e9bb01c39f0"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.7201012261863162,
+          "brier": 0.2600373473638422
+        },
+        "target_platt": {
+          "nll": 0.6751997630588651,
+          "brier": 0.2411194924389322
+        },
+        "support_logistic": {
+          "nll": 0.6845779345460434,
+          "brier": 0.24572753906677683
+        },
+        "query": {
+          "nll": 0.7192151055273533,
+          "brier": 0.2596830154496781
+        },
+        "task_scalar": {
+          "nll": 0.7196169615518881,
+          "brier": 0.25984369153912645
+        },
+        "support_head": {
+          "nll": 0.7192063214768719,
+          "brier": 0.2596804122561731
+        },
+        "guarded_logistic": {
+          "nll": 0.7201012261863162,
+          "brier": 0.2600373473638422
+        },
+        "native_linear_converged": {
+          "nll": 0.7178542922157827,
+          "brier": 0.259147213031373
+        },
+        "global_platt": {
+          "nll": 0.7241342864110779,
+          "brier": 0.26234432997109697
+        },
+        "global_simplex": {
+          "nll": 0.6780084352073366,
+          "brier": 0.2423168963299668
+        }
+      },
+      "decisions": {
+        "query": [
+          true,
+          true
+        ],
+        "task_scalar": [
+          true,
+          true
+        ],
+        "support_head": [
+          true,
+          true
+        ]
+      },
+      "prediction_file": "predictions/brfss_760001_road_ksi_development_group99.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0816681711721685e-17,
+          "objective_gap_upper": 2.4074124304840448e-33,
+          "iterations": 5,
+          "weights": [
+            -0.1853909811680274,
+            0.35962243238919483
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760001,
+      "task": "road_ksi",
+      "group": "group99",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group99.npz",
+      "input_sha256": "b834e0991c627f4d62df6b7fcd3cad72928d38ce2dfdecb9b81d6a9f32da8796"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.6598920949844246,
+          "brier": 0.23136975391034248
+        },
+        "target_platt": {
+          "nll": 0.6519483604878096,
+          "brier": 0.22841443360544406
+        },
+        "support_logistic": {
+          "nll": 0.650896845556103,
+          "brier": 0.22875065536801567
+        },
+        "query": {
+          "nll": 0.6598920947742035,
+          "brier": 0.2313697538237336
+        },
+        "task_scalar": {
+          "nll": 0.6598920947742035,
+          "brier": 0.2313697538237336
+        },
+        "support_head": {
+          "nll": 0.6598920947742035,
+          "brier": 0.2313697538237336
+        },
+        "guarded_logistic": {
+          "nll": 0.6598920949844246,
+          "brier": 0.23136975391034248
+        },
+        "native_linear_converged": {
+          "nll": 0.6545760253398917,
+          "brier": 0.2294090301113695
+        },
+        "global_platt": {
+          "nll": 0.6583985117407187,
+          "brier": 0.23117692872502943
+        },
+        "global_simplex": {
+          "nll": 0.6517286970993149,
+          "brier": 0.22833813272271938
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760002_road_ksi_development_group14.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0695684749272303e-14,
+          "objective_gap_upper": 3.646189605258839e-27,
+          "iterations": 4,
+          "weights": [
+            0.003851885998610838,
+            0.10088052729432186
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 7,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760002,
+      "task": "road_ksi",
+      "group": "group14",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group14.npz",
+      "input_sha256": "8ba70169f79a28ec61c386c9a1f8814e251dcedcd5131026c2f662241bc8e218"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.5423665234404715,
+          "brier": 0.17908050734800218
+        },
+        "target_platt": {
+          "nll": 0.5459480171590169,
+          "brier": 0.1805194333408853
+        },
+        "support_logistic": {
+          "nll": 0.5560486620318273,
+          "brier": 0.1842876834921622
+        },
+        "query": {
+          "nll": 0.5423665226706987,
+          "brier": 0.17908050709763026
+        },
+        "task_scalar": {
+          "nll": 0.5423665226706987,
+          "brier": 0.17908050709763026
+        },
+        "support_head": {
+          "nll": 0.5423665226706987,
+          "brier": 0.17908050709763026
+        },
+        "guarded_logistic": {
+          "nll": 0.5423665234404715,
+          "brier": 0.17908050734800218
+        },
+        "native_linear_converged": {
+          "nll": 0.5443953985531765,
+          "brier": 0.17991216014362063
+        },
+        "global_platt": {
+          "nll": 0.5423416309063581,
+          "brier": 0.1790525541414072
+        },
+        "global_simplex": {
+          "nll": 0.5453851995287436,
+          "brier": 0.18031775365831326
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760002_road_ksi_development_group34.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0070898068547116e-12,
+          "objective_gap_upper": 3.2293037738870134e-23,
+          "iterations": 4,
+          "weights": [
+            -0.05645798743017816,
+            0.09484928989045714
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 7,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760002,
+      "task": "road_ksi",
+      "group": "group34",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group34.npz",
+      "input_sha256": "b780e23479186252737ea2605c57629ec1aea4d9e22775a6f5691b47940dbc89"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.6434205499126295,
+          "brier": 0.22460823406985536
+        },
+        "target_platt": {
+          "nll": 0.6393476928197808,
+          "brier": 0.22304985909408778
+        },
+        "support_logistic": {
+          "nll": 0.6434316116869646,
+          "brier": 0.22499847414159063
+        },
+        "query": {
+          "nll": 0.6434205499086931,
+          "brier": 0.2246082340854904
+        },
+        "task_scalar": {
+          "nll": 0.6434205499086931,
+          "brier": 0.2246082340854904
+        },
+        "support_head": {
+          "nll": 0.6434205499086931,
+          "brier": 0.2246082340854904
+        },
+        "guarded_logistic": {
+          "nll": 0.6434205499126295,
+          "brier": 0.22460823406985536
+        },
+        "native_linear_converged": {
+          "nll": 0.6407204947052583,
+          "brier": 0.22359529784854548
+        },
+        "global_platt": {
+          "nll": 0.6426684255089815,
+          "brier": 0.22450041699658177
+        },
+        "global_simplex": {
+          "nll": 0.6383220878253193,
+          "brier": 0.22268141123522703
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760002_road_ksi_development_group4.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.717376241217039e-16,
+          "objective_gap_upper": 2.613547119844241e-31,
+          "iterations": 4,
+          "weights": [
+            0.031057220934829304,
+            0.08691362223319245
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 6,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760002,
+      "task": "road_ksi",
+      "group": "group4",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group4.npz",
+      "input_sha256": "b70b70a8e98234f019f245e0a5c53d606421d73d9b31e7441c53f1ed3816e196"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.573185131800942,
+          "brier": 0.1917722936605688
+        },
+        "target_platt": {
+          "nll": 0.57688230551183,
+          "brier": 0.1940583602482852
+        },
+        "support_logistic": {
+          "nll": 0.5840311796470563,
+          "brier": 0.19698519442026582
+        },
+        "query": {
+          "nll": 0.5731851317607202,
+          "brier": 0.19177229362334358
+        },
+        "task_scalar": {
+          "nll": 0.5731851317607202,
+          "brier": 0.19177229362334358
+        },
+        "support_head": {
+          "nll": 0.5731851317607202,
+          "brier": 0.19177229362334358
+        },
+        "guarded_logistic": {
+          "nll": 0.573185131800942,
+          "brier": 0.1917722936605688
+        },
+        "native_linear_converged": {
+          "nll": 0.5793985561801381,
+          "brier": 0.19522877073739908
+        },
+        "global_platt": {
+          "nll": 0.5704768951595875,
+          "brier": 0.19097763206513502
+        },
+        "global_simplex": {
+          "nll": 0.5752448623520419,
+          "brier": 0.19334824860827318
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760002_road_ksi_development_group44.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.3877787807814457e-17,
+          "objective_gap_upper": 1.023150282955719e-33,
+          "iterations": 5,
+          "weights": [
+            -0.17079787240039143,
+            0.2204768916635901
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760002,
+      "task": "road_ksi",
+      "group": "group44",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group44.npz",
+      "input_sha256": "cc3dbf7ce1d3b22028cca441b84feab076267e17835750a8db7e9d7193a2064d"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.5401990182460708,
+          "brier": 0.17837015746116558
+        },
+        "target_platt": {
+          "nll": 0.5400616479006958,
+          "brier": 0.17833651687672863
+        },
+        "support_logistic": {
+          "nll": 0.5667732812838097,
+          "brier": 0.18824102943372686
+        },
+        "query": {
+          "nll": 0.5400951305712735,
+          "brier": 0.1783342413587213
+        },
+        "task_scalar": {
+          "nll": 0.5401990188931727,
+          "brier": 0.17837015777480558
+        },
+        "support_head": {
+          "nll": 0.5400980225053572,
+          "brier": 0.178335675094386
+        },
+        "guarded_logistic": {
+          "nll": 0.5401990182460708,
+          "brier": 0.17837015746116558
+        },
+        "native_linear_converged": {
+          "nll": 0.5395311613357796,
+          "brier": 0.17815807943701706
+        },
+        "global_platt": {
+          "nll": 0.540527045867988,
+          "brier": 0.17852406892440578
+        },
+        "global_simplex": {
+          "nll": 0.5394986256806574,
+          "brier": 0.1781442475566224
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          true
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          true
+        ]
+      },
+      "prediction_file": "predictions/brfss_760002_road_ksi_development_group54.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.9081958235744878e-17,
+          "objective_gap_upper": 3.325238419606087e-33,
+          "iterations": 4,
+          "weights": [
+            -0.07554496498841601,
+            -0.09369959993532498
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760002,
+      "task": "road_ksi",
+      "group": "group54",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group54.npz",
+      "input_sha256": "f78b71d48da74cd56d42c6e711fab48a600788fafcfb794e01989e9bb01c39f0"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.7201012261863162,
+          "brier": 0.2600373473638422
+        },
+        "target_platt": {
+          "nll": 0.6751997630588651,
+          "brier": 0.2411194924389322
+        },
+        "support_logistic": {
+          "nll": 0.6845779345460434,
+          "brier": 0.24572753906677683
+        },
+        "query": {
+          "nll": 0.7191840281246479,
+          "brier": 0.2596705766262353
+        },
+        "task_scalar": {
+          "nll": 0.7196157188240995,
+          "brier": 0.25984293886515836
+        },
+        "support_head": {
+          "nll": 0.7192201157121884,
+          "brier": 0.259685916024742
+        },
+        "guarded_logistic": {
+          "nll": 0.7201012261863162,
+          "brier": 0.2600373473638422
+        },
+        "native_linear_converged": {
+          "nll": 0.7178542922157827,
+          "brier": 0.259147213031373
+        },
+        "global_platt": {
+          "nll": 0.7241342864110779,
+          "brier": 0.26234432997109697
+        },
+        "global_simplex": {
+          "nll": 0.6780084352073366,
+          "brier": 0.2423168963299668
+        }
+      },
+      "decisions": {
+        "query": [
+          true,
+          true
+        ],
+        "task_scalar": [
+          true,
+          true
+        ],
+        "support_head": [
+          true,
+          true
+        ]
+      },
+      "prediction_file": "predictions/brfss_760002_road_ksi_development_group99.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0816681711721685e-17,
+          "objective_gap_upper": 2.4074124304840448e-33,
+          "iterations": 5,
+          "weights": [
+            -0.1853909811680274,
+            0.35962243238919483
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760002,
+      "task": "road_ksi",
+      "group": "group99",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group99.npz",
+      "input_sha256": "b834e0991c627f4d62df6b7fcd3cad72928d38ce2dfdecb9b81d6a9f32da8796"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.6598920949844246,
+          "brier": 0.23136975391034248
+        },
+        "target_platt": {
+          "nll": 0.6519483604878096,
+          "brier": 0.22841443360544406
+        },
+        "support_logistic": {
+          "nll": 0.650896845556103,
+          "brier": 0.22875065536801567
+        },
+        "query": {
+          "nll": 0.6598920947742035,
+          "brier": 0.2313697538237336
+        },
+        "task_scalar": {
+          "nll": 0.6598920947742035,
+          "brier": 0.2313697538237336
+        },
+        "support_head": {
+          "nll": 0.6598920947742035,
+          "brier": 0.2313697538237336
+        },
+        "guarded_logistic": {
+          "nll": 0.6598920949844246,
+          "brier": 0.23136975391034248
+        },
+        "native_linear_converged": {
+          "nll": 0.6545760253398917,
+          "brier": 0.2294090301113695
+        },
+        "global_platt": {
+          "nll": 0.6583985117407187,
+          "brier": 0.23117692872502943
+        },
+        "global_simplex": {
+          "nll": 0.6517286970993149,
+          "brier": 0.22833813272271938
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760003_road_ksi_development_group14.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0695684749272303e-14,
+          "objective_gap_upper": 3.646189605258839e-27,
+          "iterations": 4,
+          "weights": [
+            0.003851885998610838,
+            0.10088052729432186
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 7,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760003,
+      "task": "road_ksi",
+      "group": "group14",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group14.npz",
+      "input_sha256": "8ba70169f79a28ec61c386c9a1f8814e251dcedcd5131026c2f662241bc8e218"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.5423665234404715,
+          "brier": 0.17908050734800218
+        },
+        "target_platt": {
+          "nll": 0.5459480171590169,
+          "brier": 0.1805194333408853
+        },
+        "support_logistic": {
+          "nll": 0.5560486620318273,
+          "brier": 0.1842876834921622
+        },
+        "query": {
+          "nll": 0.5423665226706987,
+          "brier": 0.17908050709763026
+        },
+        "task_scalar": {
+          "nll": 0.5423665226706987,
+          "brier": 0.17908050709763026
+        },
+        "support_head": {
+          "nll": 0.5423665226706987,
+          "brier": 0.17908050709763026
+        },
+        "guarded_logistic": {
+          "nll": 0.5423665234404715,
+          "brier": 0.17908050734800218
+        },
+        "native_linear_converged": {
+          "nll": 0.5443953985531765,
+          "brier": 0.17991216014362063
+        },
+        "global_platt": {
+          "nll": 0.5423416309063581,
+          "brier": 0.1790525541414072
+        },
+        "global_simplex": {
+          "nll": 0.5453851995287436,
+          "brier": 0.18031775365831326
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760003_road_ksi_development_group34.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0070898068547116e-12,
+          "objective_gap_upper": 3.2293037738870134e-23,
+          "iterations": 4,
+          "weights": [
+            -0.05645798743017816,
+            0.09484928989045714
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 7,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760003,
+      "task": "road_ksi",
+      "group": "group34",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group34.npz",
+      "input_sha256": "b780e23479186252737ea2605c57629ec1aea4d9e22775a6f5691b47940dbc89"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.6434205499126295,
+          "brier": 0.22460823406985536
+        },
+        "target_platt": {
+          "nll": 0.6393476928197808,
+          "brier": 0.22304985909408778
+        },
+        "support_logistic": {
+          "nll": 0.6434316116869646,
+          "brier": 0.22499847414159063
+        },
+        "query": {
+          "nll": 0.6434205499086931,
+          "brier": 0.2246082340854904
+        },
+        "task_scalar": {
+          "nll": 0.6434205499086931,
+          "brier": 0.2246082340854904
+        },
+        "support_head": {
+          "nll": 0.6434205499086931,
+          "brier": 0.2246082340854904
+        },
+        "guarded_logistic": {
+          "nll": 0.6434205499126295,
+          "brier": 0.22460823406985536
+        },
+        "native_linear_converged": {
+          "nll": 0.6407204947052583,
+          "brier": 0.22359529784854548
+        },
+        "global_platt": {
+          "nll": 0.6426684255089815,
+          "brier": 0.22450041699658177
+        },
+        "global_simplex": {
+          "nll": 0.6383220878253193,
+          "brier": 0.22268141123522703
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760003_road_ksi_development_group4.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.717376241217039e-16,
+          "objective_gap_upper": 2.613547119844241e-31,
+          "iterations": 4,
+          "weights": [
+            0.031057220934829304,
+            0.08691362223319245
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 6,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760003,
+      "task": "road_ksi",
+      "group": "group4",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group4.npz",
+      "input_sha256": "b70b70a8e98234f019f245e0a5c53d606421d73d9b31e7441c53f1ed3816e196"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.573185131800942,
+          "brier": 0.1917722936605688
+        },
+        "target_platt": {
+          "nll": 0.57688230551183,
+          "brier": 0.1940583602482852
+        },
+        "support_logistic": {
+          "nll": 0.5840311796470563,
+          "brier": 0.19698519442026582
+        },
+        "query": {
+          "nll": 0.5731851317607202,
+          "brier": 0.19177229362334358
+        },
+        "task_scalar": {
+          "nll": 0.5731851317607202,
+          "brier": 0.19177229362334358
+        },
+        "support_head": {
+          "nll": 0.5731851317607202,
+          "brier": 0.19177229362334358
+        },
+        "guarded_logistic": {
+          "nll": 0.573185131800942,
+          "brier": 0.1917722936605688
+        },
+        "native_linear_converged": {
+          "nll": 0.5793985561801381,
+          "brier": 0.19522877073739908
+        },
+        "global_platt": {
+          "nll": 0.5704768951595875,
+          "brier": 0.19097763206513502
+        },
+        "global_simplex": {
+          "nll": 0.5752448623520419,
+          "brier": 0.19334824860827318
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/brfss_760003_road_ksi_development_group44.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.3877787807814457e-17,
+          "objective_gap_upper": 1.023150282955719e-33,
+          "iterations": 5,
+          "weights": [
+            -0.17079787240039143,
+            0.2204768916635901
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760003,
+      "task": "road_ksi",
+      "group": "group44",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group44.npz",
+      "input_sha256": "cc3dbf7ce1d3b22028cca441b84feab076267e17835750a8db7e9d7193a2064d"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.5401990182460708,
+          "brier": 0.17837015746116558
+        },
+        "target_platt": {
+          "nll": 0.5400616479006958,
+          "brier": 0.17833651687672863
+        },
+        "support_logistic": {
+          "nll": 0.5667732812838097,
+          "brier": 0.18824102943372686
+        },
+        "query": {
+          "nll": 0.5401018735258066,
+          "brier": 0.1783363798473655
+        },
+        "task_scalar": {
+          "nll": 0.5401990188931727,
+          "brier": 0.17837015777480558
+        },
+        "support_head": {
+          "nll": 0.5401006808551113,
+          "brier": 0.1783361902662597
+        },
+        "guarded_logistic": {
+          "nll": 0.5401990182460708,
+          "brier": 0.17837015746116558
+        },
+        "native_linear_converged": {
+          "nll": 0.5395311613357796,
+          "brier": 0.17815807943701706
+        },
+        "global_platt": {
+          "nll": 0.540527045867988,
+          "brier": 0.17852406892440578
+        },
+        "global_simplex": {
+          "nll": 0.5394986256806574,
+          "brier": 0.1781442475566224
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          true
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          true
+        ]
+      },
+      "prediction_file": "predictions/brfss_760003_road_ksi_development_group54.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.9081958235744878e-17,
+          "objective_gap_upper": 3.325238419606087e-33,
+          "iterations": 4,
+          "weights": [
+            -0.07554496498841601,
+            -0.09369959993532498
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760003,
+      "task": "road_ksi",
+      "group": "group54",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group54.npz",
+      "input_sha256": "f78b71d48da74cd56d42c6e711fab48a600788fafcfb794e01989e9bb01c39f0"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.7201012261863162,
+          "brier": 0.2600373473638422
+        },
+        "target_platt": {
+          "nll": 0.6751997630588651,
+          "brier": 0.2411194924389322
+        },
+        "support_logistic": {
+          "nll": 0.6845779345460434,
+          "brier": 0.24572753906677683
+        },
+        "query": {
+          "nll": 0.7192590877751088,
+          "brier": 0.2597007739667764
+        },
+        "task_scalar": {
+          "nll": 0.7196506073005642,
+          "brier": 0.25985725743014737
+        },
+        "support_head": {
+          "nll": 0.7192788158885522,
+          "brier": 0.2597093593061515
+        },
+        "guarded_logistic": {
+          "nll": 0.7201012261863162,
+          "brier": 0.2600373473638422
+        },
+        "native_linear_converged": {
+          "nll": 0.7178542922157827,
+          "brier": 0.259147213031373
+        },
+        "global_platt": {
+          "nll": 0.7241342864110779,
+          "brier": 0.26234432997109697
+        },
+        "global_simplex": {
+          "nll": 0.6780084352073366,
+          "brier": 0.2423168963299668
+        }
+      },
+      "decisions": {
+        "query": [
+          true,
+          true
+        ],
+        "task_scalar": [
+          true,
+          true
+        ],
+        "support_head": [
+          true,
+          true
+        ]
+      },
+      "prediction_file": "predictions/brfss_760003_road_ksi_development_group99.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0816681711721685e-17,
+          "objective_gap_upper": 2.4074124304840448e-33,
+          "iterations": 5,
+          "weights": [
+            -0.1853909811680274,
+            0.35962243238919483
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "brfss",
+      "target_family": "road",
+      "initialization": 760003,
+      "task": "road_ksi",
+      "group": "group99",
+      "input_file": "artifacts/reports/native_meta_inputs/development/road_ksi_development_group99.npz",
+      "input_sha256": "b834e0991c627f4d62df6b7fcd3cad72928d38ce2dfdecb9b81d6a9f32da8796"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.34420406165459705,
+          "brier": 0.10032014135480824
+        },
+        "target_platt": {
+          "nll": 0.3434980809510636,
+          "brier": 0.10013148579446365
+        },
+        "support_logistic": {
+          "nll": 0.3778017356645399,
+          "brier": 0.11059077594955082
+        },
+        "query": {
+          "nll": 0.34420406195763664,
+          "brier": 0.10032014147248546
+        },
+        "task_scalar": {
+          "nll": 0.34420406195763664,
+          "brier": 0.10032014147248546
+        },
+        "support_head": {
+          "nll": 0.34420406195763664,
+          "brier": 0.10032014147248546
+        },
+        "guarded_logistic": {
+          "nll": 0.34420406165459705,
+          "brier": 0.10032014135480824
+        },
+        "native_linear_converged": {
+          "nll": 0.34420405961440564,
+          "brier": 0.10032014096624614
+        },
+        "global_platt": {
+          "nll": 0.34445722811284774,
+          "brier": 0.1003687814313019
+        },
+        "global_simplex": {
+          "nll": 0.3437819666464409,
+          "brier": 0.10021984285807804
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_asthma3_development_group19.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.222614453595284e-16,
+          "objective_gap_upper": 2.980538807159661e-31,
+          "iterations": 4,
+          "weights": [
+            0.009447632850675977,
+            -0.017502631084450174
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_asthma3",
+      "group": "group19",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group19.npz",
+      "input_sha256": "65551f4e750271b81630fef06992df5148cbdc82d6cd21b78c18ee6cd6d8a6ef"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.38578200587622735,
+          "brier": 0.11684610785258301
+        },
+        "target_platt": {
+          "nll": 0.3858699573527653,
+          "brier": 0.11688698515317544
+        },
+        "support_logistic": {
+          "nll": 0.4225904768775148,
+          "brier": 0.12863325557244404
+        },
+        "query": {
+          "nll": 0.38578200536680857,
+          "brier": 0.116846107659467
+        },
+        "task_scalar": {
+          "nll": 0.38578200536680857,
+          "brier": 0.116846107659467
+        },
+        "support_head": {
+          "nll": 0.38578200536680857,
+          "brier": 0.116846107659467
+        },
+        "guarded_logistic": {
+          "nll": 0.38578200587622735,
+          "brier": 0.11684610785258301
+        },
+        "native_linear_converged": {
+          "nll": 0.3857820058764384,
+          "brier": 0.1168461078526118
+        },
+        "global_platt": {
+          "nll": 0.38581072232713476,
+          "brier": 0.11683929198534418
+        },
+        "global_simplex": {
+          "nll": 0.3859355239206278,
+          "brier": 0.11687595313148524
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_asthma3_development_group24.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0902550523782537e-14,
+          "objective_gap_upper": 2.675326908759617e-27,
+          "iterations": 4,
+          "weights": [
+            0.04329935634972044,
+            0.024017916127288517
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_asthma3",
+      "group": "group24",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group24.npz",
+      "input_sha256": "1b805108ad027b4d25dc755f676486134e3147dc9c4c4f406ecc22a8c06c306c"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.37630133559036827,
+          "brier": 0.11308017734264891
+        },
+        "target_platt": {
+          "nll": 0.3775800270038101,
+          "brier": 0.11312281946943212
+        },
+        "support_logistic": {
+          "nll": 0.40213066784196494,
+          "brier": 0.11987354599070935
+        },
+        "query": {
+          "nll": 0.37630133515120345,
+          "brier": 0.11308017722026932
+        },
+        "task_scalar": {
+          "nll": 0.37630133515120345,
+          "brier": 0.11308017722026932
+        },
+        "support_head": {
+          "nll": 0.37630133515120345,
+          "brier": 0.11308017722026932
+        },
+        "guarded_logistic": {
+          "nll": 0.37630133559036827,
+          "brier": 0.11308017734264891
+        },
+        "native_linear_converged": {
+          "nll": 0.37630133564288665,
+          "brier": 0.11308017736368664
+        },
+        "global_platt": {
+          "nll": 0.3763327154208682,
+          "brier": 0.11304084271738904
+        },
+        "global_simplex": {
+          "nll": 0.3747921272217227,
+          "brier": 0.11256399602671702
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_asthma3_development_group29.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.9968028886505635e-15,
+          "objective_gap_upper": 9.794193375804113e-29,
+          "iterations": 5,
+          "weights": [
+            0.2150176427496247,
+            0.012436154979067785
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_asthma3",
+      "group": "group29",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group29.npz",
+      "input_sha256": "4c00b797133c7f8f3ef93d248af08e966065640588cc2e9e90db54098fc0f1a5"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.37848138259529884,
+          "brier": 0.11400483456676701
+        },
+        "target_platt": {
+          "nll": 0.38023142005979776,
+          "brier": 0.1143819111241442
+        },
+        "support_logistic": {
+          "nll": 0.42110326766811323,
+          "brier": 0.1260486913407487
+        },
+        "query": {
+          "nll": 0.37848138260524977,
+          "brier": 0.11400483455817542
+        },
+        "task_scalar": {
+          "nll": 0.37848138260524977,
+          "brier": 0.11400483455817542
+        },
+        "support_head": {
+          "nll": 0.37848138260524977,
+          "brier": 0.11400483455817542
+        },
+        "guarded_logistic": {
+          "nll": 0.37848138259529884,
+          "brier": 0.11400483456676701
+        },
+        "native_linear_converged": {
+          "nll": 0.378481382590493,
+          "brier": 0.11400483456620147
+        },
+        "global_platt": {
+          "nll": 0.37856292231250366,
+          "brier": 0.114012552537766
+        },
+        "global_simplex": {
+          "nll": 0.37846530393637573,
+          "brier": 0.11401063321841459
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_asthma3_development_group34.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.6020852139652106e-18,
+          "objective_gap_upper": 4.890056499420716e-35,
+          "iterations": 5,
+          "weights": [
+            0.14601833309798082,
+            0.04735362150705161
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_asthma3",
+      "group": "group34",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group34.npz",
+      "input_sha256": "515a73871a12b4e56601e83fd54947705e41fbde23a4cb3a7391a200998a651b"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3794743841964073,
+          "brier": 0.1156320617165704
+        },
+        "target_platt": {
+          "nll": 0.3782093114574372,
+          "brier": 0.1149919144431086
+        },
+        "support_logistic": {
+          "nll": 0.4220610821987787,
+          "brier": 0.12681419851757467
+        },
+        "query": {
+          "nll": 0.3794743844571109,
+          "brier": 0.11563206186099953
+        },
+        "task_scalar": {
+          "nll": 0.3794743844571109,
+          "brier": 0.11563206186099953
+        },
+        "support_head": {
+          "nll": 0.3794743844571109,
+          "brier": 0.11563206186099953
+        },
+        "guarded_logistic": {
+          "nll": 0.3794743841964073,
+          "brier": 0.1156320617165704
+        },
+        "native_linear_converged": {
+          "nll": 0.3794743841539546,
+          "brier": 0.11563206170711768
+        },
+        "global_platt": {
+          "nll": 0.37951521659890103,
+          "brier": 0.11557029861117692
+        },
+        "global_simplex": {
+          "nll": 0.3789679700173116,
+          "brier": 0.11544014447122325
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_asthma3_development_group39.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.056514680770505e-15,
+          "objective_gap_upper": 2.57475655858349e-29,
+          "iterations": 4,
+          "weights": [
+            -0.05669683153940673,
+            -0.14637752593238845
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_asthma3",
+      "group": "group39",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group39.npz",
+      "input_sha256": "1227b6229e2ace37683e1d69df1754538d582c739d30a6a7c5fb519fbc4bc91b"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.39308152410355235,
+          "brier": 0.1196691877738224
+        },
+        "target_platt": {
+          "nll": 0.3939502055487397,
+          "brier": 0.11989674313181402
+        },
+        "support_logistic": {
+          "nll": 0.4386799122840698,
+          "brier": 0.1338453562702505
+        },
+        "query": {
+          "nll": 0.39308152344494074,
+          "brier": 0.11966918756570571
+        },
+        "task_scalar": {
+          "nll": 0.39308152344494074,
+          "brier": 0.11966918756570571
+        },
+        "support_head": {
+          "nll": 0.39308152344494074,
+          "brier": 0.11966918756570571
+        },
+        "guarded_logistic": {
+          "nll": 0.39308152410355235,
+          "brier": 0.1196691877738224
+        },
+        "native_linear_converged": {
+          "nll": 0.3930815229191164,
+          "brier": 0.11966918731372675
+        },
+        "global_platt": {
+          "nll": 0.3929823044363865,
+          "brier": 0.1196461329047156
+        },
+        "global_simplex": {
+          "nll": 0.39245719871891005,
+          "brier": 0.1194572871091193
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_asthma3_development_group4.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 7.922690281603195e-13,
+          "objective_gap_upper": 3.750700559038418e-24,
+          "iterations": 4,
+          "weights": [
+            0.13229163630619376,
+            0.21155708408664436
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 15,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_asthma3",
+      "group": "group4",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group4.npz",
+      "input_sha256": "87f4ab127b0c5042cd2720a6450516a3e407eb6828f9e84eff46762812e11472"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.42797984541788964,
+          "brier": 0.13295035926801996
+        },
+        "target_platt": {
+          "nll": 0.42723921302511086,
+          "brier": 0.13270230534947688
+        },
+        "support_logistic": {
+          "nll": 0.4810536307147503,
+          "brier": 0.15216987358151174
+        },
+        "query": {
+          "nll": 0.42797984607494133,
+          "brier": 0.13295035943018368
+        },
+        "task_scalar": {
+          "nll": 0.42797984607494133,
+          "brier": 0.13295035943018368
+        },
+        "support_head": {
+          "nll": 0.42797984607494133,
+          "brier": 0.13295035943018368
+        },
+        "guarded_logistic": {
+          "nll": 0.42797984541788964,
+          "brier": 0.13295035926801996
+        },
+        "native_linear_converged": {
+          "nll": 0.42561146795037513,
+          "brier": 0.13235454986913342
+        },
+        "global_platt": {
+          "nll": 0.42772846344270454,
+          "brier": 0.13290117694683506
+        },
+        "global_simplex": {
+          "nll": 0.42619037639120716,
+          "brier": 0.13246273859308696
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_asthma3_development_group44.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 8.500145032286355e-17,
+          "objective_gap_upper": 4.7922553694323017e-32,
+          "iterations": 5,
+          "weights": [
+            -0.07358468509360251,
+            0.16972910057647406
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_asthma3",
+      "group": "group44",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group44.npz",
+      "input_sha256": "bc233a7629809d7c07dfd00d934daebc1293766dca74e254a2dc8668f0c20807"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.4334416871385772,
+          "brier": 0.13423714918215535
+        },
+        "target_platt": {
+          "nll": 0.4375365104620177,
+          "brier": 0.13507837943191406
+        },
+        "support_logistic": {
+          "nll": 0.4811390779714828,
+          "brier": 0.14826186821868176
+        },
+        "query": {
+          "nll": 0.43344168694210194,
+          "brier": 0.13423714915041246
+        },
+        "task_scalar": {
+          "nll": 0.43344168694210194,
+          "brier": 0.13423714915041246
+        },
+        "support_head": {
+          "nll": 0.43344168694210194,
+          "brier": 0.13423714915041246
+        },
+        "guarded_logistic": {
+          "nll": 0.4334416871385772,
+          "brier": 0.13423714918215535
+        },
+        "native_linear_converged": {
+          "nll": 0.4334418332454101,
+          "brier": 0.13423716060611426
+        },
+        "global_platt": {
+          "nll": 0.43311383412130167,
+          "brier": 0.1341825306946523
+        },
+        "global_simplex": {
+          "nll": 0.4345955432813683,
+          "brier": 0.13448171189973507
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_asthma3_development_group49.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.5243975352852157e-11,
+          "objective_gap_upper": 1.4122113452529097e-21,
+          "iterations": 4,
+          "weights": [
+            0.04469413962107943,
+            -0.05841867235397316
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_asthma3",
+      "group": "group49",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group49.npz",
+      "input_sha256": "367bdcf2f1cf80fce46c97fdc17e62a80f6c5cdb4059b67237fe85142cf18d56"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.4156267521604737,
+          "brier": 0.12939807381079474
+        },
+        "target_platt": {
+          "nll": 0.41623802642787017,
+          "brier": 0.12949710003689105
+        },
+        "support_logistic": {
+          "nll": 0.46335894232867403,
+          "brier": 0.14353542035553718
+        },
+        "query": {
+          "nll": 0.4156267526662108,
+          "brier": 0.12939807390227676
+        },
+        "task_scalar": {
+          "nll": 0.4156267526662108,
+          "brier": 0.12939807390227676
+        },
+        "support_head": {
+          "nll": 0.4156267526662108,
+          "brier": 0.12939807390227676
+        },
+        "guarded_logistic": {
+          "nll": 0.4156267521604737,
+          "brier": 0.12939807381079474
+        },
+        "native_linear_converged": {
+          "nll": 0.4156267521402965,
+          "brier": 0.1293980738494187
+        },
+        "global_platt": {
+          "nll": 0.41555632586720137,
+          "brier": 0.12933540729184462
+        },
+        "global_simplex": {
+          "nll": 0.41527012686325027,
+          "brier": 0.12924502644789898
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_asthma3_development_group54.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.0408340855860843e-17,
+          "objective_gap_upper": 5.454293787815414e-34,
+          "iterations": 5,
+          "weights": [
+            0.06816102318933516,
+            -0.06784194071962706
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_asthma3",
+      "group": "group54",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group54.npz",
+      "input_sha256": "7b3b708ba6c472753efbb8d2781ff6347ff3daeef8d5d248d82bbd98e0aac10f"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3983496575287475,
+          "brier": 0.12168671219850918
+        },
+        "target_platt": {
+          "nll": 0.40243449948751453,
+          "brier": 0.12247965715394588
+        },
+        "support_logistic": {
+          "nll": 0.4503532566688301,
+          "brier": 0.13836061515142228
+        },
+        "query": {
+          "nll": 0.39834965702392655,
+          "brier": 0.12168671207793708
+        },
+        "task_scalar": {
+          "nll": 0.39834965702392655,
+          "brier": 0.12168671207793708
+        },
+        "support_head": {
+          "nll": 0.39834965702392655,
+          "brier": 0.12168671207793708
+        },
+        "guarded_logistic": {
+          "nll": 0.3983496575287475,
+          "brier": 0.12168671219850918
+        },
+        "native_linear_converged": {
+          "nll": 0.398314967302477,
+          "brier": 0.12167476745901343
+        },
+        "global_platt": {
+          "nll": 0.3983537651794462,
+          "brier": 0.12170251071985697
+        },
+        "global_simplex": {
+          "nll": 0.397516101253372,
+          "brier": 0.12142235552767591
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_asthma3_development_group9.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.112093915902392e-15,
+          "objective_gap_upper": 5.793866252796672e-29,
+          "iterations": 5,
+          "weights": [
+            -0.1787371691286956,
+            -0.0016573227371466008
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_asthma3",
+      "group": "group9",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group9.npz",
+      "input_sha256": "66f67457b9008380313bc5edddc79ca068e6e9ca1596782e63d4c18b25f8c9c2"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.31478272153160763,
+          "brier": 0.09712241633994834
+        },
+        "target_platt": {
+          "nll": 0.31492411211931187,
+          "brier": 0.09701186422490776
+        },
+        "support_logistic": {
+          "nll": 0.39836533698333987,
+          "brier": 0.11883152693678742
+        },
+        "query": {
+          "nll": 0.3147827213348859,
+          "brier": 0.09712241629696151
+        },
+        "task_scalar": {
+          "nll": 0.3147827213348859,
+          "brier": 0.09712241629696151
+        },
+        "support_head": {
+          "nll": 0.3147827213348859,
+          "brier": 0.09712241629696151
+        },
+        "guarded_logistic": {
+          "nll": 0.31478272153160763,
+          "brier": 0.09712241633994834
+        },
+        "native_linear_converged": {
+          "nll": 0.3147827108679512,
+          "brier": 0.09712241301376906
+        },
+        "global_platt": {
+          "nll": 0.31502402406610674,
+          "brier": 0.09716857616222223
+        },
+        "global_simplex": {
+          "nll": 0.31469160406930075,
+          "brier": 0.09715406935341107
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_diabete4_development_group19.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.3010426069826053e-17,
+          "objective_gap_upper": 8.614022602825723e-34,
+          "iterations": 5,
+          "weights": [
+            0.11981216851365087,
+            0.026188083179234888
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_diabete4",
+      "group": "group19",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group19.npz",
+      "input_sha256": "638cc0b59c539e80c61d68458027b9a73542e68a1365141546e98068c70f7432"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3542320248324218,
+          "brier": 0.11186183011476598
+        },
+        "target_platt": {
+          "nll": 0.3541075222788032,
+          "brier": 0.1117873607321109
+        },
+        "support_logistic": {
+          "nll": 0.4361224798244102,
+          "brier": 0.13437145511432813
+        },
+        "query": {
+          "nll": 0.35423202488025674,
+          "brier": 0.11186183014187365
+        },
+        "task_scalar": {
+          "nll": 0.35423202488025674,
+          "brier": 0.11186183014187365
+        },
+        "support_head": {
+          "nll": 0.35423202488025674,
+          "brier": 0.11186183014187365
+        },
+        "guarded_logistic": {
+          "nll": 0.3542320248324218,
+          "brier": 0.11186183011476598
+        },
+        "native_linear_converged": {
+          "nll": 0.35423202487321326,
+          "brier": 0.11186183012676212
+        },
+        "global_platt": {
+          "nll": 0.35415684577935647,
+          "brier": 0.11184898309591097
+        },
+        "global_simplex": {
+          "nll": 0.3538944408248355,
+          "brier": 0.11174801966016035
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_diabete4_development_group24.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.691355389077387e-16,
+          "objective_gap_upper": 1.7282964301721863e-31,
+          "iterations": 4,
+          "weights": [
+            0.028726811533523387,
+            0.04379908502699631
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_diabete4",
+      "group": "group24",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group24.npz",
+      "input_sha256": "09d40f17f2c6ec223a6c4feb2042851045ab06e8aa6359b1e2d99aa0f1862260"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3122232512715156,
+          "brier": 0.09645337408567685
+        },
+        "target_platt": {
+          "nll": 0.3137168624283477,
+          "brier": 0.09686055488184847
+        },
+        "support_logistic": {
+          "nll": 0.4082337351547527,
+          "brier": 0.1212429627596573
+        },
+        "query": {
+          "nll": 0.3122232512318591,
+          "brier": 0.09645337415607011
+        },
+        "task_scalar": {
+          "nll": 0.3122232512318591,
+          "brier": 0.09645337415607011
+        },
+        "support_head": {
+          "nll": 0.3122232512318591,
+          "brier": 0.09645337415607011
+        },
+        "guarded_logistic": {
+          "nll": 0.3122232512715156,
+          "brier": 0.09645337408567685
+        },
+        "native_linear_converged": {
+          "nll": 0.3122232512723265,
+          "brier": 0.09645337408570637
+        },
+        "global_platt": {
+          "nll": 0.31218054135325635,
+          "brier": 0.09643029247147897
+        },
+        "global_simplex": {
+          "nll": 0.31224199707974465,
+          "brier": 0.09651007096641424
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_diabete4_development_group29.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.5019730171281793e-17,
+          "objective_gap_upper": 7.35066004927947e-33,
+          "iterations": 5,
+          "weights": [
+            -0.08932254916528842,
+            -0.0019315066799444264
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 15,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_diabete4",
+      "group": "group29",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group29.npz",
+      "input_sha256": "0d458fe82f2558d31f250323d5083254b433580afd2bc85e09fd8288b58c0776"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.30842974363268144,
+          "brier": 0.09503632294135941
+        },
+        "target_platt": {
+          "nll": 0.3082311738914864,
+          "brier": 0.09483668468231196
+        },
+        "support_logistic": {
+          "nll": 0.39799476807630996,
+          "brier": 0.11762949272545033
+        },
+        "query": {
+          "nll": 0.30842974337775375,
+          "brier": 0.0950363228906714
+        },
+        "task_scalar": {
+          "nll": 0.30842974337775375,
+          "brier": 0.0950363228906714
+        },
+        "support_head": {
+          "nll": 0.30842974337775375,
+          "brier": 0.0950363228906714
+        },
+        "guarded_logistic": {
+          "nll": 0.30842974363268144,
+          "brier": 0.09503632294135941
+        },
+        "native_linear_converged": {
+          "nll": 0.3084297436108856,
+          "brier": 0.09503632293166075
+        },
+        "global_platt": {
+          "nll": 0.30840632370913856,
+          "brier": 0.0949988426240583
+        },
+        "global_simplex": {
+          "nll": 0.30876255382208884,
+          "brier": 0.09507706066163872
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_diabete4_development_group34.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 8.532931305982316e-14,
+          "objective_gap_upper": 4.046614897562211e-26,
+          "iterations": 4,
+          "weights": [
+            -0.0659035785249474,
+            -0.1414836260461433
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_diabete4",
+      "group": "group34",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group34.npz",
+      "input_sha256": "2cbe3600676cd2079e49e58ef5fdef24ec7de65e919036874f3473aa44dab8fc"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3781953129852787,
+          "brier": 0.12028724311062242
+        },
+        "target_platt": {
+          "nll": 0.377993372237571,
+          "brier": 0.12022716847773407
+        },
+        "support_logistic": {
+          "nll": 0.4643809083786524,
+          "brier": 0.1456676351138362
+        },
+        "query": {
+          "nll": 0.3781953127482883,
+          "brier": 0.12028724300459365
+        },
+        "task_scalar": {
+          "nll": 0.3781953127482883,
+          "brier": 0.12028724300459365
+        },
+        "support_head": {
+          "nll": 0.3781953127482883,
+          "brier": 0.12028724300459365
+        },
+        "guarded_logistic": {
+          "nll": 0.3781953129852787,
+          "brier": 0.12028724311062242
+        },
+        "native_linear_converged": {
+          "nll": 0.3781953129852787,
+          "brier": 0.12028724311062242
+        },
+        "global_platt": {
+          "nll": 0.37798773622112525,
+          "brier": 0.12025056047328683
+        },
+        "global_simplex": {
+          "nll": 0.3779772382098693,
+          "brier": 0.12017464529130888
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_diabete4_development_group39.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 7.96716859152724e-12,
+          "objective_gap_upper": 3.5582807722913246e-22,
+          "iterations": 4,
+          "weights": [
+            -0.04512172242966334,
+            0.029846235054342807
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_diabete4",
+      "group": "group39",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group39.npz",
+      "input_sha256": "b1dfc554bf94cad24edecf60257f5fb83105c0d89df704d51a595f50f992e4dc"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3615526986111559,
+          "brier": 0.11507265548897408
+        },
+        "target_platt": {
+          "nll": 0.3620753872923693,
+          "brier": 0.11520004846267617
+        },
+        "support_logistic": {
+          "nll": 0.46092540447622343,
+          "brier": 0.14305114329933177
+        },
+        "query": {
+          "nll": 0.3615526981145498,
+          "brier": 0.11507265534830324
+        },
+        "task_scalar": {
+          "nll": 0.3615526981145498,
+          "brier": 0.11507265534830324
+        },
+        "support_head": {
+          "nll": 0.3615526981145498,
+          "brier": 0.11507265534830324
+        },
+        "guarded_logistic": {
+          "nll": 0.3615526986111559,
+          "brier": 0.11507265548897408
+        },
+        "native_linear_converged": {
+          "nll": 0.36155269859121464,
+          "brier": 0.11507265548110845
+        },
+        "global_platt": {
+          "nll": 0.36145819176714516,
+          "brier": 0.11503800365297526
+        },
+        "global_simplex": {
+          "nll": 0.36145009780572557,
+          "brier": 0.1150122119203037
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_diabete4_development_group4.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0646678811075958e-13,
+          "objective_gap_upper": 2.441863090111447e-25,
+          "iterations": 4,
+          "weights": [
+            0.05045188299765535,
+            0.029966272139454242
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_diabete4",
+      "group": "group4",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group4.npz",
+      "input_sha256": "7e3cfc128e000f9ad04e97a92cd94e1b19ee198fac281f0dfe14310f19883f85"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.33409068709166134,
+          "brier": 0.10059252356699705
+        },
+        "target_platt": {
+          "nll": 0.34798657808138106,
+          "brier": 0.10165715208467818
+        },
+        "support_logistic": {
+          "nll": 0.3872849945283244,
+          "brier": 0.113759579609013
+        },
+        "query": {
+          "nll": 0.3340906870626313,
+          "brier": 0.10059252357961654
+        },
+        "task_scalar": {
+          "nll": 0.3340906870626313,
+          "brier": 0.10059252357961654
+        },
+        "support_head": {
+          "nll": 0.3340906870626313,
+          "brier": 0.10059252357961654
+        },
+        "guarded_logistic": {
+          "nll": 0.33409068709166134,
+          "brier": 0.10059252356699705
+        },
+        "native_linear_converged": {
+          "nll": 0.33409068709166134,
+          "brier": 0.10059252356699705
+        },
+        "global_platt": {
+          "nll": 0.3335488842084803,
+          "brier": 0.10052325901379053
+        },
+        "global_simplex": {
+          "nll": 0.3337176839252629,
+          "brier": 0.10033208977688696
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_diabete4_development_group44.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.3528414499752728e-13,
+          "objective_gap_upper": 1.0954269123260393e-25,
+          "iterations": 5,
+          "weights": [
+            0.30632082881965583,
+            0.06261595908059346
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_diabete4",
+      "group": "group44",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group44.npz",
+      "input_sha256": "5d26927b0c35c157ef42b3c55c3daf9718f3d7f3506dc927f731d4a849b70b45"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.25910275892542967,
+          "brier": 0.0783035515043298
+        },
+        "target_platt": {
+          "nll": 0.25723945501260137,
+          "brier": 0.0776212906142568
+        },
+        "support_logistic": {
+          "nll": 0.32760352822170064,
+          "brier": 0.09170277216154617
+        },
+        "query": {
+          "nll": 0.25910275837557806,
+          "brier": 0.07830355137937821
+        },
+        "task_scalar": {
+          "nll": 0.25910275837557806,
+          "brier": 0.07830355137937821
+        },
+        "support_head": {
+          "nll": 0.25910275837557806,
+          "brier": 0.07830355137937821
+        },
+        "guarded_logistic": {
+          "nll": 0.25910275892542967,
+          "brier": 0.0783035515043298
+        },
+        "native_linear_converged": {
+          "nll": 0.2616569427992298,
+          "brier": 0.07887581462900858
+        },
+        "global_platt": {
+          "nll": 0.2595298354899127,
+          "brier": 0.07832130981764315
+        },
+        "global_simplex": {
+          "nll": 0.25732793938452564,
+          "brier": 0.07769095876641832
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_diabete4_development_group49.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.5128150388530344e-16,
+          "objective_gap_upper": 6.865676941005912e-31,
+          "iterations": 5,
+          "weights": [
+            0.07353831518553162,
+            -0.2042564399762074
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_diabete4",
+      "group": "group49",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group49.npz",
+      "input_sha256": "0f6aa0d2dacdbac48d285294917830e64e98f83d5861c7a8b3241e912d9099eb"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.4076610679078362,
+          "brier": 0.1331805338424362
+        },
+        "target_platt": {
+          "nll": 0.41124667222566513,
+          "brier": 0.13440811197786387
+        },
+        "support_logistic": {
+          "nll": 0.497933913503941,
+          "brier": 0.16066563150951332
+        },
+        "query": {
+          "nll": 0.4076610679109523,
+          "brier": 0.1331805338668495
+        },
+        "task_scalar": {
+          "nll": 0.4076610679109523,
+          "brier": 0.1331805338668495
+        },
+        "support_head": {
+          "nll": 0.4076610679109523,
+          "brier": 0.1331805338668495
+        },
+        "guarded_logistic": {
+          "nll": 0.4076610679078362,
+          "brier": 0.1331805338424362
+        },
+        "native_linear_converged": {
+          "nll": 0.407661067903969,
+          "brier": 0.13318053384200496
+        },
+        "global_platt": {
+          "nll": 0.40755429562428047,
+          "brier": 0.13309993274221305
+        },
+        "global_simplex": {
+          "nll": 0.40846160273583415,
+          "brier": 0.13349855457910242
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_diabete4_development_group54.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 7.719519468096792e-17,
+          "objective_gap_upper": 3.8462175158905247e-32,
+          "iterations": 5,
+          "weights": [
+            -0.04132120943057462,
+            0.22416227760152763
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_diabete4",
+      "group": "group54",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group54.npz",
+      "input_sha256": "395b9c32ad729817b0174bd2a4de8dba7cc0ab110ceb75fe116ce58d00fade42"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.29302086395130167,
+          "brier": 0.08890022292199598
+        },
+        "target_platt": {
+          "nll": 0.29209551160311276,
+          "brier": 0.08860131221566411
+        },
+        "support_logistic": {
+          "nll": 0.37255325358902186,
+          "brier": 0.10679768397161639
+        },
+        "query": {
+          "nll": 0.2930208637773467,
+          "brier": 0.08890022291821333
+        },
+        "task_scalar": {
+          "nll": 0.2930208637773467,
+          "brier": 0.08890022291821333
+        },
+        "support_head": {
+          "nll": 0.2930208637773467,
+          "brier": 0.08890022291821333
+        },
+        "guarded_logistic": {
+          "nll": 0.29302086395130167,
+          "brier": 0.08890022292199598
+        },
+        "native_linear_converged": {
+          "nll": 0.3039578952570654,
+          "brier": 0.09192812881626647
+        },
+        "global_platt": {
+          "nll": 0.2932482070479115,
+          "brier": 0.08889658688818826
+        },
+        "global_simplex": {
+          "nll": 0.29252417273856424,
+          "brier": 0.08873173349227162
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760001_brfss_diabete4_development_group9.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.701164574132886e-11,
+          "objective_gap_upper": 4.1083098851733215e-21,
+          "iterations": 4,
+          "weights": [
+            -0.01036976921418533,
+            -0.18828729168967542
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760001,
+      "task": "brfss_diabete4",
+      "group": "group9",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group9.npz",
+      "input_sha256": "90186ea1aa81435639764c49665c0a24fa5092c6c99ecb14fd4336adfb20c205"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.34420406165459705,
+          "brier": 0.10032014135480824
+        },
+        "target_platt": {
+          "nll": 0.3434980809510636,
+          "brier": 0.10013148579446365
+        },
+        "support_logistic": {
+          "nll": 0.3778017356645399,
+          "brier": 0.11059077594955082
+        },
+        "query": {
+          "nll": 0.34420406195763664,
+          "brier": 0.10032014147248546
+        },
+        "task_scalar": {
+          "nll": 0.34420406195763664,
+          "brier": 0.10032014147248546
+        },
+        "support_head": {
+          "nll": 0.34420406195763664,
+          "brier": 0.10032014147248546
+        },
+        "guarded_logistic": {
+          "nll": 0.34420406165459705,
+          "brier": 0.10032014135480824
+        },
+        "native_linear_converged": {
+          "nll": 0.34420405961440564,
+          "brier": 0.10032014096624614
+        },
+        "global_platt": {
+          "nll": 0.34445722811284774,
+          "brier": 0.1003687814313019
+        },
+        "global_simplex": {
+          "nll": 0.3437819666464409,
+          "brier": 0.10021984285807804
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_asthma3_development_group19.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.222614453595284e-16,
+          "objective_gap_upper": 2.980538807159661e-31,
+          "iterations": 4,
+          "weights": [
+            0.009447632850675977,
+            -0.017502631084450174
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_asthma3",
+      "group": "group19",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group19.npz",
+      "input_sha256": "65551f4e750271b81630fef06992df5148cbdc82d6cd21b78c18ee6cd6d8a6ef"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.38578200587622735,
+          "brier": 0.11684610785258301
+        },
+        "target_platt": {
+          "nll": 0.3858699573527653,
+          "brier": 0.11688698515317544
+        },
+        "support_logistic": {
+          "nll": 0.4225904768775148,
+          "brier": 0.12863325557244404
+        },
+        "query": {
+          "nll": 0.38578200536680857,
+          "brier": 0.116846107659467
+        },
+        "task_scalar": {
+          "nll": 0.38578200536680857,
+          "brier": 0.116846107659467
+        },
+        "support_head": {
+          "nll": 0.38578200536680857,
+          "brier": 0.116846107659467
+        },
+        "guarded_logistic": {
+          "nll": 0.38578200587622735,
+          "brier": 0.11684610785258301
+        },
+        "native_linear_converged": {
+          "nll": 0.3857820058764384,
+          "brier": 0.1168461078526118
+        },
+        "global_platt": {
+          "nll": 0.38581072232713476,
+          "brier": 0.11683929198534418
+        },
+        "global_simplex": {
+          "nll": 0.3859355239206278,
+          "brier": 0.11687595313148524
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_asthma3_development_group24.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0902550523782537e-14,
+          "objective_gap_upper": 2.675326908759617e-27,
+          "iterations": 4,
+          "weights": [
+            0.04329935634972044,
+            0.024017916127288517
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_asthma3",
+      "group": "group24",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group24.npz",
+      "input_sha256": "1b805108ad027b4d25dc755f676486134e3147dc9c4c4f406ecc22a8c06c306c"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.37630133559036827,
+          "brier": 0.11308017734264891
+        },
+        "target_platt": {
+          "nll": 0.3775800270038101,
+          "brier": 0.11312281946943212
+        },
+        "support_logistic": {
+          "nll": 0.40213066784196494,
+          "brier": 0.11987354599070935
+        },
+        "query": {
+          "nll": 0.37630133515120345,
+          "brier": 0.11308017722026932
+        },
+        "task_scalar": {
+          "nll": 0.37630133515120345,
+          "brier": 0.11308017722026932
+        },
+        "support_head": {
+          "nll": 0.37630133515120345,
+          "brier": 0.11308017722026932
+        },
+        "guarded_logistic": {
+          "nll": 0.37630133559036827,
+          "brier": 0.11308017734264891
+        },
+        "native_linear_converged": {
+          "nll": 0.37630133564288665,
+          "brier": 0.11308017736368664
+        },
+        "global_platt": {
+          "nll": 0.3763327154208682,
+          "brier": 0.11304084271738904
+        },
+        "global_simplex": {
+          "nll": 0.3747921272217227,
+          "brier": 0.11256399602671702
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_asthma3_development_group29.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.9968028886505635e-15,
+          "objective_gap_upper": 9.794193375804113e-29,
+          "iterations": 5,
+          "weights": [
+            0.2150176427496247,
+            0.012436154979067785
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_asthma3",
+      "group": "group29",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group29.npz",
+      "input_sha256": "4c00b797133c7f8f3ef93d248af08e966065640588cc2e9e90db54098fc0f1a5"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.37848138259529884,
+          "brier": 0.11400483456676701
+        },
+        "target_platt": {
+          "nll": 0.38023142005979776,
+          "brier": 0.1143819111241442
+        },
+        "support_logistic": {
+          "nll": 0.42110326766811323,
+          "brier": 0.1260486913407487
+        },
+        "query": {
+          "nll": 0.37848138260524977,
+          "brier": 0.11400483455817542
+        },
+        "task_scalar": {
+          "nll": 0.37848138260524977,
+          "brier": 0.11400483455817542
+        },
+        "support_head": {
+          "nll": 0.37848138260524977,
+          "brier": 0.11400483455817542
+        },
+        "guarded_logistic": {
+          "nll": 0.37848138259529884,
+          "brier": 0.11400483456676701
+        },
+        "native_linear_converged": {
+          "nll": 0.378481382590493,
+          "brier": 0.11400483456620147
+        },
+        "global_platt": {
+          "nll": 0.37856292231250366,
+          "brier": 0.114012552537766
+        },
+        "global_simplex": {
+          "nll": 0.37846530393637573,
+          "brier": 0.11401063321841459
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_asthma3_development_group34.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.6020852139652106e-18,
+          "objective_gap_upper": 4.890056499420716e-35,
+          "iterations": 5,
+          "weights": [
+            0.14601833309798082,
+            0.04735362150705161
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_asthma3",
+      "group": "group34",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group34.npz",
+      "input_sha256": "515a73871a12b4e56601e83fd54947705e41fbde23a4cb3a7391a200998a651b"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3794743841964073,
+          "brier": 0.1156320617165704
+        },
+        "target_platt": {
+          "nll": 0.3782093114574372,
+          "brier": 0.1149919144431086
+        },
+        "support_logistic": {
+          "nll": 0.4220610821987787,
+          "brier": 0.12681419851757467
+        },
+        "query": {
+          "nll": 0.3794743844571109,
+          "brier": 0.11563206186099953
+        },
+        "task_scalar": {
+          "nll": 0.3794743844571109,
+          "brier": 0.11563206186099953
+        },
+        "support_head": {
+          "nll": 0.3794743844571109,
+          "brier": 0.11563206186099953
+        },
+        "guarded_logistic": {
+          "nll": 0.3794743841964073,
+          "brier": 0.1156320617165704
+        },
+        "native_linear_converged": {
+          "nll": 0.3794743841539546,
+          "brier": 0.11563206170711768
+        },
+        "global_platt": {
+          "nll": 0.37951521659890103,
+          "brier": 0.11557029861117692
+        },
+        "global_simplex": {
+          "nll": 0.3789679700173116,
+          "brier": 0.11544014447122325
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_asthma3_development_group39.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.056514680770505e-15,
+          "objective_gap_upper": 2.57475655858349e-29,
+          "iterations": 4,
+          "weights": [
+            -0.05669683153940673,
+            -0.14637752593238845
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_asthma3",
+      "group": "group39",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group39.npz",
+      "input_sha256": "1227b6229e2ace37683e1d69df1754538d582c739d30a6a7c5fb519fbc4bc91b"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.39308152410355235,
+          "brier": 0.1196691877738224
+        },
+        "target_platt": {
+          "nll": 0.3939502055487397,
+          "brier": 0.11989674313181402
+        },
+        "support_logistic": {
+          "nll": 0.4386799122840698,
+          "brier": 0.1338453562702505
+        },
+        "query": {
+          "nll": 0.39308152344494074,
+          "brier": 0.11966918756570571
+        },
+        "task_scalar": {
+          "nll": 0.39308152344494074,
+          "brier": 0.11966918756570571
+        },
+        "support_head": {
+          "nll": 0.39308152344494074,
+          "brier": 0.11966918756570571
+        },
+        "guarded_logistic": {
+          "nll": 0.39308152410355235,
+          "brier": 0.1196691877738224
+        },
+        "native_linear_converged": {
+          "nll": 0.3930815229191164,
+          "brier": 0.11966918731372675
+        },
+        "global_platt": {
+          "nll": 0.3929823044363865,
+          "brier": 0.1196461329047156
+        },
+        "global_simplex": {
+          "nll": 0.39245719871891005,
+          "brier": 0.1194572871091193
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_asthma3_development_group4.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 7.922690281603195e-13,
+          "objective_gap_upper": 3.750700559038418e-24,
+          "iterations": 4,
+          "weights": [
+            0.13229163630619376,
+            0.21155708408664436
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 15,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_asthma3",
+      "group": "group4",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group4.npz",
+      "input_sha256": "87f4ab127b0c5042cd2720a6450516a3e407eb6828f9e84eff46762812e11472"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.42797984541788964,
+          "brier": 0.13295035926801996
+        },
+        "target_platt": {
+          "nll": 0.42723921302511086,
+          "brier": 0.13270230534947688
+        },
+        "support_logistic": {
+          "nll": 0.4810536307147503,
+          "brier": 0.15216987358151174
+        },
+        "query": {
+          "nll": 0.42797984607494133,
+          "brier": 0.13295035943018368
+        },
+        "task_scalar": {
+          "nll": 0.42797984607494133,
+          "brier": 0.13295035943018368
+        },
+        "support_head": {
+          "nll": 0.42797984607494133,
+          "brier": 0.13295035943018368
+        },
+        "guarded_logistic": {
+          "nll": 0.42797984541788964,
+          "brier": 0.13295035926801996
+        },
+        "native_linear_converged": {
+          "nll": 0.42561146795037513,
+          "brier": 0.13235454986913342
+        },
+        "global_platt": {
+          "nll": 0.42772846344270454,
+          "brier": 0.13290117694683506
+        },
+        "global_simplex": {
+          "nll": 0.42619037639120716,
+          "brier": 0.13246273859308696
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_asthma3_development_group44.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 8.500145032286355e-17,
+          "objective_gap_upper": 4.7922553694323017e-32,
+          "iterations": 5,
+          "weights": [
+            -0.07358468509360251,
+            0.16972910057647406
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_asthma3",
+      "group": "group44",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group44.npz",
+      "input_sha256": "bc233a7629809d7c07dfd00d934daebc1293766dca74e254a2dc8668f0c20807"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.4334416871385772,
+          "brier": 0.13423714918215535
+        },
+        "target_platt": {
+          "nll": 0.4375365104620177,
+          "brier": 0.13507837943191406
+        },
+        "support_logistic": {
+          "nll": 0.4811390779714828,
+          "brier": 0.14826186821868176
+        },
+        "query": {
+          "nll": 0.43344168694210194,
+          "brier": 0.13423714915041246
+        },
+        "task_scalar": {
+          "nll": 0.43344168694210194,
+          "brier": 0.13423714915041246
+        },
+        "support_head": {
+          "nll": 0.43344168694210194,
+          "brier": 0.13423714915041246
+        },
+        "guarded_logistic": {
+          "nll": 0.4334416871385772,
+          "brier": 0.13423714918215535
+        },
+        "native_linear_converged": {
+          "nll": 0.4334418332454101,
+          "brier": 0.13423716060611426
+        },
+        "global_platt": {
+          "nll": 0.43311383412130167,
+          "brier": 0.1341825306946523
+        },
+        "global_simplex": {
+          "nll": 0.4345955432813683,
+          "brier": 0.13448171189973507
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_asthma3_development_group49.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.5243975352852157e-11,
+          "objective_gap_upper": 1.4122113452529097e-21,
+          "iterations": 4,
+          "weights": [
+            0.04469413962107943,
+            -0.05841867235397316
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_asthma3",
+      "group": "group49",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group49.npz",
+      "input_sha256": "367bdcf2f1cf80fce46c97fdc17e62a80f6c5cdb4059b67237fe85142cf18d56"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.4156267521604737,
+          "brier": 0.12939807381079474
+        },
+        "target_platt": {
+          "nll": 0.41623802642787017,
+          "brier": 0.12949710003689105
+        },
+        "support_logistic": {
+          "nll": 0.46335894232867403,
+          "brier": 0.14353542035553718
+        },
+        "query": {
+          "nll": 0.4156267526662108,
+          "brier": 0.12939807390227676
+        },
+        "task_scalar": {
+          "nll": 0.4156267526662108,
+          "brier": 0.12939807390227676
+        },
+        "support_head": {
+          "nll": 0.4156267526662108,
+          "brier": 0.12939807390227676
+        },
+        "guarded_logistic": {
+          "nll": 0.4156267521604737,
+          "brier": 0.12939807381079474
+        },
+        "native_linear_converged": {
+          "nll": 0.4156267521402965,
+          "brier": 0.1293980738494187
+        },
+        "global_platt": {
+          "nll": 0.41555632586720137,
+          "brier": 0.12933540729184462
+        },
+        "global_simplex": {
+          "nll": 0.41527012686325027,
+          "brier": 0.12924502644789898
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_asthma3_development_group54.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.0408340855860843e-17,
+          "objective_gap_upper": 5.454293787815414e-34,
+          "iterations": 5,
+          "weights": [
+            0.06816102318933516,
+            -0.06784194071962706
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_asthma3",
+      "group": "group54",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group54.npz",
+      "input_sha256": "7b3b708ba6c472753efbb8d2781ff6347ff3daeef8d5d248d82bbd98e0aac10f"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3983496575287475,
+          "brier": 0.12168671219850918
+        },
+        "target_platt": {
+          "nll": 0.40243449948751453,
+          "brier": 0.12247965715394588
+        },
+        "support_logistic": {
+          "nll": 0.4503532566688301,
+          "brier": 0.13836061515142228
+        },
+        "query": {
+          "nll": 0.39834965702392655,
+          "brier": 0.12168671207793708
+        },
+        "task_scalar": {
+          "nll": 0.39834965702392655,
+          "brier": 0.12168671207793708
+        },
+        "support_head": {
+          "nll": 0.39834965702392655,
+          "brier": 0.12168671207793708
+        },
+        "guarded_logistic": {
+          "nll": 0.3983496575287475,
+          "brier": 0.12168671219850918
+        },
+        "native_linear_converged": {
+          "nll": 0.398314967302477,
+          "brier": 0.12167476745901343
+        },
+        "global_platt": {
+          "nll": 0.3983537651794462,
+          "brier": 0.12170251071985697
+        },
+        "global_simplex": {
+          "nll": 0.397516101253372,
+          "brier": 0.12142235552767591
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_asthma3_development_group9.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.112093915902392e-15,
+          "objective_gap_upper": 5.793866252796672e-29,
+          "iterations": 5,
+          "weights": [
+            -0.1787371691286956,
+            -0.0016573227371466008
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_asthma3",
+      "group": "group9",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group9.npz",
+      "input_sha256": "66f67457b9008380313bc5edddc79ca068e6e9ca1596782e63d4c18b25f8c9c2"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.31478272153160763,
+          "brier": 0.09712241633994834
+        },
+        "target_platt": {
+          "nll": 0.31492411211931187,
+          "brier": 0.09701186422490776
+        },
+        "support_logistic": {
+          "nll": 0.39836533698333987,
+          "brier": 0.11883152693678742
+        },
+        "query": {
+          "nll": 0.3147827213348859,
+          "brier": 0.09712241629696151
+        },
+        "task_scalar": {
+          "nll": 0.3147827213348859,
+          "brier": 0.09712241629696151
+        },
+        "support_head": {
+          "nll": 0.3147827213348859,
+          "brier": 0.09712241629696151
+        },
+        "guarded_logistic": {
+          "nll": 0.31478272153160763,
+          "brier": 0.09712241633994834
+        },
+        "native_linear_converged": {
+          "nll": 0.3147827108679512,
+          "brier": 0.09712241301376906
+        },
+        "global_platt": {
+          "nll": 0.31502402406610674,
+          "brier": 0.09716857616222223
+        },
+        "global_simplex": {
+          "nll": 0.31469160406930075,
+          "brier": 0.09715406935341107
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_diabete4_development_group19.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.3010426069826053e-17,
+          "objective_gap_upper": 8.614022602825723e-34,
+          "iterations": 5,
+          "weights": [
+            0.11981216851365087,
+            0.026188083179234888
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_diabete4",
+      "group": "group19",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group19.npz",
+      "input_sha256": "638cc0b59c539e80c61d68458027b9a73542e68a1365141546e98068c70f7432"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3542320248324218,
+          "brier": 0.11186183011476598
+        },
+        "target_platt": {
+          "nll": 0.3541075222788032,
+          "brier": 0.1117873607321109
+        },
+        "support_logistic": {
+          "nll": 0.4361224798244102,
+          "brier": 0.13437145511432813
+        },
+        "query": {
+          "nll": 0.35423202488025674,
+          "brier": 0.11186183014187365
+        },
+        "task_scalar": {
+          "nll": 0.35423202488025674,
+          "brier": 0.11186183014187365
+        },
+        "support_head": {
+          "nll": 0.35423202488025674,
+          "brier": 0.11186183014187365
+        },
+        "guarded_logistic": {
+          "nll": 0.3542320248324218,
+          "brier": 0.11186183011476598
+        },
+        "native_linear_converged": {
+          "nll": 0.35423202487321326,
+          "brier": 0.11186183012676212
+        },
+        "global_platt": {
+          "nll": 0.35415684577935647,
+          "brier": 0.11184898309591097
+        },
+        "global_simplex": {
+          "nll": 0.3538944408248355,
+          "brier": 0.11174801966016035
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_diabete4_development_group24.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.691355389077387e-16,
+          "objective_gap_upper": 1.7282964301721863e-31,
+          "iterations": 4,
+          "weights": [
+            0.028726811533523387,
+            0.04379908502699631
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_diabete4",
+      "group": "group24",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group24.npz",
+      "input_sha256": "09d40f17f2c6ec223a6c4feb2042851045ab06e8aa6359b1e2d99aa0f1862260"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3122232512715156,
+          "brier": 0.09645337408567685
+        },
+        "target_platt": {
+          "nll": 0.3137168624283477,
+          "brier": 0.09686055488184847
+        },
+        "support_logistic": {
+          "nll": 0.4082337351547527,
+          "brier": 0.1212429627596573
+        },
+        "query": {
+          "nll": 0.3122232512318591,
+          "brier": 0.09645337415607011
+        },
+        "task_scalar": {
+          "nll": 0.3122232512318591,
+          "brier": 0.09645337415607011
+        },
+        "support_head": {
+          "nll": 0.3122232512318591,
+          "brier": 0.09645337415607011
+        },
+        "guarded_logistic": {
+          "nll": 0.3122232512715156,
+          "brier": 0.09645337408567685
+        },
+        "native_linear_converged": {
+          "nll": 0.3122232512723265,
+          "brier": 0.09645337408570637
+        },
+        "global_platt": {
+          "nll": 0.31218054135325635,
+          "brier": 0.09643029247147897
+        },
+        "global_simplex": {
+          "nll": 0.31224199707974465,
+          "brier": 0.09651007096641424
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_diabete4_development_group29.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.5019730171281793e-17,
+          "objective_gap_upper": 7.35066004927947e-33,
+          "iterations": 5,
+          "weights": [
+            -0.08932254916528842,
+            -0.0019315066799444264
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 15,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_diabete4",
+      "group": "group29",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group29.npz",
+      "input_sha256": "0d458fe82f2558d31f250323d5083254b433580afd2bc85e09fd8288b58c0776"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.30842974363268144,
+          "brier": 0.09503632294135941
+        },
+        "target_platt": {
+          "nll": 0.3082311738914864,
+          "brier": 0.09483668468231196
+        },
+        "support_logistic": {
+          "nll": 0.39799476807630996,
+          "brier": 0.11762949272545033
+        },
+        "query": {
+          "nll": 0.30842974337775375,
+          "brier": 0.0950363228906714
+        },
+        "task_scalar": {
+          "nll": 0.30842974337775375,
+          "brier": 0.0950363228906714
+        },
+        "support_head": {
+          "nll": 0.30842974337775375,
+          "brier": 0.0950363228906714
+        },
+        "guarded_logistic": {
+          "nll": 0.30842974363268144,
+          "brier": 0.09503632294135941
+        },
+        "native_linear_converged": {
+          "nll": 0.3084297436108856,
+          "brier": 0.09503632293166075
+        },
+        "global_platt": {
+          "nll": 0.30840632370913856,
+          "brier": 0.0949988426240583
+        },
+        "global_simplex": {
+          "nll": 0.30876255382208884,
+          "brier": 0.09507706066163872
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_diabete4_development_group34.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 8.532931305982316e-14,
+          "objective_gap_upper": 4.046614897562211e-26,
+          "iterations": 4,
+          "weights": [
+            -0.0659035785249474,
+            -0.1414836260461433
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_diabete4",
+      "group": "group34",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group34.npz",
+      "input_sha256": "2cbe3600676cd2079e49e58ef5fdef24ec7de65e919036874f3473aa44dab8fc"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3781953129852787,
+          "brier": 0.12028724311062242
+        },
+        "target_platt": {
+          "nll": 0.377993372237571,
+          "brier": 0.12022716847773407
+        },
+        "support_logistic": {
+          "nll": 0.4643809083786524,
+          "brier": 0.1456676351138362
+        },
+        "query": {
+          "nll": 0.3781953127482883,
+          "brier": 0.12028724300459365
+        },
+        "task_scalar": {
+          "nll": 0.3781953127482883,
+          "brier": 0.12028724300459365
+        },
+        "support_head": {
+          "nll": 0.3781953127482883,
+          "brier": 0.12028724300459365
+        },
+        "guarded_logistic": {
+          "nll": 0.3781953129852787,
+          "brier": 0.12028724311062242
+        },
+        "native_linear_converged": {
+          "nll": 0.3781953129852787,
+          "brier": 0.12028724311062242
+        },
+        "global_platt": {
+          "nll": 0.37798773622112525,
+          "brier": 0.12025056047328683
+        },
+        "global_simplex": {
+          "nll": 0.3779772382098693,
+          "brier": 0.12017464529130888
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_diabete4_development_group39.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 7.96716859152724e-12,
+          "objective_gap_upper": 3.5582807722913246e-22,
+          "iterations": 4,
+          "weights": [
+            -0.04512172242966334,
+            0.029846235054342807
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_diabete4",
+      "group": "group39",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group39.npz",
+      "input_sha256": "b1dfc554bf94cad24edecf60257f5fb83105c0d89df704d51a595f50f992e4dc"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3615526986111559,
+          "brier": 0.11507265548897408
+        },
+        "target_platt": {
+          "nll": 0.3620753872923693,
+          "brier": 0.11520004846267617
+        },
+        "support_logistic": {
+          "nll": 0.46092540447622343,
+          "brier": 0.14305114329933177
+        },
+        "query": {
+          "nll": 0.3615526981145498,
+          "brier": 0.11507265534830324
+        },
+        "task_scalar": {
+          "nll": 0.3615526981145498,
+          "brier": 0.11507265534830324
+        },
+        "support_head": {
+          "nll": 0.3615526981145498,
+          "brier": 0.11507265534830324
+        },
+        "guarded_logistic": {
+          "nll": 0.3615526986111559,
+          "brier": 0.11507265548897408
+        },
+        "native_linear_converged": {
+          "nll": 0.36155269859121464,
+          "brier": 0.11507265548110845
+        },
+        "global_platt": {
+          "nll": 0.36145819176714516,
+          "brier": 0.11503800365297526
+        },
+        "global_simplex": {
+          "nll": 0.36145009780572557,
+          "brier": 0.1150122119203037
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_diabete4_development_group4.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0646678811075958e-13,
+          "objective_gap_upper": 2.441863090111447e-25,
+          "iterations": 4,
+          "weights": [
+            0.05045188299765535,
+            0.029966272139454242
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_diabete4",
+      "group": "group4",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group4.npz",
+      "input_sha256": "7e3cfc128e000f9ad04e97a92cd94e1b19ee198fac281f0dfe14310f19883f85"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.33409068709166134,
+          "brier": 0.10059252356699705
+        },
+        "target_platt": {
+          "nll": 0.34798657808138106,
+          "brier": 0.10165715208467818
+        },
+        "support_logistic": {
+          "nll": 0.3872849945283244,
+          "brier": 0.113759579609013
+        },
+        "query": {
+          "nll": 0.3340906870626313,
+          "brier": 0.10059252357961654
+        },
+        "task_scalar": {
+          "nll": 0.3340906870626313,
+          "brier": 0.10059252357961654
+        },
+        "support_head": {
+          "nll": 0.3340906870626313,
+          "brier": 0.10059252357961654
+        },
+        "guarded_logistic": {
+          "nll": 0.33409068709166134,
+          "brier": 0.10059252356699705
+        },
+        "native_linear_converged": {
+          "nll": 0.33409068709166134,
+          "brier": 0.10059252356699705
+        },
+        "global_platt": {
+          "nll": 0.3335488842084803,
+          "brier": 0.10052325901379053
+        },
+        "global_simplex": {
+          "nll": 0.3337176839252629,
+          "brier": 0.10033208977688696
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_diabete4_development_group44.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.3528414499752728e-13,
+          "objective_gap_upper": 1.0954269123260393e-25,
+          "iterations": 5,
+          "weights": [
+            0.30632082881965583,
+            0.06261595908059346
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_diabete4",
+      "group": "group44",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group44.npz",
+      "input_sha256": "5d26927b0c35c157ef42b3c55c3daf9718f3d7f3506dc927f731d4a849b70b45"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.25910275892542967,
+          "brier": 0.0783035515043298
+        },
+        "target_platt": {
+          "nll": 0.25723945501260137,
+          "brier": 0.0776212906142568
+        },
+        "support_logistic": {
+          "nll": 0.32760352822170064,
+          "brier": 0.09170277216154617
+        },
+        "query": {
+          "nll": 0.25910275837557806,
+          "brier": 0.07830355137937821
+        },
+        "task_scalar": {
+          "nll": 0.25910275837557806,
+          "brier": 0.07830355137937821
+        },
+        "support_head": {
+          "nll": 0.25910275837557806,
+          "brier": 0.07830355137937821
+        },
+        "guarded_logistic": {
+          "nll": 0.25910275892542967,
+          "brier": 0.0783035515043298
+        },
+        "native_linear_converged": {
+          "nll": 0.2616569427992298,
+          "brier": 0.07887581462900858
+        },
+        "global_platt": {
+          "nll": 0.2595298354899127,
+          "brier": 0.07832130981764315
+        },
+        "global_simplex": {
+          "nll": 0.25732793938452564,
+          "brier": 0.07769095876641832
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_diabete4_development_group49.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.5128150388530344e-16,
+          "objective_gap_upper": 6.865676941005912e-31,
+          "iterations": 5,
+          "weights": [
+            0.07353831518553162,
+            -0.2042564399762074
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_diabete4",
+      "group": "group49",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group49.npz",
+      "input_sha256": "0f6aa0d2dacdbac48d285294917830e64e98f83d5861c7a8b3241e912d9099eb"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.4076610679078362,
+          "brier": 0.1331805338424362
+        },
+        "target_platt": {
+          "nll": 0.41124667222566513,
+          "brier": 0.13440811197786387
+        },
+        "support_logistic": {
+          "nll": 0.497933913503941,
+          "brier": 0.16066563150951332
+        },
+        "query": {
+          "nll": 0.4076610679109523,
+          "brier": 0.1331805338668495
+        },
+        "task_scalar": {
+          "nll": 0.4076610679109523,
+          "brier": 0.1331805338668495
+        },
+        "support_head": {
+          "nll": 0.4076610679109523,
+          "brier": 0.1331805338668495
+        },
+        "guarded_logistic": {
+          "nll": 0.4076610679078362,
+          "brier": 0.1331805338424362
+        },
+        "native_linear_converged": {
+          "nll": 0.407661067903969,
+          "brier": 0.13318053384200496
+        },
+        "global_platt": {
+          "nll": 0.40755429562428047,
+          "brier": 0.13309993274221305
+        },
+        "global_simplex": {
+          "nll": 0.40846160273583415,
+          "brier": 0.13349855457910242
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_diabete4_development_group54.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 7.719519468096792e-17,
+          "objective_gap_upper": 3.8462175158905247e-32,
+          "iterations": 5,
+          "weights": [
+            -0.04132120943057462,
+            0.22416227760152763
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_diabete4",
+      "group": "group54",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group54.npz",
+      "input_sha256": "395b9c32ad729817b0174bd2a4de8dba7cc0ab110ceb75fe116ce58d00fade42"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.29302086395130167,
+          "brier": 0.08890022292199598
+        },
+        "target_platt": {
+          "nll": 0.29209551160311276,
+          "brier": 0.08860131221566411
+        },
+        "support_logistic": {
+          "nll": 0.37255325358902186,
+          "brier": 0.10679768397161639
+        },
+        "query": {
+          "nll": 0.2930208637773467,
+          "brier": 0.08890022291821333
+        },
+        "task_scalar": {
+          "nll": 0.2930208637773467,
+          "brier": 0.08890022291821333
+        },
+        "support_head": {
+          "nll": 0.2930208637773467,
+          "brier": 0.08890022291821333
+        },
+        "guarded_logistic": {
+          "nll": 0.29302086395130167,
+          "brier": 0.08890022292199598
+        },
+        "native_linear_converged": {
+          "nll": 0.3039578952570654,
+          "brier": 0.09192812881626647
+        },
+        "global_platt": {
+          "nll": 0.2932482070479115,
+          "brier": 0.08889658688818826
+        },
+        "global_simplex": {
+          "nll": 0.29252417273856424,
+          "brier": 0.08873173349227162
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760002_brfss_diabete4_development_group9.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.701164574132886e-11,
+          "objective_gap_upper": 4.1083098851733215e-21,
+          "iterations": 4,
+          "weights": [
+            -0.01036976921418533,
+            -0.18828729168967542
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760002,
+      "task": "brfss_diabete4",
+      "group": "group9",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group9.npz",
+      "input_sha256": "90186ea1aa81435639764c49665c0a24fa5092c6c99ecb14fd4336adfb20c205"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.34420406165459705,
+          "brier": 0.10032014135480824
+        },
+        "target_platt": {
+          "nll": 0.3434980809510636,
+          "brier": 0.10013148579446365
+        },
+        "support_logistic": {
+          "nll": 0.3778017356645399,
+          "brier": 0.11059077594955082
+        },
+        "query": {
+          "nll": 0.34420406195763664,
+          "brier": 0.10032014147248546
+        },
+        "task_scalar": {
+          "nll": 0.34420406195763664,
+          "brier": 0.10032014147248546
+        },
+        "support_head": {
+          "nll": 0.34420406195763664,
+          "brier": 0.10032014147248546
+        },
+        "guarded_logistic": {
+          "nll": 0.34420406165459705,
+          "brier": 0.10032014135480824
+        },
+        "native_linear_converged": {
+          "nll": 0.34420405961440564,
+          "brier": 0.10032014096624614
+        },
+        "global_platt": {
+          "nll": 0.34445722811284774,
+          "brier": 0.1003687814313019
+        },
+        "global_simplex": {
+          "nll": 0.3437819666464409,
+          "brier": 0.10021984285807804
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_asthma3_development_group19.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.222614453595284e-16,
+          "objective_gap_upper": 2.980538807159661e-31,
+          "iterations": 4,
+          "weights": [
+            0.009447632850675977,
+            -0.017502631084450174
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_asthma3",
+      "group": "group19",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group19.npz",
+      "input_sha256": "65551f4e750271b81630fef06992df5148cbdc82d6cd21b78c18ee6cd6d8a6ef"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.38578200587622735,
+          "brier": 0.11684610785258301
+        },
+        "target_platt": {
+          "nll": 0.3858699573527653,
+          "brier": 0.11688698515317544
+        },
+        "support_logistic": {
+          "nll": 0.4225904768775148,
+          "brier": 0.12863325557244404
+        },
+        "query": {
+          "nll": 0.38578200536680857,
+          "brier": 0.116846107659467
+        },
+        "task_scalar": {
+          "nll": 0.38578200536680857,
+          "brier": 0.116846107659467
+        },
+        "support_head": {
+          "nll": 0.38578200536680857,
+          "brier": 0.116846107659467
+        },
+        "guarded_logistic": {
+          "nll": 0.38578200587622735,
+          "brier": 0.11684610785258301
+        },
+        "native_linear_converged": {
+          "nll": 0.3857820058764384,
+          "brier": 0.1168461078526118
+        },
+        "global_platt": {
+          "nll": 0.38581072232713476,
+          "brier": 0.11683929198534418
+        },
+        "global_simplex": {
+          "nll": 0.3859355239206278,
+          "brier": 0.11687595313148524
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_asthma3_development_group24.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0902550523782537e-14,
+          "objective_gap_upper": 2.675326908759617e-27,
+          "iterations": 4,
+          "weights": [
+            0.04329935634972044,
+            0.024017916127288517
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_asthma3",
+      "group": "group24",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group24.npz",
+      "input_sha256": "1b805108ad027b4d25dc755f676486134e3147dc9c4c4f406ecc22a8c06c306c"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.37630133559036827,
+          "brier": 0.11308017734264891
+        },
+        "target_platt": {
+          "nll": 0.3775800270038101,
+          "brier": 0.11312281946943212
+        },
+        "support_logistic": {
+          "nll": 0.40213066784196494,
+          "brier": 0.11987354599070935
+        },
+        "query": {
+          "nll": 0.37630133515120345,
+          "brier": 0.11308017722026932
+        },
+        "task_scalar": {
+          "nll": 0.37630133515120345,
+          "brier": 0.11308017722026932
+        },
+        "support_head": {
+          "nll": 0.37630133515120345,
+          "brier": 0.11308017722026932
+        },
+        "guarded_logistic": {
+          "nll": 0.37630133559036827,
+          "brier": 0.11308017734264891
+        },
+        "native_linear_converged": {
+          "nll": 0.37630133564288665,
+          "brier": 0.11308017736368664
+        },
+        "global_platt": {
+          "nll": 0.3763327154208682,
+          "brier": 0.11304084271738904
+        },
+        "global_simplex": {
+          "nll": 0.3747921272217227,
+          "brier": 0.11256399602671702
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_asthma3_development_group29.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.9968028886505635e-15,
+          "objective_gap_upper": 9.794193375804113e-29,
+          "iterations": 5,
+          "weights": [
+            0.2150176427496247,
+            0.012436154979067785
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_asthma3",
+      "group": "group29",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group29.npz",
+      "input_sha256": "4c00b797133c7f8f3ef93d248af08e966065640588cc2e9e90db54098fc0f1a5"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.37848138259529884,
+          "brier": 0.11400483456676701
+        },
+        "target_platt": {
+          "nll": 0.38023142005979776,
+          "brier": 0.1143819111241442
+        },
+        "support_logistic": {
+          "nll": 0.42110326766811323,
+          "brier": 0.1260486913407487
+        },
+        "query": {
+          "nll": 0.37848138260524977,
+          "brier": 0.11400483455817542
+        },
+        "task_scalar": {
+          "nll": 0.37848138260524977,
+          "brier": 0.11400483455817542
+        },
+        "support_head": {
+          "nll": 0.37848138260524977,
+          "brier": 0.11400483455817542
+        },
+        "guarded_logistic": {
+          "nll": 0.37848138259529884,
+          "brier": 0.11400483456676701
+        },
+        "native_linear_converged": {
+          "nll": 0.378481382590493,
+          "brier": 0.11400483456620147
+        },
+        "global_platt": {
+          "nll": 0.37856292231250366,
+          "brier": 0.114012552537766
+        },
+        "global_simplex": {
+          "nll": 0.37846530393637573,
+          "brier": 0.11401063321841459
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_asthma3_development_group34.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.6020852139652106e-18,
+          "objective_gap_upper": 4.890056499420716e-35,
+          "iterations": 5,
+          "weights": [
+            0.14601833309798082,
+            0.04735362150705161
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_asthma3",
+      "group": "group34",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group34.npz",
+      "input_sha256": "515a73871a12b4e56601e83fd54947705e41fbde23a4cb3a7391a200998a651b"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3794743841964073,
+          "brier": 0.1156320617165704
+        },
+        "target_platt": {
+          "nll": 0.3782093114574372,
+          "brier": 0.1149919144431086
+        },
+        "support_logistic": {
+          "nll": 0.4220610821987787,
+          "brier": 0.12681419851757467
+        },
+        "query": {
+          "nll": 0.3794743844571109,
+          "brier": 0.11563206186099953
+        },
+        "task_scalar": {
+          "nll": 0.3794743844571109,
+          "brier": 0.11563206186099953
+        },
+        "support_head": {
+          "nll": 0.3794743844571109,
+          "brier": 0.11563206186099953
+        },
+        "guarded_logistic": {
+          "nll": 0.3794743841964073,
+          "brier": 0.1156320617165704
+        },
+        "native_linear_converged": {
+          "nll": 0.3794743841539546,
+          "brier": 0.11563206170711768
+        },
+        "global_platt": {
+          "nll": 0.37951521659890103,
+          "brier": 0.11557029861117692
+        },
+        "global_simplex": {
+          "nll": 0.3789679700173116,
+          "brier": 0.11544014447122325
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_asthma3_development_group39.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.056514680770505e-15,
+          "objective_gap_upper": 2.57475655858349e-29,
+          "iterations": 4,
+          "weights": [
+            -0.05669683153940673,
+            -0.14637752593238845
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_asthma3",
+      "group": "group39",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group39.npz",
+      "input_sha256": "1227b6229e2ace37683e1d69df1754538d582c739d30a6a7c5fb519fbc4bc91b"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.39308152410355235,
+          "brier": 0.1196691877738224
+        },
+        "target_platt": {
+          "nll": 0.3939502055487397,
+          "brier": 0.11989674313181402
+        },
+        "support_logistic": {
+          "nll": 0.4386799122840698,
+          "brier": 0.1338453562702505
+        },
+        "query": {
+          "nll": 0.39308152344494074,
+          "brier": 0.11966918756570571
+        },
+        "task_scalar": {
+          "nll": 0.39308152344494074,
+          "brier": 0.11966918756570571
+        },
+        "support_head": {
+          "nll": 0.39308152344494074,
+          "brier": 0.11966918756570571
+        },
+        "guarded_logistic": {
+          "nll": 0.39308152410355235,
+          "brier": 0.1196691877738224
+        },
+        "native_linear_converged": {
+          "nll": 0.3930815229191164,
+          "brier": 0.11966918731372675
+        },
+        "global_platt": {
+          "nll": 0.3929823044363865,
+          "brier": 0.1196461329047156
+        },
+        "global_simplex": {
+          "nll": 0.39245719871891005,
+          "brier": 0.1194572871091193
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_asthma3_development_group4.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 7.922690281603195e-13,
+          "objective_gap_upper": 3.750700559038418e-24,
+          "iterations": 4,
+          "weights": [
+            0.13229163630619376,
+            0.21155708408664436
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 15,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_asthma3",
+      "group": "group4",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group4.npz",
+      "input_sha256": "87f4ab127b0c5042cd2720a6450516a3e407eb6828f9e84eff46762812e11472"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.42797984541788964,
+          "brier": 0.13295035926801996
+        },
+        "target_platt": {
+          "nll": 0.42723921302511086,
+          "brier": 0.13270230534947688
+        },
+        "support_logistic": {
+          "nll": 0.4810536307147503,
+          "brier": 0.15216987358151174
+        },
+        "query": {
+          "nll": 0.42797984607494133,
+          "brier": 0.13295035943018368
+        },
+        "task_scalar": {
+          "nll": 0.42797984607494133,
+          "brier": 0.13295035943018368
+        },
+        "support_head": {
+          "nll": 0.42797984607494133,
+          "brier": 0.13295035943018368
+        },
+        "guarded_logistic": {
+          "nll": 0.42797984541788964,
+          "brier": 0.13295035926801996
+        },
+        "native_linear_converged": {
+          "nll": 0.42561146795037513,
+          "brier": 0.13235454986913342
+        },
+        "global_platt": {
+          "nll": 0.42772846344270454,
+          "brier": 0.13290117694683506
+        },
+        "global_simplex": {
+          "nll": 0.42619037639120716,
+          "brier": 0.13246273859308696
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_asthma3_development_group44.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 8.500145032286355e-17,
+          "objective_gap_upper": 4.7922553694323017e-32,
+          "iterations": 5,
+          "weights": [
+            -0.07358468509360251,
+            0.16972910057647406
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_asthma3",
+      "group": "group44",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group44.npz",
+      "input_sha256": "bc233a7629809d7c07dfd00d934daebc1293766dca74e254a2dc8668f0c20807"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.4334416871385772,
+          "brier": 0.13423714918215535
+        },
+        "target_platt": {
+          "nll": 0.4375365104620177,
+          "brier": 0.13507837943191406
+        },
+        "support_logistic": {
+          "nll": 0.4811390779714828,
+          "brier": 0.14826186821868176
+        },
+        "query": {
+          "nll": 0.43344168694210194,
+          "brier": 0.13423714915041246
+        },
+        "task_scalar": {
+          "nll": 0.43344168694210194,
+          "brier": 0.13423714915041246
+        },
+        "support_head": {
+          "nll": 0.43344168694210194,
+          "brier": 0.13423714915041246
+        },
+        "guarded_logistic": {
+          "nll": 0.4334416871385772,
+          "brier": 0.13423714918215535
+        },
+        "native_linear_converged": {
+          "nll": 0.4334418332454101,
+          "brier": 0.13423716060611426
+        },
+        "global_platt": {
+          "nll": 0.43311383412130167,
+          "brier": 0.1341825306946523
+        },
+        "global_simplex": {
+          "nll": 0.4345955432813683,
+          "brier": 0.13448171189973507
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_asthma3_development_group49.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.5243975352852157e-11,
+          "objective_gap_upper": 1.4122113452529097e-21,
+          "iterations": 4,
+          "weights": [
+            0.04469413962107943,
+            -0.05841867235397316
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_asthma3",
+      "group": "group49",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group49.npz",
+      "input_sha256": "367bdcf2f1cf80fce46c97fdc17e62a80f6c5cdb4059b67237fe85142cf18d56"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.4156267521604737,
+          "brier": 0.12939807381079474
+        },
+        "target_platt": {
+          "nll": 0.41623802642787017,
+          "brier": 0.12949710003689105
+        },
+        "support_logistic": {
+          "nll": 0.46335894232867403,
+          "brier": 0.14353542035553718
+        },
+        "query": {
+          "nll": 0.4156267526662108,
+          "brier": 0.12939807390227676
+        },
+        "task_scalar": {
+          "nll": 0.4156267526662108,
+          "brier": 0.12939807390227676
+        },
+        "support_head": {
+          "nll": 0.4156267526662108,
+          "brier": 0.12939807390227676
+        },
+        "guarded_logistic": {
+          "nll": 0.4156267521604737,
+          "brier": 0.12939807381079474
+        },
+        "native_linear_converged": {
+          "nll": 0.4156267521402965,
+          "brier": 0.1293980738494187
+        },
+        "global_platt": {
+          "nll": 0.41555632586720137,
+          "brier": 0.12933540729184462
+        },
+        "global_simplex": {
+          "nll": 0.41527012686325027,
+          "brier": 0.12924502644789898
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_asthma3_development_group54.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.0408340855860843e-17,
+          "objective_gap_upper": 5.454293787815414e-34,
+          "iterations": 5,
+          "weights": [
+            0.06816102318933516,
+            -0.06784194071962706
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_asthma3",
+      "group": "group54",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group54.npz",
+      "input_sha256": "7b3b708ba6c472753efbb8d2781ff6347ff3daeef8d5d248d82bbd98e0aac10f"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3983496575287475,
+          "brier": 0.12168671219850918
+        },
+        "target_platt": {
+          "nll": 0.40243449948751453,
+          "brier": 0.12247965715394588
+        },
+        "support_logistic": {
+          "nll": 0.4503532566688301,
+          "brier": 0.13836061515142228
+        },
+        "query": {
+          "nll": 0.39834965702392655,
+          "brier": 0.12168671207793708
+        },
+        "task_scalar": {
+          "nll": 0.39834965702392655,
+          "brier": 0.12168671207793708
+        },
+        "support_head": {
+          "nll": 0.39834965702392655,
+          "brier": 0.12168671207793708
+        },
+        "guarded_logistic": {
+          "nll": 0.3983496575287475,
+          "brier": 0.12168671219850918
+        },
+        "native_linear_converged": {
+          "nll": 0.398314967302477,
+          "brier": 0.12167476745901343
+        },
+        "global_platt": {
+          "nll": 0.3983537651794462,
+          "brier": 0.12170251071985697
+        },
+        "global_simplex": {
+          "nll": 0.397516101253372,
+          "brier": 0.12142235552767591
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_asthma3_development_group9.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.112093915902392e-15,
+          "objective_gap_upper": 5.793866252796672e-29,
+          "iterations": 5,
+          "weights": [
+            -0.1787371691286956,
+            -0.0016573227371466008
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_asthma3",
+      "group": "group9",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_asthma3_development_group9.npz",
+      "input_sha256": "66f67457b9008380313bc5edddc79ca068e6e9ca1596782e63d4c18b25f8c9c2"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.31478272153160763,
+          "brier": 0.09712241633994834
+        },
+        "target_platt": {
+          "nll": 0.31492411211931187,
+          "brier": 0.09701186422490776
+        },
+        "support_logistic": {
+          "nll": 0.39836533698333987,
+          "brier": 0.11883152693678742
+        },
+        "query": {
+          "nll": 0.3147827213348859,
+          "brier": 0.09712241629696151
+        },
+        "task_scalar": {
+          "nll": 0.3147827213348859,
+          "brier": 0.09712241629696151
+        },
+        "support_head": {
+          "nll": 0.3147827213348859,
+          "brier": 0.09712241629696151
+        },
+        "guarded_logistic": {
+          "nll": 0.31478272153160763,
+          "brier": 0.09712241633994834
+        },
+        "native_linear_converged": {
+          "nll": 0.3147827108679512,
+          "brier": 0.09712241301376906
+        },
+        "global_platt": {
+          "nll": 0.31502402406610674,
+          "brier": 0.09716857616222223
+        },
+        "global_simplex": {
+          "nll": 0.31469160406930075,
+          "brier": 0.09715406935341107
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_diabete4_development_group19.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.3010426069826053e-17,
+          "objective_gap_upper": 8.614022602825723e-34,
+          "iterations": 5,
+          "weights": [
+            0.11981216851365087,
+            0.026188083179234888
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_diabete4",
+      "group": "group19",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group19.npz",
+      "input_sha256": "638cc0b59c539e80c61d68458027b9a73542e68a1365141546e98068c70f7432"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3542320248324218,
+          "brier": 0.11186183011476598
+        },
+        "target_platt": {
+          "nll": 0.3541075222788032,
+          "brier": 0.1117873607321109
+        },
+        "support_logistic": {
+          "nll": 0.4361224798244102,
+          "brier": 0.13437145511432813
+        },
+        "query": {
+          "nll": 0.35423202488025674,
+          "brier": 0.11186183014187365
+        },
+        "task_scalar": {
+          "nll": 0.35423202488025674,
+          "brier": 0.11186183014187365
+        },
+        "support_head": {
+          "nll": 0.35423202488025674,
+          "brier": 0.11186183014187365
+        },
+        "guarded_logistic": {
+          "nll": 0.3542320248324218,
+          "brier": 0.11186183011476598
+        },
+        "native_linear_converged": {
+          "nll": 0.35423202487321326,
+          "brier": 0.11186183012676212
+        },
+        "global_platt": {
+          "nll": 0.35415684577935647,
+          "brier": 0.11184898309591097
+        },
+        "global_simplex": {
+          "nll": 0.3538944408248355,
+          "brier": 0.11174801966016035
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_diabete4_development_group24.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.691355389077387e-16,
+          "objective_gap_upper": 1.7282964301721863e-31,
+          "iterations": 4,
+          "weights": [
+            0.028726811533523387,
+            0.04379908502699631
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_diabete4",
+      "group": "group24",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group24.npz",
+      "input_sha256": "09d40f17f2c6ec223a6c4feb2042851045ab06e8aa6359b1e2d99aa0f1862260"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3122232512715156,
+          "brier": 0.09645337408567685
+        },
+        "target_platt": {
+          "nll": 0.3137168624283477,
+          "brier": 0.09686055488184847
+        },
+        "support_logistic": {
+          "nll": 0.4082337351547527,
+          "brier": 0.1212429627596573
+        },
+        "query": {
+          "nll": 0.3122232512318591,
+          "brier": 0.09645337415607011
+        },
+        "task_scalar": {
+          "nll": 0.3122232512318591,
+          "brier": 0.09645337415607011
+        },
+        "support_head": {
+          "nll": 0.3122232512318591,
+          "brier": 0.09645337415607011
+        },
+        "guarded_logistic": {
+          "nll": 0.3122232512715156,
+          "brier": 0.09645337408567685
+        },
+        "native_linear_converged": {
+          "nll": 0.3122232512723265,
+          "brier": 0.09645337408570637
+        },
+        "global_platt": {
+          "nll": 0.31218054135325635,
+          "brier": 0.09643029247147897
+        },
+        "global_simplex": {
+          "nll": 0.31224199707974465,
+          "brier": 0.09651007096641424
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_diabete4_development_group29.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.5019730171281793e-17,
+          "objective_gap_upper": 7.35066004927947e-33,
+          "iterations": 5,
+          "weights": [
+            -0.08932254916528842,
+            -0.0019315066799444264
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 15,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_diabete4",
+      "group": "group29",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group29.npz",
+      "input_sha256": "0d458fe82f2558d31f250323d5083254b433580afd2bc85e09fd8288b58c0776"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.30842974363268144,
+          "brier": 0.09503632294135941
+        },
+        "target_platt": {
+          "nll": 0.3082311738914864,
+          "brier": 0.09483668468231196
+        },
+        "support_logistic": {
+          "nll": 0.39799476807630996,
+          "brier": 0.11762949272545033
+        },
+        "query": {
+          "nll": 0.30842974337775375,
+          "brier": 0.0950363228906714
+        },
+        "task_scalar": {
+          "nll": 0.30842974337775375,
+          "brier": 0.0950363228906714
+        },
+        "support_head": {
+          "nll": 0.30842974337775375,
+          "brier": 0.0950363228906714
+        },
+        "guarded_logistic": {
+          "nll": 0.30842974363268144,
+          "brier": 0.09503632294135941
+        },
+        "native_linear_converged": {
+          "nll": 0.3084297436108856,
+          "brier": 0.09503632293166075
+        },
+        "global_platt": {
+          "nll": 0.30840632370913856,
+          "brier": 0.0949988426240583
+        },
+        "global_simplex": {
+          "nll": 0.30876255382208884,
+          "brier": 0.09507706066163872
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_diabete4_development_group34.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 8.532931305982316e-14,
+          "objective_gap_upper": 4.046614897562211e-26,
+          "iterations": 4,
+          "weights": [
+            -0.0659035785249474,
+            -0.1414836260461433
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_diabete4",
+      "group": "group34",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group34.npz",
+      "input_sha256": "2cbe3600676cd2079e49e58ef5fdef24ec7de65e919036874f3473aa44dab8fc"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3781953129852787,
+          "brier": 0.12028724311062242
+        },
+        "target_platt": {
+          "nll": 0.377993372237571,
+          "brier": 0.12022716847773407
+        },
+        "support_logistic": {
+          "nll": 0.4643809083786524,
+          "brier": 0.1456676351138362
+        },
+        "query": {
+          "nll": 0.3781953127482883,
+          "brier": 0.12028724300459365
+        },
+        "task_scalar": {
+          "nll": 0.3781953127482883,
+          "brier": 0.12028724300459365
+        },
+        "support_head": {
+          "nll": 0.3781953127482883,
+          "brier": 0.12028724300459365
+        },
+        "guarded_logistic": {
+          "nll": 0.3781953129852787,
+          "brier": 0.12028724311062242
+        },
+        "native_linear_converged": {
+          "nll": 0.3781953129852787,
+          "brier": 0.12028724311062242
+        },
+        "global_platt": {
+          "nll": 0.37798773622112525,
+          "brier": 0.12025056047328683
+        },
+        "global_simplex": {
+          "nll": 0.3779772382098693,
+          "brier": 0.12017464529130888
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_diabete4_development_group39.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 7.96716859152724e-12,
+          "objective_gap_upper": 3.5582807722913246e-22,
+          "iterations": 4,
+          "weights": [
+            -0.04512172242966334,
+            0.029846235054342807
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 14,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_diabete4",
+      "group": "group39",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group39.npz",
+      "input_sha256": "b1dfc554bf94cad24edecf60257f5fb83105c0d89df704d51a595f50f992e4dc"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.3615526986111559,
+          "brier": 0.11507265548897408
+        },
+        "target_platt": {
+          "nll": 0.3620753872923693,
+          "brier": 0.11520004846267617
+        },
+        "support_logistic": {
+          "nll": 0.46092540447622343,
+          "brier": 0.14305114329933177
+        },
+        "query": {
+          "nll": 0.3615526981145498,
+          "brier": 0.11507265534830324
+        },
+        "task_scalar": {
+          "nll": 0.3615526981145498,
+          "brier": 0.11507265534830324
+        },
+        "support_head": {
+          "nll": 0.3615526981145498,
+          "brier": 0.11507265534830324
+        },
+        "guarded_logistic": {
+          "nll": 0.3615526986111559,
+          "brier": 0.11507265548897408
+        },
+        "native_linear_converged": {
+          "nll": 0.36155269859121464,
+          "brier": 0.11507265548110845
+        },
+        "global_platt": {
+          "nll": 0.36145819176714516,
+          "brier": 0.11503800365297526
+        },
+        "global_simplex": {
+          "nll": 0.36145009780572557,
+          "brier": 0.1150122119203037
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_diabete4_development_group4.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.0646678811075958e-13,
+          "objective_gap_upper": 2.441863090111447e-25,
+          "iterations": 4,
+          "weights": [
+            0.05045188299765535,
+            0.029966272139454242
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_diabete4",
+      "group": "group4",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group4.npz",
+      "input_sha256": "7e3cfc128e000f9ad04e97a92cd94e1b19ee198fac281f0dfe14310f19883f85"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.33409068709166134,
+          "brier": 0.10059252356699705
+        },
+        "target_platt": {
+          "nll": 0.34798657808138106,
+          "brier": 0.10165715208467818
+        },
+        "support_logistic": {
+          "nll": 0.3872849945283244,
+          "brier": 0.113759579609013
+        },
+        "query": {
+          "nll": 0.3340906870626313,
+          "brier": 0.10059252357961654
+        },
+        "task_scalar": {
+          "nll": 0.3340906870626313,
+          "brier": 0.10059252357961654
+        },
+        "support_head": {
+          "nll": 0.3340906870626313,
+          "brier": 0.10059252357961654
+        },
+        "guarded_logistic": {
+          "nll": 0.33409068709166134,
+          "brier": 0.10059252356699705
+        },
+        "native_linear_converged": {
+          "nll": 0.33409068709166134,
+          "brier": 0.10059252356699705
+        },
+        "global_platt": {
+          "nll": 0.3335488842084803,
+          "brier": 0.10052325901379053
+        },
+        "global_simplex": {
+          "nll": 0.3337176839252629,
+          "brier": 0.10033208977688696
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_diabete4_development_group44.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 1.3528414499752728e-13,
+          "objective_gap_upper": 1.0954269123260393e-25,
+          "iterations": 5,
+          "weights": [
+            0.30632082881965583,
+            0.06261595908059346
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_diabete4",
+      "group": "group44",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group44.npz",
+      "input_sha256": "5d26927b0c35c157ef42b3c55c3daf9718f3d7f3506dc927f731d4a849b70b45"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.25910275892542967,
+          "brier": 0.0783035515043298
+        },
+        "target_platt": {
+          "nll": 0.25723945501260137,
+          "brier": 0.0776212906142568
+        },
+        "support_logistic": {
+          "nll": 0.32760352822170064,
+          "brier": 0.09170277216154617
+        },
+        "query": {
+          "nll": 0.25910275837557806,
+          "brier": 0.07830355137937821
+        },
+        "task_scalar": {
+          "nll": 0.25910275837557806,
+          "brier": 0.07830355137937821
+        },
+        "support_head": {
+          "nll": 0.25910275837557806,
+          "brier": 0.07830355137937821
+        },
+        "guarded_logistic": {
+          "nll": 0.25910275892542967,
+          "brier": 0.0783035515043298
+        },
+        "native_linear_converged": {
+          "nll": 0.2616569427992298,
+          "brier": 0.07887581462900858
+        },
+        "global_platt": {
+          "nll": 0.2595298354899127,
+          "brier": 0.07832130981764315
+        },
+        "global_simplex": {
+          "nll": 0.25732793938452564,
+          "brier": 0.07769095876641832
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_diabete4_development_group49.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 3.5128150388530344e-16,
+          "objective_gap_upper": 6.865676941005912e-31,
+          "iterations": 5,
+          "weights": [
+            0.07353831518553162,
+            -0.2042564399762074
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_diabete4",
+      "group": "group49",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group49.npz",
+      "input_sha256": "0f6aa0d2dacdbac48d285294917830e64e98f83d5861c7a8b3241e912d9099eb"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.4076610679078362,
+          "brier": 0.1331805338424362
+        },
+        "target_platt": {
+          "nll": 0.41124667222566513,
+          "brier": 0.13440811197786387
+        },
+        "support_logistic": {
+          "nll": 0.497933913503941,
+          "brier": 0.16066563150951332
+        },
+        "query": {
+          "nll": 0.4076610679109523,
+          "brier": 0.1331805338668495
+        },
+        "task_scalar": {
+          "nll": 0.4076610679109523,
+          "brier": 0.1331805338668495
+        },
+        "support_head": {
+          "nll": 0.4076610679109523,
+          "brier": 0.1331805338668495
+        },
+        "guarded_logistic": {
+          "nll": 0.4076610679078362,
+          "brier": 0.1331805338424362
+        },
+        "native_linear_converged": {
+          "nll": 0.407661067903969,
+          "brier": 0.13318053384200496
+        },
+        "global_platt": {
+          "nll": 0.40755429562428047,
+          "brier": 0.13309993274221305
+        },
+        "global_simplex": {
+          "nll": 0.40846160273583415,
+          "brier": 0.13349855457910242
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_diabete4_development_group54.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 7.719519468096792e-17,
+          "objective_gap_upper": 3.8462175158905247e-32,
+          "iterations": 5,
+          "weights": [
+            -0.04132120943057462,
+            0.22416227760152763
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_diabete4",
+      "group": "group54",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group54.npz",
+      "input_sha256": "395b9c32ad729817b0174bd2a4de8dba7cc0ab110ceb75fe116ce58d00fade42"
+    },
+    {
+      "metrics": {
+        "frozen": {
+          "nll": 0.29302086395130167,
+          "brier": 0.08890022292199598
+        },
+        "target_platt": {
+          "nll": 0.29209551160311276,
+          "brier": 0.08860131221566411
+        },
+        "support_logistic": {
+          "nll": 0.37255325358902186,
+          "brier": 0.10679768397161639
+        },
+        "query": {
+          "nll": 0.2930208637773467,
+          "brier": 0.08890022291821333
+        },
+        "task_scalar": {
+          "nll": 0.2930208637773467,
+          "brier": 0.08890022291821333
+        },
+        "support_head": {
+          "nll": 0.2930208637773467,
+          "brier": 0.08890022291821333
+        },
+        "guarded_logistic": {
+          "nll": 0.29302086395130167,
+          "brier": 0.08890022292199598
+        },
+        "native_linear_converged": {
+          "nll": 0.3039578952570654,
+          "brier": 0.09192812881626647
+        },
+        "global_platt": {
+          "nll": 0.2932482070479115,
+          "brier": 0.08889658688818826
+        },
+        "global_simplex": {
+          "nll": 0.29252417273856424,
+          "brier": 0.08873173349227162
+        }
+      },
+      "decisions": {
+        "query": [
+          false,
+          false
+        ],
+        "task_scalar": [
+          false,
+          false
+        ],
+        "support_head": [
+          false,
+          false
+        ]
+      },
+      "prediction_file": "predictions/road_760003_brfss_diabete4_development_group9.npz",
+      "control_certificates": {
+        "target_platt": {
+          "success": true,
+          "method": "damped exact Newton, same objective/ridge",
+          "gradient_max": 2.701164574132886e-11,
+          "objective_gap_upper": 4.1083098851733215e-21,
+          "iterations": 4,
+          "weights": [
+            -0.01036976921418533,
+            -0.18828729168967542
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 25
+        }
+      },
+      "source_family": "road",
+      "target_family": "brfss",
+      "initialization": 760003,
+      "task": "brfss_diabete4",
+      "group": "group9",
+      "input_file": "artifacts/reports/native_meta_inputs/development/brfss_diabete4_development_group9.npz",
+      "input_sha256": "90186ea1aa81435639764c49665c0a24fa5092c6c99ecb14fd4336adfb20c205"
+    }
+  ],
+  "means": {
+    "brfss_asthma3": {
+      "frozen": 0.3932722636262139,
+      "target_platt": 0.39427872517761264,
+      "support_logistic": 0.4360272050218718,
+      "query": 0.39327226356901307,
+      "task_scalar": 0.39327226356901307,
+      "support_head": 0.39327226356901307,
+      "guarded_logistic": 0.3932722636262139,
+      "native_linear_converged": 0.3930319711435854,
+      "global_platt": 0.3932413497819296,
+      "global_simplex": 0.3927972238250587
+    },
+    "brfss_diabete4": {
+      "frozen": 0.3323291130740891,
+      "target_platt": 0.333961664717065,
+      "support_logistic": 0.41513983227366763,
+      "query": 0.3323291128814102,
+      "task_scalar": 0.3323291128814102,
+      "support_head": 0.3323291128814102,
+      "guarded_logistic": 0.3323291130740891,
+      "native_linear_converged": 0.3336782335252796,
+      "global_platt": 0.33230948852667136,
+      "global_simplex": 0.3321049330595752
+    },
+    "road_ksi": {
+      "frozen": 0.6131940907618091,
+      "target_platt": 0.6048979644896664,
+      "support_logistic": 0.614293252458634,
+      "query": 0.6130314153293193,
+      "task_scalar": 0.6131151800943899,
+      "support_head": 0.6130342004410525,
+      "guarded_logistic": 0.6131940907618091,
+      "native_linear_converged": 0.6127459880550045,
+      "global_platt": 0.6130911325991186,
+      "global_simplex": 0.604697984615569
+    }
+  },
+  "gains": {
+    "brfss_asthma3": {
+      "frozen": 5.7200855163586084e-11,
+      "target_platt": 0.0010064616085995737,
+      "support_logistic": 0.04275494145285874,
+      "query": 0.0,
+      "task_scalar": 0.0,
+      "support_head": 0.0,
+      "guarded_logistic": 5.7200855163586084e-11,
+      "native_linear_converged": -0.00024029242542766838,
+      "global_platt": -3.091378708347525e-05,
+      "global_simplex": -0.000475039743954353
+    },
+    "brfss_diabete4": {
+      "frozen": 1.9267887285678853e-10,
+      "target_platt": 0.0016325518356548052,
+      "support_logistic": 0.08281071939225743,
+      "query": 0.0,
+      "task_scalar": 0.0,
+      "support_head": 0.0,
+      "guarded_logistic": 1.9267887285678853e-10,
+      "native_linear_converged": 0.0013491206438693837,
+      "global_platt": -1.9624354738845273e-05,
+      "global_simplex": -0.00022417982183497998
+    },
+    "road_ksi": {
+      "frozen": 0.00016267543248982275,
+      "target_platt": -0.00813345083965289,
+      "support_logistic": 0.0012618371293147135,
+      "query": 0.0,
+      "task_scalar": 8.376476507065966e-05,
+      "support_head": 2.785111733238921e-06,
+      "guarded_logistic": 0.00016267543248982275,
+      "native_linear_converged": -0.00028542727431479786,
+      "global_platt": 5.97172697993642e-05,
+      "global_simplex": -0.008333430713750256
+    }
+  },
+  "initialization_nll": {
+    "brfss_asthma3": {
+      "760001": 0.393272263569013,
+      "760002": 0.393272263569013,
+      "760003": 0.393272263569013
+    },
+    "brfss_diabete4": {
+      "760001": 0.3323291128814102,
+      "760002": 0.3323291128814102,
+      "760003": 0.3323291128814102
+    },
+    "road_ksi": {
+      "760001": 0.6130327929503799,
+      "760002": 0.6130239096350395,
+      "760003": 0.6130375434025385
+    }
+  },
+  "development_gate": false,
+  "seconds": 372.3600000000006,
+  "cloud_calls": 0,
+  "device": "cpu",
+  "freeze_sha256": "3210736b0ba3e81309fa6c29aea8ba730c5c3fdc40e655f30de9c47fa3176cb4"
+}

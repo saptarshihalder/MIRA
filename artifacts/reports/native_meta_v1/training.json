@@ -1,0 +1,1910 @@
+{
+  "brfss_760001_query": {
+    "source_family": "brfss",
+    "initialization": 760001,
+    "variant": "query",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 64,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_9.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_9.npz"
+    ],
+    "max_gradient": 0.004608175805691174,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.3671040636872635
+      },
+      {
+        "update": 51,
+        "loss": 0.359122889135737
+      },
+      {
+        "update": 101,
+        "loss": 0.3470123623430351
+      },
+      {
+        "update": 151,
+        "loss": 0.3943811539629152
+      },
+      {
+        "update": 201,
+        "loss": 0.3685759171370958
+      },
+      {
+        "update": 251,
+        "loss": 0.36363535068379693
+      },
+      {
+        "update": 301,
+        "loss": 0.3861792012256529
+      },
+      {
+        "update": 351,
+        "loss": 0.39698590523782024
+      },
+      {
+        "update": 401,
+        "loss": 0.3899939061110619
+      },
+      {
+        "update": 451,
+        "loss": 0.3403644370344734
+      },
+      {
+        "update": 500,
+        "loss": 0.3785819435310194
+      }
+    ],
+    "checkpoint_sha256": "c962e690af36bbb90ff98b09537c94e3702f1934fe781e8316873ed5b916e735"
+  },
+  "brfss_760001_task_scalar": {
+    "source_family": "brfss",
+    "initialization": 760001,
+    "variant": "task_scalar",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 64,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_9.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_9.npz"
+    ],
+    "max_gradient": 0.0046177788482196155,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.3671040636872635
+      },
+      {
+        "update": 51,
+        "loss": 0.3590579725120068
+      },
+      {
+        "update": 101,
+        "loss": 0.346996880003301
+      },
+      {
+        "update": 151,
+        "loss": 0.39436050034712666
+      },
+      {
+        "update": 201,
+        "loss": 0.36862271158629323
+      },
+      {
+        "update": 251,
+        "loss": 0.36366624435941886
+      },
+      {
+        "update": 301,
+        "loss": 0.38618986288597723
+      },
+      {
+        "update": 351,
+        "loss": 0.39698996791589486
+      },
+      {
+        "update": 401,
+        "loss": 0.3900119517031364
+      },
+      {
+        "update": 451,
+        "loss": 0.3403714683256744
+      },
+      {
+        "update": 500,
+        "loss": 0.3786290050643888
+      }
+    ],
+    "checkpoint_sha256": "758a874607d8edc248d3cc7b7d3837d64074ea8a2ec34a781ead8d96e0423e07"
+  },
+  "brfss_760001_support_head": {
+    "source_family": "brfss",
+    "initialization": 760001,
+    "variant": "support_head",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 64,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_9.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_9.npz"
+    ],
+    "max_gradient": 0.004626052252141015,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.3671040636872635
+      },
+      {
+        "update": 51,
+        "loss": 0.35911159672797743
+      },
+      {
+        "update": 101,
+        "loss": 0.3470097121639972
+      },
+      {
+        "update": 151,
+        "loss": 0.39436925709437964
+      },
+      {
+        "update": 201,
+        "loss": 0.3685802133718516
+      },
+      {
+        "update": 251,
+        "loss": 0.3636356196557038
+      },
+      {
+        "update": 301,
+        "loss": 0.3861794612887929
+      },
+      {
+        "update": 351,
+        "loss": 0.39698139321104786
+      },
+      {
+        "update": 401,
+        "loss": 0.38999470240111944
+      },
+      {
+        "update": 451,
+        "loss": 0.34036351500093204
+      },
+      {
+        "update": 500,
+        "loss": 0.37858369914448076
+      }
+    ],
+    "checkpoint_sha256": "54e5d015b110b52e7fed1aded6464eb58d84bf12a69eba1ed2c0ae572f1f8038"
+  },
+  "brfss_760002_query": {
+    "source_family": "brfss",
+    "initialization": 760002,
+    "variant": "query",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 64,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_9.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_9.npz"
+    ],
+    "max_gradient": 0.003927326389536491,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.38146847936245243
+      },
+      {
+        "update": 51,
+        "loss": 0.3873581121131521
+      },
+      {
+        "update": 101,
+        "loss": 0.34614047746221854
+      },
+      {
+        "update": 151,
+        "loss": 0.38516238394656976
+      },
+      {
+        "update": 201,
+        "loss": 0.3885284616953294
+      },
+      {
+        "update": 251,
+        "loss": 0.3843787388889752
+      },
+      {
+        "update": 301,
+        "loss": 0.3587564556222772
+      },
+      {
+        "update": 351,
+        "loss": 0.38383834704824793
+      },
+      {
+        "update": 401,
+        "loss": 0.37982236625043997
+      },
+      {
+        "update": 451,
+        "loss": 0.35789213701918127
+      },
+      {
+        "update": 500,
+        "loss": 0.3296253391817808
+      }
+    ],
+    "checkpoint_sha256": "50b3d44798940be5d550b294a3d4004173584e52b06fd220b2bacfa204cfabed"
+  },
+  "brfss_760002_task_scalar": {
+    "source_family": "brfss",
+    "initialization": 760002,
+    "variant": "task_scalar",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 64,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_9.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_9.npz"
+    ],
+    "max_gradient": 0.0037932511031077963,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.38146847936245243
+      },
+      {
+        "update": 51,
+        "loss": 0.38735362764426895
+      },
+      {
+        "update": 101,
+        "loss": 0.34612743431568127
+      },
+      {
+        "update": 151,
+        "loss": 0.38518364523389786
+      },
+      {
+        "update": 201,
+        "loss": 0.38854494968413
+      },
+      {
+        "update": 251,
+        "loss": 0.3843866100512169
+      },
+      {
+        "update": 301,
+        "loss": 0.3587775617405383
+      },
+      {
+        "update": 351,
+        "loss": 0.38379202473959295
+      },
+      {
+        "update": 401,
+        "loss": 0.379802208739217
+      },
+      {
+        "update": 451,
+        "loss": 0.35791220299506354
+      },
+      {
+        "update": 500,
+        "loss": 0.32965425986198105
+      }
+    ],
+    "checkpoint_sha256": "add3c58ae92040950473c47f5c3c04afa0d091e943cc7f94365b6640a31ef53a"
+  },
+  "brfss_760002_support_head": {
+    "source_family": "brfss",
+    "initialization": 760002,
+    "variant": "support_head",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 64,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_9.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_9.npz"
+    ],
+    "max_gradient": 0.00389954281752841,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.38146847936245243
+      },
+      {
+        "update": 51,
+        "loss": 0.387363509987018
+      },
+      {
+        "update": 101,
+        "loss": 0.34613572455456487
+      },
+      {
+        "update": 151,
+        "loss": 0.3851595169096691
+      },
+      {
+        "update": 201,
+        "loss": 0.3885253878120085
+      },
+      {
+        "update": 251,
+        "loss": 0.3843795087441664
+      },
+      {
+        "update": 301,
+        "loss": 0.35874791627547625
+      },
+      {
+        "update": 351,
+        "loss": 0.38384530458740945
+      },
+      {
+        "update": 401,
+        "loss": 0.37982125349261964
+      },
+      {
+        "update": 451,
+        "loss": 0.3578833519941233
+      },
+      {
+        "update": 500,
+        "loss": 0.32962731097316955
+      }
+    ],
+    "checkpoint_sha256": "56b96f1ced0492f43973183c3f21000c25996c16fe39b97306a97a8e4fbbd0b5"
+  },
+  "brfss_760003_query": {
+    "source_family": "brfss",
+    "initialization": 760003,
+    "variant": "query",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 64,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_9.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_9.npz"
+    ],
+    "max_gradient": 0.003885841866220132,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.33549203324567467
+      },
+      {
+        "update": 51,
+        "loss": 0.3650947886566469
+      },
+      {
+        "update": 101,
+        "loss": 0.3649249336941143
+      },
+      {
+        "update": 151,
+        "loss": 0.3562868820496468
+      },
+      {
+        "update": 201,
+        "loss": 0.3785325019866112
+      },
+      {
+        "update": 251,
+        "loss": 0.3626746573550898
+      },
+      {
+        "update": 301,
+        "loss": 0.359845243525725
+      },
+      {
+        "update": 351,
+        "loss": 0.3821723619966959
+      },
+      {
+        "update": 401,
+        "loss": 0.36890075504264547
+      },
+      {
+        "update": 451,
+        "loss": 0.3471665549947347
+      },
+      {
+        "update": 500,
+        "loss": 0.3689827939676642
+      }
+    ],
+    "checkpoint_sha256": "1ccc338c4561e27aaa58003fd0bc2d4aaf8bd5bc54da737e2b19849383e837dd"
+  },
+  "brfss_760003_task_scalar": {
+    "source_family": "brfss",
+    "initialization": 760003,
+    "variant": "task_scalar",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 64,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_9.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_9.npz"
+    ],
+    "max_gradient": 0.003815009800301892,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.33549203324567467
+      },
+      {
+        "update": 51,
+        "loss": 0.3651171988334324
+      },
+      {
+        "update": 101,
+        "loss": 0.3649413816422759
+      },
+      {
+        "update": 151,
+        "loss": 0.3562829446270473
+      },
+      {
+        "update": 201,
+        "loss": 0.3785390925598241
+      },
+      {
+        "update": 251,
+        "loss": 0.36267044599422393
+      },
+      {
+        "update": 301,
+        "loss": 0.3598784703809986
+      },
+      {
+        "update": 351,
+        "loss": 0.3821471606248261
+      },
+      {
+        "update": 401,
+        "loss": 0.3688724054321534
+      },
+      {
+        "update": 451,
+        "loss": 0.34726403958945934
+      },
+      {
+        "update": 500,
+        "loss": 0.3689942139506873
+      }
+    ],
+    "checkpoint_sha256": "19059ca185eb701d7a33563a7f7849655aef866f712a92242712fedbf0e0a9e9"
+  },
+  "brfss_760003_support_head": {
+    "source_family": "brfss",
+    "initialization": 760003,
+    "variant": "support_head",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 64,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_asthma3_9.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_0.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_1.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_10.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_11.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_12.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_13.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_14.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_15.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_16.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_17.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_18.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_19.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_2.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_20.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_21.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_22.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_23.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_24.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_25.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_26.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_27.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_28.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_29.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_3.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_30.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_31.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_4.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_5.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_6.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_7.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_8.npz",
+      "artifacts/reports/native_meta_inputs/training/brfss_diabete4_9.npz"
+    ],
+    "max_gradient": 0.003930349389618108,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.33549203324567467
+      },
+      {
+        "update": 51,
+        "loss": 0.365090904837565
+      },
+      {
+        "update": 101,
+        "loss": 0.3649157725082003
+      },
+      {
+        "update": 151,
+        "loss": 0.35628666307572876
+      },
+      {
+        "update": 201,
+        "loss": 0.3785364089859657
+      },
+      {
+        "update": 251,
+        "loss": 0.3626745564320488
+      },
+      {
+        "update": 301,
+        "loss": 0.35983793647470036
+      },
+      {
+        "update": 351,
+        "loss": 0.3821717184370342
+      },
+      {
+        "update": 401,
+        "loss": 0.3689010483454032
+      },
+      {
+        "update": 451,
+        "loss": 0.3471589208776922
+      },
+      {
+        "update": 500,
+        "loss": 0.3689842357612097
+      }
+    ],
+    "checkpoint_sha256": "fce316ea04e5463adacf8e3d561206aeab89243350a611546772a729d23f04be"
+  },
+  "road_760001_query": {
+    "source_family": "road",
+    "initialization": 760001,
+    "variant": "query",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 32,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/road_ksi_0.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_1.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_10.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_11.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_12.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_13.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_14.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_15.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_16.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_17.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_18.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_19.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_2.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_20.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_21.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_22.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_23.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_24.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_25.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_26.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_27.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_28.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_29.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_3.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_30.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_31.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_4.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_5.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_6.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_7.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_8.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_9.npz"
+    ],
+    "max_gradient": 0.0017083844723612958,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.533956916165354
+      },
+      {
+        "update": 51,
+        "loss": 0.5501179095394466
+      },
+      {
+        "update": 101,
+        "loss": 0.5337699870372508
+      },
+      {
+        "update": 151,
+        "loss": 0.5542191231043059
+      },
+      {
+        "update": 201,
+        "loss": 0.5271721452074306
+      },
+      {
+        "update": 251,
+        "loss": 0.5390574799431755
+      },
+      {
+        "update": 301,
+        "loss": 0.5779441240170966
+      },
+      {
+        "update": 351,
+        "loss": 0.5447875412253513
+      },
+      {
+        "update": 401,
+        "loss": 0.559362146255105
+      },
+      {
+        "update": 451,
+        "loss": 0.5413649169206554
+      },
+      {
+        "update": 500,
+        "loss": 0.5581255939936788
+      }
+    ],
+    "checkpoint_sha256": "1756e84c87264a5f3408c25876212c44a6122a3924f7af205745a6f7e19138ec"
+  },
+  "road_760001_task_scalar": {
+    "source_family": "road",
+    "initialization": 760001,
+    "variant": "task_scalar",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 32,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/road_ksi_0.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_1.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_10.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_11.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_12.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_13.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_14.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_15.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_16.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_17.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_18.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_19.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_2.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_20.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_21.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_22.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_23.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_24.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_25.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_26.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_27.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_28.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_29.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_3.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_30.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_31.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_4.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_5.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_6.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_7.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_8.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_9.npz"
+    ],
+    "max_gradient": 0.0017408503907303226,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.533956916165354
+      },
+      {
+        "update": 51,
+        "loss": 0.5500695466065041
+      },
+      {
+        "update": 101,
+        "loss": 0.5337390867109917
+      },
+      {
+        "update": 151,
+        "loss": 0.5541955792946045
+      },
+      {
+        "update": 201,
+        "loss": 0.5272243532108882
+      },
+      {
+        "update": 251,
+        "loss": 0.5389593584692016
+      },
+      {
+        "update": 301,
+        "loss": 0.5779342872796082
+      },
+      {
+        "update": 351,
+        "loss": 0.5448497720020917
+      },
+      {
+        "update": 401,
+        "loss": 0.5595032141824507
+      },
+      {
+        "update": 451,
+        "loss": 0.5413663652615213
+      },
+      {
+        "update": 500,
+        "loss": 0.5583211037675173
+      }
+    ],
+    "checkpoint_sha256": "bd92e75b7f3de3ccf02d624ca1b77fba23fd24204920fa56aadc1dfde6e0e88b"
+  },
+  "road_760001_support_head": {
+    "source_family": "road",
+    "initialization": 760001,
+    "variant": "support_head",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 32,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/road_ksi_0.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_1.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_10.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_11.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_12.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_13.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_14.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_15.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_16.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_17.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_18.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_19.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_2.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_20.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_21.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_22.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_23.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_24.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_25.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_26.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_27.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_28.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_29.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_3.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_30.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_31.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_4.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_5.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_6.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_7.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_8.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_9.npz"
+    ],
+    "max_gradient": 0.0018910442424909385,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.533956916165354
+      },
+      {
+        "update": 51,
+        "loss": 0.550700562348795
+      },
+      {
+        "update": 101,
+        "loss": 0.5336690707568074
+      },
+      {
+        "update": 151,
+        "loss": 0.5539565385611855
+      },
+      {
+        "update": 201,
+        "loss": 0.5274345085241836
+      },
+      {
+        "update": 251,
+        "loss": 0.5386854163065828
+      },
+      {
+        "update": 301,
+        "loss": 0.578420658236818
+      },
+      {
+        "update": 351,
+        "loss": 0.5448986603972994
+      },
+      {
+        "update": 401,
+        "loss": 0.5608663710936245
+      },
+      {
+        "update": 451,
+        "loss": 0.540694393083035
+      },
+      {
+        "update": 500,
+        "loss": 0.5583143373897279
+      }
+    ],
+    "checkpoint_sha256": "ca71b82fe15fce2a4ea436e055a08cba5f079b85751bd8111f898be58358b745"
+  },
+  "road_760002_query": {
+    "source_family": "road",
+    "initialization": 760002,
+    "variant": "query",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 32,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/road_ksi_0.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_1.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_10.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_11.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_12.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_13.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_14.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_15.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_16.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_17.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_18.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_19.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_2.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_20.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_21.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_22.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_23.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_24.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_25.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_26.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_27.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_28.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_29.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_3.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_30.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_31.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_4.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_5.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_6.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_7.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_8.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_9.npz"
+    ],
+    "max_gradient": 0.001605188248973835,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.5248088977541945
+      },
+      {
+        "update": 51,
+        "loss": 0.5990891375553349
+      },
+      {
+        "update": 101,
+        "loss": 0.519925947251001
+      },
+      {
+        "update": 151,
+        "loss": 0.5628417894367808
+      },
+      {
+        "update": 201,
+        "loss": 0.5439726939176329
+      },
+      {
+        "update": 251,
+        "loss": 0.5651396994687024
+      },
+      {
+        "update": 301,
+        "loss": 0.5063594093138626
+      },
+      {
+        "update": 351,
+        "loss": 0.5264202319425568
+      },
+      {
+        "update": 401,
+        "loss": 0.5711217066837684
+      },
+      {
+        "update": 451,
+        "loss": 0.5218022279462822
+      },
+      {
+        "update": 500,
+        "loss": 0.5219684809299678
+      }
+    ],
+    "checkpoint_sha256": "5e134c0079589ed37a350c85c5cb20d67e6a69cf696e2bbaa931daa917e4b413"
+  },
+  "road_760002_task_scalar": {
+    "source_family": "road",
+    "initialization": 760002,
+    "variant": "task_scalar",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 32,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/road_ksi_0.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_1.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_10.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_11.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_12.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_13.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_14.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_15.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_16.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_17.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_18.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_19.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_2.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_20.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_21.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_22.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_23.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_24.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_25.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_26.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_27.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_28.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_29.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_3.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_30.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_31.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_4.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_5.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_6.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_7.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_8.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_9.npz"
+    ],
+    "max_gradient": 0.001702677743826328,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.5248088977541945
+      },
+      {
+        "update": 51,
+        "loss": 0.5987359340422351
+      },
+      {
+        "update": 101,
+        "loss": 0.5199081147011455
+      },
+      {
+        "update": 151,
+        "loss": 0.5628916343477566
+      },
+      {
+        "update": 201,
+        "loss": 0.5440310257239371
+      },
+      {
+        "update": 251,
+        "loss": 0.5650984234872674
+      },
+      {
+        "update": 301,
+        "loss": 0.5063198669521305
+      },
+      {
+        "update": 351,
+        "loss": 0.5264303255326126
+      },
+      {
+        "update": 401,
+        "loss": 0.5711737590491199
+      },
+      {
+        "update": 451,
+        "loss": 0.521863314427981
+      },
+      {
+        "update": 500,
+        "loss": 0.5220752508700254
+      }
+    ],
+    "checkpoint_sha256": "025ba9405b4c36a1dbc58a35ee9f6198ecc448dc26803b386ef6c5ca957eb98d"
+  },
+  "road_760002_support_head": {
+    "source_family": "road",
+    "initialization": 760002,
+    "variant": "support_head",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 32,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/road_ksi_0.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_1.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_10.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_11.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_12.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_13.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_14.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_15.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_16.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_17.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_18.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_19.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_2.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_20.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_21.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_22.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_23.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_24.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_25.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_26.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_27.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_28.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_29.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_3.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_30.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_31.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_4.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_5.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_6.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_7.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_8.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_9.npz"
+    ],
+    "max_gradient": 0.0016535766904939553,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.5248088977541945
+      },
+      {
+        "update": 51,
+        "loss": 0.5992699038901177
+      },
+      {
+        "update": 101,
+        "loss": 0.5201299641496385
+      },
+      {
+        "update": 151,
+        "loss": 0.5625837210997222
+      },
+      {
+        "update": 201,
+        "loss": 0.5437384478745875
+      },
+      {
+        "update": 251,
+        "loss": 0.5670486176022549
+      },
+      {
+        "update": 301,
+        "loss": 0.5063380585451067
+      },
+      {
+        "update": 351,
+        "loss": 0.5265171334129346
+      },
+      {
+        "update": 401,
+        "loss": 0.5706997626629033
+      },
+      {
+        "update": 451,
+        "loss": 0.5236802351107175
+      },
+      {
+        "update": 500,
+        "loss": 0.522101950838234
+      }
+    ],
+    "checkpoint_sha256": "5a312e51c9ac366d6a67dc8120f898db390ec0e5a9cfd685c4a865e9cf6087d0"
+  },
+  "road_760003_query": {
+    "source_family": "road",
+    "initialization": 760003,
+    "variant": "query",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 32,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/road_ksi_0.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_1.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_10.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_11.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_12.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_13.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_14.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_15.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_16.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_17.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_18.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_19.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_2.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_20.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_21.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_22.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_23.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_24.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_25.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_26.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_27.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_28.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_29.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_3.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_30.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_31.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_4.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_5.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_6.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_7.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_8.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_9.npz"
+    ],
+    "max_gradient": 0.0020670433755647336,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.5389685011190039
+      },
+      {
+        "update": 51,
+        "loss": 0.5589076875733143
+      },
+      {
+        "update": 101,
+        "loss": 0.5291995006631154
+      },
+      {
+        "update": 151,
+        "loss": 0.5258263221008217
+      },
+      {
+        "update": 201,
+        "loss": 0.5865594871531699
+      },
+      {
+        "update": 251,
+        "loss": 0.5530010943452432
+      },
+      {
+        "update": 301,
+        "loss": 0.5266816003683411
+      },
+      {
+        "update": 351,
+        "loss": 0.530008907669931
+      },
+      {
+        "update": 401,
+        "loss": 0.5538680545598265
+      },
+      {
+        "update": 451,
+        "loss": 0.5420145720735011
+      },
+      {
+        "update": 500,
+        "loss": 0.5302083358838198
+      }
+    ],
+    "checkpoint_sha256": "89b895dd53881928c2c70435eb8380e3025a2150e7b9cb8dcc3001204ec07505"
+  },
+  "road_760003_task_scalar": {
+    "source_family": "road",
+    "initialization": 760003,
+    "variant": "task_scalar",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 32,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/road_ksi_0.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_1.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_10.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_11.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_12.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_13.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_14.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_15.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_16.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_17.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_18.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_19.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_2.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_20.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_21.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_22.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_23.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_24.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_25.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_26.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_27.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_28.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_29.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_3.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_30.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_31.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_4.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_5.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_6.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_7.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_8.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_9.npz"
+    ],
+    "max_gradient": 0.002128695557074623,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.5389685011190039
+      },
+      {
+        "update": 51,
+        "loss": 0.558855569624278
+      },
+      {
+        "update": 101,
+        "loss": 0.5291945143151235
+      },
+      {
+        "update": 151,
+        "loss": 0.5258409900073647
+      },
+      {
+        "update": 201,
+        "loss": 0.5866157976842454
+      },
+      {
+        "update": 251,
+        "loss": 0.5529981061200445
+      },
+      {
+        "update": 301,
+        "loss": 0.5267307577894278
+      },
+      {
+        "update": 351,
+        "loss": 0.5299639566623707
+      },
+      {
+        "update": 401,
+        "loss": 0.5539644824831813
+      },
+      {
+        "update": 451,
+        "loss": 0.5420557403071727
+      },
+      {
+        "update": 500,
+        "loss": 0.5303208394762109
+      }
+    ],
+    "checkpoint_sha256": "d3b5195a6c29bd8c0b1685582be27a0a633adefb5a692d99bd0299fe2af1650d"
+  },
+  "road_760003_support_head": {
+    "source_family": "road",
+    "initialization": 760003,
+    "variant": "support_head",
+    "updates": 500,
+    "parameters": 370,
+    "training_episodes": 32,
+    "training_input_files": [
+      "artifacts/reports/native_meta_inputs/training/road_ksi_0.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_1.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_10.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_11.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_12.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_13.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_14.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_15.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_16.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_17.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_18.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_19.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_2.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_20.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_21.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_22.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_23.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_24.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_25.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_26.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_27.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_28.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_29.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_3.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_30.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_31.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_4.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_5.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_6.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_7.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_8.npz",
+      "artifacts/reports/native_meta_inputs/training/road_ksi_9.npz"
+    ],
+    "max_gradient": 0.0020450706002031445,
+    "trace": [
+      {
+        "update": 1,
+        "loss": 0.5389685011190039
+      },
+      {
+        "update": 51,
+        "loss": 0.5588914904500337
+      },
+      {
+        "update": 101,
+        "loss": 0.5307365396448249
+      },
+      {
+        "update": 151,
+        "loss": 0.5275857185436227
+      },
+      {
+        "update": 201,
+        "loss": 0.5868743176339764
+      },
+      {
+        "update": 251,
+        "loss": 0.5535279011498464
+      },
+      {
+        "update": 301,
+        "loss": 0.5264837700580893
+      },
+      {
+        "update": 351,
+        "loss": 0.5301183272807724
+      },
+      {
+        "update": 401,
+        "loss": 0.5536889861404568
+      },
+      {
+        "update": 451,
+        "loss": 0.5413667700875868
+      },
+      {
+        "update": 500,
+        "loss": 0.5304712275273789
+      }
+    ],
+    "checkpoint_sha256": "143695c06596b87fe3e77b34aeddad5c332a87f5d1f5043205e0ba19b0ac6d24"
+  }
+}
