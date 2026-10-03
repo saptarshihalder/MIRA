@@ -35,9 +35,9 @@ def model_predict(state,context,experts,linear):
     return experts@weight
 
 
-def audit(out):
+def audit(out,protocol):
     manifest=json.loads((out/'manifest.json').read_text())
-    protocol=ROOT/'configs/large_native_v1.json'
+    protocol=Path(protocol)
     assert manifest['protocol_sha256']==checksum(protocol)
     plan=json.loads(protocol.read_text())
     report_rows=[]
@@ -112,4 +112,6 @@ def audit(out):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--out',required=True)
-    audit(Path(parser.parse_args().out))
+    parser.add_argument('--config',default=str(ROOT/'configs/large_native_v2.json'))
+    args=parser.parse_args()
+    audit(Path(args.out),args.config)

@@ -682,7 +682,7 @@
     "run_id": "large_native_a100_v2",
     "phase": "large_native_a100_repair",
     "reserved_usd": 1.5,
-    "status": "reserved",
+    "status": "failed",
     "date": "2026-10-03",
     "model": "Same large native CUDA protocol; numerical calibration repair",
     "protocol_sha256": "1abb1b402b99192b10cce796b35026e5296ceb37b459bddec0f5266c9564d770",
@@ -692,6 +692,27 @@
     "startup_timeout_seconds": 180,
     "retries": 0,
     "actual_charged_usd": null,
-    "authorization": "Human requested Modal code execution and allowed extension if needed; cap $20 and reproduction reserve remain binding"
+    "authorization": "Human requested Modal code execution and allowed extension if needed; cap $20 and reproduction reserve remain binding",
+    "remote_invocations_authorized": 1,
+    "error": "FileNotFoundError(2, 'No such file or directory')",
+    "remote_function_calls": 1,
+    "failure": "Cloud input validation found missing mounted v1 wrapper; no child training invocation",
+    "provider_charge_status": "Failed GPU startup counted; reservation retained"
+  },
+  {
+    "run_id": "large_native_a100_v3",
+    "phase": "large_native_a100_final",
+    "reserved_usd": 0.4,
+    "status": "reserved",
+    "date": "2026-10-03",
+    "model": "Same large native CUDA evaluation; packaging and numerical repair",
+    "protocol_sha256": "32fab885687eb25201128445873fa14926c127d64dbd448614b5beab034b0f34",
+    "max_calls": 1,
+    "gpu": "A100-40GB",
+    "timeout_seconds": 300,
+    "startup_timeout_seconds": 60,
+    "retries": 0,
+    "actual_charged_usd": null,
+    "authorization": "Existing human GPU request and conditional extension, within latest $20 cap and protected $3 reserve"
   }
 ]
