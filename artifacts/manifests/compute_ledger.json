@@ -611,5 +611,43 @@
     "active_seconds": 188.009322222,
     "exit_code": 0,
     "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\compiler_gpu_repair_v1_tabicl"
+  },
+  {
+    "phase": "policy_native_gpu",
+    "model": "XGBoost CUDA and native-trained neural mixtures",
+    "max_seconds": 900,
+    "protocol_sha256": "374608efa019ae14dd2339c6f8759b6b3ad49c126e881c5a1d1bc70751a7e174",
+    "authorization": "October3 user explicitly requests real GPU viaColabPro orModal after the failedCPU gate; CUDA engineering/native-training feasibility only",
+    "freeze_commit": "68f5dcd",
+    "run_id": "policy_native_gpu_v1",
+    "reserved_usd": 0.5,
+    "status": "completed",
+    "date": "2026-10-03T06:23:37.717543+00:00",
+    "launcher_failures": [
+      {
+        "exit_code": 1,
+        "error": "Windows charmap could not encode Modal startup checkmark",
+        "pre_dispatch": true,
+        "app_id": "ap-sGc3kL2ecmhr7adc7lf40o",
+        "app_tasks_before_stop": 0
+      }
+    ],
+    "launcher_resume": "UTF8 console repair before the first remote invocation; same0.50 reservation covers launcher failure",
+    "exit_code": 0,
+    "active_seconds": 16.876546990999998,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\policy_native_gpu_v1",
+    "app_id": "ap-yd9YbpSmYeKwFYgpgepUj5",
+    "app_url": "https://modal.com/apps/saptarshihalder/main/ap-yd9YbpSmYeKwFYgpgepUj5",
+    "gpu_verified": "Tesla T4",
+    "torch_version": "2.8.0+cu128",
+    "source_booster_device": "cuda:0",
+    "cuda_updates_per_trained_model": 400,
+    "remote_function_calls": 1,
+    "launcher_failure_count": 1,
+    "provider_charge_usd": null,
+    "provider_cost_status": "pendingbilling;0.50reservation retained includingclientstartupfailure",
+    "active_compute_estimate_usd": 0.0035096467122483605,
+    "pricing_verified_date": "2026-10-03",
+    "pricing_url": "https://modal.com/pricing"
   }
 ]

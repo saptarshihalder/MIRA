@@ -4,18 +4,18 @@
 \usepackage{amsmath,amssymb,booktabs}
 \usepackage[breaklinks=true,colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
 \setlength{\emergencystretch}{2em}
-\title{Learning Missingness Coordinates and Context Corrections for Frozen Predictors}
+\title{Training Missingness Corrections for Frozen Tabular Predictors}
 \author{MIRA working manuscript\\Author list to be confirmed}
 \date{3 October 2026}
 
 \begin{document}
 \maketitle
 \begin{center}
-\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} Both a 6,092-parameter mask compiler and an 11,176-parameter predictive-loss context adapter are trained. The compiler matches a fixed heuristic; the new adapter improves over an ordinary residual MLP but loses to a stronger centered-moment correction and harms null tasks. Neither learned-method gate passes. Earlier representation confirmation is supporting evidence; methodological novelty and manuscript readiness remain unresolved.}}
+\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} Trained missingness corrections now include a 961-parameter uncertainty mixture and actual CUDA training on naturally incomplete Diabetes data. Synthetic improvement over a moment estimator is supported, but improvement over a calibrated guard is uncertain. Native neural and linear corrections perform similarly; synthetic pretraining does not help. Methodological novelty and manuscript readiness remain unresolved.}}
 \end{center}
 
 \begin{abstract}
-We train MIRA-Compiler, a 6,092-parameter support-conditioned selector of reversible missingness coordinates for a frozen tabular predictor. Synthetic pretraining uses privileged basis teachers; inference receives labeled support only. On 512 new development tasks, its predictions match a fixed moment heuristic on all 256 informative tasks. A hash-frozen 324-prediction backbone screen finds expected log-loss gains over uncompiled indicators of 0.086 nats for TabPFN v2 and 0.061 for TabICLv2, averaging pairwise and four-way tasks within three seed units. The heuristic reproduces all synthetic compiler predictions, so these improvements do not establish a learned-method advantage. On Hepatitis and Horse Colic, the compiler is identical to uncompiled indicators; augmentation helps or harms depending on dataset. An earlier twenty-task confirmation establishes a narrower TabPFN representation effect, with gain 0.104 nats over native inputs; strong interaction logistic baselines nearly close its oracle gap. We retain the trained candidate, source/checkpoint identities, controls and negative results, but the useful learned-contribution gate is not met. Current-checkpoint transfer, broad natural-missingness benefits and venue readiness remain unresolved.
+We train support-conditioned missingness corrections for frozen tabular predictors. A 961-parameter network learns probability mixtures over sixteen support-fitted corrections using predictive cross-entropy, with no privileged mechanism teacher. On forty-eight synthetic development worlds its gain over a centered-moment estimator is .01577 nats, while null harm is .00193; the gain over a calibrated guard is .00365 with a nominal 95\% task interval crossing zero. We then train a full-feature source XGBoost predictor and three correction models on a Tesla T4 using naturally incomplete Diabetes encounters with patient-disjoint partitions. Training the neural mixture from scratch performs better than synthetic pretraining followed by native fine-tuning; a 13-parameter trained linear mixture performs similarly. These findings support limited predictive adaptation, not an established novel learned-method advantage. Supporting experiments retain a trained reversible compiler that matches a heuristic, a 324-prediction frozen-backbone screen, and an earlier twenty-task TabPFN representation confirmation. Source, checkpoints, probabilities, boundaries, failed gates and costs are retained. General native-missingness benefit, identified acquisition-policy transport and venue readiness remain unresolved.
 \end{abstract}
 
 \section{Question and scope}
@@ -125,6 +125,40 @@ Context adapter, shifted training & .513901\\\bottomrule
 \end{table}
 
 The context adapter improves over the ordinary trained adapter by .052991 nats (nominal development 95\% paired task interval [.030107,.075875]) and over no-shift training by .027183 [.014161,.040206]. However, its expected loss exceeds the centered-moment correction by .044606 [.034072,.055141], and its null loss exceeds the frozen predictor by .045750. Thus both the strong-control superiority requirement and the prespecified .01 null-harm limit fail. These are development results, not fresh confirmation. No paid expansion of this candidate is launched. Six boundary checks verify label/oracle exclusion, hidden-value exclusion, support/query permutation behavior, independent query processing, paired outcomes, frozen coefficients and a known likelihood-ratio identity. The always-observed sufficient scalar and single-parity family are restrictive; gains cannot be attributed solely to learning raw-row representations because engineered residual moments are also inputs. Neither natural policy transport nor TFM adaptation is established by this screen.
+
+\section{Learned uncertainty mixtures and native CUDA training}
+The failed dense correction motivates a separate finite-support uncertainty hypothesis. Sixteen candidate probabilities comprise frozen prediction and fifteen support-fitted single-parity corrections with fixed ridge regularization. Three-fold out-of-support losses, residual moments, source agreement and fitted coefficients provide twelve candidate-context features. A shared neural scorer with widths 32 and 16 has 961 parameters and assigns predictive mixture weights:
+\begin{equation}
+ \widehat p(y=1\mid q,C)=\sum_{j=0}^{15}\operatorname{softmax}_{j}(h_\theta(c_j))p_j(q).
+\end{equation}
+A fixed offset favors the frozen candidate at initialization. These are learned predictive weights, not a calibrated Bayesian mechanism posterior. Candidate probabilities depend on observed query inputs; fitting and context use labeled support only. A linear scorer receives identical candidate contexts, synthetic query labels and updates. Both models train on 768 new paired-policy worlds for 60 fixed epochs. An operational guard selects a centered-moment correction only when its out-of-support gain exceeds a threshold from a predeclared validation grid.
+
+On 48 new development worlds with five cells each, the neural mixture improves expected NLL over the retained moment estimator by .015773 [.008210,.023337] and over CV candidate selection by .014616 [.007547,.021684]. Mean null harm is .001930. The strongest guard contrast is .003645 [$-$.000058,.007349], so the full superiority gate fails. Every score and task interval reconstructs exactly across 2,400 saved prediction arrays. The guard's moment selector differs from the intercept-calibrated retained moment in five of 240 episodes; complete OOF preprocessing is not exactly support-permutation invariant because fold allocation depends on row order. These limits prevent an overbroad uncertainty or symmetry claim.
+
+\paragraph{Larger naturally incomplete dataset.}
+The UCI Diabetes 130-US Hospitals dataset~\cite{diabetes130} contains 101,766 encounters. Official source hashes and missing-token semantics are retained. We exclude death/hospice dispositions using the official mapping and choose one encounter per patient using a label-independent hash, leaving 69,990 patient representatives. Another patient hash orders source/validation/development partitions at 60/20/20. Patient and encounter identifiers are excluded from predictors; neither identifier establishes chronology. The dataset lacks explicit hospital/date fields, so this is a retrospective patient-grouped utility screen rather than a verified temporal or hospital observation-policy shift. The outcome is recorded readmission within thirty days versus other recorded outcomes; absent readmission records do not establish complete follow-up. Prediction is defined at discharge.
+
+\paragraph{Actual GPU training.}
+A separately frozen, user-authorized Modal run trains an XGBoost 3.4.1 source predictor on 4,096 source labels using CUDA. A disjoint 128-label source context is retained. The neural mixture is fine-tuned from its synthetic checkpoint; an identical neural model starts from scratch, and a 13-parameter linear scorer is trained with the same native meta-training episodes. Each receives 400 CUDA optimizer updates over 32 patient-disjoint meta-training episodes with 64 support and 256 query labels, followed by diagnostic validation on 16 separate episodes. The guard threshold uses validation only; final checkpoints are fixed. Development comprises 32 separate patient-disjoint episodes with 64 support labels and 256 scored queries each. Source-fitted category vocabularies, selected mask columns and normalization remain frozen. Four mask channels are weight, glucose measurement, HbA1c measurement and medical specialty; unmeasured test tokens retain their missing-measurement meaning.
+
+\begin{table}[t]
+\centering\small
+\caption{Native Diabetes CUDA development: empirical query NLL, conditional on the shared trained source backbone. Lower is better. These are single-dataset results.}
+\label{tab:native-cuda}
+\begin{tabular}{lr}\toprule
+Method & NLL\\\midrule
+Frozen source XGBoost & .313739\\
+Fixed synthetic neural mixture & .318891\\
+Native fine-tuned neural mixture & .311691\\
+Native neural mixture from scratch & .307248\\
+Native trained linear mixture & .307697\\
+Centered-moment correction & .333232\\
+CV candidate selection & .329009\\
+Native-validation guard & .317943\\\bottomrule
+\end{tabular}
+\end{table}
+
+Fine-tuning improves over the fixed synthetic checkpoint but loses to native training from scratch. Neural and linear native corrections have similar means, so this screen does not establish a distinctive nonlinear or synthetic-pretraining benefit. Intervals across disjoint target episodes are conditional on the shared source backbone and meta-training data, not uncertainty across datasets or hospitals. The 16.877-second bounded remote call records Tesla T4, Torch 2.8.0+cu128, CUDA parameter devices and source-booster CUDA configuration. XGBoost reports host/device prediction fallback for NumPy inputs, and minority-class support folds emit warnings; these are preserved. All correction training ran on CUDA, while we do not assert that every XGBoost inference kernel did. The additional reservation is \$0.50, increasing project reservations to \$11.05 while retaining the \$3 reproduction reserve inside \$26; reservations are not provider invoices. One local launcher encoding failure before cloud dispatch remains recorded. No new confirmation or clinical-effectiveness claim is made.
 
 \section{Controlled data and oracle}
 The initial synthetic diagnostic keeps an observed variable $U\in\{-1,+1\}$ balanced and uses
@@ -389,5 +423,9 @@ Connectionist Bench (Sonar, Mines vs. Rocks). UCI Machine Learning Repository, 1
 \bibitem{heart}
 Statlog (Heart). UCI Machine Learning Repository.
 \url{https://doi.org/10.24432/C57303}.
+\bibitem{diabetes130}
+Diabetes 130-US Hospitals for Years 1999--2008.
+UCI Machine Learning Repository, 2014. CC BY 4.0.
+\url{https://doi.org/10.24432/C5230J}.
 \end{thebibliography}
 \end{document}

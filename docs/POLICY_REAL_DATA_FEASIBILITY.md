@@ -1,0 +1,15 @@
+# Native-data feasibility — 3 October 2026
+
+**Recommendation:** UCI Diabetes 130-US Hospitals is suitable for a larger retrospective native-missingness training screen with patient-grouped splits. It does not supply a verified hospital or temporal transport benchmark.
+
+[UCI's official record](https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008) lists 101,766 encounters, 47 features, native missingness and CC BY 4.0 licensing. The [official ZIP](https://archive.ics.uci.edu/static/public/296/diabetes+130-us+hospitals+for+years+1999-2008.zip) was downloaded through BrowserOS and preserved under ignored artifacts/runs/diabetes_native_raw. ZIP SHA256: f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a. The [official metadata API](https://archive.ics.uci.edu/api/dataset?id=296) describes normalized-export NaN; local archive inspection confirms physical missing token ?. Literal None remains an unmeasured-test category.
+
+encounter_id identifies encounters; patient_nbr identifies patients. Group all encounters of a patient within one train/validation/test partition, keep both IDs out of predictors, and group source support, target support and queries similarly. The complete 50-column official schema contains no hospital identifier or encounter date. Its 1999–2008 coverage does not recover row dates. Neither numeric ID supports an inferred site or chronological split. UCI recommends no specific split.
+
+The target readmitted distinguishes less-than-30-day, greater-than-30-day and no recorded readmission. A binary early-readmission screen can predeclare <30 versus the other two labels; absence of a record is not proof of complete follow-up. Set prediction time at discharge: length of stay, procedures and medication changes summarize the encounter. Predeclare eligibility using the supplied disposition mapping rather than guessed numeric codes.
+
+Metadata marks race, weight, payer_code, medical_specialty and three diagnoses as incomplete. max_glu_serum/A1Cresult's none explicitly means unmeasured; medication no means not prescribed. Preserve these meanings separately from generic missing cells and numeric category codes.
+
+Before evaluation, freeze downloaded hashes, token normalization, categorical encoding, patient partitions and labeled-support access. Keep native masks. Claims should concern retrospective predictive utility, not identified acquisition-policy shifts, MNAR, clinical effectiveness or external hospital/time generalization.
+
+Public preparation is complete without fitting/scoring. Native audit and proposed row assignments are saved as native_token_entity_audit.json and patient_grouped_partitions_v1.npz beside raw files. There are 71,518 patients; exclusion of official death/hospice codes 11,13,14,19,20,21 leaves 99,343 rows/69,990 patients. Proposed label-independent patient hashing yields train/validation/test patient counts 48,800/10,699/10,491. All groups are disjoint; exact predictor duplicates are absent. The downstream protocol must explicitly adopt this proposal.

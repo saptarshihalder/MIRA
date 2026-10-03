@@ -1,0 +1,256 @@
+{
+  "status": "Independent saved loss/scorer/hash/patient-boundary audit passed with float32 rounding tolerance",
+  "episodes": 32,
+  "query_rows": 8192,
+  "target_support_rows": 2048,
+  "probability_arrays": 256,
+  "max_nll_discrepancy": 2.9802322387695312e-08,
+  "max_interval_discrepancy": 1.6107425410832876e-09,
+  "max_numpy_prediction_discrepancy": {
+    "pretrained_fixed": 1.7881393432617188e-07,
+    "native_finetuned": 1.7881393432617188e-07,
+    "native_scratch": 1.7881393432617188e-07,
+    "native_linear": 1.1920928955078125e-07
+  },
+  "cv_selection_discrepancy": 0.0,
+  "guard_selection_discrepancy": 0.0,
+  "source_protocol_raw_checkpoint_backbone_hashes_verified": true,
+  "protocol_sha256": "374608efa019ae14dd2339c6f8759b6b3ad49c126e881c5a1d1bc70751a7e174",
+  "source_sha256": "b8c25382e47f6df074911f06065d8e5f0a3c613fee69259cbc4fc2fd78b8ea90",
+  "report_sha256": "f2391b690fb527326ce2b53f7b4fce7f4071b9742a4248514f79e80370e298ec",
+  "backbone_sha256": "9686ab7c72ba020463438b6493edad4c7b24d0ca410f38d117c70a12a7238146",
+  "prediction_manifest_sha256": "b1b81447436ebce56ff21cb3697e2b0bedf5d3baf5979fd5e2bc67d5e646ad9b",
+  "backbone_saved_model_trees": 100,
+  "native_patient_rows": 69990,
+  "one_eligible_hash_selected_encounter_per_patient": true,
+  "all_patient_partitions_disjoint": true,
+  "partition_sizes": {
+    "source_fit": 4096,
+    "source_context": 128,
+    "meta_train": 10240,
+    "validation": 5120,
+    "development": 10240
+  },
+  "source_only_missing_column_selection_verified": true,
+  "selected_columns": [
+    "weight",
+    "max_glu_serum",
+    "A1Cresult",
+    "medical_specialty"
+  ],
+  "model_update_counts": {
+    "pretrained_fixed": 0,
+    "native_finetuned": 400,
+    "native_scratch": 400,
+    "native_linear": 400
+  },
+  "gpu": "Tesla T4",
+  "source_backbone_device": "cuda:0",
+  "gains_against_prespecified_finetuned": {
+    "pretrained_fixed": {
+      "mean": 0.007200508015386724,
+      "low": 0.002367450908457104,
+      "high": 0.012033565122316344,
+      "episodes": 32
+    },
+    "native_scratch": {
+      "mean": -0.004442426668091337,
+      "low": -0.007940603655518394,
+      "high": -0.0009442496806642796,
+      "episodes": 32
+    },
+    "native_linear": {
+      "mean": -0.003993873870519906,
+      "low": -0.007514509741927465,
+      "high": -0.00047323799911234846,
+      "episodes": 32
+    },
+    "frozen": {
+      "mean": 0.0020487495175256325,
+      "low": -0.002428191543234536,
+      "high": 0.006525690578285801,
+      "episodes": 32
+    },
+    "moment": {
+      "mean": 0.02154167466225763,
+      "low": 0.013072951897334605,
+      "high": 0.030010397427180657,
+      "episodes": 32
+    },
+    "cv_select": {
+      "mean": 0.017317872535313566,
+      "low": 0.008505422040755432,
+      "high": 0.0261303230298717,
+      "episodes": 32
+    },
+    "native_guard": {
+      "mean": 0.006252323318149049,
+      "low": -0.001976673375117123,
+      "high": 0.014481320011415222,
+      "episodes": 32
+    }
+  },
+  "requested_descriptive_scratch_contrasts": {
+    "frozen_minus_scratch": {
+      "mean": 0.006491176185616969,
+      "low": 0.002545648206284645,
+      "high": 0.010436704164949294,
+      "episodes": 32
+    },
+    "native_guard_minus_scratch": {
+      "mean": 0.010694749986240388,
+      "low": 0.003980490490152896,
+      "high": 0.01740900948232788,
+      "episodes": 32
+    },
+    "native_linear_minus_scratch": {
+      "mean": 0.0004485527975714304,
+      "low": -0.00038825109497628903,
+      "high": 0.0012853566901191498,
+      "episodes": 32
+    },
+    "native_finetuned_minus_scratch": {
+      "mean": 0.004442426668091337,
+      "low": 0.0009442496806642796,
+      "high": 0.007940603655518394,
+      "episodes": 32
+    }
+  },
+  "mean_nll": {
+    "pretrained_fixed": 0.31889120774930424,
+    "native_finetuned": 0.3116906997339175,
+    "native_scratch": 0.3072482730658262,
+    "native_linear": 0.30769682586339764,
+    "frozen": 0.31373944925144315,
+    "moment": 0.33323237439617515,
+    "cv_select": 0.3290085722692311,
+    "native_guard": 0.31794302305206656
+  },
+  "warnings_preserved": [
+    "[06:26:00] WARNING: /__w/xgboost/xgboost/src/common/error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.\nPotential solutions:\n- Use a data structure that matches the device ordinal in the booster.\n- Set the device for booster before call to inplace_predict.\n\nThis warning will only be shown once.\n",
+    "The least populated class in y has only 2 members, which is less than n_splits=3.",
+    "The least populated class in y has only 1 members, which is less than n_splits=3.",
+    "The least populated class in y has only 1 members, which is less than n_splits=3.",
+    "The least populated class in y has only 2 members, which is less than n_splits=3.",
+    "The least populated class in y has only 2 members, which is less than n_splits=3.",
+    "The least populated class in y has only 1 members, which is less than n_splits=3.",
+    "The least populated class in y has only 2 members, which is less than n_splits=3.",
+    "The least populated class in y has only 1 members, which is less than n_splits=3.",
+    "The least populated class in y has only 2 members, which is less than n_splits=3.",
+    "The least populated class in y has only 2 members, which is less than n_splits=3.",
+    "The least populated class in y has only 1 members, which is less than n_splits=3.",
+    "The least populated class in y has only 2 members, which is less than n_splits=3.",
+    "The least populated class in y has only 2 members, which is less than n_splits=3."
+  ],
+  "classcount_warning_count": 13,
+  "support_class_counts": {
+    "meta_train": {
+      "below_three": 3,
+      "minimum_class_count": 1,
+      "episode_minority_counts": [
+        6,
+        4,
+        2,
+        5,
+        6,
+        6,
+        4,
+        6,
+        4,
+        4,
+        4,
+        5,
+        6,
+        6,
+        4,
+        5,
+        7,
+        5,
+        3,
+        1,
+        4,
+        3,
+        7,
+        1,
+        3,
+        4,
+        5,
+        3,
+        4,
+        6,
+        4,
+        7
+      ]
+    },
+    "validation": {
+      "below_three": 4,
+      "minimum_class_count": 0,
+      "episode_minority_counts": [
+        5,
+        6,
+        5,
+        4,
+        2,
+        5,
+        2,
+        6,
+        4,
+        4,
+        3,
+        0,
+        1,
+        4,
+        7,
+        8
+      ]
+    },
+    "development": {
+      "below_three": 7,
+      "minimum_class_count": 1,
+      "episode_minority_counts": [
+        9,
+        6,
+        3,
+        3,
+        2,
+        5,
+        3,
+        5,
+        4,
+        4,
+        1,
+        5,
+        3,
+        8,
+        8,
+        10,
+        3,
+        2,
+        3,
+        7,
+        5,
+        5,
+        2,
+        1,
+        2,
+        3,
+        4,
+        2,
+        5,
+        9,
+        6,
+        4
+      ]
+    }
+  },
+  "single_paid_phase_reservation_verified": true,
+  "limitations": [
+    "No retraining, expert refitting, XGBoost prediction or paid call occurred.",
+    "Float32 control losses differ across saved GPU environment and local NumPy by one ULP; discrepancies are recorded.",
+    "Native train/validation feature archives are absent; row boundaries reconstruct from frozen source and reported arrays.",
+    "Intervals condition on one dataset, shared source backbone and model initialization; no site/time/training-seed generalization.",
+    "Host NumPy inputs triggered XGBoost DMatrix prediction fallback despiteCUDA training.",
+    "Thirteen low minority-count warnings limit three-fold expert-validation reliability.",
+    "Scratch contrasts are requested descriptive comparisons; fine-tuned remains the prespecified primary model."
+  ]
+}

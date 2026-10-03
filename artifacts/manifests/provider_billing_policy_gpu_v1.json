@@ -1,0 +1,18 @@
+{
+  "version": "provider_billing_policy_gpu_v1",
+  "app_id": "ap-yd9YbpSmYeKwFYgpgepUj5",
+  "checked_at_utc": "2026-10-03T06:37:11.942844+00:00",
+  "method": "BrowserOS signed-in Modal app Usage tab; one completed charge-page read, no subsequent polling",
+  "status": "pending_or_rounded",
+  "actualcharged_usd": null,
+  "provider_displayed_total_usage_usd": 0.0,
+  "provider_displayed_function_usage_usd": 0.0,
+  "provider_display_precision": "two decimals",
+  "provider_displayed_network_egress_bytes": 0,
+  "function_name": "train_native_mixtures",
+  "run_id": "policy_native_gpu_v1",
+  "reserved_usd": 0.5,
+  "invoice_verified": false,
+  "caveat": "UI displayed $0.00 for total and function usage. Two-decimal rounding or metering lag can obscure a nonzero cost; this is not evidence of zero final charge. Image-build/startup attribution and final invoice were not independently verified.",
+  "scope": "Read-only provider usage; no credentials, patient identifiers, retraining or paid call"
+}

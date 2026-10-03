@@ -57,7 +57,7 @@ citations = {item.strip() for match in re.findall(r'\\cite(?:\[[^]]*\])?\{([^}]+
 references = set(re.findall(r'\\(?:ref|eqref)\{([^}]+)\}', source))
 assert citations <= set(re.findall(r'\\bibitem\{([^}]+)\}', source))
 assert references <= set(re.findall(r'\\label\{([^}]+)\}', source))
-manifest = dict(path=str(ROOT/'paper/main.tex'), source_sha256=hashlib.sha256(source.encode()).hexdigest(),
+manifest = dict(path=str(ROOT/'paper/main.tex'), source_sha256=hashlib.sha256((ROOT/'paper/main.tex').read_bytes()).hexdigest(),
     native_compiler_status='compile-failed', diagnostic='Unable to find standard directories for platform',
     pdf_verified=False, source_checks=dict(environments_balanced=True,citations_resolved=True,references_resolved=True),
     policy_protocol_files_rechecked=len(freeze['files']),
