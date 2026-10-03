@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-03",
+  "phase": "CPU uncertainty-mixture development",
+  "files": {
+    "experiments/policy_adapter_v1/pilot.py": "bb4785fadf2a3c9173ce68d3883031ea1116bdac83e89460f73d8590d8d77546",
+    "experiments/policy_adapter_v1/mixture.py": "1dbc5c2041bd11e5eb8e98ff1849c51b7b0a59920060f3c1e7deff7d09006be0",
+    "configs/policy_mixture_v1.json": "27d101bc47a3cd53b04cc8954a54f81b75d2f44806c4d8fd97d7df3188ff5a57",
+    "docs/POLICY_MIXTURE_PROTOCOL.md": "5f548277997ff23b9a8f4663c1bd30a3712ef8d3b1fc5d427940ccfbe991bb44"
+  }
+}

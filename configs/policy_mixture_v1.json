@@ -1,0 +1,22 @@
+{
+  "version": "policy_mixture_v1_cpu_development",
+  "namespace": 1601,
+  "train_seeds": [120000, 120768],
+  "validation_seeds": [122000, 122064],
+  "development_seeds": [124000, 124048],
+  "source_labels": 128,
+  "target_labels": 64,
+  "queries": 128,
+  "epochs": 60,
+  "batch_size": 32,
+  "learning_rate": 0.003,
+  "training_seed": 1701,
+  "cv_seed": 1702,
+  "ridge_grid": [0.001, 0.01, 0.1, 1.0],
+  "guard_grid": [0.0, 0.01, 0.03, 0.05, 0.1],
+  "checkpoint": "fixed final epoch; guard threshold validation-only",
+  "device": "cpu",
+  "paid_compute": false,
+  "gate": "mean expected-NLL gain vs moment >=.01; positive nominal95% task lower bounds vs linear_mixture/moment/calibrated_guard/cv_select/cv_parity/cv_pooled; mean null harm vs frozen<=.01",
+  "scope": "Uncertainty over16 support-fitted corrections; synthetic first-pilot family reused with disjoint worlds; no policy novelty/TFM/native-data claim"
+}
