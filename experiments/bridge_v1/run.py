@@ -357,20 +357,26 @@ def main():
             for split, split_seeds in (('validation', plan['validation_seeds']), ('development', plan['development_seeds'])):
                 for seed in split_seeds:
                     for width in plan['development_widths']:
-                      for episode in world(seed, width, plan):
-                        predictions, audits = controls(episode, plan)
-                        predictions.update({name: model_probability(model, episode, device) for name, model in models.items()})
-                        np.savez_compressed(out / 'predictions' / f"{split}_seed{seed}_width{width}_{episode['regime']}.npz",
-                            **predictions, labels=episode['query_y'], **{key: episode[key] for key in INPUT_KEYS},
-                            **{key: episode[key] for key in ('source_fit_ids', 'source_ids', 'target_ids', 'query_ids',
-                                                            'source_frozen_coefficient', 'source_frozen_intercept')})
-                        for key in INPUT_KEYS + ('query_y',):
-                            (validation_digest if split == 'validation' else evaluation_digest).update(np.ascontiguousarray(episode[key]).tobytes())
-                        destination = validation_results if split == 'validation' else results
-                        destination.append(dict(split=split, seed=seed, width=width, regime=episode['regime'], control_audits=audits,
-                                                metrics={name: metrics(probability, episode['query_y']) for name, probability in predictions.items()}))
-                        metadata.append(dict(split=split, seed=seed, width=width, regime=episode['regime'], **episode['generator_metadata']))
+                        for episode in world(seed, width, plan):
+                            predictions, audits = controls(episode, plan)
+                            predictions.update({name: model_probability(model, episode, device) for name, model in models.items()})
+                            np.savez_compressed(out / 'predictions' / f"{split}_seed{seed}_width{width}_{episode['regime']}.npz",
+                                **predictions, labels=episode['query_y'], **{key: episode[key] for key in INPUT_KEYS},
+                                **{key: episode[key] for key in ('source_fit_ids', 'source_ids', 'target_ids', 'query_ids',
+                                                                'source_frozen_coefficient', 'source_frozen_intercept')})
+                            for key in INPUT_KEYS + ('query_y',):
+                                (validation_digest if split == 'validation' else evaluation_digest).update(np.ascontiguousarray(episode[key]).tobytes())
+                            destination = validation_results if split == 'validation' else results
+                            destination.append(dict(split=split, seed=seed, width=width, regime=episode['regime'], control_audits=audits,
+                                                    metrics={name: metrics(probability, episode['query_y']) for name, probability in predictions.items()}))
+                            metadata.append(dict(split=split, seed=seed, width=width, regime=episode['regime'], **episode['generator_metadata']))
             report = summarize(results, plan, args.smoke)
+            failed_controls = [dict(split=row['split'], seed=row['seed'], width=row['width'], regime=row['regime'])
+                               for row in validation_results + results
+                               if not row['control_audits']['support_logistic'].get('converged', True)]
+            report['unconverged_support_controls'] = failed_controls
+            if failed_controls and not args.smoke:
+                report['gate_pass'] = False
             report.update(results=results, validation_results=validation_results, training_models=traces, device=device,
                 gpu=torch.cuda.get_device_name(0) if device == 'cuda' else None,
                 updates=plan['updates'], train_world_seeds=len(plan['train_seeds']), development_world_seeds=len(plan['development_seeds']),
@@ -379,6 +385,7 @@ def main():
                 training_data_sha256=data_digest.hexdigest(), development_data_sha256=evaluation_digest.hexdigest(),
                 protocol_sha256=checksum(config), source_sha256=checksum(__file__),
                 model_source_sha256=checksum(Path(__file__).with_name('model.py')), effective_plan=plan,
+                correction_ranges=dict(bridge=[-4., 4.], generic_contextual=[-4., 4.], target_only=[-4., 4.], no_query=[-4., 4.]),
                 torch=torch.__version__, sklearn=sklearn.__version__, python=platform.python_version(),
                 seconds=time.monotonic() - started)
             (out / 'generator_metadata.json').write_text(json.dumps(metadata, indent=2))

@@ -127,7 +127,7 @@
   "automatic_retries": 0,
   "file_sha256": {
     "experiments/bridge_v1/model.py": "e90a6e16c45da94fb7a9a8c01177635883e69e4511184de1a322fee47adf51ae",
-    "experiments/bridge_v1/run.py": "e43fac0d874364ac65ed38b7f29b502fd438b43cf877053f0cab31b5357e42ad",
+    "experiments/bridge_v1/run.py": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
     "experiments/bridge_v1/launch.py": "319c4a01be429492e20f9de13933e3b267faf20cf3607a1fb6d32781dd557a07",
     "experiments/bridge_v1/freeze.py": "30a0e54c3ceca54b89c515746f07eaeed8af52c92821b9c7eeb350720bad2c6c",
     "infra/modal_bridge_v1.py": "01d0ffe1017480ef1dec012194f16fe6c61eb2e36f6cbe97d5fcba7e7759dceb",

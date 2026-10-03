@@ -746,7 +746,7 @@
     "status": "reserved",
     "reserved_usd": 0.8,
     "model": "Bridge20801/Generic20769/linear13 and separately trained ablations",
-    "protocol_sha256": "96a4cb0c77f9c0aaa80aee896e54f336ea896a4ce9c9c1fb6f81063e740662d9",
+    "protocol_sha256": "cfd60b1647e852398c74d928a63ad1fd8219457d5cdaae729a37325deba4dc08",
     "gpu": "A100-40GB",
     "max_calls": 1,
     "retries": 0,
@@ -758,6 +758,14 @@
     "actual_charged_usd": null,
     "authorization": "Human requested implementing MIRA-Bridge and GPU wherever needed; totalcap20 and reproduction reserve3 preserved",
     "maximum_resource_compute_usd": 0.4151,
-    "charge_status": "Worst-case resource plus >$.38 contingency reserved before deployment/dispatch"
+    "charge_status": "Worst-case resource plus >$.38 contingency reserved before deployment/dispatch",
+    "pre_dispatch_failures": [
+      {
+        "error": "Sourcehash guard rejected concurrent reporting cleanup after initial freeze",
+        "remote_calls": 0,
+        "old_protocol_sha256": "96a4cb0c77f9c0aaa80aee896e54f336ea896a4ce9c9c1fb6f81063e740662d9",
+        "initial_commit": "c334220"
+      }
+    ]
   }
 ]
