@@ -1,0 +1,50 @@
+[
+  {
+    "app_id": "ap-QI93Lc6YsGv7wnGPHoqVp4",
+    "description": "mira-crossfit-v1",
+    "state": "deployed",
+    "tasks": "0",
+    "created_at": "2026-10-04 00:54:07+05:30",
+    "stopped_at": null
+  },
+  {
+    "app_id": "ap-AayNPNUQps9oJcUVAjaF6B",
+    "description": "mira-spectral-v1",
+    "state": "deployed",
+    "tasks": "0",
+    "created_at": "2026-10-03 23:07:33+05:30",
+    "stopped_at": null
+  },
+  {
+    "app_id": "ap-ToSEFBbBj2FtA8VpFQFQOP",
+    "description": "mira-recursive-jepa-v1",
+    "state": "deployed",
+    "tasks": "0",
+    "created_at": "2026-10-03 22:45:03+05:30",
+    "stopped_at": null
+  },
+  {
+    "app_id": "ap-vCFNSkNvKoLqkVxjHuVjKV",
+    "description": "mira-bridge-v2-a100",
+    "state": "deployed",
+    "tasks": "0",
+    "created_at": "2026-10-03 17:40:10+05:30",
+    "stopped_at": null
+  },
+  {
+    "app_id": "ap-zOyHMVDKIfs6KtgCCB4EVn",
+    "description": "mira-bridge-v1-a100",
+    "state": "deployed",
+    "tasks": "0",
+    "created_at": "2026-10-03 17:15:27+05:30",
+    "stopped_at": null
+  },
+  {
+    "app_id": "ap-raKw2bH4mQsaJMMJXkJwvJ",
+    "description": "mira-large-native-a100-final",
+    "state": "deployed",
+    "tasks": "0",
+    "created_at": "2026-10-03 16:33:46+05:30",
+    "stopped_at": null
+  }
+]

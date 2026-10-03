@@ -1,6 +1,14 @@
-# MIRA status â€” October 3, 2026
+# MIRA status — October 4, 2026
 
 Target: a NeurIPS-quality draft by October 20; trained-model contribution required. Real native-data CUDA training is complete, but methodological novelty and venue readiness remain unresolved. Strict token rationing continues.
+
+## Support-verified query operator — October 4
+
+Read docs/CROSSFIT_FINDINGS.md first. A370-parameter query-conditioned trained correction now PASSES the prespecified exploratory synthetic robustness gate on20fresh latent seeds/two widths/all four regimes. Sign-flip gain.045838 [.034527,.057149] over frozen; .032354 [.020077,.044631] over same-rule guarded logistic; .018036 [.008201,.027872] over no-query learner. All80ignorable branch decisions reject adaptation. Nonlinear harm.0000123 is small. However gain.006202 [-.002545,.014948] versus the114parameter scalar/query learner is uncertain; the stronger neural-specific gate FAILS. Ordinary full-support logistic still wins on sign flip while harming null cases. No universal safety, novelty, native utility or venue-readiness claim. Intervals are unadjusted exploratory; confirmation98000-98019 untouched.
+
+Three500-update models trained on Modal CUDA/A100 allocation. Evaluation failed at the Platt numerical control after132cells; all checkpoints preserved. Committed CPU-only recovery solved the SAME convex calibration objective with gradient<8.33e-11; no retrain/remote retry/seed changes. Original GPU run stays FAILED in ledger. All160cells completed;1,600scores,960CPU prediction-array replays,960split decisions and640identity arrays audit pass. Original132GPU neural files agree within1.87e-9. Training traces/exact device-name log were lost at late evaluation abort, disclosed. Artifacts/reports/crossfit_v1_gpu includes original failed-run archive and recovered full predictions.
+
+Next: resolve capacity/task-conditioned scalar and support-only-head controls, then freeze a finite independent replication and native-transfer protocol. Current learned field representation is handcrafted; optional learned interactions need evidence against matched features. See CROSSFIT_FINDINGS. Do not add seeds until significance or spend on another architecture without an unresolved-control rationale. Budget16.45 provisions +3 reproduction leaves.55 under20. Latest app tasks0; bills may lag. Same paper/editor updated; native PDF compiler environment remains unresolved. No email/submission.
 
 ## Spectral learned-operator checkpoint — October 3
 
