@@ -1,0 +1,32 @@
+{
+  "frozen_at_utc": "2026-10-03T12:10:05.455765+00:00",
+  "protocol_sha256": "0d73b1f071710af4edb9c5780e2d393a91bd059567a47de0b6202179421e5f04",
+  "files": {
+    "experiments/bridge_v2/model.py": "43b36a45081b47aaf3f1b34842f6a51f237b56ebe03120af532921dbe18ba5cc",
+    "experiments/bridge_v2/run.py": "3309d9ed06b16468965491989e1a9f1d5e0ee21aa88768558de407dee0f5a13c",
+    "experiments/bridge_v2/launch.py": "db89f66058db5417a006dd01cb4dd5ff4527ad64a82c0b461b083369a2708e48",
+    "experiments/bridge_v2/freeze.py": "f696c09461c7adcc8410e88375d1f5355f523793dd6774a9ed18ce62164cc6e9",
+    "infra/modal_bridge_v2.py": "3010e4361146063ff1ae1709477325840b108032ad377c8e1a8a165346e3443f",
+    "docs/BRIDGE_V2_PROTOCOL.md": "3072f518f9f742acad58e2bd968f0eaa69c0752f39173cc4561d774a217e9cd9",
+    "experiments/bridge_v1/run.py": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
+    "experiments/bridge_v1/model.py": "e90a6e16c45da94fb7a9a8c01177635883e69e4511184de1a322fee47adf51ae"
+  },
+  "development_seeds": [
+    360001,
+    360002,
+    360003,
+    360004,
+    360005,
+    360006,
+    360007,
+    360008,
+    360009,
+    360010,
+    360011,
+    360012
+  ],
+  "confirmation_seeds_untouched": "98000-98019",
+  "budget_reserved_usd": 14.050000000000002,
+  "reproduction_reserve_usd": 3,
+  "total_cap_usd": 20
+}

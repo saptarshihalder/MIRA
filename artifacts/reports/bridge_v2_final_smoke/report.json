@@ -1,0 +1,2424 @@
+{
+  "gate_pass": null,
+  "primary_model": "contextual_regularizer",
+  "shifted_nll_gains": {
+    "frozen": {
+      "mean": -0.03560431666029645,
+      "low": -0.05030800744759939,
+      "high": -0.020900625872993517,
+      "independent_world_seeds": 2,
+      "bootstrap_samples": 2000
+    },
+    "target_platt": {
+      "mean": -0.035565247461155955,
+      "low": -0.05603032678851727,
+      "high": -0.01510016813379464,
+      "independent_world_seeds": 2,
+      "bootstrap_samples": 2000
+    },
+    "support_logistic": {
+      "mean": 0.022068825201051773,
+      "low": -0.033275968920982946,
+      "high": 0.07741361932308649,
+      "independent_world_seeds": 2,
+      "bootstrap_samples": 2000
+    },
+    "fixed_regularizer": {
+      "mean": 0.00021517176335886234,
+      "low": 0.00013080641264390236,
+      "high": 0.00029953711407382233,
+      "independent_world_seeds": 2,
+      "bootstrap_samples": 2000
+    },
+    "global_regularizer": {
+      "mean": 0.00013742540708064355,
+      "low": 8.526388936214158e-05,
+      "high": 0.00018958692479914552,
+      "independent_world_seeds": 2,
+      "bootstrap_samples": 2000
+    },
+    "type_regularizer": {
+      "mean": 8.654398596569246e-06,
+      "low": 6.831319930067359e-06,
+      "high": 1.0477477263071133e-05,
+      "independent_world_seeds": 2,
+      "bootstrap_samples": 2000
+    },
+    "target_only_regularizer": {
+      "mean": 8.236291872132373e-06,
+      "low": 7.503816702170152e-06,
+      "high": 8.968767042094594e-06,
+      "independent_world_seeds": 2,
+      "bootstrap_samples": 2000
+    },
+    "global_grid_control": {
+      "mean": -0.03922384533557294,
+      "low": -0.05789257652181279,
+      "high": -0.020555114149333087,
+      "independent_world_seeds": 2,
+      "bootstrap_samples": 2000
+    }
+  },
+  "null_harms": {
+    "no_shift": {
+      "mean": -0.05139595491747234,
+      "low": -0.11061480325721396,
+      "high": 0.007822893422269273,
+      "independent_world_seeds": 2,
+      "bootstrap_samples": 2000
+    },
+    "ignorable_shift": {
+      "mean": 0.12323607055765934,
+      "low": 0.06117561454131237,
+      "high": 0.1852965265740063,
+      "independent_world_seeds": 2,
+      "bootstrap_samples": 2000
+    }
+  },
+  "gate_rule": {
+    "comparators": [
+      "frozen",
+      "target_platt",
+      "support_logistic",
+      "fixed_regularizer",
+      "global_regularizer",
+      "type_regularizer",
+      "target_only_regularizer",
+      "global_grid_control"
+    ],
+    "useful_effect_nll": 0.003,
+    "max_null_harm_upper95_nll": 0.001
+  },
+  "interval_scope": "Paired bootstrap of generator seed; average widths/shifted regimes inside each seed;12 development seeds are uncertainty units",
+  "scope": "Separate engineering smoke; excluded from scientific development",
+  "results": [
+    {
+      "split": "development",
+      "seed": 960001,
+      "width": 6,
+      "regime": "sign_flip",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 1.7933256225496907e-10,
+          "iterations": 6,
+          "weights": [
+            0.37529191540024714,
+            -0.0351514469440374
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 7.411091698661387e-09,
+          "penalty_min": 0.1003090962767601,
+          "penalty_max": 0.10048708319664001,
+          "coefficient_max_abs": 0.4820599017839789,
+          "objective_mean": 0.2925543486602091,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 7.55915154082576e-09,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.4825090679319935,
+          "objective_mean": 0.2923724681001171,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 7.416998938636343e-09,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.4819557542460843,
+          "objective_mean": 0.2925601045455271,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 7.418811454051877e-09,
+          "penalty_min": 0.10030826926231384,
+          "penalty_max": 0.10043612867593765,
+          "coefficient_max_abs": 0.48201752351961746,
+          "objective_mean": 0.2925575382805896,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 7.649604630288742e-09,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.4828866078998486,
+          "objective_mean": 0.29225311647083163,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.547373340571312e-15,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.22532937340310924,
+          "objective_mean": 0.3933799368457212,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.5208731930692786,
+          "brier": 0.1746535627217909
+        },
+        "target_platt": {
+          "nll": 0.5327523067946558,
+          "brier": 0.1773587323854255
+        },
+        "support_logistic": {
+          "nll": 0.6175213013192861,
+          "brier": 0.21404752753506895
+        },
+        "contextual_regularizer": {
+          "nll": 0.5620542541844749,
+          "brier": 0.1684789698042019
+        },
+        "global_regularizer": {
+          "nll": 0.562159573493882,
+          "brier": 0.16847480971978096
+        },
+        "type_regularizer": {
+          "nll": 0.5620560584049692,
+          "brier": 0.16847925010975087
+        },
+        "target_only_regularizer": {
+          "nll": 0.562051080960061,
+          "brier": 0.16847706018382788
+        },
+        "fixed_regularizer": {
+          "nll": 0.5622191717232173,
+          "brier": 0.1684733340413341
+        },
+        "global_grid_control": {
+          "nll": 0.5304927882459015,
+          "brier": 0.1717840893044636
+        }
+      }
+    },
+    {
+      "split": "development",
+      "seed": 960001,
+      "width": 6,
+      "regime": "nonlinear_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 6.090039930684021e-12,
+          "iterations": 5,
+          "weights": [
+            0.062290361100552416,
+            -0.05573192029694031
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.4772852732769515e-10,
+          "penalty_min": 0.10031122714281082,
+          "penalty_max": 0.10048913955688477,
+          "coefficient_max_abs": 0.4872967618762903,
+          "objective_mean": 0.32193638004939706,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.5061052752174398e-10,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.4881037536275439,
+          "objective_mean": 0.3217206701688144,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.4774229062375355e-10,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.4875074924825528,
+          "objective_mean": 0.32192916708094926,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.475775890380504e-10,
+          "penalty_min": 0.100308857858181,
+          "penalty_max": 0.1004452332854271,
+          "coefficient_max_abs": 0.4875151315191067,
+          "objective_mean": 0.3219223129364852,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.5224170882288668e-10,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.4884133567149598,
+          "objective_mean": 0.32159036034004085,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 3.469446951953614e-17,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.23800502586853922,
+          "objective_mean": 0.43000697110468683,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.48896804558713836,
+          "brier": 0.159787041978762
+        },
+        "target_platt": {
+          "nll": 0.4886898473401589,
+          "brier": 0.1601245236056095
+        },
+        "support_logistic": {
+          "nll": 0.5889484277292909,
+          "brier": 0.2009144939815123
+        },
+        "contextual_regularizer": {
+          "nll": 0.48958823621792913,
+          "brier": 0.16745045189403196
+        },
+        "global_regularizer": {
+          "nll": 0.48965344468724625,
+          "brier": 0.1674802381233214
+        },
+        "type_regularizer": {
+          "nll": 0.48960738695196093,
+          "brier": 0.1674582507948913
+        },
+        "target_only_regularizer": {
+          "nll": 0.4896093469764272,
+          "brier": 0.16745914570271847
+        },
+        "fixed_regularizer": {
+          "nll": 0.48968493150447445,
+          "brier": 0.1674950499398734
+        },
+        "global_grid_control": {
+          "nll": 0.4800394738578363,
+          "brier": 0.15986745469634284
+        }
+      }
+    },
+    {
+      "split": "development",
+      "seed": 960001,
+      "width": 6,
+      "regime": "no_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 2.296586618794061e-11,
+          "iterations": 5,
+          "weights": [
+            0.306982528758887,
+            0.037366843019936605
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.6881354557059005e-09,
+          "penalty_min": 0.10030564665794373,
+          "penalty_max": 0.10048139095306396,
+          "coefficient_max_abs": 0.4509617527543852,
+          "objective_mean": 0.2994751336502169,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.781600094512118e-09,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.45147555793815647,
+          "objective_mean": 0.29932178959437294,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.685454836090731e-09,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.4509025491872778,
+          "objective_mean": 0.29947432385607775,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.68358292374338e-09,
+          "penalty_min": 0.10030811280012131,
+          "penalty_max": 0.10044102370738983,
+          "coefficient_max_abs": 0.45091518376645645,
+          "objective_mean": 0.29947009979078937,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.841543131157589e-09,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.45192624517498653,
+          "objective_mean": 0.2992254740165713,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.8388068845354155e-15,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.17794616031683774,
+          "objective_mean": 0.37821704619511337,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.5350248057439326,
+          "brier": 0.175119318295731
+        },
+        "target_platt": {
+          "nll": 0.5435995296395617,
+          "brier": 0.17421741470658256
+        },
+        "support_logistic": {
+          "nll": 0.5739800300422693,
+          "brier": 0.19396065022705444
+        },
+        "contextual_regularizer": {
+          "nll": 0.5428476991662019,
+          "brier": 0.1540969198914601
+        },
+        "global_regularizer": {
+          "nll": 0.5429324522940588,
+          "brier": 0.15408997187533963
+        },
+        "type_regularizer": {
+          "nll": 0.5428421892562336,
+          "brier": 0.15409609657432483
+        },
+        "target_only_regularizer": {
+          "nll": 0.5428363334130186,
+          "brier": 0.15409255859387289
+        },
+        "fixed_regularizer": {
+          "nll": 0.5429908431640083,
+          "brier": 0.15408864019523716
+        },
+        "global_grid_control": {
+          "nll": 0.5188772225155995,
+          "brier": 0.16008302124084633
+        }
+      }
+    },
+    {
+      "split": "development",
+      "seed": 960001,
+      "width": 6,
+      "regime": "ignorable_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 2.998623259420352e-10,
+          "iterations": 4,
+          "weights": [
+            0.07758280860910884,
+            -0.1631272064925121
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 3.935440744638752e-08,
+          "penalty_min": 0.1003042608499527,
+          "penalty_max": 0.1004413440823555,
+          "coefficient_max_abs": 0.5210936115404051,
+          "objective_mean": 0.28806015455496464,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 4.0029216634082654e-08,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.5215443427625,
+          "objective_mean": 0.28783001826156507,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 3.9342182508311785e-08,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.5210263807392328,
+          "objective_mean": 0.28806146065373794,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 3.934326209265038e-08,
+          "penalty_min": 0.100309818983078,
+          "penalty_max": 0.10043862462043762,
+          "coefficient_max_abs": 0.5210954340567898,
+          "objective_mean": 0.28805577928896126,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 4.045795053489454e-08,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.5219163364571892,
+          "objective_mean": 0.28768669920071305,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.4640012252774568e-14,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.22928084717050898,
+          "objective_mean": 0.4188024430641349,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.5621391237287949,
+          "brier": 0.18499788189269428
+        },
+        "target_platt": {
+          "nll": 0.5748915613935474,
+          "brier": 0.18871529121602368
+        },
+        "support_logistic": {
+          "nll": 0.608794568452161,
+          "brier": 0.21112018860837414
+        },
+        "contextual_regularizer": {
+          "nll": 0.6233147382701073,
+          "brier": 0.2116065708116936
+        },
+        "global_regularizer": {
+          "nll": 0.6234062556050304,
+          "brier": 0.21163284151365896
+        },
+        "type_regularizer": {
+          "nll": 0.6233020444149682,
+          "brier": 0.21160316687160052
+        },
+        "target_only_regularizer": {
+          "nll": 0.6233007037142687,
+          "brier": 0.21160276668472466
+        },
+        "fixed_regularizer": {
+          "nll": 0.6234836751924102,
+          "brier": 0.211655658699469
+        },
+        "global_grid_control": {
+          "nll": 0.5738994110940385,
+          "brier": 0.19323751024100358
+        }
+      }
+    },
+    {
+      "split": "development",
+      "seed": 960002,
+      "width": 6,
+      "regime": "sign_flip",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 2.5326068039607796e-09,
+          "iterations": 5,
+          "weights": [
+            -0.30846684219546083,
+            -0.03375605818220801
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 4.014617474394633e-09,
+          "penalty_min": 0.10031183063983917,
+          "penalty_max": 0.1004461795091629,
+          "coefficient_max_abs": 0.6229284350166131,
+          "objective_mean": 0.3666858030915024,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 4.084274349714506e-09,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.623738130683707,
+          "objective_mean": 0.36640148837380027,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 4.016376134018812e-09,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.6229047253513047,
+          "objective_mean": 0.3666849938962985,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 4.0132398515524415e-09,
+          "penalty_min": 0.1003088727593422,
+          "penalty_max": 0.100443534553051,
+          "coefficient_max_abs": 0.6229717375188426,
+          "objective_mean": 0.36667874413664264,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 4.126809182575242e-09,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.6242629193938586,
+          "objective_mean": 0.3662217547666408,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.4287182548144983e-14,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.2382101554672396,
+          "objective_mean": 0.5235833051781512,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6798799590200753,
+          "brier": 0.2430959422510338
+        },
+        "target_platt": {
+          "nll": 0.6653811480135168,
+          "brier": 0.237376457071151
+        },
+        "support_logistic": {
+          "nll": 0.6723769577608244,
+          "brier": 0.23831333393842327
+        },
+        "contextual_regularizer": {
+          "nll": 0.695842256710699,
+          "brier": 0.23997899607292944
+        },
+        "global_regularizer": {
+          "nll": 0.6959409721330452,
+          "brier": 0.2399983532232309
+        },
+        "type_regularizer": {
+          "nll": 0.6958478124366549,
+          "brier": 0.23998304939254597
+        },
+        "target_only_regularizer": {
+          "nll": 0.6958404845375905,
+          "brier": 0.2399802851763288
+        },
+        "fixed_regularizer": {
+          "nll": 0.6959974300929446,
+          "brier": 0.24000604765739142
+        },
+        "global_grid_control": {
+          "nll": 0.6693458080055246,
+          "brier": 0.23706985784492482
+        }
+      }
+    },
+    {
+      "split": "development",
+      "seed": 960002,
+      "width": 6,
+      "regime": "nonlinear_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 9.724484516249188e-10,
+          "iterations": 5,
+          "weights": [
+            -0.21982461620910576,
+            -0.059058303075817574
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.3015876973443419e-08,
+          "penalty_min": 0.10030794143676758,
+          "penalty_max": 0.10044784098863602,
+          "coefficient_max_abs": 0.7897305448695509,
+          "objective_mean": 0.39192289054308815,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.3248504432405994e-08,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.7905466511423775,
+          "objective_mean": 0.3916643114185802,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.3016484778916038e-08,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.7896564233790526,
+          "objective_mean": 0.391924383722582,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.2991952180740896e-08,
+          "penalty_min": 0.10030914843082428,
+          "penalty_max": 0.10044405609369278,
+          "coefficient_max_abs": 0.7894820365299864,
+          "objective_mean": 0.3919306033412361,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.33969292742675e-08,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.7911536014505631,
+          "objective_mean": 0.3914990465336407,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.0609568779074152e-14,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.3345459508651003,
+          "objective_mean": 0.5348119997574408,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6108045672275038,
+          "brier": 0.20992429871808924
+        },
+        "target_platt": {
+          "nll": 0.6138587395522265,
+          "brier": 0.21172417987776124
+        },
+        "support_logistic": {
+          "nll": 0.6523716455399875,
+          "brier": 0.23090670912893005
+        },
+        "contextual_regularizer": {
+          "nll": 0.6954582844320788,
+          "brier": 0.2416171458845532
+        },
+        "global_regularizer": {
+          "nll": 0.6957387428593309,
+          "brier": 0.24170602714411193
+        },
+        "type_regularizer": {
+          "nll": 0.695466391345983,
+          "brier": 0.2416206618220789
+        },
+        "target_only_regularizer": {
+          "nll": 0.6954750642385916,
+          "brier": 0.24162688157008494
+        },
+        "fixed_regularizer": {
+          "nll": 0.6959021852779809,
+          "brier": 0.2417558359034011
+        },
+        "global_grid_control": {
+          "nll": 0.6061695800936276,
+          "brier": 0.21019603615622556
+        }
+      }
+    },
+    {
+      "split": "development",
+      "seed": 960002,
+      "width": 6,
+      "regime": "no_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 1.53950255321611e-11,
+          "iterations": 5,
+          "weights": [
+            0.015104318665299056,
+            -0.2489904602596106
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.5083022263800983e-06,
+          "penalty_min": 0.10031409561634064,
+          "penalty_max": 0.10044722259044647,
+          "coefficient_max_abs": 0.5223700562520266,
+          "objective_mean": 0.325317928325103,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.5360729658034367e-06,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.5229140067662299,
+          "objective_mean": 0.3250941959210878,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.5079806305121068e-06,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.5224040788824776,
+          "objective_mean": 0.3253135284165828,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.508642686574857e-06,
+          "penalty_min": 0.10031045973300934,
+          "penalty_max": 0.10044825077056885,
+          "coefficient_max_abs": 0.5224043084810025,
+          "objective_mean": 0.3253154850029981,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.5550868338251589e-06,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.5232678812460556,
+          "objective_mean": 0.32495683352545507,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 4.996003610813204e-16,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.24330678439862546,
+          "objective_mean": 0.4434305679657164,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6742229987014444,
+          "brier": 0.229774681808958
+        },
+        "target_platt": {
+          "nll": 0.6811092049495983,
+          "brier": 0.23527592594743063
+        },
+        "support_logistic": {
+          "nll": 0.5862449578643434,
+          "brier": 0.19998902286226716
+        },
+        "contextual_regularizer": {
+          "nll": 0.5636081954442305,
+          "brier": 0.192238476419542
+        },
+        "global_regularizer": {
+          "nll": 0.5636105006066348,
+          "brier": 0.1922475519919229
+        },
+        "type_regularizer": {
+          "nll": 0.5636208602116795,
+          "brier": 0.19224282492318573
+        },
+        "target_only_regularizer": {
+          "nll": 0.5636197150896417,
+          "brier": 0.19224170009377717
+        },
+        "fixed_regularizer": {
+          "nll": 0.5635896422583733,
+          "brier": 0.19224413431691934
+        },
+        "global_grid_control": {
+          "nll": 0.602633414514725,
+          "brier": 0.20363345312327358
+        }
+      }
+    },
+    {
+      "split": "development",
+      "seed": 960002,
+      "width": 6,
+      "regime": "ignorable_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 3.5519566454755847e-10,
+          "iterations": 6,
+          "weights": [
+            0.5556230491202323,
+            -0.5208594431150295
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 9.314176134533891e-08,
+          "penalty_min": 0.10031986981630325,
+          "penalty_max": 0.10046876221895218,
+          "coefficient_max_abs": 0.48497476795209715,
+          "objective_mean": 0.2909588456673467,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 9.469848283316651e-08,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.4855372947522674,
+          "objective_mean": 0.29076402578539684,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 9.318470624991582e-08,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.4850294500510997,
+          "objective_mean": 0.29095386203597645,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 9.307411040493374e-08,
+          "penalty_min": 0.10031185299158096,
+          "penalty_max": 0.10044911503791809,
+          "coefficient_max_abs": 0.48502941079473805,
+          "objective_mean": 0.290957690665955,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 9.566250798453968e-08,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.4858865092486917,
+          "objective_mean": 0.29064186108004736,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 8.199690926247172e-14,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.21956826718428457,
+          "objective_mean": 0.4014671633834689,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6605098807068854,
+          "brier": 0.23033574516763042
+        },
+        "target_platt": {
+          "nll": 0.6715110447354155,
+          "brier": 0.2341315022467652
+        },
+        "support_logistic": {
+          "nll": 0.6795612007098955,
+          "brier": 0.24255406790578524
+        },
+        "contextual_regularizer": {
+          "nll": 0.8458064072808917,
+          "brier": 0.2803044059643353
+        },
+        "global_regularizer": {
+          "nll": 0.8461021022994726,
+          "brier": 0.28036066773828594
+        },
+        "type_regularizer": {
+          "nll": 0.8458104104804818,
+          "brier": 0.2803037097328013
+        },
+        "target_only_regularizer": {
+          "nll": 0.8458062694267912,
+          "brier": 0.28030306357012014
+        },
+        "fixed_regularizer": {
+          "nll": 0.8462784974102798,
+          "brier": 0.28039700739997037
+        },
+        "global_grid_control": {
+          "nll": 0.7275312268444831,
+          "brier": 0.2511629327325803
+        }
+      }
+    }
+  ],
+  "validation_results": [
+    {
+      "split": "validation",
+      "seed": 950001,
+      "width": 6,
+      "regime": "sign_flip",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 9.322773542735918e-11,
+          "iterations": 6,
+          "weights": [
+            -0.415053857929304,
+            0.04140631972670447
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 10,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.7514959977163458e-09,
+          "penalty_min": 0.10031308978796005,
+          "penalty_max": 0.1005157083272934,
+          "coefficient_max_abs": 0.7473294231059452,
+          "objective_mean": 0.3534354079706396,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.7778645144614358e-09,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.7478579871733553,
+          "objective_mean": 0.35317215037311744,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.7530173571436714e-09,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.7471439331950362,
+          "objective_mean": 0.35343508930330625,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.7531752117758148e-09,
+          "penalty_min": 0.1003069058060646,
+          "penalty_max": 0.10044537484645844,
+          "coefficient_max_abs": 0.7470778402952105,
+          "objective_mean": 0.3534337773853963,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.7939047261550378e-09,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.7483725084689439,
+          "objective_mean": 0.3530029911857272,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.498001805406602e-16,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.3399382103876306,
+          "objective_mean": 0.5097955708604311,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6594999634084813,
+          "brier": 0.22974581235941244
+        },
+        "target_platt": {
+          "nll": 0.6255993087790956,
+          "brier": 0.2187229473434042
+        },
+        "support_logistic": {
+          "nll": 0.6954232074353273,
+          "brier": 0.25151725326241686
+        },
+        "contextual_regularizer": {
+          "nll": 0.6875770418482916,
+          "brier": 0.242282941529252
+        },
+        "global_regularizer": {
+          "nll": 0.6877568928609787,
+          "brier": 0.24234879465164327
+        },
+        "type_regularizer": {
+          "nll": 0.6876098406892812,
+          "brier": 0.24229886101782858
+        },
+        "target_only_regularizer": {
+          "nll": 0.6876068240592927,
+          "brier": 0.24229776137302667
+        },
+        "fixed_regularizer": {
+          "nll": 0.6878365128559486,
+          "brier": 0.24237227346891316
+        },
+        "global_grid_control": {
+          "nll": 0.6433186171286165,
+          "brier": 0.2271016927034994
+        }
+      }
+    },
+    {
+      "split": "validation",
+      "seed": 950001,
+      "width": 6,
+      "regime": "nonlinear_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 2.2778764985353916e-11,
+          "iterations": 6,
+          "weights": [
+            -1.0195935021771416,
+            -0.18574232116965939
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.387763269051657e-08,
+          "penalty_min": 0.10031379759311676,
+          "penalty_max": 0.1005164235830307,
+          "coefficient_max_abs": 0.8591801206222971,
+          "objective_mean": 0.4169458319733556,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.4519696412150793e-08,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.8601174509194485,
+          "objective_mean": 0.41656716121457005,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.3937958462671993e-08,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.8590797942152736,
+          "objective_mean": 0.4169116765959171,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.394067885602702e-08,
+          "penalty_min": 0.10030736774206161,
+          "penalty_max": 0.1004454493522644,
+          "coefficient_max_abs": 0.8590015876471678,
+          "objective_mean": 0.41690846295455164,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.4860282624161734e-08,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.8606310869004672,
+          "objective_mean": 0.4163604787060522,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.581268532253489e-15,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.4460654431257898,
+          "objective_mean": 0.6223663329844513,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.569782583000156,
+          "brier": 0.19268538493340925
+        },
+        "target_platt": {
+          "nll": 0.6815637299928919,
+          "brier": 0.24420514433207646
+        },
+        "support_logistic": {
+          "nll": 0.6579103712382958,
+          "brier": 0.23326765441760136
+        },
+        "contextual_regularizer": {
+          "nll": 0.6200273680572903,
+          "brier": 0.21608886216449832
+        },
+        "global_regularizer": {
+          "nll": 0.6203255836817925,
+          "brier": 0.2162161826282269
+        },
+        "type_regularizer": {
+          "nll": 0.6201061074921381,
+          "brier": 0.2161227906400727
+        },
+        "target_only_regularizer": {
+          "nll": 0.6201105143040333,
+          "brier": 0.21612500562375306
+        },
+        "fixed_regularizer": {
+          "nll": 0.6204393479333263,
+          "brier": 0.2162647572746535
+        },
+        "global_grid_control": {
+          "nll": 0.5526337079538459,
+          "brier": 0.18705352161810088
+        }
+      }
+    },
+    {
+      "split": "validation",
+      "seed": 950001,
+      "width": 6,
+      "regime": "no_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 1.3977737092774056e-09,
+          "iterations": 7,
+          "weights": [
+            -0.7347958012189957,
+            -0.11258206704184882
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 10,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.8068404689097761e-09,
+          "penalty_min": 0.10031512379646301,
+          "penalty_max": 0.10051585733890533,
+          "coefficient_max_abs": 0.6164318285191424,
+          "objective_mean": 0.47458176917189754,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.8727195558176923e-09,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.61710572427079,
+          "objective_mean": 0.47431282699387645,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.8159825795893703e-09,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.6163939780681659,
+          "objective_mean": 0.4745660335894182,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.8158844844462507e-09,
+          "penalty_min": 0.10030826926231384,
+          "penalty_max": 0.1004478856921196,
+          "coefficient_max_abs": 0.6163672037157251,
+          "objective_mean": 0.4745643375601063,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.909174249248302e-09,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.6175966908457667,
+          "objective_mean": 0.47415649765623497,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 6.661338147750939e-16,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.3340000163046107,
+          "objective_mean": 0.6264349933398814,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.48538740924915824,
+          "brier": 0.16083998219038736
+        },
+        "target_platt": {
+          "nll": 0.5775036220861326,
+          "brier": 0.1941387877176956
+        },
+        "support_logistic": {
+          "nll": 0.6887554828421789,
+          "brier": 0.24854528958800523
+        },
+        "contextual_regularizer": {
+          "nll": 0.6231859453223632,
+          "brier": 0.22016344620643208
+        },
+        "global_regularizer": {
+          "nll": 0.6234815702912584,
+          "brier": 0.22028433538277964
+        },
+        "type_regularizer": {
+          "nll": 0.6232462248996091,
+          "brier": 0.22018950482016306
+        },
+        "target_only_regularizer": {
+          "nll": 0.6232399327277579,
+          "brier": 0.22018616526487697
+        },
+        "fixed_regularizer": {
+          "nll": 0.6236085978209875,
+          "brier": 0.22033392178856304
+        },
+        "global_grid_control": {
+          "nll": 0.5279739423962583,
+          "brier": 0.1774398887151574
+        }
+      }
+    },
+    {
+      "split": "validation",
+      "seed": 950001,
+      "width": 6,
+      "regime": "ignorable_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 2.271152016453115e-11,
+          "iterations": 7,
+          "weights": [
+            -0.5659456431437807,
+            -0.22035753986616852
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.3054333096000625e-06,
+          "penalty_min": 0.10031352192163467,
+          "penalty_max": 0.10048700124025345,
+          "coefficient_max_abs": 0.7600781285451536,
+          "objective_mean": 0.45513952187208906,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.3049148560873025e-06,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.7612585723044502,
+          "objective_mean": 0.45485213356010934,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.3062451661612073e-06,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.7602674661509949,
+          "objective_mean": 0.45512147588170293,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.3070135397932892e-06,
+          "penalty_min": 0.10031071305274963,
+          "penalty_max": 0.10045149177312851,
+          "coefficient_max_abs": 0.7603313527423936,
+          "objective_mean": 0.4551200034501267,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.3022425530279103e-06,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.7617141078931782,
+          "objective_mean": 0.4546806750272118,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.4377388168895777e-14,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.3778364713659502,
+          "objective_mean": 0.6059441078215377,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.604419669243175,
+          "brier": 0.20935028540569145
+        },
+        "target_platt": {
+          "nll": 0.6354589858157477,
+          "brier": 0.22207274343973032
+        },
+        "support_logistic": {
+          "nll": 0.6173966691258153,
+          "brier": 0.21225375981935518
+        },
+        "contextual_regularizer": {
+          "nll": 0.6589529367413749,
+          "brier": 0.22177106963050813
+        },
+        "global_regularizer": {
+          "nll": 0.6592111496938319,
+          "brier": 0.22184703395783012
+        },
+        "type_regularizer": {
+          "nll": 0.6589702345100462,
+          "brier": 0.22177638023843546
+        },
+        "target_only_regularizer": {
+          "nll": 0.658977033507919,
+          "brier": 0.22177827671203412
+        },
+        "fixed_regularizer": {
+          "nll": 0.6593616957202479,
+          "brier": 0.22188999719430635
+        },
+        "global_grid_control": {
+          "nll": 0.5840231484561292,
+          "brier": 0.19763689426594752
+        }
+      }
+    },
+    {
+      "split": "validation",
+      "seed": 950002,
+      "width": 6,
+      "regime": "sign_flip",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 1.2631323504513903e-11,
+          "iterations": 6,
+          "weights": [
+            -0.14726796499276887,
+            0.012090553484712632
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.313575479268251e-06,
+          "penalty_min": 0.10031221061944962,
+          "penalty_max": 0.10047416388988495,
+          "coefficient_max_abs": 0.7485987648349693,
+          "objective_mean": 0.3627125984229479,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.392074493418275e-06,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.7498406900909128,
+          "objective_mean": 0.3624778733466869,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.319357955044235e-06,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.7488094373199508,
+          "objective_mean": 0.36269484981986866,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.3139410392533115e-06,
+          "penalty_min": 0.10030877590179443,
+          "penalty_max": 0.10045493394136429,
+          "coefficient_max_abs": 0.7487068564758115,
+          "objective_mean": 0.36269978044369655,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.436007288084355e-06,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.7503557627675086,
+          "objective_mean": 0.36234596061873514,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.6270401692608516e-11,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.3660391473693206,
+          "objective_mean": 0.48071424545659314,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6296680044341026,
+          "brier": 0.22048137820564362
+        },
+        "target_platt": {
+          "nll": 0.6266264412631225,
+          "brier": 0.2191967290616253
+        },
+        "support_logistic": {
+          "nll": 0.7560097758009168,
+          "brier": 0.2803597114173143
+        },
+        "contextual_regularizer": {
+          "nll": 0.6842693965017121,
+          "brier": 0.2417863556791831
+        },
+        "global_regularizer": {
+          "nll": 0.6844466363532657,
+          "brier": 0.241835627729659
+        },
+        "type_regularizer": {
+          "nll": 0.6842958983294968,
+          "brier": 0.24179498442709108
+        },
+        "target_only_regularizer": {
+          "nll": 0.6842960784706646,
+          "brier": 0.24179539727894783
+        },
+        "fixed_regularizer": {
+          "nll": 0.6845380772486324,
+          "brier": 0.24185984572563532
+        },
+        "global_grid_control": {
+          "nll": 0.6247999868530911,
+          "brier": 0.2195582504618717
+        }
+      }
+    },
+    {
+      "split": "validation",
+      "seed": 950002,
+      "width": 6,
+      "regime": "nonlinear_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 5.4728381548851956e-11,
+          "iterations": 5,
+          "weights": [
+            -0.09406598995699536,
+            0.23496443653647797
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 11,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.0303927734447993e-05,
+          "penalty_min": 0.10031600296497345,
+          "penalty_max": 0.10046837478876114,
+          "coefficient_max_abs": 0.8326331193931437,
+          "objective_mean": 0.36721341802441887,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.0408442432177645e-05,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.8340532380504049,
+          "objective_mean": 0.3669591543558695,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.0309795028889956e-05,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.8328582768298827,
+          "objective_mean": 0.3671958039068326,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.030592097651939e-05,
+          "penalty_min": 0.10030656307935715,
+          "penalty_max": 0.10045048594474792,
+          "coefficient_max_abs": 0.8327877833516322,
+          "objective_mean": 0.36720462655690467,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.0471134759465484e-05,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.834654107569799,
+          "objective_mean": 0.3668163815635854,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 5.85376913608826e-10,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.3822151413074868,
+          "objective_mean": 0.4858730017749199,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6973465100396781,
+          "brier": 0.24824245194396835
+        },
+        "target_platt": {
+          "nll": 0.728697494365985,
+          "brier": 0.2606728675463125
+        },
+        "support_logistic": {
+          "nll": 0.7669298281096122,
+          "brier": 0.28521650735131376
+        },
+        "contextual_regularizer": {
+          "nll": 0.7530974409172174,
+          "brier": 0.253862993728598
+        },
+        "global_regularizer": {
+          "nll": 0.7533501614379039,
+          "brier": 0.25390396918735225
+        },
+        "type_regularizer": {
+          "nll": 0.7531351846390992,
+          "brier": 0.25387099126547263
+        },
+        "target_only_regularizer": {
+          "nll": 0.7531317486933247,
+          "brier": 0.2538715558393926
+        },
+        "fixed_regularizer": {
+          "nll": 0.753471927666252,
+          "brier": 0.2539226727652665
+        },
+        "global_grid_control": {
+          "nll": 0.6928294606256646,
+          "brier": 0.24297733270777397
+        }
+      }
+    },
+    {
+      "split": "validation",
+      "seed": 950002,
+      "width": 6,
+      "regime": "no_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 4.5448581009743805e-10,
+          "iterations": 5,
+          "weights": [
+            0.26979392947313197,
+            -0.11513371142415822
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 13,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.1092854499277225e-06,
+          "penalty_min": 0.10031598061323166,
+          "penalty_max": 0.10047351568937302,
+          "coefficient_max_abs": 0.7076947198737407,
+          "objective_mean": 0.3538121198053549,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.135706032690976e-06,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.7090012095018277,
+          "objective_mean": 0.35359193351831303,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.1110351247216608e-06,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.7079176660172094,
+          "objective_mean": 0.3537929063711114,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.1091204024936694e-06,
+          "penalty_min": 0.10030879080295563,
+          "penalty_max": 0.10045630484819412,
+          "coefficient_max_abs": 0.7078393826961571,
+          "objective_mean": 0.35380055210169475,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 2.151034314473721e-06,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.7095457273024048,
+          "objective_mean": 0.35346979463016426,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 6.676809105599091e-11,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.31440819398206893,
+          "objective_mean": 0.45240135192565795,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6285015254068426,
+          "brier": 0.22314884055212175
+        },
+        "target_platt": {
+          "nll": 0.6204996681586183,
+          "brier": 0.22196841367393477
+        },
+        "support_logistic": {
+          "nll": 0.7184746682366623,
+          "brier": 0.2598790338147989
+        },
+        "contextual_regularizer": {
+          "nll": 0.7127592785821597,
+          "brier": 0.22754504159025174
+        },
+        "global_regularizer": {
+          "nll": 0.7130389055006263,
+          "brier": 0.2275632385738392
+        },
+        "type_regularizer": {
+          "nll": 0.712780699735647,
+          "brier": 0.2275453656826526
+        },
+        "target_only_regularizer": {
+          "nll": 0.7127688045015352,
+          "brier": 0.227544745790062
+        },
+        "fixed_regularizer": {
+          "nll": 0.7131976454790465,
+          "brier": 0.22757550266409612
+        },
+        "global_grid_control": {
+          "nll": 0.6224884733543048,
+          "brier": 0.2153165756768324
+        }
+      }
+    },
+    {
+      "split": "validation",
+      "seed": 950002,
+      "width": 6,
+      "regime": "ignorable_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 3.95449254939062e-11,
+          "iterations": 5,
+          "weights": [
+            0.06614668059389163,
+            0.07256242351097716
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 12,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "solver_audits": {
+        "contextual_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.4316373569273066e-08,
+          "penalty_min": 0.10031241178512573,
+          "penalty_max": 0.10045839101076126,
+          "coefficient_max_abs": 0.649979965355878,
+          "objective_mean": 0.39016914602209973,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.4586777705855036e-08,
+          "penalty_min": 0.10014423727989197,
+          "penalty_max": 0.10014423727989197,
+          "coefficient_max_abs": 0.6507919037200448,
+          "objective_mean": 0.38996154266890437,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "type_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.4326336455691702e-08,
+          "penalty_min": 0.10033341497182846,
+          "penalty_max": 0.10041418671607971,
+          "coefficient_max_abs": 0.6499159576640353,
+          "objective_mean": 0.39017197455507113,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "target_only_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.4321454711377357e-08,
+          "penalty_min": 0.10030770301818848,
+          "penalty_max": 0.10045435279607773,
+          "coefficient_max_abs": 0.6499422047745755,
+          "objective_mean": 0.39017208141932624,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "fixed_regularizer": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 1.47531775962495e-08,
+          "penalty_min": 0.10000000149011612,
+          "penalty_max": 0.10000000149011612,
+          "coefficient_max_abs": 0.6514662606814203,
+          "objective_mean": 0.3898214069253918,
+          "all_finite": true,
+          "convergence_claim": false
+        },
+        "global_grid_control": {
+          "newton_steps": 4,
+          "solver_dtype": "torch.float64",
+          "max_abs_gradient": 4.3472170307978786e-15,
+          "penalty_min": 0.3981071710586548,
+          "penalty_max": 0.3981071710586548,
+          "coefficient_max_abs": 0.2427206639522518,
+          "objective_mean": 0.5096608506210738,
+          "all_finite": true,
+          "convergence_claim": false
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6467094899128993,
+          "brier": 0.2269991928766484
+        },
+        "target_platt": {
+          "nll": 0.6559538135316292,
+          "brier": 0.23109954654971168
+        },
+        "support_logistic": {
+          "nll": 0.7947482964126691,
+          "brier": 0.2983461435932084
+        },
+        "contextual_regularizer": {
+          "nll": 0.8594269653775644,
+          "brier": 0.3136928445218896
+        },
+        "global_regularizer": {
+          "nll": 0.8597583711132071,
+          "brier": 0.31379580815056585
+        },
+        "type_regularizer": {
+          "nll": 0.8594473186194667,
+          "brier": 0.31369990402222275
+        },
+        "target_only_regularizer": {
+          "nll": 0.8594627486951384,
+          "brier": 0.3137058451541671
+        },
+        "fixed_regularizer": {
+          "nll": 0.8599487599617641,
+          "brier": 0.313853355427148
+        },
+        "global_grid_control": {
+          "nll": 0.7285331631008294,
+          "brier": 0.26518920463022655
+        }
+      }
+    }
+  ],
+  "unconverged_support_controls": [],
+  "training_models": {
+    "contextual_regularizer": {
+      "parameters": 1857,
+      "updates": 2,
+      "parameter_device": "cpu",
+      "train_nll": [
+        {
+          "update": 1,
+          "nll": 0.7471153736114502
+        },
+        {
+          "update": 2,
+          "nll": 0.7278884053230286
+        }
+      ],
+      "solver_device": "cpu",
+      "checkpoint_sha256": "154858f68c4587b3d39605dbcd0faf2c7e29210b8fd9d741434ddb87b77e9fbb",
+      "seconds": 1.9369999999762513,
+      "conditioning": "Source and target support statistics",
+      "optimization": "Fixed final Adam update; identical meta-query labels/batches for learned controls"
+    },
+    "global_regularizer": {
+      "parameters": 1,
+      "updates": 2,
+      "parameter_device": "cpu",
+      "train_nll": [
+        {
+          "update": 1,
+          "nll": 0.7471153736114502
+        },
+        {
+          "update": 2,
+          "nll": 0.7279216647148132
+        }
+      ],
+      "solver_device": "cpu",
+      "checkpoint_sha256": "28486c5145a9c7ceba1fa934c65f1bd4e238e682021cd3c1fd8eef8f4937279d",
+      "seconds": 0.0,
+      "conditioning": "One global scalar",
+      "optimization": "Fixed final Adam update; identical meta-query labels/batches for learned controls"
+    },
+    "type_regularizer": {
+      "parameters": 1857,
+      "updates": 2,
+      "parameter_device": "cpu",
+      "train_nll": [
+        {
+          "update": 1,
+          "nll": 0.7471153736114502
+        },
+        {
+          "update": 2,
+          "nll": 0.7279036045074463
+        }
+      ],
+      "solver_device": "cpu",
+      "checkpoint_sha256": "a034a62e20c0d208fccc303d3c62a1b92456fe65dcfd6926e7a221864cee8e6d",
+      "seconds": 0.03200000000651926,
+      "conditioning": "Five coordinate-type penalties;1857storednetworkparameters, support statistics excluded",
+      "optimization": "Fixed final Adam update; identical meta-query labels/batches for learned controls"
+    },
+    "target_only_regularizer": {
+      "parameters": 1857,
+      "updates": 2,
+      "parameter_device": "cpu",
+      "train_nll": [
+        {
+          "update": 1,
+          "nll": 0.7471153736114502
+        },
+        {
+          "update": 2,
+          "nll": 0.7278919219970703
+        }
+      ],
+      "solver_device": "cpu",
+      "checkpoint_sha256": "73d6a9aa150cec731283422c7764598e6ac990f4b974381094a35538fdfb67fe",
+      "seconds": 0.015000000013969839,
+      "conditioning": "Target-support statistics only",
+      "optimization": "Fixed final Adam update; identical meta-query labels/batches for learned controls"
+    },
+    "fixed_regularizer": {
+      "parameters": 0,
+      "updates": 0,
+      "parameter_device": null,
+      "train_nll": [],
+      "solver_device": "cpu",
+      "checkpoint_sha256": "c38c8cf0748c6b88a3dc07ae311c04cd72ded225f711bae19c116f4eed6fcdf0",
+      "seconds": 0.0,
+      "conditioning": "Fixed .1scalar",
+      "optimization": "Prespecified .1penalty support solver; zero trained meta parameters"
+    },
+    "global_grid_control": {
+      "parameters": 0,
+      "updates": 0,
+      "parameter_device": null,
+      "solver_device": "cpu",
+      "checkpoint_sha256": "57397ca585c5baaeb200a334f4d54477b364370fbd52b010216b6c54a6ec20b9",
+      "optimization": "11fixed global penalties selected by all training meta-query labels; no validation/development selection",
+      "conditioning": "One selected global scalar; fixed four-step support solve",
+      "selection": {
+        "objectives": [
+          {
+            "penalty": 0.01,
+            "actual_penalty": 0.009999999776482582,
+            "train_meta_query_nll": 1.11162568628788
+          },
+          {
+            "penalty": 0.015848931924611134,
+            "actual_penalty": 0.015848932787775993,
+            "train_meta_query_nll": 0.989723265171051
+          },
+          {
+            "penalty": 0.025118864315095794,
+            "actual_penalty": 0.025118865072727203,
+            "train_meta_query_nll": 0.894148051738739
+          },
+          {
+            "penalty": 0.039810717055349734,
+            "actual_penalty": 0.03981071710586548,
+            "train_meta_query_nll": 0.8221165239810944
+          },
+          {
+            "penalty": 0.06309573444801933,
+            "actual_penalty": 0.06309573352336884,
+            "train_meta_query_nll": 0.7698540091514587
+          },
+          {
+            "penalty": 0.1,
+            "actual_penalty": 0.10000000149011612,
+            "train_meta_query_nll": 0.7341843545436859
+          },
+          {
+            "penalty": 0.15848931924611143,
+            "actual_penalty": 0.15848931670188904,
+            "train_meta_query_nll": 0.7123048156499863
+          },
+          {
+            "penalty": 0.25118864315095807,
+            "actual_penalty": 0.25118863582611084,
+            "train_meta_query_nll": 0.7012229710817337
+          },
+          {
+            "penalty": 0.3981071705534973,
+            "actual_penalty": 0.3981071710586548,
+            "train_meta_query_nll": 0.6978114694356918
+          },
+          {
+            "penalty": 0.6309573444801934,
+            "actual_penalty": 0.6309573650360107,
+            "train_meta_query_nll": 0.6991566270589828
+          },
+          {
+            "penalty": 1.0,
+            "actual_penalty": 1.0,
+            "train_meta_query_nll": 0.7027971595525742
+          }
+        ],
+        "selected_index": 8,
+        "selected_penalty": 0.3981071705534973,
+        "actual_selected_penalty": 0.3981071710586548,
+        "selection_split": "train_meta_query_only",
+        "training_meta_query_labels": 128,
+        "candidate_count": 11,
+        "search_cost": {
+          "forward_batches": 44,
+          "episode_fits": 88,
+          "newton_batch_steps": 176,
+          "backward_updates": 0,
+          "seconds": 0.0779999999795109
+        }
+      }
+    }
+  },
+  "device": "cpu",
+  "gpu": null,
+  "updates": 2,
+  "training_data_sha256": "ecefc6bc5222bc60b092834b18d2e4a37a55b1a409dd89126851d07650d8f3bc",
+  "validation_data_sha256": "cf07e02e7bed3ca01f7cc54027f6f3edae1e2e821f271d1f3c33b57254305d7e",
+  "development_data_sha256": "1cf9bf0545cfda3fbca9e164142227484757132cce1ec59b58aea75d8535b8ba",
+  "protocol_sha256": "86b408065af0a4c539058b0bd0d518a67930990410d3699f322582a8d2aec964",
+  "source_sha256": "3309d9ed06b16468965491989e1a9f1d5e0ee21aa88768558de407dee0f5a13c",
+  "model_source_sha256": "43b36a45081b47aaf3f1b34842f6a51f237b56ebe03120af532921dbe18ba5cc",
+  "frozen_v1_source_sha256": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
+  "effective_plan": {
+    "source_fit_labels": 256,
+    "source_labels": 16,
+    "target_labels": 16,
+    "queries": 32,
+    "training_queries": 16,
+    "train_widths": [
+      6
+    ],
+    "development_widths": [
+      6
+    ],
+    "updates": 2,
+    "batch_size": 2,
+    "learning_rate": 0.001,
+    "width": 32,
+    "heads": 4,
+    "platt_ridge": 0.1,
+    "support_logistic_c": 0.1,
+    "bootstrap_samples": 2000,
+    "bootstrap_seed": 380001,
+    "useful_effect_nll": 0.003,
+    "max_null_harm_nll": 0.001,
+    "newton_steps": 4,
+    "fixed_penalty": 0.1,
+    "version": "bridge_v2",
+    "regimes": [
+      "sign_flip",
+      "nonlinear_shift",
+      "no_shift",
+      "ignorable_shift"
+    ],
+    "train_seeds": [
+      940001,
+      940002
+    ],
+    "validation_seeds": [
+      950001,
+      950002
+    ],
+    "development_seeds": [
+      960001,
+      960002
+    ],
+    "training_seed": 370001,
+    "gate": "shift mean gain >= .003 and paired seed lower95 >0 against frozen/Platt/supportinteraction logistic/fixed/global/type/target-only/train-only-globalgrid solver controls; both null upper95 <=.001; no developmentselection",
+    "scientific_status": "Second and final bounded successor in this turn; fresh synthetic development after failedv1; no confirmation/native efficacy claim",
+    "gpu": "A100-40GB",
+    "gpu_timeout_seconds": 600,
+    "gpu_startup_timeout_seconds": 60,
+    "child_timeout_seconds": 540,
+    "gpu_reservation_usd": 0.8,
+    "automatic_retries": 0,
+    "frozen_v1_source_sha256": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
+    "global_grid_penalties": 11,
+    "global_grid_selection": "training_meta_query_nll_only"
+  },
+  "fixed_solver": "Four differentiable Newton steps, float64, same basis/offset for every regularizer; not a convergence guarantee",
+  "torch": "2.8.0+cpu",
+  "python": "3.11.9",
+  "seconds": 2.672000000020489
+}
