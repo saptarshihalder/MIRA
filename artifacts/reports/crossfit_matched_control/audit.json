@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "files": 160,
+  "label_identity_checks": 160,
+  "max_independent_nll_error": 0,
+  "intervals_recomputed": true,
+  "source_checkpoint_protocol_hashes_match": true,
+  "checkpoint_replay_error": 0.0,
+  "limitation": "Replay reported by frozen runner; independent audit recomputes scores and intervals, not retraining."
+}
