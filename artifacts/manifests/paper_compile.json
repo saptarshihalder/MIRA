@@ -1,6 +1,6 @@
 {
   "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\paper\\main.tex",
-  "source_sha256": "a2e9d79cba36456a4983be9dc29cdfc079911ef5b3669f7556c83d5675d905d6",
+  "source_sha256": "805ae9926164ebfdd399eb05f03c42fc645f029ab28c901da1198a7b160f5f6c",
   "native_compiler_status": "compile-failed",
   "diagnostic": "Unable to find standard directories for platform",
   "pdf_verified": false,
@@ -9,6 +9,6 @@
     "citations_resolved": true,
     "references_resolved": true
   },
-  "frozen_protocols_rechecked": 3,
-  "limitation": "Source checks do not establish successful compilation or PDF layout. Same native document remains open."
+  "policy_protocol_files_rechecked": 4,
+  "limitation": "Source checks do not establish native compilation or PDF layout; same editor remains open."
 }

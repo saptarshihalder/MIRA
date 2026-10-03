@@ -4,7 +4,7 @@ Objective authorized by the user: a rigorous NeurIPS-quality manuscript by Octob
 
 ## Scientific decision
 
-Primary track: a trained-model contribution, evaluated against strong simple controls. The reversible mask compiler is trained and tested through Day14, but its signal-regime predictions match a fixed heuristic. Its current useful learned-contribution gate fails. Earlier missingness-representation confirmation is supporting evidence; an observed difference does not establish a causal pretraining-prior explanation.
+Primary track: a trained-model contribution, evaluated against strong simple controls. The reversible compiler ties a heuristic. The new support-conditioned predictive-loss adapter is implemented, trained and evaluated on48 independent acquisition-policy worlds: it improves over ordinary/no-shift learned controls but loses to a centered-moment correction and harms null tasks. Both useful-method gates fail. Read `docs/POLICY_ADAPTER_NEXT_GATE.md` before a successor design. Earlier missingness-representation confirmation is supporting evidence; an observed difference does not establish a causal pretraining-prior explanation.
 
 Conditional track: MIRA-Shift. Activate only after development demonstrates useful remaining headroom against strong simple corrections and refreshed-context TFMs with the same labels. Existing CPU results do not justify large neural training. A negative finding stays in the record; manuscript scope follows evidence.
 

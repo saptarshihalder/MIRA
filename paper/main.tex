@@ -4,14 +4,14 @@
 \usepackage{amsmath,amssymb,booktabs}
 \usepackage[breaklinks=true,colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
 \setlength{\emergencystretch}{2em}
-\title{Learning Reversible Missingness Coordinates for Frozen Tabular Predictors}
+\title{Learning Missingness Coordinates and Context Corrections for Frozen Predictors}
 \author{MIRA working manuscript\\Author list to be confirmed}
-\date{2 October 2026}
+\date{3 October 2026}
 
 \begin{document}
 \maketitle
 \begin{center}
-\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} A 6,092-parameter mask compiler is trained, with matched learned controls, 3,584 downstream CPU predictions and two native-missingness datasets. The learned compiler has no demonstrated signal-regime advantage over a fixed heuristic. Earlier representation confirmation is supporting evidence; methodological novelty, current-checkpoint access and manuscript readiness remain unresolved.}}
+\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} Both a 6,092-parameter mask compiler and an 11,176-parameter predictive-loss context adapter are trained. The compiler matches a fixed heuristic; the new adapter improves over an ordinary residual MLP but loses to a stronger centered-moment correction and harms null tasks. Neither learned-method gate passes. Earlier representation confirmation is supporting evidence; methodological novelty and manuscript readiness remain unresolved.}}
 \end{center}
 
 \begin{abstract}
@@ -98,6 +98,33 @@ TabICLv2 & 4 & .46062 & .31187 & .21034 & .21034\\\bottomrule
 The mean identity-minus-trained high-signal gain, averaging orders within each of three seed units, is 0.08587 nats for TabPFN and 0.06110 for TabICL. Both exceed the development screen's 0.01 threshold; null-signal change relative to identity is zero. This is not a no-harm result relative to native input: TabPFN's order-two null loss increases from 0.64269 native to 0.65034 with indicators. No confirmation interval is claimed for this three-seed development screen. The trained and heuristic maps and predictions coincide on all twelve synthetic episodes for each backbone; equally informed Deep Sets and CV controls also explain the high-signal improvement. Thus the additional requirement of a substantive learned advantage fails, and no fresh confirmation of this candidate is launched.
 
 On naturally missing outcomes, all six trained/identity probability arrays are bit-identical for each backbone. Query-weighted native-to-trained losses are 0.39815 to 0.41321 on Hepatitis and 0.52761 to 0.51922 on Horse Colic for TabPFN; corresponding TabICL losses are 0.37222 to 0.38415 and 0.52091 to 0.51986. The learned fallback avoids one worse heuristic selection on Hepatitis, but establishes no benefit over the identity representation. Two retrospective datasets do not support a general natural-missingness claim.
+
+\section{Predictive-loss context adapter: development gate}
+To replace privileged teacher recovery with a predictive objective, we train a separate 11,176-parameter context adapter. A shared row encoder pools labeled source and target support; learned pooled features, observed means and centered residual moments condition a hypernetwork producing query correction coefficients. Query features contain an always-observed scalar $U$, four incompletely observed auxiliary values, fifteen declared mask parities and a frozen source-predictor logit. The frozen predictor is a logistic regression fitted to source $U$ only, rather than a tabular foundation model. The adapter minimizes empirical query cross-entropy during meta-training; evaluation query labels, true policy parameters and oracle probabilities never enter inference.
+
+Each outcome world fixes $P(Y\mid U)=\sigma(\beta U+b)$ while observation policies vary. A sixteen-pattern normalized mask law contains label-dependent parity, rate, correlated-block and value-dependent terms. Intercepts vary across worlds, but remain fixed within paired policies. The model sees 128 source labels and 64 target support labels. Meta-training uses 768 worlds with two policy cells each, 40 fixed epochs, and final-epoch checkpoints; 64 separate validation worlds are diagnostic only. An ordinary residual MLP has 12,601 parameters, while the identical context architecture trained without policy shifts has 11,176. Approximate capacity and equal update counts do not establish optimization fairness.
+
+The frozen development protocol evaluates 48 new worlds with five policy cells each: unchanged, reversal, extreme rate, stronger correlated acquisition, and null. Cells share latent target rows within worlds, so averaging precedes task-level uncertainty. Only rate/block parameters exceed training support; reversal is generally a recombination of seen policies, and 17 of the 48 source signals are null. All nine methods' probabilities are retained across 240 episodes (2,160 prediction arrays). Table~\ref{tab:policy-context} reports equally weighted expected NLL, using an exact generative posterior solely for scoring.
+
+\begin{table}[t]
+\centering\small
+\caption{CPU synthetic development with a frozen logistic proxy. Lower expected NLL is better. All methods use the same target-label budget; the pooled comparator also uses source labels.}
+\label{tab:policy-context}
+\begin{tabular}{lr}\toprule
+Method & Expected NLL\\\midrule
+Frozen source predictor & .568161\\
+Target intercept calibration & .571151\\
+Support-CV mask correction & .555391\\
+Support-CV full-parity correction & .504136\\
+Pooled domain-interaction correction & .501625\\
+Centered-moment correction & .469295\\
+Ordinary trained residual adapter & .566892\\
+Context adapter, no-shift training & .541084\\
+Context adapter, shifted training & .513901\\\bottomrule
+\end{tabular}
+\end{table}
+
+The context adapter improves over the ordinary trained adapter by .052991 nats (nominal development 95\% paired task interval [.030107,.075875]) and over no-shift training by .027183 [.014161,.040206]. However, its expected loss exceeds the centered-moment correction by .044606 [.034072,.055141], and its null loss exceeds the frozen predictor by .045750. Thus both the strong-control superiority requirement and the prespecified .01 null-harm limit fail. These are development results, not fresh confirmation. No paid expansion of this candidate is launched. Six boundary checks verify label/oracle exclusion, hidden-value exclusion, support/query permutation behavior, independent query processing, paired outcomes, frozen coefficients and a known likelihood-ratio identity. The always-observed sufficient scalar and single-parity family are restrictive; gains cannot be attributed solely to learning raw-row representations because engineered residual moments are also inputs. Neither natural policy transport nor TFM adaptation is established by this screen.
 
 \section{Controlled data and oracle}
 The initial synthetic diagnostic keeps an observed variable $U\in\{-1,+1\}$ balanced and uses
