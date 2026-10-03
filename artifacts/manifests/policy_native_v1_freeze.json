@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-03",
+  "phase": "CPU native development",
+  "files": {
+    "experiments/policy_adapter_v1/pilot.py": "bb4785fadf2a3c9173ce68d3883031ea1116bdac83e89460f73d8590d8d77546",
+    "experiments/policy_adapter_v1/mixture.py": "1dbc5c2041bd11e5eb8e98ff1849c51b7b0a59920060f3c1e7deff7d09006be0",
+    "experiments/policy_adapter_v1/native.py": "bfb1ced2d9819bc2f4f14caa20dc6f5ee4158da72c13b6fe436fe239432443ec",
+    "configs/policy_native_v1.json": "477a3360bcf96f9efc87e4f23ee667085947edb65c6e02c4518369de4bcee716",
+    "artifacts/reports/policy_mixture_v1/neural_mixture.npz": "e8f8554ef6684b27baec660690c237e3c132155145b918e37c842466d57d887d",
+    "artifacts/reports/policy_mixture_v1/training.json": "e7c69de99ee1d8fd1b21e07bded57863e6d7350f92abbf55903e824cbdb4d7b0"
+  }
+}

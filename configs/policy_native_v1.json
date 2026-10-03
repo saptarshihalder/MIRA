@@ -1,0 +1,17 @@
+{
+  "version": "frozen_mixture_native_diabetes_v1_cpu_development",
+  "raw_csv_sha256": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97",
+  "backbone_labels": 4096,
+  "source_labels": 128,
+  "target_labels": 64,
+  "queries": 256,
+  "episodes": 32,
+  "cv_seed": 1902,
+  "ridge_grid": [0.001, 0.01, 0.1, 1.0],
+  "paid_compute": false,
+  "fit": "source HistGB100iterations/15leaves/.05lr/l2=1; all47 discharge-time predictors; source-only categorical vocabulary top126+other",
+  "partition": "label-independent patient hash ordering; first60%source,next20%unused,last20%development; single hash-selected eligible encounter perpatient; IDs excluded from predictors",
+  "outcome": "recorded readmission<30 vs >30/NO; missing follow-up limitation",
+  "checkpoint": "fixed neural_mixture961parameters at commit447b488; no adaptation or native-data tuning",
+  "scope": "Exploratory native generalization of trained synthetic uncertainty learner; single dataset, conditional task intervals; no time/site/acquisition-policy transport or clinical claim"
+}
