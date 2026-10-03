@@ -1,0 +1,19 @@
+{
+  "frozen_at_utc": "2026-10-03T19:24:02.486888+00:00",
+  "protocol_sha256": "276095220d847cf279373d84d6c220a8f82dc36d4d1c14763adf2859676f438c",
+  "files": {
+    "experiments/crossfit_v1/model.py": "c2bd5c4b99e55a45cf2b0b0e532caf042c052dfc868a9d10e7f0bd9826acb713",
+    "experiments/crossfit_v1/run.py": "243b60e64c4e1a800df61275f21ee10ab0786bb17f25a5fb805f77fd1cae82ad",
+    "experiments/crossfit_v1/launch.py": "fccd93a90f97f5d52907c43fa31170bf82480b2bc9d62234ab0e3c9c888c1bf2",
+    "experiments/crossfit_v1/freeze.py": "aca0d52b082a4fc8505b46d7f6f740cd33477e154f8a53e4f8659e2fc39712d0",
+    "infra/modal_crossfit_v1.py": "bc513ce5e1a597b37e08c06cadb71e862f5071c221f34b642a4a42ddc36a83b7",
+    "docs/CROSSFIT_PROTOCOL.md": "f5ee8cccc55a525481821dbc772e404c9acd0d8e4ecd72938f97314634aac8fb",
+    "experiments/spectral_v1/model.py": "483dea5f9046324e25ebf7ed969114445f4cce7252a49dc83d2dce760f856abb",
+    "experiments/bridge_v1/run.py": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
+    "experiments/bridge_v1/model.py": "e90a6e16c45da94fb7a9a8c01177635883e69e4511184de1a322fee47adf51ae"
+  },
+  "engineering_only": true,
+  "confirmation_seeds_untouched": "98000-98019",
+  "total_provisions_usd": 16.450000000000003,
+  "reproduction_reserve_usd": 3.0
+}

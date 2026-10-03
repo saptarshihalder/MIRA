@@ -885,5 +885,25 @@
     "cuda_updates_per_trained_model": 500,
     "provider_reported_resource_cost_usd": 0.0225863,
     "provider_cost_status": "Report may lag; unavailable is not zero; final invoice unverified and full.80 retained"
+  },
+  {
+    "run_id": "crossfit_v1_gpu",
+    "phase": "crossfit_development",
+    "date": "2026-10-03T19:24:02.486888+00:00",
+    "status": "reserved",
+    "reserved_usd": 0.8,
+    "protocol_sha256": "276095220d847cf279373d84d6c220a8f82dc36d4d1c14763adf2859676f438c",
+    "gpu": "A100-40GB",
+    "max_calls": 1,
+    "retries": 0,
+    "timeout_seconds": 600,
+    "startup_timeout_seconds": 60,
+    "child_timeout_seconds": 540,
+    "cpu_physical_cores": 2,
+    "memory_gib": 8,
+    "actual_charged_usd": null,
+    "authorization": "Human requested recursive label embedding architecture and GPU where needed; cap20/reserve3 preserved",
+    "maximum_resource_compute_usd": 0.4151,
+    "charge_status": "Worst-case provision includes provider contingency; invoice unverified"
   }
 ]

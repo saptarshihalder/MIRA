@@ -1,0 +1,100 @@
+{
+  "version": "crossfit_v1",
+  "run_id": "crossfit_v1_gpu",
+  "scientific_status": "fresh adaptive development; no confirmation",
+  "source_fit_labels": 2048,
+  "source_labels": 128,
+  "target_labels": 128,
+  "queries": 128,
+  "training_queries": 64,
+  "train_widths": [
+    6,
+    10
+  ],
+  "development_widths": [
+    6,
+    10
+  ],
+  "regimes": [
+    "sign_flip",
+    "nonlinear_shift",
+    "no_shift",
+    "ignorable_shift"
+  ],
+  "train_seeds": [
+    640001,
+    640002,
+    640003,
+    640004,
+    640005,
+    640006,
+    640007,
+    640008,
+    640009,
+    640010,
+    640011,
+    640012,
+    640013,
+    640014,
+    640015,
+    640016
+  ],
+  "validation_seeds": [
+    645001,
+    645002
+  ],
+  "development_seeds": [
+    650001,
+    650002,
+    650003,
+    650004,
+    650005,
+    650006,
+    650007,
+    650008,
+    650009,
+    650010,
+    650011,
+    650012,
+    650013,
+    650014,
+    650015,
+    650016,
+    650017,
+    650018,
+    650019,
+    650020
+  ],
+  "validation_used": false,
+  "training_seed": 660001,
+  "updates": 500,
+  "batch_size": 8,
+  "learning_rate": 0.003,
+  "width": 16,
+  "steps": 6,
+  "support_logistic_c": 0.1,
+  "gate": "Both null upper95 harm<=.001; sign-flip gain>.003 with lower95>0 over frozen; neural benefit over guarded logistic/no-query/scalar required separately; no automatic native confirmation",
+  "gpu": "A100-40GB",
+  "gpu_timeout_seconds": 600,
+  "gpu_startup_timeout_seconds": 60,
+  "child_timeout_seconds": 540,
+  "gpu_reservation_usd": 0.8,
+  "automatic_retries": 0,
+  "guard_threshold": 1.645,
+  "soft_guard_scale": 0.005,
+  "loss_weights": {
+    "soft_guarded": 0.5,
+    "unguarded": 0.5
+  },
+  "file_sha256": {
+    "experiments/crossfit_v1/model.py": "c2bd5c4b99e55a45cf2b0b0e532caf042c052dfc868a9d10e7f0bd9826acb713",
+    "experiments/crossfit_v1/run.py": "243b60e64c4e1a800df61275f21ee10ab0786bb17f25a5fb805f77fd1cae82ad",
+    "experiments/crossfit_v1/launch.py": "fccd93a90f97f5d52907c43fa31170bf82480b2bc9d62234ab0e3c9c888c1bf2",
+    "experiments/crossfit_v1/freeze.py": "aca0d52b082a4fc8505b46d7f6f740cd33477e154f8a53e4f8659e2fc39712d0",
+    "infra/modal_crossfit_v1.py": "bc513ce5e1a597b37e08c06cadb71e862f5071c221f34b642a4a42ddc36a83b7",
+    "docs/CROSSFIT_PROTOCOL.md": "f5ee8cccc55a525481821dbc772e404c9acd0d8e4ecd72938f97314634aac8fb",
+    "experiments/spectral_v1/model.py": "483dea5f9046324e25ebf7ed969114445f4cce7252a49dc83d2dce760f856abb",
+    "experiments/bridge_v1/run.py": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
+    "experiments/bridge_v1/model.py": "e90a6e16c45da94fb7a9a8c01177635883e69e4511184de1a322fee47adf51ae"
+  }
+}
