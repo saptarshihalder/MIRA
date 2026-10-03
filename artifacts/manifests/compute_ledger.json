@@ -814,5 +814,25 @@
     "provider_cost_status": "Reported resource cost; final invoice unverified, full $.80 provision retained",
     "gpu_verified": "NVIDIA A100-SXM4-40GB",
     "cuda_updates_per_trained_model": 600
+  },
+  {
+    "run_id": "recursive_jepa_v1_gpu",
+    "phase": "recursive_jepa_engineering",
+    "date": "2026-10-03T17:14:45.421613+00:00",
+    "status": "reserved",
+    "reserved_usd": 0.8,
+    "protocol_sha256": "96258a1fb109381b0e7662850e39753e4c9731a14ef150be3f401e58575f4f1f",
+    "gpu": "A100-40GB",
+    "max_calls": 1,
+    "retries": 0,
+    "timeout_seconds": 600,
+    "startup_timeout_seconds": 60,
+    "child_timeout_seconds": 540,
+    "cpu_physical_cores": 2,
+    "memory_gib": 8,
+    "actual_charged_usd": null,
+    "authorization": "Human requested recursive label embedding architecture and GPU where needed; cap20/reserve3 preserved",
+    "maximum_resource_compute_usd": 0.4151,
+    "charge_status": "Worst-case provision includes provider contingency; invoice unverified"
   }
 ]

@@ -1,0 +1,18 @@
+{
+  "frozen_at_utc": "2026-10-03T17:14:45.421613+00:00",
+  "protocol_sha256": "96258a1fb109381b0e7662850e39753e4c9731a14ef150be3f401e58575f4f1f",
+  "files": {
+    "experiments/recursive_jepa_v1/model.py": "5c07e1d5c813528438e05c448c2225dd11a1a529e0a5d2bbd11e951e9e95a8f4",
+    "experiments/recursive_jepa_v1/run.py": "4557b8cf986570d2e3badcc18924305b6cdb825a3d044276d2820d1d92e272da",
+    "experiments/recursive_jepa_v1/launch.py": "1e8433ff3715989b1902bc7a69adb52dd29551a65074101f9e7be969a1152f00",
+    "experiments/recursive_jepa_v1/freeze.py": "ff8f53eb6ec31b85e8317f88b146d231256d892420ea3dee83a54761fb504b9c",
+    "infra/modal_recursive_jepa_v1.py": "1396a2a58a484af2d0185d9c7826d83d23e5efc987ac008f7d05eeb8fe822ae9",
+    "docs/RECURSIVE_JEPA_PROTOCOL.md": "4d9a3411c0d10d8090411926a16510292e6da4c2def5bc67b57775000d28e324",
+    "experiments/bridge_v1/run.py": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
+    "experiments/bridge_v1/model.py": "e90a6e16c45da94fb7a9a8c01177635883e69e4511184de1a322fee47adf51ae"
+  },
+  "engineering_only": true,
+  "confirmation_seeds_untouched": "98000-98019",
+  "total_provisions_usd": 14.850000000000003,
+  "reproduction_reserve_usd": 3.0
+}
