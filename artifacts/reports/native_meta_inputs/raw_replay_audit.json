@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "raw_identity_uniqueness": true,
+  "raw_replayed_episode_files": 122,
+  "max_feature_replay_error": 0.0,
+  "max_logit_replay_error": 6.67572021484375e-06,
+  "max_training_frozen_probability_error": 6.556510925292969e-07,
+  "development_source_meta_disjoint": true
+}

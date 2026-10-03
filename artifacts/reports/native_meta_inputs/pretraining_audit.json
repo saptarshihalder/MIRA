@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "source_training_episodes": 96,
+  "support_and_query_id_replays": 192,
+  "query_label_replays": 96,
+  "max_training_frozen_probability_error": 6.556510925292969e-07
+}

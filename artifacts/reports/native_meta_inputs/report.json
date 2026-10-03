@@ -1,0 +1,61 @@
+{
+  "tasks": [
+    {
+      "task": "brfss_diabete4",
+      "family": "brfss",
+      "training_episodes": 32,
+      "development_episodes": 10,
+      "raw_sha256": "124e8535be3c4a3fe16894ecbe606d9bbf9d82644c3b955419440e6666d6de40",
+      "boundary_sha256": "f220bc8b6f7cbaa174cbb16ef0e5bb3b5a8b7cabcc1832fd536f49ffb006c204",
+      "backbone_sha256": "2eac247f9a77be22ab4553396bcc19eee60e2847cfb2e79da734a7c736dd7e5f",
+      "selected_columns": [
+        "SMOKDAY2",
+        "POORHLTH",
+        "INCOME3",
+        "ALCDAY4"
+      ],
+      "max_cpu_gpu_logit_replay_error": 6.67572021484375e-06,
+      "source_fit_labels": 50000,
+      "source_context_labels": 128
+    },
+    {
+      "task": "brfss_asthma3",
+      "family": "brfss",
+      "training_episodes": 32,
+      "development_episodes": 10,
+      "raw_sha256": "e9c61d02cb79217ea1334c9f6b3e4a384308a8cf7b3dd8c4e48ec70c62b11af0",
+      "boundary_sha256": "6ed86f2171193c6bfa68a513df15bec7b1811f0ae1133eeaec0315d18cb71a19",
+      "backbone_sha256": "63d270268efa1022e04829669ae1afbd81f7038ec36e6270fc893221fa5b5337",
+      "selected_columns": [
+        "SMOKDAY2",
+        "POORHLTH",
+        "INCOME3",
+        "ALCDAY4"
+      ],
+      "max_cpu_gpu_logit_replay_error": 4.0531158447265625e-06,
+      "source_fit_labels": 50000,
+      "source_context_labels": 128
+    },
+    {
+      "task": "road_ksi",
+      "family": "road",
+      "training_episodes": 32,
+      "development_episodes": 6,
+      "raw_sha256": "60e9777b7b83810e78dcd9026b5a7f0ac05584abed90813cc7ee3715e961750f",
+      "boundary_sha256": "10e3d901a1e3b611e8a2261972d194521c04320ddd9ff44c4ca90e11924d2f8c",
+      "backbone_sha256": "96baa22c8e0367a8951d1fb848ed82ed8908d2fe9bd6af71b3fabfe923399988",
+      "selected_columns": [
+        "pedestrian_crossing_human_control_historic",
+        "pedestrian_crossing_physical_facilities_historic",
+        "special_conditions_at_site",
+        "carriageway_hazards_historic"
+      ],
+      "max_cpu_gpu_logit_replay_error": 2.86102294921875e-06,
+      "source_fit_labels": 50000,
+      "source_context_labels": 128
+    }
+  ],
+  "scope": "2024 source-only native meta labels; used2025 development",
+  "xgboost": "3.4.1",
+  "new_cloud_calls": 0
+}
