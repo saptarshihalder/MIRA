@@ -1,0 +1,18 @@
+{
+  "frozen_at_utc": "2026-10-03T17:37:28.247743+00:00",
+  "protocol_sha256": "8383e139f668890461045936f98962841f94fb8e08907530033dc90604f68f18",
+  "files": {
+    "experiments/spectral_v1/model.py": "483dea5f9046324e25ebf7ed969114445f4cce7252a49dc83d2dce760f856abb",
+    "experiments/spectral_v1/run.py": "6baf4645d67357eef215f06b411f1e3d6a77d5d34ddd0eb1d941d0ed4b712f4a",
+    "experiments/spectral_v1/launch.py": "5ecd523401600bbebdce5d832e371f4633095e0f2f464f44c2b11bf30b03b191",
+    "experiments/spectral_v1/freeze.py": "6bae5e391a9cc67184d7ab712dd4db069d7f2a340b9688f8eb4687bfe0b45300",
+    "infra/modal_spectral_v1.py": "0f2fad84bfef768776dcf40e50db5e2b2f56d2dc24f0af5d82a1a37bf8eb035f",
+    "docs/SPECTRAL_PROTOCOL.md": "6c5a7daafaa7db05d0b640dc9712e371ab7b234d11b5f87fd43e1c78909e0dd1",
+    "experiments/bridge_v1/run.py": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
+    "experiments/bridge_v1/model.py": "e90a6e16c45da94fb7a9a8c01177635883e69e4511184de1a322fee47adf51ae"
+  },
+  "engineering_only": true,
+  "confirmation_seeds_untouched": "98000-98019",
+  "total_provisions_usd": 15.650000000000004,
+  "reproduction_reserve_usd": 3.0
+}

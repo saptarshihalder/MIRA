@@ -850,5 +850,25 @@
     "provider_report_source": "artifacts/manifests/modal_billing_after_recursive_jepa.json",
     "provider_cost_status": "Resource report may lag; no matching rows means unavailable, not zero cost. Final invoice unverified; $.80 provision retained",
     "active_tasks": 0
+  },
+  {
+    "run_id": "spectral_v1_gpu",
+    "phase": "recursive_jepa_engineering",
+    "date": "2026-10-03T17:37:28.247743+00:00",
+    "status": "reserved",
+    "reserved_usd": 0.8,
+    "protocol_sha256": "8383e139f668890461045936f98962841f94fb8e08907530033dc90604f68f18",
+    "gpu": "A100-40GB",
+    "max_calls": 1,
+    "retries": 0,
+    "timeout_seconds": 600,
+    "startup_timeout_seconds": 60,
+    "child_timeout_seconds": 540,
+    "cpu_physical_cores": 2,
+    "memory_gib": 8,
+    "actual_charged_usd": null,
+    "authorization": "Human requested recursive label embedding architecture and GPU where needed; cap20/reserve3 preserved",
+    "maximum_resource_compute_usd": 0.4151,
+    "charge_status": "Worst-case provision includes provider contingency; invoice unverified"
   }
 ]
