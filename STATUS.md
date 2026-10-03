@@ -1,5 +1,10 @@
 # MIRA status — October 4, 2026
 
+## Calibration-anchored redesign completed: October 4
+
+Read docs/ANCHORED_FINDINGS.md and CROSSFIT_EXTENSION_FINDINGS.md. Implemented fitting-only calibration, a correction basis orthogonal to fitting [1,logit], and dual verification; trained3 matched370-parameter models for500 CPU updates each. Fresh20-seed pilot: gain over calibration anchor .020919 [.007838,.034000] (three-comparison family intervals), but task-shared/support-only contrasts uncertain; joint architecture gate FAILS, robustness PASSES. Native78-episode gate FAILS: no learned update accepted on asthma/roads, diabetes harms relative to anchor. Candidate NOT promoted; original replicated synthetic query-head contrast remains strongest evidence. Close both finite batches, retain negative outcomes, and do not repeat these synthetic architecture variants. Next conditional work is source-only native episodic training with matched controls and dataset-disjoint fresh evaluation; not yet implemented/validated. See saved protocol, checkpoints, traces and prediction audits. No extra cloud cost;16.45 provisions+3 reserve leave.55. Confirmation98000-98019 untouched; JMLR/NeurIPS readiness remains unproven.
+
+
 Target: a NeurIPS-quality draft by October 20; trained-model contribution required. Real native-data CUDA training is complete, but methodological novelty and venue readiness remain unresolved. Strict token rationing continues.
 
 ## Architecture and native-transfer batch completed: October 4

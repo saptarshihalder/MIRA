@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "source_hashes": 10,
+  "independent_score_arrays": 2216,
+  "checkpoint_replays": 952,
+  "max_reload_error": 0.0,
+  "primary_intervals_verified": true,
+  "task_means_verified": true
+}

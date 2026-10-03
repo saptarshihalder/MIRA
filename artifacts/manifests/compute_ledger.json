@@ -937,5 +937,17 @@
     "cloud_calls": 0,
     "results": "artifacts/reports/crossfit_extension",
     "scientific_outcome": "query-head contrast supported; joint architecture and native gates fail"
+  },
+  {
+    "run_id": "calibration_anchored_v1_cpu",
+    "status": "completed",
+    "date": "2026-10-04",
+    "reserved_usd": 0,
+    "provider_charge_usd": 0,
+    "cloud_calls": 0,
+    "device": "local_cpu",
+    "seconds": 111.46900000000005,
+    "results": "artifacts/reports/anchored_v1",
+    "scientific_outcome": "robustness passes; architecture and native gates fail; not promoted"
   }
 ]
