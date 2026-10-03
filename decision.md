@@ -73,3 +73,11 @@ Next: diagnose representation geometry and nonlinear label discrimination on CPU
 
 Conservative provisions14.85 plus protected reproduction3 within20 leave2.15 unallocated. New $.80 retained; provider report has not yet posted matching rows, so charge is unavailable, not zero. Preserve source/editor; no email or submission.
 
+## Spectral learned-operator checkpoint — October 3
+
+Read docs/SPECTRAL_FINDINGS.md. A257-parameter learned mode filter and scalar control each completed500 CUDA updates on Modal A100; fresh development8seeds x2widths x4regimes. Neural selectivity improves sign-flip NLL over the trained scalar by.019314 [.004884,.033744] and nonlinear NLL over support logistic by.010659 [.004019,.017299]. However frozen wins on nonlinear and ignorable shifts; ignorable harm.013053 [.006387,.019719]. Full development gate FAILED. Intervals are exploratory and unadjusted. Support-objective descent holds under the stated convex bound and passed numerical checks; it is not test-risk safety. All384 score arrays/192 CPU predictions audit/replay pass. Protocol8383e139 committedf00fce3 before GPU. Artifacts/reports/spectral_v1_gpu includes full predictions/checkpoints.
+
+JEPA diagnosis: solved head on learned pooled features worsens sign-flip NLL to.637938, versus original.616819 and random-solved.630923. The next architecture candidate is a cross-fitted label-response operator: trainable field interactions plus learned spectral gates informed by disjoint support gradient agreement. First test free CPU discrimination of harmful modes; then commit fresh label/compute-matched protocol. See SPECTRAL_FINDINGS for closest prior art, constraints and failure cases. No claim of unique novelty,100% safety or venue readiness; confirmation98000-98019 untouched.
+
+Budget:15.65 provisions +3 protected reproduction leaves1.35 within20. Latest job complete/zero active tasks, no retry; provider charges may lag, full.80 retained. Existing native LaTeX compiler environment failure persists until a successful check. No email/submission.
+
