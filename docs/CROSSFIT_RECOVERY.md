@@ -1,0 +1,7 @@
+# Numerical-control recovery, October4
+
+The original Modal job failed during evaluation after all three500-update model checkpoints and132 prediction files had been saved. The failing operation is the existing two-parameter target-Platt L-BFGS-B control, with ABNORMAL termination. The paid run stays FAILED in the ledger; its.80 provision and all artifacts remain. No remote retry or retraining is authorized by this recovery recipe.
+
+Complete all160 evaluation cells on CPU from the byte-identical saved checkpoints. Replace ONLY the numerical Platt solver with damped exact Newton for the same offset-logistic objective and ridge. Require infinity-norm gradient<1e-8; ridge strong convexity gives objective suboptimality <=||gradient||²/(2*ridge). Preserve seeds, models, thresholds, other controls and query boundaries. Re-evaluate all original132 files and require model GPU/CPU difference<1e-8 and all control probability differences<1e-5. Keep original files and separate recovered output. No performance selection or exclusions.
+
+Per-update training traces and exact GPU device-name output were held in memory until the failed final report and are unavailable. The frozen worker mandates CUDA/A100 provision and500updates, with checkpoints written only after the finite/nonzero-gradient checks. Confirm checkpoint changes from initialization and disclose the missing traces. Future runners must checkpoint traces incrementally; do not alter this frozen training source retrospectively.
