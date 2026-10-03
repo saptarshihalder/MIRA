@@ -1,6 +1,19 @@
-# MIRA status — October 1, 2026
+# MIRA status — October 3, 2026
 
-Target: NeurIPS-quality draft by October 20; $26 compute cap; strict token rationing. **Research evidence gates through Day 8 are complete for accessible checkpoints.** The manuscript is a working draft, with a confirmed synthetic representation effect and a completed, narrower real-covariate evaluation. No neural-adapter contribution is established.
+Target: NeurIPS-quality draft by October 20; $26 compute cap; strict token rationing. **Day 8–14 development gates executed; the learned-method advantage gate failed.** Trained compiler and matched learned controls exist. All 324 backbone predictions completed, including 162 actual Modal T4 predictions and 162 CPU predictions. All saved losses reconstruct exactly. The current trained candidate does not establish a NeurIPS/JMLR-level methodological contribution.
+
+## Current checkpoint: read this before continuing
+
+- Reports: `artifacts/reports/trained_compiler_backbone_v1/`, `matched_compiler_v1/`, `natural_compiler_baselines_v2/`, and `docs/DAY_8_14_AUDIT.md`. Earlier study evidence below remains fixed supporting history.
+- 512 CPU tasks / 3,584 predictions: trained prototype and fixed heuristic agree on all 256 informative tasks. Actual frozen-backbone high-signal identity-minus-compiler gains are .085870 TabPFN and .061096 TabICL, but the heuristic duplicates all synthetic compiler predictions. Numeric screen passes; useful learned-method screen fails. No fresh confirmation is launched.
+- Native UCI Hepatitis/Horse Colic: 155/353 canonical rows, native NaNs, three grouped folds each, 24 CPU control predictions and 108 backbone predictions. Compiler/identity arrays coincide on all twelve backbone/episode pairs. Augmentation effects are mixed; no clinical/MNAR/general benefit claim.
+- TabPFN CPU: 162 cells /444.047 seconds. TabICL Modal T4: 162 cells /188.009 wrapper seconds, no failed inference cells. Two preceding paid attempts failed before inference and remain counted. Freeze commits `d2bcbd2`, `931534e`, `4e7d3a8` preceded corresponding evaluations. Cross-platform paired float drift <=3.47e-18; masks/labels/IDs exact; all reconstructed score discrepancies zero.
+- Four specialist tasks covered matched training, native-data preparation, runner/budget integration and independent novelty/score audit. 101 initial local tests plus thirteen repaired-wrapper tests pass. 900 null/OOD support tests measure selection only, not predictive safety. Independent CPU audit verifies all 162 predictions; root lineage audit verifies all 324.
+- Reservations **$10.55 across 22 calls**, including three compiler calls of which two failed. Initial two-call/$1 pilot is exhausted; the user's later GPU instruction authorized a separate single $.50 repair, now complete. Provider-reported MIRA app charges **$0.54356618**; lag and image/storage/transfer attribution remain unaudited. Protect $3 inside $26. No further paid compiler-pilot/recovery calls or automatic retries.
+- BrowserOS is connected and current inventory checked. Colab notebook prepared but no execution proof or Pro-subscription verification; do not claim Colab GPU use. Modal T4 use is verified by completed predictions/runtime/ledger. Specialist usage limit interrupted further independent work; reuse the completed reports rather than restarting agents.
+- Same open `paper/main.tex` updated; native compilation still fails at the environment level (`Unable to find standard directories for platform`). Preserve source; PDF/layout remains unverified. No alternate document, email or submission.
+
+Next: a **CPU-only utility-learning prototype** with predeclared predictive-loss targets, class imbalance/acquisition-block variation and observed covariates; compare centered fixed moments, calibrated heuristic, support-CV and equally pretrained competitors. Do not rerun the failed candidate or describe these used panels as untouched. Spend further compute only after a new CPU gate shows useful advantage and a separate protocol is committed within the existing cap/reserve. Seeds98000–98019 remain unused for a genuinely passing future hypothesis. Days18–20 still require fresh external evidence, clean reproduction, current-checkpoint access, official formatting, authorship and readiness review.
 
 ## Completed evidence
 

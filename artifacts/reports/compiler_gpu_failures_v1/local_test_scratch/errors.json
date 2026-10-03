@@ -1,0 +1,8 @@
+[
+  {
+    "episode_id": "integration",
+    "error": "RuntimeError('fixture checkpoint unavailable')",
+    "mode": "identity",
+    "model": "tabicl:v2"
+  }
+]

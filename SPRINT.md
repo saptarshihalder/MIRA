@@ -4,7 +4,7 @@ Objective authorized by the user: a rigorous NeurIPS-quality manuscript by Octob
 
 ## Scientific decision
 
-Primary track: controlled missingness representation study. Ask when a frozen tabular predictor differs between native missing values and the same data with explicit mask columns. Indicators are deterministic functions of native NaNs; preprocessing can change what reaches the network. An observed difference does not establish a causal pretraining-prior explanation.
+Primary track: a trained-model contribution, evaluated against strong simple controls. The reversible mask compiler is trained and tested through Day14, but its signal-regime predictions match a fixed heuristic. Its current useful learned-contribution gate fails. Earlier missingness-representation confirmation is supporting evidence; an observed difference does not establish a causal pretraining-prior explanation.
 
 Conditional track: MIRA-Shift. Activate only after development demonstrates useful remaining headroom against strong simple corrections and refreshed-context TFMs with the same labels. Existing CPU results do not justify large neural training. A negative finding stays in the record; manuscript scope follows evidence.
 
@@ -45,6 +45,10 @@ Modal calls must reserve cost in `artifacts/manifests/compute_ledger.json` befor
 Day 3 reallocates the internal ceilings to cover seven conservative $0.50 development reservations. The total remains $26, including a $3 reproduction reserve; reservations are larger than measured active-compute charges and must not be described as invoices.
 
 ## Continuation
+
+October3 checkpoint supersedes pending Day9–14 text below: matched learning, 3,584 CPU predictions, native-data provenance, 24 full-feature controls, 900 null supports and all324 backbone predictions are complete. Read `docs/DAY_8_14_AUDIT.md` and the current STATUS checkpoint. Two pre-inference GPU failures remain charged conservatively; user-authorized separate T4 repair completed162 predictions. Reservations10.55; provider MIRA app report0.54356618 (lag/attribution caveats). Both initial pilot and single repair are closed.
+
+Day15–17: begin a CPU-only learner trained on predictive utility rather than privileged basis recovery. Include class imbalance, acquisition blocks, observed covariates and matched centered/calibrated heuristics. Freeze an actual objective and comparison budget; require improvement beyond simple controls before fresh confirmation or additional paid execution. Do not tune on the already-used two native datasets and call them external holdouts. Day18–20: fresh external evidence, reproduction, manuscript synthesis, official formatting/authorship and readiness review; current learned-method and native-compiler/PDF gates remain unmet.
 
 Read `STATUS.md` first, inspect ledger and existing outputs, then execute the next unresolved gate. Reuse results and exact dependencies. Update status/decision after meaningful evidence changes. Do not rerun confirmation after development changes without explicitly recording that it is no longer untouched. Preserve source attachments under the workspace `reference/handoff` directory.
 

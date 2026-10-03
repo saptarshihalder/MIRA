@@ -4,24 +4,26 @@
 \usepackage{amsmath,amssymb,booktabs}
 \usepackage[breaklinks=true,colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
 \setlength{\emergencystretch}{2em}
-\title{Missingness Representation in Frozen Tabular Predictors}
+\title{Learning Reversible Missingness Coordinates for Frozen Tabular Predictors}
 \author{MIRA working manuscript\\Author list to be confirmed}
-\date{1 October 2026}
+\date{2 October 2026}
 
 \begin{document}
 \maketitle
 \begin{center}
-\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} The CPU pilot, 1,296 development cells, 360 frozen confirmation cells, 240 CPU baseline predictions and a 1,440-cell six-dataset real-covariate panel are complete. The contribution is a scoped representation study; adapter training remains inactive. Manuscript production and current-checkpoint evaluation remain incomplete.}}
+\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} A 6,092-parameter mask compiler is trained, with matched learned controls, 3,584 downstream CPU predictions and two native-missingness datasets. The learned compiler has no demonstrated signal-regime advantage over a fixed heuristic. Earlier representation confirmation is supporting evidence; methodological novelty, current-checkpoint access and manuscript readiness remain unresolved.}}
 \end{center}
 
 \begin{abstract}
-Missingness can carry predictive information when observation decisions depend on outcomes. An incomplete table already identifies absent measurements, yet a frozen predictor can behave differently when those bits are appended as feature columns. We study this representation question with exact synthetic posteriors, paired inputs, and shuffled-indicator controls. After 1,296 development cells, a protocol committed before evaluation tests twenty fresh Gaussian pairwise-mask tasks with 256 context labels. TabPFN v2 gains 0.104 nats in expected log-loss over native inputs and 0.095 over same-width shuffled indicators; both prespecified contrasts have positive multiplicity-adjusted intervals. However, a support-trained L1 mask-interaction logistic baseline attains loss 0.193, only 0.009 above the oracle. A separate all-zero diagnostic localizes information loss to TabICL preprocessing; partial-zero controls do not reproduce its large failure. A second frozen protocol evaluates six real-covariate datasets in 1,440 cells with 128 labels. Under imposed outcome-associated missingness, dataset-balanced TabPFN gains are small with intervals including zero, whereas logistic regression benefits in the high-missingness condition. These findings support a version- and mechanism-specific representation effect and limit the case for a new adapter. The real-covariate intervention does not establish natural-missingness, clinical, or universal benefit; contemporary-checkpoint access remains unresolved.
+We train MIRA-Compiler, a 6,092-parameter support-conditioned selector of reversible missingness coordinates for a frozen tabular predictor. Synthetic pretraining uses privileged basis teachers; inference receives labeled support only. On 512 new development tasks, its predictions match a fixed moment heuristic on all 256 informative tasks. A hash-frozen 324-prediction backbone screen finds expected log-loss gains over uncompiled indicators of 0.086 nats for TabPFN v2 and 0.061 for TabICLv2, averaging pairwise and four-way tasks within three seed units. The heuristic reproduces all synthetic compiler predictions, so these improvements do not establish a learned-method advantage. On Hepatitis and Horse Colic, the compiler is identical to uncompiled indicators; augmentation helps or harms depending on dataset. An earlier twenty-task confirmation establishes a narrower TabPFN representation effect, with gain 0.104 nats over native inputs; strong interaction logistic baselines nearly close its oracle gap. We retain the trained candidate, source/checkpoint identities, controls and negative results, but the useful learned-contribution gate is not met. Current-checkpoint transfer, broad natural-missingness benefits and venue readiness remain unresolved.
 \end{abstract}
 
 \section{Question and scope}
+Our primary candidate is MIRA-Compiler, a trained selector of reversible missingness coordinates for a frozen predictor. Its purpose is to expose a task-relevant mask interaction as an individual coordinate while retaining the raw incomplete table. Training alone does not establish a useful contribution: our development screen compares the learned selector with fixed moments, equally pretrained competitors, support-only basis search and uncompiled inputs. We report failures of this screen as well as improvements. The earlier representation experiments establish motivation rather than evidence of learned-model superiority.
+
 Tabular foundation models predict from labeled examples without updating their pretrained weights. Their treatment of missing data depends on architecture, preprocessing, and inference configuration. We ask whether representing missingness as explicit binary columns changes prediction when the raw statistical information is unchanged. An affirmative result would establish a useful behavioral limitation or opportunity, with scope determined by the tested models and mechanisms.
 
-The question concerns representation rather than imputation accuracy. It also differs from claiming that every missingness shift changes the optimal predictor. Previous work distinguishes ignorable shifts from non-ignorable changes that can alter the Bayes predictor~\cite{rockenschaub2024}. Observation-policy adaptation is already an established problem~\cite{zhou2023}. Our proposed contribution is therefore a controlled, reproducible characterization, conditional on the experiments supporting it.
+The question concerns representation rather than imputation accuracy. It also differs from claiming that every missingness shift changes the optimal predictor. Previous work distinguishes ignorable shifts from non-ignorable changes that can alter the Bayes predictor~\cite{rockenschaub2024}. Observation-policy adaptation is already an established problem~\cite{zhou2023}. These precedents constrain novelty claims and motivate direct evaluation of the trained compiler against simple corrections.
 
 \section{Information equivalence}
 Let $X\in\mathbb{R}^{d}$ denote complete covariates, $Y\in\{0,1\}$ the outcome, and $M\in\{0,1\}^{d}$ a mask, with $M_j=1$ indicating an absent value. Write $\widetilde X$ for the table row in which missing entries carry a distinguished missing-value marker. The raw-input observation is $O=\widetilde X$, and $M=h(O)$ is measurable from it. Consequently,
@@ -37,6 +39,65 @@ For a labeled context $C$, compare a frozen predictor $F$ on native input and on
  p_{\rm ind} &= F(C^{+},[O,M]).
 \end{align}
 Here $C^{+}$ contains the same context rows and labels with their masks appended. Augmentation changes feature count and potentially feature grouping, embeddings, and preprocessing. Mean imputation may obscure a native marker internally; explicit columns may then restore accessible information. A performance difference alone cannot identify a pretraining-prior explanation, and comparing checkpoints is not a controlled intervention on that prior.
+
+\section{Trained reversible mask compiler}
+For four selected mask bits, let $\mathcal A$ contain twelve binary matrices, each satisfying $A^2=I$ over $\mathbb F_2$. For a nonzero parity vector $a$, choose a pivot $i$ with $a_i=1$, replace row $i$ of $I$ by $a$, and retain the other identity rows. Single-bit vectors collapse to the identity, yielding twelve distinct matrices. The compiled coordinate vector is $z=Am\pmod 2$, with inverse $m=Az$. We append these coordinates to the unchanged incomplete table. On wider tables, only four support-selected mask columns are transformed; all remaining mask indicators are retained. Reversibility preserves statistical information and supplies an implementation check, not a new theorem or a guarantee about finite-predictor loss.
+
+The trained prototype uses fifteen absolute support parity/label moments, one observed-variable/label moment and a context-size descriptor. A $17\to64\to64\to12$ ReLU network selects a basis. If its maximum softmax probability is below 0.8, it chooses the identity basis. This confidence rule is fixed and uncalibrated; it does not guarantee absence of harm. At inference the selector receives labeled support only, with no query outcomes, generator parameters or oracle posterior.
+
+We train on 2,048 synthetic support tasks, with separate 256-task validation and 256-task development sets, using Adam at learning rate 0.003, batch size 128 and 80 fixed epochs. Privileged active-parity and zero-signal metadata define pretraining teachers only. The teacher identifies a basis, not the basis minimizing frozen-backbone query loss. Final epochs and confidence thresholds are fixed rather than selected on test outcomes. The prototype achieves 82.42\% raw and 78.12\% guarded teacher recovery on held-out development tasks; the fixed moment heuristic also achieves 78.12\%. These are teacher-recovery statistics, not downstream efficacy.
+
+Matched competitors receive the same tasks, teachers, optimizer settings and exact minibatches: a 216-parameter linear selector and a 6,092-parameter raw-row Deep Sets encoder. Exact CPU replay reproduces the prototype's six weight arrays and all 1,280 updates. Equal epochs and parameter counts do not ensure equal optimization suitability: the prototype already receives engineered parity moments, whereas the row encoder must learn interactions. Support-CV basis search requires 108 logistic fits; the full-parity L1 comparator has fifteen mask features rather than four. We retain these feature and computation differences.
+
+\subsection{Matched downstream development}
+On 512 new tasks spanning interaction orders one through four, signal strengths 0 and 0.9, 128 support labels and 256 queries, seven CPU methods issue 3,584 saved predictions. Regularization and basis search use support-only CV. An independent reconstruction verifies all probability hashes, losses and selection mappings with zero score discrepancy. Table~\ref{tab:compiler_cpu} shows high-signal expected log-loss. Prototype and fixed heuristic select exactly the same bases and predictions on all 256 signal tasks. At zero signal the prototype selects identity on all 256 tasks; the heuristic makes one different selection. This single avoided selection error does not establish a useful learned advantage.
+
+\begin{table}[t]
+\centering\small
+\caption{CPU compiler development at $\gamma=0.9$: expected log-loss, 64 tasks per order. These are used development tasks, not fresh confirmation.}
+\label{tab:compiler_cpu}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Selector/predictor & Order 1 & Order 2 & Order 3 & Order 4\\\midrule
+Trained prototype & .20963 & .20767 & .20722 & .20410\\
+Fixed heuristic & .20963 & .20767 & .20722 & .20410\\
+Matched linear & .20963 & .63856 & .64171 & .20410\\
+Raw Deep Sets & .20963 & .23974 & .21388 & .20410\\
+Full-parity L1 & .21822 & .21594 & .21684 & .21315\\\bottomrule
+\end{tabular}
+\end{table}
+
+In a separate 900-support null-signal stress screen, outcomes and masks are independent, with class prevalences 0.2/0.5/0.8, missing rates 0.1/0.5/0.9 and independent or shared-block acquisition masks. The guarded nonidentity fraction is 0.02 in one condition and zero in the other seventeen. The observed-variable proxy is zero, outside the training distribution. This screen measures basis selection only; it cannot bound predictive harm or certify safety.
+
+\section{Naturally missing retrospective outcomes}
+We retain native missing values in UCI Hepatitis~\cite{hepatitis} and Horse Colic~\cite{horse}, with 155 and 353 canonical rows respectively. Official CSV entries are checked against the original archives, with cached source hashes and CC BY 4.0 attribution. Horse Colic excludes two unknown outcomes, thirteen exact retained-feature/label duplicates and outcome, treatment, lesion and identifier fields from predictor inputs. Death and euthanasia form the positive outcome. Original train/test records are pooled before three grouped folds; supplied hospital identifiers and identical covariates define isolated groups. This cannot establish independence of unknown patients or prospective availability of measurements.
+
+All retained covariates and native NaNs reach each backbone. The selector uses the four columns with highest support missing rates, with stable label-free tie-breaking. Its observed-variable proxy is zero and is never added as a backbone covariate. Nominal category codes are treated numerically, a limitation shared by these comparisons. Three folds within each dataset share training rows; we aggregate query-weighted folds within dataset and report two descriptive dataset results rather than six independent replications.
+
+Twenty-four full-feature CPU control predictions are complete, without recorded fit/predict warnings. Native-to-identity-indicator logistic losses are 0.46155 to 0.40453 on Hepatitis and 0.55561 to 0.56094 on Horse Colic. Fixed histogram boosting is unchanged at 0.56303 and 0.75336. Logistic tuning uses group-isolated support CV; six query-label-inversion checks reproduce identical issued probabilities. These retrospective results neither identify the missingness mechanism nor establish clinical, causal or universal benefit.
+
+\section{Direct frozen-backbone compiler validation}
+The predeclared development matrix contains twelve synthetic episodes (orders two/four, $\gamma=0/0.9$, three seeds, 128 support labels, 256 queries) and six native-missingness episodes. Nine views per episode and two backbones give 324 predictions. Synthetic tasks here use $\beta=1$, whereas the preceding CPU comparison uses $\beta=0.8$. Views include native inputs, uncompiled indicators, learned compiler, fixed heuristic, matched linear and Deep Sets selectors, support-CV basis, random basis and shuffled indicators. All are retained in the artifact tables.
+
+TabPFN v2 completes 162 predictions on local CPU in 444 seconds; TabICLv2 completes 162 on a Modal T4 GPU, with 188 seconds of wrapper runtime. Both use the exact cached checkpoint hashes, four ensembles, Torch 2.8 and NumPy 2.3.5. Windows/Python 3.11 and Linux/Python 3.12, CPU/CUDA and transitive dependencies differ. These are disclosed development devices rather than a demonstration of CPU/GPU numerical equivalence. Binary masks, labels and identifiers agree exactly across runs; maximum paired floating-input difference is $3.47\times10^{-18}$. Every saved probability/data hash and recorded NLL/Brier score reconstructs with zero discrepancy.
+
+Two earlier GPU calls failed before inference: one at module hydration and one at a fresh-output guard. Both reservations and logs remain preserved. The corrected GPU source and unchanged experiment lineage were committed before its predictions. No failed cells were silently replaced or counted as completed inference.
+
+\begin{table}[t]
+\centering\small
+\caption{Compiler backbone development at $\gamma=0.9$: expected log-loss over three seeds per order. The same fixed heuristic reproduces the trained predictions.}
+\label{tab:compiler_backbone}
+\begin{tabular}{@{}llrrrr@{}}\toprule
+Backbone & Order & Native & Identity & Trained & Heuristic\\\midrule
+TabPFN v2 & 2 & .38840 & .23832 & .23316 & .23316\\
+TabPFN v2 & 4 & .62159 & .38790 & .22132 & .22132\\
+TabICLv2 & 2 & .26990 & .25256 & .23190 & .23190\\
+TabICLv2 & 4 & .46062 & .31187 & .21034 & .21034\\\bottomrule
+\end{tabular}
+\end{table}
+
+The mean identity-minus-trained high-signal gain, averaging orders within each of three seed units, is 0.08587 nats for TabPFN and 0.06110 for TabICL. Both exceed the development screen's 0.01 threshold; null-signal change relative to identity is zero. This is not a no-harm result relative to native input: TabPFN's order-two null loss increases from 0.64269 native to 0.65034 with indicators. No confirmation interval is claimed for this three-seed development screen. The trained and heuristic maps and predictions coincide on all twelve synthetic episodes for each backbone; equally informed Deep Sets and CV controls also explain the high-signal improvement. Thus the additional requirement of a substantive learned advantage fails, and no fresh confirmation of this candidate is launched.
+
+On naturally missing outcomes, all six trained/identity probability arrays are bit-identical for each backbone. Query-weighted native-to-trained losses are 0.39815 to 0.41321 on Hepatitis and 0.52761 to 0.51922 on Horse Colic for TabPFN; corresponding TabICL losses are 0.37222 to 0.38415 and 0.52091 to 0.51986. The learned fallback avoids one worse heuristic selection on Hepatitis, but establishes no benefit over the identity representation. Two retrospective datasets do not support a general natural-missingness claim.
 
 \section{Controlled data and oracle}
 The initial synthetic diagnostic keeps an observed variable $U\in\{-1,+1\}$ balanced and uses
@@ -215,6 +276,7 @@ A support-fitted SimpleImputer reference finds no observed active-column values 
 The labels used to impose retrospective missingness are evaluator-only. Class-conditional probabilities on the active column are 0.02/0.18 at $r=0.1$ and 0.1/0.9 at $r=0.5$ when $\gamma=0.8$; realized rates and all original/imposed masks are retained. Native missingness is absent. Unknown acquisition groups, numerical feature selection, small context budgets, six nonrepresentative datasets and overlapping training folds limit interpretation. This is controlled evaluation on real covariates, not validation of a natural observation policy.
 
 \section{Related work and limitations}
+Learning to recommend feature transformations from dataset summaries is established~\cite{nargesian}; permutation-invariant set encoders~\cite{deepsets} and learned nonlinear missingness processing~\cite{neumiss} are also prior art. The candidate combination here is support-conditioned selection of an invertible mask basis for a frozen predictor. Parity features, reversibility, an MLP and privileged synthetic training individually do not establish novelty. The prototype's exact tie with the heuristic on signal tasks directly limits a learned-method claim.
 TabPFN v2 demonstrates strong small-data prediction~\cite{hollmann2025}. Contemporary versions already encode missingness: TabPFN-3.5 explicitly inherits missing and infiniteness indicators~\cite{priorlabs2026}. Thus, native indicator encoding is compatible with our question, and a blanket claim that foundation models discard masks would be incorrect.
 
 PFN-Flow studies Bayesian prediction under structural missingness, with guarantees restricted to its specified prior~\cite{liang2026}. TFM-Retouche uses a lightweight residual input adapter through a frozen backbone and a held-out identity guard~\cite{nguyen2026}. These precedents prevent treating missingness-specific training or frozen residual adaptation alone as methodological novelty.
@@ -223,6 +285,21 @@ The specified pairwise TabPFN contrast has fresh-task confirmation; other synthe
 
 \begin{thebibliography}{99}
 \small
+\bibitem{nargesian}
+F. Nargesian et al. Learning Feature Engineering for Classification. IJCAI, 2017.
+\url{https://www.ijcai.org/proceedings/2017/352}.
+\bibitem{deepsets}
+M. Zaheer et al. Deep Sets. NeurIPS, 2017.
+\url{https://arxiv.org/abs/1703.06114}.
+\bibitem{neumiss}
+M. Le Morvan et al. NeuMiss networks. 2020.
+\url{https://arxiv.org/abs/2007.01627}.
+\bibitem{hepatitis}
+Hepatitis. UCI Machine Learning Repository, 1983.
+\url{https://doi.org/10.24432/C5Q59J}.
+\bibitem{horse}
+M. McLeish and M. Cecile. Horse Colic. UCI Machine Learning Repository, 1989.
+\url{https://doi.org/10.24432/C58W23}.
 \bibitem{qu2026}
 J. Qu, D. Holzm\"uller, G. Varoquaux, and M. Le Morvan.
 TabICLv2: A Better, Faster, Scalable, and Open Tabular Foundation Model.

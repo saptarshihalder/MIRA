@@ -1,0 +1,17 @@
+{
+  "data_sha256": "e99c3b439a7d1cebed9ad4726d3a5bdf86719620f7f518f457244e879bf7a026",
+  "dataset": null,
+  "episode_id": "synthetic_k4_g0_s74001",
+  "fold": null,
+  "gamma": 0,
+  "kind": "synthetic",
+  "order": 4,
+  "seed": 74001,
+  "selected_columns": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "selector_ood": null
+}

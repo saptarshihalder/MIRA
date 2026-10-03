@@ -1,0 +1,66 @@
+{
+  "identity": {
+    "matrix": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "selection": "fixed identity/no labels"
+    }
+  },
+  "random_basis": {
+    "matrix": [
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "identity_probability": 0.08333333333333333,
+      "index": 5,
+      "selection": "label-free seeded random"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "dependency_lock_status": "not requested",
+  "packages": {
+    "numpy": "1.26.4",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.16.3",
+    "tabicl": "not installed",
+    "tabpfn": "not installed",
+    "torch": "2.12.1",
+    "xgboost": "not installed"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.9",
+  "python_executable": "C:\\Python311\\python.exe"
+}

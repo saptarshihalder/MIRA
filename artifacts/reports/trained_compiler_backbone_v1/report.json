@@ -1,0 +1,2591 @@
+{
+  "status": "audited",
+  "protocol_sha256": "bbd594ff7e8175c33490a908f07d3f95943d6a5a76afadf4c34a3507818caef4",
+  "source_sha256": "72cfa84b9f60d8cb70ccc86c22b2df4a59d318049234e7dfb2295de0c4c9e0b7",
+  "cells": 324,
+  "maximum_cross_platform_input_drift": 3.469446951953614e-18,
+  "runs": [
+    {
+      "model": "tabpfn:v2",
+      "cells": 162,
+      "episodes": 18,
+      "seconds": 444.0469999999914,
+      "manifest_sha256": "892feb2da54d103aa5211828e1340b38c997a66965f84e5485d0e9155f313d20",
+      "actual_protocol_sha256": "bbd594ff7e8175c33490a908f07d3f95943d6a5a76afadf4c34a3507818caef4"
+    },
+    {
+      "model": "tabicl:v2",
+      "cells": 162,
+      "episodes": 18,
+      "seconds": 181.27965440100002,
+      "manifest_sha256": "824ea011953beaec94d547ff96a2a83c0a5e644a96f4a2d5584281b96a8046d4",
+      "actual_protocol_sha256": "3dee6317629de8567ff70a26f5571108135f804ba0c3eb154d9c91ea4d815f75"
+    }
+  ],
+  "maximum_score_discrepancy": 0.0,
+  "gates": [
+    {
+      "model": "tabpfn:v2",
+      "high_signal_gain": 0.08587015393181612,
+      "null_signal_harm": -0.0,
+      "passes_numeric_development_screen": true,
+      "seed_units": {
+        "0.0": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "0.9": [
+          0.06961018887228287,
+          0.10250016861242507,
+          0.08550010431074043
+        ]
+      },
+      "limits": "Three seeds with orders averaged within seed; descriptive development only. Passing also requires evidence beyond strong equally informed baselines and a separate fresh confirmation."
+    },
+    {
+      "model": "tabicl:v2",
+      "high_signal_gain": 0.06109556166687689,
+      "null_signal_harm": -0.0,
+      "passes_numeric_development_screen": true,
+      "seed_units": {
+        "0.0": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "0.9": [
+          0.045800346636061876,
+          0.1084797132284902,
+          0.0290066251360786
+        ]
+      },
+      "limits": "Three seeds with orders averaged within seed; descriptive development only. Passing also requires evidence beyond strong equally informed baselines and a separate fresh confirmation."
+    }
+  ],
+  "uncertainty": "No confirmatory intervals. Natural results aggregate overlapping grouped folds within each of two fixed datasets; not six independent replications.",
+  "summary": [
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "native",
+      "nll": 0.6426857108809462,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "identity",
+      "nll": 0.6503391663030712,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "trained",
+      "nll": 0.6503391663030712,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "heuristic",
+      "nll": 0.6503391663030712,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "matched_linear",
+      "nll": 0.6503391663030712,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "cv_basis",
+      "nll": 0.651453427052675,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "random_basis",
+      "nll": 0.6510073055734624,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "deepsets",
+      "nll": 0.6503391663030712,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "shuffled",
+      "nll": 0.6458324848639516,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "native",
+      "nll": 0.3883990521625899,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "identity",
+      "nll": 0.238320073218077,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "trained",
+      "nll": 0.23315966892441833,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "heuristic",
+      "nll": 0.23315966892441833,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "matched_linear",
+      "nll": 0.238320073218077,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "cv_basis",
+      "nll": 0.23315966892441833,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "random_basis",
+      "nll": 0.24792315618184316,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "deepsets",
+      "nll": 0.23315966892441833,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "shuffled",
+      "nll": 0.3728691830921613,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "native",
+      "nll": 0.6278424372557445,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "identity",
+      "nll": 0.6296698886793038,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "trained",
+      "nll": 0.6296698886793038,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "heuristic",
+      "nll": 0.6296698886793038,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "matched_linear",
+      "nll": 0.6296698886793038,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "cv_basis",
+      "nll": 0.6348619732775472,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "random_basis",
+      "nll": 0.6334665715363207,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "deepsets",
+      "nll": 0.6296698886793038,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "shuffled",
+      "nll": 0.630975780824315,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "native",
+      "nll": 0.6215936199795198,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "identity",
+      "nll": 0.38789627489137857,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "trained",
+      "nll": 0.2213163713214049,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "heuristic",
+      "nll": 0.2213163713214049,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "matched_linear",
+      "nll": 0.2213163713214049,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "cv_basis",
+      "nll": 0.2213163713214049,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "random_basis",
+      "nll": 0.3165123786902328,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "deepsets",
+      "nll": 0.2213163713214049,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "shuffled",
+      "nll": 0.6382911234306197,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "native",
+      "nll": 0.3981548587132905,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "identity",
+      "nll": 0.4132061814990759,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "trained",
+      "nll": 0.4132061814990759,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "heuristic",
+      "nll": 0.4161113635806632,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "matched_linear",
+      "nll": 0.4132061814990759,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "cv_basis",
+      "nll": 0.4104673807147562,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "random_basis",
+      "nll": 0.4132789504515538,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "deepsets",
+      "nll": 0.4132061814990759,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "shuffled",
+      "nll": 0.41022423275241476,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "native",
+      "nll": 0.5276108123992788,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "identity",
+      "nll": 0.51921523467766,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "trained",
+      "nll": 0.51921523467766,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "heuristic",
+      "nll": 0.51921523467766,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "matched_linear",
+      "nll": 0.51921523467766,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "cv_basis",
+      "nll": 0.5207513646158016,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "random_basis",
+      "nll": 0.5200844903885538,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "deepsets",
+      "nll": 0.51921523467766,
+      "episodes": 3
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "shuffled",
+      "nll": 0.5263521482772378,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "native",
+      "nll": 0.6415503685485785,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "identity",
+      "nll": 0.6380368607392617,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "trained",
+      "nll": 0.6380368607392617,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "heuristic",
+      "nll": 0.6380368607392617,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "matched_linear",
+      "nll": 0.6380368607392617,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "cv_basis",
+      "nll": 0.6412421754212053,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "random_basis",
+      "nll": 0.6388242991261347,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "deepsets",
+      "nll": 0.6380368607392617,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "shuffled",
+      "nll": 0.6483907375617594,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "native",
+      "nll": 0.26990418329691757,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "identity",
+      "nll": 0.2525594096236367,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "trained",
+      "nll": 0.23189739839612747,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "heuristic",
+      "nll": 0.23189739839612747,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "matched_linear",
+      "nll": 0.2525594096236367,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "cv_basis",
+      "nll": 0.23189739839612747,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "random_basis",
+      "nll": 0.2623392420759342,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "deepsets",
+      "nll": 0.23189739839612747,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 2,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "shuffled",
+      "nll": 0.25732989358849206,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "native",
+      "nll": 0.6314131966262118,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "identity",
+      "nll": 0.6334592810621981,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "trained",
+      "nll": 0.6334592810621981,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "heuristic",
+      "nll": 0.6334592810621981,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "matched_linear",
+      "nll": 0.6334592810621981,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "cv_basis",
+      "nll": 0.6418587672311739,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "random_basis",
+      "nll": 0.6370455585187668,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "deepsets",
+      "nll": 0.6334592810621981,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0,
+      "dataset": null,
+      "mode": "shuffled",
+      "nll": 0.6487720137147787,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "native",
+      "nll": 0.460618494843561,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "identity",
+      "nll": 0.311867477738844,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "trained",
+      "nll": 0.21033836563259942,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "heuristic",
+      "nll": 0.21033836563259942,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "matched_linear",
+      "nll": 0.21033836563259942,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "cv_basis",
+      "nll": 0.21033836563259942,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "random_basis",
+      "nll": 0.26033820228362076,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "deepsets",
+      "nll": 0.21033836563259942,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "order": 4,
+      "gamma": 0.9,
+      "dataset": null,
+      "mode": "shuffled",
+      "nll": 0.6232457300908877,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "native",
+      "nll": 0.37221574085981274,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "identity",
+      "nll": 0.3841472499932775,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "trained",
+      "nll": 0.3841472499932775,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "heuristic",
+      "nll": 0.39275895900900476,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "matched_linear",
+      "nll": 0.3841472499932775,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "cv_basis",
+      "nll": 0.38936768546791645,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "random_basis",
+      "nll": 0.3829636286510299,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "deepsets",
+      "nll": 0.3841472499932775,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "hepatitis",
+      "mode": "shuffled",
+      "nll": 0.387459605194447,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "native",
+      "nll": 0.520907038831362,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "identity",
+      "nll": 0.5198556588629033,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "trained",
+      "nll": 0.5198556588629033,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "heuristic",
+      "nll": 0.5198556588629033,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "matched_linear",
+      "nll": 0.5198556588629033,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "cv_basis",
+      "nll": 0.5201961539148474,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "random_basis",
+      "nll": 0.5216676490353348,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "deepsets",
+      "nll": 0.5198556588629033,
+      "episodes": 3
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "order": null,
+      "gamma": null,
+      "dataset": "horse_colic",
+      "mode": "shuffled",
+      "nll": 0.5186035108697696,
+      "episodes": 3
+    }
+  ],
+  "contrasts": [
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "native",
+      "gain_over_reference": -0.00765345542212507,
+      "paired_episode_gains": [
+        -0.011876479270004237,
+        -0.010513879090793488,
+        -0.0005700079055774854
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.001114260749603746,
+      "paired_episode_gains": [
+        -0.010141783298945772,
+        0.013114498546634379,
+        0.00037006700112263147
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 0.0006681392703911845,
+      "paired_episode_gains": [
+        0.0,
+        0.0020044178111735533,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": -0.00450668143911966,
+      "paired_episode_gains": [
+        -0.010374502267348151,
+        -0.004609505811097092,
+        0.0014639637610862621
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "native",
+      "gain_over_reference": 0.15523938323817152,
+      "paired_episode_gains": [
+        0.22390159541717414,
+        0.01941524893635682,
+        0.22240130536098363
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.005160404293658623,
+      "paired_episode_gains": [
+        0.014417011353204834,
+        -0.03028034818744396,
+        0.031344549715215
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.005160404293658623,
+      "paired_episode_gains": [
+        0.014417011353204834,
+        -0.03028034818744396,
+        0.031344549715215
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 0.014763487257424804,
+      "paired_episode_gains": [
+        0.014417011353204834,
+        -0.0014710992961454172,
+        0.031344549715215
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": 0.13970951416774294,
+      "paired_episode_gains": [
+        0.17415914029382318,
+        -0.025228024440024477,
+        0.27019742664943014
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "native",
+      "gain_over_reference": -0.0018274514235594082,
+      "paired_episode_gains": [
+        0.0019131529076603648,
+        0.0021190605643590654,
+        -0.009514567742697655
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.005192084598243274,
+      "paired_episode_gains": [
+        0.004704485983251905,
+        0.0004424405609178006,
+        0.010429327250560116
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 0.003796682857016768,
+      "paired_episode_gains": [
+        0.0,
+        0.011390048571050304,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": 0.0013058921450111265,
+      "paired_episode_gains": [
+        0.0009007765771866794,
+        0.006585589403293124,
+        -0.003568689545446424
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "native",
+      "gain_over_reference": 0.4002772486581149,
+      "paired_episode_gains": [
+        0.4006026433201466,
+        0.3963653678480664,
+        0.40386373480613164
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.16657990356997363,
+      "paired_episode_gains": [
+        0.12480336639136091,
+        0.2352806854122941,
+        0.13965565890626586
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 0.0951960073688279,
+      "paired_episode_gains": [
+        0.12480336639136091,
+        0.021128996808856937,
+        0.13965565890626586
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": 0.4169747521092148,
+      "paired_episode_gains": [
+        0.4050125636482398,
+        0.4358574133588634,
+        0.4100542793205412
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "native",
+      "gain_over_reference": -0.015051322785785365,
+      "paired_episode_gains": [
+        -0.0009293066000206629,
+        -0.015036635728279402,
+        -0.029465216288728002
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0029051820815872457,
+      "paired_episode_gains": [
+        0.0,
+        0.008659677358577367,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": -0.0027388007843196587,
+      "paired_episode_gains": [
+        -0.012158351277766322,
+        0.008659677358577367,
+        -0.0047565309367004205
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 7.276895247793427e-05,
+      "paired_episode_gains": [
+        0.005002326387322675,
+        -0.005311028014001462,
+        0.000535915141595622
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": -0.002981948746661125,
+      "paired_episode_gains": [
+        0.010136518313362819,
+        0.0024752387750736626,
+        -0.021921831849630813
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "native",
+      "gain_over_reference": 0.008395577721618693,
+      "paired_episode_gains": [
+        0.01813261927429155,
+        0.013637595439240702,
+        -0.006711507696285535
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.0015361299381416922,
+      "paired_episode_gains": [
+        0.002875229044212557,
+        0.0008615329223800594,
+        0.0008659483427870818
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 0.000869255710893804,
+      "paired_episode_gains": [
+        -0.0009864483309204308,
+        -0.0012374141527107807,
+        0.004865496059948682
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabpfn:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": 0.007136913599577751,
+      "paired_episode_gains": [
+        0.016834954288095783,
+        0.01270314043525489,
+        -0.008257817749610541
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "native",
+      "gain_over_reference": 0.003513507809316844,
+      "paired_episode_gains": [
+        0.012517013914035036,
+        -0.002330464548713107,
+        0.00035397406262860365
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.0032053146819435905,
+      "paired_episode_gains": [
+        0.0033224012808766856,
+        0.005478168216055179,
+        0.0008153745488989061
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 0.0007874383868730442,
+      "paired_episode_gains": [
+        0.0,
+        0.002362315160619133,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": 0.010353876822497665,
+      "paired_episode_gains": [
+        0.021046745180208437,
+        0.006829484298943145,
+        0.0031854009883414136
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "native",
+      "gain_over_reference": 0.0380067849007901,
+      "paired_episode_gains": [
+        0.07605538299667974,
+        0.009158194094243621,
+        0.028806777611446927
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.02066201122750924,
+      "paired_episode_gains": [
+        0.014489151304612924,
+        0.0329373818098227,
+        0.014559500568092104
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.02066201122750924,
+      "paired_episode_gains": [
+        0.014489151304612924,
+        0.0329373818098227,
+        0.014559500568092104
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 0.03044184367980669,
+      "paired_episode_gains": [
+        0.014489151304612924,
+        0.06227687916671504,
+        0.014559500568092104
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        2,
+        0.9
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": 0.025432495192364568,
+      "paired_episode_gains": [
+        0.05345559567217112,
+        0.006423183423823309,
+        0.016418706481099277
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "native",
+      "gain_over_reference": -0.0020460844359862693,
+      "paired_episode_gains": [
+        -0.001804334737980362,
+        0.0014179988849862823,
+        -0.005751917454964728
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.008399486168975975,
+      "paired_episode_gains": [
+        0.0027135518130472214,
+        0.0030236596917541103,
+        0.01946124700212659
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 0.0035862774565687725,
+      "paired_episode_gains": [
+        0.0,
+        0.010758832369706317,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": 0.015312732652580633,
+      "paired_episode_gains": [
+        0.003419799633254006,
+        0.023973323353159826,
+        0.018545074971328068
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "native",
+      "gain_over_reference": 0.2502801292109616,
+      "paired_episode_gains": [
+        0.29636333088111066,
+        0.33520106266415656,
+        0.11927599408761755
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.10152911210624456,
+      "paired_episode_gains": [
+        0.07711154196751083,
+        0.1840220446471577,
+        0.0434537497040651
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 0.04999983665102137,
+      "paired_episode_gains": [
+        0.07711154196751083,
+        0.029434218281488178,
+        0.0434537497040651
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "synthetic",
+      "condition": [
+        4,
+        0.9
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": 0.4129073644582883,
+      "paired_episode_gains": [
+        0.37939110789083763,
+        0.4321653842274266,
+        0.4271656012566005
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "native",
+      "gain_over_reference": -0.011931509133464812,
+      "paired_episode_gains": [
+        -0.019267259592854746,
+        -0.008121996805821485,
+        -0.008336129077566312
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.008611709015727267,
+      "paired_episode_gains": [
+        0.0,
+        0.025669517258417818,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.005220435474638939,
+      "paired_episode_gains": [
+        -0.011457216899968314,
+        0.025669517258417818,
+        0.0013750564692090461
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": -0.0011836213422475926,
+      "paired_episode_gains": [
+        -0.005220587187277137,
+        0.00033251852083959754,
+        0.001386632600125004
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "hepatitis",
+        null
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": 0.0033123552011695557,
+      "paired_episode_gains": [
+        -0.01012303290050448,
+        -0.0039713229871163325,
+        0.0244376776928934
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "native",
+      "gain_over_reference": 0.001051379968458797,
+      "paired_episode_gains": [
+        0.028315643135793933,
+        -0.008066476581651882,
+        -0.01725012414122057
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "identity",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "heuristic",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "matched_linear",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "cv_basis",
+      "gain_over_reference": 0.00034049505194426585,
+      "paired_episode_gains": [
+        -0.0034052418352110703,
+        0.0008754982891298613,
+        0.003578670869862466
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "random_basis",
+      "gain_over_reference": 0.0018119901724315852,
+      "paired_episode_gains": [
+        -0.00016403865359759795,
+        0.0011754890838541754,
+        0.004446849402547637
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "deepsets",
+      "gain_over_reference": 0.0,
+      "paired_episode_gains": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "tabicl:v2",
+      "kind": "natural",
+      "condition": [
+        "horse_colic",
+        null
+      ],
+      "reference": "shuffled",
+      "gain_over_reference": -0.0012521479931335141,
+      "paired_episode_gains": [
+        0.005825791497079624,
+        -0.002875751058237508,
+        -0.006753102678286327
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "automatic_retries": 0,
+  "bound": "2400-second maximum configured between-cell check; no automatic restart",
+  "checkpoint_sha256": {
+    "huggingface/hub/blobs/45/45c13f180e7197fbc11b24a9cf5e3be795902967bcc61e2223dc19245559a934": "bdc7dbd5e4ff21f8f0456fcf90c6b7cdf72dbea960f2d05b19bec19f9b3d4ed0",
+    "tabpfn/tabpfn-v2-classifier-finetuned-zk73skhh.ckpt": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49"
+  },
+  "checkpoint_transfer": {
+    "bytes": 139377577,
+    "cli_exit": "Windows CP1252 checkmark error after completed transfer; file SHAs independently match",
+    "method": "Modal volume get; no inference/app dispatch",
+    "service_bandwidth_charges": "Not independently measured; no additional paid compute reservation"
+  },
+  "completed_cells": 162,
+  "environment_actual": {
+    "executable": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Scripts\\python.exe",
+    "packages": {
+      "numpy": {
+        "actual": "2.3.5",
+        "metadata": "2.3.5",
+        "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Lib\\site-packages\\numpy\\__init__.py"
+      },
+      "scikit-learn": {
+        "actual": "1.8.0",
+        "metadata": "1.8.0",
+        "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Lib\\site-packages\\sklearn\\__init__.py"
+      },
+      "scipy": {
+        "actual": "1.17.0",
+        "metadata": "1.17.0",
+        "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Lib\\site-packages\\scipy\\__init__.py"
+      },
+      "tabpfn": {
+        "actual": "9.0.0",
+        "metadata": "9.0.0",
+        "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Lib\\site-packages\\tabpfn\\__init__.py"
+      },
+      "torch": {
+        "actual": "2.8.0+cpu",
+        "metadata": "2.8.0+cpu",
+        "path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Lib\\site-packages\\torch\\__init__.py"
+      }
+    },
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]"
+  },
+  "execution": {
+    "device": "cpu",
+    "max_seconds": 2400,
+    "model": "tabpfn:v2",
+    "threads": 2
+  },
+  "numerical_equivalence_to_GPU": "not established",
+  "paid_jobs_dispatched": 0,
+  "protocol_sha256": "bbd594ff7e8175c33490a908f07d3f95943d6a5a76afadf4c34a3507818caef4",
+  "resume": false,
+  "runner_sha256": "688ae2883ecee18b0dc62608e3a1a76fd26519dc9410bf1851658a90271bee5e",
+  "scope": "development successor: Windows/Python3.11 CPU versus original Linux/Python3.12 GPU",
+  "status": "complete",
+  "warnings": []
+}

@@ -1,0 +1,16 @@
+{
+  "completed_cells": 0,
+  "expected_cells": 2,
+  "failures": 1,
+  "model": "tabicl:v2",
+  "protocol_sha256": "local_test",
+  "protocol_version": "local_only",
+  "seconds": 0.07800000000861473,
+  "source_sha256": {},
+  "started_utc": "2026-10-01T20:03:20.070818+00:00",
+  "status": "failed; remaining backbone calls skipped without retry",
+  "views": [
+    "identity",
+    "random_basis"
+  ]
+}

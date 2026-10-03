@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-03",
+  "browseros": "connected; current browser inventory inspected",
+  "colab_pro_subscription": "unverified",
+  "active_colab_tabs": 0,
+  "notebook": "experiments/mask_compiler/colab_gpu_reproduction.ipynb",
+  "notebook_status": "prepared, no execution proof; not included in empirical results",
+  "gpu_used": "Modal T4, completed162 TabICL predictions"
+}

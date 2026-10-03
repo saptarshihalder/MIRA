@@ -573,5 +573,43 @@
     "app_stopped": true,
     "model_invocations": 0,
     "evidence_file": "artifacts/manifests/compiler_validation_v1_startup_failure.json"
+  },
+  {
+    "run_id": "compiler_validation_v2_tabicl",
+    "phase": "mask_compiler_backbone",
+    "model": "tabicl:v2",
+    "reserved_usd": 0.5,
+    "status": "failed",
+    "max_seconds": 900,
+    "protocol_sha256": "bbd594ff7e8175c33490a908f07d3f95943d6a5a76afadf4c34a3507818caef4",
+    "protocol_version": "trained_compiler_validation_v2",
+    "predecessor_run_id": "compiler_validation_v1_tabpfn",
+    "predecessor_protocol_sha256": "7d0f7719304763ce7d5d9d40a575aa6fdeaeffa7e47ac1ad9493b6f349624ed4",
+    "failure_evidence_sha256": "0774cc790d61c3180daabad66f4c4c9be02b05d131775a8162ace5d817e6249e",
+    "date": "2026-10-01T19:57:34.818783+00:00",
+    "active_seconds": 3.2710746449999997,
+    "exit_code": 1,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\compiler_validation_v2_tabicl",
+    "error": "SystemExit(1)"
+  },
+  {
+    "run_id": "compiler_gpu_repair_v1_tabicl",
+    "phase": "mask_compiler_gpu_repair",
+    "model": "tabicl:v2",
+    "reserved_usd": 0.5,
+    "status": "completed",
+    "max_seconds": 900,
+    "protocol_sha256": "3dee6317629de8567ff70a26f5571108135f804ba0c3eb154d9c91ea4d815f75",
+    "protocol_version": "compiler_gpu_repair_v1",
+    "failed_pilot_ledger_sha256": "d77d4bb590d76af4065fc5e6b86683af41923c7ae0e971e96be36e14235c5f2c",
+    "authorization": {
+      "origin": "human_user",
+      "date": "2026-10-02",
+      "request": "use gpu man, also minimize the token usage lol, use modal and colab pro"
+    },
+    "date": "2026-10-01T20:13:21.200945+00:00",
+    "active_seconds": 188.009322222,
+    "exit_code": 0,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\compiler_gpu_repair_v1_tabicl"
   }
 ]

@@ -1,0 +1,17 @@
+{
+  "data_sha256": "c9f03238c2e40a473b3b30c630c3ed8ea8e3386274857cbf90781a405d0efb0c",
+  "dataset": "hepatitis",
+  "episode_id": "natural_hepatitis_f1",
+  "fold": 1,
+  "gamma": null,
+  "kind": "natural",
+  "order": null,
+  "seed": 96601,
+  "selected_columns": [
+    17,
+    14,
+    16,
+    7
+  ],
+  "selector_ood": "U proxy is identically zero; no U column is added to natural backbone X"
+}

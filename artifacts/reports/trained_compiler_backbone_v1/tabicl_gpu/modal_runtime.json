@@ -1,0 +1,23 @@
+{
+  "seconds": 188.009322222,
+  "exit_code": 0,
+  "command": [
+    "/usr/local/bin/python",
+    "/opt/mira/experiments/mask_compiler/run_backbone.py",
+    "--protocol",
+    "/opt/mira/configs/compiler_gpu_repair_v1.json",
+    "--model",
+    "tabicl:v2",
+    "--cache-root",
+    "/cache",
+    "--out",
+    "/tmp/mira_compiler_v3_5bah400y/results"
+  ],
+  "gpu": "T4",
+  "max_seconds": 900,
+  "wrapper": "modal_compiler_v3",
+  "remote_root": "/opt/mira",
+  "phase": "mask_compiler_gpu_repair",
+  "estimated_active_compute_usd": 0.03909841864928712,
+  "invoice_status": "estimate; excludes startup/build/provider rounding"
+}

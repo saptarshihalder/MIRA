@@ -1,4 +1,12 @@
-# Trained MIRA-Compiler — working plan, 1 October 2026
+# Trained MIRA-Compiler — working plan, updated October 3, 2026
+
+## Day14 outcome supersedes unperformed-gate text below
+
+All matched-training, native-data and direct-backbone development gates executed. See `docs/DAY_8_14_AUDIT.md` and `artifacts/reports/trained_compiler_backbone_v1/`. Trained compiler improves over uncompiled indicators on synthetic multibit tasks (.085870/.061096 mean gains for TabPFN/TabICL), but fixed heuristic and equally informed controls explain the gain. All six native-data compiler/identity predictions per backbone coincide. **Do not advance this candidate to fresh confirmation or claim a useful new learned method.**
+
+Next CPU-only candidate must train on actual predictive utility with support-held-out training labels, rather than privileged active-parity recovery. Include class imbalance/acquisition blocks/observed-value interactions, compare centered moments and calibrated fixed selection, and match all meta-training/teacher and target-label budgets. Test whether a learned residual or utility ranker offers improvement beyond these controls before designing another paid gate. This is pending research, not a promised model or acceptance guarantee.
+
+Initial two-call/$1 pilot exhausted with two preserved pre-inference failures. User's later GPU instruction authorized one separate $.50 repair, which completed162 T4 predictions. No further attempts in either phase. Global reservations10.55, cap26, reserve3. CPU TabPFN completed162 predictions; Colab notebook is prepared but unexecuted/unverified. All current seeds74000–74002 and90000–90063 are now development, while98000–98019 remain unused.
 
 ## Primary candidate
 

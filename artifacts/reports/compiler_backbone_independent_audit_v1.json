@@ -1,0 +1,366 @@
+{
+  "status": "pass",
+  "scope": "Development only; CPU TabPFN audit. TabICL pending; no CPU/GPU numerical-equivalence claim. Independent saved-prediction score calculation; no model rerun.",
+  "runs": [
+    {
+      "directory": "artifacts\\runs\\compiler_backbone_v2_tabpfn_cpu",
+      "model": "tabpfn:v2",
+      "protocol_sha256": "bbd594ff7e8175c33490a908f07d3f95943d6a5a76afadf4c34a3507818caef4",
+      "episodes": 18,
+      "predictions": 162,
+      "seconds": 444.0469999999914,
+      "errors": 0,
+      "warnings": 0,
+      "checks_passed": {
+        "prediction_hashes": 162,
+        "data_hashes": 162,
+        "valid_probability_vectors": 162,
+        "empirical_nll": 162,
+        "empirical_brier": 162,
+        "expected_nll": 108,
+        "source_files": 62,
+        "episode_arrays": 234,
+        "mask_patterns": 36,
+        "disjoint_row_ids": 18,
+        "disjoint_natural_groups": 6,
+        "invertible_maps": 162,
+        "saved_selection_records": 162,
+        "input_widths": 162,
+        "backbone_parameters": 162
+      },
+      "max_score_recomputation_drift": {
+        "empirical_nll": 0.0,
+        "empirical_brier": 0.0,
+        "expected_nll": 0.0
+      },
+      "reconstructed_arrays_max_float_drift": 0.0,
+      "reconstruction_float_atol": 1e-12,
+      "nonfloat_comparison": "exact element values; dtype differences separately recorded",
+      "dtype_differences": [
+        {
+          "episode": "synthetic_k2_g0_s74000",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k2_g0_s74001",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k2_g0_s74002",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k2_g0.9_s74000",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k2_g0.9_s74001",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k2_g0.9_s74002",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k4_g0_s74000",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k4_g0_s74001",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k4_g0_s74002",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k4_g0.9_s74000",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k4_g0.9_s74001",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        },
+        {
+          "episode": "synthetic_k4_g0.9_s74002",
+          "array": "selected_columns",
+          "saved_dtype": "int64",
+          "reconstructed_dtype": "int32"
+        }
+      ],
+      "source_hash_failures": [],
+      "actual_checkpoint_hashes": {
+        "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\checkpoints\\compiler_cpu\\tabpfn\\tabpfn-v2-classifier-finetuned-zk73skhh.ckpt": {
+          "sha256": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49",
+          "matches_frozen": true
+        }
+      },
+      "episode_audits": [
+        {
+          "episode": "synthetic_k2_g0_s74000",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "34d5f31ffae5348e185f8bc336c66834e074241cfbd75c9f4fcbd33b5eb96291"
+        },
+        {
+          "episode": "synthetic_k2_g0_s74001",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "41499d788d45e8836ebe4f5b4522a1a6bd51f7e69dc40760982bcf80d56b5be3"
+        },
+        {
+          "episode": "synthetic_k2_g0_s74002",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "31f58e978fd0944a1b861b01b9a893791e7e7e7ec1ec9c048d6f928fd6a9a23a"
+        },
+        {
+          "episode": "synthetic_k2_g0.9_s74000",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "b2ef003e78ec82c235f1dde563da3a81a40facbbfaf77b5371851e4a46aed09c"
+        },
+        {
+          "episode": "synthetic_k2_g0.9_s74001",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "6c661bae58a8679590081dce9ecb40a95b4b152f22218e6a2041ab27f161b749"
+        },
+        {
+          "episode": "synthetic_k2_g0.9_s74002",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "10928013d036b0dfb94e13642271285c449b7a693ece1e31c89493d38809b641"
+        },
+        {
+          "episode": "synthetic_k4_g0_s74000",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "52db0b683b30614036b90336ac7481965fbb334c06cb66b3fefcbaac6afbd452"
+        },
+        {
+          "episode": "synthetic_k4_g0_s74001",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "e99c3b439a7d1cebed9ad4726d3a5bdf86719620f7f518f457244e879bf7a026"
+        },
+        {
+          "episode": "synthetic_k4_g0_s74002",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "c4e8b12f3c50e1631d5ef5010559b8368fb7217908a11072b5ea4523352f6178"
+        },
+        {
+          "episode": "synthetic_k4_g0.9_s74000",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "64f094ac092b3ef1a6f1975af4d94f9991b571db68fe2f796a20e8d6ac2b865a"
+        },
+        {
+          "episode": "synthetic_k4_g0.9_s74001",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "d33067b674ccb8f1f5bc92af4cf4c49958b51816716478e2e182fe01f8cfd2ad"
+        },
+        {
+          "episode": "synthetic_k4_g0.9_s74002",
+          "kind": "synthetic",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "f27f5011ca5acf6f0c2ad60a8217f8a895dd7efe89c53121c5f56abf9d62daa5"
+        },
+        {
+          "episode": "natural_hepatitis_f0",
+          "kind": "natural",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "34902335c82a20259d56fa2cd60854bd30dc4840f4da3c09b930daf7e2003cfb"
+        },
+        {
+          "episode": "natural_hepatitis_f1",
+          "kind": "natural",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "c9f03238c2e40a473b3b30c630c3ed8ea8e3386274857cbf90781a405d0efb0c"
+        },
+        {
+          "episode": "natural_hepatitis_f2",
+          "kind": "natural",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "68133db871e65bb7faab02367a30642908be9ac63e72be1ab144b31c85dad931"
+        },
+        {
+          "episode": "natural_horse_colic_f0",
+          "kind": "natural",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "2198a705cf7003dfa55c9907cb124fc0eaee25c202df9b9a6b818c5af984bf46"
+        },
+        {
+          "episode": "natural_horse_colic_f1",
+          "kind": "natural",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "84aa2de20d63a97a29f71342d088223c0909e5fa92ed9565035cdabe1678d226"
+        },
+        {
+          "episode": "natural_horse_colic_f2",
+          "kind": "natural",
+          "recreated_max_float_drift": 0.0,
+          "dataset_file_sha256": "2d1128829d477772e3a76813ae82125ec162d8fce6fd815c5d70a1a80b9132b1"
+        }
+      ],
+      "trained_vs_heuristic": [
+        {
+          "episode": "synthetic_k2_g0_s74000",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k2_g0_s74001",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k2_g0_s74002",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k2_g0.9_s74000",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k2_g0.9_s74001",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k2_g0.9_s74002",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k4_g0_s74000",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k4_g0_s74001",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k4_g0_s74002",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k4_g0.9_s74000",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k4_g0.9_s74001",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "synthetic_k4_g0.9_s74002",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "natural_hepatitis_f0",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "natural_hepatitis_f1",
+          "maps_equal": false,
+          "probabilities_exact_equal": false,
+          "max_probability_drift": 0.17607280611991882
+        },
+        {
+          "episode": "natural_hepatitis_f2",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "natural_horse_colic_f0",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "natural_horse_colic_f1",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        },
+        {
+          "episode": "natural_horse_colic_f2",
+          "maps_equal": true,
+          "probabilities_exact_equal": true,
+          "max_probability_drift": 0.0
+        }
+      ],
+      "trained_heuristic_equal_map_episodes": 17,
+      "trained_heuristic_exact_probability_episodes": 17,
+      "primary_descriptive_gate": [
+        {
+          "gamma": 0,
+          "three_seed_order_averaged_identity_minus_trained": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mean": 0.0
+        },
+        {
+          "gamma": 0.9,
+          "three_seed_order_averaged_identity_minus_trained": [
+            0.06961018887228287,
+            0.10250016861242507,
+            0.08550010431074043
+          ],
+          "mean": 0.08587015393181612
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "pending": "Add TabICL GPU repair run after root completion notice."
+}

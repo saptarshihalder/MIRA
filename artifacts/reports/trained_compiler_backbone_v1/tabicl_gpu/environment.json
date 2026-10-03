@@ -1,0 +1,16 @@
+{
+  "dependency_lock_sha256": "18f79906e30d2cdde4ea39207b9529a240a93d3ca39d33611facbe925d461f4b",
+  "dependency_lock_status": "captured",
+  "packages": {
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "tabicl": "2.2.0",
+    "tabpfn": "9.0.0",
+    "torch": "2.8.0",
+    "xgboost": "3.4.1"
+  },
+  "platform": "Linux-4.19.0-gvisor-x86_64-with-glibc2.36",
+  "python": "3.12.10",
+  "python_executable": "/usr/local/bin/python"
+}

@@ -1,0 +1,16 @@
+{
+  "dependency_lock_sha256": "ec5d7c752dae4b0060bd9edc730f86e5275545124320cdf35b283793534a8adf",
+  "dependency_lock_status": "captured",
+  "packages": {
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "tabicl": "not installed",
+    "tabpfn": "9.0.0",
+    "torch": "2.8.0+cpu",
+    "xgboost": "not installed"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.9",
+  "python_executable": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\.venv-compiler-cpu\\Scripts\\python.exe"
+}

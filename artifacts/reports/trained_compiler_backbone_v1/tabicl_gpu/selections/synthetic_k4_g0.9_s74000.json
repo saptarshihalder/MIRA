@@ -1,0 +1,298 @@
+{
+  "cv_basis": {
+    "matrix": [
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "C": 1.0,
+      "cv_fits": 108,
+      "cv_nll": 0.20743101822911783,
+      "group_cv": false,
+      "index": 11,
+      "objective": "support-only mask-logistic surrogate"
+    }
+  },
+  "deepsets": {
+    "matrix": [
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "index": 11,
+      "max_probability": 0.9998114705085754,
+      "raw_index": 11,
+      "threshold": 0.8
+    }
+  },
+  "heuristic": {
+    "matrix": [
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "index": 11,
+      "max_moment": 0.921875,
+      "threshold": 0.3
+    }
+  },
+  "identity": {
+    "matrix": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "selection": "fixed identity/no labels"
+    }
+  },
+  "matched_linear": {
+    "matrix": [
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "index": 11,
+      "max_probability": 0.9040563702583313,
+      "raw_index": 11,
+      "threshold": 0.8
+    }
+  },
+  "native": {
+    "matrix": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "selection": "fixed identity/no labels"
+    }
+  },
+  "random_basis": {
+    "matrix": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "identity_probability": 0.08333333333333333,
+      "index": 0,
+      "selection": "label-free seeded random"
+    }
+  },
+  "shuffled": {
+    "matrix": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "selection": "fixed identity/no labels"
+    }
+  },
+  "trained": {
+    "matrix": [
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "selection": {
+      "index": 11,
+      "max_probability": 0.9999693632125854,
+      "threshold": 0.8
+    }
+  }
+}

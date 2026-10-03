@@ -1,0 +1,17 @@
+{
+  "data_sha256": "e1ac667b25fefb39f3ee646ec5db6af4f3f46433bf989812f515fae0d8261e84",
+  "dataset": null,
+  "episode_id": "integration",
+  "fold": null,
+  "gamma": 0.9,
+  "kind": "synthetic",
+  "order": 2,
+  "seed": 74009,
+  "selected_columns": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "selector_ood": null
+}

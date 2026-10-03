@@ -1,0 +1,17 @@
+{
+  "data_sha256": "188a90c887b4ed04d9728c7c9308ebaba1f17d83ef9817ad3e263f06b5748c14",
+  "dataset": "horse_colic",
+  "episode_id": "natural_horse_colic_f1",
+  "fold": 1,
+  "gamma": null,
+  "kind": "natural",
+  "order": null,
+  "seed": 96701,
+  "selected_columns": [
+    13,
+    19,
+    18,
+    12
+  ],
+  "selector_ood": "U proxy is identically zero; no U column is added to natural backbone X"
+}
