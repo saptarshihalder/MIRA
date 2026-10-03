@@ -924,5 +924,18 @@
     "provider_reported_resource_cost_usd": 0.04768177,
     "provider_cost_status": "Final invoice unverified; missing resource rows mean unavailable; full.80 retained despite CPU recovery",
     "failure": "Platt L-BFGS-B ABNORMAL after all training and132predictions; no remote retry"
+  },
+  {
+    "run_id": "crossfit_architecture_transfer_cpu",
+    "date": "2026-10-04",
+    "status": "completed",
+    "reserved_usd": 0,
+    "provider_charge_usd": 0,
+    "device": "local_cpu",
+    "training_seconds": 36,
+    "evaluation_seconds": 23.157,
+    "cloud_calls": 0,
+    "results": "artifacts/reports/crossfit_extension",
+    "scientific_outcome": "query-head contrast supported; joint architecture and native gates fail"
   }
 ]

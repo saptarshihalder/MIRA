@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "frozen_file_hashes": 100,
+  "synthetic_cells": 160,
+  "native_cells": 78,
+  "probability_arrays": 2454,
+  "checkpoint_replays": 1190,
+  "max_score_error": 0.0,
+  "max_replay_error": 0.0,
+  "all_recorded_decisions_match": true,
+  "intervals_and_task_means_verified": true,
+  "confirmation_seeds_untouched": true
+}

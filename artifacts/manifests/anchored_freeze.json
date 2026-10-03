@@ -1,0 +1,12 @@
+{
+  "docs/ANCHORED_PROTOCOL.md": "6fc57082937fe27b3c473b01c16025073ec0ea5e85ea981e07cc0db59e702010",
+  "experiments/crossfit_v1/anchored_model.py": "0939f6e4356561bad47bf1e4f922a8af7bcab3f869c1a46c9febfe6da28981f0",
+  "experiments/crossfit_v1/anchored_run.py": "564f2aeb4e1856148f8334287dead9416167ea3576d23ec1f44808ac60067fbb",
+  "experiments/crossfit_v1/extension.py": "5367a51fceebb80c9659a8f1cc4d0e5bd7732d5259fc2f73fce468f008c7a08c",
+  "experiments/crossfit_v1/support_head.py": "d12baffc775f8d8b1feadaca79288156c8be2a80178698c15bcb15e7608a977a",
+  "experiments/crossfit_v1/model.py": "c2bd5c4b99e55a45cf2b0b0e532caf042c052dfc868a9d10e7f0bd9826acb713",
+  "experiments/spectral_v1/model.py": "483dea5f9046324e25ebf7ed969114445f4cce7252a49dc83d2dce760f856abb",
+  "experiments/bridge_v1/run.py": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
+  "experiments/crossfit_v1/recover_evaluation.py": "9d3e16bbc98658eb3ebf4b0a04591679d21031e1fdeedf3dcfdc200b5e60cde6",
+  "artifacts/manifests/crossfit_extension_freeze.json": "068d41ed95a0638161f4cfa0b8f7398e3622f530a9e27a837006fabec14fcc9d"
+}

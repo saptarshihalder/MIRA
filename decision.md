@@ -1,5 +1,10 @@
 # Research decision â€” October 1, 2026
 
+## Architecture and native-transfer batch completed: October 4
+
+Read docs/CROSSFIT_EXTENSION_FINDINGS.md first. The new capacity-matched support-only head and fixed20-seed replication support query conditioning: sign-flip gain .014318 [.002958,.025678], a prespecified97.5% interval. Full architecture gate still FAILS because task-conditioned-scalar contrast .004074 [-.001861,.010009] is uncertain. Robustness gate PASSES; ignorable harm .000237 has upper95 .000733, so zero-harm safety is false. Frozen-checkpoint native transfer over all78 episodes FAILS: main NLL harms BRFSS asthma/diabetes by .000160/.000084 and improves roads by .000500, where support-only and Platt do better. No venue-readiness claim. All2,454 score arrays/1,190 checkpoint replays/100 hashes audit pass; actual native inputs and predictions are archived for reproduction. New control trained500 CPU steps; original main remains CUDA-trained. No new cloud cost. Provisions16.45 +3 protected leave.55. Confirmation98000-98019 untouched. This finite batch is CLOSED; next conditional direction is dataset-disjoint native meta-training with matched head/calibration controls and training-seed replication, NOT repeated threshold/seed searching on this panel. Same paper source updated; native PDF compiler remains unresolved.
+
+
 **Complete the scoped representation paper; keep substantial adapter training inactive. Research evidence through Day 8 is complete for the accessible checkpoints.**
 
 The frozen Gaussian pairwise hypothesis passed on twenty fresh tasks: TabPFN v2 gains .103894 [.079695,.128093] nats over native input and .094994 [.061620,.128368] over same-width shuffled indicators. Protocol 7ffb13d preceded evaluation; only these two contrasts have the prespecified 97.5% task intervals and nominal Bonferroni familywise coverage. The 360 cells and independent exact-oracle/identity/interval audits pass. Seeds 60000â€“60019 are consumed; further analysis on them is post-confirmation.

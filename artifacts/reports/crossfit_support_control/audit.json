@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "independent_scores": 160,
+  "label_identity_checks": 160,
+  "max_score_error": 0,
+  "runner_checkpoint_reload_error": 0.0
+}

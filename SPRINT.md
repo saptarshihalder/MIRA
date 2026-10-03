@@ -1,5 +1,10 @@
 # MIRA: October 1â€“20, 2026
 
+## Architecture and native-transfer batch completed: October 4
+
+Read docs/CROSSFIT_EXTENSION_FINDINGS.md first. The new capacity-matched support-only head and fixed20-seed replication support query conditioning: sign-flip gain .014318 [.002958,.025678], a prespecified97.5% interval. Full architecture gate still FAILS because task-conditioned-scalar contrast .004074 [-.001861,.010009] is uncertain. Robustness gate PASSES; ignorable harm .000237 has upper95 .000733, so zero-harm safety is false. Frozen-checkpoint native transfer over all78 episodes FAILS: main NLL harms BRFSS asthma/diabetes by .000160/.000084 and improves roads by .000500, where support-only and Platt do better. No venue-readiness claim. All2,454 score arrays/1,190 checkpoint replays/100 hashes audit pass; actual native inputs and predictions are archived for reproduction. New control trained500 CPU steps; original main remains CUDA-trained. No new cloud cost. Provisions16.45 +3 protected leave.55. Confirmation98000-98019 untouched. This finite batch is CLOSED; next conditional direction is dataset-disjoint native meta-training with matched head/calibration controls and training-seed replication, NOT repeated threshold/seed searching on this panel. Same paper source updated; native PDF compiler remains unresolved.
+
+
 Objective authorized by the user: a rigorous NeurIPS-quality manuscript by October 20. This is a draft deadline, not a NeurIPS 2026 main-track submission deadline (May 6). On October 3 the user reduced the total Modal compute ceiling to $20, superseding the earlier $26 ceiling. Conserve tokens with saved state, short updates, bounded experiments and compact reports.
 
 ## Scientific decision
