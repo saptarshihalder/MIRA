@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-03",
+  "phase": "CPU development",
+  "files": {
+    "experiments/policy_adapter_v1/pilot.py": "bb4785fadf2a3c9173ce68d3883031ea1116bdac83e89460f73d8590d8d77546",
+    "experiments/policy_adapter_v1/test_boundaries.py": "3048769b9a49f555986bbff408e665fdb50bbec5438812c0098f58c9bcfd2584",
+    "configs/policy_adapter_v1.json": "897acf53e9cb9918da8df2d97ba0e25214a985c0e2986cf8e5c6dc5a070a6541",
+    "docs/POLICY_ADAPTER_PLAN.md": "dd783894beceea2598deecb17296ba8cbe271d073f2fcb9d2eed4f5a9031b58a"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version": "policy_adapter_v1_cpu_development",
+  "namespace": 1601,
+  "train_seeds": [110000, 110768],
+  "validation_seeds": [112000, 112064],
+  "development_seeds": [114000, 114048],
+  "source_labels": 128,
+  "target_labels": 64,
+  "queries": 128,
+  "epochs": 40,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "training_seed": 1601,
+  "cv_seed": 1602,
+  "ridge_grid": [0.001, 0.01, 0.1, 1.0],
+  "checkpoint": "fixed final epoch; validation diagnostic only",
+  "device": "cpu",
+  "paid_compute": false,
+  "confirmation_seeds": "98000-98019 remain unused",
+  "gate": "ordinary mean expected-NLL gain >=.01; positive nominal 95% task-level lower bounds against ordinary/no_shift/intercept/cv_mask/cv_parity/cv_pooled/moment; mean null and unchanged harm vs frozen <=.01",
+  "scope": "New synthetic developmental screen using frozen source-U logistic proxy; no natural-data or TFM result"
+}
