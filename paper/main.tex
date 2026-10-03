@@ -15,11 +15,11 @@
 \end{center}
 
 \begin{abstract}
-We train support-conditioned missingness corrections for frozen tabular predictors. A 961-parameter network learns probability mixtures over sixteen support-fitted corrections using predictive cross-entropy, with no privileged mechanism teacher. On forty-eight synthetic development worlds its gain over a centered-moment estimator is .01577 nats, while null harm is .00193; the gain over a calibrated guard is .00365 with a nominal 95\% task interval crossing zero. We then train a full-feature source XGBoost predictor and three correction models on a Tesla T4 using naturally incomplete Diabetes encounters with patient-disjoint partitions. Training the neural mixture from scratch performs better than synthetic pretraining followed by native fine-tuning; a 13-parameter trained linear mixture performs similarly. Nine further A100 trials evaluate health surveys and road collisions from 2026 releases, using 50,000 source labels per fit and held-out 2025 regions. Neural gains are tiny or matched by calibration and convex stacking controls. These findings support limited predictive adaptation, not an established novel learned-method advantage. Supporting experiments retain a trained reversible compiler that matches a heuristic, a 324-prediction frozen-backbone screen, and an earlier twenty-task TabPFN representation confirmation. Source, checkpoints, probabilities, boundaries, failed gates and costs are retained. General native-missingness benefit, identified acquisition-policy transport and venue readiness remain unresolved.
+We train support-conditioned missingness corrections for frozen tabular predictors. A 961-parameter network learns probability mixtures over sixteen support-fitted corrections using predictive cross-entropy, with no privileged mechanism teacher. On forty-eight synthetic development worlds its gain over a centered-moment estimator is .01577 nats, while null harm is .00193; the gain over a calibrated guard is .00365 with a nominal 95\% task interval crossing zero. We then train a full-feature source XGBoost predictor and three correction models on a Tesla T4 using naturally incomplete Diabetes encounters with patient-disjoint partitions. Training the neural mixture from scratch performs better than synthetic pretraining followed by native fine-tuning; a 13-parameter trained linear mixture performs similarly. Nine further A100 trials evaluate health surveys and road collisions from 2026 releases, using 50,000 source labels per fit and held-out 2025 regions. Neural gains are tiny or matched by calibration and convex stacking controls. These findings support limited predictive adaptation, not an established novel learned-method advantage. Supporting experiments retain a trained reversible compiler that matches a heuristic, a 324-prediction frozen-backbone screen, and an earlier twenty-task TabPFN representation confirmation. Source, checkpoints, probabilities, boundaries, failed gates and costs are retained. A later learned support regularizer improves averaged controlled-shift losses over strong controls, but harms ignorable missingness and nonlinear-shift cases. General native-missingness benefit, identified acquisition-policy transport and venue readiness remain unresolved.
 \end{abstract}
 
 \section{Question and scope}
-Our primary candidate is MIRA-Compiler, a trained selector of reversible missingness coordinates for a frozen predictor. Its purpose is to expose a task-relevant mask interaction as an individual coordinate while retaining the raw incomplete table. Training alone does not establish a useful contribution: our development screen compares the learned selector with fixed moments, equally pretrained competitors, support-only basis search and uncompiled inputs. We report failures of this screen as well as improvements. The earlier representation experiments establish motivation rather than evidence of learned-model superiority.
+Our current trainable candidate learns source/target-support-conditioned regularization for a differentiable logistic correction. Its controlled shifted benefit is qualified by substantial null and nonlinear-regime failures. Earlier MIRA-Compiler is a trained selector of reversible missingness coordinates for a frozen predictor. Its purpose is to expose a task-relevant mask interaction as an individual coordinate while retaining the raw incomplete table. Training alone does not establish a useful contribution: our development screen compares the learned selector with fixed moments, equally pretrained competitors, support-only basis search and uncompiled inputs. We report failures of this screen as well as improvements. The earlier representation experiments establish motivation rather than evidence of learned-model superiority.
 
 Tabular foundation models predict from labeled examples without updating their pretrained weights. Their treatment of missing data depends on architecture, preprocessing, and inference configuration. We ask whether representing missingness as explicit binary columns changes prediction when the raw statistical information is unchanged. An affirmative result would establish a useful behavioral limitation or opportunity, with scope determined by the tested models and mechanisms.
 
@@ -184,7 +184,39 @@ Support Platt & .335693 & .398324 & .603197\\\bottomrule
 
 Road neural loss improves descriptively over frozen by .007634 nats, with a conditional nominal 95\% region interval $[-.001617,.016885]$ after averaging seeds. Its contrast against support Platt is $-.000487$ $[-.003223,.002248]$; against global simplex it is $-.000336$ $[-.001358,.000685]$. Health changes are tiny or negative. This broader evaluation does not establish a distinctive nonlinear advantage. Two domains, correlated targets and fixed region choices do not establish generalization across arbitrary datasets. BRFSS questionnaire/state coverage and DfT reporting specifications change between years; large structural absence in legacy collision fields prevents attributing performance changes causally to acquisition policy.
 
-All nine trials completed on an NVIDIA A100-SXM4-40GB in a deployed Modal app; the final bounded wrapper took 62.020 seconds. Independent reconstruction verifies 1,470 probability arrays, checkpoints, original prepared labels and group/year boundaries, with NLL error at most $7.05\times10^{-8}$ and NumPy checkpoint error $2.02\times10^{-7}$. Every contextual linear fit attains its declared gradient tolerance; maximum simplex KKT residual is $2.01\times10^{-6}$. XGBoost host/device prediction fallback is preserved, so CUDA training does not imply every prediction kernel ran on GPU. An earlier calibration line-search failure retained four complete trials and partial outputs. A separately frozen, numerically equivalent safeguarded Newton solver uses the same ridge objective; an initial cloud-mount failure and its GPU charges are also retained. All repairs preserve data, seeds, objectives and models; no results-based scientific selection or automatic retry occurs. Latest total Modal cap is \$20, with conservative reservations \$16.95 and a protected \$3 reproduction reserve. Provider UI displays \$0.11 across the three attempts, rounded and unverified as a final invoice. The successful app persists with zero active GPU containers and no schedule or endpoint.
+All nine trials completed on an NVIDIA A100-SXM4-40GB in a deployed Modal app; the final bounded wrapper took 62.020 seconds. Independent reconstruction verifies 1,470 probability arrays, checkpoints, original prepared labels and group/year boundaries, with NLL error at most $7.05\times10^{-8}$ and NumPy checkpoint error $2.02\times10^{-7}$. Every contextual linear fit attains its declared gradient tolerance; maximum simplex KKT residual is $2.01\times10^{-6}$. XGBoost host/device prediction fallback is preserved, so CUDA training does not imply every prediction kernel ran on GPU. An earlier calibration line-search failure retained four complete trials and partial outputs. A separately frozen, numerically equivalent safeguarded Newton solver uses the same ridge objective; an initial cloud-mount failure and its GPU charges are also retained. All repairs preserve data, seeds, objectives and models; no results-based scientific selection or automatic retry occurs. At that native checkpoint, the total Modal cap was \$20, with conservative reservations \$16.95 and a protected \$3 reproduction reserve. Provider UI displays \$0.11 across the three attempts, rounded and unverified as a final invoice. The successful app persists with zero active GPU containers and no schedule or endpoint.
+
+
+\subsection{Trainable support-conditioned successors}
+The fixed candidate mixture motivated a variable-width query-conditioned bridge with 20,801 parameters, bounded shared potentials, and correction
+\begin{equation}
+ z_{\mathrm{target}}(q)=z_{\mathrm{frozen}}(q)+h_{\theta}(q,S_t)-h_{\theta}(q,S_s).
+\end{equation}
+Potential subtraction guarantees identity, reversal and composition only at the same observed query. It does not guarantee correct adaptation. Five models received 800 CUDA updates on controlled development tasks. Shifted gain over frozen was .001602 [-.001330,.004660]; support interaction logistic was better by .027011 [.016530,.037520], and target-only conditioning by .003339 [.000681,.005855]. The frozen gate failed.
+
+A separately frozen revision fits target labels explicitly while learning coordinate-specific positive regularization from source and target support moments. A shared 1,857-parameter MLP outputs penalties for the basis containing intercept, frozen logit, observed values, masks and all ordered value--mask products. Four differentiable float64 Newton updates approximate
+\begin{equation}
+ \min_b\;\frac{1}{n_t}\sum_{i\in S_t}\ell(z_i+\psi_i^\top b,y_i)
+ +\frac{1}{2}\sum_j\lambda_{\omega,j}(S_s,S_t)b_j^2.
+\end{equation}
+Prediction is $\sigma(z_q+\psi_q^\top b^{(4)})$. No query label or mechanism coefficient conditions prediction; synthetic labels enter the evaluator's observation generator and meta-training loss. This is controlled retrospective masking, not natural missingness. The explicit interaction basis is shared by every solver control and cannot be credited as a learned feature representation. Optimization layers and learned regularization have established precedents~\cite{r2d2,metaoptnet,metareg}; the support-conditioning advantage is the candidate contribution under test.
+
+Four learned variants receive the same episodes and 600 updates: source/target-conditioned, target-only-conditioned, feature-type-only, and global-scalar penalties. The type-only network has the same stored size but effectively emits five type penalties. Fixed .1 regularization and eleven global penalties selected using training meta-query loss only are additional controls. Source-fit, support, meta-query, validation and development generator streams are disjoint. Four validation and twelve development latent seeds each span widths6/10/14 and four regimes. Bootstrap intervals resample the twelve seeds after averaging correlated widths and regimes. Width14 is structural extrapolation, not an external dataset.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Model & Sign flip & Nonlinear & No shift & Ignorable\\
+\midrule
+Frozen & .600367 & .594366 & .600610 & .661772\\
+Support interaction logistic & .491318 & .624173 & .496648 & .719699\\
+Fixed/train-grid regularizer & .498337 & .608472 & .500623 & .707019\\
+Target-only learned & .458689 & .613399 & .456088 & .728806\\
+Source/target learned & .445794 & .619693 & .444034 & .722628\\
+\bottomrule
+\end{tabular}
+\end{center}
+Lower NLL is better. Averaged shifted gain is .025002 [.021761,.028315] over support logistic, .020661 [.017715,.023771] over fixed/train-grid regularization, and .003300 [.000862,.005632] over the target-only learner. These are conditional synthetic gains. Ignorable-null harm is .060856 [.050163,.070476], far above the predeclared .001 limit, and nonlinear-shift loss exceeds frozen. Thus the full gate fails; a positive aggregate does not establish robustness or identified policy transport. No natural-data or confirmation extension follows this result. All outcomes, source hashes, checkpoints and probabilities are retained. Both versions trained on NVIDIA A100-SXM4-40GB; independent audits reconstruct all scores and data boundaries and replay checkpoints. The four-step solver reports numerical gradients without a convergence guarantee. Both candidate protocols preceded their respective GPU scores, and the second was explicitly motivated by the first failed development result. Current conservative provisions are \$14.05 with \$3 protected for reproduction within the \$20 total cap; reported resource charges are distinct from unverified final invoices.
 
 \section{Controlled data and oracle}
 The initial synthetic diagnostic keeps an observed variable $U\in\{-1,+1\}$ balanced and uses
@@ -458,5 +490,18 @@ Centers for Disease Control and Prevention. 2025 and 2024 BRFSS Survey Data and 
 
 \bibitem{road2025}
 UK Department for Transport. Road safety open data: final 2025 collision records, released July 30, 2026, with documented later revisions. Open Government Licence v3.0. \url{https://www.gov.uk/government/statistical-data-sets/road-safety-open-data}.
+
+\bibitem{r2d2}
+L. Bertinetto, J. F. Henriques, P. Torr, and A. Vedaldi.
+Meta-learning with differentiable closed-form solvers. ICLR, 2019.
+\url{https://arxiv.org/abs/1805.08136}.
+\bibitem{metaoptnet}
+K. Lee, S. Maji, A. Ravichandran, and S. Soatto.
+Meta-learning with differentiable convex optimization. CVPR, 2019.
+\url{https://openaccess.thecvf.com/content_CVPR_2019/html/Lee_Meta-Learning_With_Differentiable_Convex_Optimization_CVPR_2019_paper.html}.
+\bibitem{metareg}
+Y. Balaji, S. Sankaranarayanan, and R. Chellappa.
+MetaReg: Towards domain generalization using meta-regularization. NeurIPS, 2018.
+\url{https://proceedings.neurips.cc/paper/2018/hash/647bba344396e7c8170902bcf2e15551-Abstract.html}.
 \end{thebibliography}
 \end{document}

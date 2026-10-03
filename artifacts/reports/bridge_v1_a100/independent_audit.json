@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "errors": [],
+  "checks_passed": 2518,
+  "checks_total": 2518,
+  "version": 1,
+  "protocol_sha256": "cfd60b1647e852398c74d928a63ad1fd8219457d5cdaae729a37325deba4dc08",
+  "auditor_sha256": "fa838cefbe78a09b1c89f058cd0cd6e176295300f3676c92ebbfb9236791da9f",
+  "files_checked": 192,
+  "probability_arrays_checked": 1536,
+  "cpu_checkpoint_files": 24,
+  "cpu_checkpoint_predictions": 120,
+  "cpu_subset": "First seed in each split, width and regime; every saved checkpoint",
+  "max_metric_error": 1.1102230246251565e-16,
+  "max_source_logit_error": 0.0,
+  "max_cpu_probability_error": 4.76837158203125e-07,
+  "max_regenerated_numeric_error": 1.1920928955078125e-07,
+  "max_regenerated_coefficient_error": 1.8827017722600203e-10,
+  "max_metadata_float_error": 2.220446049250313e-16,
+  "saved_data_hashes": {
+    "validation": "63c707f180bd6da84d5f320f36fe66ca22076f24b7d0a95f9bc06f7d6023492a",
+    "development": "c58b38ca9fa66890efbf4b1c4a66963d575419bfe92334187ee80f8d9e69765c"
+  },
+  "regenerated_data_hashes": {
+    "validation": "63c707f180bd6da84d5f320f36fe66ca22076f24b7d0a95f9bc06f7d6023492a",
+    "development": "185ca051db8630ea93c1608971f209731755614eab8b7b6dd1aae1b3aab7587e"
+  },
+  "regeneration_note": "Source-fit floating logits may vary by platform; masks, observed values and all labels require exact equality. Metadata floats tolerance1e-12; fitted coefficients1e-7; fitted logits1e-6.",
+  "independent_gate_pass": false,
+  "independent_shifted_gains": {
+    "frozen": {
+      "mean": 0.0016018121336109576,
+      "low": -0.001330262919962165,
+      "high": 0.004659858362259415
+    },
+    "target_platt": {
+      "mean": 0.004133213039510148,
+      "low": 0.00013586265032132928,
+      "high": 0.007725473627723853
+    },
+    "support_logistic": {
+      "mean": -0.027010666132282212,
+      "low": -0.037520455928164755,
+      "high": -0.016529735285123
+    },
+    "linear_residual": {
+      "mean": 0.0015634910829374043,
+      "low": -0.0014555653809574989,
+      "high": 0.00457622991902203
+    },
+    "generic_contextual": {
+      "mean": -0.0017785952633255775,
+      "low": -0.004448108542407791,
+      "high": 0.0009084032378765845
+    }
+  },
+  "independent_null_harms": {
+    "no_shift": {
+      "mean": 0.0009302142804502158,
+      "low": -0.002244592434758751,
+      "high": 0.003797827486549704
+    },
+    "ignorable_shift": {
+      "mean": -0.0025073347882932947,
+      "low": -0.004642095305522675,
+      "high": -0.00018706463833353964
+    }
+  },
+  "scope": "Saved artifacts, NumPy scoring, frozen generator regeneration and CPU checkpoint replay; no retraining/provider calls",
+  "seconds": 4.35899999999674
+}

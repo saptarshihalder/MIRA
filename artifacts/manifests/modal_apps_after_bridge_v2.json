@@ -1,0 +1,42 @@
+[
+  {
+    "app_id": "ap-vCFNSkNvKoLqkVxjHuVjKV",
+    "description": "mira-bridge-v2-a100",
+    "state": "deployed",
+    "tasks": "0",
+    "created_at": "2026-10-03 17:40:10+05:30",
+    "stopped_at": null
+  },
+  {
+    "app_id": "ap-zOyHMVDKIfs6KtgCCB4EVn",
+    "description": "mira-bridge-v1-a100",
+    "state": "deployed",
+    "tasks": "0",
+    "created_at": "2026-10-03 17:15:27+05:30",
+    "stopped_at": null
+  },
+  {
+    "app_id": "ap-raKw2bH4mQsaJMMJXkJwvJ",
+    "description": "mira-large-native-a100-final",
+    "state": "deployed",
+    "tasks": "0",
+    "created_at": "2026-10-03 16:33:46+05:30",
+    "stopped_at": null
+  },
+  {
+    "app_id": "ap-FGMu0nPPjGLxIT7Ds63p70",
+    "description": "mira-large-native-a100-repair",
+    "state": "stopped",
+    "tasks": "0",
+    "created_at": "2026-10-03 16:31:01+05:30",
+    "stopped_at": "2026-10-03 16:41:52+05:30"
+  },
+  {
+    "app_id": "ap-29sdBNwyGIJse79T72LRNz",
+    "description": "mira-large-native-a100",
+    "state": "stopped",
+    "tasks": "0",
+    "created_at": "2026-10-03 16:24:02+05:30",
+    "stopped_at": "2026-10-03 16:41:49+05:30"
+  }
+]

@@ -1,8 +1,8 @@
-# Research decision — October 1, 2026
+# Research decision â€” October 1, 2026
 
 **Complete the scoped representation paper; keep substantial adapter training inactive. Research evidence through Day 8 is complete for the accessible checkpoints.**
 
-The frozen Gaussian pairwise hypothesis passed on twenty fresh tasks: TabPFN v2 gains .103894 [.079695,.128093] nats over native input and .094994 [.061620,.128368] over same-width shuffled indicators. Protocol 7ffb13d preceded evaluation; only these two contrasts have the prespecified 97.5% task intervals and nominal Bonferroni familywise coverage. The 360 cells and independent exact-oracle/identity/interval audits pass. Seeds 60000–60019 are consumed; further analysis on them is post-confirmation.
+The frozen Gaussian pairwise hypothesis passed on twenty fresh tasks: TabPFN v2 gains .103894 [.079695,.128093] nats over native input and .094994 [.061620,.128368] over same-width shuffled indicators. Protocol 7ffb13d preceded evaluation; only these two contrasts have the prespecified 97.5% task intervals and nominal Bonferroni familywise coverage. The 360 cells and independent exact-oracle/identity/interval audits pass. Seeds 60000â€“60019 are consumed; further analysis on them is post-confirmation.
 
 The 240-prediction CPU follow-up uses the same support labels and engineered but fully declared mask-interaction basis. Support-CV L1 logistic reaches .193364 expected NLL, leaving .008930 above oracle. It descriptively beats TabPFN indicators by .015945 [.006618,.025272]. The fitted-base mixture is operational under its structural prior; the true-beta mixture is parameter-informed and excluded from the fair pool. Zero-signal interaction-model harms remain visible. This evidence does not activate a costly neural branch or establish new residual-adaptation novelty.
 
@@ -49,8 +49,14 @@ The 961-parameter uncertainty learner improves over the synthetic moment correct
 The fine-tuned primary loses to native scratch and linear models. Descriptive scratch gain over frozen is .006491 [.002546,.010437]; gain over the 13-parameter linear control is .000449 [-.000388,.001285]. This supports limited native utility, without establishing nonlinear novelty or a synthetic-pretraining benefit. Preserve warnings and earlier CPU/launcher failures. Reservations $11.05/$26 retain the $3 reproduction reserve; provider charge remains pending/rounded. No remote retry or confirmation. Next compare converged/calibration controls before a broader trainable successor. Native PDF compilation remains blocked by its environment.
 
 
-## Larger 2026-release A100 outcome — October 3
+## Larger 2026-release A100 outcome â€” October 3
 
 Nine complete A100 trials on BRFSS diabetes/asthma and UK collision severity use 50,000 source labels each, fixed native meta-training and held-out 2025 regions. Neural NLL .333545/.395610/.603685 versus frozen .333466/.395842/.611319. Strong calibration/simplex controls match or improve the neural model; no distinctive nonlinear advantage is established. Conditional road gain .007634 [-.001617,.016885] is uncertain. Two domains, correlated health targets and reporting/state changes constrain inference. This is used development, not confirmation or venue readiness.
 
 All 1,470 probability arrays and query-label/group/year/checkpoint boundaries pass independent audit. Converged contextual linear gradient certificates pass all nine trials; simplex KKT residual <=2.01e-6. Preserve the calibration and cloud-mount failures and all partial scores. Numerical repair changes neither objective, ridges, model, data nor partitions; no scientific selection follows scores. Successful app stays deployed with zero GPU containers; failed apps stopped. Latest cap $20, reservations $16.95, reproduction reserve $3. Provider UI total $0.11 is rounded and unverified as final invoices. No further paid expansion without reconciled headroom or a changed cap. Next use CPU diagnostics and prior art to assess a query-conditioned, variable-width trained successor; do not manufacture a positive result.
+
+## Trained successor update — October 3
+
+Bridge v1 fails; v2 support-conditioned regularization has a real controlled shifted gain over support logistic 0.025002 [0.021761,0.028315] and target-only conditioning .003300 [.000862,.005632]. However it harms the ignorable null by .060856 [.050163,.070476] and nonlinear-shift NLL .619693 exceeds frozen .594366. The aggregate shifted gain does not establish robustness. Both gates fail; neither candidate advances to native confirmation.
+
+Provisions $14.05 plus protected reproduction $3 within $20. Current next gate: docs/BRIDGE_NEXT_GATE.md. No completed phase is repeated; all negatives and confirmation separation persist.

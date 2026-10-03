@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "primary": "bridge",
+  "gate_pass": false,
+  "regime_mean_nll": {
+    "sign_flip": {
+      "frozen": 0.6030532888958038,
+      "target_platt": 0.6053481730460346,
+      "support_logistic": 0.5067239786127683,
+      "bridge": 0.598199411699087,
+      "generic_contextual": 0.5995006676170014,
+      "linear_residual": 0.6029278942830889,
+      "target_only": 0.5977951945456748,
+      "no_query": 0.6029925246340188
+    },
+    "nonlinear_shift": {
+      "frozen": 0.5984631858359235,
+      "target_platt": 0.6012311034974912,
+      "support_logistic": 0.6375675395871727,
+      "bridge": 0.6001134387654188,
+      "generic_contextual": 0.595254992320853,
+      "linear_residual": 0.5985119383472913,
+      "target_only": 0.5938402960299833,
+      "no_query": 0.5984270093066519
+    },
+    "no_shift": {
+      "frozen": 0.5998601989748367,
+      "target_platt": 0.6031523482952497,
+      "support_logistic": 0.49920090686010127,
+      "bridge": 0.6007904132552871,
+      "generic_contextual": 0.5959415119091778,
+      "linear_residual": 0.5998106342708628,
+      "target_only": 0.5940402485813753,
+      "no_query": 0.5997567024975483
+    },
+    "ignorable_shift": {
+      "frozen": 0.6607588040448291,
+      "target_platt": 0.6610053671342357,
+      "support_logistic": 0.7118127035282957,
+      "bridge": 0.6582514692565358,
+      "generic_contextual": 0.6569557641465735,
+      "linear_residual": 0.6611556879137885,
+      "target_only": 0.655697055761873,
+      "no_query": 0.660634716081031
+    }
+  },
+  "shifted_nll_gains": {
+    "frozen": {
+      "mean": 0.0016018121336109576,
+      "low": -0.001330262919962165,
+      "high": 0.004659858362259415,
+      "independent_world_seeds": 12,
+      "bootstrap_samples": 2000
+    },
+    "target_platt": {
+      "mean": 0.00413321303951015,
+      "low": 0.00013586265032132795,
+      "high": 0.0077254736277238565,
+      "independent_world_seeds": 12,
+      "bootstrap_samples": 2000
+    },
+    "support_logistic": {
+      "mean": -0.027010666132282216,
+      "low": -0.037520455928164755,
+      "high": -0.016529735285123005,
+      "independent_world_seeds": 12,
+      "bootstrap_samples": 2000
+    },
+    "generic_contextual": {
+      "mean": -0.0017785952633255786,
+      "low": -0.004448108542407792,
+      "high": 0.000908403237876583,
+      "independent_world_seeds": 12,
+      "bootstrap_samples": 2000
+    },
+    "linear_residual": {
+      "mean": 0.0015634910829374043,
+      "low": -0.0014555653809574989,
+      "high": 0.00457622991902203,
+      "independent_world_seeds": 12,
+      "bootstrap_samples": 2000
+    },
+    "target_only": {
+      "mean": -0.0033386799444236077,
+      "low": -0.005855356240852747,
+      "high": -0.0006814423470344024,
+      "independent_world_seeds": 12,
+      "bootstrap_samples": 2000
+    },
+    "no_query": {
+      "mean": 0.001553341738082599,
+      "low": -0.0013682280337600128,
+      "high": 0.004608879496764814,
+      "independent_world_seeds": 12,
+      "bootstrap_samples": 2000
+    }
+  },
+  "null_harms": {
+    "no_shift": {
+      "mean": 0.0009302142804502158,
+      "low": -0.002244592434758751,
+      "high": 0.003797827486549704,
+      "independent_world_seeds": 12,
+      "bootstrap_samples": 2000
+    },
+    "ignorable_shift": {
+      "mean": -0.0025073347882932947,
+      "low": -0.004642095305522675,
+      "high": -0.00018706463833353964,
+      "independent_world_seeds": 12,
+      "bootstrap_samples": 2000
+    }
+  },
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "updates": 800,
+  "parameters": 20801,
+  "protocol_sha256": "cfd60b1647e852398c74d928a63ad1fd8219457d5cdaae729a37325deba4dc08",
+  "independent_audit": {
+    "passed": true,
+    "errors": [],
+    "checks_passed": 2518,
+    "checks_total": 2518,
+    "version": 1,
+    "protocol_sha256": "cfd60b1647e852398c74d928a63ad1fd8219457d5cdaae729a37325deba4dc08",
+    "auditor_sha256": "fa838cefbe78a09b1c89f058cd0cd6e176295300f3676c92ebbfb9236791da9f",
+    "files_checked": 192,
+    "probability_arrays_checked": 1536,
+    "cpu_checkpoint_files": 24,
+    "cpu_checkpoint_predictions": 120,
+    "cpu_subset": "First seed in each split, width and regime; every saved checkpoint",
+    "max_metric_error": 1.1102230246251565e-16,
+    "max_source_logit_error": 0.0,
+    "max_cpu_probability_error": 4.76837158203125e-07,
+    "max_regenerated_numeric_error": 1.1920928955078125e-07,
+    "max_regenerated_coefficient_error": 1.8827017722600203e-10,
+    "max_metadata_float_error": 2.220446049250313e-16,
+    "saved_data_hashes": {
+      "validation": "63c707f180bd6da84d5f320f36fe66ca22076f24b7d0a95f9bc06f7d6023492a",
+      "development": "c58b38ca9fa66890efbf4b1c4a66963d575419bfe92334187ee80f8d9e69765c"
+    },
+    "regenerated_data_hashes": {
+      "validation": "63c707f180bd6da84d5f320f36fe66ca22076f24b7d0a95f9bc06f7d6023492a",
+      "development": "185ca051db8630ea93c1608971f209731755614eab8b7b6dd1aae1b3aab7587e"
+    },
+    "regeneration_note": "Source-fit floating logits may vary by platform; masks, observed values and all labels require exact equality. Metadata floats tolerance1e-12; fitted coefficients1e-7; fitted logits1e-6.",
+    "independent_gate_pass": false,
+    "independent_shifted_gains": {
+      "frozen": {
+        "mean": 0.0016018121336109576,
+        "low": -0.001330262919962165,
+        "high": 0.004659858362259415
+      },
+      "target_platt": {
+        "mean": 0.004133213039510148,
+        "low": 0.00013586265032132928,
+        "high": 0.007725473627723853
+      },
+      "support_logistic": {
+        "mean": -0.027010666132282212,
+        "low": -0.037520455928164755,
+        "high": -0.016529735285123
+      },
+      "linear_residual": {
+        "mean": 0.0015634910829374043,
+        "low": -0.0014555653809574989,
+        "high": 0.00457622991902203
+      },
+      "generic_contextual": {
+        "mean": -0.0017785952633255775,
+        "low": -0.004448108542407791,
+        "high": 0.0009084032378765845
+      }
+    },
+    "independent_null_harms": {
+      "no_shift": {
+        "mean": 0.0009302142804502158,
+        "low": -0.002244592434758751,
+        "high": 0.003797827486549704
+      },
+      "ignorable_shift": {
+        "mean": -0.0025073347882932947,
+        "low": -0.004642095305522675,
+        "high": -0.00018706463833353964
+      }
+    },
+    "scope": "Saved artifacts, NumPy scoring, frozen generator regeneration and CPU checkpoint replay; no retraining/provider calls",
+    "seconds": 4.35899999999674
+  },
+  "statistical_units": 12,
+  "development_files": 144,
+  "validation_files": 48,
+  "scope": "Synthetic adaptive development, not confirmation or native/causal efficacy"
+}

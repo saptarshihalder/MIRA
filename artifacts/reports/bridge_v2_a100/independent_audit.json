@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "errors": [],
+  "checks_passed": 2520,
+  "checks_total": 2520,
+  "version": 2,
+  "protocol_sha256": "0d73b1f071710af4edb9c5780e2d393a91bd059567a47de0b6202179421e5f04",
+  "auditor_sha256": "fa838cefbe78a09b1c89f058cd0cd6e176295300f3676c92ebbfb9236791da9f",
+  "files_checked": 192,
+  "probability_arrays_checked": 1728,
+  "cpu_checkpoint_files": 24,
+  "cpu_checkpoint_predictions": 144,
+  "cpu_subset": "First seed in each split, width and regime; every saved checkpoint",
+  "max_metric_error": 1.1102230246251565e-16,
+  "max_source_logit_error": 0.0,
+  "max_cpu_probability_error": 1.1920928955078125e-07,
+  "max_regenerated_numeric_error": 1.1920928955078125e-07,
+  "max_regenerated_coefficient_error": 6.808126840063267e-10,
+  "max_metadata_float_error": 0.0,
+  "saved_data_hashes": {
+    "validation": "37dd89edda616a767e31bd125029d3038561631d25705c5c5ba9f66e9f4001dc",
+    "development": "cb9fae4266c656a3da8ac09bd983ab6e3973ebe0bfbcad45c17c0010019bc0f0"
+  },
+  "regenerated_data_hashes": {
+    "validation": "2b21372f6fb8295afd8bfe80b453cb8b122750c7ed1248cc8056bdd23b487495",
+    "development": "3070fe4e2293fca033b6df2421060bd927cd80a74ba9b81b6b33ca6d0e9b5277"
+  },
+  "regeneration_note": "Source-fit floating logits may vary by platform; masks, observed values and all labels require exact equality. Metadata floats tolerance1e-12; fitted coefficients1e-7; fitted logits1e-6.",
+  "independent_gate_pass": false,
+  "independent_shifted_gains": {
+    "frozen": {
+      "mean": 0.06462265874468759,
+      "low": 0.057044915578440006,
+      "high": 0.07203531881776283
+    },
+    "target_platt": {
+      "mean": 0.06557965734827807,
+      "low": 0.058765951131499856,
+      "high": 0.07191888344912038
+    },
+    "support_logistic": {
+      "mean": 0.02500182788679019,
+      "low": 0.02176066089638124,
+      "high": 0.028315081654011677
+    },
+    "fixed_regularizer": {
+      "mean": 0.020660899196437866,
+      "low": 0.017714535503111726,
+      "high": 0.023770934485699342
+    },
+    "global_regularizer": {
+      "mean": 0.020512810655084566,
+      "low": 0.01765047056119538,
+      "high": 0.02368488391245848
+    },
+    "type_regularizer": {
+      "mean": 0.010319932030687734,
+      "low": 0.006958301560063919,
+      "high": 0.013657250448834344
+    },
+    "target_only_regularizer": {
+      "mean": 0.0032998497092877337,
+      "low": 0.0008622192446277029,
+      "high": 0.005632221348969659
+    },
+    "global_grid_control": {
+      "mean": 0.020660899196437866,
+      "low": 0.017714535503111726,
+      "high": 0.023770934485699342
+    }
+  },
+  "independent_null_harms": {
+    "no_shift": {
+      "mean": -0.15657681536492815,
+      "low": -0.16739206489328265,
+      "high": -0.14639612786760298
+    },
+    "ignorable_shift": {
+      "mean": 0.06085589693721219,
+      "low": 0.050163030716938936,
+      "high": 0.07047624707150486
+    }
+  },
+  "scope": "Saved artifacts, NumPy scoring, frozen generator regeneration and CPU checkpoint replay; no retraining/provider calls",
+  "seconds": 9.125
+}

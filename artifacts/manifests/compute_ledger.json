@@ -776,14 +776,16 @@
     "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\bridge_v1_a100",
     "app_id": "ap-zOyHMVDKIfs6KtgCCB4EVn",
     "provider_reported_resource_cost_usd": 0.08919361,
-    "provider_report_source": "artifacts/manifests/modal_billing_after_bridge_v1.json",
-    "provider_cost_status": "Reported resource charge, not final invoice; full $.80 provision retained"
+    "provider_report_source": "artifacts/manifests/modal_billing_after_bridge_v2.json",
+    "provider_cost_status": "Reported resource cost; final invoice unverified, full $.80 provision retained",
+    "gpu_verified": "NVIDIA A100-SXM4-40GB",
+    "cuda_updates_per_trained_model": 800
   },
   {
     "run_id": "bridge_v2_a100",
     "phase": "bridge_architecture_development",
     "date": "2026-10-03T12:10:05.455765+00:00",
-    "status": "reserved",
+    "status": "completed",
     "reserved_usd": 0.8,
     "model": "Support regularization1857/global1/type1857/target-only1857",
     "protocol_sha256": "0d73b1f071710af4edb9c5780e2d393a91bd059567a47de0b6202179421e5f04",
@@ -798,6 +800,19 @@
     "actual_charged_usd": null,
     "authorization": "Human requested implementing MIRA-Bridge and GPU wherever needed; totalcap20 and reproduction reserve3 preserved",
     "maximum_resource_compute_usd": 0.4151,
-    "charge_status": "Worst-case resource plus >$.38 contingency reserved before deployment/dispatch"
+    "charge_status": "Resource estimate excludes load/build/provider charges; $.80 provision retained",
+    "remote_invocations_authorized": 1,
+    "seconds": 48.751889247,
+    "exit_code": 0,
+    "requested_gpu": "A100-40GB",
+    "active_compute_estimate_usd": 0.03056548448229912,
+    "remote_function_calls": 1,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\bridge_v2_a100",
+    "app_id": "ap-vCFNSkNvKoLqkVxjHuVjKV",
+    "provider_reported_resource_cost_usd": 0.0401534,
+    "provider_report_source": "artifacts/manifests/modal_billing_after_bridge_v2.json",
+    "provider_cost_status": "Reported resource cost; final invoice unverified, full $.80 provision retained",
+    "gpu_verified": "NVIDIA A100-SXM4-40GB",
+    "cuda_updates_per_trained_model": 600
   }
 ]
