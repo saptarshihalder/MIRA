@@ -45,7 +45,23 @@ def audit(out,protocol):
     max_error=0.
     max_model_error=0.
     convergence=[]
+    source_cache={}
     for item in manifest['reports']:
+        spec=next(task for task in plan['tasks'] if task['name']==item['task'])
+        if item['task'] not in source_cache:
+            source_path=ROOT/'artifacts/runs/large_native_data'/spec['npz']
+            assert checksum(source_path)==spec['npz_sha256']
+            with np.load(source_path) as source:
+                ids=(source['year'].astype(np.int64)<<32)+source['row_id']
+                order=np.argsort(ids)
+                source_cache[item['task']]=(ids[order],source['groups'][order],source['y'][order])
+        source_ids,source_groups,source_labels=source_cache[item['task']]
+        def lookup(ids):
+            ids=np.asarray(ids).reshape(-1,2)
+            keys=(ids[:,0].astype(np.int64)<<32)+ids[:,1]
+            positions=np.searchsorted(source_ids,keys)
+            assert np.all(positions<len(source_ids)) and np.array_equal(source_ids[positions],keys)
+            return positions
         directory=out/f"{item['task']}_seed{item['seed']}"
         report=json.loads((directory/'report.json').read_text())
         assert report['gpu'].startswith('NVIDIA A100') and report['source_backbone_device'].startswith('cuda')
@@ -59,6 +75,7 @@ def audit(out,protocol):
                 assert len(ids)==boundary[key].reshape(-1,2).shape[0]
                 assert not used.intersection(ids)
                 assert all(year==2024 for year,_ in ids)
+                assert np.all(source_groups[lookup(boundary[key])]%5<3)
                 used.update(ids)
         states={}
         for name,trace in report['training_models'].items():
@@ -81,6 +98,10 @@ def audit(out,protocol):
                 assert all(year==2025 for year,_ in support|query)
                 used.update(support|query)
                 labels=data['labels'].astype(float)
+                assert np.all(source_groups[lookup(data['support_ids'])]==group)
+                assert np.all(source_groups[lookup(data['query_ids'])]==group)
+                assert np.array_equal(source_labels[lookup(data['query_ids'])],labels)
+                assert np.array_equal(source_labels[lookup(data['support_ids'])],data['support_y'])
                 for name,expected in scores[(split,group)]['nll'].items():
                     probability=data[name]
                     assert np.isfinite(probability).all() and np.all((probability>=0)&(probability<=1))

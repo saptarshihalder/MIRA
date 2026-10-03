@@ -676,7 +676,9 @@
     "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\large_native_a100_v1",
     "error": "SystemExit(1)",
     "app_id": "ap-29sdBNwyGIJse79T72LRNz",
-    "failure": "Calibration baseline L-BFGS-B ABNORMAL line search; partial CUDA checkpoints/predictions preserved"
+    "failure": "Calibration baseline L-BFGS-B ABNORMAL line search; partial CUDA checkpoints/predictions preserved",
+    "provider_display_usd": 0.04,
+    "provider_cost_status": "rounded/pending final invoice; full reservation retained"
   },
   {
     "run_id": "large_native_a100_v2",
@@ -697,13 +699,16 @@
     "error": "FileNotFoundError(2, 'No such file or directory')",
     "remote_function_calls": 1,
     "failure": "Cloud input validation found missing mounted v1 wrapper; no child training invocation",
-    "provider_charge_status": "Failed GPU startup counted; reservation retained"
+    "provider_charge_status": "Failed GPU startup counted; reservation retained",
+    "app_id": "ap-FGMu0nPPjGLxIT7Ds63p70",
+    "provider_display_usd": 0.02,
+    "provider_cost_status": "rounded/pending final invoice; full reservation retained"
   },
   {
     "run_id": "large_native_a100_v3",
     "phase": "large_native_a100_final",
     "reserved_usd": 0.4,
-    "status": "reserved",
+    "status": "completed",
     "date": "2026-10-03",
     "model": "Same large native CUDA evaluation; packaging and numerical repair",
     "protocol_sha256": "32fab885687eb25201128445873fa14926c127d64dbd448614b5beab034b0f34",
@@ -713,6 +718,19 @@
     "startup_timeout_seconds": 60,
     "retries": 0,
     "actual_charged_usd": null,
-    "authorization": "Existing human GPU request and conditional extension, within latest $20 cap and protected $3 reserve"
+    "authorization": "Existing human GPU request and conditional extension, within latest $20 cap and protected $3 reserve",
+    "remote_invocations_authorized": 1,
+    "seconds": 62.019931420000006,
+    "exit_code": 0,
+    "requested_gpu": "A100-40GB",
+    "cpu_physical_cores": 2,
+    "memory_gib": 8,
+    "active_compute_estimate_usd": 0.038884019645093595,
+    "charge_status": "Estimate excludes provider load/build/other charges; $.40 reservation retained",
+    "remote_function_calls": 1,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\large_native_a100_v3",
+    "app_id": "ap-raKw2bH4mQsaJMMJXkJwvJ",
+    "provider_display_usd": 0.05,
+    "provider_cost_status": "rounded/pending final invoice; full reservation retained"
   }
 ]

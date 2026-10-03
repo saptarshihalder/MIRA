@@ -4,7 +4,7 @@ Objective authorized by the user: a rigorous NeurIPS-quality manuscript by Octob
 
 ## Scientific decision
 
-Primary track: a trained-model contribution evaluated against strong simple controls. The 961-parameter uncertainty mixture improves over synthetic moments, but its calibrated-guard advantage is uncertain. Actual Modal T4 native Diabetes training is complete: source XGBoost and 400 CUDA updates each for fine-tuned/scratch neural and linear corrections. Native pretraining does not help; scratch neural and linear models perform similarly. Read docs/POLICY_ADAPTER_NEXT_GATE.md before a successor. Compare calibration and converged controls before broader query-dependent learning across native datasets. Historical representation evidence does not establish a causal pretraining-prior effect.
+Primary track: a trained-model contribution evaluated against strong simple controls. The 961-parameter uncertainty mixture improves over synthetic moments, but its calibrated-guard advantage is uncertain. Actual Modal T4 native Diabetes training is complete: source XGBoost and 400 CUDA updates each for fine-tuned/scratch neural and linear corrections. Native pretraining does not help; scratch neural and linear models perform similarly. Read docs/POLICY_ADAPTER_NEXT_GATE.md before a successor. Larger 2026-release A100 development and converged/calibration controls are complete; neural utility is small or matched by simple controls. Diagnose query-dependent learning on CPU before another paid protocol. Historical representation evidence does not establish a causal pretraining-prior effect.
 
 Conditional track: MIRA-Shift. Activate only after development demonstrates useful remaining headroom against strong simple corrections and refreshed-context TFMs with the same labels. Existing CPU results do not justify large neural training. A negative finding stays in the record; manuscript scope follows evidence.
 
@@ -34,10 +34,9 @@ Conditional track: MIRA-Shift. Activate only after development demonstrates usef
 
 | Purpose | USD |
 |---|---:|
-| Existing conservative reservations | 11.05 |
-| Larger native A100 evaluation | 4 |
+| Completed conservative reservations including failures | 16.95 |
 | Clean reproduction reserve | 3 |
-| Unallocated | 1.95 |
+| Unallocated | 0.05 |
 
 Modal calls must reserve cost in `artifacts/manifests/compute_ledger.json` before execution, have finite timeouts, one GPU container and no automatic retries. Include failed calls, image builds and provider usage when available. The latest user-authorized total ceiling is $20; credit balance is not yet independently verified. No subscription purchase, additional funds, manuscript submission or messages to third parties are needed for this phase.
 

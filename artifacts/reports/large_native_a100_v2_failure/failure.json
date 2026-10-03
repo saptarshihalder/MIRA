@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "preserved": true,
+  "reason": "Missing frozen v1 wrapper at /opt/mira/infra; remote input check failed before child training",
+  "scope": "Failed run; not a complete evaluation; charges retained"
+}

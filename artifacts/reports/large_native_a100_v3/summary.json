@@ -1,0 +1,214 @@
+{
+  "group_mean_nll": {
+    "brfss_asthma3": {
+      "native_scratch": 0.39560963796074844,
+      "native_linear": 0.3958440042890483,
+      "native_linear_converged": 0.3962418131683637,
+      "frozen": 0.39584216797314653,
+      "cv_select": 0.40973423561409206,
+      "moment": 0.41168333802023765,
+      "global_platt": 0.3957796247740831,
+      "global_simplex": 0.39569027736806944,
+      "support_intercept": 0.3984882734705938,
+      "support_platt": 0.3983236714713555
+    },
+    "brfss_diabete4": {
+      "native_scratch": 0.3335450849163795,
+      "native_linear": 0.3337270558784197,
+      "native_linear_converged": 0.33533880558637874,
+      "frozen": 0.33346629868786093,
+      "cv_select": 0.3485874731109098,
+      "moment": 0.3487382866512712,
+      "global_platt": 0.33363768608324124,
+      "global_simplex": 0.33355338113074384,
+      "support_intercept": 0.33642437508887973,
+      "support_platt": 0.3356930179033553
+    },
+    "road_ksi": {
+      "native_scratch": 0.6036848111603764,
+      "native_linear": 0.6036483618656585,
+      "native_linear_converged": 0.6085036271450528,
+      "frozen": 0.6113186752301453,
+      "cv_select": 0.6044568827249264,
+      "moment": 0.604513220449131,
+      "global_platt": 0.612423533247722,
+      "global_simplex": 0.6033484120291999,
+      "support_intercept": 0.6034969348196998,
+      "support_platt": 0.6031973157734993
+    }
+  },
+  "comparator_minus_neural": {
+    "brfss_asthma3": {
+      "native_linear": {
+        "mean": 0.00023436632829984725,
+        "low": -0.00013096842973887198,
+        "high": 0.0005997010863385665,
+        "groups": 10
+      },
+      "native_linear_converged": {
+        "mean": 0.0006321752076153617,
+        "low": -0.0006185401816949043,
+        "high": 0.0018828905969256278,
+        "groups": 10
+      },
+      "frozen": {
+        "mean": 0.00023253001239816143,
+        "low": 9.455060746631281e-05,
+        "high": 0.00037050941733001005,
+        "groups": 10
+      },
+      "cv_select": {
+        "mean": 0.01412459765334367,
+        "low": 0.01005123907764011,
+        "high": 0.01819795622904723,
+        "groups": 10
+      },
+      "moment": {
+        "mean": 0.016073700059489254,
+        "low": 0.011663354163616038,
+        "high": 0.02048404595536247,
+        "groups": 10
+      },
+      "global_platt": {
+        "mean": 0.00016998681333484366,
+        "low": -3.0546183929691954e-05,
+        "high": 0.00037051981059937927,
+        "groups": 10
+      },
+      "global_simplex": {
+        "mean": 8.063940732110364e-05,
+        "low": -1.5701639074726235e-05,
+        "high": 0.00017698045371693352,
+        "groups": 10
+      },
+      "support_intercept": {
+        "mean": 0.0028786355098454177,
+        "low": 0.0005359619198876146,
+        "high": 0.005221309099803221,
+        "groups": 10
+      },
+      "support_platt": {
+        "mean": 0.0027140335106071852,
+        "low": 0.0006539288871234114,
+        "high": 0.0047741381340909595,
+        "groups": 10
+      }
+    },
+    "brfss_diabete4": {
+      "native_linear": {
+        "mean": 0.0001819709620401566,
+        "low": -5.507884806168131e-05,
+        "high": 0.00041902077214199453,
+        "groups": 10
+      },
+      "native_linear_converged": {
+        "mean": 0.0017937206699992568,
+        "low": 0.000439796867846875,
+        "high": 0.0031476444721516388,
+        "groups": 10
+      },
+      "frozen": {
+        "mean": -7.878622851858658e-05,
+        "low": -0.0006070328504296792,
+        "high": 0.000449460393392506,
+        "groups": 10
+      },
+      "cv_select": {
+        "mean": 0.015042388194530326,
+        "low": 0.011501402191355982,
+        "high": 0.018583374197704672,
+        "groups": 10
+      },
+      "moment": {
+        "mean": 0.015193201734891623,
+        "low": 0.012393592803368119,
+        "high": 0.01799281066641513,
+        "groups": 10
+      },
+      "global_platt": {
+        "mean": 9.260116686168699e-05,
+        "low": -0.0005183173352594251,
+        "high": 0.0007035196689827991,
+        "groups": 10
+      },
+      "global_simplex": {
+        "mean": 8.296214364324671e-06,
+        "low": -0.00028475143159906684,
+        "high": 0.00030134386032771616,
+        "groups": 10
+      },
+      "support_intercept": {
+        "mean": 0.002879290172500191,
+        "low": 0.001673530131839666,
+        "high": 0.004085050213160715,
+        "groups": 10
+      },
+      "support_platt": {
+        "mean": 0.0021479329869758387,
+        "low": 0.001101363170355381,
+        "high": 0.0031945028035962964,
+        "groups": 10
+      }
+    },
+    "road_ksi": {
+      "native_linear": {
+        "mean": -3.6449294718021725e-05,
+        "low": -0.0001739518628739038,
+        "high": 0.00010105327343786036,
+        "groups": 6
+      },
+      "native_linear_converged": {
+        "mean": 0.004818815984676255,
+        "low": -0.0025866384079206925,
+        "high": 0.012224270377273203,
+        "groups": 6
+      },
+      "frozen": {
+        "mean": 0.007633864069768768,
+        "low": -0.0016172567316924697,
+        "high": 0.016884984871230004,
+        "groups": 6
+      },
+      "cv_select": {
+        "mean": 0.0007720715645498057,
+        "low": -0.005587334962865807,
+        "high": 0.007131478091965418,
+        "groups": 6
+      },
+      "moment": {
+        "mean": 0.0008284092887544267,
+        "low": -0.005616976717245953,
+        "high": 0.007273795294754807,
+        "groups": 6
+      },
+      "global_platt": {
+        "mean": 0.008738722087345552,
+        "low": -0.0026772322796420438,
+        "high": 0.020154676454333147,
+        "groups": 6
+      },
+      "global_simplex": {
+        "mean": -0.00033639913117675417,
+        "low": -0.0013582011756935355,
+        "high": 0.0006854029133400272,
+        "groups": 6
+      },
+      "support_intercept": {
+        "mean": -0.00018787634067670314,
+        "low": -0.0055106674648581315,
+        "high": 0.0051349147835047255,
+        "groups": 6
+      },
+      "support_platt": {
+        "mean": -0.0004874953868770473,
+        "low": -0.0032232146073823778,
+        "high": 0.002248223833628283,
+        "groups": 6
+      }
+    }
+  },
+  "independent_audit": "independent_audit.json",
+  "trials": 9,
+  "primary": "native_scratch",
+  "inference": "Descriptive t intervals over fixed held-out regions after averaging three seeds; correlated health tasks, two domains, conditional on trained sources; not confirmation"
+}

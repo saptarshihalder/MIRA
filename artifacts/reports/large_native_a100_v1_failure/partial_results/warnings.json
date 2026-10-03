@@ -1,0 +1,3 @@
+[
+  "[10:55:12] WARNING: /__w/xgboost/xgboost/src/common/error_msg.cc:62: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.\nPotential solutions:\n- Use a data structure that matches the device ordinal in the booster.\n- Set the device for booster before call to inplace_predict.\n\nThis warning will only be shown once.\n"
+]

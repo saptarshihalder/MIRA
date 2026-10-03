@@ -1,0 +1,16 @@
+{"task": "brfss_diabete4", "seed": 171001, "gpu": "NVIDIA A100-SXM4-40GB", "seconds": 10.023347933, "source_fit_labels": 50000, "development_groups": 10}
+{"task": "brfss_diabete4", "seed": 171002, "gpu": "NVIDIA A100-SXM4-40GB", "seconds": 6.829211234999999, "source_fit_labels": 50000, "development_groups": 10}
+{"task": "brfss_diabete4", "seed": 171003, "gpu": "NVIDIA A100-SXM4-40GB", "seconds": 6.275895948000002, "source_fit_labels": 50000, "development_groups": 10}
+{"task": "brfss_asthma3", "seed": 171001, "gpu": "NVIDIA A100-SXM4-40GB", "seconds": 6.667234842999999, "source_fit_labels": 50000, "development_groups": 10}
+Traceback (most recent call last):
+  File "/opt/mira/experiments/policy_adapter_v1/large_native.py", line 381, in <module>
+    main()
+  File "/opt/mira/experiments/policy_adapter_v1/large_native.py", line 371, in main
+    reports = [execute_task(spec, plan, seed, Path(args.data), out / f"{spec['name']}_seed{seed}")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/mira/experiments/policy_adapter_v1/large_native.py", line 295, in execute_task
+    intercept, intercept_audit = calibration(support_z, task['support_y'], 'intercept', plan['support_intercept_ridge'])
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/mira/experiments/policy_adapter_v1/large_native.py", line 127, in calibration
+    raise RuntimeError('Calibration convergence failed: ' + str(result.message))
+RuntimeError: Calibration convergence failed: ABNORMAL: 

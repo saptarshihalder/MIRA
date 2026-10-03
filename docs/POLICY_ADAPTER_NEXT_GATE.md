@@ -20,3 +20,10 @@ Actual Modal T4 native training completed under the user's explicit GPU instruct
 Reservations are $11.05 within $26, protecting $3 for reproduction. The new $0.50 native GPU phase and old phases are closed. Include launcher failures and provider charges; a displayed rounded $0.00 is not a verified zero invoice. Scientific paid expansion needs a useful gate and separately committed bounds; explicit engineering requests remain distinct from efficacy/confirmation.
 
 Readiness still requires broad native evidence, current backbones, appropriate task uncertainty, clean reproduction, formatting/authorship and native PDF verification. Preserve the same open manuscript. No acceptance, universal-improvement, safety or clinical-effectiveness promise.
+
+
+## Completed larger gate — October 3
+
+The separately frozen larger native A100 development is complete and audited: nine trials, two domains, recent 2026 releases, 1,016,280 raw records, 1,470 saved probability arrays. Global/support calibration and converged linear/convex stacking controls are complete. Health effects are tiny/negative and road gain is matched by simple controls. A distinctive neural contribution is still unsupported. Preserve all failed gates; these panels and partial v1 outcomes remain used development.
+
+Next identify query-conditional or variable-width residual structure that simple calibration cannot represent, using bounded free CPU diagnostics and targeted prior-art review. A new trainable model needs a fixed new protocol and direct superiority against appropriate trained controls. Do not rely on increasing parameter count, dataset size or GPU power alone. Further paid scientific work requires reconciling retained reservations or a changed user cap; $16.95 of the $20 cap is reserved and $3 remains protected. Successful live app has zero active containers; do not repeat completed calls. Same manuscript contains the results; native compiler still has an environment error.

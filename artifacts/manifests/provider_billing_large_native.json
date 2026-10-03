@@ -1,0 +1,26 @@
+{
+  "observed_date": "2026-10-03",
+  "provider": "Modal",
+  "precision": "USD rounded to 2 decimal places",
+  "apps": [
+    {
+      "app_id": "ap-29sdBNwyGIJse79T72LRNz",
+      "display_usd": 0.04,
+      "status": "rounded provider UI, not final invoice"
+    },
+    {
+      "app_id": "ap-FGMu0nPPjGLxIT7Ds63p70",
+      "display_usd": 0.02,
+      "status": "rounded provider UI, not final invoice"
+    },
+    {
+      "app_id": "ap-raKw2bH4mQsaJMMJXkJwvJ",
+      "display_usd": 0.05,
+      "status": "rounded provider UI, not final invoice"
+    }
+  ],
+  "sum_display_usd": 0.11,
+  "final_invoice_verified": false,
+  "actual_charged_usd": null,
+  "reservations_retained": true
+}

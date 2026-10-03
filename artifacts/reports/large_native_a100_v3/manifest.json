@@ -1,0 +1,56 @@
+{
+  "protocol_sha256": "32fab885687eb25201128445873fa14926c127d64dbd448614b5beab034b0f34",
+  "source_sha256": "450c4647ba214e584a5a9bd73138bb2d05eec906cb8829b4c931d7e149625393",
+  "reused_sources": {
+    "mixture.py": "1dbc5c2041bd11e5eb8e98ff1849c51b7b0a59920060f3c1e7deff7d09006be0",
+    "native.py": "bfb1ced2d9819bc2f4f14caa20dc6f5ee4158da72c13b6fe436fe239432443ec",
+    "pilot.py": "bb4785fadf2a3c9173ce68d3883031ea1116bdac83e89460f73d8590d8d77546"
+  },
+  "reports": [
+    {
+      "task": "brfss_diabete4",
+      "seed": 171001,
+      "seconds": 10.234933297000001
+    },
+    {
+      "task": "brfss_diabete4",
+      "seed": 171002,
+      "seconds": 6.786158365000002
+    },
+    {
+      "task": "brfss_diabete4",
+      "seed": 171003,
+      "seconds": 6.074437295999999
+    },
+    {
+      "task": "brfss_asthma3",
+      "seed": 171001,
+      "seconds": 6.371415029000001
+    },
+    {
+      "task": "brfss_asthma3",
+      "seed": 171002,
+      "seconds": 6.370446627
+    },
+    {
+      "task": "brfss_asthma3",
+      "seed": 171003,
+      "seconds": 6.623188872
+    },
+    {
+      "task": "road_ksi",
+      "seed": 171001,
+      "seconds": 4.056715874999995
+    },
+    {
+      "task": "road_ksi",
+      "seed": 171002,
+      "seconds": 3.9471583989999957
+    },
+    {
+      "task": "road_ksi",
+      "seed": 171003,
+      "seconds": 4.274132049999999
+    }
+  ]
+}
