@@ -1,0 +1,2853 @@
+{
+  "engineering_only": true,
+  "gate_pass": null,
+  "smoke": false,
+  "scope": "Bounded recursive JEPA engineering pilot; all scores diagnostic; no efficacy gate, validation selection, confirmation or native claim",
+  "results": [
+    {
+      "seed": 450001,
+      "width": 6,
+      "regime": "sign_flip",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 3.2371627947669346e-11,
+          "iterations": 4,
+          "weights": [
+            0.023071092258316227,
+            -0.09198067361035665
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 16,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.014596226625144482,
+            "minimum_std": 0.0008835302432999015,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.3443774921361182e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.016057293862104416,
+            "minimum_std": 0.0008507446036674082,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 3.795069147827235e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.015148378908634186,
+            "minimum_std": 0.0008599816937930882,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.502537022053275e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.033698298037052155,
+            "minimum_std": 0.0016284356825053692,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.8054765860142652e-06,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.03615925461053848,
+            "minimum_std": 0.0016595169436186552,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 2.4247224246209953e-06,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.03390263766050339,
+            "minimum_std": 0.0018579150782898068,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.7788139530239278e-06,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.014886786229908466,
+            "minimum_std": 0.0004774710978381336,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.2650461062312388e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.016220906749367714,
+            "minimum_std": 0.000545231974683702,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 3.521951441598503e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.015390481799840927,
+            "minimum_std": 0.0005245640059001744,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.346957828081031e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.655429557262398,
+          "brier": 0.2335315463094225
+        },
+        "target_platt": {
+          "nll": 0.6581257520856691,
+          "brier": 0.23484694842726034
+        },
+        "support_logistic": {
+          "nll": 0.563576987395686,
+          "brier": 0.1909394929715443
+        },
+        "full_jepa": {
+          "nll": 0.6554961403507362,
+          "brier": 0.23367599235120065
+        },
+        "supervised_only": {
+          "nll": 0.6554930041865286,
+          "brier": 0.23367056769928676
+        },
+        "no_recursion": {
+          "nll": 0.6554693816126109,
+          "brier": 0.23364612397685441
+        }
+      }
+    },
+    {
+      "seed": 450001,
+      "width": 6,
+      "regime": "nonlinear_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 3.3726912582188184e-10,
+          "iterations": 5,
+          "weights": [
+            0.10773513545652533,
+            -0.11717926115593814
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 16,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.014599615707993507,
+            "minimum_std": 0.0008546570315957069,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.3112363578547956e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.01533807534724474,
+            "minimum_std": 0.0007576721254736185,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 3.107364321408568e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.01391719002276659,
+            "minimum_std": 0.0007836760487407446,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.9704152975918987e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.03374361991882324,
+            "minimum_std": 0.0016139494255185127,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.808452907425817e-06,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.0327359214425087,
+            "minimum_std": 0.0014413191238418221,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.4249402511268272e-06,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.02891756221652031,
+            "minimum_std": 0.0014566837344318628,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 8.583172075304901e-07,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.014865209348499775,
+            "minimum_std": 0.000477289198897779,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.2116875442179662e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.015477425418794155,
+            "minimum_std": 0.0005295424489304423,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.7244912104151808e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.014138862490653992,
+            "minimum_std": 0.0005324375233612955,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.7532398643993474e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.5794773575157841,
+          "brier": 0.1989414573539561
+        },
+        "target_platt": {
+          "nll": 0.5837297548647347,
+          "brier": 0.20062394513028442
+        },
+        "support_logistic": {
+          "nll": 0.5936167747766516,
+          "brier": 0.20567603052053296
+        },
+        "full_jepa": {
+          "nll": 0.5797497941147307,
+          "brier": 0.19922012282018708
+        },
+        "supervised_only": {
+          "nll": 0.5797401076446361,
+          "brier": 0.1992021320210368
+        },
+        "no_recursion": {
+          "nll": 0.5796853002144369,
+          "brier": 0.19916618612111398
+        }
+      }
+    },
+    {
+      "seed": 450001,
+      "width": 6,
+      "regime": "no_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 5.727723156878639e-10,
+          "iterations": 4,
+          "weights": [
+            -0.043685404843251126,
+            -0.12644068421596621
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 16,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.014727026224136353,
+            "minimum_std": 0.0008165138424374163,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.415714028813909e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.015425745397806168,
+            "minimum_std": 0.0007341447635553777,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.9988818539550266e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.015392789617180824,
+            "minimum_std": 0.000846279610414058,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.717417935116373e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.03344074264168739,
+            "minimum_std": 0.001584707759320736,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.7415492266081856e-06,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.030872751027345657,
+            "minimum_std": 0.0014769984409213066,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.0154120673178113e-06,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.03293745964765549,
+            "minimum_std": 0.0016984984977170825,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.4594213553209556e-06,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.014947684481739998,
+            "minimum_std": 0.0004963449318893254,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.2431791535382217e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.0155937559902668,
+            "minimum_std": 0.0006163000361993909,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.4957135025260868e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.015489248558878899,
+            "minimum_std": 0.0006313521880656481,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.4215362159907272e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.5844376856233906,
+          "brier": 0.19976298168196033
+        },
+        "target_platt": {
+          "nll": 0.5872541523505641,
+          "brier": 0.20111655553165786
+        },
+        "support_logistic": {
+          "nll": 0.561203311040029,
+          "brier": 0.19365323487172775
+        },
+        "full_jepa": {
+          "nll": 0.5851941117237924,
+          "brier": 0.2000790328862292
+        },
+        "supervised_only": {
+          "nll": 0.58512091957276,
+          "brier": 0.20004787037800134
+        },
+        "no_recursion": {
+          "nll": 0.585048970790247,
+          "brier": 0.20001728679026046
+        }
+      }
+    },
+    {
+      "seed": 450001,
+      "width": 6,
+      "regime": "ignorable_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 1.600542615110001e-12,
+          "iterations": 5,
+          "weights": [
+            -0.06469329380900155,
+            -0.20302547133313165
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 18,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.014408428221940994,
+            "minimum_std": 0.0008292063721455634,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.559661460566076e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.014202594757080078,
+            "minimum_std": 0.000698150135576725,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 2.4175996315989323e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.014580044895410538,
+            "minimum_std": 0.000702534569427371,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.559564471482645e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.032064758241176605,
+            "minimum_std": 0.0015902752056717873,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.4245947568269912e-06,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.02487308531999588,
+            "minimum_std": 0.00139622890856117,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 3.446184564381838e-07,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.025494342669844627,
+            "minimum_std": 0.001483818283304572,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 3.8005862279533176e-07,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.014506639912724495,
+            "minimum_std": 0.0005888979067094624,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.2649549791253776e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.014192546717822552,
+            "minimum_std": 0.0005543969455175102,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.928169623965914e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.014633255079388618,
+            "minimum_std": 0.0006367040914483368,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.063744553026936e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6170643103957427,
+          "brier": 0.2156936749889224
+        },
+        "target_platt": {
+          "nll": 0.6209480179187385,
+          "brier": 0.21783944752484757
+        },
+        "support_logistic": {
+          "nll": 0.6497401497488005,
+          "brier": 0.23202441065606103
+        },
+        "full_jepa": {
+          "nll": 0.6174308775860147,
+          "brier": 0.2160857720534498
+        },
+        "supervised_only": {
+          "nll": 0.6173564853087073,
+          "brier": 0.2160388153171371
+        },
+        "no_recursion": {
+          "nll": 0.6172959260096236,
+          "brier": 0.2159920400453287
+        }
+      }
+    },
+    {
+      "seed": 450001,
+      "width": 10,
+      "regime": "sign_flip",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 2.722761252571537e-13,
+          "iterations": 5,
+          "weights": [
+            -0.072660519554771,
+            0.12701663032201582
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 20,
+          "c": 0.1,
+          "parameters": 121
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.011247562244534492,
+            "minimum_std": 0.0005849679582752287,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 7.555557957061865e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.011754116043448448,
+            "minimum_std": 0.0005212202086113393,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 9.49838341313125e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.011579664424061775,
+            "minimum_std": 0.0005278741591610014,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 9.339019335641296e-09,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.018946602940559387,
+            "minimum_std": 0.001144437468610704,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 8.756465774695243e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.016680996865034103,
+            "minimum_std": 0.001205623964779079,
+            "fraction_dimensions_std_below_01": 0.3125,
+            "off_diagonal_covariance_mean_square": 3.867366871190825e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.016622336581349373,
+            "minimum_std": 0.0012235125759616494,
+            "fraction_dimensions_std_below_01": 0.3125,
+            "off_diagonal_covariance_mean_square": 3.720850472177517e-08,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.011543908156454563,
+            "minimum_std": 0.00048573972890153527,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 7.05303726533657e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.011996290646493435,
+            "minimum_std": 0.0004916161415167153,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 8.58350279742126e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.011897463351488113,
+            "minimum_std": 0.0005016812938265502,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 8.969094800193034e-09,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.5819632333554509,
+          "brier": 0.1961658080390829
+        },
+        "target_platt": {
+          "nll": 0.5802574985200211,
+          "brier": 0.19502925391089998
+        },
+        "support_logistic": {
+          "nll": 0.4429202266275939,
+          "brier": 0.14233176033252062
+        },
+        "full_jepa": {
+          "nll": 0.5805617385714538,
+          "brier": 0.19524661682401068
+        },
+        "supervised_only": {
+          "nll": 0.5806372297686975,
+          "brier": 0.19529862507971574
+        },
+        "no_recursion": {
+          "nll": 0.5807539365208838,
+          "brier": 0.19538069281527348
+        }
+      }
+    },
+    {
+      "seed": 450001,
+      "width": 10,
+      "regime": "nonlinear_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 3.202294332482758e-10,
+          "iterations": 5,
+          "weights": [
+            -0.05710729509181432,
+            0.18367626145506508
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 19,
+          "c": 0.1,
+          "parameters": 121
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.011286027729511261,
+            "minimum_std": 0.0005823350511491299,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 8.179080523973425e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.012736201286315918,
+            "minimum_std": 0.0005932890926487744,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 1.3600139681102519e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.011616513133049011,
+            "minimum_std": 0.0005363482632674277,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 9.519033561389278e-09,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.019050396978855133,
+            "minimum_std": 0.0012129273964092135,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 8.851348098914968e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.021443337202072144,
+            "minimum_std": 0.0012863430893048644,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.6085238030427718e-07,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.018423616886138916,
+            "minimum_std": 0.0012578641762956977,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 6.69136426267869e-08,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.011626827530562878,
+            "minimum_std": 0.00048320653149858117,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 7.75999975388686e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.013061188161373138,
+            "minimum_std": 0.0004595730279106647,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.264065030426309e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.011956354603171349,
+            "minimum_std": 0.0004729104693979025,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 9.188610761157179e-09,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6300516048725118,
+          "brier": 0.21987306566832138
+        },
+        "target_platt": {
+          "nll": 0.6258416787571435,
+          "brier": 0.2177981865725388
+        },
+        "support_logistic": {
+          "nll": 0.6368764310221205,
+          "brier": 0.2190454244172426
+        },
+        "full_jepa": {
+          "nll": 0.628455871620271,
+          "brier": 0.21903757871616414
+        },
+        "supervised_only": {
+          "nll": 0.6284956614554501,
+          "brier": 0.21906681817139595
+        },
+        "no_recursion": {
+          "nll": 0.6286475348493346,
+          "brier": 0.21914765551348728
+        }
+      }
+    },
+    {
+      "seed": 450001,
+      "width": 10,
+      "regime": "no_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 4.41090431541058e-10,
+          "iterations": 5,
+          "weights": [
+            -0.16739991265511042,
+            0.19169619125500606
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 19,
+          "c": 0.1,
+          "parameters": 121
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.01126503199338913,
+            "minimum_std": 0.0005752667784690857,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 8.152964525720563e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.012224113568663597,
+            "minimum_std": 0.0005428510485216975,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 9.56313250810581e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.0123369749635458,
+            "minimum_std": 0.0005557492258958519,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 1.1608527472617425e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.01910596713423729,
+            "minimum_std": 0.0012054105754941702,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 8.897334424773362e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.020325899124145508,
+            "minimum_std": 0.0013200175017118454,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.0876156153472039e-07,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.020403927192091942,
+            "minimum_std": 0.0013302124571055174,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.1176875602814107e-07,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.011616275645792484,
+            "minimum_std": 0.00046933305566199124,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 7.752904984670295e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.01249823346734047,
+            "minimum_std": 0.00046300998656079173,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 8.82996076256859e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.012659881263971329,
+            "minimum_std": 0.0004819308815058321,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.0701106667454496e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6441476656350287,
+          "brier": 0.2251997095009916
+        },
+        "target_platt": {
+          "nll": 0.6361577800167406,
+          "brier": 0.2224992961609579
+        },
+        "support_logistic": {
+          "nll": 0.5474759387191395,
+          "brier": 0.18692910219880543
+        },
+        "full_jepa": {
+          "nll": 0.643007630142338,
+          "brier": 0.22467995004343674
+        },
+        "supervised_only": {
+          "nll": 0.6430170946602696,
+          "brier": 0.22468970614488185
+        },
+        "no_recursion": {
+          "nll": 0.6430982285117246,
+          "brier": 0.22472886449265794
+        }
+      }
+    },
+    {
+      "seed": 450001,
+      "width": 10,
+      "regime": "ignorable_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 4.212453337537614e-10,
+          "iterations": 5,
+          "weights": [
+            -0.14902266721038643,
+            0.13193036781299614
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 27,
+          "c": 0.1,
+          "parameters": 121
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.012147752568125725,
+            "minimum_std": 0.0006858536507934332,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 7.751046027237862e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.012910810299217701,
+            "minimum_std": 0.0005224892520345747,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 1.3519252384242009e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.011897867545485497,
+            "minimum_std": 0.0005504054133780301,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 1.1364404528535488e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.0231742225587368,
+            "minimum_std": 0.0013786428608000278,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 2.824847342708381e-07,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.01730247028172016,
+            "minimum_std": 0.001173851196654141,
+            "fraction_dimensions_std_below_01": 0.3125,
+            "off_diagonal_covariance_mean_square": 5.518207757404525e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.014324471354484558,
+            "minimum_std": 0.0009208099800162017,
+            "fraction_dimensions_std_below_01": 0.375,
+            "off_diagonal_covariance_mean_square": 3.966587414083733e-08,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.012300476431846619,
+            "minimum_std": 0.00048511242493987083,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 6.878182468028626e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.01302441954612732,
+            "minimum_std": 0.0004551343445200473,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.1386513953937083e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.012091292068362236,
+            "minimum_std": 0.0004477390320971608,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.0032840336293702e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6127507201234201,
+          "brier": 0.20693530007734123
+        },
+        "target_platt": {
+          "nll": 0.6116572378789937,
+          "brier": 0.2082495658032018
+        },
+        "support_logistic": {
+          "nll": 0.652545717172759,
+          "brier": 0.21996300988431128
+        },
+        "full_jepa": {
+          "nll": 0.6119361744515025,
+          "brier": 0.20664280156598508
+        },
+        "supervised_only": {
+          "nll": 0.6119665873468465,
+          "brier": 0.20664858422736987
+        },
+        "no_recursion": {
+          "nll": 0.6120198470909478,
+          "brier": 0.20666864113060557
+        }
+      }
+    },
+    {
+      "seed": 450002,
+      "width": 6,
+      "regime": "sign_flip",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 1.7671999714280462e-11,
+          "iterations": 5,
+          "weights": [
+            0.0644876314699643,
+            0.03389481131380416
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 15,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.014582058414816856,
+            "minimum_std": 0.0007472249562852085,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.4950367105702753e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.015166365541517735,
+            "minimum_std": 0.0008489995379932225,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.8602514134945523e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.01462203823029995,
+            "minimum_std": 0.0008783779921941459,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.3039765650878508e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.030203718692064285,
+            "minimum_std": 0.0015158634632825851,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.0108589094670606e-06,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.034786976873874664,
+            "minimum_std": 0.001701681292615831,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.9913791220460553e-06,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.03221225365996361,
+            "minimum_std": 0.0018090353114530444,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.371823827867047e-06,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.014872802421450615,
+            "minimum_std": 0.0004787615325767547,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.3024007589356188e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.015313701704144478,
+            "minimum_std": 0.0005244069034233689,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.6294966204432058e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.014746753498911858,
+            "minimum_std": 0.0005208895308896899,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.1459285903802083e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6031185723824588,
+          "brier": 0.2095163663804644
+        },
+        "target_platt": {
+          "nll": 0.6025510416452486,
+          "brier": 0.20932765289358243
+        },
+        "support_logistic": {
+          "nll": 0.565329592810325,
+          "brier": 0.19137207413085838
+        },
+        "full_jepa": {
+          "nll": 0.6027130666247275,
+          "brier": 0.2093364817814303
+        },
+        "supervised_only": {
+          "nll": 0.6027382359520332,
+          "brier": 0.20934750203824265
+        },
+        "no_recursion": {
+          "nll": 0.6027729292714923,
+          "brier": 0.20936304808164496
+        }
+      }
+    },
+    {
+      "seed": 450002,
+      "width": 6,
+      "regime": "nonlinear_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 6.974732336822997e-11,
+          "iterations": 5,
+          "weights": [
+            0.0921327696543097,
+            0.038287052083994015
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 18,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.01462562382221222,
+            "minimum_std": 0.000750312115997076,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.5261231328954636e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.014999623410403728,
+            "minimum_std": 0.0007584207924082875,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.69415849629695e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.014977270737290382,
+            "minimum_std": 0.0008362875669263303,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.6325515989356063e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.030208557844161987,
+            "minimum_std": 0.0014968442264944315,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.0260588396704406e-06,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.0314561128616333,
+            "minimum_std": 0.0014585840981453657,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.2239396482982556e-06,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.03233627602458,
+            "minimum_std": 0.0017258231528103352,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.4044467206986155e-06,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.014865605160593987,
+            "minimum_std": 0.000500732334330678,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.298138213063794e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.01509946957230568,
+            "minimum_std": 0.0005249817622825503,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.3907688273538952e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.015046580694615841,
+            "minimum_std": 0.0005662135663442314,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.3018841943667212e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.5809939824396468,
+          "brier": 0.19575609308440484
+        },
+        "target_platt": {
+          "nll": 0.5793493193952749,
+          "brier": 0.19435924730604667
+        },
+        "support_logistic": {
+          "nll": 0.6048256300632271,
+          "brier": 0.2049412455240071
+        },
+        "full_jepa": {
+          "nll": 0.5804018472979328,
+          "brier": 0.19548806682287803
+        },
+        "supervised_only": {
+          "nll": 0.5804527656849172,
+          "brier": 0.1955104685989954
+        },
+        "no_recursion": {
+          "nll": 0.5804900615590787,
+          "brier": 0.19552788955634787
+        }
+      }
+    },
+    {
+      "seed": 450002,
+      "width": 6,
+      "regime": "no_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 4.7441137823733825e-11,
+          "iterations": 5,
+          "weights": [
+            0.2218485162978587,
+            0.04283421909289731
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 16,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.014429007656872272,
+            "minimum_std": 0.0007384846685454249,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.455991854333206e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.014996235258877277,
+            "minimum_std": 0.0007859878242015839,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 3.105856549723285e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.014295155182480812,
+            "minimum_std": 0.000783373776357621,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.4563311384895314e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.030122585594654083,
+            "minimum_std": 0.0015317255165427923,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.0105951560035464e-06,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.033390071243047714,
+            "minimum_std": 0.0015706236008554697,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.6721289739507483e-06,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.0303514301776886,
+            "minimum_std": 0.0015811793273314834,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.0764879334601574e-06,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.014720049686729908,
+            "minimum_std": 0.00047673803055658937,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.2800762167207722e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.015132712200284004,
+            "minimum_std": 0.0005156671395525336,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.759739281543716e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.014462852850556374,
+            "minimum_std": 0.0005629236111417413,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.202820326147048e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.5871515700994818,
+          "brier": 0.20020249312379101
+        },
+        "target_platt": {
+          "nll": 0.591129959736242,
+          "brier": 0.20069905245500919
+        },
+        "support_logistic": {
+          "nll": 0.5369690448065769,
+          "brier": 0.17888679654237594
+        },
+        "full_jepa": {
+          "nll": 0.5865912822987519,
+          "brier": 0.19997142086443215
+        },
+        "supervised_only": {
+          "nll": 0.5866257084317371,
+          "brier": 0.19998567730218528
+        },
+        "no_recursion": {
+          "nll": 0.586675641844888,
+          "brier": 0.20000617055865716
+        }
+      }
+    },
+    {
+      "seed": 450002,
+      "width": 6,
+      "regime": "ignorable_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 3.396813594291892e-10,
+          "iterations": 5,
+          "weights": [
+            0.029272281865145622,
+            0.21282134849957546
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 21,
+          "c": 0.1,
+          "parameters": 49
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.015024934895336628,
+            "minimum_std": 0.0008412538445554674,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.8471454527334572e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.014414457604289055,
+            "minimum_std": 0.0007183495326898992,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.12315267589247e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.015478499233722687,
+            "minimum_std": 0.0007985304109752178,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.982442381949113e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.03238510340452194,
+            "minimum_std": 0.001709686010144651,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.4336031881612143e-06,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.023044314235448837,
+            "minimum_std": 0.00139227497857064,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.924130685893033e-07,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.029537465423345566,
+            "minimum_std": 0.0016584177501499653,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 7.988321613083826e-07,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.015108831226825714,
+            "minimum_std": 0.0005688645760528743,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.4989818214748993e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.014356035739183426,
+            "minimum_std": 0.000601625011768192,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.6693991966576505e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.015472665429115295,
+            "minimum_std": 0.0006348135648295283,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.3916179259231285e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.7089729973616632,
+          "brier": 0.25671388030460174
+        },
+        "target_platt": {
+          "nll": 0.7070346490261974,
+          "brier": 0.2562878985322127
+        },
+        "support_logistic": {
+          "nll": 0.6992552021182425,
+          "brier": 0.25129435759060625
+        },
+        "full_jepa": {
+          "nll": 0.7065191218990928,
+          "brier": 0.25582107539820353
+        },
+        "supervised_only": {
+          "nll": 0.7066507083370849,
+          "brier": 0.25586572494451054
+        },
+        "no_recursion": {
+          "nll": 0.706780717206011,
+          "brier": 0.255910843579709
+        }
+      }
+    },
+    {
+      "seed": 450002,
+      "width": 10,
+      "regime": "sign_flip",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 1.5089176544531846e-10,
+          "iterations": 4,
+          "weights": [
+            0.018425538365144344,
+            0.1520316505128246
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 18,
+          "c": 0.1,
+          "parameters": 121
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.011552490293979645,
+            "minimum_std": 0.0006198821938596666,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 7.155968706484828e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.01149833481758833,
+            "minimum_std": 0.0006030243821442127,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 8.232330372948127e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.010608133859932423,
+            "minimum_std": 0.000516287749633193,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 6.132597984986887e-09,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.02051621675491333,
+            "minimum_std": 0.0012515428243204951,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.417625412614143e-07,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.019429100677371025,
+            "minimum_std": 0.0011185656767338514,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.1382371667423286e-07,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.01728760078549385,
+            "minimum_std": 0.001004447927698493,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 6.270333585689514e-08,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.011796459555625916,
+            "minimum_std": 0.0005102427094243467,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 6.2163252323443885e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.011639367789030075,
+            "minimum_std": 0.00047107142745517194,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 6.97173607733248e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.010867362841963768,
+            "minimum_std": 0.0004599356325343251,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 5.273446124220982e-09,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6314831378085375,
+          "brier": 0.22285606456527907
+        },
+        "target_platt": {
+          "nll": 0.6253338769628389,
+          "brier": 0.2193173107173101
+        },
+        "support_logistic": {
+          "nll": 0.44229151798060606,
+          "brier": 0.14283640252180985
+        },
+        "full_jepa": {
+          "nll": 0.628506691400424,
+          "brier": 0.22129858766312865
+        },
+        "supervised_only": {
+          "nll": 0.6287014668979947,
+          "brier": 0.2214040877444215
+        },
+        "no_recursion": {
+          "nll": 0.6289411581238176,
+          "brier": 0.22153058010243898
+        }
+      }
+    },
+    {
+      "seed": 450002,
+      "width": 10,
+      "regime": "nonlinear_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 1.8090809666276852e-10,
+          "iterations": 5,
+          "weights": [
+            -0.07484839503239274,
+            0.1460554215918964
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 19,
+          "c": 0.1,
+          "parameters": 121
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.011521033942699432,
+            "minimum_std": 0.0006216834881342947,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 7.028096771222181e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.010883161798119545,
+            "minimum_std": 0.0005553964874707162,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 6.107135686050924e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.011267120018601418,
+            "minimum_std": 0.0005876835202798247,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 8.682898844369902e-09,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.020661186426877975,
+            "minimum_std": 0.0012703905813395977,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.4681516802284023e-07,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.017787816002964973,
+            "minimum_std": 0.0011042271507903934,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 6.766020987925003e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.019108157604932785,
+            "minimum_std": 0.001198116922751069,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 9.61926502895949e-08,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.011760041117668152,
+            "minimum_std": 0.0005171781522221863,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 6.142988340229749e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.011066315695643425,
+            "minimum_std": 0.00043817039113491774,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 5.3943400857292545e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.011490128003060818,
+            "minimum_std": 0.000483691634144634,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 7.713779837104084e-09,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.5827906811425108,
+          "brier": 0.19898052379564243
+        },
+        "target_platt": {
+          "nll": 0.5763400380262214,
+          "brier": 0.19551229099982412
+        },
+        "support_logistic": {
+          "nll": 0.5915162642269605,
+          "brier": 0.20507586485482168
+        },
+        "full_jepa": {
+          "nll": 0.5798567266488197,
+          "brier": 0.19747486684879478
+        },
+        "supervised_only": {
+          "nll": 0.5800412469386522,
+          "brier": 0.19757041404234738
+        },
+        "no_recursion": {
+          "nll": 0.5802872316176662,
+          "brier": 0.1976986759362807
+        }
+      }
+    },
+    {
+      "seed": 450002,
+      "width": 10,
+      "regime": "no_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 4.843171159257809e-10,
+          "iterations": 4,
+          "weights": [
+            0.02136845335650748,
+            0.08116167839681927
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 18,
+          "c": 0.1,
+          "parameters": 121
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.011592602357268333,
+            "minimum_std": 0.0006044480251148343,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 7.313690986165966e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.011008596047759056,
+            "minimum_std": 0.0005609727231785655,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 7.307852101234857e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.010851627215743065,
+            "minimum_std": 0.0005401336238719523,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 5.952970560940685e-09,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.020422041416168213,
+            "minimum_std": 0.0012181493220850825,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.3143923638381239e-07,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.015874512493610382,
+            "minimum_std": 0.0010465061059221625,
+            "fraction_dimensions_std_below_01": 0.3125,
+            "off_diagonal_covariance_mean_square": 2.9189816785901712e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.0178927443921566,
+            "minimum_std": 0.0011183397145941854,
+            "fraction_dimensions_std_below_01": 0.3125,
+            "off_diagonal_covariance_mean_square": 5.90638364883489e-08,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.011774681508541107,
+            "minimum_std": 0.0005439106607809663,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 6.079741154962903e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.011137194000184536,
+            "minimum_std": 0.0004821426991838962,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 6.073781477766715e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.011074203997850418,
+            "minimum_std": 0.0005022705299779773,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 5.173545147840741e-09,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.5891180975732999,
+          "brier": 0.20318942779142612
+        },
+        "target_platt": {
+          "nll": 0.5832134920491263,
+          "brier": 0.20043940950859962
+        },
+        "support_logistic": {
+          "nll": 0.4307725526157171,
+          "brier": 0.13764590105553287
+        },
+        "full_jepa": {
+          "nll": 0.5869258896637675,
+          "brier": 0.20215773359170786
+        },
+        "supervised_only": {
+          "nll": 0.5870711742748874,
+          "brier": 0.20222700131875598
+        },
+        "no_recursion": {
+          "nll": 0.5872654188744821,
+          "brier": 0.20231790693498208
+        }
+      }
+    },
+    {
+      "seed": 450002,
+      "width": 10,
+      "regime": "ignorable_shift",
+      "control_audits": {
+        "target_platt": {
+          "success": true,
+          "gradient_max": 1.0183661205975802e-11,
+          "iterations": 5,
+          "weights": [
+            -0.09713656330108134,
+            0.0746618375775986
+          ],
+          "ridge": 0.1
+        },
+        "support_logistic": {
+          "converged": true,
+          "iterations": 27,
+          "c": 0.1,
+          "parameters": 121
+        }
+      },
+      "collapse_stats": {
+        "full_jepa": {
+          "source": {
+            "mean_std": 0.011159030720591545,
+            "minimum_std": 0.0006048352224752307,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 5.5491518047290356e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.011908800341188908,
+            "minimum_std": 0.0005537695833481848,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 1.2470726673541321e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.011739627458155155,
+            "minimum_std": 0.00046094090794213116,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 1.0104955983081254e-08,
+            "all_finite": true
+          }
+        },
+        "supervised_only": {
+          "source": {
+            "mean_std": 0.020161962136626244,
+            "minimum_std": 0.0012625904055312276,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.424421327556047e-07,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.015930719673633575,
+            "minimum_std": 0.0010674194199964404,
+            "fraction_dimensions_std_below_01": 0.3125,
+            "off_diagonal_covariance_mean_square": 5.383100898370685e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.015206865966320038,
+            "minimum_std": 0.0009173218277283013,
+            "fraction_dimensions_std_below_01": 0.375,
+            "off_diagonal_covariance_mean_square": 5.010947035088975e-08,
+            "all_finite": true
+          }
+        },
+        "no_recursion": {
+          "source": {
+            "mean_std": 0.01135585643351078,
+            "minimum_std": 0.0004930734285153449,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 5.067943842362865e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.011966914869844913,
+            "minimum_std": 0.0004659281112253666,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 1.0194450617007078e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.011993657797574997,
+            "minimum_std": 0.00046881320304237306,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 9.421309954404933e-09,
+            "all_finite": true
+          }
+        }
+      },
+      "metrics": {
+        "frozen": {
+          "nll": 0.6531513227851733,
+          "brier": 0.23153999755710758
+        },
+        "target_platt": {
+          "nll": 0.6477962241187645,
+          "brier": 0.22877629703552094
+        },
+        "support_logistic": {
+          "nll": 0.7345322874645737,
+          "brier": 0.2652309184732601
+        },
+        "full_jepa": {
+          "nll": 0.6513416649759134,
+          "brier": 0.23063984344937385
+        },
+        "supervised_only": {
+          "nll": 0.651455380441935,
+          "brier": 0.23069711012671856
+        },
+        "no_recursion": {
+          "nll": 0.6516050547347305,
+          "brier": 0.23077174954075616
+        }
+      }
+    }
+  ],
+  "regime_means": {
+    "sign_flip": {
+      "frozen": {
+        "nll": 0.6179986252022113,
+        "brier": 0.21551744632356223
+      },
+      "target_platt": {
+        "nll": 0.6165670423034444,
+        "brier": 0.2146302914872632
+      },
+      "support_logistic": {
+        "nll": 0.5035295812035527,
+        "brier": 0.1668699324891833
+      },
+      "full_jepa": {
+        "nll": 0.6168194092368353,
+        "brier": 0.21488941965494257
+      },
+      "supervised_only": {
+        "nll": 0.6168924842013135,
+        "brier": 0.21493019564041665
+      },
+      "no_recursion": {
+        "nll": 0.6169843513822011,
+        "brier": 0.21498011124405297
+      }
+    },
+    "nonlinear_shift": {
+      "frozen": {
+        "nll": 0.5933284064926134,
+        "brier": 0.20338778497558122
+      },
+      "target_platt": {
+        "nll": 0.5913151977608436,
+        "brier": 0.2020734175021735
+      },
+      "support_logistic": {
+        "nll": 0.60670877502224,
+        "brier": 0.2086846413291511
+      },
+      "full_jepa": {
+        "nll": 0.5921160599204386,
+        "brier": 0.202805158802006
+      },
+      "supervised_only": {
+        "nll": 0.5921824454309139,
+        "brier": 0.20283745820844384
+      },
+      "no_recursion": {
+        "nll": 0.592277532060129,
+        "brier": 0.20288510178180746
+      }
+    },
+    "no_shift": {
+      "frozen": {
+        "nll": 0.6012137547328003,
+        "brier": 0.20708865302454227
+      },
+      "target_platt": {
+        "nll": 0.5994388460381683,
+        "brier": 0.20618857841405613
+      },
+      "support_logistic": {
+        "nll": 0.5191052117953656,
+        "brier": 0.1742787586671105
+      },
+      "full_jepa": {
+        "nll": 0.6004297284571625,
+        "brier": 0.2067220343464515
+      },
+      "supervised_only": {
+        "nll": 0.6004587242349135,
+        "brier": 0.2067375637859561
+      },
+      "no_recursion": {
+        "nll": 0.6005220650053354,
+        "brier": 0.20676755719413942
+      }
+    },
+    "ignorable_shift": {
+      "frozen": {
+        "nll": 0.6479848376664998,
+        "brier": 0.22772071323199322
+      },
+      "target_platt": {
+        "nll": 0.6468590322356735,
+        "brier": 0.22778830222394575
+      },
+      "support_logistic": {
+        "nll": 0.6840183391260939,
+        "brier": 0.24212817415105967
+      },
+      "full_jepa": {
+        "nll": 0.6468069597281308,
+        "brier": 0.22729737311675305
+      },
+      "supervised_only": {
+        "nll": 0.6468572903586434,
+        "brier": 0.22731255865393402
+      },
+      "no_recursion": {
+        "nll": 0.6469253862603281,
+        "brier": 0.22733581857409985
+      }
+    }
+  },
+  "training_models": {
+    "full_jepa": {
+      "spec": {
+        "width": 16,
+        "steps": 3,
+        "use_jepa": true
+      },
+      "parameters": 8448,
+      "trainable_parameters": 6880,
+      "frozen_parameters": 1568,
+      "parameter_device": "cuda:0",
+      "updates": 64,
+      "loss_weights": {
+        "jepa_weight": 0.1,
+        "variance_weight": 0.01,
+        "covariance_weight": 0.001,
+        "deep_weight": 0.2
+      },
+      "training_trace": [
+        {
+          "update": 1,
+          "loss": 0.8256772756576538,
+          "supervised_bce": 0.5936329364776611,
+          "deep_bce": 0.5930233001708984,
+          "jepa_mse": 1.0368537902832031,
+          "variance": 0.9754304885864258,
+          "covariance": 1.1001282018696656e-06,
+          "student_std_mean": 0.022198030725121498,
+          "student_std_min": 0.009628876112401485
+        },
+        {
+          "update": 9,
+          "loss": 0.7564367055892944,
+          "supervised_bce": 0.5595300197601318,
+          "deep_bce": 0.5585330128669739,
+          "jepa_mse": 0.7542031407356262,
+          "variance": 0.9779731035232544,
+          "covariance": 3.4889188782472047e-07,
+          "student_std_mean": 0.019419800490140915,
+          "student_std_min": 0.008175167255103588
+        },
+        {
+          "update": 17,
+          "loss": 0.7347844839096069,
+          "supervised_bce": 0.5608421564102173,
+          "deep_bce": 0.5604800581932068,
+          "jepa_mse": 0.5204631686210632,
+          "variance": 0.9799999594688416,
+          "covariance": 3.1611054396307736e-07,
+          "student_std_mean": 0.017028748989105225,
+          "student_std_min": 0.006917267106473446
+        },
+        {
+          "update": 25,
+          "loss": 0.7431294322013855,
+          "supervised_bce": 0.583896815776825,
+          "deep_bce": 0.5836178064346313,
+          "jepa_mse": 0.3275039494037628,
+          "variance": 0.9758701324462891,
+          "covariance": 8.055261560002691e-07,
+          "student_std_mean": 0.02168848365545273,
+          "student_std_min": 0.008185828104615211
+        },
+        {
+          "update": 33,
+          "loss": 0.779469907283783,
+          "supervised_bce": 0.6262209415435791,
+          "deep_bce": 0.625439465045929,
+          "jepa_mse": 0.18400926887989044,
+          "variance": 0.976012647151947,
+          "covariance": 6.865529371680168e-07,
+          "student_std_mean": 0.021586250513792038,
+          "student_std_min": 0.009200355038046837
+        },
+        {
+          "update": 41,
+          "loss": 0.7000341415405273,
+          "supervised_bce": 0.5677015781402588,
+          "deep_bce": 0.5676170587539673,
+          "jepa_mse": 0.09054213762283325,
+          "variance": 0.9754922986030579,
+          "covariance": 7.35317257749557e-07,
+          "student_std_mean": 0.022173181176185608,
+          "student_std_min": 0.011003885418176651
+        },
+        {
+          "update": 49,
+          "loss": 0.7622210383415222,
+          "supervised_bce": 0.6241664886474609,
+          "deep_bce": 0.6241247653961182,
+          "jepa_mse": 0.0347319133579731,
+          "variance": 0.9756437540054321,
+          "covariance": 6.044891733836266e-07,
+          "student_std_mean": 0.022082865238189697,
+          "student_std_min": 0.012429097667336464
+        },
+        {
+          "update": 57,
+          "loss": 0.7046186327934265,
+          "supervised_bce": 0.5783001780509949,
+          "deep_bce": 0.577669084072113,
+          "jepa_mse": 0.010793142020702362,
+          "variance": 0.9705293774604797,
+          "covariance": 1.9637952846096596e-06,
+          "student_std_mean": 0.027592159807682037,
+          "student_std_min": 0.014921524561941624
+        },
+        {
+          "update": 64,
+          "loss": 0.7009322643280029,
+          "supervised_bce": 0.5757229328155518,
+          "deep_bce": 0.5756295919418335,
+          "jepa_mse": 0.003988632932305336,
+          "variance": 0.9684584140777588,
+          "covariance": 2.40648296312429e-06,
+          "student_std_mean": 0.029806701466441154,
+          "student_std_min": 0.017160383984446526
+        }
+      ],
+      "collapse_stats": {
+        "1": {
+          "source": {
+            "mean_std": 0.008272077888250351,
+            "minimum_std": 0.0006752153858542442,
+            "fraction_dimensions_std_below_01": 0.8125,
+            "off_diagonal_covariance_mean_square": 4.139343090514558e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.008060935884714127,
+            "minimum_std": 0.0006128009990788996,
+            "fraction_dimensions_std_below_01": 0.8125,
+            "off_diagonal_covariance_mean_square": 2.271664856223765e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.008280745707452297,
+            "minimum_std": 0.000603530730586499,
+            "fraction_dimensions_std_below_01": 0.8125,
+            "off_diagonal_covariance_mean_square": 2.7990942896849447e-09,
+            "all_finite": true
+          }
+        },
+        "64": {
+          "source": {
+            "mean_std": 0.014362012036144733,
+            "minimum_std": 0.0008358322666026652,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.395514015456456e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.015072155743837357,
+            "minimum_std": 0.0008528926991857588,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.941504024216556e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.015229010954499245,
+            "minimum_std": 0.00088710174895823,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.4326887171355338e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "gradient_paths": {
+        "encoder.field.0.weight": {
+          "max_abs_gradient": 0.0023761126212775707,
+          "nonzero_observed": true
+        },
+        "encoder.field.0.bias": {
+          "max_abs_gradient": 0.0038453922607004642,
+          "nonzero_observed": true
+        },
+        "encoder.field.2.weight": {
+          "max_abs_gradient": 0.0020867767743766308,
+          "nonzero_observed": true
+        },
+        "encoder.field.2.bias": {
+          "max_abs_gradient": 0.012792054563760757,
+          "nonzero_observed": true
+        },
+        "encoder.row.0.weight": {
+          "max_abs_gradient": 0.004486218560487032,
+          "nonzero_observed": true
+        },
+        "encoder.row.0.bias": {
+          "max_abs_gradient": 0.0402497872710228,
+          "nonzero_observed": true
+        },
+        "encoder.row.1.weight": {
+          "max_abs_gradient": 0.009543544612824917,
+          "nonzero_observed": true
+        },
+        "encoder.row.1.bias": {
+          "max_abs_gradient": 0.006067343056201935,
+          "nonzero_observed": true
+        },
+        "refiner.0.weight": {
+          "max_abs_gradient": 0.0006190273561514914,
+          "nonzero_observed": true
+        },
+        "refiner.0.bias": {
+          "max_abs_gradient": 0.0008281907648779452,
+          "nonzero_observed": true
+        },
+        "refiner.2.weight": {
+          "max_abs_gradient": 0.0010313866659998894,
+          "nonzero_observed": true
+        },
+        "refiner.2.bias": {
+          "max_abs_gradient": 0.0010602810652926564,
+          "nonzero_observed": true
+        },
+        "predictor.0.weight": {
+          "max_abs_gradient": 0.02436457946896553,
+          "nonzero_observed": true
+        },
+        "predictor.0.bias": {
+          "max_abs_gradient": 0.012007639743387699,
+          "nonzero_observed": true
+        },
+        "predictor.2.weight": {
+          "max_abs_gradient": 0.03810826689004898,
+          "nonzero_observed": true
+        },
+        "predictor.2.bias": {
+          "max_abs_gradient": 0.025675997138023376,
+          "nonzero_observed": true
+        }
+      },
+      "teacher_ema": {
+        "decay": 0.99,
+        "update_calls": 64,
+        "observed_teacher_updates": 64,
+        "iterations_changing_teacher_parameters": 64,
+        "teacher_gradients_absent": true
+      },
+      "checkpoint_sha256": "3ea3882e225932f966587bdf0b7a79e776993086e5616bf5db4a1c0f39221a6b",
+      "seconds": 8.32713666
+    },
+    "supervised_only": {
+      "spec": {
+        "width": 16,
+        "steps": 3,
+        "use_jepa": false
+      },
+      "parameters": 8448,
+      "trainable_parameters": 6880,
+      "frozen_parameters": 1568,
+      "parameter_device": "cuda:0",
+      "updates": 64,
+      "loss_weights": {
+        "jepa_weight": 0.0,
+        "variance_weight": 0.0,
+        "covariance_weight": 0.0,
+        "deep_weight": 0.2
+      },
+      "training_trace": [
+        {
+          "update": 1,
+          "loss": 0.7122375965118408,
+          "supervised_bce": 0.5936329364776611,
+          "deep_bce": 0.5930233001708984,
+          "jepa_mse": 0.0,
+          "variance": 0.0,
+          "covariance": 0.0,
+          "student_std_mean": 0.023372787982225418,
+          "student_std_min": 0.008717990480363369
+        },
+        {
+          "update": 9,
+          "loss": 0.6707355380058289,
+          "supervised_bce": 0.5590986013412476,
+          "deep_bce": 0.5581846833229065,
+          "jepa_mse": 0.0,
+          "variance": 0.0,
+          "covariance": 0.0,
+          "student_std_mean": 0.02798970602452755,
+          "student_std_min": 0.011827881447970867
+        },
+        {
+          "update": 17,
+          "loss": 0.6726678609848022,
+          "supervised_bce": 0.5606129765510559,
+          "deep_bce": 0.5602743625640869,
+          "jepa_mse": 0.0,
+          "variance": 0.0,
+          "covariance": 0.0,
+          "student_std_mean": 0.021540246903896332,
+          "student_std_min": 0.009229160845279694
+        },
+        {
+          "update": 25,
+          "loss": 0.7003189921379089,
+          "supervised_bce": 0.5836385488510132,
+          "deep_bce": 0.5834022760391235,
+          "jepa_mse": 0.0,
+          "variance": 0.0,
+          "covariance": 0.0,
+          "student_std_mean": 0.027207065373659134,
+          "student_std_min": 0.0122843561694026
+        },
+        {
+          "update": 33,
+          "loss": 0.7505369782447815,
+          "supervised_bce": 0.625583291053772,
+          "deep_bce": 0.6247684955596924,
+          "jepa_mse": 0.0,
+          "variance": 0.0,
+          "covariance": 0.0,
+          "student_std_mean": 0.0385313406586647,
+          "student_std_min": 0.013951790519058704
+        },
+        {
+          "update": 41,
+          "loss": 0.6811473369598389,
+          "supervised_bce": 0.5676336884498596,
+          "deep_bce": 0.567568302154541,
+          "jepa_mse": 0.0,
+          "variance": 0.0,
+          "covariance": 0.0,
+          "student_std_mean": 0.025779150426387787,
+          "student_std_min": 0.012409348972141743
+        },
+        {
+          "update": 49,
+          "loss": 0.7489306926727295,
+          "supervised_bce": 0.6241140365600586,
+          "deep_bce": 0.6240831613540649,
+          "jepa_mse": 0.0,
+          "variance": 0.0,
+          "covariance": 0.0,
+          "student_std_mean": 0.02709093689918518,
+          "student_std_min": 0.01368497684597969
+        },
+        {
+          "update": 57,
+          "loss": 0.6931545734405518,
+          "supervised_bce": 0.5777661800384521,
+          "deep_bce": 0.5769419074058533,
+          "jepa_mse": 0.0,
+          "variance": 0.0,
+          "covariance": 0.0,
+          "student_std_mean": 0.03819526731967926,
+          "student_std_min": 0.014653786085546017
+        },
+        {
+          "update": 64,
+          "loss": 0.6907334327697754,
+          "supervised_bce": 0.575633704662323,
+          "deep_bce": 0.5754987597465515,
+          "jepa_mse": 0.0,
+          "variance": 0.0,
+          "covariance": 0.0,
+          "student_std_mean": 0.028295056894421577,
+          "student_std_min": 0.015755778178572655
+        }
+      ],
+      "collapse_stats": {
+        "1": {
+          "source": {
+            "mean_std": 0.008948367089033127,
+            "minimum_std": 0.0006673612515442073,
+            "fraction_dimensions_std_below_01": 0.8125,
+            "off_diagonal_covariance_mean_square": 5.45350165026548e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.008752858266234398,
+            "minimum_std": 0.0005992346559651196,
+            "fraction_dimensions_std_below_01": 0.75,
+            "off_diagonal_covariance_mean_square": 3.125727232600184e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.009004484862089157,
+            "minimum_std": 0.0005886650178581476,
+            "fraction_dimensions_std_below_01": 0.75,
+            "off_diagonal_covariance_mean_square": 3.856782004874049e-09,
+            "all_finite": true
+          }
+        },
+        "64": {
+          "source": {
+            "mean_std": 0.02352522313594818,
+            "minimum_std": 0.002874435391277075,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 1.8799387646595278e-07,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.020533958449959755,
+            "minimum_std": 0.0025726379826664925,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 6.792858187054662e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.021223071962594986,
+            "minimum_std": 0.001916844048537314,
+            "fraction_dimensions_std_below_01": 0.25,
+            "off_diagonal_covariance_mean_square": 8.23331021138074e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "gradient_paths": {
+        "encoder.field.0.weight": {
+          "max_abs_gradient": 0.00030623964266851544,
+          "nonzero_observed": true
+        },
+        "encoder.field.0.bias": {
+          "max_abs_gradient": 0.0005771801806986332,
+          "nonzero_observed": true
+        },
+        "encoder.field.2.weight": {
+          "max_abs_gradient": 0.0004574887570925057,
+          "nonzero_observed": true
+        },
+        "encoder.field.2.bias": {
+          "max_abs_gradient": 0.0031762258149683475,
+          "nonzero_observed": true
+        },
+        "encoder.row.0.weight": {
+          "max_abs_gradient": 0.0010157376527786255,
+          "nonzero_observed": true
+        },
+        "encoder.row.0.bias": {
+          "max_abs_gradient": 0.009466107003390789,
+          "nonzero_observed": true
+        },
+        "encoder.row.1.weight": {
+          "max_abs_gradient": 0.00044673975207842886,
+          "nonzero_observed": true
+        },
+        "encoder.row.1.bias": {
+          "max_abs_gradient": 0.0014350798446685076,
+          "nonzero_observed": true
+        },
+        "refiner.0.weight": {
+          "max_abs_gradient": 0.000401927885832265,
+          "nonzero_observed": true
+        },
+        "refiner.0.bias": {
+          "max_abs_gradient": 0.000516028085257858,
+          "nonzero_observed": true
+        },
+        "refiner.2.weight": {
+          "max_abs_gradient": 0.0005053490167483687,
+          "nonzero_observed": true
+        },
+        "refiner.2.bias": {
+          "max_abs_gradient": 0.001065328367985785,
+          "nonzero_observed": true
+        },
+        "predictor.0.weight": {
+          "max_abs_gradient": 0.0,
+          "nonzero_observed": false
+        },
+        "predictor.0.bias": {
+          "max_abs_gradient": 0.0,
+          "nonzero_observed": false
+        },
+        "predictor.2.weight": {
+          "max_abs_gradient": 0.0,
+          "nonzero_observed": false
+        },
+        "predictor.2.bias": {
+          "max_abs_gradient": 0.0,
+          "nonzero_observed": false
+        }
+      },
+      "teacher_ema": {
+        "decay": 0.99,
+        "update_calls": 64,
+        "observed_teacher_updates": 64,
+        "iterations_changing_teacher_parameters": 64,
+        "teacher_gradients_absent": true
+      },
+      "checkpoint_sha256": "b5474e0e14612306d3e0235d26a911a3d7ec881666b080a27a460dc3146ca6e4",
+      "seconds": 2.157582098999999
+    },
+    "no_recursion": {
+      "spec": {
+        "width": 16,
+        "steps": 1,
+        "use_jepa": true
+      },
+      "parameters": 8448,
+      "trainable_parameters": 6880,
+      "frozen_parameters": 1568,
+      "parameter_device": "cuda:0",
+      "updates": 64,
+      "loss_weights": {
+        "jepa_weight": 0.1,
+        "variance_weight": 0.01,
+        "covariance_weight": 0.001,
+        "deep_weight": 0.2
+      },
+      "training_trace": [
+        {
+          "update": 1,
+          "loss": 0.7062549591064453,
+          "supervised_bce": 0.5928152799606323,
+          "deep_bce": 0.0,
+          "jepa_mse": 1.0368537902832031,
+          "variance": 0.9754304885864258,
+          "covariance": 1.1001282018696656e-06,
+          "student_std_mean": 0.022198030725121498,
+          "student_std_min": 0.009628876112401485
+        },
+        {
+          "update": 9,
+          "loss": 0.643286406993866,
+          "supervised_bce": 0.5581080317497253,
+          "deep_bce": 0.0,
+          "jepa_mse": 0.7539812922477722,
+          "variance": 0.9780220985412598,
+          "covariance": 3.4722023656286183e-07,
+          "student_std_mean": 0.019365277141332626,
+          "student_std_min": 0.008110590279102325
+        },
+        {
+          "update": 17,
+          "loss": 0.6221146583557129,
+          "supervised_bce": 0.5603322982788086,
+          "deep_bce": 0.0,
+          "jepa_mse": 0.51982182264328,
+          "variance": 0.980016827583313,
+          "covariance": 3.1626765917280864e-07,
+          "student_std_mean": 0.01701178029179573,
+          "student_std_min": 0.006962262559682131
+        },
+        {
+          "update": 25,
+          "loss": 0.6259598731994629,
+          "supervised_bce": 0.5835196375846863,
+          "deep_bce": 0.0,
+          "jepa_mse": 0.3268097937107086,
+          "variance": 0.9759277105331421,
+          "covariance": 7.90192700605985e-07,
+          "student_std_mean": 0.021633410826325417,
+          "student_std_min": 0.008174218237400055
+        },
+        {
+          "update": 33,
+          "loss": 0.6532691121101379,
+          "supervised_bce": 0.6251927614212036,
+          "deep_bce": 0.0,
+          "jepa_mse": 0.1831628382205963,
+          "variance": 0.9760056734085083,
+          "covariance": 6.87907856899983e-07,
+          "student_std_mean": 0.02160286344587803,
+          "student_std_min": 0.009153876453638077
+        },
+        {
+          "update": 41,
+          "loss": 0.5863130688667297,
+          "supervised_bce": 0.5675936341285706,
+          "deep_bce": 0.0,
+          "jepa_mse": 0.08965013921260834,
+          "variance": 0.9754430055618286,
+          "covariance": 7.287536618605372e-07,
+          "student_std_mean": 0.022233178839087486,
+          "student_std_min": 0.011207462288439274
+        },
+        {
+          "update": 49,
+          "loss": 0.6373339295387268,
+          "supervised_bce": 0.6241143941879272,
+          "deep_bce": 0.0,
+          "jepa_mse": 0.034643035382032394,
+          "variance": 0.975523829460144,
+          "covariance": 6.023806236044038e-07,
+          "student_std_mean": 0.022221552208065987,
+          "student_std_min": 0.012969167903065681
+        },
+        {
+          "update": 57,
+          "loss": 0.5883509516716003,
+          "supervised_bce": 0.5775270462036133,
+          "deep_bce": 0.0,
+          "jepa_mse": 0.011196109466254711,
+          "variance": 0.9704267978668213,
+          "covariance": 1.9443473320279736e-06,
+          "student_std_mean": 0.027712851762771606,
+          "student_std_min": 0.015334569849073887
+        },
+        {
+          "update": 64,
+          "loss": 0.5857169032096863,
+          "supervised_bce": 0.5755905508995056,
+          "deep_bce": 0.0,
+          "jepa_mse": 0.00444417679682374,
+          "variance": 0.9681949615478516,
+          "covariance": 2.322653244846151e-06,
+          "student_std_mean": 0.03009600192308426,
+          "student_std_min": 0.017765045166015625
+        }
+      ],
+      "collapse_stats": {
+        "1": {
+          "source": {
+            "mean_std": 0.01076439768075943,
+            "minimum_std": 0.0007959610084071755,
+            "fraction_dimensions_std_below_01": 0.5625,
+            "off_diagonal_covariance_mean_square": 7.773349963713372e-09,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.010612260550260544,
+            "minimum_std": 0.0008762091165408492,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 4.903544237322421e-09,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.010835791006684303,
+            "minimum_std": 0.000860403582919389,
+            "fraction_dimensions_std_below_01": 0.5,
+            "off_diagonal_covariance_mean_square": 5.78910697157653e-09,
+            "all_finite": true
+          }
+        },
+        "64": {
+          "source": {
+            "mean_std": 0.014953076839447021,
+            "minimum_std": 0.000615469238255173,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 1.4035625106600946e-08,
+            "all_finite": true
+          },
+          "target": {
+            "mean_std": 0.015680840238928795,
+            "minimum_std": 0.0006112796836532652,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.2076061867437602e-08,
+            "all_finite": true
+          },
+          "query": {
+            "mean_std": 0.015873467549681664,
+            "minimum_std": 0.0006656149635091424,
+            "fraction_dimensions_std_below_01": 0.4375,
+            "off_diagonal_covariance_mean_square": 2.546502386735483e-08,
+            "all_finite": true
+          }
+        }
+      },
+      "gradient_paths": {
+        "encoder.field.0.weight": {
+          "max_abs_gradient": 0.0024036653339862823,
+          "nonzero_observed": true
+        },
+        "encoder.field.0.bias": {
+          "max_abs_gradient": 0.0038458651397377253,
+          "nonzero_observed": true
+        },
+        "encoder.field.2.weight": {
+          "max_abs_gradient": 0.0020417203195393085,
+          "nonzero_observed": true
+        },
+        "encoder.field.2.bias": {
+          "max_abs_gradient": 0.012129713781177998,
+          "nonzero_observed": true
+        },
+        "encoder.row.0.weight": {
+          "max_abs_gradient": 0.004474882036447525,
+          "nonzero_observed": true
+        },
+        "encoder.row.0.bias": {
+          "max_abs_gradient": 0.04015413299202919,
+          "nonzero_observed": true
+        },
+        "encoder.row.1.weight": {
+          "max_abs_gradient": 0.009547733701765537,
+          "nonzero_observed": true
+        },
+        "encoder.row.1.bias": {
+          "max_abs_gradient": 0.006081628147512674,
+          "nonzero_observed": true
+        },
+        "refiner.0.weight": {
+          "max_abs_gradient": 0.0001667661708779633,
+          "nonzero_observed": true
+        },
+        "refiner.0.bias": {
+          "max_abs_gradient": 0.00017231541278306395,
+          "nonzero_observed": true
+        },
+        "refiner.2.weight": {
+          "max_abs_gradient": 0.0002567667397670448,
+          "nonzero_observed": true
+        },
+        "refiner.2.bias": {
+          "max_abs_gradient": 0.00023862061789259315,
+          "nonzero_observed": true
+        },
+        "predictor.0.weight": {
+          "max_abs_gradient": 0.024358218535780907,
+          "nonzero_observed": true
+        },
+        "predictor.0.bias": {
+          "max_abs_gradient": 0.012007639743387699,
+          "nonzero_observed": true
+        },
+        "predictor.2.weight": {
+          "max_abs_gradient": 0.03812522068619728,
+          "nonzero_observed": true
+        },
+        "predictor.2.bias": {
+          "max_abs_gradient": 0.025675997138023376,
+          "nonzero_observed": true
+        }
+      },
+      "teacher_ema": {
+        "decay": 0.99,
+        "update_calls": 64,
+        "observed_teacher_updates": 64,
+        "iterations_changing_teacher_parameters": 64,
+        "teacher_gradients_absent": true
+      },
+      "checkpoint_sha256": "5669b1d900ae87d04bd5431d8193129f56a40301cf1528795f2791d46f4d2ec1",
+      "seconds": 1.493930358
+    }
+  },
+  "effective_plan": {
+    "source_fit_labels": 2048,
+    "source_labels": 128,
+    "target_labels": 128,
+    "queries": 128,
+    "training_queries": 64,
+    "train_widths": [
+      6,
+      10
+    ],
+    "development_widths": [
+      6,
+      10
+    ],
+    "updates": 64,
+    "batch_size": 4,
+    "learning_rate": 0.001,
+    "width": 16,
+    "heads": 4,
+    "platt_ridge": 0.1,
+    "support_logistic_c": 0.1,
+    "bootstrap_samples": 2000,
+    "bootstrap_seed": 191301,
+    "useful_effect_nll": 0.003,
+    "max_null_harm_nll": 0.001,
+    "version": "recursive_jepa_v1",
+    "run_id": "recursive_jepa_v1_gpu",
+    "scientific_status": "engineering_only; no efficacy gate or confirmation",
+    "regimes": [
+      "sign_flip",
+      "nonlinear_shift",
+      "no_shift",
+      "ignorable_shift"
+    ],
+    "train_seeds": [
+      440001,
+      440002,
+      440003,
+      440004
+    ],
+    "validation_seeds": [
+      445001,
+      445002
+    ],
+    "development_seeds": [
+      450001,
+      450002
+    ],
+    "validation_used": false,
+    "training_seed": 460001,
+    "steps": 3,
+    "teacher_decay": 0.99,
+    "jepa_weight": 0.1,
+    "variance_weight": 0.01,
+    "covariance_weight": 0.001,
+    "deep_supervision_weight": 0.2,
+    "gate": "engineering_only; gate_pass=null; diagnostic scores never activate confirmation",
+    "gpu": "A100-40GB",
+    "gpu_timeout_seconds": 600,
+    "gpu_startup_timeout_seconds": 60,
+    "child_timeout_seconds": 540,
+    "gpu_reservation_usd": 0.8,
+    "automatic_retries": 0,
+    "file_sha256": {
+      "experiments/recursive_jepa_v1/model.py": "5c07e1d5c813528438e05c448c2225dd11a1a529e0a5d2bbd11e951e9e95a8f4",
+      "experiments/recursive_jepa_v1/run.py": "4557b8cf986570d2e3badcc18924305b6cdb825a3d044276d2820d1d92e272da",
+      "experiments/recursive_jepa_v1/launch.py": "1e8433ff3715989b1902bc7a69adb52dd29551a65074101f9e7be969a1152f00",
+      "experiments/recursive_jepa_v1/freeze.py": "ff8f53eb6ec31b85e8317f88b146d231256d892420ea3dee83a54761fb504b9c",
+      "infra/modal_recursive_jepa_v1.py": "1396a2a58a484af2d0185d9c7826d83d23e5efc987ac008f7d05eeb8fe822ae9",
+      "docs/RECURSIVE_JEPA_PROTOCOL.md": "4d9a3411c0d10d8090411926a16510292e6da4c2def5bc67b57775000d28e324",
+      "experiments/bridge_v1/run.py": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
+      "experiments/bridge_v1/model.py": "e90a6e16c45da94fb7a9a8c01177635883e69e4511184de1a322fee47adf51ae"
+    }
+  },
+  "validation_used": false,
+  "unused_validation_seeds": [
+    445001,
+    445002
+  ],
+  "device": "cuda",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "updates": 64,
+  "training_data_sha256": "e93d8e9690dc73fe655c1ab1ae452e6a65611434ac0fdb8818a33ebac72b4af3",
+  "development_data_sha256": "8613d2351a2f9ea2d459d0724d7a211f49aafb553eb52dd620235da3cad309bd",
+  "protocol_sha256": "96258a1fb109381b0e7662850e39753e4c9731a14ef150be3f401e58575f4f1f",
+  "source_sha256": "4557b8cf986570d2e3badcc18924305b6cdb825a3d044276d2820d1d92e272da",
+  "model_source_sha256": "5c07e1d5c813528438e05c448c2225dd11a1a529e0a5d2bbd11e951e9e95a8f4",
+  "frozen_v1_source_sha256": "8ad93613daff801a8378b503911286fc08e0cfb6c8d181a1c413788ab3c97386",
+  "torch": "2.8.0+cu128",
+  "python": "3.12.10",
+  "seconds": 13.834954144
+}

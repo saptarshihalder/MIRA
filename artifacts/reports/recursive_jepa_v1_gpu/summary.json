@@ -1,0 +1,21 @@
+{
+  "engineering_only": true,
+  "gate_pass": null,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "runner_seconds": 13.834954144,
+  "wrapper_seconds": 24.838139812,
+  "trainable_parameters": 6880,
+  "stored_parameters": 8448,
+  "cuda_updates_per_model": 64,
+  "controls": [
+    "full_jepa",
+    "supervised_only",
+    "no_recursion"
+  ],
+  "audit_passed": true,
+  "interpretation": "JEPA prediction loss falls but latent spread stays low and downstream changes are small. No efficacy, anti-collapse, novelty or robustness claim.",
+  "current_provisions_usd": 14.85,
+  "reproduction_reserve_usd": 3,
+  "unallocated_usd": 2.15,
+  "provider_invoice_verified": false
+}

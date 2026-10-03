@@ -2,6 +2,18 @@
 
 Target: a NeurIPS-quality draft by October 20; trained-model contribution required. Real native-data CUDA training is complete, but methodological novelty and venue readiness remain unresolved. Strict token rationing continues.
 
+## Recursive JEPA engineering checkpoint — October 3
+
+Implemented and actually trained a 6,880-trainable-parameter, three-step tied recursive label-memory model on Modal NVIDIA A100-SXM4-40GB. Support-only residual/class memories drive nonlinear embeddings and bounded differentiable head updates; supervised meta-query loss backpropagates through every step. A support-conditioned EMA teacher predicts embeddings across nested observed-only missingness views. Query labels never enter inference or the teacher target. JEPA/VICReg/MAML motivate ingredients; novelty is unestablished.
+
+Three controls completed64 CUDA updates each (full, supervised-only, one-step); runner13.835s/wrapper24.838s. Seven grouped unit tests and a separate two-update CPU engineering smoke pass. Independent audit verifies16 files/96 probability arrays and48 CPU checkpoint predictions (max error1.19e-7), all label boundaries, source logits, teacher states and exact frozen intervention. Saved raw predictions, all checkpoints, traces and audit are in artifacts/reports/recursive_jepa_v1_gpu. Protocol96258a1f was committed252c348 before the paid call. The app has zero active tasks, no schedule or endpoint, and no retries.
+
+Full JEPA auxiliary MSE1.036854→.003989; student mean std .022198→.029807 stays far below variance floor1 and final recurrent query std is .015229 on the logged batch. This is low-spread/collapse-risk evidence, not robust label representation. Diagnostic NLL full/frozen: sign-flip .616819/.617999; nonlinear .592116/.593328; no-shift .600430/.601214; ignorable .646807/.647985. Supervised-only and one-step scores are almost identical; support logistic sign-flip .503530 is much stronger. Two correlated development worlds cannot establish safety, significance or neural novelty. Different recurrence/deep-supervision/auxiliary costs prevent a causal ablation claim. Gate is deliberately null, not passed. Earlier failed full gates remain failed.
+
+Next: diagnose representation geometry and nonlinear label discrimination on CPU before another GPU protocol. Use per-world variance/effective rank, held-out support class separation and shuffled-label controls; do not solve a low-variance auxiliary merely by inflating embedding norm. Consider a learned field interaction/attention representation that preserves task-relevant cross-feature structure, then independently validated frozen fallback. Freeze a fresh computationally matched protocol and per-regime/null gate before scientific GPU expansion. Confirmation98000-98019 remains untouched; no native extension is activated.
+
+Conservative provisions14.85 plus protected reproduction3 within20 leave2.15 unallocated. New $.80 retained; provider report has not yet posted matching rows, so charge is unavailable, not zero. Preserve source/editor; no email or submission.
+
 ## Current successor checkpoint — October 3
 
 Bridge v1 fails; v2 support-conditioned regularization has a real controlled shifted gain over support logistic 0.025002 [0.021761,0.028315] and target-only conditioning .003300 [.000862,.005632]. However it harms the ignorable null by .060856 [.050163,.070476] and nonlinear-shift NLL .619693 exceeds frozen .594366. The aggregate shifted gain does not establish robustness. Both gates fail; neither candidate advances to native confirmation.

@@ -216,7 +216,13 @@ Source/target learned & .445794 & .619693 & .444034 & .722628\\
 \bottomrule
 \end{tabular}
 \end{center}
-Lower NLL is better. Averaged shifted gain is .025002 [.021761,.028315] over support logistic, .020661 [.017715,.023771] over fixed/train-grid regularization, and .003300 [.000862,.005632] over the target-only learner. These are conditional synthetic gains. Ignorable-null harm is .060856 [.050163,.070476], far above the predeclared .001 limit, and nonlinear-shift loss exceeds frozen. Thus the full gate fails; a positive aggregate does not establish robustness or identified policy transport. No natural-data or confirmation extension follows this result. All outcomes, source hashes, checkpoints and probabilities are retained. Both versions trained on NVIDIA A100-SXM4-40GB; independent audits reconstruct all scores and data boundaries and replay checkpoints. The four-step solver reports numerical gradients without a convergence guarantee. Both candidate protocols preceded their respective GPU scores, and the second was explicitly motivated by the first failed development result. Current conservative provisions are \$14.05 with \$3 protected for reproduction within the \$20 total cap; reported resource charges are distinct from unverified final invoices.
+Lower NLL is better. Averaged shifted gain is .025002 [.021761,.028315] over support logistic, .020661 [.017715,.023771] over fixed/train-grid regularization, and .003300 [.000862,.005632] over the target-only learner. These are conditional synthetic gains. Ignorable-null harm is .060856 [.050163,.070476], far above the predeclared .001 limit, and nonlinear-shift loss exceeds frozen. Thus the full gate fails; a positive aggregate does not establish robustness or identified policy transport. No natural-data or confirmation extension follows this result. All outcomes, source hashes, checkpoints and probabilities are retained. Both versions trained on NVIDIA A100-SXM4-40GB; independent audits reconstruct all scores and data boundaries and replay checkpoints. The four-step solver reports numerical gradients without a convergence guarantee. Both candidate protocols preceded their respective GPU scores, and the second was explicitly motivated by the first failed development result. Current conservative provisions including the subsequent engineering pilot are \$14.85 with \$3 protected for reproduction within the \$20 total cap; reported resource charges are distinct from unverified final invoices.
+
+
+\subsection{Recursive label-memory engineering prototype}
+We implemented a separate6,880-parameter encoder/refiner with three tied steps. Source/target labeled support class prototypes and current residual memories refine nonlinear query embeddings; bounded support-gradient head updates receive outer meta-query backpropagation. A stop-gradient EMA encoder supplies representation targets across nested additional missingness views, using only originally observed values and support-label context. No query label enters the teacher target or inference. The auxiliary is JEPA-inspired and support-conditioned, rather than fully self-supervised\cite{ijepa,vicreg,maml}. Finite unrolling and a bounded correction do not guarantee contraction, calibrated predictions, monotonic improvement or safety; exact frozen output is available as an intervention, not yet a validated gate.
+
+An engineering-only Modal A100 pilot trains the full model, supervised-only control and one-step control for64 updates each, with no score-based selection. All have6,880 trainable parameters; their effective auxiliary training, deep supervision and recurrent compute differ. The full auxiliary MSE falls1.036854 to .003989, but student mean standard deviation remains .029807 against variance floor1, and recurrent query spread is .015229 on the logged batch. Diagnostic full/frozen NLL is .616819/.617999 for sign flip, .592116/.593328 for nonlinear shift, .600430/.601214 for no shift and .646807/.647985 for ignorable shift. Control neural scores are nearly identical; support logistic reaches .503530 on sign flip. These two correlated synthetic worlds establish neither usefulness nor anti-collapse performance; no efficacy gate was run or passed. Independent audit replays all48 checkpoint predictions and verifies96 probability arrays. The next gate concerns discriminative embedding geometry, matched computational controls and a support-validated frozen fallback, followed by fresh development before any confirmation.
 
 \section{Controlled data and oracle}
 The initial synthetic diagnostic keeps an observed variable $U\in\{-1,+1\}$ balanced and uses
@@ -503,5 +509,15 @@ Meta-learning with differentiable convex optimization. CVPR, 2019.
 Y. Balaji, S. Sankaranarayanan, and R. Chellappa.
 MetaReg: Towards domain generalization using meta-regularization. NeurIPS, 2018.
 \url{https://proceedings.neurips.cc/paper/2018/hash/647bba344396e7c8170902bcf2e15551-Abstract.html}.
+
+\bibitem{ijepa}
+M. Assran et al. Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture. 2023.
+\url{https://arxiv.org/abs/2301.08243}.
+\bibitem{vicreg}
+A. Bardes, J. Ponce, and Y. LeCun. VICReg: Variance-Invariance-Covariance Regularization for Self-Supervised Learning. 2021.
+\url{https://arxiv.org/abs/2105.04906}.
+\bibitem{maml}
+C. Finn, P. Abbeel, and S. Levine. Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks. 2017.
+\url{https://arxiv.org/abs/1703.03400}.
 \end{thebibliography}
 \end{document}

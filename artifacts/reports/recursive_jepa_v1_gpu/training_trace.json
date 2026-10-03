@@ -1,0 +1,305 @@
+{
+  "full_jepa": [
+    {
+      "update": 1,
+      "loss": 0.8256772756576538,
+      "supervised_bce": 0.5936329364776611,
+      "deep_bce": 0.5930233001708984,
+      "jepa_mse": 1.0368537902832031,
+      "variance": 0.9754304885864258,
+      "covariance": 1.1001282018696656e-06,
+      "student_std_mean": 0.022198030725121498,
+      "student_std_min": 0.009628876112401485
+    },
+    {
+      "update": 9,
+      "loss": 0.7564367055892944,
+      "supervised_bce": 0.5595300197601318,
+      "deep_bce": 0.5585330128669739,
+      "jepa_mse": 0.7542031407356262,
+      "variance": 0.9779731035232544,
+      "covariance": 3.4889188782472047e-07,
+      "student_std_mean": 0.019419800490140915,
+      "student_std_min": 0.008175167255103588
+    },
+    {
+      "update": 17,
+      "loss": 0.7347844839096069,
+      "supervised_bce": 0.5608421564102173,
+      "deep_bce": 0.5604800581932068,
+      "jepa_mse": 0.5204631686210632,
+      "variance": 0.9799999594688416,
+      "covariance": 3.1611054396307736e-07,
+      "student_std_mean": 0.017028748989105225,
+      "student_std_min": 0.006917267106473446
+    },
+    {
+      "update": 25,
+      "loss": 0.7431294322013855,
+      "supervised_bce": 0.583896815776825,
+      "deep_bce": 0.5836178064346313,
+      "jepa_mse": 0.3275039494037628,
+      "variance": 0.9758701324462891,
+      "covariance": 8.055261560002691e-07,
+      "student_std_mean": 0.02168848365545273,
+      "student_std_min": 0.008185828104615211
+    },
+    {
+      "update": 33,
+      "loss": 0.779469907283783,
+      "supervised_bce": 0.6262209415435791,
+      "deep_bce": 0.625439465045929,
+      "jepa_mse": 0.18400926887989044,
+      "variance": 0.976012647151947,
+      "covariance": 6.865529371680168e-07,
+      "student_std_mean": 0.021586250513792038,
+      "student_std_min": 0.009200355038046837
+    },
+    {
+      "update": 41,
+      "loss": 0.7000341415405273,
+      "supervised_bce": 0.5677015781402588,
+      "deep_bce": 0.5676170587539673,
+      "jepa_mse": 0.09054213762283325,
+      "variance": 0.9754922986030579,
+      "covariance": 7.35317257749557e-07,
+      "student_std_mean": 0.022173181176185608,
+      "student_std_min": 0.011003885418176651
+    },
+    {
+      "update": 49,
+      "loss": 0.7622210383415222,
+      "supervised_bce": 0.6241664886474609,
+      "deep_bce": 0.6241247653961182,
+      "jepa_mse": 0.0347319133579731,
+      "variance": 0.9756437540054321,
+      "covariance": 6.044891733836266e-07,
+      "student_std_mean": 0.022082865238189697,
+      "student_std_min": 0.012429097667336464
+    },
+    {
+      "update": 57,
+      "loss": 0.7046186327934265,
+      "supervised_bce": 0.5783001780509949,
+      "deep_bce": 0.577669084072113,
+      "jepa_mse": 0.010793142020702362,
+      "variance": 0.9705293774604797,
+      "covariance": 1.9637952846096596e-06,
+      "student_std_mean": 0.027592159807682037,
+      "student_std_min": 0.014921524561941624
+    },
+    {
+      "update": 64,
+      "loss": 0.7009322643280029,
+      "supervised_bce": 0.5757229328155518,
+      "deep_bce": 0.5756295919418335,
+      "jepa_mse": 0.003988632932305336,
+      "variance": 0.9684584140777588,
+      "covariance": 2.40648296312429e-06,
+      "student_std_mean": 0.029806701466441154,
+      "student_std_min": 0.017160383984446526
+    }
+  ],
+  "supervised_only": [
+    {
+      "update": 1,
+      "loss": 0.7122375965118408,
+      "supervised_bce": 0.5936329364776611,
+      "deep_bce": 0.5930233001708984,
+      "jepa_mse": 0.0,
+      "variance": 0.0,
+      "covariance": 0.0,
+      "student_std_mean": 0.023372787982225418,
+      "student_std_min": 0.008717990480363369
+    },
+    {
+      "update": 9,
+      "loss": 0.6707355380058289,
+      "supervised_bce": 0.5590986013412476,
+      "deep_bce": 0.5581846833229065,
+      "jepa_mse": 0.0,
+      "variance": 0.0,
+      "covariance": 0.0,
+      "student_std_mean": 0.02798970602452755,
+      "student_std_min": 0.011827881447970867
+    },
+    {
+      "update": 17,
+      "loss": 0.6726678609848022,
+      "supervised_bce": 0.5606129765510559,
+      "deep_bce": 0.5602743625640869,
+      "jepa_mse": 0.0,
+      "variance": 0.0,
+      "covariance": 0.0,
+      "student_std_mean": 0.021540246903896332,
+      "student_std_min": 0.009229160845279694
+    },
+    {
+      "update": 25,
+      "loss": 0.7003189921379089,
+      "supervised_bce": 0.5836385488510132,
+      "deep_bce": 0.5834022760391235,
+      "jepa_mse": 0.0,
+      "variance": 0.0,
+      "covariance": 0.0,
+      "student_std_mean": 0.027207065373659134,
+      "student_std_min": 0.0122843561694026
+    },
+    {
+      "update": 33,
+      "loss": 0.7505369782447815,
+      "supervised_bce": 0.625583291053772,
+      "deep_bce": 0.6247684955596924,
+      "jepa_mse": 0.0,
+      "variance": 0.0,
+      "covariance": 0.0,
+      "student_std_mean": 0.0385313406586647,
+      "student_std_min": 0.013951790519058704
+    },
+    {
+      "update": 41,
+      "loss": 0.6811473369598389,
+      "supervised_bce": 0.5676336884498596,
+      "deep_bce": 0.567568302154541,
+      "jepa_mse": 0.0,
+      "variance": 0.0,
+      "covariance": 0.0,
+      "student_std_mean": 0.025779150426387787,
+      "student_std_min": 0.012409348972141743
+    },
+    {
+      "update": 49,
+      "loss": 0.7489306926727295,
+      "supervised_bce": 0.6241140365600586,
+      "deep_bce": 0.6240831613540649,
+      "jepa_mse": 0.0,
+      "variance": 0.0,
+      "covariance": 0.0,
+      "student_std_mean": 0.02709093689918518,
+      "student_std_min": 0.01368497684597969
+    },
+    {
+      "update": 57,
+      "loss": 0.6931545734405518,
+      "supervised_bce": 0.5777661800384521,
+      "deep_bce": 0.5769419074058533,
+      "jepa_mse": 0.0,
+      "variance": 0.0,
+      "covariance": 0.0,
+      "student_std_mean": 0.03819526731967926,
+      "student_std_min": 0.014653786085546017
+    },
+    {
+      "update": 64,
+      "loss": 0.6907334327697754,
+      "supervised_bce": 0.575633704662323,
+      "deep_bce": 0.5754987597465515,
+      "jepa_mse": 0.0,
+      "variance": 0.0,
+      "covariance": 0.0,
+      "student_std_mean": 0.028295056894421577,
+      "student_std_min": 0.015755778178572655
+    }
+  ],
+  "no_recursion": [
+    {
+      "update": 1,
+      "loss": 0.7062549591064453,
+      "supervised_bce": 0.5928152799606323,
+      "deep_bce": 0.0,
+      "jepa_mse": 1.0368537902832031,
+      "variance": 0.9754304885864258,
+      "covariance": 1.1001282018696656e-06,
+      "student_std_mean": 0.022198030725121498,
+      "student_std_min": 0.009628876112401485
+    },
+    {
+      "update": 9,
+      "loss": 0.643286406993866,
+      "supervised_bce": 0.5581080317497253,
+      "deep_bce": 0.0,
+      "jepa_mse": 0.7539812922477722,
+      "variance": 0.9780220985412598,
+      "covariance": 3.4722023656286183e-07,
+      "student_std_mean": 0.019365277141332626,
+      "student_std_min": 0.008110590279102325
+    },
+    {
+      "update": 17,
+      "loss": 0.6221146583557129,
+      "supervised_bce": 0.5603322982788086,
+      "deep_bce": 0.0,
+      "jepa_mse": 0.51982182264328,
+      "variance": 0.980016827583313,
+      "covariance": 3.1626765917280864e-07,
+      "student_std_mean": 0.01701178029179573,
+      "student_std_min": 0.006962262559682131
+    },
+    {
+      "update": 25,
+      "loss": 0.6259598731994629,
+      "supervised_bce": 0.5835196375846863,
+      "deep_bce": 0.0,
+      "jepa_mse": 0.3268097937107086,
+      "variance": 0.9759277105331421,
+      "covariance": 7.90192700605985e-07,
+      "student_std_mean": 0.021633410826325417,
+      "student_std_min": 0.008174218237400055
+    },
+    {
+      "update": 33,
+      "loss": 0.6532691121101379,
+      "supervised_bce": 0.6251927614212036,
+      "deep_bce": 0.0,
+      "jepa_mse": 0.1831628382205963,
+      "variance": 0.9760056734085083,
+      "covariance": 6.87907856899983e-07,
+      "student_std_mean": 0.02160286344587803,
+      "student_std_min": 0.009153876453638077
+    },
+    {
+      "update": 41,
+      "loss": 0.5863130688667297,
+      "supervised_bce": 0.5675936341285706,
+      "deep_bce": 0.0,
+      "jepa_mse": 0.08965013921260834,
+      "variance": 0.9754430055618286,
+      "covariance": 7.287536618605372e-07,
+      "student_std_mean": 0.022233178839087486,
+      "student_std_min": 0.011207462288439274
+    },
+    {
+      "update": 49,
+      "loss": 0.6373339295387268,
+      "supervised_bce": 0.6241143941879272,
+      "deep_bce": 0.0,
+      "jepa_mse": 0.034643035382032394,
+      "variance": 0.975523829460144,
+      "covariance": 6.023806236044038e-07,
+      "student_std_mean": 0.022221552208065987,
+      "student_std_min": 0.012969167903065681
+    },
+    {
+      "update": 57,
+      "loss": 0.5883509516716003,
+      "supervised_bce": 0.5775270462036133,
+      "deep_bce": 0.0,
+      "jepa_mse": 0.011196109466254711,
+      "variance": 0.9704267978668213,
+      "covariance": 1.9443473320279736e-06,
+      "student_std_mean": 0.027712851762771606,
+      "student_std_min": 0.015334569849073887
+    },
+    {
+      "update": 64,
+      "loss": 0.5857169032096863,
+      "supervised_bce": 0.5755905508995056,
+      "deep_bce": 0.0,
+      "jepa_mse": 0.00444417679682374,
+      "variance": 0.9681949615478516,
+      "covariance": 2.322653244846151e-06,
+      "student_std_mean": 0.03009600192308426,
+      "student_std_min": 0.017765045166015625
+    }
+  ]
+}

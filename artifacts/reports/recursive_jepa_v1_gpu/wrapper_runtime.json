@@ -1,0 +1,14 @@
+{
+  "seconds": 24.838139812,
+  "exit_code": 0,
+  "requested_gpu": "A100-40GB",
+  "cpu_physical_cores": 2,
+  "memory_gib": 8,
+  "timeout_seconds": 600,
+  "startup_timeout_seconds": 60,
+  "retries": 0,
+  "min_containers": 0,
+  "max_containers": 1,
+  "active_compute_estimate_usd": 0.01557252013653152,
+  "charge_status": "Resource estimate excludes load/build/provider charges; $.80 reservation retained"
+}

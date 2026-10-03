@@ -819,7 +819,7 @@
     "run_id": "recursive_jepa_v1_gpu",
     "phase": "recursive_jepa_engineering",
     "date": "2026-10-03T17:14:45.421613+00:00",
-    "status": "reserved",
+    "status": "completed",
     "reserved_usd": 0.8,
     "protocol_sha256": "96258a1fb109381b0e7662850e39753e4c9731a14ef150be3f401e58575f4f1f",
     "gpu": "A100-40GB",
@@ -833,6 +833,22 @@
     "actual_charged_usd": null,
     "authorization": "Human requested recursive label embedding architecture and GPU where needed; cap20/reserve3 preserved",
     "maximum_resource_compute_usd": 0.4151,
-    "charge_status": "Worst-case provision includes provider contingency; invoice unverified"
+    "charge_status": "Resource estimate excludes load/build/provider charges; $.80 reservation retained",
+    "remote_invocations_authorized": 1,
+    "seconds": 24.838139812,
+    "exit_code": 0,
+    "requested_gpu": "A100-40GB",
+    "min_containers": 0,
+    "max_containers": 1,
+    "active_compute_estimate_usd": 0.01557252013653152,
+    "remote_function_calls": 1,
+    "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\recursive_jepa_v1_gpu",
+    "app_id": "ap-ToSEFBbBj2FtA8VpFQFQOP",
+    "gpu_verified": "NVIDIA A100-SXM4-40GB",
+    "cuda_updates_per_trained_model": 64,
+    "provider_reported_resource_cost_usd": null,
+    "provider_report_source": "artifacts/manifests/modal_billing_after_recursive_jepa.json",
+    "provider_cost_status": "Resource report may lag; no matching rows means unavailable, not zero cost. Final invoice unverified; $.80 provision retained",
+    "active_tasks": 0
   }
 ]
