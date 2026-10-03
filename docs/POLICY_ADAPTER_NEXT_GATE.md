@@ -1,5 +1,7 @@
 # Next gate for a trained-model contribution
 
+October 3 update: the user explicitly authorized a larger, current-data evaluation and a live powerful Modal app. The separately frozen `docs/LARGE_NATIVE_PROTOCOL.md` governs this development extension and supersedes the earlier instruction to defer all broader panels. Latest total Modal cap is $20. Existing reservations $11.05 plus the new $4 bound preserve $3 for reproduction. Do not repeat this phase or use its outcomes as confirmation.
+
 Keep the user-required trainable-model core and every negative result. The compiler matches a heuristic; the dense context learner loses to the moment correction. The 961-parameter uncertainty mixture has limited synthetic/native utility, but distinct methodological novelty remains unresolved.
 
 ## Evidence that constrains the next step

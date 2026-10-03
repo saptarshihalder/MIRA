@@ -649,5 +649,20 @@
     "active_compute_estimate_usd": 0.0035096467122483605,
     "pricing_verified_date": "2026-10-03",
     "pricing_url": "https://modal.com/pricing"
+  },
+  {
+    "run_id": "large_native_a100_v1",
+    "phase": "large_native_a100",
+    "reserved_usd": 4.0,
+    "status": "reserved",
+    "date": "2026-10-03",
+    "model": "CUDA XGBoost plus native neural/linear/calibration controls",
+    "protocol_sha256": "4379de4e8b469c570b281cb58030158814c61ab7d0d0b1833e0b665465f777a4",
+    "max_calls": 1,
+    "gpu": "A100-40GB",
+    "timeout_seconds": 3600,
+    "retries": 0,
+    "actual_charged_usd": null,
+    "authorization": "Human requested larger 2026-release datasets and powerful live Modal GPU; latest total cap $20"
   }
 ]

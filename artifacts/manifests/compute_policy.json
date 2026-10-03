@@ -1,0 +1,10 @@
+{
+  "effective_date": "2026-10-03",
+  "total_cap_usd": 20.0,
+  "reproduction_reserve_usd": 3.0,
+  "authorization": "User: remember you only have 20 dollars on modal; extend the new 4-dollar run only if necessary within this total cap",
+  "ledger": "artifacts/manifests/compute_ledger.json",
+  "count_failed_calls": true,
+  "automatic_retries": 0,
+  "provider_charges_must_be_reconciled": true
+}

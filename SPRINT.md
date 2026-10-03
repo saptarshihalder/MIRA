@@ -1,6 +1,6 @@
 # MIRA: October 1–20, 2026
 
-Objective authorized by the user: a rigorous NeurIPS-quality manuscript by October 20. This is a draft deadline, not a NeurIPS 2026 main-track submission deadline (May 6). Total project compute ceiling: $26; conserve tokens with saved state, short updates, bounded experiments and compact reports.
+Objective authorized by the user: a rigorous NeurIPS-quality manuscript by October 20. This is a draft deadline, not a NeurIPS 2026 main-track submission deadline (May 6). On October 3 the user reduced the total Modal compute ceiling to $20, superseding the earlier $26 ceiling. Conserve tokens with saved state, short updates, bounded experiments and compact reports.
 
 ## Scientific decision
 
@@ -34,15 +34,14 @@ Conditional track: MIRA-Shift. Activate only after development demonstrates usef
 
 | Purpose | USD |
 |---|---:|
-| Setup, compatibility and development | 6 |
-| Confirmation | 8 |
-| Real-covariate panel | 5 |
-| Essential ablations | 4 |
+| Existing conservative reservations | 11.05 |
+| Larger native A100 evaluation | 4 |
 | Clean reproduction reserve | 3 |
+| Unallocated | 1.95 |
 
-Modal calls must reserve cost in `artifacts/manifests/compute_ledger.json` before execution, have finite timeouts, one GPU container and no automatic retries. Include failed calls, image builds and provider usage when available. The user-reported remaining $26 is a spending ceiling; credit balance is not yet independently verified. No subscription purchase, additional funds, manuscript submission or messages to third parties are needed for this phase.
+Modal calls must reserve cost in `artifacts/manifests/compute_ledger.json` before execution, have finite timeouts, one GPU container and no automatic retries. Include failed calls, image builds and provider usage when available. The latest user-authorized total ceiling is $20; credit balance is not yet independently verified. No subscription purchase, additional funds, manuscript submission or messages to third parties are needed for this phase.
 
-Day 3 reallocates the internal ceilings to cover seven conservative $0.50 development reservations. The total remains $26, including a $3 reproduction reserve; reservations are larger than measured active-compute charges and must not be described as invoices.
+Earlier internal allocations are historical. The current $20 ceiling includes the $3 reproduction reserve; reservations are larger than measured active-compute charges and must not be described as invoices. A deployed Modal app has no schedule or web endpoint and scales to zero containers after its bounded, manually invoked evaluation.
 
 ## Continuation
 
