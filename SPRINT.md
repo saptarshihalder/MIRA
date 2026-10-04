@@ -1,5 +1,10 @@
 # MIRA: October 1â€“20, 2026
 
+## User-requested adaptive RL pilot closed — October 4
+
+Read docs/ANNUAL_RL_FINDINGS.md and ANNUAL_RL_PROTOCOL.md. A nonlinear contextual-bandit policy (REINFORCE) completed on 15 previously unscored annual groups, three seeds and two matched neural controls: 135 checkpoints, 300 updates each. RL beats calibrated trees on all tasks but still loses to strongest conventional controls. NLL RL/best is .330176/.322880 diabetes, .394884/.393274 asthma, .553420/.551698 roads. All task gates fail; exact policy-gradient results are almost identical. RL uses 384 fitting +128 selection labels; conventional controls refit on all 512. All 405 neural and 60 baseline scores/model replays pass exactly. No cloud cost; provisions unchanged. This user-authorized distinct RL test is closed, not a general disproof of RL. All scored cohorts are used development. Next conditional direction remains the acquisition proposal's novelty/data audit; do not tune this RL panel until positive. Paper updated; PDF compiler remains environment-blocked.
+
+
 ## Annual-cohort headroom closed — October 4
 
 Read docs/ANNUAL_HEADROOM_FINDINGS.md and docs/ACQUISITION_SUCCESSOR_PLAN.md. The fixed 15-group screen fails every endpoint gate: frozen wins BRFSS, support Platt wins roads; calibrated nonlinear corrections do not clear strong controls. All 60 scores/model replays and raw identities audit exactly. 23,040 endpoint-row uses represent 15,639 unique records across two families; endpoints overlap. All scored rows are used development, not confirmation. No new cloud cost; $16.45 provisions + $3 protected leave $.55. Close this correction route. Next is a conditional acquisition-model proposal, beginning with novelty/data-access audit against 2026 L2M and other strong prior art; no unvalidated architecture or venue-readiness claim. Preserve confirmation 98000–98019. Strict token policy: one bounded unresolved gate per continuation, short outputs, no broad sweeps or duplicate agents.

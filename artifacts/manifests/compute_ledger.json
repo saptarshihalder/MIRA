@@ -996,5 +996,23 @@
     "unique_records": 15639,
     "scientific_gate": "failed",
     "results": "artifacts/reports/annual_headroom_v1"
+  },
+  {
+    "run_id": "annual_rl_v1_cpu",
+    "date": "2026-10-04",
+    "status": "completed",
+    "reserved_usd": 0,
+    "provider_charge_usd": 0,
+    "cloud_calls": 0,
+    "device": "local_cpu",
+    "neural_seconds": 74.26499999999942,
+    "baseline_seconds": 10.328000000001339,
+    "trained_checkpoints": 135,
+    "updates_per_model": 300,
+    "endpoint_groups": 15,
+    "unique_records": 15688,
+    "scientific_gate": "failed",
+    "audit_repair_notes": "NumPy integer JSON serialization repaired in auditor; no fit/prediction changes or training retry",
+    "results": "artifacts/reports/annual_rl_v1"
   }
 ]

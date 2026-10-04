@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "score_arrays": 60,
+  "max_score_error": 0.0,
+  "max_model_replay_error": 0.0,
+  "endpoint_rows": 23040,
+  "unique_rows_by_family": {
+    "brfss": 8008,
+    "road": 7680
+  },
+  "raw_input_replay": true,
+  "source_target_disjoint": true,
+  "convex_stationarity": true,
+  "general_successor_gate": false,
+  "auditor_sha256": "78dd5e325a704d887129d67850a6309d0e4aac9f0f2d14de2d6863039eee0fc8"
+}

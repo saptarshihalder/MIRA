@@ -1,0 +1,3723 @@
+{
+  "rows": [
+    {
+      "episode": 0,
+      "task": "brfss_diabete4",
+      "group": 12,
+      "input": "artifacts/reports/annual_rl_inputs/brfss_diabete4_group12.npz",
+      "source": "artifacts/reports/annual_rl_inputs/brfss_diabete4_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/brfss_diabete4_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.36319859388292286,
+          "brier": 0.11441160675498124
+        },
+        "platt": {
+          "nll": 0.36337185485917295,
+          "brier": 0.11452317333714293
+        },
+        "additive": {
+          "nll": 0.36542050675196003,
+          "brier": 0.11552873561707541
+        },
+        "conditional_tree": {
+          "nll": 0.36798985122517164,
+          "brier": 0.11677308518052282
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.377294046698295,
+            0.37677470092160326,
+            0.37632634445137525,
+            0.37620558927707864
+          ],
+          "chosen": 3,
+          "certificates": [
+            {
+              "iterations": 6,
+              "gradient_max": 3.7505309337273855e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 2.619946232010372e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 1.7182063561929563e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 3.476905230739846e-10,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 9.293624027685923e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 2.4935991836010692e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 7.673000082530912e-11,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 9.38820433123589e-10,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 8.54159327989823e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 7.919985414023278e-12,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 2.565087416778189e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 3.14414575312838e-08,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.4330099674563578,
+            0.3818634003081358,
+            0.37522069150757154,
+            0.3756083644324974
+          ],
+          "chosen": 2,
+          "certificates": [
+            {
+              "iterations": 47,
+              "gradient_max": 8.91415648836681e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 47,
+              "gradient_max": 6.865967034025769e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 52,
+              "gradient_max": 6.919066320912716e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 17,
+              "gradient_max": 4.093727429450595e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 18,
+              "gradient_max": 5.939872709144478e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 21,
+              "gradient_max": 8.977870372063775e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 7.749237106689788e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.138650833343302e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 7.332532300438621e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 6.423081322370905e-08,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.110523527303453e-09,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.5065183062851206e-08,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.39068166030557155,
+            0.3796238395793671,
+            0.39175200299922597,
+            0.3787508839537743
+          ],
+          "chosen": 3,
+          "anchor_certificates": [
+            {
+              "iterations": 6,
+              "gradient_max": 3.7505309337273855e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 2.619946232010372e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 1.7182063561929563e-08,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 4,
+          "gradient_max": 4.77121141553849e-09,
+          "ridge": 1.0
+        },
+        "additive": {
+          "iterations": 9,
+          "gradient_max": 5.088133442354703e-09,
+          "ridge": 1.0
+        },
+        "tree_anchor": {
+          "iterations": 6,
+          "gradient_max": 1.0235650961046825e-08,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 1,
+      "task": "brfss_diabete4",
+      "group": 15,
+      "input": "artifacts/reports/annual_rl_inputs/brfss_diabete4_group15.npz",
+      "source": "artifacts/reports/annual_rl_inputs/brfss_diabete4_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/brfss_diabete4_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.30606812028227726,
+          "brier": 0.09337616454676928
+        },
+        "platt": {
+          "nll": 0.30854217806710416,
+          "brier": 0.09437467072877269
+        },
+        "additive": {
+          "nll": 0.3070712843580906,
+          "brier": 0.09371895051441799
+        },
+        "conditional_tree": {
+          "nll": 0.3146130637454771,
+          "brier": 0.09643601287197187
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.2931084952984821,
+            0.2928074608601866,
+            0.29346711241768997,
+            0.2946473284388388
+          ],
+          "chosen": 1,
+          "certificates": [
+            {
+              "iterations": 6,
+              "gradient_max": 1.837246211880395e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 8.9619750292947e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 5.974903671541847e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 1.1645180828748908e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 8.026719986028649e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 5.980058211357657e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.754380530188734e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 5.971917948436462e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.1665009600619891e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 1.273131593204635e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 2.1089315585531843e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 2.3959094083703114e-10,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.3449099806802641,
+            0.2990449321835097,
+            0.29308415373880636,
+            0.2943129827708811
+          ],
+          "chosen": 2,
+          "certificates": [
+            {
+              "iterations": 45,
+              "gradient_max": 8.929915026943507e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 43,
+              "gradient_max": 8.804182131038826e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 37,
+              "gradient_max": 8.161241007195556e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 16,
+              "gradient_max": 5.96560609292772e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 16,
+              "gradient_max": 6.446543799297488e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 18,
+              "gradient_max": 3.744235291605613e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 2.5704340128607228e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 2.8494264493056365e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 5.440670449927132e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.0586762334841016e-09,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 3.868336151402474e-09,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.3244299927606118e-09,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.29904012246090594,
+            0.29490955659385165,
+            0.299511037248251,
+            0.2948257403980269
+          ],
+          "chosen": 3,
+          "anchor_certificates": [
+            {
+              "iterations": 6,
+              "gradient_max": 1.837246211880395e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 8.9619750292947e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 5.974903671541847e-09,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 6,
+          "gradient_max": 9.253336277553412e-09,
+          "ridge": 0.01
+        },
+        "additive": {
+          "iterations": 8,
+          "gradient_max": 5.034903101212851e-08,
+          "ridge": 1.0
+        },
+        "tree_anchor": {
+          "iterations": 6,
+          "gradient_max": 8.232662121026571e-08,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 2,
+      "task": "brfss_diabete4",
+      "group": 16,
+      "input": "artifacts/reports/annual_rl_inputs/brfss_diabete4_group16.npz",
+      "source": "artifacts/reports/annual_rl_inputs/brfss_diabete4_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/brfss_diabete4_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.27446415314771544,
+          "brier": 0.08349545957319804
+        },
+        "platt": {
+          "nll": 0.2792428542220569,
+          "brier": 0.08483242964463562
+        },
+        "additive": {
+          "nll": 0.2747681672972362,
+          "brier": 0.08308630031001155
+        },
+        "conditional_tree": {
+          "nll": 0.2849495778396575,
+          "brier": 0.08553674181809112
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.24535497544536364,
+            0.24540162135730134,
+            0.24838645509862278,
+            0.2542354203101441
+          ],
+          "chosen": 0,
+          "certificates": [
+            {
+              "iterations": 8,
+              "gradient_max": 6.153603057342839e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.1950082602337018e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 9.407834670256861e-11,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 2.9317781648349403e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 3.3061838474964834e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.9177094037542072e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 7.702588369906671e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 1.382832150002844e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.7502871941670337e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 2.0384402783790723e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 6.980913359877494e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 1.231888412112081e-08,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.2810484065211566,
+            0.2456783580860133,
+            0.24413865445429891,
+            0.25273591114013766
+          ],
+          "chosen": 2,
+          "certificates": [
+            {
+              "iterations": 40,
+              "gradient_max": 4.91702475797183e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 44,
+              "gradient_max": 8.46370632129681e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 42,
+              "gradient_max": 7.976196135083685e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 19,
+              "gradient_max": 8.882608279643656e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 18,
+              "gradient_max": 7.252136514056262e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 18,
+              "gradient_max": 7.070270446364602e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 2.3384393744302345e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 2.5248044058234775e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 3.535095269638355e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 5.977842942872513e-09,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 9.156077194344414e-08,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 4.853357469386532e-09,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.2607685456579323,
+            0.24811598397414986,
+            0.2607268409439698,
+            0.24821763792172696
+          ],
+          "chosen": 1,
+          "anchor_certificates": [
+            {
+              "iterations": 8,
+              "gradient_max": 6.153603057342839e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.1950082602337018e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 9.407834670256861e-11,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 7,
+          "gradient_max": 7.119142211670321e-08,
+          "ridge": 0.001
+        },
+        "additive": {
+          "iterations": 8,
+          "gradient_max": 1.6923883652125715e-08,
+          "ridge": 1.0
+        },
+        "tree_anchor": {
+          "iterations": 7,
+          "gradient_max": 7.119142211670321e-08,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 3,
+      "task": "brfss_diabete4",
+      "group": 17,
+      "input": "artifacts/reports/annual_rl_inputs/brfss_diabete4_group17.npz",
+      "source": "artifacts/reports/annual_rl_inputs/brfss_diabete4_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/brfss_diabete4_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.3255687702493134,
+          "brier": 0.1035739263464455
+        },
+        "platt": {
+          "nll": 0.3257402182275334,
+          "brier": 0.10365329080856281
+        },
+        "additive": {
+          "nll": 0.32798626090960314,
+          "brier": 0.10465979555756534
+        },
+        "conditional_tree": {
+          "nll": 0.34154913702493883,
+          "brier": 0.1094965740669204
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.31779691119038683,
+            0.3163105537832581,
+            0.3130626421854549,
+            0.31155124069060536
+          ],
+          "chosen": 3,
+          "certificates": [
+            {
+              "iterations": 7,
+              "gradient_max": 2.140703420083767e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 2.027157812387059e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 3.9423205147295e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 1.303774073944941e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 5.820006018352614e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 2.4132660788982185e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 6.745529482210522e-12,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 4.093443421032683e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 8.086585526288076e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 3,
+              "gradient_max": 6.696656458353434e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 1.4006283979850487e-10,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 2.1003120584742185e-08,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.3313849203329031,
+            0.3114701508113866,
+            0.31088776089673975,
+            0.3111456999491721
+          ],
+          "chosen": 2,
+          "certificates": [
+            {
+              "iterations": 52,
+              "gradient_max": 9.294690259239926e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 36,
+              "gradient_max": 9.338611142146829e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 29,
+              "gradient_max": 8.869549728474004e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 12,
+              "gradient_max": 6.780025613942892e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 15,
+              "gradient_max": 7.333724068303571e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 16,
+              "gradient_max": 5.7141296519111484e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 2.9401239163770465e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 3.372749336110273e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 2.1260440092457644e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.7002545552036175e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 4.720778221459221e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 8.947521890068089e-10,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.322140141195284,
+            0.314041180716081,
+            0.3244439805065223,
+            0.3140098907878724
+          ],
+          "chosen": 3,
+          "anchor_certificates": [
+            {
+              "iterations": 7,
+              "gradient_max": 2.140703420083767e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 2.027157812387059e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 3.9423205147295e-09,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 3,
+          "gradient_max": 4.982399363744061e-09,
+          "ridge": 1.0
+        },
+        "additive": {
+          "iterations": 7,
+          "gradient_max": 2.1376349110951987e-09,
+          "ridge": 1.0
+        },
+        "tree_anchor": {
+          "iterations": 6,
+          "gradient_max": 2.2388996961995953e-10,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 4,
+      "task": "brfss_diabete4",
+      "group": 20,
+      "input": "artifacts/reports/annual_rl_inputs/brfss_diabete4_group20.npz",
+      "source": "artifacts/reports/annual_rl_inputs/brfss_diabete4_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/brfss_diabete4_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.34509894572267935,
+          "brier": 0.10921898236673266
+        },
+        "platt": {
+          "nll": 0.34814372505546026,
+          "brier": 0.1097948198213057
+        },
+        "additive": {
+          "nll": 0.34863513726927176,
+          "brier": 0.1100659579529049
+        },
+        "conditional_tree": {
+          "nll": 0.35367098395853735,
+          "brier": 0.11148190359879734
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.3713363711326383,
+            0.37131757958528716,
+            0.37232679474710173,
+            0.3745136275193312
+          ],
+          "chosen": 1,
+          "certificates": [
+            {
+              "iterations": 6,
+              "gradient_max": 2.086285898341778e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 2.8720053275150224e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 9.982902889613728e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 3.779915656951932e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 1.0408508625305013e-10,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 1.3813431127239484e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 3.3536148354856854e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 4.129542386863139e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 6.059571637864747e-10,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 2.7620063673683415e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 9.262383318664469e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 1.6165865299178073e-08,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.3950541137866734,
+            0.3723461341066602,
+            0.37396862476058923,
+            0.37556920648748693
+          ],
+          "chosen": 1,
+          "certificates": [
+            {
+              "iterations": 52,
+              "gradient_max": 9.07389675951849e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 45,
+              "gradient_max": 9.315809347944324e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 45,
+              "gradient_max": 7.752343871621908e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 13,
+              "gradient_max": 9.604295887321451e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 16,
+              "gradient_max": 4.806514869708928e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 17,
+              "gradient_max": 8.873679131111165e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 3.3196116175360224e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 4.620998172305546e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 8.160611546931262e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.875458947864228e-09,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 9.106491602461908e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 4.834239462209178e-08,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.38332787266734497,
+            0.3748476297529999,
+            0.3890738411917453,
+            0.37560185990174844
+          ],
+          "chosen": 1,
+          "anchor_certificates": [
+            {
+              "iterations": 6,
+              "gradient_max": 2.086285898341778e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 2.8720053275150224e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 9.982902889613728e-08,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 6,
+          "gradient_max": 9.601551910314032e-10,
+          "ridge": 0.01
+        },
+        "additive": {
+          "iterations": 15,
+          "gradient_max": 4.7372782345121364e-08,
+          "ridge": 0.1
+        },
+        "tree_anchor": {
+          "iterations": 6,
+          "gradient_max": 2.1360397309006657e-08,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 5,
+      "task": "brfss_asthma3",
+      "group": 12,
+      "input": "artifacts/reports/annual_rl_inputs/brfss_asthma3_group12.npz",
+      "source": "artifacts/reports/annual_rl_inputs/brfss_asthma3_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/brfss_asthma3_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.3613007035485657,
+          "brier": 0.1068316227445345
+        },
+        "platt": {
+          "nll": 0.3611201113867222,
+          "brier": 0.10648043462959803
+        },
+        "additive": {
+          "nll": 0.3601632381427382,
+          "brier": 0.10622581496791869
+        },
+        "conditional_tree": {
+          "nll": 0.3649289594299884,
+          "brier": 0.10744890376169836
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.33215659465338815,
+            0.3319040927032262,
+            0.3316678187429326,
+            0.3332258397743569
+          ],
+          "chosen": 2,
+          "certificates": [
+            {
+              "iterations": 9,
+              "gradient_max": 9.829425632619905e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 7.681597637363151e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 5.4147406724382847e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 1.3173017510354282e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 1.6918329591550547e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 1.3031751886914862e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 5.371724365668684e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 5.280884639823069e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 8.545435123408218e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 5.779654532744871e-11,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 7.070606985667971e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.3748747834663178e-09,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.381685589519399,
+            0.3353161890150036,
+            0.3314106106908449,
+            0.3335919641922764
+          ],
+          "chosen": 2,
+          "certificates": [
+            {
+              "iterations": 36,
+              "gradient_max": 9.845001408483219e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 45,
+              "gradient_max": 6.523875434880436e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 39,
+              "gradient_max": 9.843034522866168e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 18,
+              "gradient_max": 9.308422178845241e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 19,
+              "gradient_max": 7.881184624358717e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 21,
+              "gradient_max": 6.791139458076079e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 3.754508664036149e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 9.181890178733276e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 1.4846060204104505e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.4357195217418184e-08,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 8.003324638433673e-09,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.1747636818187912e-08,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.3506235315613192,
+            0.3366197679081721,
+            0.352188564053295,
+            0.3373824427200435
+          ],
+          "chosen": 1,
+          "anchor_certificates": [
+            {
+              "iterations": 9,
+              "gradient_max": 9.829425632619905e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 7.681597637363151e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 5.4147406724382847e-08,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 6,
+          "gradient_max": 8.247257242410821e-08,
+          "ridge": 0.1
+        },
+        "additive": {
+          "iterations": 9,
+          "gradient_max": 2.3194253089345307e-08,
+          "ridge": 1.0
+        },
+        "tree_anchor": {
+          "iterations": 9,
+          "gradient_max": 6.164050974383369e-09,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 6,
+      "task": "brfss_asthma3",
+      "group": 15,
+      "input": "artifacts/reports/annual_rl_inputs/brfss_asthma3_group15.npz",
+      "source": "artifacts/reports/annual_rl_inputs/brfss_asthma3_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/brfss_asthma3_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.4235967348552315,
+          "brier": 0.13047927535511067
+        },
+        "platt": {
+          "nll": 0.42130719423020846,
+          "brier": 0.1299008649293001
+        },
+        "additive": {
+          "nll": 0.42446918377920345,
+          "brier": 0.13127990538962633
+        },
+        "conditional_tree": {
+          "nll": 0.42715332041446763,
+          "brier": 0.13166040242172217
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.40114754579076456,
+            0.4005856978031982,
+            0.40112329934618274,
+            0.4020025175714135
+          ],
+          "chosen": 1,
+          "certificates": [
+            {
+              "iterations": 10,
+              "gradient_max": 1.8290298820083386e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 10,
+              "gradient_max": 2.2608782089864575e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 4.6878346000444205e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 10,
+              "gradient_max": 1.02849084972342e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 1.3990856820300657e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.4277736729018109e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 7.0593318204914546e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 4.607223685676107e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.3825946308838877e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 7.729215415266943e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 1.2796367070133652e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 2.5948570216149935e-08,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.41925306344664703,
+            0.3928623604454982,
+            0.3981762199928754,
+            0.40173593025206855
+          ],
+          "chosen": 1,
+          "certificates": [
+            {
+              "iterations": 54,
+              "gradient_max": 7.878399082726292e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 52,
+              "gradient_max": 5.522635208914323e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 47,
+              "gradient_max": 8.150612128244531e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 23,
+              "gradient_max": 2.0268839627090446e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 22,
+              "gradient_max": 2.6622199057551275e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 23,
+              "gradient_max": 4.456647996562563e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 7.427738154229535e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 10,
+              "gradient_max": 6.849747338777412e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 8.00025014334807e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.4198969748173704e-08,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 6.960217560636472e-08,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.736337528618348e-08,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.4019372417832492,
+            0.3965296421579147,
+            0.4067522457233713,
+            0.3965716469070544
+          ],
+          "chosen": 1,
+          "anchor_certificates": [
+            {
+              "iterations": 10,
+              "gradient_max": 1.8290298820083386e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 10,
+              "gradient_max": 2.2608782089864575e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 4.6878346000444205e-08,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 10,
+          "gradient_max": 2.801809294988855e-09,
+          "ridge": 0.01
+        },
+        "additive": {
+          "iterations": 23,
+          "gradient_max": 5.4741054291915225e-08,
+          "ridge": 0.1
+        },
+        "tree_anchor": {
+          "iterations": 10,
+          "gradient_max": 1.1554849927894982e-09,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 7,
+      "task": "brfss_asthma3",
+      "group": 16,
+      "input": "artifacts/reports/annual_rl_inputs/brfss_asthma3_group16.npz",
+      "source": "artifacts/reports/annual_rl_inputs/brfss_asthma3_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/brfss_asthma3_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.41968432328894645,
+          "brier": 0.12882158978624345
+        },
+        "platt": {
+          "nll": 0.4205182540276435,
+          "brier": 0.1295599402365067
+        },
+        "additive": {
+          "nll": 0.42528903893231434,
+          "brier": 0.1307594669507393
+        },
+        "conditional_tree": {
+          "nll": 0.42591371184770077,
+          "brier": 0.13105762288068812
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.40960251592836433,
+            0.41004707861917394,
+            0.4123039600334931,
+            0.4134214177903744
+          ],
+          "chosen": 0,
+          "certificates": [
+            {
+              "iterations": 7,
+              "gradient_max": 2.555408685654334e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 1.647357985700565e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 7.453772982624236e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.9881223704224654e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 2.2483587105385366e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.751934514951023e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.3222835291114288e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 2.1835290959885956e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.1466893145087309e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 7.023069530445736e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 1.838450858909768e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 5.351511310480728e-09,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.4359979246259791,
+            0.4082692939405853,
+            0.4112069101206694,
+            0.4134212546361898
+          ],
+          "chosen": 1,
+          "certificates": [
+            {
+              "iterations": 53,
+              "gradient_max": 6.916395242672398e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 46,
+              "gradient_max": 6.062529064594473e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 40,
+              "gradient_max": 5.7381946322147825e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 15,
+              "gradient_max": 8.156265594660246e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 19,
+              "gradient_max": 6.046373774229452e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 14,
+              "gradient_max": 3.712177661617522e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 5.902156006390869e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 4.011272598455906e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 4.0545592636803685e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.5225160507337243e-09,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.623661218836837e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.2472832164669989e-08,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.4095175162260622,
+            0.4056553083171262,
+            0.40802129722531444,
+            0.40530698431882717
+          ],
+          "chosen": 3,
+          "anchor_certificates": [
+            {
+              "iterations": 7,
+              "gradient_max": 2.555408685654334e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 1.647357985700565e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 7.453772982624236e-09,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 8,
+          "gradient_max": 2.3257482938056784e-08,
+          "ridge": 0.001
+        },
+        "additive": {
+          "iterations": 23,
+          "gradient_max": 6.940497250008948e-08,
+          "ridge": 0.1
+        },
+        "tree_anchor": {
+          "iterations": 8,
+          "gradient_max": 2.3257482938056784e-08,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 8,
+      "task": "brfss_asthma3",
+      "group": 17,
+      "input": "artifacts/reports/annual_rl_inputs/brfss_asthma3_group17.npz",
+      "source": "artifacts/reports/annual_rl_inputs/brfss_asthma3_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/brfss_asthma3_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.37412867820610574,
+          "brier": 0.1140193357721655
+        },
+        "platt": {
+          "nll": 0.374139574722961,
+          "brier": 0.11436472967656879
+        },
+        "additive": {
+          "nll": 0.37483695488777685,
+          "brier": 0.11456740979410704
+        },
+        "conditional_tree": {
+          "nll": 0.37731004238506766,
+          "brier": 0.11546374840580631
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.34688113880467514,
+            0.3460763222194327,
+            0.34481993162795627,
+            0.34541726255617133
+          ],
+          "chosen": 2,
+          "certificates": [
+            {
+              "iterations": 9,
+              "gradient_max": 8.871703234450656e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 3.6035863947388906e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 10,
+              "gradient_max": 7.3273169877517e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 5.651999637379428e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 1.327382173578126e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 3.4295657965876386e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 2.2007596143895636e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 2.5232879780415218e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.1133947143589229e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.5042420330180217e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 3.9102972571730676e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 7.567114018725007e-10,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.4031897680450411,
+            0.3513487672370289,
+            0.34420817889277844,
+            0.34542388942713875
+          ],
+          "chosen": 2,
+          "certificates": [
+            {
+              "iterations": 41,
+              "gradient_max": 5.5241399954820275e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 52,
+              "gradient_max": 6.358346409671492e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 46,
+              "gradient_max": 5.5350357930491687e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 19,
+              "gradient_max": 6.361694895005987e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 21,
+              "gradient_max": 7.246945449637665e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 21,
+              "gradient_max": 6.799907401738858e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 4.170686084686848e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 5.511334815778979e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 10,
+              "gradient_max": 1.8657450931436337e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.3998967221540148e-08,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.5395818297320174e-08,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.982134055841412e-08,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.36571837187730927,
+            0.3509213732228023,
+            0.3726644883334926,
+            0.352117423756674
+          ],
+          "chosen": 1,
+          "anchor_certificates": [
+            {
+              "iterations": 9,
+              "gradient_max": 8.871703234450656e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 3.6035863947388906e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 10,
+              "gradient_max": 7.3273169877517e-10,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 7,
+          "gradient_max": 8.825987621308151e-09,
+          "ridge": 0.1
+        },
+        "additive": {
+          "iterations": 9,
+          "gradient_max": 7.923127551788534e-08,
+          "ridge": 1.0
+        },
+        "tree_anchor": {
+          "iterations": 9,
+          "gradient_max": 4.755839612357834e-08,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 9,
+      "task": "brfss_asthma3",
+      "group": 20,
+      "input": "artifacts/reports/annual_rl_inputs/brfss_asthma3_group20.npz",
+      "source": "artifacts/reports/annual_rl_inputs/brfss_asthma3_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/brfss_asthma3_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.39003048438884264,
+          "brier": 0.1174621965295527
+        },
+        "platt": {
+          "nll": 0.38928719281063073,
+          "brier": 0.11706385360207744
+        },
+        "additive": {
+          "nll": 0.3903023171627186,
+          "brier": 0.11745527547838895
+        },
+        "conditional_tree": {
+          "nll": 0.3948891185002369,
+          "brier": 0.1185314861496378
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.4025339729926217,
+            0.4027421483002397,
+            0.40516000349499975,
+            0.40625634415855
+          ],
+          "chosen": 0,
+          "certificates": [
+            {
+              "iterations": 6,
+              "gradient_max": 4.5687627964717537e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 2.6227892253871676e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 8.923000559198395e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.8843124385044957e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 5.705675844985825e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 4.199717149565296e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 4.803968334243791e-11,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.7193167028972667e-11,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 6.578394004877475e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 8.088218896723509e-12,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 5.310412699854883e-11,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 3,
+              "gradient_max": 7.458874670684956e-08,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.43815285859902964,
+            0.4092171067201405,
+            0.40552540631145284,
+            0.4061430376291246
+          ],
+          "chosen": 2,
+          "certificates": [
+            {
+              "iterations": 54,
+              "gradient_max": 7.62468332963194e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 54,
+              "gradient_max": 4.8737609835512036e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 53,
+              "gradient_max": 7.654241865372516e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 24,
+              "gradient_max": 6.126759439020746e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 23,
+              "gradient_max": 3.2288396317747825e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 20,
+              "gradient_max": 6.62036126871041e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.411967782798118e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.1115987220110257e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 3.475913221574062e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.7290470447707826e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.8117105385351273e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 3.719564534848674e-10,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.41901612662247933,
+            0.40646281583297367,
+            0.42174648484518806,
+            0.4043288007300855
+          ],
+          "chosen": 3,
+          "anchor_certificates": [
+            {
+              "iterations": 6,
+              "gradient_max": 4.5687627964717537e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 2.6227892253871676e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 8.923000559198395e-08,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 5,
+          "gradient_max": 3.911201224557955e-08,
+          "ridge": 0.001
+        },
+        "additive": {
+          "iterations": 7,
+          "gradient_max": 1.568158076135917e-08,
+          "ridge": 1.0
+        },
+        "tree_anchor": {
+          "iterations": 5,
+          "gradient_max": 3.911201224557955e-08,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 10,
+      "task": "road_ksi",
+      "group": 16,
+      "input": "artifacts/reports/annual_rl_inputs/road_ksi_group16.npz",
+      "source": "artifacts/reports/annual_rl_inputs/road_ksi_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/road_ksi_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.5553681589298967,
+          "brier": 0.1844124479231057
+        },
+        "platt": {
+          "nll": 0.5556596272474366,
+          "brier": 0.1845563201756373
+        },
+        "additive": {
+          "nll": 0.5610892408817973,
+          "brier": 0.18695238518028448
+        },
+        "conditional_tree": {
+          "nll": 0.5616970683505532,
+          "brier": 0.18728571701034413
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.5777950424944511,
+            0.575195897545312,
+            0.572962861134182,
+            0.5726996055010332
+          ],
+          "chosen": 3,
+          "certificates": [
+            {
+              "iterations": 8,
+              "gradient_max": 1.7821604504370935e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 2.506451911418652e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 10,
+              "gradient_max": 2.5400093589837344e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.982884918674127e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 7.872921516989149e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 2.4144794038682277e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 7.472755401451148e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.5739926579770233e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.0989138136355964e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 4.941925826895677e-10,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 1.0115209421804328e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 1.7314345981261914e-08,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.5915335736765597,
+            0.5686797653753063,
+            0.5714070517238383,
+            0.5725668375915591
+          ],
+          "chosen": 1,
+          "certificates": [
+            {
+              "iterations": 44,
+              "gradient_max": 5.428752543248233e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 39,
+              "gradient_max": 4.498107894013517e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 54,
+              "gradient_max": 6.096586913474991e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 12,
+              "gradient_max": 9.266116167416794e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 14,
+              "gradient_max": 8.208453206211275e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 15,
+              "gradient_max": 8.258540019705739e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 2.2659957538834208e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 3.91195089689822e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 3.021073363522475e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 7.04807150142539e-11,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.2906600748162642e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 9.944370863226859e-08,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.5904798195625098,
+            0.5832803617375162,
+            0.594248638679173,
+            0.5851679628120598
+          ],
+          "chosen": 1,
+          "anchor_certificates": [
+            {
+              "iterations": 8,
+              "gradient_max": 1.7821604504370935e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 2.506451911418652e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 10,
+              "gradient_max": 2.5400093589837344e-10,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 4,
+          "gradient_max": 1.2378225874853932e-09,
+          "ridge": 1.0
+        },
+        "additive": {
+          "iterations": 14,
+          "gradient_max": 4.161256282088355e-08,
+          "ridge": 0.1
+        },
+        "tree_anchor": {
+          "iterations": 9,
+          "gradient_max": 3.835094624722357e-08,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 11,
+      "task": "road_ksi",
+      "group": 20,
+      "input": "artifacts/reports/annual_rl_inputs/road_ksi_group20.npz",
+      "source": "artifacts/reports/annual_rl_inputs/road_ksi_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/road_ksi_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.5145768120833767,
+          "brier": 0.16641732040147061
+        },
+        "platt": {
+          "nll": 0.5181407860836287,
+          "brier": 0.1675306028891831
+        },
+        "additive": {
+          "nll": 0.5139200989508886,
+          "brier": 0.16592679741197452
+        },
+        "conditional_tree": {
+          "nll": 0.5212377718107855,
+          "brier": 0.16856469057339607
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.48599622059396996,
+            0.490567717237469,
+            0.49683738315496234,
+            0.5003091842575762
+          ],
+          "chosen": 0,
+          "certificates": [
+            {
+              "iterations": 7,
+              "gradient_max": 8.129619314507178e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 6.622218651480133e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 8.502101800367257e-12,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 3.996338347137668e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 4.295714662455596e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 6.5570255982673464e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 8.778998318234588e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 7.756740976524318e-10,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.783838547702755e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 5.693566097753067e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 3.354324880355808e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 3.891838469549658e-09,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.5104359157421636,
+            0.49079172256563575,
+            0.49491088466886524,
+            0.4999943271834775
+          ],
+          "chosen": 1,
+          "certificates": [
+            {
+              "iterations": 49,
+              "gradient_max": 9.353934945089803e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 44,
+              "gradient_max": 8.288497190629338e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 39,
+              "gradient_max": 7.669772906582564e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 20,
+              "gradient_max": 1.8434511949924626e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 20,
+              "gradient_max": 7.196399454427113e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 18,
+              "gradient_max": 8.287384455421543e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 8.322554856648318e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 5.24542456189353e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 9,
+              "gradient_max": 1.6802717066029607e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.1080877822949864e-08,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.1616804011793658e-08,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.8692973058342943e-08,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.5033260710985217,
+            0.4916346741742491,
+            0.5068350553494299,
+            0.49074027286800626
+          ],
+          "chosen": 3,
+          "anchor_certificates": [
+            {
+              "iterations": 7,
+              "gradient_max": 8.129619314507178e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 6.622218651480133e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 8.502101800367257e-12,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 8,
+          "gradient_max": 7.401269881256861e-10,
+          "ridge": 0.001
+        },
+        "additive": {
+          "iterations": 23,
+          "gradient_max": 5.002580074882704e-08,
+          "ridge": 0.1
+        },
+        "tree_anchor": {
+          "iterations": 8,
+          "gradient_max": 7.401269881256861e-10,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 12,
+      "task": "road_ksi",
+      "group": 21,
+      "input": "artifacts/reports/annual_rl_inputs/road_ksi_group21.npz",
+      "source": "artifacts/reports/annual_rl_inputs/road_ksi_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/road_ksi_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.5385769795714797,
+          "brier": 0.1792300458168336
+        },
+        "platt": {
+          "nll": 0.5392383287794085,
+          "brier": 0.1794254850553187
+        },
+        "additive": {
+          "nll": 0.5440552768896137,
+          "brier": 0.18157723461375813
+        },
+        "conditional_tree": {
+          "nll": 0.5488857490707664,
+          "brier": 0.1833440786412464
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.5612960121873217,
+            0.5608339905055199,
+            0.5608138007993081,
+            0.561598028049487
+          ],
+          "chosen": 2,
+          "certificates": [
+            {
+              "iterations": 9,
+              "gradient_max": 3.4472804962438087e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 9.196417394979634e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 5.658872942958769e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 6.860999315639596e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 4.976176396290222e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 3.660094149721821e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 5.671081698861713e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 2.4588404966621735e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 4.4781466692830896e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 2.584228581126169e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 2.0022997322677316e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 6.938025817054827e-09,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.6047670966026779,
+            0.558481687614455,
+            0.5593269774500558,
+            0.5617397241523276
+          ],
+          "chosen": 1,
+          "certificates": [
+            {
+              "iterations": 48,
+              "gradient_max": 7.042818308536022e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 44,
+              "gradient_max": 4.13514958713581e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 38,
+              "gradient_max": 5.4530034433210306e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 14,
+              "gradient_max": 5.9550455580592576e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 17,
+              "gradient_max": 3.96631213172606e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 13,
+              "gradient_max": 8.863023357244537e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 6.730933378371051e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 1.6236062428320527e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 5.101715546329197e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 3.9395815082388097e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 5.203535206887988e-09,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.0041854287278227e-10,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.5610320461066003,
+            0.5561205292405458,
+            0.5614815428643196,
+            0.5562779964664606
+          ],
+          "chosen": 1,
+          "anchor_certificates": [
+            {
+              "iterations": 9,
+              "gradient_max": 3.4472804962438087e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 9.196417394979634e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 8,
+              "gradient_max": 5.658872942958769e-08,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 7,
+          "gradient_max": 6.796312729934716e-09,
+          "ridge": 0.1
+        },
+        "additive": {
+          "iterations": 13,
+          "gradient_max": 6.82571211632144e-08,
+          "ridge": 0.1
+        },
+        "tree_anchor": {
+          "iterations": 9,
+          "gradient_max": 3.7152060327369334e-08,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 13,
+      "task": "road_ksi",
+      "group": 30,
+      "input": "artifacts/reports/annual_rl_inputs/road_ksi_group30.npz",
+      "source": "artifacts/reports/annual_rl_inputs/road_ksi_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/road_ksi_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.5891310844966989,
+          "brier": 0.2003187214593961
+        },
+        "platt": {
+          "nll": 0.5920853895849735,
+          "brier": 0.20167281145614896
+        },
+        "additive": {
+          "nll": 0.5894448289115841,
+          "brier": 0.2004468416094773
+        },
+        "conditional_tree": {
+          "nll": 0.5950690900728801,
+          "brier": 0.20270577050714575
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.5567425316587491,
+            0.5561945391362516,
+            0.5566436442239562,
+            0.5568116300975879
+          ],
+          "chosen": 1,
+          "certificates": [
+            {
+              "iterations": 6,
+              "gradient_max": 1.4066060866416152e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 3.2385161391782977e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 2.9306716105553104e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 3.77895765894809e-10,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.195381715395378e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 8.87804913687765e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 6.547524567836194e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 2.5592675492736028e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 4.3690853723538786e-11,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 3,
+              "gradient_max": 2.6907826222374864e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 3,
+              "gradient_max": 1.4224813958251675e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 3,
+              "gradient_max": 5.495623872121824e-08,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.5905239431398247,
+            0.5615426721886717,
+            0.5571301248616263,
+            0.5567597073356889
+          ],
+          "chosen": 3,
+          "certificates": [
+            {
+              "iterations": 43,
+              "gradient_max": 8.457636160440641e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 40,
+              "gradient_max": 8.880221436046809e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 36,
+              "gradient_max": 9.676532425708685e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 17,
+              "gradient_max": 5.678414425388384e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 12,
+              "gradient_max": 1.499380356331792e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 14,
+              "gradient_max": 8.040047502939907e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 3.1675683296802926e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 3.920548248895206e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 2.9980965135371126e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 5.650069667684221e-08,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 3.3430716354920786e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.3832059936612637e-10,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.5667133807283181,
+            0.557820991564052,
+            0.5746927579498248,
+            0.5584393786898656
+          ],
+          "chosen": 1,
+          "anchor_certificates": [
+            {
+              "iterations": 6,
+              "gradient_max": 1.4066060866416152e-08,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 3.2385161391782977e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 7,
+              "gradient_max": 2.9306716105553104e-09,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 5,
+          "gradient_max": 1.1162796225566707e-09,
+          "ridge": 0.01
+        },
+        "additive": {
+          "iterations": 5,
+          "gradient_max": 3.6185092769369653e-10,
+          "ridge": 10.0
+        },
+        "tree_anchor": {
+          "iterations": 5,
+          "gradient_max": 9.689515072106502e-08,
+          "ridge": 0.001
+        }
+      }
+    },
+    {
+      "episode": 14,
+      "task": "road_ksi",
+      "group": 31,
+      "input": "artifacts/reports/annual_rl_inputs/road_ksi_group31.npz",
+      "source": "artifacts/reports/annual_rl_inputs/road_ksi_source.npz",
+      "backbone": "artifacts/reports/large_native_a100_v3/road_ksi_seed171001/source_backbone.json",
+      "metrics": {
+        "frozen": {
+          "nll": 0.5608378881275365,
+          "brier": 0.1866615221646159
+        },
+        "platt": {
+          "nll": 0.5608246945018616,
+          "brier": 0.18665695134519983
+        },
+        "additive": {
+          "nll": 0.5608114696321895,
+          "brier": 0.18664703207158992
+        },
+        "conditional_tree": {
+          "nll": 0.5610252769614299,
+          "brier": 0.1864329339556905
+        }
+      },
+      "searches": {
+        "platt": {
+          "penalties": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ],
+          "support_oof_nll": [
+            0.553692003334701,
+            0.5517131321005098,
+            0.5502546027948849,
+            0.5499623857894606
+          ],
+          "chosen": 3,
+          "certificates": [
+            {
+              "iterations": 5,
+              "gradient_max": 9.846899584240419e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 1.2809070926329824e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 3.805079554799985e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 3.979164848099889e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 5.127068372287602e-09,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 3.425116688583968e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 9.706592803832015e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 5.714741703292947e-09,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 4,
+              "gradient_max": 1.743531550689112e-10,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 3,
+              "gradient_max": 8.909495811254553e-09,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 3,
+              "gradient_max": 1.3325354348593665e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 3,
+              "gradient_max": 2.0141548802074527e-10,
+              "ridge": 1.0
+            }
+          ]
+        },
+        "additive": {
+          "penalties": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "support_oof_nll": [
+            0.623900457185272,
+            0.564413416213227,
+            0.5518816953421246,
+            0.550129479811102
+          ],
+          "chosen": 3,
+          "certificates": [
+            {
+              "iterations": 44,
+              "gradient_max": 9.235765699574724e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 47,
+              "gradient_max": 6.519836119606029e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 40,
+              "gradient_max": 8.276077506836656e-08,
+              "ridge": 0.01
+            },
+            {
+              "iterations": 15,
+              "gradient_max": 5.928544542278553e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 12,
+              "gradient_max": 7.704996077446957e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 20,
+              "gradient_max": 3.701048729640166e-08,
+              "ridge": 0.1
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 9.342868255088344e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 6.90623800354926e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 3.1913066332774076e-08,
+              "ridge": 1.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.985704392055588e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 2.725404903928391e-10,
+              "ridge": 10.0
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 1.1982166994717325e-10,
+              "ridge": 10.0
+            }
+          ]
+        },
+        "conditional_tree": {
+          "settings": [
+            [
+              2,
+              10
+            ],
+            [
+              2,
+              100
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              3,
+              100
+            ]
+          ],
+          "support_oof_nll": [
+            0.5771240500951522,
+            0.5572426716860219,
+            0.5811873521195643,
+            0.5555172456425641
+          ],
+          "chosen": 3,
+          "anchor_certificates": [
+            {
+              "iterations": 5,
+              "gradient_max": 9.846899584240419e-09,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 6,
+              "gradient_max": 1.2809070926329824e-10,
+              "ridge": 0.001
+            },
+            {
+              "iterations": 5,
+              "gradient_max": 3.805079554799985e-10,
+              "ridge": 0.001
+            }
+          ]
+        }
+      },
+      "certificates": {
+        "platt": {
+          "iterations": 3,
+          "gradient_max": 2.1865012940405076e-09,
+          "ridge": 1.0
+        },
+        "additive": {
+          "iterations": 5,
+          "gradient_max": 1.0029437653644169e-10,
+          "ridge": 10.0
+        },
+        "tree_anchor": {
+          "iterations": 5,
+          "gradient_max": 1.4100471207854383e-09,
+          "ridge": 0.001
+        }
+      }
+    }
+  ],
+  "summary": {
+    "brfss_asthma3": {
+      "means": {
+        "frozen": 0.39374818485753843,
+        "platt": 0.39327446543563316,
+        "additive": 0.3950121465809503,
+        "conditional_tree": 0.3980390305154923
+      },
+      "gains": {
+        "frozen": {
+          "mean": -0.004290845657953846,
+          "positive": 0
+        },
+        "platt": {
+          "mean": -0.004764565079859118,
+          "positive": 0
+        },
+        "additive": {
+          "mean": -0.0030268839345419796,
+          "positive": 0
+        }
+      },
+      "gate": false
+    },
+    "brfss_diabete4": {
+      "means": {
+        "frozen": 0.3228797166569817,
+        "platt": 0.32500816608626554,
+        "additive": 0.32477627131723236,
+        "conditional_tree": 0.33255452275875647
+      },
+      "gains": {
+        "frozen": {
+          "mean": -0.009674806101774791,
+          "positive": 0
+        },
+        "platt": {
+          "mean": -0.007546356672490928,
+          "positive": 0
+        },
+        "additive": {
+          "mean": -0.007778251441524109,
+          "positive": 0
+        }
+      },
+      "gate": false
+    },
+    "road_ksi": {
+      "means": {
+        "frozen": 0.5516981846417977,
+        "platt": 0.5531897652394617,
+        "additive": 0.5538641830532146,
+        "conditional_tree": 0.557582991253283
+      },
+      "gains": {
+        "frozen": {
+          "mean": -0.0058848066114853825,
+          "positive": 0
+        },
+        "platt": {
+          "mean": -0.004393226013821305,
+          "positive": 0
+        },
+        "additive": {
+          "mean": -0.003718808200068424,
+          "positive": 0
+        }
+      },
+      "gate": false
+    }
+  },
+  "general_successor_gate": false,
+  "seconds": 10.328000000001339,
+  "cloud_calls": 0
+}

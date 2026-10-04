@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checkpoints": 135,
+  "metric_arrays": 405,
+  "max_score_error": 0.0,
+  "max_model_replay_error": 0.0,
+  "matching_initializations": 45,
+  "source_only_anchor_stationarity": true,
+  "selection_replayed": true,
+  "endpoint_rows": 23040,
+  "unique_rows_by_family": {
+    "brfss": 8008,
+    "road": 7680
+  },
+  "general_rl_gate": false,
+  "auditor_sha256": "b7a41ae1f1334652d8e5ca3c55f33b5c3c743be3a7780e0e0ed14eda26373eff"
+}
