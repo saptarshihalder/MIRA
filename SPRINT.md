@@ -1,5 +1,10 @@
 # MIRA: October 1â€“20, 2026
 
+## Three-gate roadmap — October 4
+
+Follow docs/THREE_GATE_ROADMAP.md: novelty/data eligibility first, then useful model advantage, then frozen external validation. These are conditional planned gates, not completed evidence. The RL module stays closed. October 20 remains a draft target; do not relax evaluation or spending constraints to meet it.
+
+
 ## RL completion review — October 4
 
 The finite RL module is complete as a reproducible negative result; the overall manuscript is partial, not JMLR/NeurIPS-ready. See docs/RL_COMPLETION.md. Portable review checks 357 hashes, policy-gradient/baseline identities and an exact single-fit reproduction with no query labels. Saved descriptive CSV and runtime versions accompany all prior checkpoints/results. RL assigns about 90–93% probability to zero correction; no useful architecture advantage emerged. No new scientific trial or cloud cost. Remaining gates: useful novel model, external evidence and PDF verification. Preserve all closed panels and confirmation seeds.
