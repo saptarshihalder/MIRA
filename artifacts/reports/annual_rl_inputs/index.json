@@ -1,0 +1,107 @@
+[
+  {
+    "task": "brfss_diabete4",
+    "group": 12,
+    "input": "artifacts/reports/annual_rl_inputs/brfss_diabete4_group12.npz",
+    "source": "artifacts/reports/annual_rl_inputs/brfss_diabete4_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/brfss_diabete4_seed171001/source_backbone.json"
+  },
+  {
+    "task": "brfss_diabete4",
+    "group": 15,
+    "input": "artifacts/reports/annual_rl_inputs/brfss_diabete4_group15.npz",
+    "source": "artifacts/reports/annual_rl_inputs/brfss_diabete4_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/brfss_diabete4_seed171001/source_backbone.json"
+  },
+  {
+    "task": "brfss_diabete4",
+    "group": 16,
+    "input": "artifacts/reports/annual_rl_inputs/brfss_diabete4_group16.npz",
+    "source": "artifacts/reports/annual_rl_inputs/brfss_diabete4_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/brfss_diabete4_seed171001/source_backbone.json"
+  },
+  {
+    "task": "brfss_diabete4",
+    "group": 17,
+    "input": "artifacts/reports/annual_rl_inputs/brfss_diabete4_group17.npz",
+    "source": "artifacts/reports/annual_rl_inputs/brfss_diabete4_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/brfss_diabete4_seed171001/source_backbone.json"
+  },
+  {
+    "task": "brfss_diabete4",
+    "group": 20,
+    "input": "artifacts/reports/annual_rl_inputs/brfss_diabete4_group20.npz",
+    "source": "artifacts/reports/annual_rl_inputs/brfss_diabete4_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/brfss_diabete4_seed171001/source_backbone.json"
+  },
+  {
+    "task": "brfss_asthma3",
+    "group": 12,
+    "input": "artifacts/reports/annual_rl_inputs/brfss_asthma3_group12.npz",
+    "source": "artifacts/reports/annual_rl_inputs/brfss_asthma3_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/brfss_asthma3_seed171001/source_backbone.json"
+  },
+  {
+    "task": "brfss_asthma3",
+    "group": 15,
+    "input": "artifacts/reports/annual_rl_inputs/brfss_asthma3_group15.npz",
+    "source": "artifacts/reports/annual_rl_inputs/brfss_asthma3_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/brfss_asthma3_seed171001/source_backbone.json"
+  },
+  {
+    "task": "brfss_asthma3",
+    "group": 16,
+    "input": "artifacts/reports/annual_rl_inputs/brfss_asthma3_group16.npz",
+    "source": "artifacts/reports/annual_rl_inputs/brfss_asthma3_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/brfss_asthma3_seed171001/source_backbone.json"
+  },
+  {
+    "task": "brfss_asthma3",
+    "group": 17,
+    "input": "artifacts/reports/annual_rl_inputs/brfss_asthma3_group17.npz",
+    "source": "artifacts/reports/annual_rl_inputs/brfss_asthma3_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/brfss_asthma3_seed171001/source_backbone.json"
+  },
+  {
+    "task": "brfss_asthma3",
+    "group": 20,
+    "input": "artifacts/reports/annual_rl_inputs/brfss_asthma3_group20.npz",
+    "source": "artifacts/reports/annual_rl_inputs/brfss_asthma3_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/brfss_asthma3_seed171001/source_backbone.json"
+  },
+  {
+    "task": "road_ksi",
+    "group": 16,
+    "input": "artifacts/reports/annual_rl_inputs/road_ksi_group16.npz",
+    "source": "artifacts/reports/annual_rl_inputs/road_ksi_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/road_ksi_seed171001/source_backbone.json"
+  },
+  {
+    "task": "road_ksi",
+    "group": 20,
+    "input": "artifacts/reports/annual_rl_inputs/road_ksi_group20.npz",
+    "source": "artifacts/reports/annual_rl_inputs/road_ksi_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/road_ksi_seed171001/source_backbone.json"
+  },
+  {
+    "task": "road_ksi",
+    "group": 21,
+    "input": "artifacts/reports/annual_rl_inputs/road_ksi_group21.npz",
+    "source": "artifacts/reports/annual_rl_inputs/road_ksi_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/road_ksi_seed171001/source_backbone.json"
+  },
+  {
+    "task": "road_ksi",
+    "group": 30,
+    "input": "artifacts/reports/annual_rl_inputs/road_ksi_group30.npz",
+    "source": "artifacts/reports/annual_rl_inputs/road_ksi_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/road_ksi_seed171001/source_backbone.json"
+  },
+  {
+    "task": "road_ksi",
+    "group": 31,
+    "input": "artifacts/reports/annual_rl_inputs/road_ksi_group31.npz",
+    "source": "artifacts/reports/annual_rl_inputs/road_ksi_source.npz",
+    "backbone": "artifacts/reports/large_native_a100_v3/road_ksi_seed171001/source_backbone.json"
+  }
+]
