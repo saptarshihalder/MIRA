@@ -1,5 +1,10 @@
 # Research decision â€” October 1, 2026
 
+## RL completion review — October 4
+
+The finite RL module is complete as a reproducible negative result; the overall manuscript is partial, not JMLR/NeurIPS-ready. See docs/RL_COMPLETION.md. Portable review checks 357 hashes, policy-gradient/baseline identities and an exact single-fit reproduction with no query labels. Saved descriptive CSV and runtime versions accompany all prior checkpoints/results. RL assigns about 90–93% probability to zero correction; no useful architecture advantage emerged. No new scientific trial or cloud cost. Remaining gates: useful novel model, external evidence and PDF verification. Preserve all closed panels and confirmation seeds.
+
+
 ## User-requested adaptive RL pilot closed — October 4
 
 Read docs/ANNUAL_RL_FINDINGS.md and ANNUAL_RL_PROTOCOL.md. A nonlinear contextual-bandit policy (REINFORCE) completed on 15 previously unscored annual groups, three seeds and two matched neural controls: 135 checkpoints, 300 updates each. RL beats calibrated trees on all tasks but still loses to strongest conventional controls. NLL RL/best is .330176/.322880 diabetes, .394884/.393274 asthma, .553420/.551698 roads. All task gates fail; exact policy-gradient results are almost identical. RL uses 384 fitting +128 selection labels; conventional controls refit on all 512. All 405 neural and 60 baseline scores/model replays pass exactly. No cloud cost; provisions unchanged. This user-authorized distinct RL test is closed, not a general disproof of RL. All scored cohorts are used development. Next conditional direction remains the acquisition proposal's novelty/data audit; do not tune this RL panel until positive. Paper updated; PDF compiler remains environment-blocked.

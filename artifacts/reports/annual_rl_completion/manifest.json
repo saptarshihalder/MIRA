@@ -1,0 +1,7 @@
+{
+  "artifacts/reports/annual_rl_completion/environment.json": "34aeafd7142272ada74ebe71069f0dfaf646fcadd844036cf050e7d9d00de0df",
+  "artifacts/reports/annual_rl_completion/results.csv": "d9b694f4c9aaae0a64c18febf80c58cddf1f1732af4f79509ac9b62a89c5c836",
+  "artifacts/reports/annual_rl_completion/review.json": "257d27562a41d2f268dd7357665df48aafd752792ab994fab3fa24514bfc9ab2",
+  "experiments/crossfit_v1/rl_review.py": "3d90588a841cb59642c07c8b58a7127d5c965985a7402d194662c779fcddc2cd",
+  "docs/RL_COMPLETION.md": "31bd727189aa65764f9b2aa7ce6a6af5125613691a970249d86a69b8b8368e3e"
+}

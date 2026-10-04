@@ -1,0 +1,45 @@
+{
+  "artifact_review_passed": true,
+  "files_hashed": 357,
+  "raw_reconstruction_inputs_unavailable": [],
+  "gradient_identity_error": 1.4901161193847656e-08,
+  "single_fit_reproduction": {
+    "checkpoint": "episode0_991001_reinforce",
+    "max_weight_error": 0.0,
+    "seconds": 0.5630000000019209,
+    "query_labels_supplied": false
+  },
+  "tasks": [
+    {
+      "task": "brfss_asthma3",
+      "rl_nll": 0.3948840898540459,
+      "best_baseline": "platt",
+      "best_nll": 0.39327446543563316,
+      "anchor_gain": 2.2755078500143653e-05,
+      "seed_min": 0.3948792664130016,
+      "seed_max": 0.3948897655338922,
+      "mean_zero_action_probability": 0.9057213505109151
+    },
+    {
+      "task": "brfss_diabete4",
+      "rl_nll": 0.33017585448781445,
+      "best_baseline": "frozen",
+      "best_nll": 0.3228797166569817,
+      "anchor_gain": 3.104440849220902e-05,
+      "seed_min": 0.3301652697501921,
+      "seed_max": 0.33019443921330816,
+      "mean_zero_action_probability": 0.8988282680511475
+    },
+    {
+      "task": "road_ksi",
+      "rl_nll": 0.5534201777701557,
+      "best_baseline": "frozen",
+      "best_nll": 0.5516981846417977,
+      "anchor_gain": 2.1229321573534853e-05,
+      "seed_min": 0.5533796113467748,
+      "seed_max": 0.5534427413670315,
+      "mean_zero_action_probability": 0.9293718616167704
+    }
+  ],
+  "scope": "Closed finite RL pilot complete as a negative result; no convergence, architectural novelty or venue-readiness claim"
+}

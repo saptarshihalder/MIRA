@@ -1,8 +1,10 @@
 # MIRA
 
+**Current status (October 4):** The [RL module and reproduction review](docs/RL_COMPLETION.md) are complete as a negative result. The trained-model paper remains partial; native advantage and submission readiness are unproven. [Latest findings](docs/ANNUAL_RL_FINDINGS.md). Current Modal cap is **$20**, superseding historical $26 references below; $16.45 provisions plus $3 protected leave $.55.
+
 Trained reversible missingness compiler and controlled frozen-tabular-predictor evaluations.
 
-**Status:** Day8–14 development completed: trained prototype/matched controls, 3,584 downstream CPU predictions, 324 exact-backbone predictions (162 Modal T4,162 CPU), two native-missingness UCI datasets, 24 real controls and 900 selection stress tasks. Compiler improves synthetic coordinates but ties a fixed heuristic and adds no native-data benefit over identity; its useful learned-method gate fails. Earlier3,096 GPU study cells remain supporting evidence. See [Day8–14 audit](docs/DAY_8_14_AUDIT.md) and [full results](artifacts/reports/trained_compiler_backbone_v1/report.md). No venue-readiness or safety guarantee.
+**Historical Day8–14 status:** Day8–14 development completed: trained prototype/matched controls, 3,584 downstream CPU predictions, 324 exact-backbone predictions (162 Modal T4,162 CPU), two native-missingness UCI datasets, 24 real controls and 900 selection stress tasks. Compiler improves synthetic coordinates but ties a fixed heuristic and adds no native-data benefit over identity; its useful learned-method gate fails. Earlier3,096 GPU study cells remain supporting evidence. See [Day8–14 audit](docs/DAY_8_14_AUDIT.md) and [full results](artifacts/reports/trained_compiler_backbone_v1/report.md). No venue-readiness or safety guarantee.
 
 Start with [STATUS.md](STATUS.md), [SPRINT.md](SPRINT.md) and [decision.md](decision.md). The manuscript is `paper/main.tex`, edited in Codex's built-in LaTeX panel; compilation currently has an environment error. The original repository was empty when cloned on October 1, 2026; this checkout is the implementation workspace.
 

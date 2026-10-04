@@ -1014,5 +1014,16 @@
     "scientific_gate": "failed",
     "audit_repair_notes": "NumPy integer JSON serialization repaired in auditor; no fit/prediction changes or training retry",
     "results": "artifacts/reports/annual_rl_v1"
+  },
+  {
+    "run_id": "rl_completion_reproduction_cpu",
+    "date": "2026-10-04",
+    "status": "completed",
+    "reserved_usd": 0,
+    "provider_charge_usd": 0,
+    "cloud_calls": 0,
+    "seconds": 0.5630000000019209,
+    "purpose": "One deterministic reproduction; no new scientific evaluation",
+    "results": "artifacts/reports/annual_rl_completion"
   }
 ]
