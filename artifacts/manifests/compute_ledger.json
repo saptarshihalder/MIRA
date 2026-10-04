@@ -1041,5 +1041,25 @@
     "independently_enumerated_risk_cells": 216,
     "scientific_gate": "failed",
     "results": "artifacts/reports/acquisition_repair_probe"
+  },
+  {
+    "run_id": "wine_acquisition_v1_cpu",
+    "date": "2026-10-04",
+    "status": "completed",
+    "reserved_usd": 0,
+    "provider_charge_usd": 0,
+    "cloud_calls": 0,
+    "device": "local_cpu",
+    "seconds": 23.51600000000326,
+    "audit_seconds": 90.907,
+    "trained_checkpoints": 18,
+    "mixture_checkpoints": 12,
+    "tree_checkpoints": 6,
+    "updates_per_mixture": 500,
+    "score_cells": 576,
+    "unique_development_rows": 1309,
+    "scientific_gate": "failed",
+    "audit_notes": "Supplementary runtime and summary files incorporated after replay; auditor-only manifest handling repair; no training retry",
+    "results": "artifacts/reports/wine_acquisition_v1"
   }
 ]

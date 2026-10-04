@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "created_at_utc": "2026-10-04T17:16:36.635919+00:00",
+  "auditor_sha256": "b141260f20cb3f305133bd36c712e7d55f623f57b0d93f74f4da0165b3f4bc75",
+  "freeze_sha256": "065918983345e0c40b4fa9998cd241dc08ed3a36f2b8ef0687f77875afa2f4fd",
+  "report_sha256": "35a3ca2a60615cd0e4905613022b48faac0370575c649e427c37c66cf2dcd8fb",
+  "cpu_threads": 1,
+  "seconds": 90.90700000000652,
+  "checks": {
+    "freeze_hashes": 8,
+    "prescoring_hashes": 30,
+    "output_hashes_before_audit": 608,
+    "checkpoint_training_hashes": 18,
+    "raw_reconstruction": {
+      "total_rows": 6497,
+      "global_unique_feature_groups": 5318,
+      "duplicate_groups": 993,
+      "duplicate_rows_beyond_first": 1179,
+      "cross_color_feature_groups": 2,
+      "cross_partition_group_overlap": 0
+    },
+    "train_only_terciles": true,
+    "mixture_checkpoints_reloaded": 12,
+    "trusted_tree_checkpoints_reloaded": 6,
+    "states_per_model": 529,
+    "all_calibrated_state_predictions_reproduced": true,
+    "existing_validation_masks_and_temperature_choices_reproduced": true,
+    "all_state_policy_decisions_rederived": true,
+    "score_cells_replayed": 576,
+    "per_row_score_replays": 376992,
+    "selected_features_only_in_path_replay": true,
+    "all_row_identities_costs_scores_and_feasibility_verified": true,
+    "all_results_retained": true,
+    "means_and_gates_recomputed": true
+  },
+  "recomputed_means": {
+    "red": {
+      "masked_depth2": 0.6094307047066871,
+      "joint_depth2": 0.6070919498834217,
+      "masked_greedy": 0.6094307047066871,
+      "masked_static": 0.6124461337162621,
+      "masked_stop": 0.6876770729533537,
+      "tree_depth2": 0.6343864414785735,
+      "tree_greedy": 0.6278598528748287,
+      "tree_static": 0.6118533552123888
+    },
+    "white": {
+      "masked_depth2": 0.5916572808823791,
+      "joint_depth2": 0.5877868551824317,
+      "masked_greedy": 0.5916572808823791,
+      "masked_static": 0.5983819453253099,
+      "masked_stop": 0.6369581069842505,
+      "tree_depth2": 0.5849095598768108,
+      "tree_greedy": 0.5850411066473654,
+      "tree_static": 0.5906345336670697
+    }
+  },
+  "recomputed_gates": {
+    "red": {
+      "minimum_gain": -0.0023387548232653987,
+      "positive_all_seeds": false,
+      "passed": false
+    },
+    "white": {
+      "minimum_gain": -0.006747721005568308,
+      "positive_all_seeds": false,
+      "passed": false
+    }
+  },
+  "benchmark_gate_passed": false,
+  "tolerances": {
+    "default_atol": 1e-12,
+    "default_rtol": 1e-12,
+    "validation_loss_atol": 1e-07,
+    "validation_loss_rtol": 1e-07
+  },
+  "limitations": [
+    "Replay verifies persisted artifacts and frozen source; it cannot independently prove historical execution order from hashes alone.",
+    "No new fitting, tuning, scenarios, or outcome-dependent exclusions were performed.",
+    "This audit does not establish producer/batch independence, real measurement costs, novelty, or external validity."
+  ],
+  "audit_process_note": "Initial audit attempt stopped at manifest coverage because root added runtime.json after the run. Auditor allowlist was corrected for that provenance file only; no scientific retry or source/model change occurred.",
+  "runtime_provenance_sha256": "c2a0106db3ba844a324f62f1c08e369f13b00aff3373442a754f65efda60ed5d",
+  "unverified_decision_rules": [],
+  "supplementary_verification": {
+    "summary_rows_checked": 16,
+    "summary_sha256": "d5d2d99ee17f9901a711b8f4b56334d30065ea0dd45f0c0e8a5d1f5fc8b4e62d",
+    "runtime_sha256": "c2a0106db3ba844a324f62f1c08e369f13b00aff3373442a754f65efda60ed5d",
+    "verifier_sha256": "cf2a567d0a11b72804281e27bd4abac0bb08f8aef10ca6faeadd417e610a76be",
+    "note": "Root added summary.csv during the first successful full replay. Existing output hashes and all eight frozen inputs were rechecked; summary matched report means. No score replay was repeated."
+  }
+}

@@ -1,0 +1,17 @@
+domain,method,mean_nll_plus_cost
+red,masked_depth2,0.6094307047066871
+red,joint_depth2,0.6070919498834217
+red,masked_greedy,0.6094307047066871
+red,masked_static,0.6124461337162621
+red,masked_stop,0.6876770729533537
+red,tree_depth2,0.6343864414785735
+red,tree_greedy,0.6278598528748287
+red,tree_static,0.6118533552123888
+white,masked_depth2,0.5916572808823791
+white,joint_depth2,0.5877868551824317
+white,masked_greedy,0.5916572808823791
+white,masked_static,0.5983819453253099
+white,masked_stop,0.6369581069842505
+white,tree_depth2,0.5849095598768108
+white,tree_greedy,0.5850411066473654
+white,tree_static,0.5906345336670697

@@ -1,5 +1,7 @@
 # Conditional next direction: trainable planning under constraint changes
 
+Update: the October 4 prior-art check rejects novelty of this generic planner (CONSTRAINT_PRIOR_ART_CHECK.md). The subsequent Wine established-model benchmark fails its superiority gates (WINE_ACQUISITION_FINDINGS.md). The following is historical conditional planning, not a promoted architecture.
+
 October 4, 2026. Proposal only; no successor has been trained or validated. The closed repair probe identifies a synthetic planning gap but rejects the tested learned solution. More architectural complexity alone does not justify another run.
 
 ## Concrete model hypothesis

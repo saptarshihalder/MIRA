@@ -128,6 +128,30 @@ Residual repair, direct availability-aware prediction and an availability-blind 
 
 All nine checkpoints are retained. A separate audit independently enumerates 216 population-risk cells from saved weights, with maximum error $3.33\times10^{-16}$, and checks teacher feasibility and the frozen source hashes. The probe takes 9.969 CPU seconds with zero cloud calls. It is closed without retuning; no real-data or protected confirmation labels were accessed. A structural learned-planning successor remains an unvalidated proposal requiring a distinctness audit and new development evidence.
 
+\subsection{Real-observation acquisition development benchmark}
+A frozen follow-up uses UCI Wine Quality~\cite{winequality}, with binary quality at least six and eleven features quantized by fitting-only terciles. Global exact-feature grouping keeps duplicate and conflicting-label rows together, including cross-color duplicates. Red fitting/validation/development sizes are 978/303/318; white sizes are 2911/996/991. Producer/batch identities are unavailable. Red and white are dependent domains from one dataset, and measurement prices and independent feature billing are simulated.
+
+Two established categorical-mixture models (1,088 parameters, 16 product components per class) compare joint-likelihood training with an additional masked-label objective. Three seeds and 500 updates per fit yield twelve checkpoints; six masked histogram-boosting controls use 100 iterations each. A validation temperature grid calibrates predictions. All fitted checkpoints and state predictions are hash-locked before scoring. Policies acquire at most two features, respect availability throughout planning, and are scored using actual held-out values along their selected paths. Tree planning uses its own predictive entropy and shared learned feature transitions. Tree and mixture training budgets differ and are recorded; current acquisition systems have not been reproduced.
+
+\begin{center}
+\begin{tabular}{lrr}
+\hline
+Model and policy & Red & White \\
+\hline
+Masked-label mixture, depth two & .609431 & .591657 \\
+Joint-likelihood mixture, depth two & .607092 & .587787 \\
+Masked-label mixture, greedy & .609431 & .591657 \\
+Masked-label mixture, static & .612446 & .598382 \\
+Masked-label mixture, stop & .687677 & .636958 \\
+Masked tree, depth two & .634386 & .584910 \\
+Masked tree, greedy & .627860 & .585041 \\
+Masked tree, static & .611853 & .590635 \\
+\hline
+\end{tabular}
+\end{center}
+
+Values are realized terminal NLL plus simulated measurement cost, averaged over twelve fixed availability/price scenarios and three seeds. Acquisition reduces the masked-label model's objective by 11.38\%/7.11\% relative to stopping, but loses to the strongest control by .002339/.006748. Its depth-two and greedy means coincide. Both prespecified development gates fail; no new architecture or external-validation claim follows. The bounded run takes 23.516 CPU seconds and zero cloud calls. All eighteen fitted models and 576 score cells are retained. This benchmark is closed without outcome-dependent retuning.
+
 \section{Information equivalence}
 Let $X\in\mathbb{R}^{d}$ denote complete covariates, $Y\in\{0,1\}$ the outcome, and $M\in\{0,1\}^{d}$ a mask, with $M_j=1$ indicating an absent value. Write $\widetilde X$ for the table row in which missing entries carry a distinguished missing-value marker. The raw-input observation is $O=\widetilde X$, and $M=h(O)$ is measurable from it. Consequently,
 \begin{equation}
@@ -635,5 +659,6 @@ C. Finn, P. Abbeel, and S. Levine. Model-Agnostic Meta-Learning for Fast Adaptat
 \bibitem{ren2018} M. Ren, W. Zeng, B. Yang, and R. Urtasun. Learning to Reweight Examples for Robust Deep Learning. ICML, 2018. \url{https://proceedings.mlr.press/v80/ren18a.html}.
 \bibitem{metaweight} J. Shu et al. Meta-Weight-Net: Learning an Explicit Mapping For Sample Weighting. NeurIPS, 2019. \url{https://proceedings.neurips.cc/paper/2019/hash/e58cc5ca94270acaceed13bc82dfedf7-Abstract.html}.
 \bibitem{chernozhukov2018} V. Chernozhukov et al. Double/debiased machine learning for treatment and structural parameters. The Econometrics Journal, 21(1):C1--C68, 2018. arXiv:1608.00060.
+\bibitem{winequality} P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Wine Quality. UCI Machine Learning Repository, 2009. DOI: 10.24432/C56S3T. \url{https://archive.ics.uci.edu/dataset/186/wine+quality}.
 \end{thebibliography}
 \end{document}

@@ -1,0 +1,11 @@
+# Next trained mechanism: bounded hypothesis check
+
+October 4, 2026. **No defensible new architectural mechanism identified in this bounded check.** The completed Wine result provides acquisition headroom relative to stopping, but identical greedy/depth-two performance supplies no evidence that deeper reasoning is the missing component. It also does not diagnose conditional-model error as the cause.
+
+The concrete candidate considered was a learned action-error correction: cross-fit a conditional model, compute each acquisition's model-predicted downstream loss, and train a residual head from fully observed source rows to correct its action ranking. At deployment, add that correction to the planner's action value using only observed measurements, availability, prices and budget.
+
+This has a falsifiable efficacy claim—lower realized acquisition regret under model misspecification—but its architecture is not yet a distinct contribution. A general residual action-value head overlaps fitted risk-to-go learning. Training transition models against downstream decision error is already addressed by [Iterative Value-Aware Model Learning](https://papers.nips.cc/paper_files/paper/2018/hash/7a2347d96752880e3d58d72e9813cc14-Abstract.html). [Calibrated Value-Aware Model Learning](https://arxiv.org/abs/2505.22772) is additional close prior art requiring full review before proposing calibrated model-error correction. Renaming the head or adding an uncertainty penalty does not resolve this.
+
+If this becomes a baseline investigation, training requires finite source labels and source features, with cross-fitting so correction targets come from models not fitted on those rows. The strongest controls are equal-capacity direct action-value regression, value-aware model learning, and the identical conditional model/planner without correction; match label access and total compute. Use fresh development data because Wine outcomes are now inspected.
+
+**Kill criterion:** reject architectural novelty if the corrected score is algebraically ordinary fitted action-value regression or value-aware model learning. Reject practical usefulness if it fails a predeclared realized-risk margin against the strongest matched control on fresh data. Do not train this candidate as a novel successor before identifying a specific non-equivalence.
