@@ -1,5 +1,7 @@
 # Three-gate roadmap to a defensible trained-model paper
 
+Execution update: the broad novelty gate failed on October 4 against newly identified 2026 prior art. See ACQUISITION_NOVELTY_AUDIT.md. Eight metadata-only candidate datasets do not constitute completed external validation. Later milestones are pending, not checked off.
+
 Planning date: October 4, 2026. Target: October 20 draft. This plan is not evidence of novelty, model superiority or acceptance. The RL correction module is complete as a negative result; all earlier used panels remain closed. The order is novelty, development advantage, then score-blind external validation. Each gate can fail honestly.
 
 ## 1. Novelty and problem suitability: October 4–6

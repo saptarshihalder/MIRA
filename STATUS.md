@@ -1,5 +1,10 @@
 # MIRA status — October 4, 2026
 
+## October 16 roadmap execution checkpoint — October 4
+
+Target remains a JMLR/NeurIPS-quality trained-model contribution; it is not established. Read docs/ACQUISITION_NOVELTY_AUDIT.md and ACQUISITION_DATA_AUDIT.md. Primary-method review found direct overlap with BRiG-AFA (August 2026), NM-PPG (May 2026), L2M and sequential latent acquisition. Broad novelty gate FAILS; exact architecture distinction and implementation audit remain unresolved. Eight UCI candidate metadata responses are saved, but no raw labels were downloaded, no external panel frozen, and no external scores computed. October 7–12 model-advantage and October 13–16 validation milestones remain pending prerequisites. Do not label the timeline complete. Two delegated agents hit account usage limits before doing work; primary source/metadata audit proceeded directly. Zero cloud spending. Preserve closed trials and confirmation seeds. Next: one genuinely distinct, falsifiable revision and closest-baseline code audit before fitting; uncertainty-adaptive planning is merely an unaudited hypothesis.
+
+
 ## RL completion review — October 4
 
 The finite RL module is complete as a reproducible negative result; the overall manuscript is partial, not JMLR/NeurIPS-ready. See docs/RL_COMPLETION.md. Portable review checks 357 hashes, policy-gradient/baseline identities and an exact single-fit reproduction with no query labels. Saved descriptive CSV and runtime versions accompany all prior checkpoints/results. RL assigns about 90–93% probability to zero correction; no useful architecture advantage emerged. No new scientific trial or cloud cost. Remaining gates: useful novel model, external evidence and PDF verification. Preserve all closed panels and confirmation seeds.

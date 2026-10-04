@@ -1,0 +1,147 @@
+{
+  "date": "2026-10-04",
+  "stage": "candidate registry only; NOT frozen external panel",
+  "datasets": [
+    {
+      "id": 602,
+      "family": "plant morphology",
+      "name": "Dry Bean",
+      "rows": 13611,
+      "features": 16,
+      "missing": "no",
+      "source": "https://archive.ics.uci.edu/api/dataset?id=602",
+      "page": "https://archive.ics.uci.edu/dataset/602/dry+bean+dataset",
+      "metadata_sha256": "17e69b11f23e6c898cc8413ca1adb595503fcee430aae34d5c90ee377e71e58e",
+      "last_updated": "Thu Mar 28 2024",
+      "access": "metadata only; data/labels not downloaded",
+      "status": "candidate; raw identities, license, exact version and family separation still require verification"
+    },
+    {
+      "id": 31,
+      "family": "forest ecology",
+      "name": "Covertype",
+      "rows": 581012,
+      "features": 54,
+      "missing": "no",
+      "source": "https://archive.ics.uci.edu/api/dataset?id=31",
+      "page": "https://archive.ics.uci.edu/dataset/31/covertype",
+      "metadata_sha256": "385accec8431e0222d5a3741c939bbf02994f6053e56942ba64fd36c9fc3d425",
+      "last_updated": "Sat Mar 16 2024",
+      "access": "metadata only; data/labels not downloaded",
+      "status": "candidate; raw identities, license, exact version and family separation still require verification"
+    },
+    {
+      "id": 159,
+      "family": "gamma astronomy",
+      "name": "MAGIC Gamma Telescope",
+      "rows": 19020,
+      "features": 10,
+      "missing": "no",
+      "source": "https://archive.ics.uci.edu/api/dataset?id=159",
+      "page": "https://archive.ics.uci.edu/dataset/159/magic+gamma+telescope",
+      "metadata_sha256": "e17e131aa526c3f6dbe474a7bb3847c140752560ec220b70e3892fe2afc2f701",
+      "last_updated": "Tue Dec 19 2023",
+      "access": "metadata only; data/labels not downloaded",
+      "status": "candidate; raw identities, license, exact version and family separation still require verification"
+    },
+    {
+      "id": 240,
+      "family": "human activity",
+      "name": "Human Activity Recognition Using Smartphones",
+      "rows": 10299,
+      "features": 0,
+      "missing": "no",
+      "source": "https://archive.ics.uci.edu/api/dataset?id=240",
+      "page": "https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones",
+      "metadata_sha256": "6d1945bc403b99f0e54a8f8c8e81958adc16d14a361bf2dd7fa56f3d35a9a799",
+      "last_updated": "Sun Mar 10 2024",
+      "access": "metadata only; data/labels not downloaded",
+      "status": "candidate; raw identities, license, exact version and family separation still require verification"
+    },
+    {
+      "id": 54,
+      "family": "speech",
+      "name": "ISOLET",
+      "rows": 7797,
+      "features": 617,
+      "missing": "no",
+      "source": "https://archive.ics.uci.edu/api/dataset?id=54",
+      "page": "https://archive.ics.uci.edu/dataset/54/isolet",
+      "metadata_sha256": "2ede8aedb8923da558901c52a350acb658c6b90ae4b4a9cfdbb3a3b0951a65a6",
+      "last_updated": "Fri Feb 16 2024",
+      "access": "metadata only; data/labels not downloaded",
+      "status": "candidate; raw identities, license, exact version and family separation still require verification"
+    },
+    {
+      "id": 447,
+      "family": "motor diagnosis",
+      "name": "Condition monitoring of hydraulic systems",
+      "rows": 2205,
+      "features": 43680,
+      "missing": "no",
+      "source": "https://archive.ics.uci.edu/api/dataset?id=447",
+      "page": "https://archive.ics.uci.edu/dataset/447/condition+monitoring+of+hydraulic+systems",
+      "metadata_sha256": "7c9ddaacebd5be9ad26cdecc49a4a1161408be213a1a25c0a61ca108f84f750e",
+      "last_updated": "Thu Apr 26 2018",
+      "access": "metadata only; data/labels not downloaded",
+      "status": "candidate; raw identities, license, exact version and family separation still require verification"
+    },
+    {
+      "id": 148,
+      "family": "spacecraft telemetry",
+      "name": "Statlog (Shuttle)",
+      "rows": 58000,
+      "features": 7,
+      "missing": "no",
+      "source": "https://archive.ics.uci.edu/api/dataset?id=148",
+      "page": "https://archive.ics.uci.edu/dataset/148/statlog+shuttle",
+      "metadata_sha256": "b97b7a8e84c4a00056e50dc4b41a24eda209fd1ef0d76a25eb525ed822caf701",
+      "last_updated": "Fri Feb 16 2024",
+      "access": "metadata only; data/labels not downloaded",
+      "status": "candidate; raw identities, license, exact version and family separation still require verification"
+    },
+    {
+      "id": 186,
+      "family": "wine chemistry",
+      "name": "Wine Quality",
+      "rows": 4898,
+      "features": 11,
+      "missing": "no",
+      "source": "https://archive.ics.uci.edu/api/dataset?id=186",
+      "page": "https://archive.ics.uci.edu/dataset/186/wine+quality",
+      "metadata_sha256": "ac10cf6f35d75d37f37498815389a0668048c0e4d585b4278c2686620f6c2c77",
+      "last_updated": "Wed Nov 15 2023",
+      "access": "metadata only; data/labels not downloaded",
+      "status": "candidate; raw identities, license, exact version and family separation still require verification"
+    }
+  ],
+  "previously_used_excluded": [
+    {
+      "id": 17,
+      "name": "breast_cancer_wisconsin_diagnostic"
+    },
+    {
+      "id": 52,
+      "name": "ionosphere"
+    },
+    {
+      "id": 267,
+      "name": "banknote_authentication"
+    },
+    {
+      "id": 94,
+      "name": "spambase"
+    },
+    {
+      "id": 151,
+      "name": "sonar"
+    },
+    {
+      "id": 145,
+      "name": "statlog_heart"
+    }
+  ],
+  "costs": "No real acquisition-cost provenance; only explicitly simulated costs permissible",
+  "evaluation_performed": false,
+  "cloud_calls": 0
+}
