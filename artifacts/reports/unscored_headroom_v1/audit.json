@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "patients": 7680,
+  "episodes": 5,
+  "score_arrays": 20,
+  "max_score_error": 1.0339188394326015e-09,
+  "score_tolerance": 1e-07,
+  "score_precision_note": "Published conditional-tree NLL used float32 logs; independent scoring uses float64",
+  "max_model_replay_error": 0.0,
+  "linear_stationarity_verified": true,
+  "headroom_gate": false,
+  "auditor_sha256": "479d914641ee4833a64313fabead3c7d617f2235bddb7e80580165c9d5b5acb2"
+}

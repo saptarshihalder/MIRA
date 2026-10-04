@@ -1,0 +1,37 @@
+{
+  "scope": "Repository-recorded modeling usage only; cannot exclude undocumented external/ad-hoc access",
+  "uci": {
+    "representatives": 69990,
+    "previously_unscored_range": [
+      47114,
+      55992
+    ],
+    "patients": 8878,
+    "patient_digest": "ea169ed49d468f09ceb6a89411559657c1812cf6cba1bacf5b838fd866fcdd95",
+    "saved_id_archive_checks": 66,
+    "candidate_overlap": 0,
+    "prior_exposure": "Full CSV, encoded features and all labels loaded; global/proposed split aggregates published",
+    "incompatible_partition": "70/15/15 proposal not adopted"
+  },
+  "annual2025": {
+    "criterion": "year==2025 and group%5<3",
+    "diabetes_rows": 199733,
+    "asthma_rows": 207179,
+    "roads_rows": 74179,
+    "brfss_groups": 32,
+    "road_groups": 30,
+    "prior_saved_target_overlap": 0,
+    "road_groups_below_historical640": [
+      11,
+      17,
+      60,
+      61
+    ],
+    "prior_exposure": "Full raw decoding, label/feature validation and aggregate missingness; not confirmation",
+    "separation": "Annual cohort only; group codes overlap2024source"
+  },
+  "auditors": [
+    "native_boundary_check",
+    "unused_brfss_audit"
+  ]
+}
