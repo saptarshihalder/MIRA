@@ -1,0 +1,112 @@
+{
+  "status": "development data prepared; no model fitting, scoring or outcome summaries",
+  "created_at_utc": "2026-10-04T17:02:39.477012+00:00",
+  "dataset": {
+    "name": "Wine Quality",
+    "uci_id": 186,
+    "doi": "10.24432/C56S3T",
+    "page": "https://archive.ics.uci.edu/dataset/186/wine+quality",
+    "license": "CC BY 4.0",
+    "attribution": "Cortez, Cerdeira, Almeida, Matos and Reis (2009)",
+    "metadata_last_updated": "2023-11-15"
+  },
+  "versions": {
+    "raw_version": "SHA256 of downloaded bytes; UCI does not supply an immutable release identifier",
+    "python": "3.11.9",
+    "numpy": "1.26.4",
+    "preparation_script_sha256": "7e12bce4df1438780c1a0556d9ae64d9ef0977aacfc97ec06c99b6f0b0cd3dc3"
+  },
+  "sources": {
+    "red": {
+      "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv",
+      "resolved_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv",
+      "retrieved_at_utc": "2026-10-04T17:02:36.487984+00:00",
+      "http_last_modified": null,
+      "http_etag": null,
+      "bytes": 84199,
+      "sha256": "4a402cf041b025d4566d954c3b9ba8635a3a8a01e039005d97d6a710278cf05e",
+      "path": "data/raw/wine_acquisition/winequality-red.csv"
+    },
+    "white": {
+      "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv",
+      "resolved_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv",
+      "retrieved_at_utc": "2026-10-04T17:02:39.031748+00:00",
+      "http_last_modified": null,
+      "http_etag": null,
+      "bytes": 264426,
+      "sha256": "76c3f809815c17c07212622f776311faeb31e87610d52c26d87d6e361b169836",
+      "path": "data/raw/wine_acquisition/winequality-white.csv"
+    }
+  },
+  "outputs": {
+    "red": {
+      "path": "artifacts/local/wine_acquisition/wine_red.npz",
+      "sha256": "6438029d6acbba7c299a75f48c12eed629d1cb4ada41c3311caafcb4968cf6d3",
+      "rows": 1599,
+      "unique_feature_groups": 1359,
+      "partition_rows": {
+        "fit": 978,
+        "validation": 303,
+        "development": 318
+      }
+    },
+    "white": {
+      "path": "artifacts/local/wine_acquisition/wine_white.npz",
+      "sha256": "f4dd4a4bb28596db220477f7b397617ed14827a6058e1ba010fc5c3a5cf556d6",
+      "rows": 4898,
+      "unique_feature_groups": 3961,
+      "partition_rows": {
+        "fit": 2911,
+        "validation": 996,
+        "development": 991
+      }
+    }
+  },
+  "feature_names": [
+    "fixed acidity",
+    "volatile acidity",
+    "citric acid",
+    "residual sugar",
+    "chlorides",
+    "free sulfur dioxide",
+    "total sulfur dioxide",
+    "density",
+    "pH",
+    "sulphates",
+    "alcohol"
+  ],
+  "label_rule": "quality >= 6; no label-stratified split or outcome statistics",
+  "group_rule": "SHA256 of 11 source-ordered finite IEEE754 little-endian float64 values, C order, positive zero normalization; excludes color and target",
+  "split_rule": "Global full-digest integer / 2**256: [0,.6) fit, [.6,.8) validation, [.8,1) development; approximate 60/20/20 group allocation",
+  "bin_rule": "Per-color, per-feature fit-row terciles; numpy linear quantiles at 1/3 and 2/3; equality enters higher bin; ties may leave bins empty",
+  "npz_schema": {
+    "X": "uint8 [n,11], bins 0..2",
+    "y": "uint8 [n]",
+    "row_ids": "unicode [n], source filename:CSV line",
+    "groups": "U64 [n]",
+    "partition": "uint8 [n], 0 fit / 1 validation / 2 development",
+    "thresholds": "float64 [11,2]",
+    "feature_names": "unicode [11]"
+  },
+  "audit": {
+    "total_rows": 6497,
+    "global_unique_feature_groups": 5318,
+    "duplicate_groups": 993,
+    "duplicate_rows_beyond_first": 1179,
+    "cross_color_feature_groups": 2,
+    "cross_partition_group_overlap": 0,
+    "conflicting_quality_and_binary_label_groups_checked": true,
+    "conflicting_label_policy": "Retain every source row; identical features remain in one global group regardless of conflicting labels",
+    "sha256_collision_check_passed": true,
+    "npz_roundtrip_checked": true,
+    "local_paths_git_ignored": true
+  },
+  "limitations": [
+    "Development only; not fresh external confirmation.",
+    "Exact feature grouping does not establish patient, producer, batch, bottle or temporal independence; these identities are unavailable.",
+    "Near duplicates are not detected by exact-vector grouping; arbitrary target proxies cannot be excluded.",
+    "No empirical assay price, latency or joint measurement grouping; acquisition costs must be explicitly simulated.",
+    "Red and white are domains within one dataset, not independent dataset families.",
+    "All repeated rows retained, so duplicates affect fit quantiles and subsequent row-weighted results."
+  ]
+}

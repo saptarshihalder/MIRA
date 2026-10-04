@@ -1,0 +1,10 @@
+{
+  "experiments/wine_acquisition.py": "a89a38b9c601d24cc4e9a967803652d0c21b377cc44d9adaae5a7e5e3a272e90",
+  "experiments/wine_acquisition_prepare.py": "7e12bce4df1438780c1a0556d9ae64d9ef0977aacfc97ec06c99b6f0b0cd3dc3",
+  "docs/WINE_ACQUISITION_PROTOCOL.md": "19c58a1a5e769673ef0da1fc973194a07ffbfb0ede8678b224db63c445249655",
+  "artifacts/manifests/wine_acquisition_data_audit.json": "016b6154fab2eda5bb9372eaf624ab61bf212851e66bfca12511ee052b87c7a0",
+  "artifacts/local/wine_acquisition/wine_red.npz": "6438029d6acbba7c299a75f48c12eed629d1cb4ada41c3311caafcb4968cf6d3",
+  "artifacts/local/wine_acquisition/wine_white.npz": "f4dd4a4bb28596db220477f7b397617ed14827a6058e1ba010fc5c3a5cf556d6",
+  "data/raw/wine_acquisition/winequality-red.csv": "4a402cf041b025d4566d954c3b9ba8635a3a8a01e039005d97d6a710278cf05e",
+  "data/raw/wine_acquisition/winequality-white.csv": "76c3f809815c17c07212622f776311faeb31e87610d52c26d87d6e361b169836"
+}
