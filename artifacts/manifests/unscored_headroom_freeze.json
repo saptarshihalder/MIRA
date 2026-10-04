@@ -1,0 +1,14 @@
+{
+  "docs/UNSCORED_COHORT_HEADROOM_PROTOCOL.md": "7a77abce0f6b167f923801f0848600f1053b00de477ecf4c395f4cb57c2b2cca",
+  "experiments/crossfit_v1/headroom_prepare.py": "9671b0ddc89944508746322f6c640b2bb50e2a969071c9d56f7d6e69cf6a60fd",
+  "experiments/crossfit_v1/headroom_run.py": "b2f464d398be85e9688873177e9bb4b189dedbc1b0a40032e90a178d6ceab877",
+  "experiments/policy_adapter_v1/native.py": "bfb1ced2d9819bc2f4f14caa20dc6f5ee4158da72c13b6fe436fe239432443ec",
+  "artifacts/reports/policy_native_gpu_v1/source_backbone.json": "9686ab7c72ba020463438b6493edad4c7b24d0ca410f38d117c70a12a7238146",
+  "artifacts/reports/policy_native_gpu_v1/report.json": "f2391b690fb527326ce2b53f7b4fce7f4071b9742a4248514f79e80370e298ec",
+  "artifacts/reports/unscored_headroom_inputs/episode0.npz": "b86122f8c324f5498891a73ae3135f00b67e9750771d04a1d8ba680eeae3177f",
+  "artifacts/reports/unscored_headroom_inputs/episode1.npz": "e191132f13aa233e343119c171f90646ef453ed3b5cbad81d35a8f3d96f85e11",
+  "artifacts/reports/unscored_headroom_inputs/episode2.npz": "8b12d5c35be1001382c36692aea7d9eee52346e5f736baa58a2e330cfceabe37",
+  "artifacts/reports/unscored_headroom_inputs/episode3.npz": "1dab85774334aba2213d0af15cb022ac730bdefa2b0238663f1a480813c1024b",
+  "artifacts/reports/unscored_headroom_inputs/episode4.npz": "659e2bbe14b55bf8c3a68028ad00226b773eb7edc3a4b64af2968cbba40ec520",
+  "artifacts/reports/unscored_headroom_inputs/report.json": "7b6f4e23c1f4b9b24782822a3cc791976225b89d7e6225d674db8c001b50d746"
+}
