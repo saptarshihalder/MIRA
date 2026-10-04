@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checkpoints": 9,
+  "independently_enumerated_cells": 216,
+  "max_risk_replay_error": 3.3306690738754696e-16,
+  "training_feasibility_checked": true,
+  "source_control_means": {
+    "repair": 0.46621988731614145,
+    "direct": 0.47264502269746966,
+    "blind": 0.47050331090369363
+  },
+  "mechanism_gate": false,
+  "auditor_sha256": "d3852b000421234a8d0b55302fafe73b816c6ae0157ce71f69916fc422559c55"
+}

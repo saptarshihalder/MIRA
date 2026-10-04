@@ -1025,5 +1025,21 @@
     "seconds": 0.5630000000019209,
     "purpose": "One deterministic reproduction; no new scientific evaluation",
     "results": "artifacts/reports/annual_rl_completion"
+  },
+  {
+    "run_id": "acquisition_repair_probe_cpu",
+    "date": "2026-10-04",
+    "status": "completed",
+    "reserved_usd": 0,
+    "provider_charge_usd": 0,
+    "cloud_calls": 0,
+    "device": "local_cpu",
+    "seconds": 9.968999999997322,
+    "trained_checkpoints": 9,
+    "updates_per_model": 600,
+    "training_examples": 3456,
+    "independently_enumerated_risk_cells": 216,
+    "scientific_gate": "failed",
+    "results": "artifacts/reports/acquisition_repair_probe"
   }
 ]
