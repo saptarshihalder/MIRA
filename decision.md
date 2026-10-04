@@ -1,5 +1,10 @@
 # Research decision â€” October 1, 2026
 
+## Annual-cohort headroom closed — October 4
+
+Read docs/ANNUAL_HEADROOM_FINDINGS.md and docs/ACQUISITION_SUCCESSOR_PLAN.md. The fixed 15-group screen fails every endpoint gate: frozen wins BRFSS, support Platt wins roads; calibrated nonlinear corrections do not clear strong controls. All 60 scores/model replays and raw identities audit exactly. 23,040 endpoint-row uses represent 15,639 unique records across two families; endpoints overlap. All scored rows are used development, not confirmation. No new cloud cost; $16.45 provisions + $3 protected leave $.55. Close this correction route. Next is a conditional acquisition-model proposal, beginning with novelty/data-access audit against 2026 L2M and other strong prior art; no unvalidated architecture or venue-readiness claim. Preserve confirmation 98000–98019. Strict token policy: one bounded unresolved gate per continuation, short outputs, no broad sweeps or duplicate agents.
+
+
 ## Previously unscored cohort audit/headroom screen completed: October 4
 
 Read docs/UNSCORED_HEADROOM_FINDINGS.md. Audits identify8,878 UCI patients and2025BRFSS/road residues0/1/2 unused for recorded fitting/selection/scoring, with prior full-data/label preprocessing exposure. Not pristineconfirmation/newdatasets. Frozen5-episode UCI screen uses7,680patients (512support/1,024query);1,198remain unscored. Conditional-tree gateFAILS: NLL.320952 vsfrozen.316531, Platt.265546, additive.263157. Additive-over-Platt gain.002389 below.003; no architecture launched. All20score arrays/models/IDs/convex stationarity auditpass; replay0, floatprecision scoreerror1.04e-9. Close UCI screen; next conditional work is separately frozen headroom on audited unscored2025 annual cohorts with strong full-feature/calibration controls, not another equivalent model run. These remain examined dataset families and share regioncodes. No new cloud spending;16.45+3leave.55. All scorednewpatients nowUSEDdevelopment; protectconfirmation98000-98019. Samepaper updated; PDFcompiler environment stillblocked.

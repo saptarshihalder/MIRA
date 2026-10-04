@@ -980,5 +980,21 @@
     "scientific_gate": "failed",
     "audit_repair_notes": "Float32/64 scorer tolerance and hashPath type repaired; fits/predictions unchanged",
     "results": "artifacts/reports/unscored_headroom_v1"
+  },
+  {
+    "run_id": "annual_headroom_v1_cpu",
+    "date": "2026-10-04",
+    "status": "completed",
+    "reserved_usd": 0,
+    "provider_charge_usd": 0,
+    "cloud_calls": 0,
+    "device": "local_cpu",
+    "seconds": 10.25,
+    "endpoint_groups": 15,
+    "scored_query_uses": 15360,
+    "support_uses": 7680,
+    "unique_records": 15639,
+    "scientific_gate": "failed",
+    "results": "artifacts/reports/annual_headroom_v1"
   }
 ]
