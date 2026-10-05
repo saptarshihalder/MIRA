@@ -1,5 +1,10 @@
 # MIRA status — October 4, 2026
 
+## Predictor optimization fix — October 5
+
+Read docs/PREDICTOR_ADEQUACY_FINDINGS.md. One frozen source-only duration/coverage diagnostic:12 neural checkpoints plus2 ridge controls;12,000 updates,26.922 CPU seconds,cloud0. Optimization gate PASSES all3seeds. Large-source2000-step actual risk .521829 versus .620365 at200steps, counts .562446 and matched-source ridge .528990. Neural gains over ridge .006406–.007895 remain below the fixed.01 practical margin: utility gate FAILS. All36,864 policy cells replay within3.934e-8; original200-step weights exact. This confirms material undertraining in the earlier probe, not novelty or venue readiness. Close this batch; no retuning/new Q training on these tasks. New mechanism/protocol and real transfer remain required. Modal provisions/reserve unchanged; protected seeds and closed test panels untouched.
+
+
 ## Publication readiness and topology predictive gate — October 5
 
 Read docs/PUBLICATION_READINESS.md and TOPOLOGY_PREDICTOR_FINDINGS.md. Source-only predictive topology test completed:18 neural +6 tree models, matched64-label neural arms, raw/group/selection/24score replay error0. Red H0/uniform/farthest NLL.692505/.736863/.694287; white.676785/.647930/.702192. Both gates FAIL; close this batch. No held-out Wine/Bellman panels rescored; source pools are dependent and not external confirmation. Current draft is reviewable but not JMLR/NeurIPS-ready: useful distinct trained contribution, independent evidence and PDF verification remain unmet. Work through October20 stays conditional on those gates; future milestones are not marked complete. No cloud cost; protected reserve unchanged.

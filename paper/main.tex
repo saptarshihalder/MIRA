@@ -76,6 +76,30 @@ The replicated query-conditioning contrast supports a scoped synthetic benefit. 
 
 The latest source-only topology comparison trains eighteen masked neural predictors and six tree controls at fixed support-label budgets. H0/uniform/farthest-point NLL is .692505/.736863/.694287 on red Wine and .676785/.647930/.702192 on white Wine. Both prespecified gates fail. All twenty-four model/score cells replay exactly, and no original Wine validation/development rows are scored. Geometry coverage alone does not imply predictive improvement.
 
+\subsection{Optimization adequacy: a positive source-development diagnostic}
+The closed Bellman probe used only200 predictor updates. To distinguish training duration from source coverage, a new frozen diagnostic keeps its8,161-parameter architecture and optimizer, compares200/2000 updates and192/3072 source tasks, and retains three initializations. Twelve checkpoints and two fixed ridge controls are saved before scoring96 new tasks from the same six synthetic Boolean families. All source teachers are privileged population conditionals; inference receives64 incomplete support labels and observed query features. The previous test panel and protected confirmation seeds are not accessed. These tasks constitute adaptive source development, not independent real-data confirmation.
+
+\begin{table}[t]
+\centering\small
+\caption{Predictor optimization diagnostic. Exact expected NLL plus acquisition cost, averaged over tasks/scenarios and three initializations. Lower is better.}
+\begin{tabular}{lrrr}
+\toprule
+Predictor & Source tasks & Updates & Risk plus cost\\
+\midrule
+Neural &192&200&.623607\\
+Neural &192&2000&.530208\\
+Neural &3072&200&.620365\\
+Neural &3072&2000&.521829\\
+Ridge &192&closed form&.532667\\
+Ridge &3072&closed form&.528990\\
+Support counts &0&40 EM&.562446\\
+Population Bayes &privileged&reference&.514497\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Longer training improves actual entropy-planned utility on every initialization. The predeclared large-source/2000-update candidate improves mean risk by15.88\% versus its200-update counterpart,7.22\% versus support counts, and1.35\% versus same-source ridge. All ridge gains are positive (.007181,.007895,.006406), but all fall below the prespecified.01 practical margin. The optimization diagnostic passes and the practical gate fails. Ridge shares the source teachers but uses1,485 coefficients, a logit-regression objective and closed-form training; counts receive no source pretraining. Dependent scenarios and shared task families preclude treating these means as dataset-level evidence. This establishes a material optimization confound in the previous predictor failure, not a new architecture, learned-Q benefit or native utility. Independent recursive replay checks36,864 policy-score cells within$3.934\times10^{-8}$; original200-step checkpoints reproduce exactly. The finite batch is closed without margin adjustment.
+
 \appendix
 \section{Retained development and failure analysis}
 \subsection{Calibration-anchored redesign: a retained negative result}

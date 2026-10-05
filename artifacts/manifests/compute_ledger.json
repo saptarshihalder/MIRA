@@ -1109,5 +1109,24 @@
     "score_cells": 24,
     "scientific_gate": "failed",
     "results": "artifacts/reports/topology_predictor_v1"
-  }
+  },
+{
+  "run_id": "predictor_adequacy_v1_cpu",
+  "date": "2026-10-05",
+  "status": "completed",
+  "reserved_usd": 0,
+  "provider_charge_usd": 0,
+  "cloud_calls": 0,
+  "device": "local_cpu",
+  "seconds": 26.921999999991385,
+  "audit_seconds": 15.578000000008615,
+  "training_retries": 0,
+  "neural_checkpoints": 12,
+  "ridge_controls": 2,
+  "total_updates": 12000,
+  "policy_cells": 36864,
+  "optimization_gate": "passed",
+  "practical_gate": "failed",
+  "results": "artifacts/reports/predictor_adequacy_v1"
+}
 ]

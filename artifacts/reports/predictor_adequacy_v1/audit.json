@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "cells": 36864,
+  "model_tables": 16,
+  "max_error": 3.9335334323098436e-08,
+  "source_boundary": "No closed test panel opened",
+  "seconds": 15.578000000008615
+}

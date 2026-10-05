@@ -7,7 +7,7 @@ Verdict: NOT submission-ready for the requested trained-model contribution. The 
 | Distinct trained-model contribution | Unresolved; generic planning and topology overlap prior methods |
 | Advantage over strong matched controls | Synthetic query-conditioning contrast is scoped positive; overall architecture/native/acquisition/topology gates fail |
 | Independent real-data validation | Not run; precursor gates did not pass |
-| Learning adequacy | Frozen Bellman predictors cannot clear the required count-control margin even with optimal policies |
+| Learning adequacy | Longer training fixes a material source-synthetic optimization shortfall; 7.22% gain over counts and 1.35% over matched-source ridge, but all seeds miss the frozen .01 practical margin |
 | Reproduction | Completed module audits and checkpoint/prediction replays; not a claim that every historical cloud environment was rebuilt |
 | Manuscript claims | Restricted to actual evidence; historical experiments retained in appendices |
 | PDF/layout | Unverified: native compiler cannot find platform standard directories |
