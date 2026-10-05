@@ -1,0 +1,17 @@
+{
+  "experiments/topology_predictor_gate.py": "0b12f84907ac3fc63da486926b70c8e1341c62ddae7692587d787a31a75d85ac",
+  "experiments/wine_acquisition_prepare.py": "7e12bce4df1438780c1a0556d9ae64d9ef0977aacfc97ec06c99b6f0b0cd3dc3",
+  "docs/TOPOLOGY_PREDICTOR_PROTOCOL.md": "1401c94bb0115381d67a15f984d2be3f3ae36551eee7be10ab52be6d9ca69254",
+  "artifacts/manifests/wine_acquisition_data_audit.json": "016b6154fab2eda5bb9372eaf624ab61bf212851e66bfca12511ee052b87c7a0",
+  "artifacts/reports/topological_support_sampling_v1/manifest.json": "ba22c4524d2b916d69efcd2c8b85ad96feaac460962aeb9cd8ec30aec78d8823",
+  "artifacts/reports/topological_support_sampling_v1/red_816001.npz": "0647cc8a8dc04d01b166488f3b8f6d253ad73f099b61d4c514141dc291e959f5",
+  "artifacts/reports/topological_support_sampling_v1/red_816002.npz": "182593e172a92ee4c35149e93463c543f291abcd6c241e7e8ca388b1f586405d",
+  "artifacts/reports/topological_support_sampling_v1/red_816003.npz": "1eb8ac13620dbfe0ea04a7cba0b6885a35b562f9a2c57357e08cb9dc84560e0d",
+  "artifacts/reports/topological_support_sampling_v1/report.json": "ec02fcda09207adeaf3bb850a1e8b8eb7b27cf8049c417abb456abaf8510311f",
+  "artifacts/reports/topological_support_sampling_v1/source_identity.json": "73590bbd7299077ce2a060e6ec4522a443bafe21ca93bd387b8fcb2f3a778a76",
+  "artifacts/reports/topological_support_sampling_v1/white_816001.npz": "fc03539d19468e28e76c8fb13804dd02a13b09bf8dce7ce9da8ed5b0cd8eef88",
+  "artifacts/reports/topological_support_sampling_v1/white_816002.npz": "06b907938ffe1ee671a466b2f1963241109bc37ecbaf72258e4a2fc1f64fd9dd",
+  "artifacts/reports/topological_support_sampling_v1/white_816003.npz": "3cff2d3c4e6a47e08f54fdc4f2578e97799b9e3851e9091ae92a59baf98f5dd8",
+  "data/raw/wine_acquisition/winequality-red.csv": "4a402cf041b025d4566d954c3b9ba8635a3a8a01e039005d97d6a710278cf05e",
+  "data/raw/wine_acquisition/winequality-white.csv": "76c3f809815c17c07212622f776311faeb31e87610d52c26d87d6e361b169836"
+}
