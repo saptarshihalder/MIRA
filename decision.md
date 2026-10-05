@@ -1,5 +1,10 @@
 # Research decision â€” October 1, 2026
 
+## Publication readiness and topology predictive gate — October 5
+
+Read docs/PUBLICATION_READINESS.md and TOPOLOGY_PREDICTOR_FINDINGS.md. Source-only predictive topology test completed:18 neural +6 tree models, matched64-label neural arms, raw/group/selection/24score replay error0. Red H0/uniform/farthest NLL.692505/.736863/.694287; white.676785/.647930/.702192. Both gates FAIL; close this batch. No held-out Wine/Bellman panels rescored; source pools are dependent and not external confirmation. Current draft is reviewable but not JMLR/NeurIPS-ready: useful distinct trained contribution, independent evidence and PDF verification remain unmet. Work through October20 stays conditional on those gates; future milestones are not marked complete. No cloud cost; protected reserve unchanged.
+
+
 ## Bellman extension closed; topology sampler added — October 5
 
 Read docs/SUPPORT_BELLMAN_FINDINGS.md and TOPOLOGICAL_SAMPLING.md. Three predictors/nine Q models, 1,950 updates, 15.844 CPU seconds, zero cloud cost. All three gates FAIL: support-conditioned Q loses to myopic/blind/count controls. All 13,824 cells replay within 1.146e-7; equivalent DP tie orders verified. Exact post hoc source/test ceilings show frozen predictors cannot clear the required gain even with optimal policies; fix predictor adequacy before further Q fitting. No novelty or venue-readiness claim. User requested topology sampling: H0/MST component sampling is implemented on six Wine source-feature pools, with 64 topology/uniform selections per 256 candidates, no labels or prediction scores. Next only a frozen source-only predictor/sampling comparison, including farthest-point control; geometry alone is not contribution evidence. Preserve closed Wine/Bellman/synthetic panels and seeds98000-98019. $16.45 provisions + $3 protected leave $.55; PDF compiler remains blocked. Minimal tokens, no further delegation until usage permits.

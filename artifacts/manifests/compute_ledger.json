@@ -1093,5 +1093,21 @@
     "labels_used_by_sampler": 0,
     "source_pools": 6,
     "results": "artifacts/reports/topological_support_sampling_v1"
+  },
+  {
+    "run_id": "topology_predictor_v1_cpu",
+    "date": "2026-10-05",
+    "status": "completed",
+    "reserved_usd": 0,
+    "provider_charge_usd": 0,
+    "cloud_calls": 0,
+    "device": "local_cpu",
+    "seconds": 9.421999999991385,
+    "trained_checkpoints": 24,
+    "neural_updates_per_model": 300,
+    "labels_per_arm": 64,
+    "score_cells": 24,
+    "scientific_gate": "failed",
+    "results": "artifacts/reports/topology_predictor_v1"
   }
 ]

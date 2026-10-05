@@ -6,12 +6,12 @@
 \setlength{\emergencystretch}{2em}
 \title{Learning Support-Verified Corrections for Frozen Tabular Predictors}
 \author{MIRA working manuscript\\Author list to be confirmed}
-\date{4 October 2026}
+\date{5 October 2026}
 
 \begin{document}
 \maketitle
 \begin{center}
-\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} A trained query correction passes a fresh synthetic development robustness gate. Its full architectural advantage, native transfer and novelty remain unresolved; the manuscript is not submission-ready.}}
+\fbox{\parbox{0.93\columnwidth}{\small\textbf{Working draft.} A trained query correction has scoped positive synthetic evidence. Overall architectural advantage, native transfer and novelty remain unresolved. Later acquisition and topology gates fail; the manuscript is not submission-ready.}}
 \end{center}
 
 \begin{abstract}
@@ -71,6 +71,13 @@ Road KSI & .611319 & .610819 & .609267 & .603197\\
 \end{table}
 The native gate fails: the query operator slightly harms both BRFSS tasks, and its road gain is smaller than support-only gating or ordinary calibration. Main acceptance counts are 2/60, 1/60 and 2/36 branch decisions respectively. Rejecting most updates does not establish native utility. Historical global calibration and linear controls additionally use native meta-training labels, so they are not label-matched. Independent audits verify 2,454 probability arrays and 1,190 exact checkpoint replays across the synthetic extension and native panel. Original public-data inputs, predictions and boundaries are archived. This closes the finite extension; no threshold or seed search follows from its negative outcomes.
 
+\section{Discussion and readiness}
+The replicated query-conditioning contrast supports a scoped synthetic benefit. Real transfer and subsequent correction, acquisition and topology gates fail. A distinct architecture with practical advantage over strong controls and independent real-data evidence remains unestablished. This is a working research manuscript; neither submission readiness nor acceptance follows from the completed engineering and replay audits.
+
+The latest source-only topology comparison trains eighteen masked neural predictors and six tree controls at fixed support-label budgets. H0/uniform/farthest-point NLL is .692505/.736863/.694287 on red Wine and .676785/.647930/.702192 on white Wine. Both prespecified gates fail. All twenty-four model/score cells replay exactly, and no original Wine validation/development rows are scored. Geometry coverage alone does not imply predictive improvement.
+
+\appendix
+\section{Retained development and failure analysis}
 \subsection{Calibration-anchored redesign: a retained negative result}
 A subsequent prospectively frozen pilot first fits ridge calibration on fitting support, then projects the interaction design off its fitting-support span of an intercept and the original frozen logit. Identical projection coefficients apply to source, verification and query rows. A 370-parameter learned mode filter and query gate operate on this residual design; matched task-shared and support-only-head models each receive the same 500 CPU updates. Verification requires the full learned candidate to beat both calibrated and original predictions; otherwise it uses verified calibration or the frozen predictor. These dependent nominal comparisons do not give a simultaneous risk guarantee. This design draws inspiration from separating nuisance directions\cite{chernozhukov2018} and validation-guided learning\cite{ren2018}, but its elementary projection is not an orthogonal causal score or a new theorem.
 

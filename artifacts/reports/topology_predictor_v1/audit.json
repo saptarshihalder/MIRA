@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "models": 24,
+  "score_cells": 24,
+  "max_replay_error": 0.0,
+  "scientific_gate": false,
+  "auditor_sha256": "959b3266617ed6b3562017ad74914d787fa43161c63f5c3b4d87df9633e9465a"
+}
