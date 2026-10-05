@@ -1,0 +1,15 @@
+# HAR label-closed eligibility findings — October 5, 2026
+
+**Subject and exact-duplicate boundaries PASS; model-contribution/evaluation gates remain unresolved.** Official UCI 240 archive retrieved and frozen, SHA256 `c00b803081a5c797cd5e4b83700a9810b38d53d9d84e01917e090e1fdbc81031`. The source comprises 7,352 original training rows and 2,947 original test rows, 561 numeric features, and 30 distinct subjects. Activity labels were transported inside compressed archive bytes but were never opened or parsed. No classifier, architecture or outcome metric was fitted/evaluated.
+
+The member-read log contains README, feature documentation/schema, two subject-ID files and two feature matrices. Source-fit uses 14 original training subjects; source-development uses 7; the original 9 test subjects retain closed labels. Every subject belongs to one allocation. There are zero exact canonical feature-row intersections between allocations. This establishes the recorded whole-subject boundary, not independent windows or unseen-pretraining evidence. IDs are grouping fields and must not become predictor inputs.
+
+The official collection uses overlapping sensor windows and has no native missing values. Any future missingness/cost experiment must explicitly simulate them. No same-subject random support/query split, temporal independence, clinical claim or measured acquisition saving is justified. Inspection of all feature values is disclosed; no preprocessing fit or feature selection occurred. The final modeling protocol must specify permitted evaluation-feature access before fitting. Evaluation-label release remains conditional on successful development and committed model/control identities.
+
+The registry previously recorded metadata-only access. Repository searches cannot exclude undocumented access or inclusion in a pretraining corpus. This is an eligible candidate evaluation population, not independent confirmation evidence or a latest-2026 dataset. It dates to 2013; its modern public access does not change that.
+
+Audit duration 23.391 seconds, zero cloud cost, no automatic retries. Freeze: `artifacts/manifests/har_label_closed_freeze.json`; full identity/read/hash report: `artifacts/manifests/har_label_closed_audit.json`. Raw archive and README remain local under `data/raw/har_label_closed_v1/`; compressed activity labels stay closed. Reproduction intentionally requires a clean destination to prevent overwriting audited inputs.
+
+Official source/license/collection description: [UCI HAR](https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones), DOI 10.24432/C54S4K, CC BY 4.0. Credit Reyes-Ortiz, Anguita, Ghio, Oneto and Parra (2013). Do not substitute the updated postural-transition dataset.
+
+Independent read-only code/manifest review confirms the member-read log and 14/7/9 subject allocation. It flags evaluation-feature inspection, limited nine-subject replication, absent native missingness and unresolved within-person temporal identities. No further raw/label access occurred.

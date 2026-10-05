@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-05",
+  "url": "https://archive.ics.uci.edu/static/public/240/human%2Bactivity%2Brecognition%2Busing%2Bsmartphones.zip",
+  "doi": "10.24432/C54S4K",
+  "license": "CC BY 4.0",
+  "archive_sha256": "c00b803081a5c797cd5e4b83700a9810b38d53d9d84e01917e090e1fdbc81031",
+  "archive_bytes": 61005872,
+  "nested_archive": true,
+  "member_reads": [
+    "UCI HAR Dataset/README.txt",
+    "UCI HAR Dataset/features_info.txt",
+    "UCI HAR Dataset/features.txt",
+    "UCI HAR Dataset/train/subject_train.txt",
+    "UCI HAR Dataset/train/X_train.txt",
+    "UCI HAR Dataset/test/subject_test.txt",
+    "UCI HAR Dataset/test/X_test.txt"
+  ],
+  "opened_member_hashes": {
+    "UCI HAR Dataset/README.txt": {
+      "sha256": "eaee53f45825f349681a1a1b92a997a0082648f9b5bf93ddb3290caeede4b3a8",
+      "bytes": 6304
+    },
+    "UCI HAR Dataset/features_info.txt": {
+      "sha256": "5d7e7d1f204dcfba846043029ef7a15a07c2b3711ee0a122da031f5971b3b585",
+      "bytes": 2809
+    },
+    "UCI HAR Dataset/features.txt": {
+      "sha256": "b384889885b1c8680ecf250e0e605b4c79536cdf09ce9f2fa7225a3c6773b5c7",
+      "bytes": 15785
+    },
+    "UCI HAR Dataset/train/subject_train.txt": {
+      "sha256": "66e1e2fbe9b396fa5155f531dc3348c803f503be663e2318772d49947db9153a",
+      "bytes": 20152
+    },
+    "UCI HAR Dataset/train/X_train.txt": {
+      "sha256": "9c1246099c8d5463779eec5a3845cc3898df9d8c715441ab2a1232d4421fc42f",
+      "bytes": 66006256
+    },
+    "UCI HAR Dataset/test/subject_test.txt": {
+      "sha256": "63b8c577f4a85431c06bd87f6384608c90a9f72f05c7956dd21255dc63515c07",
+      "bytes": 7934
+    },
+    "UCI HAR Dataset/test/X_test.txt": {
+      "sha256": "99035209add50d17650e847d8a4658d784a5707466ebb7c2deb97c28e5250a78",
+      "bytes": 26458166
+    }
+  },
+  "activity_labels_parsed": false,
+  "compressed_labels_transported": true,
+  "models_trained": 0,
+  "cloud_calls": 0,
+  "source_train_rows": 7352,
+  "evaluation_rows": 2947,
+  "features": 561,
+  "subject_allocation": {
+    "source_fit": [
+      11,
+      29,
+      21,
+      23,
+      19,
+      1,
+      15,
+      27,
+      6,
+      7,
+      26,
+      30,
+      14,
+      16
+    ],
+    "source_development": [
+      22,
+      5,
+      25,
+      8,
+      17,
+      3,
+      28
+    ],
+    "evaluation_label_closed": [
+      2,
+      4,
+      9,
+      10,
+      12,
+      13,
+      18,
+      20,
+      24
+    ]
+  },
+  "subject_rows": {
+    "1": 347,
+    "2": 302,
+    "3": 341,
+    "4": 317,
+    "5": 302,
+    "6": 325,
+    "7": 308,
+    "8": 281,
+    "9": 288,
+    "10": 294,
+    "11": 316,
+    "12": 320,
+    "13": 327,
+    "14": 323,
+    "15": 328,
+    "16": 366,
+    "17": 368,
+    "18": 364,
+    "19": 360,
+    "20": 354,
+    "21": 408,
+    "22": 321,
+    "23": 372,
+    "24": 381,
+    "25": 409,
+    "26": 392,
+    "27": 376,
+    "28": 382,
+    "29": 344,
+    "30": 383
+  },
+  "duplicates_within": {
+    "source_fit": 0,
+    "source_development": 0,
+    "evaluation_label_closed": 0
+  },
+  "duplicate_intersections": {
+    "source_fit__source_development": 0,
+    "source_fit__evaluation_label_closed": 0,
+    "source_development__evaluation_label_closed": 0
+  },
+  "subject_boundary_passed": true,
+  "exact_duplicate_boundary_passed": true,
+  "source_readme_sha256": "eaee53f45825f349681a1a1b92a997a0082648f9b5bf93ddb3290caeede4b3a8",
+  "seconds": 23.39100000000326,
+  "eligibility": "Whole-subject classification only; mechanism/evaluation protocol not approved by this audit",
+  "limitations": [
+    "Windows overlap within subjects; no temporal identities reconstructed",
+    "No native missingness; future masks/costs must be declared synthetic",
+    "Repository access search cannot exclude undocumented or pretrained-model access"
+  ]
+}

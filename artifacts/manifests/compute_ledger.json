@@ -1128,5 +1128,18 @@
   "optimization_gate": "passed",
   "practical_gate": "failed",
   "results": "artifacts/reports/predictor_adequacy_v1"
+},
+{
+  "run_id": "har_label_closed_audit_v1",
+  "date": "2026-10-05",
+  "status": "completed",
+  "reserved_usd": 0,
+  "provider_charge_usd": 0,
+  "cloud_calls": 0,
+  "models_trained": 0,
+  "activity_labels_parsed": false,
+  "seconds": 23.39100000000326,
+  "automatic_retries": 0,
+  "results": "artifacts/manifests/har_label_closed_audit.json"
 }
 ]

@@ -1,5 +1,10 @@
 # Research decision â€” October 1, 2026
 
+## Revised October 10 deadline and fresh-data boundary — October 5
+
+The user shortened final delivery to October 10, 2026; this supersedes October 20. Read docs/OCTOBER10_FINALIZATION.md, HAR_LABEL_CLOSED_FINDINGS.md and LABEL_ALLOCATION_PRIOR_ART.md. HAR audit passes whole-subject and exact-duplicate boundaries: 10,299 rows, 561 features, 30 subjects allocated 14 source-fit / 7 source-development / 9 evaluation-label-closed. No activity labels opened, model fit or outcome metric. This is an eligible candidate, not validation or evidence of natural missingness. Generic learned support-label allocation is rejected as novelty because active learning/evaluation precedents cover its ingredients. October 6 must resolve a substantive trained mechanism and strong frozen controls; later training/evaluation is conditional. All closed panels, failed margins and protected seeds remain preserved. Two focused independent agents completed useful checks; no duplicate sweeps. Cloud cost zero; budget provisions unchanged. Daily continuation now ends October 10. No JMLR-ready claim, email or submission.
+
+
 ## Predictor optimization fix — October 5
 
 Read docs/PREDICTOR_ADEQUACY_FINDINGS.md. One frozen source-only duration/coverage diagnostic:12 neural checkpoints plus2 ridge controls;12,000 updates,26.922 CPU seconds,cloud0. Optimization gate PASSES all3seeds. Large-source2000-step actual risk .521829 versus .620365 at200steps, counts .562446 and matched-source ridge .528990. Neural gains over ridge .006406–.007895 remain below the fixed.01 practical margin: utility gate FAILS. All36,864 policy cells replay within3.934e-8; original200-step weights exact. This confirms material undertraining in the earlier probe, not novelty or venue readiness. Close this batch; no retuning/new Q training on these tasks. New mechanism/protocol and real transfer remain required. Modal provisions/reserve unchanged; protected seeds and closed test panels untouched.
