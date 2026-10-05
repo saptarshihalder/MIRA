@@ -1,0 +1,1206 @@
+{
+  "source": [
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.09822659947438174
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.16553018988578683
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.06916757537408813
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.1562682156146074
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.04638579476755371
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.16246467501770415
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.18969301178194092
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.030737963343294497
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.19523255161174943
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.047870878931251526
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.06492693692594283
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.11128359032941272
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.14264230990195914
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.0643374130825772
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.06957609685695954
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.1853152230179915
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.08408967882360982
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.10352397312134021
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.17632679686166852
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.07382785801957642
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.16054604379598203
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.1603846443379967
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.053146734209277895
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.0499644257053702
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.16368499874557774
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.16991418484871676
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.09587952151667928
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.10477354048152979
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.03856450155283952
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.1332204580814919
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.05196535710144563
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.0761110920866804
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.12267565757563136
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.04200795219767239
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.06384653430115292
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.10668969612299008
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.10144700931409761
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.14764157640456294
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.11724356739937301
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.08070335377871671
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.13797807430486198
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.11512536339333117
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.055364761600883876
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.1968743231868825
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.05137477172837831
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.14499851321125012
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.15012058548068474
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.1541992036139657
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.046038229349177534
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.08117452554007878
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.11685585512505076
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.1098964604541107
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.1911731398615606
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.08522198580980188
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.1551941038936455
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.08217943253980167
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.09893794411968154
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.07826106299037096
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.13625564744375213
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.1542526910415498
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.14560662210142025
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.06240860470191219
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.033310034118751164
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.11611463452867275
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.13710576084232823
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.17203965445045563
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.08921080004835608
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.13831082682447726
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.18688009215545043
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.04759827897016079
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.040282955918911456
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.10969594214045743
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.15227325449713947
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.08725682337432208
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.09140123162725819
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.04870178457434127
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.09631987928927134
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.13231680339025376
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.1777706406352752
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.10496795092515318
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.14426680526367822
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.04076090802505791
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.049825039644600305
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.13684154778382135
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.15265650807981535
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.03231181049616032
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.10593979128781406
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.14828964625893726
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.08511478748404297
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.17017557422567625
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.06390585461270218
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.18062355063585303
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.03761864457014013
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.0811887048080612
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.11389588248902856
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.10718193274150929
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.16887449204854502
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.0586614203753406
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.11762537529577857
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.16849853567353576
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.13775088328813417
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.12770429859575652
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.16187567625599675
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.03596828921484051
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.10970225671094334
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.12677994569594084
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.14641537779362454
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.10509499786596764
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.12419306543097597
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.04422589633681474
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.058591323899725184
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.18317716984982485
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.04112938035956075
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.05309900840479565
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.1501121813909816
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.11628990807941163
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.14718765494283761
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.16035634470081347
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.05864134860385824
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.1170527186274704
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.13209890478600106
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.18474868497988584
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.19095162122522896
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.11286600550242705
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.177108374321489
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.1484588055141517
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.08019964963586346
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.17460593360950108
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.05470389977753226
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.14870990856277239
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.17370722372825656
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.19517856741313017
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.13646556087328648
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.12622682705250693
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.13511465976419246
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.08964397299804601
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.06708274549830193
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.09647324275622035
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.07967799515061519
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.075805421873253
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.06667035688033898
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.15980353458602153
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.1212600488943951
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.18730384448197598
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.03486293837013412
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.08669053612534983
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.14663074455995823
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.10188555587814792
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.0683842881015913
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.08218615072428773
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.07967759054436173
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.07919417874211908
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.09196395268226266
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.19334373480393413
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.10450653585486655
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.17459056762373773
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.08263579479037883
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.17379361782833266
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.16163430033317455
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.04951758788506735
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.05787065494120195
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.04601848490833859
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.17525082241113643
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.13133497830859403
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.129743953712809
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.08630762521382299
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.18947956315456707
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.0965344070204659
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.04622245239761408
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.11181774995671569
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.17857783607898556
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.041481694954016976
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.03321255271925727
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.19874392346269965
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.05417998116543225
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.11959484204126457
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.10132562208616779
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.08851938613134322
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.10266478846361814
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.04624554177945024
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.0994331490834173
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.16485459832098345
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.1173774097516533
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.1951397993354476
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.17696156030712212
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.12472324180192652
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.1199873164060332
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.04414450313472991
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.17903012285584521
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.16417566377701048
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.13716416026907474
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.19414192763972074
+    }
+  ],
+  "test": [
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.10792511288001827
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.18583913420392897
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.1685523376669528
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.16139960083299804
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.18715926543806857
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.10621580624974086
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.12193019245199972
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.12982887744554872
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.07579780256440724
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.03346355050863475
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.19784048964084486
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.15107012607885925
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.12907394945593959
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.08504513322015195
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.12105409826706573
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.18235453118065567
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.18181741737368645
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.10789236298161478
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.15512276783161696
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.17457829018734633
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.12504948645012526
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.19555652017545527
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.19661615813427788
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.03884996971952824
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.1112273357397715
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.036013712275543036
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.06444484225104705
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.06555932610102735
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.1218524285395182
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.06629005997822868
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.19312424987568472
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.16207898793771344
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.04042157222876132
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.09157059883320212
+    },
+    {
+      "selector": 1,
+      "parity": 1,
+      "noise": 0.16021722017310425
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.09014183472478768
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.19293170572314583
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.04726421466686432
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.047139541775459565
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.1745851270482425
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.05254535382937326
+    },
+    {
+      "selector": 0,
+      "parity": 0,
+      "noise": 0.1426055599476093
+    },
+    {
+      "selector": 2,
+      "parity": 0,
+      "noise": 0.13077625175442364
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.19344236760539094
+    },
+    {
+      "selector": 2,
+      "parity": 1,
+      "noise": 0.0738126976715569
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.11609282935281891
+    },
+    {
+      "selector": 0,
+      "parity": 1,
+      "noise": 0.1367181473872094
+    },
+    {
+      "selector": 1,
+      "parity": 0,
+      "noise": 0.041003861077995495
+    }
+  ]
+}

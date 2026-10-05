@@ -1,0 +1,49 @@
+{
+  "source_tasks": 192,
+  "test_tasks": 48,
+  "support_size": 64,
+  "missing_probability": 0.2,
+  "source_seed": 814101,
+  "test_seed": 814102,
+  "seeds": [
+    814001,
+    814002,
+    814003
+  ],
+  "costs": [
+    0.01,
+    0.03,
+    0.05
+  ],
+  "availability": [
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      0
+    ]
+  ],
+  "predictor_steps": 200,
+  "q_steps": 150,
+  "batch_size": 512,
+  "learning_rate": 0.003,
+  "wall_seconds": 180,
+  "em_steps": 40,
+  "superiority": 0.01,
+  "planner_noninferiority": 0.01,
+  "horizon": 2
+}

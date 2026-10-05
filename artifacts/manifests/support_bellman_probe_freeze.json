@@ -1,0 +1,9 @@
+{
+  "experiments/support_bellman_probe.py": "e3829989a3bb6e965feba5e9063a763bc558afb33bd8d1a265fe31d12c66911b",
+  "docs/SUPPORT_BELLMAN_PROTOCOL.md": "389f1afbe710aa58f1c5cb8687527f45e2d34ecc7e35e70284dd9ae020d71f74",
+  "artifacts/local/support_bellman_probe_v1/config.json": "5d530b7ba89ffae78091868cc43c1d8bbfc388e40fc58aed68b14d8d42b4b2a4",
+  "artifacts/local/support_bellman_probe_v1/manifest.json": "605ee9fccf967973a5ae472ec5b596a6eea8cfee91ab9efefa00169fb0799da7",
+  "artifacts/local/support_bellman_probe_v1/source.npz": "5dac50e06e2adafb6d00eaa88932f58fb276bfe5bac8e5c1dea14a3bf4be6a59",
+  "artifacts/local/support_bellman_probe_v1/tasks.json": "d2e732a79ae53483232efe125f49faabc43fbb2af38c507466dd01102896efba",
+  "artifacts/local/support_bellman_probe_v1/test.npz": "af235d4cd04d365f21825ab2440f7a7e1af8820afd909c3a2a7564018006d69a"
+}
