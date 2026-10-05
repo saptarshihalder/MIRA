@@ -1061,5 +1061,37 @@
     "scientific_gate": "failed",
     "audit_notes": "Supplementary runtime and summary files incorporated after replay; auditor-only manifest handling repair; no training retry",
     "results": "artifacts/reports/wine_acquisition_v1"
+  },
+  {
+    "run_id": "support_bellman_probe_v1_cpu",
+    "date": "2026-10-05",
+    "status": "completed",
+    "reserved_usd": 0,
+    "provider_charge_usd": 0,
+    "cloud_calls": 0,
+    "device": "local_cpu",
+    "seconds": 15.844000000011874,
+    "audit_seconds": 17.312000000005355,
+    "failed_audit_attempts": 3,
+    "training_retries": 0,
+    "trained_checkpoints": 12,
+    "total_updates": 1950,
+    "policy_cells": 13824,
+    "scientific_gate": "failed",
+    "results": "artifacts/reports/support_bellman_probe_v1"
+  },
+  {
+    "run_id": "topological_source_selection_v1",
+    "date": "2026-10-05",
+    "status": "completed",
+    "reserved_usd": 0,
+    "provider_charge_usd": 0,
+    "cloud_calls": 0,
+    "device": "local_cpu",
+    "trained_checkpoints": 0,
+    "prediction_evaluations": 0,
+    "labels_used_by_sampler": 0,
+    "source_pools": 6,
+    "results": "artifacts/reports/topological_support_sampling_v1"
   }
 ]

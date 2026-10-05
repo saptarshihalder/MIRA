@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "checkpoints": 12,
+  "policy_cells": 13824,
+  "equivalent_acquisition_order_ties": 69,
+  "audit_repair": "Allow equal acquired sets in different DP tie orders and 1e-6 float32/float64 replay tolerance; require predictions and costs to agree; no scientific changes",
+  "max_replay_error": 1.1457801218917041e-07,
+  "shared_predictors_exact": true,
+  "gate_passed": false,
+  "posthoc_test_predictor_ceiling": {
+    "814001": {
+      "best_possible_gain_over_counts_with_frozen_predictor": -0.0025443990212401513,
+      "required_gain": 0.01,
+      "gate_feasible_for_any_policy": false
+    },
+    "814002": {
+      "best_possible_gain_over_counts_with_frozen_predictor": -0.004357081530479423,
+      "required_gain": 0.01,
+      "gate_feasible_for_any_policy": false
+    },
+    "814003": {
+      "best_possible_gain_over_counts_with_frozen_predictor": 0.003659549330101153,
+      "required_gain": 0.01,
+      "gate_feasible_for_any_policy": false
+    }
+  },
+  "posthoc_source_predictor_ceiling": {
+    "814001": {
+      "oracle_shared_risk": 0.577260333766675,
+      "count_dp_risk": 0.5702200860511802,
+      "best_possible_gain": -0.0070402477154947185
+    },
+    "814002": {
+      "oracle_shared_risk": 0.5795376768802022,
+      "count_dp_risk": 0.5702200860511802,
+      "best_possible_gain": -0.009317590829021949
+    },
+    "814003": {
+      "oracle_shared_risk": 0.571845977178442,
+      "count_dp_risk": 0.5702200860511802,
+      "best_possible_gain": -0.0016258911272617471
+    }
+  },
+  "seconds": 17.312000000005355,
+  "auditor_sha256": "967aaea25612243a388e38919607eef3bba10b96b929061b996b74da27f2dc87",
+  "scope": "Independent path/outcome enumeration and dynamic-program recursion; learned Q forward uses frozen model code; no retraining"
+}
