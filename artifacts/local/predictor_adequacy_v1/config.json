@@ -1,0 +1,20 @@
+{
+  "extra_seed": 817101,
+  "validation_seed": 817102,
+  "extra_tasks": 2880,
+  "validation_tasks": 96,
+  "steps": [
+    200,
+    2000
+  ],
+  "seeds": [
+    814001,
+    814002,
+    814003
+  ],
+  "wall_seconds": 600,
+  "cloud_calls": 0,
+  "ridge": 1.0,
+  "optimization_margin": 0.005,
+  "utility_margin": 0.01
+}

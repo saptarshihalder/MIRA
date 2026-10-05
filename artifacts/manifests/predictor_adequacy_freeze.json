@@ -1,0 +1,10 @@
+{
+  "experiments/predictor_adequacy.py": "f8f29518bd081eb04eb2536b8cc3632dcc23871cc47ec2bf71b7aab570eb3b26",
+  "experiments/support_bellman_probe.py": "e3829989a3bb6e965feba5e9063a763bc558afb33bd8d1a265fe31d12c66911b",
+  "docs/PREDICTOR_ADEQUACY_PROTOCOL.md": "0c716b82b0fb0da5187a67fa7e1b4502a3f81dbb5a3b48e6df8e01ebed68ca66",
+  "artifacts/local/support_bellman_probe_v1/source.npz": "5dac50e06e2adafb6d00eaa88932f58fb276bfe5bac8e5c1dea14a3bf4be6a59",
+  "artifacts/local/predictor_adequacy_v1/config.json": "c44e992a4605554cb1a3b1ea738ace8d6079aed9046a6ad36379116f72cf64b1",
+  "artifacts/local/predictor_adequacy_v1/extra.npz": "40897dfcdd71abe6ae7b04433b018ae0bec0e77f787e2a7d6d222042c19aaba5",
+  "artifacts/local/predictor_adequacy_v1/tasks.json": "fb4f44fe9eca59a43b0717a501e01293362d3a2cb57efbe46855b0db12b792f2",
+  "artifacts/local/predictor_adequacy_v1/validation.npz": "480ffbf1a9852408fdc9197c83bca1179520ede8a4603beac096fa18bc4a4e99"
+}
