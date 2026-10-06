@@ -1,0 +1,28 @@
+{
+ "meta": {
+  "what": "panel",
+  "seed": 20261301,
+  "tasks": 256,
+  "nonlin": 0.4,
+  "support": 48,
+  "support_missing": 0.2,
+  "sensors": 5,
+  "cache": "/tmp/claude-0/-home-claude/74dc32ba-1f98-5450-b28d-5040b5c07dd8/scratchpad/lifted/cache",
+  "run": null,
+  "panel": null,
+  "masks": {
+   "0": 1,
+   "1": 5,
+   "2": 10,
+   "3": 10
+  }
+ },
+ "n": 256,
+ "keys": [],
+ "banks": {
+  "0": 1,
+  "1": 5,
+  "2": 10,
+  "3": 10
+ }
+}

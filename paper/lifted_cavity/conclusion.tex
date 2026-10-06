@@ -1,0 +1,13 @@
+In-context sensor fusion must handle missing sensors and shared noise at the same time. A product of experts over
+the target handles the first by construction but provably mishandles the second. Lifting each sensor's site to a
+target-plus-nuisance latent restores exactness for factor-structured noise under every missingness pattern. A learned
+cavity-conditioned refinement on top of a closed-form factor-analysis anchor turns this into a small model that:
+\begin{itemize}
+  \item outperforms strong closed forms and a 25-times-larger TabPFN-v2-style transformer trained on the same task
+  distribution;
+  \item extrapolates to unseen missingness patterns and to more sensors than it was trained on;
+  \item fine-tunes to real sensor networks.
+\end{itemize}
+Natural next steps are vector targets, robust site likelihoods for heavy-tailed sensors, mixtures of sites for
+multimodal posteriors, and evaluation on further deployments, including comparisons with pretrained tabular foundation
+models.

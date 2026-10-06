@@ -1,5 +1,9 @@
-"""Measure parameters, training time and single-thread inference time per task (480 queries: 10 masks x 48) on F1, k=2."""
-import itertools, json, time
+"""Measure parameters, training time and single-thread inference time per task (480 queries: 10 masks x 48) on F1, k=2.
+
+python compute_cost.py                 # every model and closed form
+python compute_cost.py lct_s1          # only the named runs, merged into runs/compute_cost.json
+"""
+import itertools, json, sys, time
 from pathlib import Path
 import numpy as np
 import torch
@@ -10,8 +14,10 @@ torch.set_num_threads(1)
 panel = torch.load('cache/v2_s20261201_n256_p5_nl0.4_sr48.pt', weights_only=False)
 pool, bank = panel['pool'], panel['banks'][2]
 T = 32
-out = {}
-for name in ('lift1_s1', 'pfn_s1', 'anchor_mlp_s1'):
+OUTF = Path('runs/compute_cost.json')
+out = json.loads(OUTF.read_text()) if OUTF.exists() else {}
+names = sys.argv[1:] or ['lift1_s1', 'pfn_s1', 'anchor_mlp_s1']
+for name in names:
     meta = json.loads(Path(f'runs/{name}/train.json').read_text())
     m = build(meta['model'], meta.get('repo'), meta); m.load_state_dict(torch.load(f'runs/{name}/model.pt', weights_only=True)); m.eval()
     batches = [b for _, b in itertools.islice(data.eval_batches(pool, bank, tasks_per_batch=1), T)]
@@ -23,6 +29,8 @@ for name in ('lift1_s1', 'pfn_s1', 'anchor_mlp_s1'):
         dt = (time.perf_counter() - t0) / T
     out[name] = dict(parameters=sum(p.numel() for p in m.parameters()), train_seconds=meta.get('seconds'),
                      train_steps=meta.get('steps_done', meta.get('steps')), ms_per_task=1000 * dt)
+if sys.argv[1:]:
+    OUTF.write_text(json.dumps(out, indent=1)); print(json.dumps(out, indent=1)); sys.exit()
 t0 = time.perf_counter()
 for t in range(T):
     sx, sy, sm = (pool[k][t].double().numpy() for k in ('sx', 'sy', 'sm')); qx = pool['qx'][t].double().numpy()
@@ -37,5 +45,5 @@ for t in range(T):
     for msk in bank:
         nlfa.predict_nll(m, qx, qy, np.flatnonzero(msk))
 out['nlfa'] = dict(ms_per_task=1000 * (time.perf_counter() - t0) / T)
-Path('runs/compute_cost.json').write_text(json.dumps(out, indent=1))
+OUTF.write_text(json.dumps(out, indent=1))
 print(json.dumps(out, indent=1))

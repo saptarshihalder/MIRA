@@ -146,3 +146,21 @@ def test_nonlinear_factor_baseline_is_finite_and_mask_exact():
     nll = nlfa.predict_nll(m, T['qx'][0], T['qy'][0].astype(float), [0, 2, 4])
     qx = T['qx'][0].copy(); qx[:, [1, 3]] = 99.
     assert np.isfinite(nll).all() and np.allclose(nll, nlfa.predict_nll(m, qx, T['qy'][0].astype(float), [0, 2, 4]))
+
+
+def test_lifted_cavity_transformer_starts_at_its_closed_form_and_ignores_missing_readings():
+    import lct
+    import lct_train
+    torch.manual_seed(0)
+    m = lct.LCT(d=32, layers=2, heads=2, ff=64).eval()
+    batch = lct_train.fresh_batch(np.random.default_rng(0), B=3, Q=5)
+    batch['qm'][::4, 1] = 0.                                   # a few extra missing sensors
+    with torch.no_grad():
+        mu, lv = m(batch)
+        mu0, lv0 = models.closed_form(batch['anchors'][1], batch['qx'], batch['qm'], batch['tid'])
+        assert torch.allclose(mu, mu0, atol=1e-4) and torch.allclose(lv, lv0, atol=1e-4)
+        torch.nn.init.normal_(m.head.weight, std=.1)
+        a = m(batch)
+        moved = dict(batch, qx=batch['qx'] + 10. * (1 - batch['qm']))
+        b = m(moved)
+    assert torch.allclose(a[0], b[0], atol=1e-5) and torch.allclose(a[1], b[1], atol=1e-5)

@@ -13,24 +13,36 @@ import matplotlib.pyplot as plt
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--runs', default='runs'); ap.add_argument('--cache', default='cache'); ap.add_argument('--real', default='runs_real')
-ap.add_argument('--out', required=True)
+ap.add_argument('--out', required=True); ap.add_argument('--v1', default='conf_results.json'); ap.add_argument('--posthoc', default='runs_posthoc'); ap.add_argument('--panels', default=''); ap.add_argument('--explore', default='runs_explore'); ap.add_argument('--init', default='runs_init')
 a = ap.parse_args()
-R, C, RR, OUT = Path(a.runs), Path(a.cache), Path(a.real), Path(a.out)
+R, C, RR, OUT, PH = Path(a.runs), Path(a.cache), Path(a.real), Path(a.out), Path(a.posthoc)
 (OUT / 'generated').mkdir(parents=True, exist_ok=True); (OUT / 'figures').mkdir(parents=True, exist_ok=True)
 PANEL = dict(F1='v2_s20261201_n256_p5_nl0.4_sr48', F2='v2_s20261202_n128_p8_nl0.4_sr48', F3='v2_s20261203_n128_p16_nl0.4_sr48',
              F4='v2_s20261204_n128_p5_nl0.8_sr48', F5='v2_s20261205_n128_p5_nl0.0_sr48', F6='v2_s20261206_n128_p5_nl0.4_sr16',
              F7='v2_s20261207_n128_p5_nl0.4_sr96')
 PDESC = dict(F2='8 sensors', F3='16 sensors', F4='nonlinearity 0.8', F5='linear sensors', F6='16 support rows', F7='96 support rows')
 PHEAD = dict(F2='$P{=}8$', F3='$P{=}16$', F4='nonlin.\\ 0.8', F5='linear', F6='$n{=}16$', F7='$n{=}96$')
-SEEDS = dict(lift1=(1, 2, 3), lift2=(1,), lift1_static=(1, 2, 3), lift0=(1, 2, 3), anchor_mlp=(1, 2, 3), repo_cavity_fresh=(1,), pfn=(1,), pfnall=(1,))
+SEEDS = dict(lift1=(1, 2, 3), lift2=(1,), lift1_static=(1, 2, 3), lift0=(1, 2, 3), anchor_mlp=(1, 2, 3), repo_cavity_fresh=(1,), pfn=(1,), pfnall=(1,), lct=(1,))
 macros = {}
 _panels = {}
+
+
+def load_exported(tag):
+    d = Path(a.panels)
+    if not a.panels or not (d / f'{tag}_refs.npz').exists():
+        return None
+    z = np.load(d / f'{tag}_refs.npz'); info = json.loads((d / f'{tag}.json').read_text())
+    refs = {}
+    for key in z.files:
+        c, name, m = key.split('|')
+        refs.setdefault(int(c), {}).setdefault(name, {})[m] = z[key]
+    return dict(refs=refs, pool=dict(n=info['n'], keys=info['keys']), meta=info['meta'])
 
 
 def panel(tag):
     if tag not in _panels:
         f = C / f'{tag}.pt'
-        _panels[tag] = torch.load(f, weights_only=False) if f.exists() else None
+        _panels[tag] = torch.load(f, weights_only=False) if f.exists() else load_exported(tag)
     return _panels[tag]
 
 
@@ -42,6 +54,12 @@ def cells(name, tag, k, metric='nll'):
     if name in p['refs'][k]:
         v = p['refs'][k][name][metric]
         return None if np.isnan(v).all() else v.mean(1)
+    if name == 'gp':
+        f = PH / 'gp' / f'cells_{tag}.npz'
+        if not f.exists():
+            return None
+        z = np.load(f)
+        return z[f'k{k}_{metric}'].mean(1) if f'k{k}_{metric}' in z else None
     if name == 'bop':
         f = R / 'bop' / f'cells_{tag}.npz'
         return np.load(f)[f'k{k}'].mean(1) if (f.exists() and metric == 'nll') else None
@@ -83,6 +101,7 @@ def mac(name, val):
 ROWS1 = [('Oracle (true parameters)', 'oracle', 'priv'), ('Bayes-optimal (HMC, true prior)', 'bop', 'priv'),
          ('FA-Gaussian', 'fa1', 'cf'), ('EM-Gaussian', 'em_gauss', 'cf'), ('NL-FA (cubic, tuned)', 'nlfa', 'cf'),
          ('Bayesian linear regression', 'blr_cc', 'cf'), ('Ridge (complete case)', 'ridge_cc', 'cf'), ('Ridge (mean-imputed)', 'ridge_repo', 'cf'),
+         ('GP, complete case$^\\dagger$', 'gp', 'cf'),
          ('\\textbf{Lifted cavity (ours)}, 8k', 'lift1', 'ic'), ('Transformer (TabPFN-v2 style), 203k', 'pfn', 'ic'),
          ('Residual MLP on FA anchor, 15k', 'anchor_mlp', 'ic'), ('Scalar-cavity network, 3k', 'repo_cavity_fresh', 'ic'),
          ('\\emph{Transformer, trained on all masks}', 'pfnall', 'ic*')]
@@ -204,22 +223,24 @@ for n1, n2, key in (('lift1', 'lift1_static', 'Cav'), ('lift1', 'lift0', 'Lift')
 # ------------------------------------------------------------------ Table 4: real data
 REAL = [('beijing', 'Beijing PM$_{2.5}$ (11 stations)', (0, 3, 6)), ('airq_co', 'Air Quality CO', (0, 2)), ('airq_no2', 'Air Quality NO$_2$', (0, 2))]
 ROWS4 = [('EM-Gaussian', 'ref', 'em_gauss'), ('FA-Gaussian', 'ref', 'fa1'), ('NL-FA', 'ref', 'nlfa'), ('Bayesian linear regression', 'ref', 'blr_cc'),
-         ('Ridge (complete case)', 'ref', 'ridge_cc'),
+         ('Ridge (complete case)', 'ref', 'ridge_cc'), ('GP, complete case$^\\dagger$', 'ph', 'gp'),
          ('Lifted cavity, zero-shot', 'zs', 'lift1_s1'), ('Transformer, zero-shot', 'zs', 'pfn_s1'),
          ('\\textbf{Lifted cavity, fine-tuned (ours)}', 'ft', 'lift1_s{1,2,3}_ft'), ('\\quad no synthetic pretraining', 'ft', 'lift1_untrained_ft'),
          ('\\quad no cavity input', 'ft', 'lift1_static_s1_ft'), ('\\quad scalar sites ($K=0$)', 'ft', 'lift0_s1_ft'),
          ('Transformer, fine-tuned', 'ft', 'pfn_s1_ft'), ('Residual MLP, fine-tuned', 'ft', 'anchor_mlp_s{1,2,3}_ft')]
 
 
-def real_cells(ds, kind, name, e, metric='nll'):
-    tag = f'real_{ds}_s2027'
-    pf = C / f'{tag}.pt'
-    if not pf.exists():
+def real_cells(ds, kind, name, e, metric='nll', seed=2027):
+    tag = f'real_{ds}_s{seed}'
+    if panel(tag) is None:
         return None
     if kind == 'ref':
-        p = _panels.setdefault(tag, torch.load(pf, weights_only=False))
+        p = panel(tag)
         v = p['refs'][e][name][metric]
         return None if np.isnan(v).all() else v
+    if kind == 'ph':
+        f = PH / name / f'cells_{tag}.npz'
+        return np.load(f)[f'e{e}_{metric}'] if (f.exists() and f'e{e}_{metric}' in np.load(f)) else None
     names = [name.replace('{1,2,3}', str(s)) for s in (1, 2, 3)] if '{1,2,3}' in name else [name]
     vals = []
     for nm in names:
@@ -270,11 +291,10 @@ for label, kind, name in ROWS4:
 lines += ['\\bottomrule', '\\end{tabular}', '\\end{table}']
 (OUT / 'generated' / 'real_table.tex').write_text('\n'.join(lines) + '\n')
 for ds, _, es in REAL:
-    pf = C / f'real_{ds}_s2027.pt'
-    if not pf.exists():
+    if panel(f'real_{ds}_s2027') is None:
         continue
-    keys = _panels.setdefault(f'real_{ds}_s2027', torch.load(pf, weights_only=False))['pool']['keys']
-    meta = _panels[f'real_{ds}_s2027']['meta']
+    keys = panel(f'real_{ds}_s2027')['pool']['keys']
+    meta = panel(f'real_{ds}_s2027')['meta']
     mac(f'R{ds.replace("_", "")}episodes', str(meta['episodes']))
     mac(f'R{ds.replace("_", "")}natmiss', f'{100 * meta["natural_query_missing_frac"]:.1f}')
     for e in es:
@@ -283,10 +303,35 @@ for ds, _, es in REAL:
             b = real_cells(ds, 'ref', other, e)
             if l is not None and b is not None:
                 m, lo, hi = week_ci(b, l, keys); mac(f'R{ds.replace("_", "")}e{e}vs{key}', f3(m, True)); mac(f'R{ds.replace("_", "")}e{e}vs{key}ci', f'[{f3(lo, True)}, {f3(hi, True)}]')
+        for kind_, nm_, key in (('ref', 'fa1', 'fa'), ('ref', 'blr_cc', 'blr'), ('ref', 'em_gauss', 'em'), ('ref', 'nlfa', 'nlfa'), ('ph', 'gp', 'gp'),
+                                ('zs', 'lift1_s1', 'zslift'), ('zs', 'pfn_s1', 'zspfn'), ('ft', 'lift1_s{1,2,3}_ft', 'ftlift'), ('ft', 'pfn_s1_ft', 'ftpfn')):
+            v_ = real_cells(ds, kind_, nm_, e)
+            if v_ is not None:
+                mac(f'R{ds.replace("_", "")}e{e}val{key}', f3(float(v_.mean())))
+        lz, pz, pf_, bl_ = (real_cells(ds, 'zs', 'lift1_s1', e), real_cells(ds, 'zs', 'pfn_s1', e), real_cells(ds, 'ft', 'pfn_s1_ft', e),
+                            real_cells(ds, 'ref', 'blr_cc', e))
+        if lz is not None and pz is not None:
+            m, lo, hi = week_ci(pz, lz, keys); mac(f'R{ds.replace("_", "")}e{e}zsliftvspfn', f3(m, True)); mac(f'R{ds.replace("_", "")}e{e}zsliftvspfnci', f'[{f3(lo, True)}, {f3(hi, True)}]')
+        if pf_ is not None and bl_ is not None:
+            m, lo, hi = week_ci(bl_, pf_, keys); mac(f'R{ds.replace("_", "")}e{e}pfnvsblr', f3(m, True)); mac(f'R{ds.replace("_", "")}e{e}pfnvsblrci', f'[{f3(lo, True)}, {f3(hi, True)}]')
         for other, key in (('pfn_s1_ft', 'pfn'), ('lift1_untrained_ft', 'nopre'), ('anchor_mlp_s{1,2,3}_ft', 'mlp'), ('lift1_static_s1_ft', 'static')):
             b = real_cells(ds, 'ft', other, e)
             if l is not None and b is not None:
                 m, lo, hi = week_ci(b, l, keys); mac(f'R{ds.replace("_", "")}e{e}vs{key}', f3(m, True)); mac(f'R{ds.replace("_", "")}e{e}vs{key}ci', f'[{f3(lo, True)}, {f3(hi, True)}]')
+
+# ------------------------------------------------------------------ fine-tuning diagnostics (Beijing PM2.5)
+def ft_ema(ds, nm):
+    f = RR / ds / nm / 'train.json'
+    return json.loads(f.read_text()).get('finetune', {}).get('final_ema') if f.exists() else None
+
+
+el, ep = [ft_ema('beijing', f'lift1_s{s}_ft') for s in (1, 2, 3)], ft_ema('beijing', 'pfn_s1_ft')
+if all(v is not None for v in el) and ep is not None:
+    mac('FTbeijingtraingap', f'{np.mean(el) - ep:.2f}')
+zl, fl = real_cells('beijing', 'zs', 'lift1_s1', 0), real_cells('beijing', 'ft', 'lift1_s1_ft', 0)
+zp, fp = real_cells('beijing', 'zs', 'pfn_s1', 0), real_cells('beijing', 'ft', 'pfn_s1_ft', 0)
+if all(v is not None for v in (zl, fl, zp, fp)):
+    mac('FTbeijingliftgain', f'{zl.mean() - fl.mean():.2f}'); mac('FTbeijingpfngain', f'{zp.mean() - fp.mean():.2f}')
 
 # ------------------------------------------------------------------ calibration table (F1 k=2, Beijing natural)
 CAL = [('FA-Gaussian', 'fa1'), ('EM-Gaussian', 'em_gauss'), ('BLR', 'blr_cc'), ('Lifted cavity (ours)', 'lift1'), ('Transformer', 'pfn'), ('Residual MLP', 'anchor_mlp')]
@@ -306,17 +351,21 @@ for label, n in CAL:
         v = real_cells('beijing', kind, nm, 0, metric) if kind else None
         row.append(f3(None if v is None else float(np.sqrt(v.mean()) if metric == 'se' else v.mean())))
     lines.append(f'{label} & ' + ' & '.join(row) + '\\\\')
+    for j, part in enumerate(('F', 'B')):
+        for i_, metric in enumerate(('cov', 'crps', 'rmse')):
+            if row[3 * j + i_] != '--':
+                mac(f'Cal{n.replace("_", "")}{part}{metric}', row[3 * j + i_])
 lines += ['\\bottomrule', '\\end{tabular}', '\\end{table}']
 (OUT / 'generated' / 'calib_table.tex').write_text('\n'.join(lines) + '\n')
 
 # ------------------------------------------------------------------ endpoints
-for fname, key in (('confirm_v2.json', 'V2'), ('confirm_v1.json', 'V1')):
+for fname, key in (('confirm_v2.json', 'V2'), ('confirm_v3.json', 'V3')):
     f = R / fname
     if f.exists():
         res = json.loads(f.read_text())
         for i, (k, v) in enumerate(res.items()):
             if isinstance(v, dict) and 'gain' in v:
-                tagk = re.sub(r'[^A-Za-z]', '', k.split('_')[0])
+                tagk = k.split('_')[0]
                 mac(f'{key}{tagk}gain', f3(v['gain'], True)); mac(f'{key}{tagk}ci', f'[{f3(v["lo"], True)}, {f3(v["hi"], True)}]')
                 mac(f'{key}{tagk}pass', 'pass' if v.get('passed') else 'fail')
 
@@ -366,7 +415,7 @@ fig.savefig(OUT / 'figures' / 'main.pdf', bbox_inches='tight'); fig.savefig(OUT 
 ROWSM = [('Oracle', 'oracle'), ('Bayes-optimal (HMC)', 'bop'), ('FA-Gaussian', 'fa1'), ('EM-Gaussian', 'em_gauss'), ('NL-FA', 'nlfa'), ('BLR', 'blr_cc'),
          ('Ridge (complete case)', 'ridge_cc'), ('Lifted cavity (ours)', 'lift1'), ('Lifted cavity, $K=2$', 'lift2'), ('Lifted sites, no cavity', 'lift1_static'),
          ('Scalar sites ($K=0$)', 'lift0'), ('Transformer', 'pfn'), ('Transformer, all masks', 'pfnall'), ('Residual MLP', 'anchor_mlp'),
-         ('Scalar-cavity network', 'repo_cavity_fresh')]
+         ('Scalar-cavity network', 'repo_cavity_fresh'), ('Lifted cavity transformer (v3)', 'lct')]
 more = []
 for c in ('F2', 'F3', 'F4', 'F5', 'F6', 'F7'):
     tg = PANEL[c]
@@ -392,7 +441,7 @@ for ds, lab in (('airq_co', 'Air Quality CO'), ('airq_no2', 'Air Quality NO$_2$'
 (OUT / 'generated' / 'more.tex').write_text('\n\n'.join(more) + '\n')
 
 # ------------------------------------------------------------------ v1 table and endpoint tables
-v1f = Path('conf_results.json')
+v1f = Path(a.v1)
 if v1f.exists():
     v1 = json.loads(v1f.read_text())
     desc = dict(E1='Fresh tasks, vs FA-Gaussian', E2='Fresh tasks, vs residual MLP', E3='8 sensors, vs FA-Gaussian',
@@ -419,6 +468,151 @@ if v2f.exists():
             lines.append(f"{tagk} & {d} & {f3(v['gain'], True)} [{f3(v['lo'], True)}, {f3(v['hi'], True)}] & {'pass' if v['passed'] else 'fail'}\\\\")
     lines += ['\\bottomrule', '\\end{tabular}', '\\end{table}']
     (OUT / 'generated' / 'v2_table.tex').write_text('\n'.join(lines) + '\n')
+
+
+# ------------------------------------------------------------------ protocol v3: lifted sites as the transformer's output layer
+V3P = dict(G1='v2_s20261301_n256_p5_nl0.4_sr48', G3='v2_s20261303_n128_p16_nl0.4_sr48')
+V3SYN = [('G1', k) for k in range(4)] + [('G3', 2)]
+V3REAL = [('beijing_no2', 0), ('beijing_no2', 6), ('beijing_co', 0), ('beijing_co', 6)]
+ROWS5 = [('FA-Gaussian', 'fa1', ('ref', 'fa1')), ('Bayesian linear regression', 'blr_cc', ('ref', 'blr_cc')),
+         ('Lifted cavity network, 8k', 'lift1', ('ft', 'lift1_s{1,2,3}_ft')), ('Transformer, 203k', 'pfn', ('ft', 'pfn_s1_ft')),
+         ('Transformer, all masks, 203k', 'pfnall', (None, None)), ('\\textbf{Lifted cavity transformer}, 203k', 'lct', ('ft', 'lct_s1_ft'))]
+v5 = {}
+for label, n, (kind, nm) in ROWS5:
+    v5[n] = [cells(n, V3P[p], k) for p, k in V3SYN] + [real_cells(ds, kind, nm, e, seed=3031) if kind else None for ds, e in V3REAL]
+ncol5 = len(V3SYN) + len(V3REAL)
+best5 = {}
+for i in range(ncol5):
+    cand = [(round(float(v5[n][i].mean()), 3), n) for _, n, _ in ROWS5 if v5[n][i] is not None]
+    best5[i] = {n for m, n in cand if m == min(cand)[0]} if cand else set()
+lines = ['\\begin{table}[t]', '\\centering\\scriptsize', '\\setlength{\\tabcolsep}{3pt}',
+         '\\caption{\\label{tab:v3}Protocol v3 (new panels and targets). Mean test NLL. G1: 256 fresh five-sensor tasks by number of missing query sensors $k$; '
+         'G3: 128 fresh 16-sensor tasks, $k=2$. Beijing: log NO$_2$ and log CO at each station from the other 11 stations, 2016--2017, natural missingness and six '
+         'further sensors removed; learned models fine-tuned with the recipe of protocol v2 (the all-mask transformer was not fine-tuned). Best entry per column in bold.}',
+         '\\begin{tabular}{l' + 'c' * ncol5 + '}', '\\toprule',
+         ' & \\multicolumn{4}{c}{G1, $P{=}5$} & G3 & \\multicolumn{2}{c}{Beijing NO$_2$} & \\multicolumn{2}{c}{Beijing CO}\\\\',
+         'Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & $P{=}16$ & natural & $+6$ & natural & $+6$\\\\', '\\midrule']
+for label, n, _ in ROWS5:
+    row = []
+    for i in range(ncol5):
+        v = v5[n][i]
+        s_ = f3(None if v is None else float(v.mean()))
+        row.append(f'\\textbf{{{s_}}}' if n in best5[i] else s_)
+    if n == 'lift1':
+        lines.append('\\midrule')
+    lines.append(f'{label} & ' + ' & '.join(row) + '\\\\')
+lines += ['\\bottomrule', '\\end{tabular}', '\\end{table}']
+(OUT / 'generated' / 'v3_results_table.tex').write_text('\n'.join(lines) + '\n')
+for p, k in V3SYN:
+    l3, p3, f3_, a3 = cells('lct', V3P[p], k), cells('pfn', V3P[p], k), cells('fa1', V3P[p], k), cells('lift1', V3P[p], k)
+    for other, key in ((p3, 'pfn'), (f3_, 'fa'), (a3, 'lift')):
+        if l3 is not None and other is not None:
+            m, lo, hi = ci(other, l3); mac(f'Vthree{p}k{k}lctvs{key}', f3(m, True)); mac(f'Vthree{p}k{k}lctvs{key}ci', f'[{f3(lo, True)}, {f3(hi, True)}]')
+    if a3 is not None and p3 is not None:
+        m, lo, hi = ci(p3, a3); mac(f'Vthree{p}k{k}liftvspfn', f3(m, True)); mac(f'Vthree{p}k{k}liftvspfnci', f'[{f3(lo, True)}, {f3(hi, True)}]')
+for ds in ('beijing_no2', 'beijing_co'):
+    pan = panel(f'real_{ds}_s3031')
+    if pan is None:
+        continue
+    keys = pan['pool']['keys']
+    mac(f'Vthree{ds.replace("_", "")}episodes', str(pan['meta']['episodes']))
+    for e in (0, 3, 6):
+        l3 = real_cells(ds, 'ft', 'lct_s1_ft', e, seed=3031)
+        for (kind, nm), key in ((('ft', 'pfn_s1_ft'), 'pfn'), (('ft', 'lift1_s{1,2,3}_ft'), 'lift'), (('ref', 'blr_cc'), 'blr'), (('ref', 'fa1'), 'fa')):
+            b = real_cells(ds, kind, nm, e, seed=3031)
+            if l3 is not None and b is not None:
+                m, lo, hi = week_ci(b, l3, keys); mac(f'Vthree{ds.replace("_", "")}e{e}lctvs{key}', f3(m, True)); mac(f'Vthree{ds.replace("_", "")}e{e}lctvs{key}ci', f'[{f3(lo, True)}, {f3(hi, True)}]')
+        a3, p3 = real_cells(ds, 'ft', 'lift1_s{1,2,3}_ft', e, seed=3031), real_cells(ds, 'ft', 'pfn_s1_ft', e, seed=3031)
+        if a3 is not None and p3 is not None:
+            m, lo, hi = week_ci(p3, a3, keys); mac(f'Vthree{ds.replace("_", "")}e{e}liftvspfn', f3(m, True)); mac(f'Vthree{ds.replace("_", "")}e{e}liftvspfnci', f'[{f3(lo, True)}, {f3(hi, True)}]')
+
+# ------------------------------------------------------------------ pre-registered endpoints, protocols v2 and v3
+EP = [('confirm_v2.json', 'v2', {'E1_F1_k2_lift1_vs_nlfa': ('E1', 'F1, $k=2$', 'lifted cavity network vs NL-FA'),
+                                  'E2_F1_k2_lift1_vs_pfn': ('E2', 'F1, $k=2$', 'lifted cavity network vs transformer'),
+                                  'E3a_F3_k2_lift1_vs_fa1': ('E3a', 'F3 (16 sensors), $k=2$', 'lifted cavity network vs FA-Gaussian'),
+                                  'E3b_F3_k2_lift1_vs_pfn': ('E3b', 'F3 (16 sensors), $k=2$', 'lifted cavity network vs transformer'),
+                                  'E4a_beijing_nat_lift1ft_vs_blr': ('E4a', 'Beijing PM$_{2.5}$', 'lifted cavity network (FT) vs BLR'),
+                                  'E4b_beijing_nat_lift1ft_vs_pfnft': ('E4b', 'Beijing PM$_{2.5}$', 'lifted cavity network (FT) vs transformer (FT)')}),
+      ('confirm_v3.json', 'v3', {'E5_G1_k2_lct_vs_pfn': ('E5', 'G1, $k=2$', 'LCT vs transformer'),
+                                  'E6_G3_k2_lct_vs_pfn': ('E6', 'G3 (16 sensors), $k=2$', 'LCT vs transformer'),
+                                  'E7a_bjno2_lctft_vs_lift1ft': ('E7a', 'Beijing NO$_2$', 'LCT (FT) vs lifted cavity network (FT)'),
+                                  'E7b_bjno2_lctft_noninf_pfnft': ('E7b', 'Beijing NO$_2$', 'LCT (FT) vs transformer (FT), non-inferiority')})]
+lines = ['\\begin{table}[t]', '\\centering\\scriptsize', '\\setlength{\\tabcolsep}{3pt}',
+         '\\caption{\\label{tab:endpoints}Every pre-registered endpoint of protocols v2 and v3, each committed before its panels or targets existed '
+         '(protocol v1: Appendix~\\ref{app:audit}). Gain in nats of NLL, positive when the first-named model is better; paired 95\\% intervals, cluster-robust '
+         'over weeks on Beijing. Pass: gain $\\geq0.01$ and lower bound $>0$, except E7b (lower bound $>-0.02$).}',
+         '\\begin{tabular}{llllc}', '\\toprule', 'ID & Data & Comparison & Gain [95\\% CI] & Result\\\\', '\\midrule']
+for fname, proto, desc in EP:
+    f = R / fname
+    res = json.loads(f.read_text()) if f.exists() else {}
+    if proto == 'v3':
+        lines.append('\\midrule')
+    for k, (tagk, data_, comp) in desc.items():
+        v = res.get(k)
+        if v is None:
+            lines.append(f'{tagk} & {data_} & {comp} & pending & --\\\\')
+        else:
+            verdict = 'pass' if v['passed'] else '\\textbf{fail}'
+            lines.append(f"{tagk} & {data_} & {comp} & {f3(v['gain'], True)} [{f3(v['lo'], True)}, {f3(v['hi'], True)}] & {verdict}\\\\")
+lines += ['\\bottomrule', '\\end{tabular}', '\\end{table}']
+(OUT / 'generated' / 'endpoints_table.tex').write_text('\n'.join(lines) + '\n')
+
+
+
+# ------------------------------------------------------------------ exploratory (post hoc) fine-tuning variants on Beijing PM2.5
+XP = Path(a.explore)
+for nm, key in (('lift2_s1_ft', 'Xplifttwo'), ('lift1_s1_ft10k', 'Xpliftlong')):
+    f = XP / 'beijing' / nm / 'cells_real_beijing_s2027.npz'
+    if f.exists():
+        mac(key, f3(float(np.load(f)['e0_nll'].mean())))
+v_ = real_cells('beijing', 'ft', 'lift1_s1_ft', 0)
+if v_ is not None:
+    mac('Xpliftone', f3(float(v_.mean())))
+XROWS = [('Lifted cavity network, standard recipe (seed 1)', RR / 'beijing' / 'lift1_s1_ft'), ('\\quad with $K=2$', XP / 'beijing' / 'lift2_s1_ft'),
+         ('\\quad with $5\\times$ fine-tuning steps', XP / 'beijing' / 'lift1_s1_ft10k'), ('Transformer, standard recipe', RR / 'beijing' / 'pfn_s1_ft')]
+if all((d / 'cells_real_beijing_s2027.npz').exists() for _, d in XROWS):
+    lines = ['\\begin{table}[h]', '\\centering\\small', '\\caption{\\label{tab:explore}Post-hoc fine-tuning variants on Beijing PM$_{2.5}$ (test period of protocol v2; '
+             'mean test NLL). Neither more nuisance dimensions nor longer fine-tuning closes the gap to the fine-tuned transformer.}',
+             '\\begin{tabular}{lccc}', '\\toprule', 'Fine-tuned model & natural & $+3$ & $+6$\\\\', '\\midrule']
+    for label, d in XROWS:
+        z = np.load(d / 'cells_real_beijing_s2027.npz')
+        lines.append(f'{label} & ' + ' & '.join(f3(float(z[f"e{e}_nll"].mean())) for e in (0, 3, 6)) + '\\\\')
+    lines += ['\\bottomrule', '\\end{tabular}', '\\end{table}']
+    (OUT / 'generated' / 'explore_table.tex').write_text('\n'.join(lines) + '\n')
+
+
+# ------------------------------------------------------------------ untrained lifted network (its own anchor's closed form) on F1
+fu = Path(a.init) / 'lift1_untrained' / f'cells_{PANEL["F1"]}.npz'
+if fu.exists():
+    zu = np.load(fu)
+    for k in range(4):
+        mac(f'Untrainedk{"abcd"[k]}', f3(float(zu[f'k{k}_nll'].mean(1).mean())))
+
+# ------------------------------------------------------------------ compute table (appendix)
+cf = R / 'compute_cost.json'
+if cf.exists():
+    cc = json.loads(cf.read_text())
+    lf = R / 'lct_s1' / 'train.json'
+    if lf.exists() and 'lct_s1' in cc:
+        cc['lct_s1']['train_seconds'] = json.loads(lf.read_text()).get('seconds')
+    CROWS = [('Lifted cavity network', 'lift1_s1'), ('Residual MLP on FA anchor', 'anchor_mlp_s1'), ('Transformer (TabPFN-v2 style)', 'pfn_s1'),
+             ('Lifted cavity transformer', 'lct_s1'), ('FA-Gaussian (closed form)', 'fa1'), ('NL-FA (closed form)', 'nlfa')]
+    lines = ['\\begin{table}[h]', '\\centering\\small', '\\caption{\\label{tab:compute}Compute. Training on one CPU core (core-hours); inference (ms/task) is single-threaded '
+             'time per task for 480 queries (ten masks $\\times$ 48 rows) on F1. Anchors are precomputed in batch and excluded; the closed-form rows include their '
+             'unbatched NumPy fits.}',
+             '\\begin{tabular}{lrrrr}', '\\toprule', 'Model & Parameters & Training steps & Core-hours & ms/task\\\\', '\\midrule']
+    for label, key in CROWS:
+        v = cc.get(key)
+        if v is None:
+            lines.append(f'{label} & -- & -- & -- & --\\\\'); continue
+        par = f"{v['parameters']:,}".replace(',', '{,}') if 'parameters' in v else '--'
+        st = f"{v['train_steps']:,}".replace(',', '{,}') if v.get('train_steps') else '--'
+        hrs = f"{v['train_seconds'] / 3600:.2f}" if v.get('train_seconds') else '--'
+        lines.append(f"{label} & {par} & {st} & {hrs} & {v['ms_per_task']:.1f}\\\\")
+    lines += ['\\bottomrule', '\\end{tabular}', '\\end{table}']
+    (OUT / 'generated' / 'compute_table.tex').write_text('\n'.join(lines) + '\n')
+    if 'lift1_s1' in cc and 'pfn_s1' in cc:
+        mac('Computetrainratio', f"{cc['pfn_s1']['train_seconds'] / cc['lift1_s1']['train_seconds']:.0f}")
 
 (OUT / 'generated' / 'numbers.tex').write_text('\n'.join(f'\\newcommand{{\\{k}}}{{{v}}}' for k, v in sorted(macros.items())) + '\n')
 print(len(macros), 'macros;', ', '.join(sorted(macros)[:12]), '...')

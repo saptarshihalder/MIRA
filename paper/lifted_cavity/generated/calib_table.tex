@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering\small
+\caption{\label{tab:calib}Calibration and point accuracy. Coverage of the central 90\% predictive interval (target 0.90), continuous ranked probability score (CRPS, lower is better) and RMSE. F1 with two missing sensors; Beijing test with natural missingness (fine-tuned learned models).}
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{F1, $k=2$} & \multicolumn{3}{c}{Beijing, natural}\\
+Method & Cov.\ 90 & CRPS & RMSE & Cov.\ 90 & CRPS & RMSE\\
+\midrule
+FA-Gaussian & 0.873 & 0.168 & 0.316 & 0.824 & 0.189 & 0.379\\
+EM-Gaussian & 0.860 & 0.170 & 0.318 & 0.807 & 0.207 & 0.423\\
+BLR & 0.866 & 0.174 & 0.327 & 0.861 & 0.182 & 0.374\\
+Lifted cavity (ours) & 0.901 & 0.160 & 0.305 & 0.914 & 0.171 & 0.357\\
+Transformer & 0.902 & 0.165 & 0.314 & 0.914 & 0.158 & 0.341\\
+Residual MLP & 0.902 & 0.162 & 0.309 & -- & -- & --\\
+\bottomrule
+\end{tabular}
+\end{table}

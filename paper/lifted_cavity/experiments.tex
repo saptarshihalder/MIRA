@@ -1,0 +1,89 @@
+\input{experiments_setup}
+
+\subsection{Synthetic tasks with exact references}
+\label{sec:exp-main}
+
+\input{generated/main_table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/main.pdf}
+\caption{\label{fig:main}NLL gain over the closed-form FA-Gaussian anchor (higher is better). (a) Main panel F1 by
+number of missing query sensors; shaded patterns were never seen in training. Grey lines are the privileged oracle and
+the Bayes-optimal predictive. (b) Width transfer with two missing sensors: every learned model was trained on five
+sensors, and the residual MLP exists only at $P=5$.}
+\end{figure}
+
+Table~\ref{tab:main} and Figure~\ref{fig:main}a report the main panel. The lifted cavity network is the best
+non-privileged method for every number of missing sensors, including the two- and three-sensor deletions it never saw
+in training. With two missing sensors it closes \GapliftOne\% of the achievable gap between FA-Gaussian and the
+Bayes-optimal predictive. Two comparators close less: the residual MLP, which receives the same anchor and support
+encodings with twice the parameters (\Gapanchormlp\%), and the tuned nonlinear plug-in model NL-FA (\Gapnlfa\%).
+\input{exp_main_pfn}
+EM-Gaussian, BLR and both ridges fall below FA-Gaussian, because they cannot share strength across sensors under
+missingness. Mean imputation of calibration entries is the worst of all.
+
+\subsection{Generalization beyond the training distribution}
+\label{sec:exp-shift}
+
+\input{generated/shift_table}
+
+Every learned model was trained on five sensors, nonlinearity 0.4 and 48 calibration rows (Table~\ref{tab:shift},
+Figure~\ref{fig:main}b).
+
+\textbf{Width.} The lifted cavity network runs unchanged on 8 and 16 sensors, where it improves on FA-Gaussian by
+\SFTwogainfa\ \SFTwogainfaci\ and \SFThreegainfa\ \SFThreegainfaci\ nats with two missing sensors. The residual MLP
+cannot run on these panels, and EM-Gaussian degrades as the covariance grows. \input{exp_shift_pfn}
+\textbf{Support size.} With 16 calibration rows the transformer degrades sharply, while the lifted cavity network keeps
+a \SFSixgainfa\ \SFSixgainfaci\ nat gain over FA-Gaussian; with 96 rows it remains the best method.
+\textbf{Stronger nonlinearity} (0.8 instead of 0.4) is the one shift where the transformer competes. It ties the
+lifted cavity network with two missing sensors (difference \XFFourkkTwoliftvspfn\ \XFFourkkTwoliftvspfnci) and is
+better by \XFFourkkZeroliftvspfnabs\ nats when all sensors are observed: under strong response nonlinearity alone,
+Gaussian re-linearization offers no advantage over a generic transformer.
+\textbf{Linear sensors.} When the true sensors are linear, FA-Gaussian is nearly the right model and is best; the
+learned re-linearization then costs \SFFivegainfaabs\ nats with two missing sensors, and the transformer
+\XFFivekkTwopfnvsfaabs.
+
+\subsection{What the lifting buys}
+\label{sec:audit}
+
+Ablations on F1 (Table~\ref{tab:ablation}, Appendix~\ref{app:more}) isolate the components. \textbf{Lifting} is the
+largest factor: scalar sites ($K=0$) with otherwise identical machinery and training lose \AblLiftabs\ \AblLiftci\ nats
+with two missing sensors and end up worse than the untrained FA-Gaussian anchor, which is Proposition~\ref{prop:scalar}
+in practice. \textbf{Cavity conditioning} adds \AblCavabs\ \AblCavci\ nats on top of lifted static sites. A second
+nuisance dimension ($K=2$) changes nothing, as expected for one-factor noise. The scalar-cavity network of the earlier
+design, retrained with the same 60{,}000-task recipe, remains far behind FA-Gaussian (Appendix~\ref{app:audit}).
+
+\subsection{Real sensor networks}
+\label{sec:exp-real}
+
+\input{generated/real_table}
+
+\paragraph{Beijing multi-site air quality~\citep{zhang2017beijing}.}
+The task is to predict log PM$_{2.5}$ at each of 12 monitoring stations from the other 11, using hourly data with
+natural missingness. Each episode is one station and one week, with 48 labeled support hours and 48 query hours. The
+test period (2016-01 to 2017-02, \Rbeijingepisodes\ episodes) was never examined before protocol v2 was committed.
+Learned models are fine-tuned on episodes from 2013--2015 with one fixed recipe; the protocol's analysis is
+cluster-robust over weeks.
+
+With 11 sensors and 48 rows, the joint-covariance closed forms overfit, and evidence-tuned BLR is the strongest closed
+form. The fine-tuned lifted cavity network improves on it by \RbeijingeZerovsblrabs\ \RbeijingeZerovsblrci\ nats under
+natural missingness, and by \RbeijingeSixvsblrabs\ \RbeijingeSixvsblrci\ with six further sensors removed.
+\input{exp_real_pfn}
+Synthetic pretraining helps: the same network fine-tuned from initialization is \RbeijingeZerovsnopreabs\ nats
+worse \RbeijingeZerovsnopreci. Without fine-tuning, the synthetically trained model transfers poorly
+(Table~\ref{tab:real}), reflecting the gap between the synthetic family and real stations.
+
+\paragraph{UCI Air Quality~\citep{devito2008airquality}.}
+Five metal-oxide sensors on one device predict the reference analyzers' log CO and log NO$_2$, in weekly episodes
+after October 2004. These weeks were examined in protocol v1, so this is secondary evidence.
+\input{exp_airq_pfn}
+
+\input{exp_v3}
+
+\subsection{Pre-registered endpoints and calibration}
+\label{sec:exp-endpoints}
+
+\input{generated/endpoints_table}
+
+\input{exp_endpoints}

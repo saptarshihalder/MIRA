@@ -1,0 +1,7 @@
+The TabPFN-v2-style transformer has 25 times the parameters and sees fresh tasks at every step. It is still worse
+than the lifted cavity network at every number of missing sensors, by \MainkKZeroliftvspfnabs\ to
+\MainkKTwoliftvspfnabs\ nats (all intervals exclude zero), and it closes \Gappfn\% of the gap. Training it on every
+mask pattern does not change this (\Gappfnall\%): its deficit comes from how efficiently it learns fusion from a
+finite training budget, not from unseen patterns. The residual MLP is the closest competitor in this setting. The
+lifted cavity network beats it by \MainkKZeroliftvsmlpabs\ nats with all sensors observed and by
+\MainkKTwoliftvsmlpabs\ with two missing, and the two tie with three missing.

@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{\label{tab:v3}Protocol v3 (new panels and targets). Mean test NLL. G1: 256 fresh five-sensor tasks by number of missing query sensors $k$; G3: 128 fresh 16-sensor tasks, $k=2$. Beijing: log NO$_2$ and log CO at each station from the other 11 stations, 2016--2017, natural missingness and six further sensors removed; learned models fine-tuned with the recipe of protocol v2 (the all-mask transformer was not fine-tuned). Best entry per column in bold.}
+\begin{tabular}{lccccccccc}
+\toprule
+ & \multicolumn{4}{c}{G1, $P{=}5$} & G3 & \multicolumn{2}{c}{Beijing NO$_2$} & \multicolumn{2}{c}{Beijing CO}\\
+Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & $P{=}16$ & natural & $+6$ & natural & $+6$\\
+\midrule
+FA-Gaussian & \textbf{$-$0.189} & \textbf{$-$0.054} & \textbf{0.129} & \textbf{0.396} & \textbf{$-$0.806} & 0.684 & 0.506 & -- & --\\
+Bayesian linear regression & 0.013 & 0.022 & 0.153 & 0.401 & 0.063 & \textbf{0.275} & \textbf{0.365} & -- & --\\
+\midrule
+Lifted cavity network, 8k & -- & -- & -- & -- & -- & -- & -- & -- & --\\
+Transformer, 203k & -- & -- & -- & -- & -- & -- & -- & -- & --\\
+Transformer, all masks, 203k & -- & -- & -- & -- & -- & -- & -- & -- & --\\
+\textbf{Lifted cavity transformer}, 203k & -- & -- & -- & -- & -- & -- & -- & -- & --\\
+\bottomrule
+\end{tabular}
+\end{table}

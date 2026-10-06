@@ -1,0 +1,11 @@
+\noindent\textbf{What we find.} Structure buys sample efficiency and extrapolation, but on real data it costs
+flexibility.
+\begin{itemize}
+  \item On synthetic tasks, the 8k-parameter lifted cavity network beats a 203k-parameter TabPFN-v2-style transformer
+  trained on the same task distribution for every number of missing sensors. It closes \GapliftOne\% of the
+  achievable gap against \Gappfn\%, and the margin grows when it runs on 16 sensors after training on five.
+  \item The advantage vanishes under strong response nonlinearity and when sensors are linear (\S\ref{sec:exp-shift}).
+  \item On two real sensor networks, the fine-tuned lifted network beats every closed form, but the fine-tuned
+  transformer is better, and one of our pre-registered endpoints fails (\S\ref{sec:exp-real}).
+\end{itemize}
+\input{intro_v3}

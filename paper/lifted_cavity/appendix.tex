@@ -1,0 +1,194 @@
+\section{Proofs}
+\label{app:proofs}
+
+\paragraph{Proposition~\ref{prop:scalar}.}
+Under the model, $p(x_j\mid y)=\N(x_j;a_jy,c_j)$ with $c_j=d_j^2+\sigma_j^2$.
+
+If $q(y\mid x_j)=p(y\mid x_j)$ for all $x_j$, then $p(y)\,t_j(y;x_j)\propto p(y)\,p(x_j\mid y)$ as functions of $y$.
+Hence $t_j(y;x_j)=\kappa_j(x_j)\,p(x_j\mid y)$, which is Gaussian in $y$ with precision $a_j^2/c_j>0$. For a pair, $q$
+is therefore the naive-Bayes posterior $p(y)\,p(x_j\mid y)\,p(x_k\mid y)$. Its posterior mean is linear in
+$(x_j,x_k)$ with coefficients
+\[
+  (a_j/c_j,\;a_k/c_k)\,/\,\pi_q, \qquad \pi_q=1+a_j^2/c_j+a_k^2/c_k ,
+\]
+so the coefficient of $x_j$ has the sign of $a_j$.
+
+The Bayes posterior uses $C=\mathrm{Cov}(x_j,x_k\mid y)$, with off-diagonal entry $d_jd_k$. Its mean coefficients are
+$(C^{-1}a)^\top/\pi$, with $\pi=1+a^\top C^{-1}a$. Both posteriors are Gaussian, so they coincide for all $(x_j,x_k)$
+if and only if $C^{-1}a=\mathrm{diag}(C)^{-1}a$. Equivalently $a=C\,\mathrm{diag}(C)^{-1}a$, whose off-diagonal
+components are $d_jd_k\,a_k/c_k=0$ and $d_jd_k\,a_j/c_j=0$. With $a_ja_k\neq0$ this holds if and only if $d_jd_k=0$.
+
+For the sign flip, take $a=(1,1)$, $d=(1,0.5)$ and $\sigma=(0.05,0.05)$. Then the Bayes coefficient of $x_1$ is
+$+0.499$ alone and $-0.959$ in the pair. \hfill$\square$
+
+\paragraph{Proposition~\ref{prop:exact}.}
+Given $z=(y,h)$, the readings are independent: $x_j\mid z\sim\N(w_j^\top z+c_j,\psi_j)$. Hence
+\[
+  p(z\mid x_S)\propto p(z)\prod_{j\in S}\N(x_j;w_j^\top z+c_j,\psi_j).
+\]
+In natural parameters each factor contributes $w_jw_j^\top/\psi_j$ to the precision and $w_j(x_j-c_j)/\psi_j$ to the
+shift, which is \eqref{eq:site} with $o_j=x_j-c_j$. The prior is Gaussian, so the product is the Gaussian
+\eqref{eq:product}. This holds for every $S$ because the factors of unobserved sensors are absent from both sides.
+Marginalizing $h$ gives $p(y\mid x_S)$. \hfill$\square$
+
+\paragraph{Proposition~\ref{prop:rank}.}
+\emph{Step 1: the product is a latent-factor model.} By the computation in the proof of Proposition~\ref{prop:exact}
+read backwards, a product of sites \eqref{eq:site} with $o_j=x_j-c_j$ is the exact posterior over $z$ of the model
+$M_q$: $z\sim\N(\mu_z,\Sigma_z)$ and, independently given $z$, $x_j\sim\N(w_j^\top z+c_j,\psi_j)$. Its $y$-marginal is
+$M_q$'s conditional $p_q(y\mid x_S)$, and $M_q$'s sensor covariance is $\Sigma_q=W\Sigma_zW^\top+\mathrm{diag}(\psi)$
+with $W\in\R^{P\times(1+K')}$, so $\Sigma_q-\mathrm{diag}(\psi)$ has rank at most $1+K'$.
+
+\emph{Step 2: conditionals on $|S|\leq2$ identify the covariance.} Write $V=\mathrm{Var}(y)$, $c=\mathrm{Cov}(x,y)$
+and $\Sigma=\mathrm{Cov}(x)$. The case $S=\emptyset$ gives $V$. For $S=\{j\}$ the conditional has slope
+$\beta_j=c_j/\Sigma_{jj}$ and variance $r_j=V-c_j\beta_j$, and $\beta_j\neq0$ because $c_j=a_j\neq0$. Hence
+$c_j=(V-r_j)/\beta_j$ and $\Sigma_{jj}=c_j/\beta_j$. For $S=\{j,k\}$ the slope vector $b\neq0$ solves
+$\Sigma_{\{jk\}}b=(c_j,c_k)$, and whichever entry of $b$ is non-zero determines $\Sigma_{jk}$ from one row. Since
+$M_q$ has the same conditionals, the same formulas apply to it, so $\Sigma_q=\Sigma=LL^\top+\mathrm{diag}(\sigma^2)$.
+
+\emph{Step 3: fewer factors cannot reproduce $\Sigma$.} Let $r=1+K$, so $LL^\top$ has rank $r$. Suppose
+$\Sigma=G+\Psi'$ with $\Psi'$ diagonal and $\mathrm{rank}(G)\leq r$. Fix a row $i$ and two disjoint row sets $I_1,I_2$
+not containing $i$ with $L_{I_1},L_{I_2}$ nonsingular. In the $(r+1)\times(r+1)$ submatrix of $\Sigma$ with rows
+$\{i\}\cup I_1$ and columns $\{i\}\cup I_2$, every entry except $(i,i)$ lies off the diagonal, so it is shared by $G$
+and $LL^\top$. Both $G$ and $LL^\top$ have rank at most $r$, so the corresponding minors vanish. Expanding along entry
+$(i,i)$, its cofactor is $\det(L_{I_1}L_{I_2}^\top)\neq0$, so $G_{ii}=(LL^\top)_{ii}$. Hence $G=LL^\top$, which has
+rank $r$~\citep{anderson1956statistical}. Applying this to $G=W\Sigma_zW^\top$ from Step 1 gives $1+K'\geq r=1+K$.
+
+For almost every $L$ all $r\times r$ submatrices are nonsingular, and $P\geq2r+1=2K+3$ leaves two disjoint sets of $r$
+rows after deleting any row. \hfill$\square$
+
+\paragraph{Proposition~\ref{prop:struct}.}
+\begin{itemize}
+  \item[(i)] Sites of missing sensors are multiplied by the mask before entering \eqref{eq:product}, and the
+  network's per-sensor inputs never include another sensor's raw reading, only cavity statistics built from observed
+  sites.
+  \item[(ii)] Every operation is applied per sensor with shared weights. EM and principal factors are equivariant to
+  permutations of the sensor coordinates, and sums over sensors are permutation-invariant. No input encodes a
+  sensor's index or the total number of sensors, except the fraction of observed sensors, which is permutation
+  invariant.
+  \item[(iii)] With a zero last layer, $\delta^{\mathrm{off}}=\delta^{\mathrm{slope}}=\delta^D=s=0$. Then
+  $w_j=(A_j,D_j)$, $\psi_j$ is unchanged and $o_j=\tilde x_j-A_j(\bar y-\mu_y)+A_j\bar y=\tilde x_j+A_j\mu_y$. These
+  are the initialization sites, so every round reproduces them and the output is the anchor's FA-Gaussian closed form. The zero point lies
+  in the parameter set, so the infimum of the training risk is at most FA-Gaussian's. \hfill$\square$
+\end{itemize}
+
+\section{Architecture and training details}
+\label{app:arch}
+
+\paragraph{Lifted cavity network ($K=1$, $R=3$, 8{,}004 parameters).}
+\begin{itemize}
+  \item \textbf{Support encoder.} $\phi:\R^3\to\R^{32}\to\R^{32}$ with tanh, applied to each observed calibration
+  entry $(\tilde y_i,\tilde x_{ij},\tilde r_{ij})$. The inputs are the standardized target, the centred reading, and
+  the anchor residual scaled by $\sqrt{\psi_j}$. The encoder averages over observed rows and then applies
+  $\rho:\R^{33}\to\R^{16}$, where the extra input is the observation rate.
+  \item \textbf{Site network.} $f_\theta:\R^{28}\to\R^{64}\to\R^{64}\to\R^{4}$ with tanh and a zero-initialized
+  last layer.
+  \item \textbf{Anchor.} EM uses 8 iterations with a $10^{-4}$ ridge. Principal factors use 40 iterations, with
+  uniquenesses floored at $10^{-3}$. Everything is computed in double precision from the support only.
+\end{itemize}
+
+\input{generated/compute_table}
+
+\paragraph{Training recipe (all synthetic-trained models except the transformer).}
+\begin{itemize}
+  \item Pool of 60{,}000 tasks (seed 5150).
+  \item Minibatches of 128 tasks $\times$ 8 queries.
+  \item AdamW with learning rate $1.8\times10^{-3}$, cosine decay to 10\% and weight decay $10^{-4}$.
+  \item Gradient clipping at 5 and 20{,}000 steps.
+  \item Seeds 1--3.
+\end{itemize}
+No hyperparameter search was run for any model.
+
+\paragraph{Controls.}
+\begin{itemize}
+  \item \textbf{Residual MLP on the same anchor} (15{,}490 parameters). It receives the FA-Gaussian prediction, the
+  same per-sensor support encodings (concatenated in sensor order), the readings and mask, and a 55-dimensional
+  support summary. It outputs a residual correction to the FA-Gaussian mean and log-variance, and is defined only
+  for five sensors.
+  \item \textbf{Lifted sites without cavity input.} The same sites with the cavity statistics removed.
+  \item \textbf{1-D sites} ($K=0$). The same machinery, with sites over $y$ only.
+  \item \textbf{Repository cavity network.} The three-round scalar-cavity architecture of
+  Appendix~\ref{app:audit}, retrained with the shared recipe.
+\end{itemize}
+
+\paragraph{Transformer baseline (202{,}562 parameters).}
+The transformer follows TabPFN~v2~\citep{hollmann2025tabpfnv2}:
+\begin{itemize}
+  \item every cell is a token, embedded by a linear map of its value or by a learned missing-value token;
+  \item sensors receive random per-task feature embeddings, so the model is width-agnostic and permutation
+  equivariant in distribution;
+  \item the target column has its own embedding, and query targets use a learned token;
+  \item each of 4 blocks alternates attention across the columns of a row with attention across rows within a
+  column (all rows attend to the support rows only), followed by an MLP ($d=64$, 4 heads, hidden width 128,
+  pre-LayerNorm);
+  \item targets are standardized by the support mean and standard deviation, and the output is a Gaussian mean and
+  log-variance.
+\end{itemize}
+It was trained on fresh tasks at every step (16 tasks $\times$ 16 queries, AdamW with learning rate $10^{-3}$, 1{,}000
+warm-up steps, cosine decay, clipping at 1, 30{,}000 steps), with the same query masks as the other models. A second
+copy (\emph{all masks}) saw query masks with 0--4 missing sensors, drawn uniformly. Evaluation uses a fixed seed for
+the random feature embeddings.
+
+\paragraph{Lifted cavity transformer (protocol v3, 202{,}822 parameters).}
+The backbone is the transformer above, unchanged. Its output head is replaced by a zero-initialized linear map from
+each query cell's final token to four numbers $(\delta^{\mathrm{off}}_j,\delta^{\mathrm{slope}}_j,\delta^{D}_j,s_j)$,
+used exactly as in \eqref{eq:relin} with the linearization point $\bar y$ set to the anchor's closed-form posterior
+mean (one round, $K=1$, gradients not propagated through $\bar y$). Readings of missing sensors are replaced by the
+missing-value token before the backbone and contribute no site, so they never enter the prediction (a unit test
+checks both this and the identity with the anchor's closed form at initialization). Anchors are computed on the fly
+for each training task. Training, masks, seed and evaluation are those of the transformer.
+
+\section{Baselines and references}
+\label{app:baselines}
+
+\paragraph{Support-only closed forms.}
+\begin{itemize}
+  \item \textbf{EM-Gaussian:} the conditional of $y$ given $x_S$ under the EM joint Gaussian (40 iterations).
+  \item \textbf{FA-Gaussian:} the closed form of \S\ref{sec:method}, with EM run for 40 iterations. The networks'
+  anchors use 8 iterations and no variance inflation, so the reported FA-Gaussian is a slightly stronger baseline than
+  the untrained networks (on F1 with two missing sensors, \FfaOnekc{} against \Untrainedkc).
+  \item \textbf{NL-FA:} per-sensor cubic response curves in the standardized target. The intercept and slope are
+  unpenalized; the curvature terms are ridge-penalized ($\lambda=100$) and clamped to the support's target range for
+  linear extrapolation. The residual covariance has a one-factor structure. Exact inference is done on a 401-point
+  grid. The degree and $\lambda$ were tuned on the development panel only: free degree selection by leave-one-out
+  produced catastrophic extrapolation.
+  \item \textbf{BLR:} evidence-maximized Bayesian linear regression~\citep{mackay1992bayesian} on complete-case
+  rows, with predictive variance including parameter uncertainty.
+  \item \textbf{Ridge:} complete-case ridge with leave-one-out residual variance, and the original mean-imputed ridge.
+  \item \textbf{Gaussian process (post hoc):} for each episode and observed-sensor set, an ARD squared-exponential
+  kernel plus white noise on the complete-case calibration rows, with hyperparameters by type-II maximum likelihood
+  (one restart).
+\end{itemize}
+EM-Gaussian, FA-Gaussian and ridge inflate their predictive variance by $n/(n-|S|-1)$.
+
+\paragraph{Bayes-optimal ceiling.}
+The ceiling is HMC~\citep{neal2011hmc} over the 25 (or $5P$) task parameters. It uses the true priors, transformed to
+unconstrained coordinates. The shared nuisance is marginalized analytically through a rank-one-plus-diagonal
+covariance, using only the observed entries of each calibration row. The sign of each $a_j$ is fixed by the support
+correlation, which is unambiguous because $|a_j|\geq0.6$.
+
+The sampler runs 4 chains per task, each started from a MAP fit. Warm-up has two phases: step-size adaptation (target
+acceptance $0.75$) and diagonal mass-matrix estimation from 150 iterations, followed by 150 more adaptation
+iterations. We keep 50 draws per chain, thinned by 4, with 12 leapfrog steps.
+
+The predictive density of a query uses the samples exactly, including the query's own reweighting:
+$p(y\mid x_S,\D)=\sum_m p(y,x_S\mid\theta_m)/\sum_m p(x_S\mid\theta_m)$, with $p(x_S\mid\theta_m)$ by trapezoid
+quadrature on 301 points. On every panel where it was run, R-hat on identifiable parameters was below 1.1 for at
+least 99.9\% of parameters. Run with the true parameters, the predictive formula reproduces the exact oracle to
+within $2\times10^{-3}$ nats (a unit test).
+
+\section{Protocols and audit trail}
+\label{app:audit}
+\input{audit}
+
+\section{Broader impact}
+\label{app:impact}
+Calibrating low-cost environmental sensors widens access to air-quality monitoring. Overconfident predictions could
+mislead exposure decisions, which is why we report coverage alongside likelihood. We recommend validating calibration
+on each new deployment before relying on predicted intervals.
+
+\section{Additional results}
+\label{app:more}
+\input{generated/ablation_table}
+\input{generated/calib_table}
+\input{generated/explore_table}
+\input{generated/more}

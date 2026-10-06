@@ -1,0 +1,11 @@
+Low-cost sensor deployments must estimate a target from whichever sensors are working. They have only a short
+calibration record, and temperature, humidity and drift perturb several sensors at once. We cast this as in-context
+probabilistic prediction, and ask which architectures can be trained once across deployments yet remain correct for
+every missingness pattern and any number of sensors. Products of per-sensor experts over the target meet both
+requirements, but we show they cannot be Bayes-consistent across missingness patterns when sensors share noise, and
+an expectation-propagation network with scalar cavities fails accordingly in practice. We propose \emph{lifted cavity
+networks}: each observed sensor contributes a rank-one Gaussian site over the target and a low-dimensional shared
+nuisance, which is exact for factor-structured noise under every pattern. The sites are initialized from a supervised
+factor analysis of the incomplete calibration rows and refined by a learned, cavity-conditioned re-linearization.
+\input{abstract_results}
+Both evaluation protocols were committed before their test data existed.

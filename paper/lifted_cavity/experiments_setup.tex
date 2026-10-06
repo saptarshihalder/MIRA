@@ -1,0 +1,28 @@
+\subsection{Setup}
+\label{sec:exp-setup}
+
+\paragraph{Synthetic tasks.}
+Each task draws, for every sensor $j$, a response $x_j=a_jy+b_j+0.4\sin(f_jy)+d_ju+\sigma_j\epsilon_j$ with
+$a_j=\pm\,\mathcal{U}[0.6,1.8]$ (random sign), $b_j\sim\N(0,0.4^2)$, $f_j\sim\mathcal{U}[0.5,2.5]$, shared-noise
+loading $d_j\sim\N(0,0.7^2)$, $\sigma_j\sim\mathcal{U}[0.15,0.8]$ and $y,u,\epsilon_j\sim\N(0,1)$. The support has
+$n=48$ rows with 20\% of sensor entries missing at random, and 48 query rows are scored under every mask with $k$
+missing sensors (or 20 seeded masks when there are more). The main panel (F1) has 256 fresh tasks with five sensors.
+Six further panels of 128 tasks change one factor at a time: 8 or 16 sensors, nonlinearity 0.8 or 0, and 16 or 96
+support rows.
+
+\paragraph{Methods.}
+\emph{Support-only closed forms:} FA-Gaussian, EM-Gaussian, NL-FA (cubic responses with a tuned curvature penalty and
+exact grid inference, a strong plug-in nonlinear model), evidence-tuned Bayesian linear regression (BLR), ridge, and,
+post hoc, a Gaussian process. \emph{Learned in-context models}, all trained on the same task family and masks: our
+lifted cavity network (8k parameters, three seeds); a residual MLP that receives the same FA anchor and support
+encodings (15k parameters, five sensors only); the scalar-cavity network of \S\ref{sec:scalar}; and a TabPFN-v2-style
+cell-token transformer~\citep{hollmann2025tabpfnv2} trained on fresh tasks at every step (203k parameters, 30{,}000
+steps). A second transformer was trained on \emph{all} masks, to separate architecture from training coverage.
+\emph{Privileged references:} the oracle, and the Bayes-optimal predictive estimated by HMC with the shared nuisance
+marginalized analytically (Appendix~\ref{app:baselines}).
+
+\paragraph{Protocol.}
+NLL is the primary metric; coverage, CRPS~\citep{gneiting2007scoring} and RMSE are secondary. Intervals are paired
+95\% intervals over tasks, with per-task NLL averaged over training seeds. Three evaluation protocols were committed
+to version control before their panels existed, and every endpoint is reported (Table~\ref{tab:endpoints},
+Appendix~\ref{app:audit}).

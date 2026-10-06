@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering\small
+\caption{\label{tab:main}Main synthetic panel (F1: 256 fresh tasks, five sensors). Mean test NLL by number of missing query sensors; learned models saw at most one missing sensor in training, so $k=2,3$ are unseen patterns. Learned rows average three training seeds (seed s.d.\ $\leq0.002$) except the transformers (one seed). Last column: share of the achievable gap (FA-Gaussian to Bayes-optimal) closed at $k=2$. Best non-privileged entry per column in bold.}
+\begin{tabular}{lccccc}
+\toprule
+Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & Gap closed\\
+\midrule
+\multicolumn{6}{l}{\emph{Privileged references}}\\
+Oracle (true parameters) & $-$0.419 & $-$0.250 & $-$0.026 & 0.287 & --\\
+Bayes-optimal (HMC, true prior) & $-$0.334 & $-$0.174 & 0.039 & 0.337 & --\\
+\midrule
+\multicolumn{6}{l}{\emph{Support-only closed forms}}\\
+FA-Gaussian & $-$0.152 & $-$0.011 & 0.177 & 0.439 & 0\%\\
+EM-Gaussian & $-$0.048 & 0.037 & 0.195 & 0.441 & $-$13\%\\
+NL-FA (cubic, tuned) & $-$0.173 & $-$0.036 & 0.151 & 0.417 & 19\%\\
+Bayesian linear regression & 0.111 & 0.091 & 0.214 & 0.450 & $-$26\%\\
+Ridge (complete case) & 0.026 & 0.078 & 0.216 & 0.451 & $-$28\%\\
+Ridge (mean-imputed) & 0.198 & 0.280 & 0.399 & 0.582 & $-$161\%\\
+GP, complete case$^\dagger$ & -- & -- & -- & -- & --\\
+\midrule
+\multicolumn{6}{l}{\emph{Learned in context (trained on $k\leq1$)}}\\
+\textbf{Lifted cavity (ours)}, 8k & \textbf{$-$0.265} & \textbf{$-$0.112} & \textbf{0.097} & \textbf{0.395} & 58\%\\
+Transformer (TabPFN-v2 style), 203k & $-$0.246 & $-$0.084 & 0.131 & 0.424 & 34\%\\
+Residual MLP on FA anchor, 15k & $-$0.236 & $-$0.087 & 0.114 & 0.397 & 46\%\\
+Scalar-cavity network, 3k & 0.055 & 0.178 & 0.336 & 0.555 & $-$115\%\\
+\emph{Transformer, trained on all masks} & $-$0.237 & $-$0.076 & 0.132 & 0.411 & 33\%\\
+\bottomrule
+\end{tabular}
+\end{table}

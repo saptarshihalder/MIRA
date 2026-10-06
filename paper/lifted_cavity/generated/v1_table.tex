@@ -1,0 +1,15 @@
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:v1}Protocol v1 endpoints (two missing sensors; positive gain favours the lifted cavity network; pass requires gain $\geq0.01$ and a positive lower bound).}
+\begin{tabular}{llcc}
+\toprule
+Endpoint & Comparison & Gain [95\% CI] & Result\\
+\midrule
+E1 & Fresh tasks, vs FA-Gaussian & $+$0.074 [$+$0.064, $+$0.084] & pass\\
+E2 & Fresh tasks, vs residual MLP & $+$0.016 [$+$0.012, $+$0.020] & pass\\
+E3 & 8 sensors, vs FA-Gaussian & $+$0.115 [$+$0.097, $+$0.132] & pass\\
+E4 & Nonlinearity 0.8, vs residual MLP & $+$0.028 [$+$0.020, $+$0.036] & pass\\
+R1 & Air Quality NO$_2$, 23 later weeks, vs EM-Gaussian & $+$0.112 [$+$0.050, $+$0.173] & pass\\
+\bottomrule
+\end{tabular}
+\end{table}

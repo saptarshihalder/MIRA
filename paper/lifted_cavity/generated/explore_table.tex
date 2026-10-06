@@ -1,0 +1,14 @@
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:explore}Post-hoc fine-tuning variants on Beijing PM$_{2.5}$ (test period of protocol v2; mean test NLL). Neither more nuisance dimensions nor longer fine-tuning closes the gap to the fine-tuned transformer.}
+\begin{tabular}{lccc}
+\toprule
+Fine-tuned model & natural & $+3$ & $+6$\\
+\midrule
+Lifted cavity network, standard recipe (seed 1) & 0.207 & 0.237 & 0.304\\
+\quad with $K=2$ & 0.205 & 0.239 & 0.300\\
+\quad with $5\times$ fine-tuning steps & 0.169 & 0.201 & 0.276\\
+Transformer, standard recipe & 0.087 & 0.121 & 0.236\\
+\bottomrule
+\end{tabular}
+\end{table}

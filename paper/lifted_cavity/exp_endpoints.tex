@@ -1,0 +1,8 @@
+Table~\ref{tab:endpoints} lists every pre-registered endpoint of protocols v2 and v3. Five of the six v2 endpoints
+pass; the failure, E4b, is the real-data comparison with the fine-tuned transformer. All five endpoints of protocol v1
+passed (Appendix~\ref{app:audit}). \input{exp_endpoints_v3}
+
+Every learned model is close to nominal 90\% coverage on F1 (lifted cavity network \CalliftOneFcov, transformer
+\CalpfnFcov), while the closed forms under-cover (\CalemgaussFcov--\CalfaOneFcov). On Beijing both fine-tuned networks
+cover \CalliftOneBcov, against \CalemgaussBcov--\CalblrccBcov\ for the closed forms. CRPS and RMSE rank the methods as
+NLL does (Table~\ref{tab:calib} in Appendix~\ref{app:more}).

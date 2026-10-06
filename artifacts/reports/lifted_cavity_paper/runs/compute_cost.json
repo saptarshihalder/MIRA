@@ -1,0 +1,26 @@
+{
+ "lift1_s1": {
+  "parameters": 8004,
+  "train_seconds": 802.88267827034,
+  "train_steps": 20000,
+  "ms_per_task": 7.150702437570544
+ },
+ "pfn_s1": {
+  "parameters": 202562,
+  "train_seconds": 11187.952520132065,
+  "train_steps": 30000,
+  "ms_per_task": 42.942978687506184
+ },
+ "anchor_mlp_s1": {
+  "parameters": 15490,
+  "train_seconds": 730.9580271244049,
+  "train_steps": 20000,
+  "ms_per_task": 1.227967687555065
+ },
+ "fa1": {
+  "ms_per_task": 38.31319640619313
+ },
+ "nlfa": {
+  "ms_per_task": 34.36947706245519
+ }
+}
