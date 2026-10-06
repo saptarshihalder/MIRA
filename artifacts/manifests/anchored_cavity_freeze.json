@@ -1,0 +1,7 @@
+{
+  "experiments/cavity_site.py": "807b2f9c68a3872c6e3ca8338d242409732d088f4877c569dd05c2f5a5121b08",
+  "experiments/anchored_cavity.py": "70304d0c3e48bef934410f744c53de94a64df50ffc13d39489e7c812fa2814d5",
+  "docs/ANCHORED_CAVITY_PROTOCOL.md": "3b8dfed200258e20da2e52ba2c674aa690550f609c4b603d05a16c3f19ca2d17",
+  "artifacts/local/anchored_cavity_v1/development.npz": "2ba1cead01ad0f428048ebe4f7df78629a99360b31e7eec7b2d36365fb222524",
+  "artifacts/local/anchored_cavity_v1/source.npz": "22b365db3ebe491a8a85e527a50720722d5d36836c6d89691349e14fc22c4218"
+}
