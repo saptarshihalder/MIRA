@@ -168,10 +168,32 @@ def blr_cc(sx, sy, sm, qx, S):
     Predictive variance includes parameter uncertainty."""
     from sklearn.linear_model import BayesianRidge
     S = list(S)
+    if not S:                                   # no observed sensor: predictive = support mean with t-like inflation
+        n = len(sy)
+        return np.full(len(qx), sy.mean()), np.full(len(qx), sy.var(ddof=1) * (1 + 1 / n))
     cc = sm[:, S].all(1)
     if cc.sum() < len(S) + 3:
         cc = np.ones(len(sy), dtype=bool)
     m = BayesianRidge(fit_intercept=True, compute_score=False, max_iter=300)
     m.fit(sx[cc][:, S], sy[cc])
     mu, sd = m.predict(qx[:, S], return_std=True)
+    return mu, np.maximum(sd, 1e-3) ** 2
+
+
+def gp_cc(sx, sy, sm, qx, S, restarts=1, seed=0):
+    """Post-hoc baseline: per-task Gaussian process (ARD RBF + white noise, type-II ML) on complete-case rows.
+    Predictive variance includes the fitted noise."""
+    from sklearn.gaussian_process import GaussianProcessRegressor
+    from sklearn.gaussian_process.kernels import RBF, WhiteKernel, ConstantKernel
+    S = list(S)
+    if not S:
+        n = len(sy)
+        return np.full(len(qx), sy.mean()), np.full(len(qx), sy.var(ddof=1) * (1 + 1 / n))
+    cc = sm[:, S].all(1)
+    if cc.sum() < len(S) + 3:
+        cc = np.ones(len(sy), dtype=bool)
+    k = ConstantKernel(1., (1e-2, 1e2)) * RBF(np.ones(len(S)), (1e-2, 1e2)) + WhiteKernel(.1, (1e-4, 10.))
+    gp = GaussianProcessRegressor(k, normalize_y=True, n_restarts_optimizer=restarts, random_state=seed)
+    gp.fit(sx[cc][:, S], sy[cc])
+    mu, sd = gp.predict(qx[:, S], return_std=True)
     return mu, np.maximum(sd, 1e-3) ** 2

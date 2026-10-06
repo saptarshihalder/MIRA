@@ -18,6 +18,10 @@ def build(name, repo_dir=None, meta=None):
         import pfn
         arch = (meta or {}).get('arch', {})
         return pfn.CellPFN(**arch)
+    if name == 'lct':
+        import lct
+        arch = dict((meta or {}).get('arch', {}))
+        return lct.LCT(**arch)
     if name.startswith('repo_'):
         cands = [Path(p) for p in (repo_dir, HERE.parent, HERE.parent / 'repo_experiments') if p]
         repo_dir = next(p for p in cands if (p / 'anchored_cavity.py').exists())

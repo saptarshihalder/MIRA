@@ -11,14 +11,15 @@ import torch
 import models, realdata
 from train import build
 
-RAW = {'airq_co': ('airq', 'CO(GT)'), 'airq_no2': ('airq', 'NO2(GT)'), 'beijing': ('beijing', None), 'gas': ('gas', None)}
+RAW = {'airq_co': ('airq', 'CO(GT)'), 'airq_no2': ('airq', 'NO2(GT)'), 'beijing': ('beijing', 'PM2.5'), 'beijing_no2': ('beijing', 'NO2'),
+       'beijing_co': ('beijing', 'CO'), 'beijing_pm10': ('beijing', 'PM10'), 'gas': ('gas', None)}
 
 
 def load_raw(name, paths):
     kind, target = RAW[name]
     if kind == 'airq':
         return realdata.load_airq(paths['airq'], target)
-    return realdata.load_beijing(paths['beijing']) if kind == 'beijing' else realdata.load_gas(paths['gas'])
+    return realdata.load_beijing(paths['beijing'], target) if kind == 'beijing' else realdata.load_gas(paths['gas'])
 
 
 def batch_from(pool, rng, B=64, Q=8):

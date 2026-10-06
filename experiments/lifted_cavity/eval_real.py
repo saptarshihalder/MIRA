@@ -12,7 +12,8 @@ import realdata
 from finetune_real import load_raw
 from train import build
 
-EXTRA = {'airq_co': (0, 1, 2, 3), 'airq_no2': (0, 1, 2, 3), 'beijing': (0, 3, 6), 'gas': (0, 4, 8, 12)}
+EXTRA = {'airq_co': (0, 1, 2, 3), 'airq_no2': (0, 1, 2, 3), 'beijing': (0, 3, 6), 'beijing_no2': (0, 3, 6), 'beijing_co': (0, 3, 6),
+         'beijing_pm10': (0, 3, 6), 'gas': (0, 4, 8, 12)}
 
 
 def build_panel(a):

@@ -45,14 +45,16 @@ def load_airq(csv, target):
                 files={Path(csv).name: sha(csv)})
 
 
-def load_beijing(folder):
+def load_beijing(folder, pollutant='PM2.5'):
     fs = sorted(glob.glob(str(Path(folder) / 'PRSA_Data_*_20130301-20170228.csv')))
     assert len(fs) == 12, fs
     dfs = [pd.read_csv(f) for f in fs]
     ts = pd.to_datetime(dfs[0][['year', 'month', 'day', 'hour']]).to_numpy()
     for d in dfs:
         assert (pd.to_datetime(d[['year', 'month', 'day', 'hour']]).to_numpy() == ts).all()
-    L = np.log(np.column_stack([d['PM2.5'].to_numpy(float) for d in dfs]))
+    V = np.column_stack([d[pollutant].to_numpy(float) for d in dfs])
+    V[V <= 0] = np.nan
+    L = np.log(V)
     return dict(L=L, ts=ts, stations=[d['station'].iloc[0] for d in dfs], files={Path(f).name: sha(f) for f in fs})
 
 
@@ -105,7 +107,7 @@ def episodes(name, raw, split, seed, n_source=None, period=None):
                 idx = src[(t >= s0) & (t < s0 + week)]
                 if len(idx) >= NS + NQ:
                     out.append(_episode(rng, X, y, idx, .2) + ('src',))
-    elif name == 'beijing':
+    elif name.startswith('beijing'):
         L, ts = raw['L'], raw['ts']
         lo, hi = (np.datetime64('2013-03-01'), np.datetime64('2016-01-01')) if split == 'source' else (np.datetime64('2016-01-01'), np.datetime64('2017-03-01'))
         if period is not None:                                        # development checks only

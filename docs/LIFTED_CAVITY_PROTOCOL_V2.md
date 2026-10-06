@@ -100,3 +100,10 @@ Computed by `experiments/lifted_cavity/confirm2.py`.
 - `pfnall_s1`.
 - Ablations.
 - Air Quality results.
+
+## Deviations (recorded as they happened)
+
+1. **October 6, before any Beijing score existed.** The first Beijing panel build crashed. Some query hours have no
+   other station observed, and complete-case Bayesian linear regression cannot fit zero features. For an empty
+   sensor set, that method now returns the support mean with variance s²(1 + 1/n), matching the other closed forms'
+   prior predictive. Episodes, masks and every other method are unchanged; the panel was rebuilt from scratch.
