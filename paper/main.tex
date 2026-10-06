@@ -102,6 +102,14 @@ Longer training improves actual entropy-planned utility on every initialization.
 
 \appendix
 \section{Retained development and failure analysis}
+
+\subsection{Support-conditioned cavity architecture and source-learning repair}
+We implement a trained site-replacement network inspired by expectation propagation\cite{minkaep} and multimodal product-of-experts inference\cite{wumvae}. Each sensor's Gaussian natural parameters are revised from labeled-support moments, its query value and the aggregate of other sensor sites; three rounds replace existing sites. This is a candidate task-conditioned architecture, not an established novelty claim or exact Bayesian algorithm. Controls receive the full aggregate or static prior instead, with identical nominal site parameter counts; a larger MLP and support ridge provide practical references.
+
+A frozen synthetic pilot with512 source tasks,64 development tasks, three seeds and3,000 updates per model collapses toward the prior even on source data. A separately frozen repair initializes informative sites from support moments and provides the full availability vector to all variants. Its twelve checkpoints precede evaluation on64 further development tasks, with all ten two-sensor deletions absent from training. No previous panel or HAR labels are reopened. The tasks contain shared sensor noise and nonlinear measurements; no isolated causal attribution to correlation is possible from this design.
+
+The repaired cavity network has3,362 parameters and the MLP9,154. Mean Gaussian NLL is .415012 (cavity), .410339 (full aggregate), .422938 (static), .473872 (MLP), and .395915 (ridge). Cavity beats MLP on all three seeds, improving the mean by12.42\%, but loses to ridge on every seed and to full aggregation on two. All prespecified practical gates fail; the repair does not establish the cavity-specific contribution. Mean nominal95\% coverage is only91.83\% for cavity. All24 models and72,000 updates are retained across both batches; independent replay checks798,720 prediction rows and16,640 task/mask cells, with maximum probability-free regression prediction discrepancy$9.54\times10^{-7}$. Both configurations are closed. Joint residual-correlation modeling is a further hypothesis requiring appropriate strong controls and prior-art review.
+
 \subsection{Calibration-anchored redesign: a retained negative result}
 A subsequent prospectively frozen pilot first fits ridge calibration on fitting support, then projects the interaction design off its fitting-support span of an intercept and the original frozen logit. Identical projection coefficients apply to source, verification and query rows. A 370-parameter learned mode filter and query gate operate on this residual design; matched task-shared and support-only-head models each receive the same 500 CPU updates. Verification requires the full learned candidate to beat both calibrated and original predictions; otherwise it uses verified calibration or the frozen predictor. These dependent nominal comparisons do not give a simultaneous risk guarantee. This design draws inspiration from separating nuisance directions\cite{chernozhukov2018} and validation-guided learning\cite{ren2018}, but its elementary projection is not an orthogonal causal score or a new theorem.
 
@@ -698,5 +706,8 @@ C. Finn, P. Abbeel, and S. Levine. Model-Agnostic Meta-Learning for Fast Adaptat
 \bibitem{metaweight} J. Shu et al. Meta-Weight-Net: Learning an Explicit Mapping For Sample Weighting. NeurIPS, 2019. \url{https://proceedings.neurips.cc/paper/2019/hash/e58cc5ca94270acaceed13bc82dfedf7-Abstract.html}.
 \bibitem{chernozhukov2018} V. Chernozhukov et al. Double/debiased machine learning for treatment and structural parameters. The Econometrics Journal, 21(1):C1--C68, 2018. arXiv:1608.00060.
 \bibitem{winequality} P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Wine Quality. UCI Machine Learning Repository, 2009. DOI: 10.24432/C56S3T. \url{https://archive.ics.uci.edu/dataset/186/wine+quality}.
+
+\bibitem{minkaep} T. Minka. Expectation Propagation for Approximate Bayesian Inference. UAI, 2001. \url{https://tminka.github.io/papers/ep/}.
+\bibitem{wumvae} M. Wu and N. Goodman. Multimodal Generative Models for Scalable Weakly-Supervised Learning. NeurIPS, 2018. \url{https://arxiv.org/abs/1802.05335}.
 \end{thebibliography}
 \end{document}

@@ -1,0 +1,20 @@
+[
+  {
+    "seed": 819001,
+    "source_nll": 1.415805050500218,
+    "mean_prediction_std": 0.00020679095177911222,
+    "mean_total_precision": 1.0073939561843872
+  },
+  {
+    "seed": 819002,
+    "source_nll": 1.4157861201643342,
+    "mean_prediction_std": 0.0007240119157359004,
+    "mean_total_precision": 1.0077308416366577
+  },
+  {
+    "seed": 819003,
+    "source_nll": 1.4158022816137734,
+    "mean_prediction_std": 0.00017966546874959022,
+    "mean_total_precision": 1.0085498094558716
+  }
+]

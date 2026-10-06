@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "model_prediction_rows": 399360,
+  "task_mask_cells": 8320,
+  "max_prediction_error": 9.5367431640625e-07,
+  "seconds": 4.968000000000757
+}

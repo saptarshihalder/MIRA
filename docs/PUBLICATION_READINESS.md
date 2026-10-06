@@ -1,4 +1,4 @@
-# Publication readiness review - October 5, 2026
+# Publication readiness review - October 6, 2026
 
 Verdict: NOT submission-ready for the requested trained-model contribution. Final delivery deadline is now October 10, 2026, superseding October 20. The working draft has scoped positive synthetic evidence and reproducible negative investigations.
 
@@ -18,3 +18,5 @@ See OCTOBER10_FINALIZATION.md: October 6 mechanism and frozen controls; October 
 HAR has 30 subjects, overlapping sensor windows and no native missing values. Evaluation features were inspected; only activity labels remain closed. Whole-subject splitting is necessary; within-subject temporal independence, clinical utility and physical feature-acquisition savings are unproven. This is a candidate population, not completed validation. Generic support-label allocation was rejected as novelty following focused primary-source review. Distinct mechanism and useful development advantage remain unresolved.
 
 Daily continuation ends October 10. Use one bounded unresolved gate and short outputs. Modal cap remains $20: $16.45 provisions plus $3 protected reserve leave $0.55; reconcile invoices before paid training. Latest audits cost $0 cloud. No email/submission. If scientific gates remain unmet on October 10, deliver the honest research package and report incomplete venue readiness.
+
+October6 update: a trained support-conditioned cavity model and a source-learning repair are implemented and audited. The repair beats a larger MLP by12.42% mean synthetic NLL, but ridge remains better and cavity exclusion has no consistent advantage over full aggregation. Both finite gates fail; see CAVITY_SITE_FINDINGS.md. Novel model contribution and real-data efficacy remain unresolved.

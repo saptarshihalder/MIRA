@@ -13,3 +13,5 @@ Audit duration 23.391 seconds, zero cloud cost, no automatic retries. Freeze: `a
 Official source/license/collection description: [UCI HAR](https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones), DOI 10.24432/C54S4K, CC BY 4.0. Credit Reyes-Ortiz, Anguita, Ghio, Oneto and Parra (2013). Do not substitute the updated postural-transition dataset.
 
 Independent read-only code/manifest review confirms the member-read log and 14/7/9 subject allocation. It flags evaluation-feature inspection, limited nine-subject replication, absent native missingness and unresolved within-person temporal identities. No further raw/label access occurred.
+
+October6 notice: the downloaded archive README contains a commercial-use restriction, while the current UCI page states CC BY4.0. Record both notices; the earlier unqualified license summary was incomplete. Raw archive remains local and unredistributed. No HAR activity labels were opened during the architecture pilots.

@@ -1,5 +1,10 @@
 # MIRA: October 1â€“20, 2026
 
+## Trained cavity architecture and repair - October 6
+
+Read docs/CAVITY_SITE_FINDINGS.md. Built and trained a support-conditioned three-round site-replacement architecture with matched aggregate/static controls and larger MLP/ridge references. First source learning collapsed; a separately frozen support-moment/mask repair learns successfully. Repaired mean NLL: cavity .415012, aggregate .410339, static .422938, larger MLP .473872, ridge .395915. Cavity improves over MLP12.42% but fails every .01 practical gate and loses two of three aggregate comparisons. Both batches CLOSED; no established architecture novelty or JMLR readiness. All24 models /72,000 updates retained; independent replay798,720 prediction rows and16,640 task/mask cells passes. Local CPU wall time276.078 seconds, zero cloud cost. HAR labels and protected seeds remain closed. Next requires a precise joint-correlation-model distinction and source-only headroom over a strong joint predictor before more training. October10 final deadline unchanged.
+
+
 ## Revised October 10 deadline and fresh-data boundary — October 5
 
 The user shortened final delivery to October 10, 2026; this supersedes October 20. Read docs/OCTOBER10_FINALIZATION.md, HAR_LABEL_CLOSED_FINDINGS.md and LABEL_ALLOCATION_PRIOR_ART.md. HAR audit passes whole-subject and exact-duplicate boundaries: 10,299 rows, 561 features, 30 subjects allocated 14 source-fit / 7 source-development / 9 evaluation-label-closed. No activity labels opened, model fit or outcome metric. This is an eligible candidate, not validation or evidence of natural missingness. Generic learned support-label allocation is rejected as novelty because active learning/evaluation precedents cover its ingredients. October 6 must resolve a substantive trained mechanism and strong frozen controls; later training/evaluation is conditional. All closed panels, failed margins and protected seeds remain preserved. Two focused independent agents completed useful checks; no duplicate sweeps. Cloud cost zero; budget provisions unchanged. Daily continuation now ends October 10. No JMLR-ready claim, email or submission.
