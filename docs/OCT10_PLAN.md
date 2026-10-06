@@ -51,7 +51,7 @@ multi-sensor data.
 
 | Date | Work | Exit condition |
 |---|---|---|
-| Oct 6 (evening) | Apply the patch. Run `tests/test_lifted_cavity.py`. Reproduce `lift1` seed 1 on panel 20261007 (~13 min CPU). Download the official UCI Air Quality file and compare its hash. | Reproduction within 1e-3; hash checked (if it differs, rebuild and report) |
+| Oct 6 (evening) | Merge branch `lifted-cavity` into `codex/mira-research`. Run `tests/test_lifted_cavity.py`. Reproduce `lift1` seed 1 on panel 20261007 (~13 min CPU). Download the official UCI Air Quality file and compare its hash. | Reproduction within 1e-3; hash checked (if it differs, rebuild and report) |
 | Oct 7 | **Second real dataset with natural per-sensor missingness** (recommended: UCI Beijing Multi-Site Air Quality, dataset 501): predict one station's log PM2.5 from the other 11 stations. Weekly episodes, 48 labeled support hours, temporal split. Freeze a one-page protocol before fitting: identical fine-tuning recipe, `lift1` vs EM/FA-Gaussian and `anchor_mlp`, endpoint at the dataset's natural missingness. 11 inputs also tests width transfer on real data. | Endpoint reported, pass or fail |
 | Oct 8 | Figures from `make_figure.py` and `make_report.py`. Related-work audit against learned EP messages (Heess 2013; Eslami 2014; Jitkrittum 2015), MVAE, NeuMiss, IFNet/DIFNet, KalmanNet and CNP/PFN. Make the distinctness statement precise. | Each claim mapped to one table cell |
 | Oct 9 | Rewrite `paper/main.tex` from scratch: introduction; method with Propositions 1–2; synthetic, transfer and real-data experiments; limitations; appendix with the oracle audit and a one-table summary of the closed probes. Fix PDF compilation (tectonic or Overleaf). | Compiled PDF, every number traced to a file |
