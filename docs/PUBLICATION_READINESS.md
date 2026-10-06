@@ -1,5 +1,7 @@
 # Publication readiness review - October 6, 2026
 
+Latest assessment: lifted cavity is the selected candidate. Five declared endpoint decisions reproduce and the official UCI CSV matches, but full per-cell replay exposes factor-sign sensitivity on eight-sensor tasks. Resolve this before the next real-data gate. Novelty, applicable variable-width controls, a second dataset, independent training reproduction and PDF verification remain open. See LIFTED_CAVITY_IMPORT_AUDIT.md; the earlier tables below are historical.
+
 Verdict: NOT submission-ready for the requested trained-model contribution. Final delivery deadline is now October 10, 2026, superseding October 20. The working draft has scoped positive synthetic evidence and reproducible negative investigations.
 
 | Required outcome | Current evidence |

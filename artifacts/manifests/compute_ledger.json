@@ -1171,5 +1171,19 @@
   "training_retries": 0,
   "scientific_gate": "failed",
   "results": "artifacts/reports/anchored_cavity_v1"
+},
+{
+  "run_id": "lifted_cavity_import_audit_cpu",
+  "date": "2026-10-06",
+  "status": "completed",
+  "reserved_usd": 0,
+  "provider_charge_usd": 0,
+  "cloud_calls": 0,
+  "trained_checkpoints": 0,
+  "total_updates": 0,
+  "seconds": 41.5085618,
+  "training_retries": 0,
+  "scientific_gate": "five endpoint decisions reproduced; full cell replay failed for C2; no new efficacy gate",
+  "results": "artifacts/reports/lifted_cavity_import_audit"
 }
 ]

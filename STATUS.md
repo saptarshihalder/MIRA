@@ -1,5 +1,9 @@
 # MIRA status — October 4, 2026
 
+## Lifted candidate selected; imported results audited - October 6
+
+Lifted cavity is the main candidate; Circuit and quantum-inspired attention are deferred. Read docs/LIFTED_CAVITY_IMPORT_AUDIT.md and docs/OCT10_PLAN.md first. The lifted-cavity branch was fast-forward merged locally. Six unit tests pass; official UCI CSV exactly matches the mirror. All five endpoint decisions replay, but full per-cell reproduction FAILS for eight-sensor transfer (maximum error .012804) because learned sites depend on arbitrary factor orientation. A diagnostic sign flip explains the discrepant seed-1 task. Resolve that contract on source development before a new real-data gate; preserve original checkpoints and closed panels. Cavity-specific benefit on Air Quality is unestablished; include static and trainable variable-width controls. No novelty/JMLR claim. Audit:41.51 CPU seconds, no training, zero cloud cost. Independent training rerun and Beijing validation remain pending. Existing paper/main.tex unchanged; PDF limitation remains. Deadline October10; prior cloud reservations remain protected.
+
 ## Lifted cavity network: oracle audit, repair and passed confirmation - October 6
 
 Read docs/LIFTED_CAVITY_FINDINGS.md, docs/LIFTED_CAVITY_CONFIRMATION.md, then docs/OCT10_PLAN.md, which supersedes the open-ended mechanism search. The plan opens with a decision between this line and the separately built MIRA-Circuit line (not in this repository).

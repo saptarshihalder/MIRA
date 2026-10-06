@@ -1,0 +1,10 @@
+{
+  "diagnostic_only": true,
+  "original_error": 0.005133688449859619,
+  "best_sign_error": 2.8014183044433594e-06,
+  "tasks_original_error_above_1e_3": 1,
+  "tasks_fixed_by_sign": 1,
+  "max_model_sign_sensitivity": 0.08459937572479248,
+  "mean_original": -0.4188651740550995,
+  "mean_flipped": -0.41644906997680664
+}

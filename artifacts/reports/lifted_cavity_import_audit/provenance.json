@@ -1,0 +1,8 @@
+{
+  "url": "https://archive.ics.uci.edu/static/public/360/air%2Bquality.zip",
+  "archive_sha256": "d4a64013fb385288a8a48d9d193ca7079b2e1bbddf6f8d458feb8c08ab2b8a2a",
+  "csv_sha256": "13277ae5d8581e80b7be09d47c7d3d06fe9b8e957078f2cf6e859f955e62f996",
+  "expected_sha256": "13277ae5d8581e80b7be09d47c7d3d06fe9b8e957078f2cf6e859f955e62f996",
+  "byte_identical": true,
+  "csv_bytes": 785065
+}

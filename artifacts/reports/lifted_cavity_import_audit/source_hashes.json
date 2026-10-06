@@ -1,0 +1,21 @@
+{
+  "experiments/lifted_cavity/airq.py": "7bcdcc261cfa0c60287d5d52d5b315f84b120771565ff78f43a2f6ff339242a9",
+  "experiments/lifted_cavity/anchors.py": "514a1808441ee55e01dcf75971641ded5af3e09f209c2f7b1931a46a6bfc3d90",
+  "experiments/lifted_cavity/audit_gauge.py": "6a297f725ff4b248c74ecf9071c8edfa91ce24083cf3120523e68590fae72e94",
+  "experiments/lifted_cavity/audit_import.py": "9457978cba8b6e76475cffca4ddd40ffcc89aae3e3efb97b264d6cc9498a7c21",
+  "experiments/lifted_cavity/collect.py": "940d369dde29aa57d16fb06568281aec9953b5c27bb045276605530cbbae9ebd",
+  "experiments/lifted_cavity/collect_airq.py": "7b212c9140c89849d890032b9571a620bab77da27412f310a18644460495ae2b",
+  "experiments/lifted_cavity/confirm.py": "29b522b025041c1a76cc52305fd1961de9f00d28854011b05218ae8211e1578b",
+  "experiments/lifted_cavity/data.py": "2ae57386ad6b28ce3e20478a0be2aa98ad9fbc40995ad32f10868cfb03890a33",
+  "experiments/lifted_cavity/evaluate.py": "0420ba8d9de796d20ea1930802cf650402c34ec8c6d5cd3c32aed7f17e4f1420",
+  "experiments/lifted_cavity/fa.py": "0cfd3b7862deaff584083f259b6b493961d5bb7bc00929c4495aa1ebe7dc2d65",
+  "experiments/lifted_cavity/family.py": "4033b5c6d5dd218923b0020eb40936eeaed68fe3e9bb634af8ef9b1a3c5f091e",
+  "experiments/lifted_cavity/finetune_airq.py": "4b4091002f688ffbcd63edc2dddc6eecae2578c0fc7395d853e96e7001669991",
+  "experiments/lifted_cavity/make_figure.py": "3be06855f36de86e2f0018c1ae6728c91b08c5b95df1f9ae37b7aff61fa5f554",
+  "experiments/lifted_cavity/make_report.py": "dc79b8caff87664082585ebe0b799e82261efcbfc0ae78e179a6f7ab4eb6a296",
+  "experiments/lifted_cavity/models.py": "8ed9598b197691dbdc1ced337f975088793015c2756a08293a17884f3f679be0",
+  "experiments/lifted_cavity/oracle_audit.py": "deba309cb49529e55423cb038fa8eb84d6eaf685a5489df6a2209b199de311bb",
+  "experiments/lifted_cavity/score_repo_panel.py": "03d6fd6b0651bf69a2f13a02ee1bf24f5c2d3b5e68130f9ca8b5539fbd3a8362",
+  "experiments/lifted_cavity/train.py": "fbde85138c1c66d72076d7840ae93aa58a994fcbde924df66a46fd015bca8369",
+  "tests/test_lifted_cavity.py": "b469be6f00cf59f275dca6b5c74f6f1ddb362a3a8f1609cc1e8f47509b0e5cd5"
+}
