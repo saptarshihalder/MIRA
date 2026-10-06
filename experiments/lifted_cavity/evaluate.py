@@ -66,7 +66,7 @@ def score(model, pool):
 def score_run(args):
     run = Path(args.run)
     meta = json.loads((run / 'train.json').read_text())
-    model = build(meta['model'], meta['repo'])
+    model = build(meta['model'], meta.get('repo'), meta)
     model.load_state_dict(torch.load(run / 'model.pt', weights_only=True))
     panel = torch.load(args.panel, weights_only=False)
     cells = score(model, panel['pool'])

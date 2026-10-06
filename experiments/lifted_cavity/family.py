@@ -161,3 +161,17 @@ def em_conditional(mu, sig, qx, S, n):
     beta = np.linalg.solve(sig[np.ix_(S, S)], sig[S, P])
     var = (sig[P, P] - sig[P, S] @ beta) * n / max(n - len(S) - 1, 1)
     return mu[P] + (qx[:, S] - mu[S]) @ beta, np.full(len(qx), max(var, 1e-3))
+
+
+def blr_cc(sx, sy, sm, qx, S):
+    """Bayesian linear regression on complete-case support rows, evidence-maximised (MacKay) precisions.
+    Predictive variance includes parameter uncertainty."""
+    from sklearn.linear_model import BayesianRidge
+    S = list(S)
+    cc = sm[:, S].all(1)
+    if cc.sum() < len(S) + 3:
+        cc = np.ones(len(sy), dtype=bool)
+    m = BayesianRidge(fit_intercept=True, compute_score=False, max_iter=300)
+    m.fit(sx[cc][:, S], sy[cc])
+    mu, sd = m.predict(qx[:, S], return_std=True)
+    return mu, np.maximum(sd, 1e-3) ** 2

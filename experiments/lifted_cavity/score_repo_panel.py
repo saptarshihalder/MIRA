@@ -28,7 +28,7 @@ assert np.allclose(fam.context(dev['sx'], dev['sy'].astype(float), dev['sm'].ast
 out = {}
 for run in runs:
     meta = json.loads((run / 'train.json').read_text())
-    model = build(meta['model'], meta['repo']); model.load_state_dict(torch.load(run / 'model.pt', weights_only=True))
+    model = build(meta['model'], meta.get('repo'), meta); model.load_state_dict(torch.load(run / 'model.pt', weights_only=True))
     cells = score(model, pool)
     out[run.name] = float(cells[2].mean())
 print(json.dumps({'panel': name, 'two_sensor_deletion_nll': out}, indent=1))

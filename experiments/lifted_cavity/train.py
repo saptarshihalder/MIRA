@@ -2,7 +2,7 @@
 
 python train.py --model lift1 --steps 20000 --pool 60000 --seed 1 --out runs/lift1_s1
 """
-import argparse, json, math, sys, time
+import argparse, json, math, os, sys, time
 from pathlib import Path
 import numpy as np
 import torch
@@ -10,12 +10,17 @@ import data, models
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
-CACHE = ROOT / 'artifacts' / 'runs' / 'lifted_cavity' / 'cache'   # git-ignored; pools are regenerated from seeds
+CACHE = Path(os.environ.get('MIRA_LC_CACHE', ROOT / 'artifacts' / 'runs' / 'lifted_cavity' / 'cache'))  # git-ignored
 
 
-def build(name, repo_dir=None):
+def build(name, repo_dir=None, meta=None):
+    if name == 'pfn':
+        import pfn
+        arch = (meta or {}).get('arch', {})
+        return pfn.CellPFN(**arch)
     if name.startswith('repo_'):
-        repo_dir = Path(repo_dir) if repo_dir and Path(repo_dir, 'anchored_cavity.py').exists() else HERE.parent
+        cands = [Path(p) for p in (repo_dir, HERE.parent, HERE.parent / 'repo_experiments') if p]
+        repo_dir = next(p for p in cands if (p / 'anchored_cavity.py').exists())
         sys.path.insert(0, str(repo_dir))
         import anchored_cavity as ac
         return models.RepoWrapper(ac.Model(name[5:]))

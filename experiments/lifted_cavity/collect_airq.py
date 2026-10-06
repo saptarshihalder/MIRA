@@ -14,7 +14,7 @@ test = panel['split']['test']
 rows = {n: {k: test['refs'][k][n] for k in test['refs']} for n in test['refs'][0]}
 for run in zero_shot:
     meta = json.loads((run / 'train.json').read_text())
-    model = build(meta['model'], meta['repo']); model.load_state_dict(torch.load(run / 'model.pt', weights_only=True))
+    model = build(meta['model'], meta.get('repo'), meta); model.load_state_dict(torch.load(run / 'model.pt', weights_only=True))
     rows[run.name + ' (zero-shot)'] = score(model, test['pool'])
 for run in sorted(ft_dir.iterdir()):
     f = run / 'cells_airq_test.npz'

@@ -42,7 +42,7 @@ def main():
     torch.set_num_threads(1); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=False)
     meta = json.loads((Path(a.init) / 'train.json').read_text())
-    model = build(meta['model'], meta['repo'])
+    model = build(meta['model'], meta.get('repo'), meta)
     model.load_state_dict(torch.load(Path(a.init) / 'model.pt', weights_only=True))
     panel_target = torch.load(a.panel, weights_only=False)['meta'].get('target', 'CO(GT)')
     assert panel_target == a.target, (panel_target, a.target)

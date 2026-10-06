@@ -105,3 +105,44 @@ def test_lifted_model_is_sensor_exchangeable_and_runs_on_more_sensors():
     with torch.no_grad():
         mu, lv = net(batch); mu2, lv2 = net(pb)
     assert torch.allclose(mu, mu2, atol=1e-4) and torch.allclose(lv, lv2, atol=1e-4)
+
+
+def test_transformer_baseline_queries_are_independent_and_ignore_masked_values():
+    import pfn
+    torch.manual_seed(0)
+    m = pfn.CellPFN(d=32, layers=2, heads=2, ff=64).eval()
+    sx, sy, sm, qx, qm, qy = pfn.fresh_batch(np.random.default_rng(0), 2, 6)
+    g = lambda: torch.Generator().manual_seed(0)
+    with torch.no_grad():
+        a = m.core(sx, sy, sm, qx, qm, g())[0]
+        b = m.core(sx, sy, sm, qx[:, :3], qm[:, :3], g())[0]
+        qx2 = qx.clone(); qx2[qm == 0] += 10.
+        c = m.core(sx, sy, sm, qx2, qm, g())[0]
+    assert torch.allclose(a[:, :3], b, atol=1e-5) and torch.allclose(a, c, atol=1e-6)
+
+
+def test_hmc_predictive_with_true_parameters_equals_exact_oracle():
+    import bop
+    torch.set_default_dtype(torch.float32)
+    T = fam.make_tasks(np.random.default_rng(6), 1)
+    prm, P = T['prm'], 5
+    a, b, f, d, s = (torch.as_tensor(prm[k][0], dtype=torch.float64) for k in ('a', 'b', 'f', 'd', 's'))
+    sign = torch.sign(a)
+    lg = lambda v, lo, hi: torch.logit((v - lo) / (hi - lo))
+    z = torch.cat((lg(a.abs(), .6, 1.8), b, lg(f, .5, 2.5), d, lg(s, .15, .8)))[None, None]
+    qx = torch.as_tensor(T['raw_qx'][0], dtype=torch.float64); qy = torch.as_tensor(T['qy'][0], dtype=torch.float64)
+    masks = fam.mask_bank(2)[:3]
+    nll = bop.predictive_nll(z, sign, .4, qx, qy, masks, grid=np.linspace(-6, 6, 1201)).numpy()
+    for i, msk in enumerate(masks):
+        ref, _, _ = fam.oracle(prm, 0, np.flatnonzero(msk), T['raw_qx'][0], T['qy'][0].astype(float))
+        assert np.allclose(nll[i], ref, atol=2e-3)
+    torch.set_default_dtype(torch.float32)
+
+
+def test_nonlinear_factor_baseline_is_finite_and_mask_exact():
+    import nlfa
+    T = fam.make_tasks(np.random.default_rng(7), 1)
+    m = nlfa.fit(T['sx'][0], T['sy'][0].astype(float), T['sm'][0])
+    nll = nlfa.predict_nll(m, T['qx'][0], T['qy'][0].astype(float), [0, 2, 4])
+    qx = T['qx'][0].copy(); qx[:, [1, 3]] = 99.
+    assert np.isfinite(nll).all() and np.allclose(nll, nlfa.predict_nll(m, qx, T['qy'][0].astype(float), [0, 2, 4]))
