@@ -8,11 +8,14 @@ from pathlib import Path
 import numpy as np
 import torch
 
+REP = Path(__file__).resolve().parents[2] / 'artifacts' / 'reports' / 'lifted_cavity_v1'
+CCH = Path(__file__).resolve().parents[2] / 'artifacts' / 'runs' / 'lifted_cavity' / 'cache'
 ap = argparse.ArgumentParser()
-ap.add_argument('--runs', default='runs'); ap.add_argument('--runs-airq', default='runs_airq')
-ap.add_argument('--cache', default='cache'); ap.add_argument('--oracle', default='oracle_summary.json')
-ap.add_argument('--repo-panel', default='repo_panel_scores.json'); ap.add_argument('--out', default='tables.md')
-ap.add_argument('--airq-panel', default='cache/airq_s7.pt')
+ap.add_argument('--runs', default=str(REP / 'runs')); ap.add_argument('--runs-airq', default=str(REP / 'airq_co'))
+ap.add_argument('--cache', default=str(CCH)); ap.add_argument('--oracle', default=str(REP / 'oracle_audit' / 'oracle_summary.json'))
+ap.add_argument('--repo-panel', default=str(REP / 'repo_panel_scores.json')); ap.add_argument('--out', default=str(REP / 'tables.md'))
+ap.add_argument('--airq-panel', default=str(CCH / 'airq_s7.pt'))
+ap.add_argument('--airq-no2-panel', default=str(CCH / 'airq_no2_s7.pt')); ap.add_argument('--runs-airq-no2', default=str(REP / 'airq_no2'))
 a = ap.parse_args()
 runs, cache = Path(a.runs), Path(a.cache)
 L = []
@@ -66,7 +69,7 @@ for lab, pat in (('Repo ridge (the gate\'s control)', 'ridge'), ('Repo cavity (3
     cells = []
     for p in ('cavity_site_v1', 'anchored_cavity_v1'):
         v = [x['nll'] for k, x in orc[p]['models'].items() if (k == pat if pat == 'ridge' else k.startswith(pat))]
-        cells.append(f'{min(v):.3f}' if len(v) == 1 else f'{min(v):.3f}–{max(v):.3f}')
+        cells.append(f'{min(v):.3f}' if len(v) == 1 else (f'{min(v):.3f} (all seeds collapsed)' if max(v) - min(v) < 5e-4 else f'{min(v):.3f}–{max(v):.3f}'))
     P(f'| {lab} | {cells[0]} | {cells[1]} |')
 P()
 
@@ -129,17 +132,42 @@ for tag, lab in shifts:
     P(f'| {lab} | {rows["oracle"][0][2].mean():.3f} | {rows["fa1"][0][2].mean():.3f} | ' + ' | '.join(cells) + ' |')
 P()
 
-# ---- Table D: Air Quality
-aq = json.loads((Path(a.runs_airq) / 'summary_airq_test.json').read_text())
-P('**Table D. UCI Air Quality, 23 future test weeks (Oct 2004 – Apr 2005), target log CO(GT), 48 labeled support hours per week. '
-  'NLL gain over EM-Gaussian with paired week-level 95% interval; "weeks" counts test weeks where the method beats EM-Gaussian at k = 2.**')
-P()
-P('| Method | NLL k=0 | NLL k=2 | gain k=2 [95% CI] | gain k=3 [95% CI] | weeks (k=2) |')
-P('|---|---:|---:|---:|---:|---:|')
-aqp = torch.load(a.airq_panel, weights_only=False)['split']['test']['refs']
-P(f'| EM-Gaussian (reference) | {aqp[0]["em_gauss"].mean():.3f} | {aqp[2]["em_gauss"].mean():.3f} | 0 | 0 | – |')
-for name, v in aq.items():
-    P(f'| {name} | {v["k0"]["nll"]:.3f} | {v["k2"]["nll"]:.3f} | {v["k2"]["gain"]:+.3f} [{v["k2"]["lo"]:+.3f}, {v["k2"]["hi"]:+.3f}] | '
-      f'{v["k3"]["gain"]:+.3f} [{v["k3"]["lo"]:+.3f}, {v["k3"]["hi"]:+.3f}] | {v["k2"]["weeks_better"]}/23 |')
+# ---- Table D: Air Quality (computed from per-week cells; fine-tuned rows averaged over available pretraining seeds)
+def airq_table(panel_path, ft_dir, title):
+    part = torch.load(panel_path, weights_only=False)['split']['test']
+    refs = part['refs']; n = part['pool']['n']
+    em = {k: refs[k]['em_gauss'].mean(1) for k in refs}
+    rows = [('EM-Gaussian, closed form (reference)', {k: refs[k]['em_gauss'].mean(1) for k in refs}),
+            ('FA-Gaussian, closed form', {k: refs[k]['fa1'].mean(1) for k in refs}),
+            ('Complete-case ridge', {k: refs[k]['ridge_cc'].mean(1) for k in refs}),
+            ('Repo ridge, mean-imputed', {k: refs[k]['ridge_repo'].mean(1) for k in refs})]
+    ft_dir = Path(ft_dir)
+    for pat, lab in (('lift1_s[0-9]_ft', 'Lifted cavity, synthetic pretrain + fine-tune'), ('lift1_untrained_ft', 'Lifted cavity, fine-tune only (no pretrain)'),
+                     ('lift1_static_s[0-9]_ft', 'Lifted sites, no cavity input, fine-tuned'), ('lift0_s[0-9]_ft', '1-D sites (K=0), fine-tuned'),
+                     ('anchor_mlp_s[0-9]_ft', 'Residual MLP on same anchor, fine-tuned'), ('anchor_mlp_untrained_ft', 'Residual MLP, fine-tune only'),
+                     ('repo_cavity_fresh_s[0-9]_ft', 'Repo 1-D cavity (retrained), fine-tuned')):
+        fs = sorted(ft_dir.glob(pat + '/cells_airq_test.npz'))
+        if fs:
+            zs = [np.load(f) for f in fs]
+            rows.append((lab + f' [{len(fs)}]', {k: np.mean([z[f'k{k}'] for z in zs], 0).mean(1) for k in refs}))
+    P(title)
+    P()
+    P('| Method | NLL k=0 | NLL k=2 | gain vs EM, k=2 [95% CI] | gain vs EM, k=3 [95% CI] | weeks better (k=2) |')
+    P('|---|---:|---:|---:|---:|---:|')
+    for lab, r in rows:
+        cells = []
+        for k in (2, 3):
+            d = em[k] - r[k]; m = d.mean(); se = d.std(ddof=1) / np.sqrt(len(d))
+            cells.append('–' if lab.startswith('EM-') else f'{m:+.3f} [{m - 1.96 * se:+.3f}, {m + 1.96 * se:+.3f}]')
+        wk = '–' if lab.startswith('EM-') else f'{int(((em[2] - r[2]) > 0).sum())}/{n}'
+        P(f'| {lab} | {r[0].mean():.3f} | {r[2].mean():.3f} | {cells[0]} | {cells[1]} | {wk} |')
+    P()
+
+
+airq_table(a.airq_panel, a.runs_airq, '**Table D. UCI Air Quality, 23 later test weeks (windows starting 6 Oct 2004 – 23 Mar 2005), target log CO(GT), '
+           '48 labeled support hours per week; fine-tuning used only weeks before 1 Oct 2004. Brackets: number of pretraining seeds averaged. '
+           'Gains are paired over test weeks (positive = better than EM-Gaussian).**')
+if Path(a.airq_no2_panel).exists() and Path(a.runs_airq_no2).exists():
+    airq_table(a.airq_no2_panel, a.runs_airq_no2, '**Table E. Same protocol, target log NO2(GT): the frozen confirmation endpoint R1 (one pretraining seed).**')
 Path(a.out).write_text('\n'.join(L) + '\n')
 print('\n'.join(L))

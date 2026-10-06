@@ -42,3 +42,30 @@ training seeds.
   bound > 0.
 
 Secondary, descriptive only: all other k, ablations, coverage, and gap closed relative to the oracle.
+
+## Results (scored after the protocol commit; all endpoints evaluated once)
+
+| Endpoint | Panel | Comparison at two missing sensors | Gain [95% CI] | Result |
+|---|---|---|---:|---|
+| E1 | C1, 256 tasks | `lift1` vs FA-Gaussian; per seed +.0740 / +.0739 / +.0742 | +.074 [+.064, +.084] | PASS |
+| E2 | C1, 256 tasks | `lift1` vs `anchor_mlp` | +.016 [+.012, +.020] | PASS |
+| E3 | C2, 8 sensors | `lift1` vs FA-Gaussian | +.115 [+.097, +.132] | PASS |
+| E4 | C3, nonlinearity .8 | `lift1` vs `anchor_mlp` | +.028 [+.020, +.036] | PASS |
+| R1 | Air Quality NO2(GT), 23 future weeks | fine-tuned `lift1` vs EM-Gaussian; 17/23 weeks better | +.112 [+.050, +.173] | PASS |
+
+Context, two missing sensors (mean NLL):
+
+| Panel | Oracle (privileged) | `lift1` (3 seeds) | `anchor_mlp` (3 seeds) | FA-Gaussian | EM-Gaussian | Repo ridge |
+|---|---:|---:|---:|---:|---:|---:|
+| C1 | −.053 | .072 | .087 | .146 | .158 | .391 |
+| C2 (8 sensors) | −.575 | −.420 | n/a | −.305 | −.176 | .170 |
+| C3 (nonlinearity .8) | −.108 | .190 | .219 | .327 | .295 | .481 |
+
+On NO2, fine-tuned `anchor_mlp` gains −.004 [−.050, +.042] over EM-Gaussian. `lift1` trained on source weeks
+without synthetic pretraining gains +.100 [+.052, +.148].
+
+**What the E2 margin means.** It clears .01 but is modest: on C1, the modular architecture's advantage over an
+equally trained residual MLP is about a fifth of its advantage over the closed form. The larger separations are in
+width transfer, where the MLP cannot run at all, and on real data, where the MLP gains nothing.
+
+Raw scores, checkpoint hashes and the evaluation script output: `artifacts/reports/lifted_cavity_v1/confirmation/`.

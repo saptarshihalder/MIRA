@@ -1,5 +1,7 @@
 # MIRA
 
+**Current status (October 6):** one paper, the lifted cavity network. Exact-oracle audit of the failed cavity gates, a repaired architecture and a frozen confirmation in which all five endpoints pass. See [findings](docs/LIFTED_CAVITY_FINDINGS.md), [confirmation](docs/LIFTED_CAVITY_CONFIRMATION.md) and [plan to October 10](docs/OCT10_PLAN.md).
+
 **Current status (October 4):** The [RL module and reproduction review](docs/RL_COMPLETION.md) are complete as a negative result. The trained-model paper remains partial; native advantage and submission readiness are unproven. [Latest findings](docs/ANNUAL_RL_FINDINGS.md). Current Modal cap is **$20**, superseding historical $26 references below; $16.45 provisions plus $3 protected leave $.55.
 
 Trained reversible missingness compiler and controlled frozen-tabular-predictor evaluations.

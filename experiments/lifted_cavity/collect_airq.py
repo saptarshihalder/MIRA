@@ -20,7 +20,7 @@ for run in sorted(ft_dir.iterdir()):
     f = run / 'cells_airq_test.npz'
     if f.exists():
         z = np.load(f); rows[run.name] = {k: z[f'k{k}'] for k in test['refs']}
-print(f'Air Quality test weeks (n={test["pool"]["n"]}), log CO(GT), mean NLL by number of missing sensors')
+print(f'Air Quality test weeks (n={test["pool"]["n"]}), target log {panel["meta"].get("target", "CO(GT)")}, mean NLL by number of missing sensors')
 print(f"{'method':34s}" + ''.join(f'{f"k={k}":>9s}' for k in test['refs']))
 for name, r in rows.items():
     print(f'{name:34s}' + ''.join(f'{r[k].mean():9.4f}' for k in r))

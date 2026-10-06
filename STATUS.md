@@ -1,5 +1,19 @@
 # MIRA status — October 4, 2026
 
+## Lifted cavity network: oracle audit, repair and passed confirmation - October 6
+
+Read docs/LIFTED_CAVITY_FINDINGS.md, docs/LIFTED_CAVITY_CONFIRMATION.md, then docs/OCT10_PLAN.md, which supersedes the open-ended mechanism search. The plan opens with a decision between this line and the separately built MIRA-Circuit line (not in this repository).
+
+- **Oracle audit.** The exact Bayes oracle on the closed `anchored_cavity_v1` panel scores −.046 NLL, against .396 for the gate's ridge control and .403–.430 for the cavity seeds. Support-only EM/FA-Gaussian closed forms score .168/.156. The failed gates came from a mean-imputed control, 1-D sites that cannot express shared-noise fusion across masks, and starved amortised training. They did not come from missing headroom.
+- **New model.** The lifted cavity network places per-sensor rank-1 Gaussian sites on a (target, nuisance) latent. It starts exactly at the FA-Gaussian closed form and learns cavity-conditioned re-linearisation. Same 60k-task, 20k-step recipe for all models.
+- **Frozen confirmation.** Protocol commit precedes all confirmation panels; all five endpoints PASS, with gains measured at two missing sensors:
+  - E1, versus FA-Gaussian: +.074 [.064, .084], every seed ≥ .0739.
+  - E2, versus a larger residual MLP on the same anchor: +.016 [.012, .020].
+  - E3, 8 sensors after training on 5: +.115 versus FA-Gaussian.
+  - E4, nonlinearity .8: +.028 versus the MLP.
+  - R1, Air Quality NO2, 23 later weeks: +.112 [.050, .173] versus EM-Gaussian.
+- **Limits.** One synthetic family, one real device, simulated per-sensor dropout, and novelty against learned-EP and missing-modality prior art not yet audited. No JMLR readiness claim. CPU only, zero cloud cost.
+
 ## Trained cavity architecture and repair - October 6
 
 Read docs/CAVITY_SITE_FINDINGS.md. Built and trained a support-conditioned three-round site-replacement architecture with matched aggregate/static controls and larger MLP/ridge references. First source learning collapsed; a separately frozen support-moment/mask repair learns successfully. Repaired mean NLL: cavity .415012, aggregate .410339, static .422938, larger MLP .473872, ridge .395915. Cavity improves over MLP12.42% but fails every .01 practical gate and loses two of three aggregate comparisons. Both batches CLOSED; no established architecture novelty or JMLR readiness. All24 models /72,000 updates retained; independent replay798,720 prediction rows and16,640 task/mask cells passes. Local CPU wall time276.078 seconds, zero cloud cost. HAR labels and protected seeds remain closed. Next requires a precise joint-correlation-model distinction and source-only headroom over a strong joint predictor before more training. October10 final deadline unchanged.

@@ -1,0 +1,18 @@
+{
+ "model": "lift1",
+ "repo": "/tmp/claude-0/-home-claude/74dc32ba-1f98-5450-b28d-5040b5c07dd8/scratchpad/repo_experiments",
+ "steps": 0,
+ "finetune": {
+  "csv": "../airq_dl/AirQualityUCI.csv",
+  "init": "runs_init/lift1_untrained",
+  "panel": "cache/airq_no2_s7.pt",
+  "out": "runs_airq_no2/lift1_untrained_ft",
+  "episodes": 4000,
+  "steps": 2000,
+  "lr": 0.0003,
+  "seed": 11,
+  "target": "NO2(GT)"
+ },
+ "finetune_seconds": 66.54214644432068,
+ "final_ema": -0.20007516717439824
+}

@@ -1,0 +1,80 @@
+{
+ "model": "repo_cavity",
+ "steps": 3000,
+ "pool": 512,
+ "pool_seed": 819101,
+ "nonlin": 0.4,
+ "seed": 1,
+ "lr": 0.0018,
+ "schedule": "constant",
+ "batch_tasks": 128,
+ "queries": 1,
+ "threads": 1,
+ "repo": "/tmp/claude-0/-home-claude/74dc32ba-1f98-5450-b28d-5040b5c07dd8/scratchpad/repo_experiments",
+ "cache": "/tmp/claude-0/-home-claude/74dc32ba-1f98-5450-b28d-5040b5c07dd8/scratchpad/lifted/cache",
+ "out": "runs/repo_cavity_512_s1",
+ "parameters": 3362,
+ "seconds": 12.654146432876587,
+ "trace": [
+  {
+   "step": 250,
+   "ema_loss": 0.196135602450593,
+   "seconds": 1.0525987148284912
+  },
+  {
+   "step": 500,
+   "ema_loss": 0.18117351071411292,
+   "seconds": 2.086437225341797
+  },
+  {
+   "step": 750,
+   "ema_loss": 0.1886592606988677,
+   "seconds": 3.156867265701294
+  },
+  {
+   "step": 1000,
+   "ema_loss": 0.1821373143223331,
+   "seconds": 4.089903116226196
+  },
+  {
+   "step": 1250,
+   "ema_loss": 0.16933298033305386,
+   "seconds": 5.17927885055542
+  },
+  {
+   "step": 1500,
+   "ema_loss": 0.15677414434674605,
+   "seconds": 6.308522939682007
+  },
+  {
+   "step": 1750,
+   "ema_loss": 0.15763659717268158,
+   "seconds": 7.422935247421265
+  },
+  {
+   "step": 2000,
+   "ema_loss": 0.15932843127930185,
+   "seconds": 8.541541814804077
+  },
+  {
+   "step": 2250,
+   "ema_loss": 0.1635187382556091,
+   "seconds": 9.614043474197388
+  },
+  {
+   "step": 2500,
+   "ema_loss": 0.14435303074711292,
+   "seconds": 10.628916501998901
+  },
+  {
+   "step": 2750,
+   "ema_loss": 0.14195148661623466,
+   "seconds": 11.648054838180542
+  },
+  {
+   "step": 3000,
+   "ema_loss": 0.13264220792631667,
+   "seconds": 12.653132677078247
+  }
+ ]
+}
