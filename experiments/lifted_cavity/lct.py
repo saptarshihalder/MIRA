@@ -32,7 +32,8 @@ class LCT(nn.Module):
         syn = (sy - ym) / ys
         X = torch.cat((sx * sm, qx * qm), 1); M = torch.cat((sm, qm), 1)
         tok = M[..., None] * bb.val(X[..., None]) + (1 - M[..., None]) * bb.missing
-        fe = torch.randn(B, 1, P, bb.femb_dim, generator=gen) if gen is not None else torch.randn(B, 1, P, bb.femb_dim)
+        fe = (torch.randn(B, 1, P, bb.femb_dim, generator=gen).to(sx.device) if gen is not None
+              else torch.randn(B, 1, P, bb.femb_dim, device=sx.device))
         tok = tok + bb.femb(fe)
         tcol = torch.cat((bb.val(syn[..., None]), bb.query_target.expand(B, Q, -1)), 1) + bb.target_col
         z = torch.cat((tok, tcol[:, :, None]), 2)
@@ -45,7 +46,7 @@ class LCT(nn.Module):
         B = batch['sx'].shape[0]
         nq = tid.numel() // B
         qx, qm = batch['qx'], batch['qm']
-        gen = None if self.training else torch.Generator().manual_seed(self.feature_seed)
+        gen = None if self.training else torch.Generator().manual_seed(self.feature_seed)          # CPU generator, moved to device
         h = self.tokens(batch['sx'], batch['sy'], batch['sm'], qx.reshape(B, nq, -1), qm.reshape(B, nq, -1), gen)
         out = self.head(h).reshape(B * nq, qx.shape[-1], -1)                 # (N, P, 3+K)
         K = self.K
@@ -61,7 +62,7 @@ class LCT(nn.Module):
         psi = psi0 * torch.exp(4 * torch.tanh(s / 4))
         N, P = qx.shape
         lam = (W[..., :, None] * W[..., None, :]) * (qm / psi)[..., None, None]
-        prec = torch.diag_embed(torch.cat((1 / vy[:, None], torch.ones(N, K)), -1)) + lam.sum(1)
-        nat = torch.cat(((my / vy)[:, None], torch.zeros(N, K)), -1) + (W * (qm * o / psi)[..., None]).sum(1)
+        prec = torch.diag_embed(torch.cat((1 / vy[:, None], torch.ones(N, K, dtype=vy.dtype, device=vy.device)), -1)) + lam.sum(1)
+        nat = torch.cat(((my / vy)[:, None], torch.zeros(N, K, dtype=vy.dtype, device=vy.device)), -1) + (W * (qm * o / psi)[..., None]).sum(1)
         cov = torch.linalg.inv(prec)
         return (cov @ nat[..., None])[:, 0, 0], cov[:, 0, 0].log()

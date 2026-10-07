@@ -13,7 +13,7 @@ from finetune_real import load_raw
 from train import build
 
 EXTRA = {'airq_co': (0, 1, 2, 3), 'airq_no2': (0, 1, 2, 3), 'beijing': (0, 3, 6), 'beijing_no2': (0, 3, 6), 'beijing_co': (0, 3, 6),
-         'beijing_pm10': (0, 3, 6), 'gas': (0, 4, 8, 12)}
+         'beijing_pm10': (0, 3, 6), 'beijing_so2': (0, 3, 6), 'beijing_o3': (0, 3, 6), 'gas': (0, 4, 8, 12)}
 
 
 def build_panel(a):
@@ -41,7 +41,9 @@ def score_runs(a):
     for run in [Path(r) for r in a.runs.split(',') if r]:
         meta = json.loads((run / 'train.json').read_text())
         model = build(meta['model'], meta.get('repo'), meta)
-        model.load_state_dict(torch.load(run / 'model.pt', weights_only=True))
+        model.load_state_dict(torch.load(run / 'model.pt', weights_only=True, map_location='cpu'))
+        import devutil
+        model.to(devutil.pick(a.device))
         cells = {e: realdata.score_model(model, panel['pool'], qm) for e, qm in panel['conds'].items()}
         np.savez_compressed(run / f'cells_{tag}.npz', **{f'e{e}_{m}': v for e, d in cells.items() for m, v in d.items()})
         print(run, {f'e{e}': round(float(d['nll'].mean()), 4) for e, d in cells.items()}, flush=True)
@@ -51,7 +53,7 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument('what', choices=['build', 'score'])
     ap.add_argument('--dataset'); ap.add_argument('--seed', type=int, default=2027); ap.add_argument('--out')
-    ap.add_argument('--panel'); ap.add_argument('--runs', default='')
+    ap.add_argument('--panel'); ap.add_argument('--runs', default=''); ap.add_argument('--device', default='cpu')
     ap.add_argument('--airq', default=realdata.DEFAULT['airq'])
     ap.add_argument('--beijing', default=realdata.DEFAULT['beijing'])
     ap.add_argument('--gas', default=realdata.DEFAULT['gas'])

@@ -10,6 +10,7 @@ import argparse, itertools, json, math
 from pathlib import Path
 import numpy as np
 import torch
+import devutil
 from scipy.stats import norm
 import data, family as fam, fa as fm, models, nlfa
 from train import build, CACHE
@@ -85,8 +86,10 @@ def score(model, pool, B):
     out = {}
     for k, bank in B.items():
         acc = {m: [] for m in ('nll', 'se', 'cov', 'crps')}
+        dev = devutil.model_device(model)
         for tids, batch in data.eval_batches(pool, bank, tasks_per_batch=8):
-            mu, lv = model(batch)
+            mu, lv = model(devutil.to_dev(batch, dev))
+            mu, lv = mu.detach().cpu(), lv.detach().cpu()
             g = gauss_metrics(mu.double().numpy(), np.exp(lv.double().numpy()), batch['qy'].double().numpy())
             for m, v in g.items():
                 acc[m].append(v.reshape(len(tids), len(bank), -1).mean(-1))
@@ -98,7 +101,8 @@ def score_run(a):
     run = Path(a.run)
     meta = json.loads((run / 'train.json').read_text())
     model = build(meta['model'], meta.get('repo'), meta)
-    model.load_state_dict(torch.load(run / 'model.pt', weights_only=True))
+    model.load_state_dict(torch.load(run / 'model.pt', weights_only=True, map_location='cpu'))
+    model.to(devutil.pick(getattr(a, 'device', 'cpu')))
     panel = torch.load(a.panel, weights_only=False)
     cells = score(model, panel['pool'], panel['banks'])
     tag = Path(a.panel).stem
@@ -113,7 +117,7 @@ if __name__ == '__main__':
     ap.add_argument('--nonlin', type=float, default=.4); ap.add_argument('--support', type=int, default=48)
     ap.add_argument('--support-missing', type=float, default=.2); ap.add_argument('--sensors', type=int, default=5)
     ap.add_argument('--cache', default=str(CACHE))
-    ap.add_argument('--run'); ap.add_argument('--panel')
+    ap.add_argument('--run'); ap.add_argument('--panel'); ap.add_argument('--device', default='cpu')
     a = ap.parse_args()
     torch.set_num_threads(1)
     build_panel(a) if a.what == 'panel' else score_run(a)

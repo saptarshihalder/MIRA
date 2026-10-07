@@ -225,7 +225,9 @@ def score_model(model, pool, qm, tasks_per_batch=8):
         batch['anchors'] = {K: {k: v[t] for k, v in pool['anchors'][K].items()} for K in (0, 1, 2)}
         batch['qx'] = pool['qx'][t].reshape(B * NQ, -1); batch['qy'] = pool['qy'][t].reshape(-1)
         batch['qm'] = qmt[t].reshape(B * NQ, -1); batch['tid'] = torch.arange(B).repeat_interleave(NQ)
-        mu, lv = model(batch)
+        import devutil
+        mu, lv = model(devutil.to_dev(batch, devutil.model_device(model)))
+        mu, lv = mu.detach().cpu(), lv.detach().cpu()
         g = gauss_metrics(mu.double().numpy(), np.exp(lv.double().numpy()), batch['qy'].double().numpy())
         res.append({m: v.reshape(B, NQ).mean(1) for m, v in g.items()})
     return {m: np.concatenate([r[m] for r in res]) for m in res[0]}

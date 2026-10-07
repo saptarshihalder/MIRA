@@ -60,7 +60,8 @@ class CellPFN(nn.Module):
         X = torch.cat((sx * sm, qx * qm), 1)                      # (B,R,P)
         M = torch.cat((sm, qm), 1)
         tok = M[..., None] * self.val(X[..., None]) + (1 - M[..., None]) * self.missing
-        fe = torch.randn(B, 1, P, self.femb_dim, generator=gen) if gen is not None else torch.randn(B, 1, P, self.femb_dim)
+        fe = (torch.randn(B, 1, P, self.femb_dim, generator=gen).to(sx.device) if gen is not None
+              else torch.randn(B, 1, P, self.femb_dim, device=sx.device))
         tok = tok + self.femb(fe)
         tcol = torch.cat((self.val(syn[..., None]), self.query_target.expand(B, Q, -1)), 1) + self.target_col
         z = torch.cat((tok, tcol[:, :, None]), 2)                   # (B,R,P+1,d)

@@ -6,6 +6,7 @@ import argparse, json, math, os, time
 from pathlib import Path
 import numpy as np
 import torch
+import devutil
 import anchors as an
 import family as fam
 import lct, models, resume
@@ -29,17 +30,22 @@ def main():
     ap.add_argument('--batch-tasks', type=int, default=16); ap.add_argument('--queries', type=int, default=16)
     ap.add_argument('--lr', type=float, default=1e-3); ap.add_argument('--warmup', type=int, default=1000)
     ap.add_argument('--threads', type=int, default=1); ap.add_argument('--save-every', type=int, default=2500)
+    ap.add_argument('--device', default='cpu')
+    ap.add_argument('--d', type=int, default=64); ap.add_argument('--layers', type=int, default=4)
+    ap.add_argument('--heads', type=int, default=4); ap.add_argument('--ff', type=int, default=128)
     ap.add_argument('--ckpt-every', type=int, default=250)
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
     torch.set_num_threads(a.threads); torch.manual_seed(a.seed); rng = np.random.default_rng(20_000 + a.seed)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True); ck = out / 'ckpt.pt'
-    model = lct.LCT()
+    dev = devutil.pick(a.device)
+    arch = dict(d=a.d, layers=a.layers, heads=a.heads, ff=a.ff, K=1)
+    model = lct.LCT(**arch).to(dev)
     nparam = sum(p.numel() for p in model.parameters())
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.LambdaLR(
         opt, lambda s: min(1., (s + 1) / a.warmup) * (.1 + .9 * .5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
-    meta = dict(vars(a), model='lct', parameters=nparam, arch=dict(d=64, layers=4, heads=4, ff=128, K=1))
+    meta = dict(vars(a), model='lct', parameters=nparam, arch=arch)
     trace, run, first, elapsed = [], None, 0, 0.
     if ck.exists():
         first, extra = resume.load(ck, model, opt, sched, rng); trace, run, elapsed = extra['trace'], extra['run'], extra['seconds']
@@ -48,7 +54,7 @@ def main():
     start = time.time() - elapsed
     model.train()
     for step in range(first, a.steps):
-        batch = fresh_batch(rng, a.batch_tasks, a.queries)
+        batch = devutil.to_dev(fresh_batch(rng, a.batch_tasks, a.queries), dev)
         mu, lv = model(batch)
         loss = models.gauss_nll(mu, lv, batch['qy']).mean()
         if not torch.isfinite(loss):
@@ -58,7 +64,7 @@ def main():
         if (step + 1) % 250 == 0:
             trace.append(dict(step=step + 1, ema_loss=run, seconds=time.time() - start))
         if (step + 1) % a.save_every == 0 or step + 1 == a.steps:
-            torch.save(model.state_dict(), out / 'model.pt')
+            torch.save({k: v.detach().cpu() for k, v in model.state_dict().items()}, out / 'model.pt')
             (out / 'train.json').write_text(json.dumps(dict(meta, steps_done=step + 1, seconds=time.time() - start, trace=trace), indent=1))
             print(f'step {step + 1} ema {run:.4f} {time.time() - start:.0f}s', flush=True)
         if (step + 1) % a.ckpt_every == 0 and step + 1 < a.steps:

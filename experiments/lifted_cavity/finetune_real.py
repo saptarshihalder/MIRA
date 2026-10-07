@@ -8,11 +8,12 @@ import argparse, json, math, os, time
 from pathlib import Path
 import numpy as np
 import torch
-import models, realdata, resume
+import devutil, models, realdata, resume
 from train import build
 
 RAW = {'airq_co': ('airq', 'CO(GT)'), 'airq_no2': ('airq', 'NO2(GT)'), 'beijing': ('beijing', 'PM2.5'), 'beijing_no2': ('beijing', 'NO2'),
-       'beijing_co': ('beijing', 'CO'), 'beijing_pm10': ('beijing', 'PM10'), 'gas': ('gas', None)}
+       'beijing_co': ('beijing', 'CO'), 'beijing_pm10': ('beijing', 'PM10'), 'beijing_so2': ('beijing', 'SO2'),
+       'beijing_o3': ('beijing', 'O3'), 'gas': ('gas', None)}
 
 
 def load_raw(name, paths):
@@ -46,6 +47,7 @@ def main():
     ap.add_argument('--out', required=True); ap.add_argument('--episodes', type=int, default=4000)
     ap.add_argument('--steps', type=int, default=2000); ap.add_argument('--lr', type=float, default=3e-4)
     ap.add_argument('--seed', type=int, default=11); ap.add_argument('--ckpt-every', type=int, default=50)
+    ap.add_argument('--device', default='cpu')
     ap.add_argument('--period', nargs=2, default=None, help='development only: override the source period (beijing)')
     ap.add_argument('--airq', default=realdata.DEFAULT['airq'])
     ap.add_argument('--beijing', default=realdata.DEFAULT['beijing'])
@@ -58,7 +60,8 @@ def main():
     meta = json.loads((Path(a.init) / 'train.json').read_text())
     model = build(meta['model'], meta.get('repo'), meta)
     if (Path(a.init) / 'model.pt').exists():
-        model.load_state_dict(torch.load(Path(a.init) / 'model.pt', weights_only=True))
+        model.load_state_dict(torch.load(Path(a.init) / 'model.pt', weights_only=True, map_location='cpu'))
+    dev = devutil.pick(a.device); model.to(dev)
     raw = load_raw(a.dataset, dict(airq=a.airq, beijing=a.beijing, gas=a.gas))
     pool = realdata.to_pool(realdata.episodes(a.dataset, raw, 'source', a.seed, n_source=a.episodes, period=a.period))
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
@@ -69,7 +72,7 @@ def main():
     start = time.time() - elapsed
     model.train()
     for step in range(first, a.steps):
-        batch = batch_from(pool, rng)
+        batch = devutil.to_dev(batch_from(pool, rng), dev)
         mu, lv = model(batch)
         loss = models.gauss_nll(mu, lv, batch['qy']).mean()
         if not torch.isfinite(loss):
@@ -80,7 +83,7 @@ def main():
             resume.save(ck, step + 1, model, opt, sched, rng, dict(run=run, seconds=time.time() - start))
         if os.environ.get('MIRA_STOP_AT') == str(step + 1):        # test hook: simulate an interruption
             raise SystemExit('stopped for resume test')
-    torch.save(model.state_dict(), out / 'model.pt')
+    torch.save({k: v.detach().cpu() for k, v in model.state_dict().items()}, out / 'model.pt')
     (out / 'train.json').write_text(json.dumps(dict(meta, finetune=dict(vars(a), dataset=a.dataset, seconds=time.time() - start,
                                                                          final_ema=run, files=raw['files'])), indent=1))
     print(out.name, a.dataset, f'ema {run:.4f} {time.time() - start:.0f}s')

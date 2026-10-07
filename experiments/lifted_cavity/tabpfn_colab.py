@@ -23,13 +23,17 @@ import numpy as np
 import torch
 
 
+N_ESTIMATORS, RANDOM_STATE = 8, 0                   # fixed by protocol v4
+
+
 def make_regressor(device, version):
     from tabpfn import TabPFNRegressor
     try:
         from tabpfn.constants import ModelVersion
-        return TabPFNRegressor.create_default_for_version(ModelVersion(version), device=device)
+        return TabPFNRegressor.create_default_for_version(ModelVersion(version), device=device, n_estimators=N_ESTIMATORS,
+                                                          random_state=RANDOM_STATE)
     except (ImportError, AttributeError):          # tabpfn 2.x: the default model is v2
-        return TabPFNRegressor(device=device)
+        return TabPFNRegressor(device=device, n_estimators=N_ESTIMATORS, random_state=RANDOM_STATE)
 
 
 def tabpfn_nll(reg, Xs, ys, Xq, yq):
@@ -59,12 +63,14 @@ def score_panel(reg, path, out):
     res = {}
     if 'banks' in panel:                            # synthetic: every task x every mask in each bank
         for k, bank in panel['banks'].items():
-            nll = np.zeros((pool['n'], len(bank))); se = np.zeros_like(nll)
+            bank = np.asarray(bank); M = len(bank)
+            nll = np.zeros((pool['n'], M)); se = np.zeros_like(nll)
             for t in range(pool['n']):
                 Xs, ys, qx, qy = task_arrays(pool, t)
-                for i, msk in enumerate(bank):
-                    l, mu = tabpfn_nll(reg, Xs, ys, np.where(np.asarray(msk)[None] > 0, qx, np.nan), qy)
-                    nll[t, i] = l.mean(); se[t, i] = ((mu - qy) ** 2).mean()
+                # query rows never attend to each other, so all masks are predicted in one call per task
+                Xq = np.where(bank[:, None, :] > 0, qx[None], np.nan).reshape(M * len(qy), -1)
+                l, mu = tabpfn_nll(reg, Xs, ys, Xq, np.tile(qy, M))
+                nll[t] = l.reshape(M, -1).mean(1); se[t] = ((mu.reshape(M, -1) - qy) ** 2).mean(1)
             res[f'k{k}_nll'] = nll; res[f'k{k}_se'] = se
             print(tag, 'k', k, round(float(nll.mean()), 4), flush=True)
     else:                                           # real: natural mask x extra dropped sensors, per query
