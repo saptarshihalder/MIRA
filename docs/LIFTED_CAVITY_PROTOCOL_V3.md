@@ -67,3 +67,5 @@ descriptive only). Computed by `experiments/lifted_cavity/confirm3.py`.
    (`experiments/lifted_cavity/resume.py`). A test interrupts and resumes training and fine-tuning and checks that
    the final weights are bitwise identical to an uninterrupted run, so a resumed run is the protocol's run.
    `lct_s1` was then started from scratch a third time with the same seed and recipe.
+3. **October 7, 04:02 IST.** A third restart interrupted the fine-tuning of `lct_s1` on Beijing NO2 at step 450 of
+   2,000. It resumed from its checkpoint (bitwise-identical resume), so the scored model is the protocol's model.

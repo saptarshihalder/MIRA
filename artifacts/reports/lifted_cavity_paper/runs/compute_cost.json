@@ -22,5 +22,11 @@
  },
  "nlfa": {
   "ms_per_task": 34.36947706245519
+ },
+ "lct_s1": {
+  "parameters": 202822,
+  "train_seconds": 11339.025561332703,
+  "train_steps": 30000,
+  "ms_per_task": 55.693166156231655
  }
 }

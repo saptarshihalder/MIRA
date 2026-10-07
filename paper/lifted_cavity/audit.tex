@@ -57,7 +57,9 @@ It fixes one model (the lifted cavity transformer of \S\ref{sec:exp-v3}, trained
 and seed and evaluated at its final checkpoint), two new synthetic panels (G1, G3), two Beijing pollutants never
 scored by any model (NO$_2$, primary; CO, descriptive), the fine-tuning recipe of protocol v2, and four endpoints
 (Table~\ref{tab:endpoints}). The lifted cavity transformer's scores on the v2 panels are descriptive only
-(Appendix~\ref{app:more}).
+(Appendix~\ref{app:more}). Two container restarts interrupted its training before any v3 score existed; it was retrained
+from scratch with the same seed, and later runs checkpoint every random state so that a resumed run is bitwise
+identical to an uninterrupted one (a unit test). The protocol document logs both events.
 
 \paragraph{Post-hoc analyses.} Everything not named in a protocol is post hoc and labeled as such: the per-episode
 Gaussian process and $k$-nearest neighbours, the second training seeds of both transformers, the fine-tuning diagnostics of \S\ref{sec:exp-real}, and the exploratory runs of
