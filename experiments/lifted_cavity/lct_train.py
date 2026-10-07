@@ -84,7 +84,7 @@ def main():
         opt, lambda s: min(1., (s + 1) / a.warmup) * (.1 + .9 * .5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
     meta = dict(vars(a), model='lct', parameters=nparam, arch=arch)
     trace, run, first, elapsed = [], None, 0, 0.
-    if ck.exists():
+    if resume.exists(ck):
         first, extra = resume.load(ck, model, opt, sched, rng); trace, run, elapsed = extra['trace'], extra['run'], extra['seconds']
     elif (out / 'model.pt').exists():
         raise SystemExit(f'{out} holds a model but no checkpoint; refusing to overwrite')
@@ -112,7 +112,7 @@ def main():
             raise SystemExit('stopped for resume test')
     if isinstance(nxt, Prefetch):
         nxt.close()
-    ck.unlink(missing_ok=True)
+    resume.clear(ck)
 
 
 if __name__ == '__main__':

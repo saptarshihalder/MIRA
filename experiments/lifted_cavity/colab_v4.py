@@ -97,15 +97,19 @@ def ok_npz(path):
     return ok
 
 
+def has_ckpt(run):
+    return (run / 'ckpt.pt').exists() or (run / 'ckpt.prev.pt').exists()
+
+
 def train_done(run, steps=None):
     j = run / 'train.json'
-    return (j.exists() and (run / 'model.pt').exists() and not (run / 'ckpt.pt').exists()
+    return (j.exists() and (run / 'model.pt').exists() and not has_ckpt(run)
             and json.loads(j.read_text()).get('steps_done') == (steps or STEPS))
 
 
 def ft_done(run):
     j = run / 'train.json'
-    return (j.exists() and (run / 'model.pt').exists() and not (run / 'ckpt.pt').exists()
+    return (j.exists() and (run / 'model.pt').exists() and not has_ckpt(run)
             and 'finetune' in json.loads(j.read_text()))
 
 

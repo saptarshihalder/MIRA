@@ -34,7 +34,7 @@ def main():
         opt, lambda s: min(1., (s + 1) / a.warmup) * (.1 + .9 * .5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
     meta = dict(vars(a), model='pfn', parameters=nparam, arch=dict(d=a.d, layers=a.layers, heads=a.heads, ff=a.ff))
     trace, run, first, elapsed = [], None, 0, 0.
-    if ck.exists():
+    if resume.exists(ck):
         first, extra = resume.load(ck, model, opt, sched, rng); trace, run, elapsed = extra['trace'], extra['run'], extra['seconds']
     elif (out / 'model.pt').exists():
         raise SystemExit(f'{out} holds a model but no checkpoint; refusing to overwrite')
@@ -57,7 +57,7 @@ def main():
             resume.save(ck, step + 1, model, opt, sched, rng, dict(trace=trace, run=run, seconds=time.time() - start))
         if os.environ.get('MIRA_STOP_AT') == str(step + 1):        # test hook: simulate an interruption
             raise SystemExit('stopped for resume test')
-    ck.unlink(missing_ok=True)
+    resume.clear(ck)
 
 
 if __name__ == '__main__':

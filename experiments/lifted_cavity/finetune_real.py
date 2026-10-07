@@ -75,7 +75,7 @@ def main():
     a = ap.parse_args()
     torch.set_num_threads(1); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True); ck = out / 'ckpt.pt'
-    if (out / 'model.pt').exists() and not ck.exists():     # with a checkpoint left, the run was cut off: finish it
+    if (out / 'model.pt').exists() and not resume.exists(ck):     # with a checkpoint left, the run was cut off: finish it
         raise SystemExit(f'{out} already holds a fine-tuned model')
     meta = json.loads((Path(a.init) / 'train.json').read_text())
     model = build(meta['model'], meta.get('repo'), meta)
@@ -86,7 +86,7 @@ def main():
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: .5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps)))
     run, first, elapsed = None, 0, 0.
-    if ck.exists():
+    if resume.exists(ck):
         first, extra = resume.load(ck, model, opt, sched, rng); run, elapsed = extra['run'], extra['seconds']
     start = time.time() - elapsed
     model.train()
@@ -106,7 +106,7 @@ def main():
     (out / 'train.json').write_text(json.dumps(dict(meta, finetune=dict(vars(a), dataset=a.dataset, seconds=time.time() - start,
                                                                          final_ema=run, files=files, dequant_seed=dq)), indent=1))
     print(out.name, a.dataset, f'ema {run:.4f} {time.time() - start:.0f}s')
-    ck.unlink(missing_ok=True)
+    resume.clear(ck)
 
 
 if __name__ == '__main__':
