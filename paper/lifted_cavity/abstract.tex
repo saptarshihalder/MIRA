@@ -1,12 +1,10 @@
-Low-cost sensor deployments must estimate a target from whichever sensors are working, using a short calibration
-record, while temperature, humidity and drift perturb several sensors at once. We cast this as in-context
-probabilistic prediction and ask which architectures, trained once across deployments, remain correct for every
-missingness pattern and any number of sensors. Products of per-sensor experts over the target meet both requirements,
-but we prove they cannot be Bayes-consistent across missingness patterns when sensors share noise, and an
-expectation-propagation network with scalar cavities fails accordingly. We propose \emph{lifted cavity networks}: each
-observed sensor contributes a rank-one Gaussian site over the target and a low-dimensional shared nuisance, which is
-exact for factor-structured noise under every pattern once the nuisance dimension reaches the noise rank, a condition
-we show is also necessary. The sites are initialized by a factor analysis of the incomplete calibration rows and
-refined by a learned, cavity-conditioned re-linearization.
+Low-cost sensor deployments must estimate a target from whichever sensors work, after a short calibration, while
+temperature, humidity and drift perturb several sensors at once. We cast this as in-context probabilistic prediction
+that must remain correct for every missingness pattern and any number of sensors. Products of per-sensor experts over
+the target meet both requirements, but we prove they cannot be Bayes-consistent when sensors share noise. We propose
+\emph{lifted cavity networks}: each observed sensor contributes a rank-one Gaussian site over the target and a
+low-dimensional shared nuisance, exact for factor-structured noise under every pattern once the nuisance dimension
+reaches the noise rank, which we show is also necessary. The sites start from a factor analysis of the incomplete
+calibration rows and are refined by a learned, cavity-conditioned re-linearization.
 \input{abstract_results}
 All three evaluation protocols were committed before their test data existed, and every endpoint is reported.

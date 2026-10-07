@@ -55,8 +55,10 @@ LCT) keeps real-data flexibility and gains the lifted model's extrapolation. End
   - The LCT–transformer difference is not significant either way, but non-inferiority within 0.02 is not
     established.
   - With six more stations removed, the LCT and the transformer tie.
-- Descriptive, on the protocol-v2 panels scored so far, with two missing sensors:
-  - The LCT is within 0.005 nats of the lifted network or better.
+- Descriptive, on the protocol-v2 panels with two missing sensors:
+  - The LCT closes 59% of the achievable gap on F1 (lifted network 58%, transformer 34%).
+  - It is within 0.005 nats of the lifted network or better on every panel but one. The exception is 16 calibration
+    rows (F6), where it lands between the lifted network and the transformer.
   - It beats both comparators under strong nonlinearity (F4).
 
 Post-hoc robustness runs (second transformer and LCT seeds, LCT on Beijing PM2.5) are listed in the paper's appendix

@@ -251,9 +251,8 @@ dataset and keyed to feature identities. \textbf{In-context prediction} with neu
 processes~\citep{garnelo2018cnp,kim2019anp} and prior-fitted networks such as TabPFN and
 TabICL~\citep{muller2022pfn,hollmann2023tabpfn,hollmann2025tabpfnv2,qu2025tabicl} uses generic set or transformer
 architectures; we compare against such a transformer trained on our task distribution and test lifted sites as its
-output layer. \textbf{Fusion under unknown correlations}: covariance intersection~\citep{julier1997ci} bounds fused
-errors, and learned fusion with correlated noise~\citep{wang2025ifnet,dong2025difnet} or learned Kalman
-gains~\citep{revach2022kalmannet} train per system with fixed sensor sets.
+output layer. \textbf{Fusion under unknown correlations}~\citep{julier1997ci,wang2025ifnet,dong2025difnet,revach2022kalmannet}
+is learned or bounded per system, with fixed sensor sets.
 
 %=====================================================================
 \section{Experiments}

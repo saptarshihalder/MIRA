@@ -114,7 +114,7 @@ ROWS1 = [('Oracle (true parameters)', 'oracle', 'priv'), ('Bayes-optimal (HMC, t
          ('\\emph{Lifted cavity transformer (v3)}$^\\ddagger$, 203k', 'lct', 'ic*')]
 T = PANEL['F1']
 vals = {name: [cells(name, T, k) for k in range(4)] for _, name, _ in ROWS1}
-ROWS1 = [r for r in ROWS1 if r[1] not in ('tabpfn_v2', 'lct') or any(v is not None for v in vals[r[1]])]
+ROWS1 = [r for r in ROWS1 if r[1] not in ('tabpfn_v2', 'lct', 'gp') or any(v is not None for v in vals[r[1]])]
 fa2, bop2 = vals['fa1'][2], vals['bop'][2]
 best = {}
 for k in range(4):
@@ -153,7 +153,7 @@ for _, name, _ in ROWS1:
         if v is not None:
             mac(f'F{name.replace("_", "")}k{"abcd"[k]}', f3(float(v.mean())))
 if fa2 is not None and bop2 is not None:
-    for name in ('lift1', 'pfn', 'pfnall', 'anchor_mlp', 'nlfa'):
+    for name in ('lift1', 'pfn', 'pfnall', 'anchor_mlp', 'nlfa', 'lct'):
         v = vals[name][2]
         if v is not None:
             mac(f'Gap{name.replace("_", "")}', f'{100 * (fa2.mean() - v.mean()) / (fa2.mean() - bop2.mean()):.0f}')
@@ -641,6 +641,69 @@ if curves:
         ax.spines[sp].set_visible(False)
     ax.tick_params(labelsize=7.5); ax.legend(frameon=False, fontsize=7)
     fig.tight_layout(); fig.savefig(OUT / 'figures' / 'training.pdf', bbox_inches='tight')
+
+
+# ------------------------------------------------------------------ appendix: second training seeds of both transformers (post hoc)
+def seed_cells(name, seed, tag, k=2):
+    f = R / f'{name}_s{seed}' / f'cells_{tag}.npz'
+    return np.load(f)[f'k{k}_nll'].mean(1) if f.exists() else None
+
+
+SROWS = [('E2', 'F1, $k=2$', 'lifted cavity network vs transformer', PANEL['F1'], 'lift1', 'pfn'),
+         ('E3b', 'F3, $k=2$', 'lifted cavity network vs transformer', PANEL['F3'], 'lift1', 'pfn'),
+         ('E5', 'G1, $k=2$', 'LCT vs transformer', V3P['G1'], 'lct', 'pfn'),
+         ('E6', 'G3, $k=2$', 'LCT vs transformer', V3P['G3'], 'lct', 'pfn')]
+lines, any_s2 = [], False
+for tagk, data_, comp, tag, new, base in SROWS:
+    cols = []
+    for sb, sn in ((1, 1), (2, 2), ('avg', 'avg')):
+        def get(nm, sd):
+            if nm == 'lift1':
+                return cells('lift1', tag, 2)
+            if sd == 'avg':
+                vs = [seed_cells(nm, s_, tag) for s_ in (1, 2)]
+                return np.mean(vs, 0) if all(v is not None for v in vs) else None
+            return seed_cells(nm, sd, tag)
+        b, n = get(base, sb), get(new, sn)
+        if b is None or n is None:
+            cols.append('--'); continue
+        if sb == 2:
+            any_s2 = True
+        m, lo, hi = ci(b, n); cols.append(f'{f3(m, True)} [{f3(lo, True)}, {f3(hi, True)}]')
+    lines.append(f'{tagk} & {data_} & {comp} & ' + ' & '.join(cols) + '\\\\')
+# real: Beijing NO2 (v3 target), fine-tuned
+bj = panel('real_beijing_no2_s3031')
+if bj is not None:
+    keys = bj['pool']['keys']
+    def rft(nm):
+        return real_cells('beijing_no2', 'ft', nm, 0, seed=3031)
+    for tagk, comp, new, base in (('E7a', 'LCT (FT) vs lifted cavity network (FT)', 'lct', 'lift'), ('E7b', 'LCT (FT) vs transformer (FT)', 'lct', 'pfn')):
+        cols = []
+        for sd in (1, 2, 'avg'):
+            def g(nm, sd_):
+                if nm == 'lift':
+                    return rft('lift1_s{1,2,3}_ft')
+                if sd_ == 'avg':
+                    vs = [rft(f'{nm}_s{s_}_ft') for s_ in (1, 2)]
+                    return np.mean(vs, 0) if all(v is not None for v in vs) else None
+                return rft(f'{nm}_s{sd_}_ft')
+            b, n = g(base, sd), g(new, sd)
+            if b is None or n is None:
+                cols.append('--'); continue
+            if sd == 2:
+                any_s2 = True
+            m, lo, hi = week_ci(b, n, keys); cols.append(f'{f3(m, True)} [{f3(lo, True)}, {f3(hi, True)}]')
+        lines.append(f'{tagk} & Beijing NO$_2$ & {comp} & ' + ' & '.join(cols) + '\\\\')
+if any_s2:
+    tab_ = ['\\begin{table}[h]', '\\centering\\scriptsize', '\\setlength{\\tabcolsep}{3pt}',
+            '\\caption{\\label{tab:seeds}Second training seeds of the transformer and the lifted cavity transformer (post hoc). Endpoint comparisons '
+            'recomputed with each seed and with both averaged; the lifted cavity network always averages its three seeds. Gains in nats, paired 95\\% '
+            'intervals (cluster-robust over weeks on Beijing).}',
+            '\\begin{tabular}{llllll}', '\\toprule', 'ID & Data & Comparison & Seed 1 (protocol) & Seed 2 & Seeds averaged\\\\', '\\midrule'] + lines + \
+           ['\\bottomrule', '\\end{tabular}', '\\end{table}']
+    (OUT / 'generated' / 'seeds_table.tex').write_text('\n'.join(tab_) + '\n')
+else:
+    (OUT / 'generated' / 'seeds_table.tex').write_text('% second seeds not available yet\n')
 
 # ------------------------------------------------------------------ compute table (appendix)
 cf = R / 'compute_cost.json'
