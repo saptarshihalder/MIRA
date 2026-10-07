@@ -1,0 +1,14 @@
+\noindent\textbf{What we find.} Structure buys sample efficiency and extrapolation, but on real data it costs
+flexibility.
+\begin{itemize}
+  \item On synthetic tasks, the 8k-parameter lifted cavity network beats a 203k-parameter TabPFN-v2-style transformer
+  trained on the same tasks for every number of missing sensors, closing \GapliftOne\% of the achievable gap against
+  \Gappfn\%; its margin grows on 16 sensors after training on five. It loses its edge under strong response
+  nonlinearity and on linear sensors (\S\ref{sec:exp-shift}).
+  \item On two real sensor networks, the fine-tuned lifted network improves on the closed forms, but a fine-tuned
+  transformer is better, and one pre-registered endpoint fails (\S\ref{sec:exp-real}).
+  \item As the transformer's output layer (\S\ref{sec:exp-v3}), lifted sites beat the plain transformer on fresh
+  synthetic panels and the lifted network on a new real target, recovering most of the real-data gap
+  (\VthreebeijingnoTwoeZerorecovered\% for the pre-registered seed, \Vthreeseedavgrecovered\% averaged over two);
+  non-inferiority to the fine-tuned transformer is not established.
+\end{itemize}

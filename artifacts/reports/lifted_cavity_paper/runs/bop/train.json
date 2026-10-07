@@ -1,0 +1,1 @@
+{"model": "bayes_optimal_hmc", "chains": 4, "draws_per_chain": 50, "thin": 4, "L": 12}

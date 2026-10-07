@@ -1,0 +1,9 @@
+\noindent On the fresh synthetic panels, the lifted output layer helps the transformer (Table~\ref{tab:v3}). With two
+missing sensors the LCT beats the transformer with the identical backbone, recipe and seed by
+\VthreeGOnekTwolctvspfnabs\ \VthreeGOnekTwolctvspfnci\ nats on G1 and \VthreeGThreekTwolctvspfnabs\
+\VthreeGThreekTwolctvspfnci\ on sixteen sensors (E5, E6 pass). It matches the small lifted network on five sensors
+(\VthreeGOnekTwolctvslift\ \VthreeGOnekTwolctvsliftci) and exceeds it on sixteen (\VthreeGThreekTwolctvslift\
+\VthreeGThreekTwolctvsliftci), and it learns faster: its training NLL reaches the transformer's final value after
+\Trainlctreach\ of 30{,}000 steps (Figure~\ref{fig:training}). On the v2 panels (descriptive) it closes \Gaplct\% of
+the F1 gap (lifted network \GapliftOne\%) but inherits part of the transformer's degradation with 16 calibration rows.
+\input{exp_v3_real}

@@ -1,0 +1,18 @@
+\begin{table}[h]
+\centering\scriptsize
+\setlength{\tabcolsep}{2pt}
+\caption{\label{tab:seeds}Second training seeds of the transformer and the lifted cavity transformer (post hoc). Endpoint comparisons recomputed with each seed and with both averaged; the lifted cavity network always averages its three seeds. Gains in nats, paired 95\% intervals (cluster-robust over weeks on Beijing).}
+\begin{tabular}{llllll}
+\toprule
+ID & Data & Comparison & Seed 1 (protocol) & Seed 2 & Seeds averaged\\
+\midrule
+E2 & F1, $k=2$ & lifted vs transformer & $+$0.033 [$+$0.027, $+$0.040] & $+$0.037 [$+$0.030, $+$0.044] & $+$0.035 [$+$0.029, $+$0.042]\\
+E3b & F3, $k=2$ & lifted vs transformer & $+$0.144 [$+$0.127, $+$0.161] & $+$0.155 [$+$0.139, $+$0.171] & $+$0.149 [$+$0.134, $+$0.165]\\
+E5 & G1, $k=2$ & LCT vs transformer & $+$0.035 [$+$0.027, $+$0.042] & $+$0.037 [$+$0.028, $+$0.046] & $+$0.036 [$+$0.028, $+$0.044]\\
+E6 & G3, $k=2$ & LCT vs transformer & $+$0.150 [$+$0.133, $+$0.167] & $+$0.161 [$+$0.142, $+$0.180] & $+$0.155 [$+$0.139, $+$0.172]\\
+E4b & Beijing PM$_{2.5}$ & lifted vs transformer (FT) & $-$0.118 [$-$0.145, $-$0.091] & $-$0.115 [$-$0.159, $-$0.070] & $-$0.116 [$-$0.150, $-$0.083]\\
+E7a & Beijing NO$_2$ & LCT vs lifted (FT) & $+$0.062 [$+$0.024, $+$0.100] & $+$0.042 [$-$0.023, $+$0.108] & $+$0.052 [$+$0.002, $+$0.103]\\
+E7b & Beijing NO$_2$ & LCT vs transformer (FT) & $-$0.021 [$-$0.093, $+$0.052] & $-$0.042 [$-$0.097, $+$0.012] & $-$0.032 [$-$0.093, $+$0.030]\\
+\bottomrule
+\end{tabular}
+\end{table}

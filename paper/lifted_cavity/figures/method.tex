@@ -1,0 +1,43 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize,
+  box/.style={draw=black!60, rounded corners=2pt, align=center, inner sep=3pt, fill=white},
+  sens/.style={circle, draw=black!60, minimum size=14pt, inner sep=0pt, fill=blue!6},
+  miss/.style={circle, draw=black!25, dashed, minimum size=14pt, inner sep=0pt, text=black!35},
+  lat/.style={circle, draw=black!70, thick, minimum size=18pt, inner sep=0pt, fill=orange!12},
+  arr/.style={-{Latex[length=2mm]}, black!65},
+]
+% support and anchor
+\node[box, minimum width=2.3cm] (sup) at (0,1.15) {calibration rows $\mathcal{D}$\\[-1pt]{\scriptsize $n\times(P{+}1)$, entries missing}};
+\node[box, minimum width=2.3cm] (anc) at (0,-0.25) {EM + supervised FA\\[-1pt]{\scriptsize anchor $(A_j,D_j,\psi_j)$}};
+\draw[arr] (sup) -- (anc);
+% sensors and latent
+\node[sens] (x1) at (3.0,1.45) {$x_1$};
+\node[miss] (x2) at (3.0,0.8) {$x_2$};
+\node[sens] (x3) at (3.0,0.15) {$x_3$};
+\node at (3.0,-0.32) {$\vdots$};
+\node[sens] (xP) at (3.0,-0.85) {$x_P$};
+\node[lat] (y) at (4.9,0.75) {$y$};
+\node[lat] (h) at (4.9,-0.25) {$h$};
+\foreach \s in {x1,x3,xP} { \draw[black!55] (\s) -- (y); \draw[black!55] (\s) -- (h); }
+\node[font=\scriptsize, text=black!45] at (3.0,1.95) {sensor $2$ missing: no site};
+\draw[arr] (anc.east) -- node[above, font=\scriptsize] {initial sites} (2.55,-0.25);
+\node[font=\scriptsize, align=center] at (4.05,-1.45) {rank-one Gaussian site per\\observed sensor over $z=(y,h)$};
+% refinement loop
+\node[box, minimum width=2.0cm] (cav) at (7.55,1.15) {cavity $q_{-j}(y,h)$\\[-1pt]{\scriptsize other sensors' sites}};
+\node[box, minimum width=2.0cm, fill=blue!5] (net) at (7.55,-0.25) {shared net $f_\theta$\\[-1pt]{\scriptsize $x_j$, support code $e_j$}};
+\draw[arr] (y.east) ++(0.05,0.05) -- (cav.west);
+\draw[arr] (cav) -- (net);
+\draw[arr] (net.west) -- node[above, font=\scriptsize] {new site $j$} (h.east);
+\node[font=\scriptsize] at (7.55,1.85) {$R=3$ rounds};
+% output
+\node[box, minimum width=1.6cm, fill=orange!8] (out) at (10.3,0.45) {$p(y\mid x_S,\mathcal{D})$\\[-1pt]{\scriptsize $y$-marginal}};
+\draw[arr] (cav.east) -| (out.north);
+\end{tikzpicture}
+\caption{\label{fig:method}Lifted cavity network. A supervised factor analysis estimated from the incomplete
+calibration rows gives every sensor a rank-one Gaussian site over the target $y$ and a shared nuisance $h$. Missing
+sensors contribute no site, so any subset and any number of sensors are handled by omission. For $R$ rounds, a shared
+network replaces each observed sensor's site using its cavity (the posterior from the other sensors) and an encoding
+of that sensor's calibration scatter. The prediction is the $y$-marginal of the product.}
+\end{figure}

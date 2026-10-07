@@ -1,0 +1,284 @@
+\documentclass{article}
+
+\PassOptionsToPackage{numbers, compress}{natbib}
+\usepackage{neurips_2026}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{enumitem}
+\setlist{itemsep=1pt,topsep=3pt,parsep=0pt}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\D}{\mathcal{D}}
+
+\input{generated/numbers}
+
+\title{Lifted Cavity Networks: In-Context Sensor Fusion\\with Missing Sensors and Shared Noise}
+
+\author{Anonymous Authors}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+%=====================================================================
+\section{Introduction}
+%=====================================================================
+
+Low-cost sensors now carry much of the world's environmental, industrial and clinical measurement. A typical deployment
+co-locates a few cheap sensors with a reference instrument for a short calibration period, and from then on predicts
+the reference quantity from the sensors alone~\citep{zimmerman2018calibration}. Three features make this hard. First, every deployment is different:
+gains, cross-sensitivities and noise depend on the unit, its placement and its age, and the calibration record is
+short. Second, sensor noise is \emph{shared}: temperature, humidity, local emissions and drift move several sensors at
+once, so sensors are not conditionally independent given the target. Third, sensors fail, are serviced or are added, so
+at prediction time an arbitrary subset is available, often one never seen together during calibration.
+
+We study this as \emph{in-context} probabilistic prediction. A network receives a deployment's labeled calibration rows
+(the support), with whatever entries are missing, and a query made of an arbitrary subset of sensor readings, and it
+returns a predictive distribution for the target. Trained once across many deployments, such a network adapts to a new
+one from its calibration rows alone, as conditional neural processes and prior-fitted networks do for regression and
+tabular prediction~\citep{garnelo2018cnp,muller2022pfn,hollmann2025tabpfnv2}.
+
+The problem imposes two structural requirements. The predictor must be \emph{mask-consistent}: defined and accurate for
+every subset of observed sensors, including subsets absent from training. It must also be \emph{width-agnostic}: usable
+for any number of sensors. A product of per-sensor experts over the target meets both by construction, because a
+missing sensor simply contributes no factor~\citep{hinton2002poe,wu2018mvae}. Learned message passing in the style of
+expectation propagation (EP) refines such experts using context from the other sensors~\citep{minka2001ep,heess2013learning}.
+
+\textbf{Contributions.}
+\begin{enumerate}
+  \item \textbf{When products of experts fail (\S\ref{sec:scalar}--\ref{sec:method}).} Under shared noise, no product
+  of mask-independent experts over the target alone is Bayes-consistent across missingness patterns; the optimal
+  weight of a sensor can even change sign with the other sensors present. More generally, static Gaussian sites
+  over the target and $K'$ nuisance dimensions can be consistent for every pattern only if $K'$ reaches the rank of
+  the shared noise, and then they are exact. An EP-style network with scalar cavities fails accordingly in practice.
+  \item \textbf{Lifted cavity networks (\S\ref{sec:method}).} Each observed sensor contributes a rank-one Gaussian
+  site over the target and a low-dimensional shared nuisance, and missing sensors are omitted exactly. The sites start
+  from a factor analysis of the incomplete calibration rows and are refined by a small network that re-linearizes
+  each sensor's response under its cavity.
+  \item \textbf{A pre-registered evaluation (\S\ref{sec:experiments})} against exact posteriors, a Hamiltonian Monte
+  Carlo estimate of the Bayes-optimal predictive, tuned closed forms and a TabPFN-v2-style transformer trained on the
+  same task distribution, on synthetic panels and two real sensor networks. Three protocols were committed before
+  their test data existed, and every endpoint is reported.
+\end{enumerate}
+\input{intro_results}
+
+%=====================================================================
+\section{Problem setup}
+\label{sec:setup}
+%=====================================================================
+
+A task (deployment) $\tau\sim p(\tau)$ defines a joint distribution $p_\tau(x,y)$ over $P$ sensor readings $x\in\R^P$
+and a scalar target $y$. The support $\D=\{(x_i,m_i,y_i)\}_{i=1}^{n}$ holds $n$ labeled rows whose entry $x_{ij}$ is
+observed where $m_{ij}=1$. A query is a reading $x_S$ of an observed subset $S\subseteq\{1,\dots,P\}$. The target of
+prediction is the posterior predictive
+\begin{equation}
+  p(y\mid x_S,\D)=\int p_\tau(y\mid x_S)\,p(\tau\mid \D,x_S)\,d\tau ,
+  \label{eq:ppd}
+\end{equation}
+and methods are scored by the negative log-likelihood (NLL) of the held-out target. Two privileged references bound
+what is possible on synthetic tasks: the \emph{oracle} $p_\tau(y\mid x_S)$, which knows the task, and the
+\emph{Bayes-optimal predictive}~\eqref{eq:ppd}, which knows only the task prior. We call the NLL difference between
+the closed-form FA-Gaussian of \S\ref{sec:method} and the Bayes-optimal predictive the \emph{achievable gap}.
+
+An in-context method learns a map $(\D,x_S)\mapsto q(y)$ by minimizing NLL over tasks drawn from a training
+distribution~\citep{garnelo2018cnp,muller2022pfn,gershman2014amortized}. Throughout, models are trained only on
+queries with \emph{at most one} missing sensor, and evaluated on patterns with up to three missing. Two- and
+three-sensor deletions are therefore never seen in training.
+
+%=====================================================================
+\section{Scalar experts cannot fuse sensors with shared noise}
+\label{sec:scalar}
+%=====================================================================
+
+Consider the linear-Gaussian model $x_j=a_j y+d_j u+\sigma_j\epsilon_j$ with $y,u,\epsilon_j\sim\N(0,1)$, where $u$ is
+a nuisance shared by all sensors. A product-of-experts (PoE) predictor gives each sensor a factor $t_j(y;x_j)$ and
+predicts $q(y\mid x_S)\propto p(y)\prod_{j\in S}t_j(y;x_j)$. Omitting missing sensors is what makes the construction
+mask-consistent.
+
+\begin{proposition}[Scalar experts]\label{prop:scalar}
+Let each $t_j$ be Gaussian in $y$ with positive precision, depend on $x_j$, and not depend on $S$. Suppose $q$ equals
+the Bayes posterior for every single-sensor query $S=\{j\}$. Then for a pair $\{j,k\}$ with $a_ja_k\neq0$, $q$ equals
+the Bayes posterior if and only if $d_jd_k=0$. Moreover, $q$'s pair posterior mean gives $x_j$ a coefficient with the
+sign of $a_j$, whereas the Bayes coefficient can have the opposite sign.
+\end{proposition}
+
+The proof (Appendix~\ref{app:proofs}) shows that matching single-sensor queries forces
+$t_j(y;x_j)\propto p(x_j\mid y)$, so $q$ is the naive-Bayes posterior. For example, take $a=(1,1)$, $d=(1,0.5)$ and
+$\sigma=(0.05,0.05)$. The Bayes coefficient of $x_1$ is $+0.50$ when $x_1$ is alone and $-0.96$ in the pair: the
+second sensor lets the predictor estimate $u$ and subtract it from the first.
+
+EP~\citep{minka2001ep} refines each factor using its \emph{cavity}, the approximate posterior given the other
+sensors, and learned EP amortizes the refinement~\citep{heess2013learning,eslami2014just,jitkrittum2015kernel}. With a
+Gaussian over $y$ alone, however, the cavity summarizes the other sensors by a scalar mean and variance, discarding
+what they reveal about $u$. Proposition~\ref{prop:scalar} does not exclude every scalar-cavity network, but the
+failure is visible in practice (\S\ref{sec:audit}).
+
+%=====================================================================
+\section{Lifted cavity networks}
+\label{sec:method}
+%=====================================================================
+
+\input{figures/method}
+
+\paragraph{Lifted sites.}
+Let $z=(y,h)\in\R^{1+K}$, where $h$ is a $K$-dimensional nuisance with prior $\N(0,I)$ and $y$ has prior
+$\N(\mu_y,v_y)$. Write the prior in natural parameters $(\Lambda_0,\eta_0)$. Each observed sensor contributes a
+rank-one Gaussian site, which corresponds to a linear-Gaussian measurement $\tilde x_j=w_j^\top z+e_j$ with
+$e_j\sim\N(0,\psi_j)$:
+\begin{equation}
+  \Lambda_j=\frac{w_jw_j^\top}{\psi_j},\qquad \eta_j=\frac{w_j\,o_j}{\psi_j}.
+  \label{eq:site}
+\end{equation}
+The prediction is the $y$-marginal of
+\begin{equation}
+  q(z\mid x_S)=\N\!\big(z;\Lambda^{-1}\eta,\Lambda^{-1}\big),\qquad
+  \Lambda=\Lambda_0+\textstyle\sum_{j\in S}\Lambda_j,\quad \eta=\eta_0+\textstyle\sum_{j\in S}\eta_j .
+  \label{eq:product}
+\end{equation}
+
+\begin{proposition}[Exactness]\label{prop:exact}
+Suppose $x_j=A_jy+D_j^\top h+c_j+e_j$, with independent $e_j\sim\N(0,\psi_j)$ and the priors above. Set $w_j=(A_j,D_j)$
+and $o_j=x_j-c_j$. Then \eqref{eq:product} equals $p(z\mid x_S)$ for every $S\subseteq\{1,\dots,P\}$, and its
+$y$-marginal is the Bayes predictive for every missingness pattern.
+\end{proposition}
+
+Shared noise of rank $K$ is absorbed by $K$ nuisance dimensions, so the obstruction of
+Proposition~\ref{prop:scalar} disappears: the lifted product differences out $h$ automatically. Fewer nuisance
+dimensions cannot suffice, so the lifting dimension must match the rank of the shared noise:
+
+\begin{proposition}[Lifting dimension]\label{prop:rank}
+Let $x=ay+Du+e$ with $y\sim\N(0,1)$, $u\sim\N(0,I_K)$, $D\in\R^{P\times K}$, independent Gaussian $e$, and every
+$a_j\neq0$. Suppose
+that after deleting any row, $L=[a,D]$ still contains two disjoint nonsingular $(1+K)\times(1+K)$ submatrices, which
+holds for almost every $L$ once $P\geq2K+3$. If a product of mask-independent sites of the form \eqref{eq:site} with
+$o_j=x_j-c_j$, over $z=(y,h)$ with $h\in\R^{K'}$ and a Gaussian prior, reproduces $p(y\mid x_S)$ for every $S$ with
+$|S|\leq2$, then $K'\geq K$.
+\end{proposition}
+
+The proof (Appendix~\ref{app:proofs}) shows that the conditionals on single sensors and pairs identify the covariance
+of the sensors, which a product of such sites can only represent as a matrix of rank $1+K'$ plus a diagonal; the
+identifiability argument of factor analysis~\citep{anderson1956statistical} excludes this when $K'<K$. Our main
+synthetic panels ($K=1$, $P=5$) meet the condition, so for products of static sites one nuisance dimension is
+necessary and sufficient.
+
+\paragraph{Closed-form initialization from the support.}
+Before any learning, we estimate the factor model from $\D$ alone. EM for a Gaussian with missing
+entries~\citep{dempster1977em,little2019statistical} gives the joint mean and covariance of $(x,y)$ from the incomplete
+calibration rows. Then $A=\mathrm{Cov}(x,y)/\mathrm{Var}(y)$, and principal-factor iterations on the residual
+covariance $\mathrm{Cov}(x)-AA^\top\mathrm{Var}(y)$ give $(D,\psi)$~\citep{rubin1982em,tipping1999ppca}. With sensors standardized by
+their support statistics, $o_j=\tilde x_j+A_j\mu_y$. We call the resulting predictor \emph{FA-Gaussian}; it is exact
+for every mask under the fitted model.
+
+\paragraph{Learned cavity refinement.}
+Real sensors are nonlinear, real noise is not exactly factor-structured, and $n=48$ calibration rows make plug-in
+estimates noisy. We therefore refine the sites for $R$ rounds. In each round, every observed sensor $j$ removes its
+site from \eqref{eq:product} to form the cavity $q_{-j}(z)=\N(m_{-j},V_{-j})$, the posterior over target and nuisance
+given the other sensors. The cavity predicts the reading as $\hat x_j=A_j(m_{-j,y}-\mu_y)+D_j^\top m_{-j,h}$, with
+variance $v_j=w_j^\top V_{-j}w_j+\psi_j$. A shared two-layer network $f_\theta$ reads the reading $\tilde x_j$, an
+encoding $e_j$ of sensor $j$'s calibration scatter, the anchor $(A_j,D_j,\log\psi_j)$, the cavity
+$(m_{-j},\log V_{-j,yy},V_{-j,yh})$, the raw and standardized residuals of $\tilde x_j$ against $\hat x_j$, $\log v_j$
+and the fraction of observed sensors. It outputs a correction
+$(\delta^{\mathrm{off}}_j,\delta^{\mathrm{slope}}_j,\delta^{D}_j,s_j)$, and the site is replaced by the local
+linearization of the sensor's response at the cavity mean $\bar y=m_{-j,y}$:
+\begin{equation}
+  \begin{aligned}
+  w_j&=(A_j+\delta^{\mathrm{slope}}_j,\,D_j+\delta^{D}_j), & o_j&=\tilde x_j-g_j(\bar y)+w_{j,y}\bar y,\\
+  g_j(\bar y)&=A_j(\bar y-\mu_y)+\delta^{\mathrm{off}}_j, & \psi_j&\leftarrow\psi_j\,e^{4\tanh(s_j/4)} .
+  \end{aligned}
+  \label{eq:relin}
+\end{equation}
+The encoding $e_j\in\R^{16}$ is a DeepSets network~\citep{zaheer2017deepsets} over sensor $j$'s calibration scatter,
+so $f_\theta$ can recognize a sensor's nonlinearity from the support. The last layer of $f_\theta$ is initialized at
+zero.
+
+If $f_\theta$ were replaced by the statistical linear regression of a \emph{known} response function under the cavity,
+these rounds would be EP with posterior linearization~\citep{deisenroth2012ep,garciafernandez2015plf}. The network
+amortizes the unknown response from the calibration rows, in the spirit of algorithm
+unrolling~\citep{gregor2010lista,monga2021unrolling}.
+
+\begin{proposition}[Structural guarantees]\label{prop:struct}
+For any parameters $\theta$:
+\begin{enumerate}
+  \item[(i)] the prediction does not depend on the readings of missing sensors;
+  \item[(ii)] permuting sensors together with their calibration columns leaves the prediction unchanged, and the same
+  $\theta$ applies for every $P$;
+  \item[(iii)] when the last layer of $f_\theta$ is zero, the network equals the FA-Gaussian closed form of its
+  anchor, so the minimal training risk over $\theta$ is at most that closed form's.
+\end{enumerate}
+\end{proposition}
+
+\paragraph{Training.}
+We minimize the predictive NLL over episodes drawn from a pool of 60{,}000 synthetic tasks (128 tasks $\times$ 8
+queries per step, 20{,}000 AdamW steps with cosine decay, query masks with at most one missing sensor). We use $K=1$
+and $R=3$. The model has about 8{,}000 parameters and trains in 15--20 minutes on one CPU core, \Computetrainratio{} times less than the transformer baseline (Table~\ref{tab:compute}). The same recipe trains
+every learned baseline except the transformer, which gets fresh tasks at every step.
+
+%=====================================================================
+\section{Related work}
+\label{sec:related}
+%=====================================================================
+
+\textbf{Products of experts} handle missing modalities by omission~\citep{hinton2002poe,wu2018mvae,ma2021smil}; our
+negative result says when experts over the target alone are insufficient. \textbf{Learned message passing}, through
+learned EP messages~\citep{heess2013learning,eslami2014just,jitkrittum2015kernel} or unrolled
+inference~\citep{gregor2010lista,monga2021unrolling}, amortizes inference inside a fixed model; here the model is
+unknown and must be read from a small calibration set, and the cavity is over a lifted latent. \textbf{Supervised
+learning with missing values}~\citep{rubin1976inference,little2019statistical,josse2019consistency} studies one task
+at a time; NeuMiss~\citep{lemorvan2020neumiss} unrolls the Bayes predictor of a Gaussian model but is trained per
+dataset and keyed to feature identities. \textbf{In-context prediction} with neural
+processes~\citep{garnelo2018cnp,kim2019anp} and prior-fitted networks such as TabPFN and
+TabICL~\citep{muller2022pfn,hollmann2023tabpfn,hollmann2025tabpfnv2,qu2025tabicl} uses generic set or transformer
+architectures; we compare against such a transformer trained on our task distribution and test lifted sites as its
+output layer. \textbf{Fusion under unknown correlations}~\citep{julier1997ci,wang2025ifnet,dong2025difnet,revach2022kalmannet}
+is learned or bounded per system, with fixed sensor sets.
+
+%=====================================================================
+\section{Experiments}
+\label{sec:experiments}
+%=====================================================================
+\input{experiments}
+
+%=====================================================================
+\section{Limitations}
+\label{sec:limits}
+%=====================================================================
+\input{limitations}
+
+%=====================================================================
+\section{Conclusion}
+%=====================================================================
+\input{conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\clearpage
+\appendix
+\input{appendix}
+
+\clearpage
+\input{checklist}
+
+\end{document}

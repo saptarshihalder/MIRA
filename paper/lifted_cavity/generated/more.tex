@@ -1,0 +1,205 @@
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:moreF2}Panel F2 (8 sensors; 128 tasks): mean test NLL by number of missing sensors.}
+\begin{tabular}{lcccc}
+\toprule
+Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$\\
+\midrule
+Oracle & $-$0.807 & $-$0.712 & $-$0.598 & $-$0.459\\
+FA-Gaussian & $-$0.462 & $-$0.387 & $-$0.296 & $-$0.183\\
+EM-Gaussian & 0.032 & $-$0.133 & $-$0.160 & $-$0.120\\
+NL-FA & $-$0.485 & $-$0.414 & $-$0.327 & $-$0.215\\
+BLR & 0.187 & 0.398 & 0.615 & 0.028\\
+Ridge (complete case) & 0.064 & $-$0.003 & $-$0.033 & $-$0.015\\
+Lifted cavity (ours) & $-$0.615 & $-$0.530 & $-$0.427 & $-$0.302\\
+Lifted cavity, $K=2$ & $-$0.618 & $-$0.531 & $-$0.427 & $-$0.302\\
+Lifted sites, no cavity & $-$0.551 & $-$0.469 & $-$0.369 & $-$0.250\\
+Scalar sites ($K=0$) & $-$0.295 & $-$0.228 & $-$0.148 & $-$0.057\\
+Transformer & $-$0.568 & $-$0.474 & $-$0.362 & $-$0.229\\
+Transformer, all masks & $-$0.545 & $-$0.452 & $-$0.343 & $-$0.212\\
+Lifted cavity transformer (v3) & $-$0.611 & $-$0.526 & $-$0.423 & $-$0.299\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:moreF3}Panel F3 (16 sensors; 128 tasks): mean test NLL by number of missing sensors.}
+\begin{tabular}{lcccc}
+\toprule
+Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$\\
+\midrule
+Oracle & $-$1.223 & $-$1.184 & $-$1.142 & $-$1.096\\
+FA-Gaussian & $-$0.864 & $-$0.832 & $-$0.797 & $-$0.758\\
+EM-Gaussian & 6.300 & 4.851 & 2.977 & 1.553\\
+NL-FA & $-$0.910 & $-$0.876 & $-$0.841 & $-$0.803\\
+BLR & 0.095 & 0.078 & 0.058 & 0.054\\
+Ridge (complete case) & 0.093 & 0.089 & 0.081 & 0.086\\
+Lifted cavity (ours) & $-$1.018 & $-$0.982 & $-$0.945 & $-$0.902\\
+Lifted cavity, $K=2$ & $-$1.017 & $-$0.981 & $-$0.944 & $-$0.901\\
+Lifted sites, no cavity & $-$0.952 & $-$0.916 & $-$0.880 & $-$0.836\\
+Scalar sites ($K=0$) & $-$0.658 & $-$0.627 & $-$0.591 & $-$0.554\\
+Transformer & $-$0.886 & $-$0.846 & $-$0.801 & $-$0.747\\
+Transformer, all masks & $-$0.869 & $-$0.832 & $-$0.790 & $-$0.738\\
+Lifted cavity transformer (v3) & $-$1.020 & $-$0.985 & $-$0.949 & $-$0.905\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:moreF4}Panel F4 (nonlinearity 0.8; 128 tasks): mean test NLL by number of missing sensors.}
+\begin{tabular}{lcccc}
+\toprule
+Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$\\
+\midrule
+Oracle & $-$0.513 & $-$0.331 & $-$0.086 & 0.261\\
+FA-Gaussian & 0.050 & 0.170 & 0.334 & 0.568\\
+EM-Gaussian & 0.050 & 0.145 & 0.311 & 0.559\\
+NL-FA & $-$0.032 & 0.089 & 0.258 & 0.507\\
+BLR & 0.208 & 0.188 & 0.331 & 0.568\\
+Ridge (complete case) & 0.138 & 0.208 & 0.338 & 0.571\\
+Lifted cavity (ours) & $-$0.185 & $-$0.026 & 0.191 & 0.498\\
+Lifted cavity, $K=2$ & $-$0.200 & $-$0.035 & 0.186 & 0.497\\
+Lifted sites, no cavity & $-$0.068 & 0.075 & 0.261 & 0.519\\
+Scalar sites ($K=0$) & $-$0.013 & 0.130 & 0.314 & 0.570\\
+Transformer & $-$0.226 & $-$0.043 & 0.191 & 0.503\\
+Transformer, all masks & $-$0.221 & $-$0.038 & 0.190 & 0.486\\
+Residual MLP & $-$0.107 & 0.039 & 0.235 & 0.508\\
+Scalar-cavity network & 0.133 & 0.256 & 0.416 & 0.635\\
+Lifted cavity transformer (v3) & $-$0.196 & $-$0.037 & 0.179 & 0.482\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:moreF5}Panel F5 (linear sensors; 128 tasks): mean test NLL by number of missing sensors.}
+\begin{tabular}{lcccc}
+\toprule
+Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$\\
+\midrule
+Oracle & $-$0.455 & $-$0.288 & $-$0.066 & 0.244\\
+FA-Gaussian & $-$0.362 & $-$0.203 & 0.009 & 0.305\\
+EM-Gaussian & $-$0.244 & $-$0.142 & 0.034 & 0.308\\
+NL-FA & $-$0.337 & $-$0.178 & 0.030 & 0.318\\
+BLR & $-$0.135 & $-$0.085 & 0.061 & 0.322\\
+Ridge (complete case) & $-$0.169 & $-$0.092 & 0.062 & 0.323\\
+Lifted cavity (ours) & $-$0.323 & $-$0.172 & 0.031 & 0.318\\
+Lifted cavity, $K=2$ & $-$0.320 & $-$0.170 & 0.033 & 0.318\\
+Lifted sites, no cavity & $-$0.343 & $-$0.189 & 0.018 & 0.309\\
+Scalar sites ($K=0$) & $-$0.085 & 0.031 & 0.186 & 0.415\\
+Transformer & $-$0.278 & $-$0.122 & 0.085 & 0.371\\
+Transformer, all masks & $-$0.281 & $-$0.123 & 0.080 & 0.353\\
+Residual MLP & $-$0.304 & $-$0.161 & 0.036 & 0.319\\
+Scalar-cavity network & 0.052 & 0.161 & 0.302 & 0.505\\
+Lifted cavity transformer (v3) & $-$0.319 & $-$0.171 & 0.029 & 0.315\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:moreF6}Panel F6 (16 support rows; 128 tasks): mean test NLL by number of missing sensors.}
+\begin{tabular}{lcccc}
+\toprule
+Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$\\
+\midrule
+Oracle & $-$0.446 & $-$0.280 & $-$0.060 & 0.252\\
+FA-Gaussian & 0.256 & 0.371 & 0.510 & 0.686\\
+EM-Gaussian & 24.900 & 4.682 & 1.140 & 0.739\\
+NL-FA & 0.314 & 0.388 & 0.496 & 0.661\\
+BLR & 0.898 & 0.857 & 3.690 & 0.887\\
+Ridge (complete case) & 0.317 & 0.391 & 0.500 & 0.624\\
+Lifted cavity (ours) & 0.073 & 0.195 & 0.363 & 0.604\\
+Lifted cavity, $K=2$ & 0.156 & 0.250 & 0.392 & 0.614\\
+Lifted sites, no cavity & 0.117 & 0.234 & 0.389 & 0.604\\
+Scalar sites ($K=0$) & 0.204 & 0.293 & 0.428 & 0.644\\
+Transformer & 0.253 & 0.371 & 0.523 & 0.731\\
+Transformer, all masks & 0.256 & 0.359 & 0.483 & 0.653\\
+Residual MLP & 0.094 & 0.211 & 0.371 & 0.594\\
+Scalar-cavity network & 0.345 & 0.439 & 0.565 & 0.750\\
+Lifted cavity transformer (v3) & 0.237 & 0.333 & 0.457 & 0.643\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:moreF7}Panel F7 (96 support rows; 128 tasks): mean test NLL by number of missing sensors.}
+\begin{tabular}{lcccc}
+\toprule
+Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$\\
+\midrule
+Oracle & $-$0.429 & $-$0.264 & $-$0.043 & 0.269\\
+FA-Gaussian & $-$0.232 & $-$0.082 & 0.114 & 0.385\\
+EM-Gaussian & $-$0.237 & $-$0.086 & 0.112 & 0.385\\
+NL-FA & $-$0.276 & $-$0.127 & 0.073 & 0.353\\
+BLR & $-$0.178 & $-$0.056 & 0.125 & 0.390\\
+Ridge (complete case) & $-$0.163 & $-$0.047 & 0.129 & 0.391\\
+Lifted cavity (ours) & $-$0.324 & $-$0.163 & 0.052 & 0.353\\
+Lifted cavity, $K=2$ & $-$0.320 & $-$0.159 & 0.056 & 0.357\\
+Lifted sites, no cavity & $-$0.275 & $-$0.123 & 0.078 & 0.359\\
+Scalar sites ($K=0$) & $-$0.097 & 0.034 & 0.205 & 0.443\\
+Transformer & $-$0.295 & $-$0.133 & 0.081 & 0.379\\
+Transformer, all masks & $-$0.297 & $-$0.134 & 0.080 & 0.367\\
+Residual MLP & $-$0.287 & $-$0.131 & 0.074 & 0.360\\
+Scalar-cavity network & 0.047 & 0.161 & 0.309 & 0.516\\
+Lifted cavity transformer (v3) & $-$0.329 & $-$0.167 & 0.047 & 0.346\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:moreairqco}Air Quality CO: mean test NLL for every number of simulated missing sensors (23 later weeks).}
+\begin{tabular}{lcccc}
+\toprule
+Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$\\
+\midrule
+EM-Gaussian & 0.074 & 0.063 & 0.085 & 0.146\\
+FA-Gaussian & 0.052 & 0.086 & 0.116 & 0.154\\
+NL-FA & 0.144 & 0.120 & 0.091 & 0.124\\
+Bayesian linear regression & 1.037 & 0.433 & 0.216 & 0.202\\
+Ridge (complete case) & 0.824 & 0.337 & 0.208 & 0.210\\
+GP, complete case$^\dagger$ & 3.364 & 1.056 & 0.503 & 0.146\\
+$k$-nearest neighbours$^\dagger$ & 0.571 & 0.391 & 0.353 & 0.274\\
+Lifted cavity, zero-shot & 0.044 & 0.064 & 0.129 & 0.160\\
+Transformer, zero-shot & $-$0.017 & $-$0.006 & 0.081 & 0.154\\
+\textbf{Lifted cavity, fine-tuned (ours)} & $-$0.040 & $-$0.031 & 0.008 & 0.077\\
+\quad no synthetic pretraining & $-$0.001 & $-$0.014 & $-$0.006 & 0.077\\
+\quad no cavity input & $-$0.086 & $-$0.065 & $-$0.028 & 0.038\\
+\quad scalar sites ($K=0$) & $-$0.026 & $-$0.021 & $-$0.003 & 0.075\\
+Transformer, fine-tuned & $-$0.163 & $-$0.149 & $-$0.052 & 0.036\\
+Residual MLP, fine-tuned & 0.025 & 0.061 & 0.110 & 0.160\\
+\emph{Lifted cavity transformer, fine-tuned}$^\ddagger$ & $-$0.099 & $-$0.054 & $-$0.027 & 0.044\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:moreairqno2}Air Quality NO$_2$: mean test NLL for every number of simulated missing sensors (23 later weeks).}
+\begin{tabular}{lcccc}
+\toprule
+Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$\\
+\midrule
+EM-Gaussian & $-$0.237 & $-$0.174 & $-$0.175 & $-$0.168\\
+FA-Gaussian & $-$0.196 & $-$0.173 & $-$0.155 & $-$0.162\\
+NL-FA & $-$0.090 & $-$0.102 & $-$0.142 & $-$0.169\\
+Bayesian linear regression & $-$0.055 & $-$0.214 & $-$0.178 & $-$0.160\\
+Ridge (complete case) & $-$0.200 & $-$0.230 & $-$0.176 & $-$0.145\\
+GP, complete case$^\dagger$ & 25.217 & 0.696 & $-$0.198 & $-$0.258\\
+$k$-nearest neighbours$^\dagger$ & $-$0.010 & $-$0.020 & $-$0.063 & $-$0.128\\
+Lifted cavity, zero-shot & $-$0.350 & $-$0.295 & $-$0.233 & $-$0.176\\
+Transformer, zero-shot & $-$0.360 & $-$0.310 & $-$0.231 & $-$0.136\\
+\textbf{Lifted cavity, fine-tuned (ours)} & $-$0.412 & $-$0.366 & $-$0.337 & $-$0.273\\
+\quad no synthetic pretraining & $-$0.419 & $-$0.365 & $-$0.316 & $-$0.248\\
+\quad no cavity input & $-$0.423 & $-$0.375 & $-$0.332 & $-$0.275\\
+\quad scalar sites ($K=0$) & $-$0.359 & $-$0.337 & $-$0.302 & $-$0.231\\
+Transformer, fine-tuned & $-$0.485 & $-$0.429 & $-$0.381 & $-$0.294\\
+Residual MLP, fine-tuned & $-$0.246 & $-$0.198 & $-$0.147 & $-$0.106\\
+\emph{Lifted cavity transformer, fine-tuned}$^\ddagger$ & $-$0.404 & $-$0.396 & $-$0.359 & $-$0.292\\
+\bottomrule
+\end{tabular}
+\end{table}

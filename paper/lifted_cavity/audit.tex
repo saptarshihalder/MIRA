@@ -1,0 +1,66 @@
+\paragraph{How the method arose.}
+The lifted cavity network replaced an earlier design that failed. That design was a three-round EP-style network whose
+sites live on $y$ alone and are updated from the scalar cavity of $y$. It was evaluated under pre-registered gates on
+the same synthetic family. Its first version collapsed to the prior during training. A repaired version, with sites
+initialized from support moments, trained successfully but was beaten by a ridge regression. On that panel the
+oracle, the ridge control and the best repaired seed scored:
+
+\begin{center}\small
+\begin{tabular}{lr}
+\toprule
+Method & NLL, two sensors missing\\
+\midrule
+Oracle & $-0.046$\\
+Ridge control & $0.396$\\
+Repaired scalar-cavity network (best seed) & $0.403$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Computing the oracle exposed three problems. First, the control was weak: it mean-imputed missing calibration
+entries, and a support-only EM or factor-analysis Gaussian scores 0.168 or 0.156. Second, scalar sites are
+structurally limited (\S\ref{sec:scalar}). Third, the learners were starved: 512 reused tasks and 3{,}000 updates.
+Retraining the scalar-cavity architecture with our recipe (60{,}000 tasks, 20{,}000 steps) improves it by only about
+0.05 nats, and on F1 it remains \Ablrepocavityfreshvsfaabs\ nats worse than the untrained FA-Gaussian (\S\ref{sec:audit}).
+
+\paragraph{Protocol v1.}
+After development on panels that are now retired, five endpoints were committed to version control before their
+panels were generated:
+\begin{itemize}
+  \item fresh synthetic tasks, against FA-Gaussian and against the residual MLP;
+  \item 8-sensor transfer;
+  \item stronger nonlinearity;
+  \item a new real target (NO$_2$ on the Air Quality device).
+\end{itemize}
+All five passed (Table~\ref{tab:v1}). Each endpoint was evaluated once, and no model was retrained after the commit.
+
+\input{generated/v1_table}
+
+\paragraph{Protocol v2.}
+Protocol v2 was likewise committed before any of its panels or test splits existed. It adds:
+\begin{itemize}
+  \item the transformer baseline, NL-FA, BLR and the HMC ceiling;
+  \item wider panels (8 and 16 sensors), and shifts in nonlinearity and support size;
+  \item the Beijing benchmark, whose test period had never been scored.
+\end{itemize}
+NL-FA's settings and BLR's choice as the strongest real-data closed form were fixed on development data
+(Appendix~\ref{app:baselines}). The gas-sensor-drift dataset~\citep{vergara2012drift} was examined during development
+and then excluded, before any test split was built. Its heavy-tailed sensor outliers made the mean NLL of every
+Gaussian method dominated by a few episodes, with mean and median differing by more than 100 nats, so it cannot
+separate methods. One deviation was recorded before any Beijing score existed: some query hours have no other station
+observed, and complete-case BLR cannot fit zero features, so for an empty sensor set it returns the support mean with
+variance $s^2(1+1/n)$, like the other closed forms' prior predictive.
+
+\paragraph{Protocol v3.}
+After protocol v2's real-data endpoint failed, protocol v3 was committed before any of its panels or targets existed.
+It fixes one model (the lifted cavity transformer of \S\ref{sec:exp-v3}, trained once with the transformer's recipe
+and seed and evaluated at its final checkpoint), two new synthetic panels (G1, G3), two Beijing pollutants never
+scored by any model (NO$_2$, primary; CO, descriptive), the fine-tuning recipe of protocol v2, and four endpoints
+(Table~\ref{tab:endpoints}). The lifted cavity transformer's scores on the v2 panels are descriptive only
+(Appendix~\ref{app:more}). Two container restarts interrupted its training before any v3 score existed; it was retrained
+from scratch with the same seed, and later runs checkpoint every random state so that a resumed run is bitwise
+identical to an uninterrupted one (a unit test). The protocol document logs both events.
+
+\paragraph{Post-hoc analyses.} Everything not named in a protocol is post hoc and labeled as such: the per-episode
+Gaussian process and $k$-nearest neighbours, the second training seeds of both transformers, the fine-tuning diagnostics of \S\ref{sec:exp-real}, and the exploratory runs of
+Appendix~\ref{app:more}.

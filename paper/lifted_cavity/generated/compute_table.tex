@@ -1,0 +1,16 @@
+\begin{table}[h]
+\centering\small
+\caption{\label{tab:compute}Compute. Training on one CPU core (core-hours); inference (ms/task) is single-threaded time per task for 480 queries (ten masks $\times$ 48 rows) on F1. Anchors are precomputed in batch and excluded; the closed-form rows include their unbatched NumPy fits.}
+\begin{tabular}{lrrrr}
+\toprule
+Model & Parameters & Training steps & Core-hours & ms/task\\
+\midrule
+Lifted cavity network & 8{,}004 & 20{,}000 & 0.22 & 7.2\\
+Residual MLP on FA anchor & 15{,}490 & 20{,}000 & 0.20 & 1.2\\
+Transformer (TabPFN-v2 style) & 202{,}562 & 30{,}000 & 3.11 & 42.9\\
+Lifted cavity transformer & 202{,}822 & 30{,}000 & 3.15 & 55.7\\
+FA-Gaussian (closed form) & -- & -- & -- & 38.3\\
+NL-FA (closed form) & -- & -- & -- & 34.4\\
+\bottomrule
+\end{tabular}
+\end{table}

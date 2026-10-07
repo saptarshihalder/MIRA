@@ -1,0 +1,1 @@
+{"model": "knn", "note": "Post-hoc diagnostic (not in any protocol): per-episode k-nearest-neighbour regression on the observed sensors."}

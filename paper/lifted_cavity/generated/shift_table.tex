@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\caption{\label{tab:shift}Generalization beyond the training distribution (fresh panels of 128 tasks). Mean test NLL with two missing query sensors. Every learned model was trained on $P{=}5$ sensors, nonlinearity 0.4 and $n{=}48$ support rows; the residual MLP is defined only for five sensors. Best non-privileged entry per column in bold; italic rows are controls or descriptive (the lifted cavity transformer was designed after protocol v2) and are not bolded.}
+\begin{tabular}{lcccccc}
+\toprule
+Method & $P{=}8$ & $P{=}16$ & nonlin.\ 0.8 & linear & $n{=}16$ & $n{=}96$\\
+\midrule
+Oracle & $-$0.598 & $-$1.142 & $-$0.086 & $-$0.066 & $-$0.060 & $-$0.043\\\midrule
+FA-Gaussian & $-$0.296 & $-$0.797 & 0.334 & \textbf{0.009} & 0.510 & 0.114\\
+EM-Gaussian & $-$0.160 & 2.977 & 0.311 & 0.034 & 1.140 & 0.112\\
+NL-FA & $-$0.327 & $-$0.841 & 0.258 & 0.030 & 0.496 & 0.073\\
+BLR & 0.615 & 0.058 & 0.331 & 0.061 & 3.690 & 0.125\\
+Lifted cavity (ours) & \textbf{$-$0.427} & \textbf{$-$0.945} & \textbf{0.191} & 0.031 & \textbf{0.363} & \textbf{0.052}\\
+Transformer & $-$0.362 & $-$0.801 & \textbf{0.191} & 0.085 & 0.523 & 0.081\\
+Residual MLP & -- & -- & 0.235 & 0.036 & 0.371 & 0.074\\
+\emph{Transformer, all masks} & $-$0.343 & $-$0.790 & 0.190 & 0.080 & 0.483 & 0.080\\
+\emph{Lifted cavity transformer (v3)} & $-$0.423 & $-$0.949 & 0.179 & 0.029 & 0.457 & 0.047\\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,23 @@
+{
+ "model": "lift1",
+ "repo": "/tmp/claude-0/-home-claude/74dc32ba-1f98-5450-b28d-5040b5c07dd8/scratchpad/repo_experiments",
+ "steps": 0,
+ "finetune": {
+  "dataset": "airq_no2",
+  "init": "runs_init/lift1_untrained",
+  "out": "runs_real/airq_no2/lift1_untrained_ft",
+  "episodes": 4000,
+  "steps": 2000,
+  "lr": 0.0003,
+  "seed": 11,
+  "period": null,
+  "airq": "/tmp/claude-0/-home-claude/74dc32ba-1f98-5450-b28d-5040b5c07dd8/scratchpad/airq_dl/AirQualityUCI.csv",
+  "beijing": "/tmp/claude-0/-home-claude/74dc32ba-1f98-5450-b28d-5040b5c07dd8/scratchpad/data_dl/beijing2/repo/PRSA_Data_20130301-20170228",
+  "gas": "/tmp/claude-0/-home-claude/74dc32ba-1f98-5450-b28d-5040b5c07dd8/scratchpad/data_dl/gasdrift/repo",
+  "seconds": 76.7611711025238,
+  "final_ema": -0.20007516717439824,
+  "files": {
+   "AirQualityUCI.csv": "13277ae5d8581e80b7be09d47c7d3d06fe9b8e957078f2cf6e859f955e62f996"
+  }
+ }
+}

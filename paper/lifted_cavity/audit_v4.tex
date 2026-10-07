@@ -1,0 +1,34 @@
+\paragraph{Protocol v4.}
+Protocol v4 was committed after protocol v3's results and before any of its panels or targets existed. It fixes:
+\begin{itemize}
+  \item two models, each trained on a GPU with three seeds: transformer-L and LCT-L, with identical 2.1M-parameter
+  backbones and recipes (\S\ref{sec:exp-v4});
+  \item the pretrained TabPFN~v2 regressor, used in context only, with eight estimators and a fixed random state;
+  \item two fresh synthetic panels (H1, H3);
+  \item three Beijing pollutants never scored by any model (PM$_{10}$, SO$_2$ and O$_3$, pooled as Beijing-new);
+  \item the fine-tuning recipe of protocol v2;
+  \item five endpoints (Table~\ref{tab:endpoints}).
+\end{itemize}
+
+\textbf{Amendment.} One amendment was recorded before any compared model was trained or scored on a new target.
+Building the Beijing-new panels showed two things:
+\begin{itemize}
+  \item The readings are integers, and 34.2\% of SO$_2$ and 12.8\% of O$_3$ test readings equal the floor value
+  2\,$\mu$g\,m$^{-3}$.
+  \item Three SO$_2$ support sets were constant.
+\end{itemize}
+A continuous NLL then rewards placing spikes on grid values. TabPFN's histogram output can do this; Gaussian outputs
+cannot. We therefore dequantize~\citep{theis2016note}. Every integer reading of every station becomes reading
+$+\,\mathcal{U}(-\tfrac12,\tfrac12)$ before the log. The noise is fixed per pollutant and shared by the test and
+fine-tuning episodes. Readings on finer grids, which occur only in 2013--2015, are kept as they are. Before the
+amendment, the only outputs seen were the closed-form reference scores printed while the undequantized panels were
+built; those panels were discarded.
+
+\textbf{GPU-side changes.} Every change on the GPU side affects speed or robustness only:
+\begin{itemize}
+  \item batch prefetching;
+  \item longer checkpoint intervals, with a fallback to the previous checkpoint;
+  \item a cached fine-tuning pool.
+\end{itemize}
+On a CPU these runs are bitwise identical to the original code (unit-tested). TabPFN predicts all conditions of an
+episode in one call; its query rows do not interact. The third training seeds of the 203k transformers are post hoc.

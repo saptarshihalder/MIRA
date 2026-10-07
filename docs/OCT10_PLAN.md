@@ -3,22 +3,22 @@
 This plan supersedes the open-ended "next mechanism" search in `NEXT_TRAINED_MECHANISM_HYPOTHESIS.md` and
 `OCTOBER10_FINALIZATION.md`. Read `LIFTED_CAVITY_FINDINGS.md`, then `LIFTED_CAVITY_CONFIRMATION.md`.
 
-**Status, October 7.** Version-1 confirmation endpoint decisions replay and official UCI data matches; its
-eight-sensor per-cell replay exposed factor-sign sensitivity. Version 2 resolves the K=1 sign issue by averaging
-both orientations, with nine tests and all six frozen source comparisons passing. Read
-`LIFTED_GAUGE_V2_FINDINGS.md` and `LIFTED_CAVITY_IMPORT_AUDIT.md`. Next: Beijing eligibility and boundaries;
-its evaluation remains conditional on a new frozen protocol. Original confirmation belongs to version 1.
+**Status (October 7).**
+- Protocol v1: all five endpoints passed.
+- Protocol v2: five of six passed. E4b failed: a fine-tuned TabPFN-v2-style transformer beats the lifted network on
+  Beijing.
+- The NeurIPS-format draft is compiled at `paper/lifted_cavity/main.pdf`; results are summarized in
+  `LIFTED_CAVITY_RESULTS.md`.
+- Protocol v3 (lifted sites as the transformer's output layer) is running.
 
-**Decision made October 6.** Lifted cavity is the main candidate; its branch has been merged locally into
-`codex/mira-research`. MIRA-Circuit and quantum-inspired attention are deferred. A parallel line, MIRA-Circuit,
-was built in another session on October 6. It is described
+**Decision needed first.** A parallel line, MIRA-Circuit, was built in another session on October 6. It is described
 in the Claude project doc `claude/mira_circuit_sprint.md` and is not in this repository. MIRA-Circuit compiles Boolean
 missingness circuits into one column for a frozen predictor. Its synthetic pilot gates pass, but its TabPFN/TabICL
 and real-data steps have not run yet. This repository's earlier six-dataset panel found no real-data indicator
 benefit. The lifted cavity network already has real-data confirmation.
 
-Concentrate the available budget on the lifted model's reproduction, matched controls and real-data validation.
-Do not launch the Circuit GPU notebook under this plan.
+Choose one main paper for October 10. This plan applies if it is the lifted cavity network. MIRA-Circuit's frozen
+Colab steps (~2–4 GPU hours) can still run in parallel as a second paper; their results do not change this plan.
 
 **Working title.** *Lifted Cavity Networks: In-Context Sensor Fusion with Missing Sensors and Shared Noise.*
 
@@ -35,14 +35,11 @@ multi-sensor data.
 
 1. **Scope.**
    - Work only on this paper until October 10.
-   - No unrelated mechanisms or pilots. A source-validated factor-orientation repair is required before further
-     external evaluation; version 2 now passes that source check. Preserve all original checkpoints and scores.
+   - No new mechanisms or pilots.
    - Earlier probes go into one appendix table.
 2. **Strong controls.**
    - Every comparison includes the support-only EM-Gaussian and FA-Gaussian closed forms.
    - Mean-imputed ridge never gates anything.
-   - Include lifted static sites and a trainable variable-width control. A fixed-width MLP's inability to run at
-     8 or 11 sensors is not evidence of superiority over an equally applicable learned model.
 3. **Oracle headroom first.**
    - Synthetic tables report the exact oracle and the share of the closed-form→oracle gap closed.
    - Never train a variant whose oracle headroom over the strongest closed form is below the margin.
@@ -59,10 +56,10 @@ multi-sensor data.
 
 | Date | Work | Exit condition |
 |---|---|---|
-| Oct 6 (evening) | Local merge, six tests, official CSV hash and five endpoint replay completed. Diagnose factor-sign dependence; full cell replay failed despite unchanged endpoint decisions. Independent training rerun remains pending. | Retain evidence; fix factor-orientation contract on source development before another real gate |
+| Oct 6 (evening) | Merge branch `lifted-cavity` into `codex/mira-research`. Run `tests/test_lifted_cavity.py`. Reproduce `lift1` seed 1 on panel 20261007 (~13 min CPU). Download the official UCI Air Quality file and compare its hash. | Reproduction within 1e-3; hash checked (if it differs, rebuild and report) |
 | Oct 7 | **Second real dataset with natural per-sensor missingness** (recommended: UCI Beijing Multi-Site Air Quality, dataset 501): predict one station's log PM2.5 from the other 11 stations. Weekly episodes, 48 labeled support hours, temporal split. Freeze a one-page protocol before fitting: identical fine-tuning recipe, `lift1` vs EM/FA-Gaussian and `anchor_mlp`, endpoint at the dataset's natural missingness. 11 inputs also tests width transfer on real data. | Endpoint reported, pass or fail |
 | Oct 8 | Figures from `make_figure.py` and `make_report.py`. Related-work audit against learned EP messages (Heess 2013; Eslami 2014; Jitkrittum 2015), MVAE, NeuMiss, IFNet/DIFNet, KalmanNet and CNP/PFN. Make the distinctness statement precise. | Each claim mapped to one table cell |
-| Oct 9 | Revise the existing `paper/main.tex` in place: introduction; method; synthetic, transfer and real-data experiments; limitations; appendix with the oracle audit and closed probes. Check using the native editor compiler and report any environment failure. | Compiled PDF if supported, every number traced to a file |
+| Oct 9 | Rewrite `paper/main.tex` from scratch: introduction; method with Propositions 1–2; synthetic, transfer and real-data experiments; limitations; appendix with the oracle audit and a one-table summary of the closed probes. Fix PDF compilation (tectonic or Overleaf). | Compiled PDF, every number traced to a file |
 | Oct 10 | Clean-checkout reproduction of Tables A–D and the confirmation table, final readiness review, push. | Deliverable package |
 
 ## Venue realism
@@ -79,11 +76,7 @@ multi-sensor data.
 Report it. The real-data claim then rests on one device (CO and NO2 targets), and the paper says so. Do not reopen
 the mechanism search.
 
-## Preconditions for the second dataset
 
-Audit raw identity and natural gaps before committing an endpoint. Use the source-validated version-2 wrapper
-consistently in fitting and inference; it handles K=1 signs, not general factor rotations. Freeze data boundaries, preprocessing, checkpoint hashes,
-three training seeds, matched supervision/search budgets, applicable width controls and an analysis accounting
-for temporal dependence before evaluation-label access. The original normal-approximation week intervals remain
-descriptive of their protocol. A successful repair creates a new model version; it does not renew old confirmation.
-Beijing work is conditional on these prerequisites and remains incomplete.
+## Integration note, October 7
+
+The v2/v3 results and v4 code are integrated into codex/mira-research. Preserve the separately frozen one-factor sign-averaging repair (LIFTED_GAUGE_V2_FINDINGS.md); do not silently wrap historical v2/v3/v4 checkpoints or change their declared models. Its source checks do not constitute repaired external confirmation. v4 GPU work has not started locally. Before launch: bind resume/skip decisions to immutable code and panel identities, reject partial/nonfinite scores, use source-only smoke tests, and bound elapsed GPU time. Existing paper results remain mixed; no venue-readiness or acceptance claim.

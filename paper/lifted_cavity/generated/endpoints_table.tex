@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{\label{tab:endpoints}Every pre-registered endpoint of protocols v2 and v3, each committed before its panels or targets existed (protocol v1: Appendix~\ref{app:audit}). Gain in nats of NLL, positive when the first-named model is better; paired 95\% intervals, cluster-robust over weeks on Beijing. Pass: gain $\geq0.01$ and lower bound $>0$, except E7b (lower bound $>-0.02$).}
+\begin{tabular}{llllc}
+\toprule
+ID & Data & Comparison & Gain [95\% CI] & Result\\
+\midrule
+E1 & F1, $k=2$ & lifted cavity network vs NL-FA & $+$0.054 [$+$0.043, $+$0.065] & pass\\
+E2 & F1, $k=2$ & lifted cavity network vs transformer & $+$0.033 [$+$0.027, $+$0.040] & pass\\
+E3a & F3 (16 sensors), $k=2$ & lifted cavity network vs FA-Gaussian & $+$0.148 [$+$0.115, $+$0.181] & pass\\
+E3b & F3 (16 sensors), $k=2$ & lifted cavity network vs transformer & $+$0.144 [$+$0.127, $+$0.161] & pass\\
+E4a & Beijing PM$_{2.5}$ & lifted cavity network (FT) vs BLR & $+$0.194 [$+$0.131, $+$0.257] & pass\\
+E4b & Beijing PM$_{2.5}$ & lifted cavity network (FT) vs transformer (FT) & $-$0.118 [$-$0.145, $-$0.091] & \textbf{fail}\\
+\midrule
+E5 & G1, $k=2$ & LCT vs transformer & $+$0.035 [$+$0.027, $+$0.042] & pass\\
+E6 & G3 (16 sensors), $k=2$ & LCT vs transformer & $+$0.150 [$+$0.133, $+$0.167] & pass\\
+E7a & Beijing NO$_2$ & LCT (FT) vs lifted cavity network (FT) & $+$0.062 [$+$0.024, $+$0.100] & pass\\
+E7b & Beijing NO$_2$ & LCT (FT) vs transformer (FT), non-inferiority & $-$0.021 [$-$0.093, $+$0.052] & \textbf{fail}\\
+\bottomrule
+\end{tabular}
+\end{table}

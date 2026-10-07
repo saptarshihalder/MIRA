@@ -1,0 +1,16 @@
+With two simulated missing sensors, the fine-tuned lifted cavity network improves on FA-Gaussian by
+\RairqcoeTwovsfa\ \RairqcoeTwovsfaci\ nats for CO and \RairqnoTwoeTwovsfa\ \RairqnoTwoeTwovsfaci\ for NO$_2$. The
+fine-tuned transformer is again better: the lifted network's gain over it is \RairqcoeTwovspfn\ \RairqcoeTwovspfnci\
+(CO) and \RairqnoTwoeTwovspfn\ \RairqnoTwoeTwovspfnci\ (NO$_2$). On CO, the cavity input stops helping after
+fine-tuning.
+
+\paragraph{Why the transformer wins on real data.}
+The transformer is better on \FTbeijingpfnbetterpct\% of Beijing test episodes, by
+\FTbeijinggapqQOne--\FTbeijinggapqQTwo\ nats in each of the three easier quartiles of closed-form difficulty. The
+lifted network underfits rather than overfits: the transformer's final training NLL is \FTbeijingtraingap\ nats
+lower, about the test gap. Neither a second nuisance dimension (\Xplifttwo) nor five times more fine-tuning steps
+(\Xpliftlong, against \Xpliftone; Table~\ref{tab:explore}) closes the gap to the transformer
+(\RbeijingeZerovalftpfn), and per-episode nonparametrics do worse still ($k$-nearest neighbours \RbeijingeZerovalknn,
+Gaussian process \RbeijingeZerovalgp). We therefore hypothesized that the limitation lies in how sites are refined
+(each correction sees only its own sensor's reading, calibration scatter and cavity) rather than in the site family;
+protocol v3 tests this.

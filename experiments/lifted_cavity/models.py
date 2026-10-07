@@ -63,8 +63,8 @@ class LiftedCavity(nn.Module):
         mx, my, vy = anc['mx'][tid], anc['my'][tid], anc['vy'][tid]
         N, P = qx.shape
         xt = qx - mx                                                                          # centred sensor value
-        prior_prec = torch.diag_embed(torch.cat((1 / vy[:, None], torch.ones(N, K)), -1))
-        prior_eta = torch.cat(((my / vy)[:, None], torch.zeros(N, K)), -1)
+        prior_prec = torch.diag_embed(torch.cat((1 / vy[:, None], torch.ones(N, K, dtype=vy.dtype, device=vy.device)), -1))
+        prior_eta = torch.cat(((my / vy)[:, None], torch.zeros(N, K, dtype=vy.dtype, device=vy.device)), -1)
         # round 0: closed-form FA sites; observation o_j = x~_j + A_j my  (so that w^T z reproduces A (y-my) + D h)
         W = torch.cat((A[..., None], D), -1)
         o = xt + A * my[:, None]
@@ -113,8 +113,8 @@ def closed_form(anc, qx, qm, tid):
     W = torch.cat((A[..., None], D), -1)
     o = qx - mx + A * my[:, None]
     lam = (W[..., :, None] * W[..., None, :]) * (qm / psi)[..., None, None]
-    prec = torch.diag_embed(torch.cat((1 / vy[:, None], torch.ones(N, K, dtype=qx.dtype)), -1)) + lam.sum(1)
-    nat = torch.cat(((my / vy)[:, None], torch.zeros(N, K, dtype=qx.dtype)), -1) + (W * (qm * o / psi)[..., None]).sum(1)
+    prec = torch.diag_embed(torch.cat((1 / vy[:, None], torch.ones(N, K, dtype=qx.dtype, device=qx.device)), -1)) + lam.sum(1)
+    nat = torch.cat(((my / vy)[:, None], torch.zeros(N, K, dtype=qx.dtype, device=qx.device)), -1) + (W * (qm * o / psi)[..., None]).sum(1)
     cov = torch.linalg.inv(prec)
     return (cov @ nat[..., None])[:, 0, 0], cov[:, 0, 0].log()
 
