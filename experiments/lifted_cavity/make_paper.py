@@ -54,6 +54,12 @@ def cells(name, tag, k, metric='nll'):
     if name in p['refs'][k]:
         v = p['refs'][k][name][metric]
         return None if np.isnan(v).all() else v.mean(1)
+    if name == 'tabpfn_v2':
+        f = R / 'tabpfn_v2' / f'cells_{tag}.npz'
+        if not f.exists():
+            return None
+        z = np.load(f)
+        return z[f'k{k}_{metric}'].mean(1) if f'k{k}_{metric}' in z else None
     if name == 'gp':
         f = PH / 'gp' / f'cells_{tag}.npz'
         if not f.exists():
@@ -104,9 +110,10 @@ ROWS1 = [('Oracle (true parameters)', 'oracle', 'priv'), ('Bayes-optimal (HMC, t
          ('GP, complete case$^\\dagger$', 'gp', 'cf'),
          ('\\textbf{Lifted cavity (ours)}, 8k', 'lift1', 'ic'), ('Transformer (TabPFN-v2 style), 203k', 'pfn', 'ic'),
          ('Residual MLP on FA anchor, 15k', 'anchor_mlp', 'ic'), ('Scalar-cavity network, 3k', 'repo_cavity_fresh', 'ic'),
-         ('\\emph{Transformer, trained on all masks}', 'pfnall', 'ic*')]
+         ('\\emph{Transformer, trained on all masks}', 'pfnall', 'ic*'), ('TabPFN v2, pretrained (in context only)', 'tabpfn_v2', 'ic*')]
 T = PANEL['F1']
 vals = {name: [cells(name, T, k) for k in range(4)] for _, name, _ in ROWS1}
+ROWS1 = [r for r in ROWS1 if r[1] != 'tabpfn_v2' or any(v is not None for v in vals['tabpfn_v2'])]
 fa2, bop2 = vals['fa1'][2], vals['bop'][2]
 best = {}
 for k in range(4):
@@ -115,7 +122,7 @@ for k in range(4):
 lines = ['\\begin{table}[t]', '\\centering\\small', '\\caption{\\label{tab:main}Main synthetic panel (F1: 256 fresh tasks, five sensors). Mean test NLL by number of missing query sensors; '
          'learned models saw at most one missing sensor in training, so $k=2,3$ are unseen patterns. Learned rows average three training seeds '
          '(seed s.d.\\ $\\leq0.002$) except the transformers (one seed). Last column: share of the achievable gap (FA-Gaussian to Bayes-optimal) closed at $k=2$. '
-         'Best non-privileged entry per column in bold.}',
+         'Best non-privileged entry per column in bold. $^\\dagger$Post hoc, scored at $k=2$ only.}',
          '\\begin{tabular}{lccccc}', '\\toprule', 'Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & Gap closed\\\\', '\\midrule']
 groups = {'priv': 'Privileged references', 'cf': 'Support-only closed forms', 'ic': 'Learned in context (trained on $k\\leq1$)'}
 last = None
@@ -151,7 +158,8 @@ if fa2 is not None and bop2 is not None:
 
 # ------------------------------------------------------------------ Table 2: generalisation panels, k=2
 ROWS2 = [('Oracle', 'oracle'), ('FA-Gaussian', 'fa1'), ('EM-Gaussian', 'em_gauss'), ('NL-FA', 'nlfa'), ('BLR', 'blr_cc'),
-         ('Lifted cavity (ours)', 'lift1'), ('Transformer', 'pfn'), ('Residual MLP', 'anchor_mlp'), ('\\emph{Transformer, all masks}', 'pfnall')]
+         ('Lifted cavity (ours)', 'lift1'), ('Transformer', 'pfn'), ('Residual MLP', 'anchor_mlp'), ('\\emph{Transformer, all masks}', 'pfnall'),
+         ('\\emph{TabPFN v2, pretrained}', 'tabpfn_v2')]
 cols = ['F2', 'F3', 'F4', 'F5', 'F6', 'F7']
 lines = ['\\begin{table}[t]', '\\centering\\small', '\\setlength{\\tabcolsep}{5pt}', '\\caption{\\label{tab:shift}Generalization beyond the training distribution (fresh panels of 128 tasks). '
          'Mean test NLL with two missing query sensors. Every learned model was trained on $P{=}5$ sensors, nonlinearity 0.4 and $n{=}48$ support rows; '
@@ -159,9 +167,10 @@ lines = ['\\begin{table}[t]', '\\centering\\small', '\\setlength{\\tabcolsep}{5p
          '\\begin{tabular}{l' + 'c' * len(cols) + '}', '\\toprule',
          'Method & ' + ' & '.join(PHEAD[c] for c in cols) + '\\\\', '\\midrule']
 tab = {n: [cells(n, PANEL[c], 2) for c in cols] for _, n in ROWS2}
+ROWS2 = [r for r in ROWS2 if r[1] != 'tabpfn_v2' or any(v is not None for v in tab['tabpfn_v2'])]
 bestc = {}
 for i, c in enumerate(cols):
-    cand = [(round(float(tab[n][i].mean()), 3), n) for _, n in ROWS2 if n not in ('oracle', 'pfnall') and tab[n][i] is not None]
+    cand = [(round(float(tab[n][i].mean()), 3), n) for _, n in ROWS2 if n not in ('oracle', 'pfnall', 'tabpfn_v2') and tab[n][i] is not None]
     bestc[i] = {n for m, n in cand if m == min(cand)[0]} if cand else set()
 for label, n in ROWS2:
     row = []
@@ -224,7 +233,7 @@ for n1, n2, key in (('lift1', 'lift1_static', 'Cav'), ('lift1', 'lift0', 'Lift')
 REAL = [('beijing', 'Beijing PM$_{2.5}$ (11 stations)', (0, 3, 6)), ('airq_co', 'Air Quality CO', (0, 2)), ('airq_no2', 'Air Quality NO$_2$', (0, 2))]
 ROWS4 = [('EM-Gaussian', 'ref', 'em_gauss'), ('FA-Gaussian', 'ref', 'fa1'), ('NL-FA', 'ref', 'nlfa'), ('Bayesian linear regression', 'ref', 'blr_cc'),
          ('Ridge (complete case)', 'ref', 'ridge_cc'), ('GP, complete case$^\\dagger$', 'ph', 'gp'),
-         ('Lifted cavity, zero-shot', 'zs', 'lift1_s1'), ('Transformer, zero-shot', 'zs', 'pfn_s1'),
+         ('Lifted cavity, zero-shot', 'zs', 'lift1_s1'), ('Transformer, zero-shot', 'zs', 'pfn_s1'), ('TabPFN v2, pretrained', 'zs', 'tabpfn_v2'),
          ('\\textbf{Lifted cavity, fine-tuned (ours)}', 'ft', 'lift1_s{1,2,3}_ft'), ('\\quad no synthetic pretraining', 'ft', 'lift1_untrained_ft'),
          ('\\quad no cavity input', 'ft', 'lift1_static_s1_ft'), ('\\quad scalar sites ($K=0$)', 'ft', 'lift0_s1_ft'),
          ('Transformer, fine-tuned', 'ft', 'pfn_s1_ft'), ('Residual MLP, fine-tuned', 'ft', 'anchor_mlp_s{1,2,3}_ft')]
@@ -267,11 +276,13 @@ for ds, lab, es in REAL:
 lines = ['\\begin{table}[t]', '\\centering\\scriptsize', '\\setlength{\\tabcolsep}{2.5pt}',
          '\\caption{\\label{tab:real}Real sensor networks: mean test NLL on later, held-out periods. Beijing: 12 target stations $\\times$ weekly episodes in '
          '2016--2017 with natural missingness, plus extra dropped sensors. Air Quality: weekly episodes after October 2004, sensor dropout simulated. '
-         'Fine-tuning uses only earlier periods and one recipe for every model; lifted-cavity and residual-MLP rows average three seeds. Best entry per column in bold.}',
+         'Fine-tuning uses only earlier periods and one recipe for every model; lifted-cavity and residual-MLP rows average three seeds. Best entry per column in bold. '
+         '$^\\dagger$Post hoc.}',
          '\\begin{tabular}{' + colspec + '}', '\\toprule', ' & '.join(head1) + '\\\\', ' & '.join(head2) + '\\\\', '\\midrule']
 rv = {}
 for label, kind, name in ROWS4:
     rv[(kind, name)] = [real_cells(ds, kind, name, e) for ds, _, es in REAL for e in es]
+ROWS4 = [r for r in ROWS4 if r[2] != 'tabpfn_v2' or any(v is not None for v in rv[(r[1], r[2])])]
 ncol = sum(len(es) for _, _, es in REAL)
 bestr = {}
 for i in range(ncol):
@@ -371,7 +382,7 @@ for fname, key in (('confirm_v2.json', 'V2'), ('confirm_v3.json', 'V3')):
 
 # ------------------------------------------------------------------ figure: gains over FA-Gaussian by k, and width transfer
 INK2 = '#52514e'
-fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.75))
+fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.45))
 ks = np.arange(4)
 SER = [('lift1', 'Lifted cavity (ours)', '#2a78d6', 'o', '-'), ('pfn', 'Transformer', '#eb6834', 's', '-'),
        ('pfnall', 'Transformer, all masks', '#eb6834', 's', ':'), ('anchor_mlp', 'Residual MLP', '#1baf7a', 'D', '-'),
@@ -587,6 +598,27 @@ if fu.exists():
     zu = np.load(fu)
     for k in range(4):
         mac(f'Untrainedk{"abcd"[k]}', f3(float(zu[f'k{k}_nll'].mean(1).mean())))
+
+
+# ------------------------------------------------------------------ appendix figure: training curves of the two transformers
+curves = []
+for nm, lab, col, ls in (('pfn_s1', 'Transformer, seed 1', '#eb6834', '-'), ('pfn_s2', 'Transformer, seed 2', '#eb6834', ':'),
+                         ('lct_s1', 'Lifted cavity transformer, seed 1', '#2a78d6', '-'), ('lct_s2', 'Lifted cavity transformer, seed 2', '#2a78d6', ':')):
+    f = R / nm / 'train.json'
+    if f.exists():
+        tr = json.loads(f.read_text()).get('trace', [])
+        if tr:
+            curves.append((lab, col, ls, [t['step'] for t in tr], [t['ema_loss'] for t in tr]))
+if curves:
+    fig, ax = plt.subplots(figsize=(5.2, 2.6))
+    for lab, col, ls, xs, ys in curves:
+        ax.plot(xs, ys, color=col, ls=ls, lw=1.5, label=lab)
+    ax.set_ylim(-0.2, 0.4); ax.set_xlabel('training step (16 fresh tasks $\\times$ 16 queries)', fontsize=8)
+    ax.set_ylabel('training NLL (moving average)', fontsize=8)
+    for sp in ('top', 'right'):
+        ax.spines[sp].set_visible(False)
+    ax.tick_params(labelsize=7.5); ax.legend(frameon=False, fontsize=7)
+    fig.tight_layout(); fig.savefig(OUT / 'figures' / 'training.pdf', bbox_inches='tight')
 
 # ------------------------------------------------------------------ compute table (appendix)
 cf = R / 'compute_cost.json'

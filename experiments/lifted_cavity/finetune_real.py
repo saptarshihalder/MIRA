@@ -4,11 +4,11 @@ python finetune_real.py --dataset beijing --init runs/lift1_s1 --out runs_real/b
 Recipe (fixed before any test score): 4,000 resampled source episodes, 2,000 AdamW steps, lr 3e-4 with cosine decay,
 64 episodes x 8 queries per step; query masks = natural mask x at most one extra dropped sensor; seed 11.
 """
-import argparse, json, math, time
+import argparse, json, math, os, time
 from pathlib import Path
 import numpy as np
 import torch
-import models, realdata
+import models, realdata, resume
 from train import build
 
 RAW = {'airq_co': ('airq', 'CO(GT)'), 'airq_no2': ('airq', 'NO2(GT)'), 'beijing': ('beijing', 'PM2.5'), 'beijing_no2': ('beijing', 'NO2'),
@@ -45,14 +45,16 @@ def main():
     ap.add_argument('--dataset', required=True, choices=list(RAW)); ap.add_argument('--init', required=True)
     ap.add_argument('--out', required=True); ap.add_argument('--episodes', type=int, default=4000)
     ap.add_argument('--steps', type=int, default=2000); ap.add_argument('--lr', type=float, default=3e-4)
-    ap.add_argument('--seed', type=int, default=11)
+    ap.add_argument('--seed', type=int, default=11); ap.add_argument('--ckpt-every', type=int, default=50)
     ap.add_argument('--period', nargs=2, default=None, help='development only: override the source period (beijing)')
     ap.add_argument('--airq', default=realdata.DEFAULT['airq'])
     ap.add_argument('--beijing', default=realdata.DEFAULT['beijing'])
     ap.add_argument('--gas', default=realdata.DEFAULT['gas'])
     a = ap.parse_args()
     torch.set_num_threads(1); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
-    out = Path(a.out); out.mkdir(parents=True, exist_ok=False)
+    out = Path(a.out); out.mkdir(parents=True, exist_ok=True); ck = out / 'ckpt.pt'
+    if (out / 'model.pt').exists():
+        raise SystemExit(f'{out} already holds a fine-tuned model')
     meta = json.loads((Path(a.init) / 'train.json').read_text())
     model = build(meta['model'], meta.get('repo'), meta)
     if (Path(a.init) / 'model.pt').exists():
@@ -61,9 +63,12 @@ def main():
     pool = realdata.to_pool(realdata.episodes(a.dataset, raw, 'source', a.seed, n_source=a.episodes, period=a.period))
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: .5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps)))
-    start = time.time(); run = None
+    run, first, elapsed = None, 0, 0.
+    if ck.exists():
+        first, extra = resume.load(ck, model, opt, sched, rng); run, elapsed = extra['run'], extra['seconds']
+    start = time.time() - elapsed
     model.train()
-    for step in range(a.steps):
+    for step in range(first, a.steps):
         batch = batch_from(pool, rng)
         mu, lv = model(batch)
         loss = models.gauss_nll(mu, lv, batch['qy']).mean()
@@ -71,10 +76,15 @@ def main():
             raise FloatingPointError(step)
         opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), 5.); opt.step(); sched.step()
         run = loss.item() if run is None else .98 * run + .02 * loss.item()
+        if (step + 1) % a.ckpt_every == 0 and step + 1 < a.steps:
+            resume.save(ck, step + 1, model, opt, sched, rng, dict(run=run, seconds=time.time() - start))
+        if os.environ.get('MIRA_STOP_AT') == str(step + 1):        # test hook: simulate an interruption
+            raise SystemExit('stopped for resume test')
     torch.save(model.state_dict(), out / 'model.pt')
     (out / 'train.json').write_text(json.dumps(dict(meta, finetune=dict(vars(a), dataset=a.dataset, seconds=time.time() - start,
                                                                          final_ema=run, files=raw['files'])), indent=1))
     print(out.name, a.dataset, f'ema {run:.4f} {time.time() - start:.0f}s')
+    ck.unlink(missing_ok=True)
 
 
 if __name__ == '__main__':

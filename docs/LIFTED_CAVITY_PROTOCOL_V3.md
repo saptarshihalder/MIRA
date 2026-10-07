@@ -53,3 +53,17 @@ on Beijing. Intervals are paired 95% intervals over tasks; on Beijing they are c
 
 Secondary, descriptive: every other k and model, Beijing CO, and `lct_s1` on the v2 panels (used data,
 descriptive only). Computed by `experiments/lifted_cavity/confirm3.py`.
+
+## Execution notes (recorded as they happened)
+
+1. **October 7, 00:00 IST.** The compute container restarted while `lct_s1` was at step 10,000 of 30,000 and before
+   any v3 score involving it existed. The interrupted run was set aside unevaluated
+   (`runs_aborted/lct_s1_interrupted_step10000`), and `lct_s1` was retrained from scratch with the identical seed and
+   recipe. The fine-tuning of `pfn_s1` on Beijing NO2, which had just started, was likewise restarted. Panels,
+   targets and every completed score were unaffected.
+2. **October 7, 00:23 IST.** A second container restart interrupted the retrained `lct_s1` at step 2,500 (set aside
+   unevaluated as `runs_aborted/lct_s1_interrupted_step2500`). From then on, training and fine-tuning checkpoint the
+   model, optimizer, scheduler and every random state every 250 (training) or 50 (fine-tuning) steps
+   (`experiments/lifted_cavity/resume.py`). A test interrupts and resumes training and fine-tuning and checks that
+   the final weights are bitwise identical to an uninterrupted run, so a resumed run is the protocol's run.
+   `lct_s1` was then started from scratch a third time with the same seed and recipe.

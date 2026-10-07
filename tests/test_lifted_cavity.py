@@ -164,3 +164,18 @@ def test_lifted_cavity_transformer_starts_at_its_closed_form_and_ignores_missing
         moved = dict(batch, qx=batch['qx'] + 10. * (1 - batch['qm']))
         b = m(moved)
     assert torch.allclose(a[0], b[0], atol=1e-5) and torch.allclose(a[1], b[1], atol=1e-5)
+
+
+def test_interrupted_and_resumed_training_is_bitwise_identical(tmp_path):
+    import os, subprocess
+    code = ROOT / 'experiments' / 'lifted_cavity'
+    args = ['--steps', '12', '--ckpt-every', '6', '--save-every', '12', '--warmup', '4']
+    env = dict(os.environ, OMP_NUM_THREADS='1')
+    run = lambda out, extra_env=None: subprocess.run(['python', 'lct_train.py', *args, '--out', str(out)], cwd=code,
+                                                      env=dict(env, **(extra_env or {})), capture_output=True)
+    assert run(tmp_path / 'a').returncode == 0
+    assert run(tmp_path / 'b', {'MIRA_STOP_AT': '8'}).returncode != 0          # interrupted after the step-6 checkpoint
+    assert (tmp_path / 'b' / 'ckpt.pt').exists()
+    assert run(tmp_path / 'b').returncode == 0
+    a, b = (torch.load(tmp_path / d / 'model.pt') for d in ('a', 'b'))
+    assert all(torch.equal(a[k], b[k]) for k in a)
