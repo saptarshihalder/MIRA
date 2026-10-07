@@ -1,0 +1,8 @@
+# Style provenance
+
+Official source: https://media.neurips.cc/Conferences/NeurIPS2026/Formatting_Instructions_For_NeurIPS_2026.zip
+Retrieved 2026-10-07.
+ZIP SHA256: 82473931e3ef710fcd3f4a8cd4119b9de32e56825f90f9e5a6d55f2d01b817d9
+Style SHA256: c3fc2894e83d2517ca18b66741d6c595986d97957dc08ec08bb2125a7ec4555a
+Previous mirror style SHA256: 0c1ad36961fcd9198dcc2558cf2793e1df39973bde8264fd701f5e7970672757
+Byte-identical to previous style: False

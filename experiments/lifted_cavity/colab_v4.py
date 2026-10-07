@@ -18,6 +18,7 @@ A single stage: python colab_v4.py ... smoke|main|confirm|extra|pack|status
 """
 import argparse, hashlib, json, os, platform, shutil, subprocess, sys, time, urllib.request, zipfile
 from pathlib import Path
+from score_validation import GAUSSIAN_METRICS, TABPFN_METRICS, load_scores
 
 CODE = Path(__file__).resolve().parent
 
@@ -82,35 +83,54 @@ def sh(label, args, env=None, expect_rc=0):
     return rc == expect_rc
 
 
-def ok_npz(path):
-    """True if a cells file is complete; a truncated file (interrupted write) is removed so it is recomputed."""
-    import numpy as np
+def ok_npz(path, source_panel, metrics=GAUSSIAN_METRICS):
+    """Only complete, finite scores for every panel condition can be skipped."""
     if not path.exists():
         return False
     try:
-        with np.load(path) as z:
-            ok = len(z.files) > 0 and all(z[k].size > 0 for k in z.files)
-    except Exception:
-        ok = False
-    if not ok:
-        print(f'removing incomplete {path}', flush=True); path.unlink()
-    return ok
+        load_scores(path, source_panel, metrics)
+    except (ValueError, OSError, EOFError, KeyError, zipfile.BadZipFile) as e:
+        print(f'invalid scores {path}: {e}; recomputation required', flush=True)
+        return False
+    return True
+
+
+def score_step(label, args, dest, source_panel, metrics=GAUSSIAN_METRICS):
+    if ok_npz(dest, source_panel, metrics):
+        return True
+    if not sh(label, args):
+        return False
+    if not ok_npz(dest, source_panel, metrics):
+        FAILED.append(label)
+        return False
+    return True
 
 
 def has_ckpt(run):
     return (run / 'ckpt.pt').exists() or (run / 'ckpt.prev.pt').exists()
 
 
+def bind_checkpoint(run):
+    """Record the final checkpoint BEFORE scoring; refuse silent replacement."""
+    identity = {name: sha256(run / name) for name in ('model.pt', 'train.json')}
+    p = run / 'checkpoint_identity.json'
+    if p.exists() and json.loads(p.read_text()) != identity:
+        raise ValueError(f'Completed checkpoint changed in {run}; preserve it and use a new run.')
+    if not p.exists():
+        p.write_text(json.dumps(identity, indent=1))
+    return True
+
+
 def train_done(run, steps=None):
     j = run / 'train.json'
     return (j.exists() and (run / 'model.pt').exists() and not has_ckpt(run)
-            and json.loads(j.read_text()).get('steps_done') == (steps or STEPS))
+            and json.loads(j.read_text()).get('steps_done') == (steps or STEPS) and bind_checkpoint(run))
 
 
 def ft_done(run):
     j = run / 'train.json'
     return (j.exists() and (run / 'model.pt').exists() and not has_ckpt(run)
-            and 'finetune' in json.loads(j.read_text()))
+            and 'finetune' in json.loads(j.read_text()) and bind_checkpoint(run))
 
 
 def panel(tag):
@@ -126,11 +146,7 @@ def stage_data():
         if dest.exists() and sha256(dest) == h:
             continue
         tmp = d / (name + '.part')
-        for attempt in range(3):
-            try:
-                urllib.request.urlretrieve(BEIJING_URL + name, tmp); break
-            except Exception as e:
-                print('download retry', name, e, flush=True); time.sleep(5)
+        urllib.request.urlretrieve(BEIJING_URL + name, tmp)
         if not tmp.exists() or sha256(tmp) != h:
             raise SystemExit(f'{name}: download failed or SHA-256 mismatch')
         tmp.replace(dest)
@@ -146,15 +162,32 @@ def stage_panels():
     print(f'panels: {len(PANELS)} verified', flush=True)
 
 
+def smoke_panels(folder):
+    """Independent synthetic fixtures and Beijing SOURCE episodes; never evaluation panels."""
+    import torch
+    import data, evaluate2, realdata
+    from finetune_real import load_raw
+    syn = folder / 'smoke_source_synthetic.pt'
+    real = folder / 'smoke_source_beijing.pt'
+    torch.save(dict(pool=data.build_pool(4, 90401, P=16), banks=evaluate2.banks(16, 90401),
+                    meta=dict(smoke=True, split='generated_source')), syn)
+    raw = load_raw('beijing_pm10', dict(beijing=DATA / 'beijing'))
+    pool = realdata.to_pool(realdata.episodes('beijing_pm10', raw, 'source', 90402, n_source=4))
+    conds = {e: realdata.condition_masks(pool, e, 90403 + e) for e in (0, 3, 6)}
+    torch.save(dict(pool=pool, conds=conds, meta=dict(smoke=True, split='source')), real)
+    return syn, real
+
+
 def stage_smoke():
     rep_path = ROOT / 'smoke' / 'report.json'
-    if rep_path.exists():
+    if rep_path.exists() and json.loads(rep_path.read_text()).get('source_only') is True:
         print('smoke: passed earlier', json.loads(rep_path.read_text()).get('estimate_hours'), flush=True)
         return True
     import torch
     d = ROOT / 'smoke'; shutil.rmtree(d, ignore_errors=True); d.mkdir(parents=True)
     rep = dict(device=DEV, gpu=torch.cuda.get_device_name(0) if DEV == 'cuda' else 'cpu', torch=torch.__version__,
-               python=platform.python_version())
+               python=platform.python_version(), source_only=True)
+    syn_panel, real_panel = smoke_panels(d)
     ok = True
     for name, script in MODELS:
         # 1. resume on this device: stop after a checkpoint, then continue
@@ -173,8 +206,9 @@ def stage_smoke():
         rep[f'{name}_sec_per_step'] = (tr[-1]['seconds'] - tr[0]['seconds']) / (tr[-1]['step'] - tr[0]['step'])
         # 3. scoring a synthetic panel
         t0 = time.time()
-        ok &= sh(f'smoke_{name}', ['evaluate2.py', 'model', '--run', t, '--panel', panel(H3), '--device', DEV])
-        rep[f'{name}_score_H3_sec'] = time.time() - t0
+        ok &= score_step(f'smoke_{name}', ['evaluate2.py', 'model', '--run', t, '--panel', syn_panel, '--device', DEV],
+                         t / f'cells_{syn_panel.stem}.npz', syn_panel)
+        rep[f'{name}_score_synthetic_source_sec'] = time.time() - t0
         # 4. fine-tuning (builds the cached source pool used later) with a resume, then scoring a real panel
         f = d / f'{name}_ft'
         ftargs = ['finetune_real.py', '--dataset', 'beijing_pm10', '--init', t, '--out', f, '--device', DEV,
@@ -184,14 +218,17 @@ def stage_smoke():
         ok &= sh(f'smoke_{name}', ftargs) and ft_done(f)
         rep[f'{name}_ft_pool_and_20_steps_sec'] = time.time() - t0
         t0 = time.time()
-        ok &= sh(f'smoke_{name}', ['eval_real.py', 'score', '--panel', panel(V4_REAL[0]), '--runs', f, '--device', DEV])
+        ok &= score_step(f'smoke_{name}', ['eval_real.py', 'score', '--panel', real_panel, '--runs', f, '--device', DEV],
+                         f / f'cells_{real_panel.stem}.npz', real_panel)
         rep[f'{name}_score_real_sec'] = time.time() - t0
         if not ok:
             break
     if ok:          # 5. TabPFN v2: download, a few tasks of a synthetic and a real panel
         t0 = time.time()
-        ok &= sh('smoke_tabpfn', ['tabpfn_colab.py', '--panel', panel(H3), panel(V4_REAL[1]), '--out', d / 'tabpfn',
-                                  '--limit', '4', '--device', DEV])
+        ok &= sh('smoke_tabpfn', ['tabpfn_colab.py', '--panel', syn_panel, real_panel, '--out', d / 'tabpfn',
+                                  '--device', DEV])
+        ok &= all(ok_npz(d / 'tabpfn' / f'cells_{p.stem}.npz', p, TABPFN_METRICS)
+                  for p in (syn_panel, real_panel))
         if ok:
             tim = json.loads((d / 'tabpfn' / 'train.json').read_text())['timing']
             rep['tabpfn_sec_per_call'] = sum(v['seconds'] for v in tim.values()) / sum(v['calls'] for v in tim.values())
@@ -221,8 +258,8 @@ def score_syn(name, s, tags):
         return False
     good = True
     for tag in tags:
-        if not ok_npz(run / f'cells_{tag}.npz'):
-            good &= sh(f'score_{name}_s{s}', ['evaluate2.py', 'model', '--run', run, '--panel', panel(tag), '--device', DEV])
+        good &= score_step(f'score_{name}_s{s}', ['evaluate2.py', 'model', '--run', run, '--panel', panel(tag), '--device', DEV],
+                           run / f'cells_{tag}.npz', panel(tag))
     return good
 
 
@@ -237,16 +274,18 @@ def finetune(name, s):
             if not sh(f'ft_{name}_s{s}_{ds}', ['finetune_real.py', '--dataset', ds, '--init', init, '--out', run,
                                                 '--device', DEV, '--beijing', DATA / 'beijing', '--pool-cache', POOLS] + FT):
                 good = False; continue
-        if not ok_npz(run / f'cells_{tag}.npz'):
-            good &= sh(f'ft_{name}_s{s}_{ds}', ['eval_real.py', 'score', '--panel', panel(tag), '--runs', run, '--device', DEV])
+        good &= score_step(f'ft_{name}_s{s}_{ds}', ['eval_real.py', 'score', '--panel', panel(tag), '--runs', run, '--device', DEV],
+                           run / f'cells_{tag}.npz', panel(tag))
     return good
 
 
 def tabpfn(tags):
-    todo = [t for t in tags if not ok_npz(RUNS / 'tabpfn_v2' / f'cells_{t}.npz')]
+    todo = [t for t in tags if not ok_npz(RUNS / 'tabpfn_v2' / f'cells_{t}.npz', panel(t), TABPFN_METRICS)]
     if todo:
-        sh('tabpfn_v2', ['tabpfn_colab.py', '--panel'] + [panel(t) for t in todo] + ['--out', RUNS / 'tabpfn_v2',
-                                                                                      '--version', 'v2', '--device', DEV])
+        if sh('tabpfn_v2', ['tabpfn_colab.py', '--panel'] + [panel(t) for t in todo] + ['--out', RUNS / 'tabpfn_v2',
+                                                                                      '--version', 'v2', '--device', DEV]):
+            if not all(ok_npz(RUNS / 'tabpfn_v2' / f'cells_{t}.npz', panel(t), TABPFN_METRICS) for t in todo):
+                FAILED.append('tabpfn_v2_scores')
 
 
 def stage_main():
@@ -257,19 +296,22 @@ def stage_main():
                 finetune(name, s)
         if s == SEEDS[0]:
             tabpfn([H1, H3] + V4_REAL)
-            stage_confirm(seeds=[s])              # early look (one seed); not the endpoint
             stage_pack()
 
 
 def v4_complete(seeds=SEEDS):
-    need = [RUNS / f'{n}_s{s}' / f'cells_{t}.npz' for n, _ in MODELS for s in seeds for t in (H1, H3)]
-    need += [REAL / ds / f'{n}_s{s}_ft' / f'cells_{t}.npz' for n, _ in MODELS for s in seeds for ds, t in zip(NEW, V4_REAL)]
-    need += [RUNS / 'tabpfn_v2' / f'cells_{t}.npz' for t in V4_REAL]
-    return all(p.exists() for p in need)
+    need = [(RUNS / f'{n}_s{s}' / f'cells_{t}.npz', t, GAUSSIAN_METRICS)
+            for n, _ in MODELS for s in seeds for t in (H1, H3)]
+    need += [(REAL / ds / f'{n}_s{s}_ft' / f'cells_{t}.npz', t, GAUSSIAN_METRICS)
+             for n, _ in MODELS for s in seeds for ds, t in zip(NEW, V4_REAL)]
+    need += [(RUNS / 'tabpfn_v2' / f'cells_{t}.npz', t, TABPFN_METRICS) for t in V4_REAL]
+    return all(ok_npz(p, panel(t), metrics) for p, t, metrics in need)
 
 
 def stage_confirm(seeds=SEEDS):
     seeds = list(seeds)
+    if seeds != list(SEEDS):
+        raise ValueError('Protocol v4 confirmation requires all three seeds; no early endpoint calculations')
     if not v4_complete(seeds):
         print(f'confirm: inputs for seeds {seeds} incomplete; skipped', flush=True); return
     out = RUNS / ('confirm_v4.json' if seeds == list(SEEDS) else f'early_v4_seeds{"".join(map(str, seeds))}.json')
@@ -297,6 +339,9 @@ def stage_pack():
     n = 0
     with zipfile.ZipFile(tmp, 'w', zipfile.ZIP_DEFLATED) as zf:
         zf.writestr('manifest.json', json.dumps(info, indent=1))
+        for p in (ROOT / 'run_identity.json', ROOT / 'sessions.jsonl'):
+            if p.exists():
+                zf.write(p, p.name)
         for base in (RUNS, REAL, ROOT / 'smoke', LOGS):
             if not base.exists():
                 continue

@@ -7,6 +7,7 @@ import argparse, json
 from pathlib import Path
 import numpy as np
 import torch
+from score_validation import GAUSSIAN_METRICS, TABPFN_METRICS, load_scores
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--runs', default='runs'); ap.add_argument('--cache', default='cache'); ap.add_argument('--real', default='runs_real')
@@ -17,12 +18,18 @@ R, C, RR = Path(a.runs), Path(a.cache), Path(a.real)
 H1, H3 = 'v2_s20261401_n256_p5_nl0.4_sr48', 'v2_s20261403_n128_p16_nl0.4_sr48'
 NEW = ('beijing_pm10', 'beijing_so2', 'beijing_o3')
 SEEDS = tuple(a.seeds)
+if SEEDS != (1, 2, 3):
+    raise SystemExit('Protocol v4 requires exactly seeds 1, 2, 3; partial results are not confirmation.')
+
+
+def cells(path, tag, tabpfn=False):
+    return load_scores(path, C / f'{tag}.pt', TABPFN_METRICS if tabpfn else GAUSSIAN_METRICS)
 
 
 def syn(name, tag, k=2):
     if name == 'tabpfn_v2':
-        return np.load(R / 'tabpfn_v2' / f'cells_{tag}.npz')[f'k{k}_nll'].mean(1)
-    return np.mean([np.load(R / f'{name}_s{s}' / f'cells_{tag}.npz')[f'k{k}_nll'] for s in SEEDS], 0).mean(1)
+        return cells(R / 'tabpfn_v2' / f'cells_{tag}.npz', tag, True)[f'k{k}_nll'].mean(1)
+    return np.mean([cells(R / f'{name}_s{s}' / f'cells_{tag}.npz', tag)[f'k{k}_nll'] for s in SEEDS], 0).mean(1)
 
 
 def real(name, e):
@@ -31,15 +38,19 @@ def real(name, e):
     for ds in NEW:
         tag = f'real_{ds}_s4041'
         if name == 'tabpfn_v2':
-            v = np.load(R / 'tabpfn_v2' / f'cells_{tag}.npz')[f'e{e}_nll']
+            v = cells(R / 'tabpfn_v2' / f'cells_{tag}.npz', tag, True)[f'e{e}_nll']
         else:
-            v = np.mean([np.load(RR / ds / f'{name}_s{s}_ft' / f'cells_{tag}.npz')[f'e{e}_nll'] for s in SEEDS], 0)
+            v = np.mean([cells(RR / ds / f'{name}_s{s}_ft' / f'cells_{tag}.npz', tag)[f'e{e}_nll'] for s in SEEDS], 0)
         keys = torch.load(C / f'{tag}.pt', weights_only=False)['pool']['keys']
         vals.append(v); weeks += [k.split('|')[0] for k in keys]
     return np.concatenate(vals), weeks
 
 
 def paired(base, new, clusters=None, margin=.01, noninf=None):
+    if base.shape != new.shape or base.ndim != 1 or not np.isfinite(base).all() or not np.isfinite(new).all():
+        raise ValueError('Paired endpoint requires aligned, finite, one-dimensional arrays.')
+    if clusters is not None and len(clusters) != len(base):
+        raise ValueError('Episode and cluster counts differ.')
     d = base - new
     if clusters is not None:
         d = np.array([d[[c == k for c in clusters]].mean() for k in sorted(set(clusters))])

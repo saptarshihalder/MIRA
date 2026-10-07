@@ -46,8 +46,9 @@ learned re-linearization then costs \SFFivegainfaabs\ nats with two missing sens
 
 Ablations on F1 (Table~\ref{tab:ablation}, Appendix~\ref{app:more}) isolate the components. \textbf{Lifting} is the
 largest factor: scalar sites ($K=0$) with otherwise identical machinery and training lose \AblLiftabs\ \AblLiftci\ nats
-with two missing sensors and end up worse than the untrained FA-Gaussian anchor, which is Proposition~\ref{prop:scalar}
-in practice. \textbf{Cavity conditioning} adds \AblCavabs\ \AblCavci\ nats on top of lifted static sites. A second
+with two missing sensors and end up worse than the untrained FA-Gaussian anchor. This supports lifting empirically
+under the tested training regime; Proposition~\ref{prop:scalar} does not cover this context-conditioned ablation.
+\textbf{Cavity conditioning} adds \AblCavabs\ \AblCavci\ nats on top of lifted static sites. A second
 nuisance dimension ($K=2$) changes nothing, as expected for one-factor noise. The scalar-cavity network of the earlier
 design, retrained with the same 60{,}000-task recipe, remains far behind FA-Gaussian (Appendix~\ref{app:audit}).
 

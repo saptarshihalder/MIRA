@@ -15,6 +15,7 @@ import argparse, json, time
 from pathlib import Path
 import numpy as np
 import torch
+from score_validation import TABPFN_METRICS, expected_scores, load_scores, validate_arrays
 
 
 N_ESTIMATORS, RANDOM_STATE = 8, 0                   # fixed by protocol v4
@@ -56,10 +57,18 @@ def task_arrays(pool, t):
 
 
 def score_panel(reg, path, out, limit=None):
-    tag = Path(path).stem; dest = out / f'cells_{tag}.npz'
-    if dest.exists():
-        return None
+    tag = Path(path).stem
+    # Limited smoke outputs must never occupy the full-panel result namespace.
+    stem = f'cells_{tag}' if limit is None else f'partial_cells_{tag}_limit{limit}'
+    dest = out / f'{stem}.npz'
     panel = torch.load(path, weights_only=False); pool = panel['pool']
+    expected = expected_scores(panel, TABPFN_METRICS, limit)
+    if dest.exists():
+        try:
+            load_scores(dest, panel, TABPFN_METRICS, limit)
+            return None
+        except (ValueError, OSError, EOFError, KeyError) as e:
+            print(f'recomputing invalid scores {dest}: {e}', flush=True)
     n = pool['n'] if limit is None else min(limit, pool['n'])
     res, t0, calls = {}, time.time(), 0
     if 'banks' in panel:                            # synthetic: every task x every mask in each bank
@@ -84,7 +93,8 @@ def score_panel(reg, path, out, limit=None):
         for i, e in enumerate(E):
             res[f'e{e}_nll'] = nll[i]; res[f'e{e}_se'] = se[i]
             print(tag, 'extra', e, round(float(nll[i].mean()), 4), flush=True)
-    tmp = out / f'cells_{tag}.tmp.npz'
+    validate_arrays(res, expected)
+    tmp = out / f'{stem}.tmp.npz'
     np.savez_compressed(tmp, **res); tmp.replace(dest)
     return dict(tag=tag, tasks=n, calls=calls, seconds=time.time() - t0)
 

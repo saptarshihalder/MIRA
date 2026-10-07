@@ -70,9 +70,9 @@ expectation propagation (EP) refines such experts using context from the other s
 \begin{enumerate}
   \item \textbf{When products of experts fail (\S\ref{sec:scalar}--\ref{sec:method}).} Under shared noise, no product
   of mask-independent experts over the target alone is Bayes-consistent across missingness patterns; the optimal
-  weight of a sensor can even change sign with the other sensors present. More generally, static Gaussian sites
-  over the target and $K'$ nuisance dimensions can be consistent for every pattern only if $K'$ reaches the rank of
-  the shared noise, and then they are exact. An EP-style network with scalar cavities fails accordingly in practice.
+  weight of a sensor can even change sign with the other sensors present. Under the generic-rank assumptions of
+  Proposition~\ref{prop:rank}, exact static linear-Gaussian sites require at least $K$ nuisance dimensions for rank-$K$
+  shared noise. These results do not exclude mask- or cavity-conditioned scalar sites.
   \item \textbf{Lifted cavity networks (\S\ref{sec:method}).} Each observed sensor contributes a rank-one Gaussian
   site over the target and a low-dimensional shared nuisance, and missing sensors are omitted exactly. The sites start
   from a factor analysis of the incomplete calibration rows and are refined by a small network that re-linearizes
@@ -165,8 +165,8 @@ $y$-marginal is the Bayes predictive for every missingness pattern.
 \end{proposition}
 
 Shared noise of rank $K$ is absorbed by $K$ nuisance dimensions, so the obstruction of
-Proposition~\ref{prop:scalar} disappears: the lifted product differences out $h$ automatically. Fewer nuisance
-dimensions cannot suffice, so the lifting dimension must match the rank of the shared noise:
+Proposition~\ref{prop:scalar} disappears: the lifted product differences out $h$ automatically. Under the following
+generic-rank condition, fewer nuisance dimensions cannot suffice for static linear-Gaussian sites:
 
 \begin{proposition}[Lifting dimension]\label{prop:rank}
 Let $x=ay+Du+e$ with $y\sim\N(0,1)$, $u\sim\N(0,I_K)$, $D\in\R^{P\times K}$, independent Gaussian $e$, and every
