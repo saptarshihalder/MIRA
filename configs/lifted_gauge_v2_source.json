@@ -1,0 +1,49 @@
+{
+  "version": "lifted_gauge_v2_source",
+  "tasks": 128,
+  "panels": [
+    {
+      "width": 5,
+      "seed": 620281
+    },
+    {
+      "width": 8,
+      "seed": 620282
+    }
+  ],
+  "training_seeds": [
+    1,
+    2,
+    3
+  ],
+  "max_mean_deterioration": 0.005,
+  "max_upper_deterioration": 0.01,
+  "output": "artifacts/reports/lifted_gauge_v2_source",
+  "hashes": {
+    "experiments/lifted_cavity/gauge.py": "c440c645a17549c0e480583f7f8e22646e881bf56aaeb3e5c4490ce0ebee0b66",
+    "experiments/lifted_cavity/gauge_source_gate.py": "76bfce65fb54d48f551adf323c16712b0ffa672fe7948a431b27acb1174c3ba5",
+    "tests/test_lifted_gauge.py": "699311b56467e69e9789f7ec497123935e03598e85b5ba7d61e2c014df9b293e",
+    "docs/LIFTED_GAUGE_V2_PROTOCOL.md": "3e29195f6b64e8b98bca0bc56b11e9881afe648fb91fa57a625d8bfc44cf327e",
+    "experiments/lifted_cavity/airq.py": "7bcdcc261cfa0c60287d5d52d5b315f84b120771565ff78f43a2f6ff339242a9",
+    "experiments/lifted_cavity/anchors.py": "514a1808441ee55e01dcf75971641ded5af3e09f209c2f7b1931a46a6bfc3d90",
+    "experiments/lifted_cavity/audit_gauge.py": "6a297f725ff4b248c74ecf9071c8edfa91ce24083cf3120523e68590fae72e94",
+    "experiments/lifted_cavity/audit_import.py": "9457978cba8b6e76475cffca4ddd40ffcc89aae3e3efb97b264d6cc9498a7c21",
+    "experiments/lifted_cavity/collect.py": "940d369dde29aa57d16fb06568281aec9953b5c27bb045276605530cbbae9ebd",
+    "experiments/lifted_cavity/collect_airq.py": "7b212c9140c89849d890032b9571a620bab77da27412f310a18644460495ae2b",
+    "experiments/lifted_cavity/confirm.py": "29b522b025041c1a76cc52305fd1961de9f00d28854011b05218ae8211e1578b",
+    "experiments/lifted_cavity/data.py": "2ae57386ad6b28ce3e20478a0be2aa98ad9fbc40995ad32f10868cfb03890a33",
+    "experiments/lifted_cavity/evaluate.py": "0420ba8d9de796d20ea1930802cf650402c34ec8c6d5cd3c32aed7f17e4f1420",
+    "experiments/lifted_cavity/fa.py": "0cfd3b7862deaff584083f259b6b493961d5bb7bc00929c4495aa1ebe7dc2d65",
+    "experiments/lifted_cavity/family.py": "4033b5c6d5dd218923b0020eb40936eeaed68fe3e9bb634af8ef9b1a3c5f091e",
+    "experiments/lifted_cavity/finetune_airq.py": "4b4091002f688ffbcd63edc2dddc6eecae2578c0fc7395d853e96e7001669991",
+    "experiments/lifted_cavity/make_figure.py": "3be06855f36de86e2f0018c1ae6728c91b08c5b95df1f9ae37b7aff61fa5f554",
+    "experiments/lifted_cavity/make_report.py": "dc79b8caff87664082585ebe0b799e82261efcbfc0ae78e179a6f7ab4eb6a296",
+    "experiments/lifted_cavity/models.py": "8ed9598b197691dbdc1ced337f975088793015c2756a08293a17884f3f679be0",
+    "experiments/lifted_cavity/oracle_audit.py": "deba309cb49529e55423cb038fa8eb84d6eaf685a5489df6a2209b199de311bb",
+    "experiments/lifted_cavity/score_repo_panel.py": "03d6fd6b0651bf69a2f13a02ee1bf24f5c2d3b5e68130f9ca8b5539fbd3a8362",
+    "experiments/lifted_cavity/train.py": "fbde85138c1c66d72076d7840ae93aa58a994fcbde924df66a46fd015bca8369",
+    "artifacts/reports/lifted_cavity_v1/runs/lift1_s1/model.pt": "e4ddb8300590845c650b56b3b9187db0b7c5c477b5725d7e3bce8310d6460a16",
+    "artifacts/reports/lifted_cavity_v1/runs/lift1_s2/model.pt": "1ef15df9962bdba69820c84d3080798194b58e1026faa966380a971557837c26",
+    "artifacts/reports/lifted_cavity_v1/runs/lift1_s3/model.pt": "2994439b23b2c11dd6f888adca0fd1b8af906b4abd967d43adef33e72cd08d41"
+  }
+}
