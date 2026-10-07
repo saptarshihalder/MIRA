@@ -3,9 +3,11 @@
 This plan supersedes the open-ended "next mechanism" search in `NEXT_TRAINED_MECHANISM_HYPOTHESIS.md` and
 `OCTOBER10_FINALIZATION.md`. Read `LIFTED_CAVITY_FINDINGS.md`, then `LIFTED_CAVITY_CONFIRMATION.md`.
 
-**Status.** All five declared confirmation endpoint decisions replay locally. The official UCI CSV matches.
-Full per-cell reproduction fails for eight-sensor transfer because learned sites are sensitive to the arbitrary
-factor-loading sign. Read `LIFTED_CAVITY_IMPORT_AUDIT.md` before new work; resolving this is the next prerequisite.
+**Status, October 7.** Version-1 confirmation endpoint decisions replay and official UCI data matches; its
+eight-sensor per-cell replay exposed factor-sign sensitivity. Version 2 resolves the K=1 sign issue by averaging
+both orientations, with nine tests and all six frozen source comparisons passing. Read
+`LIFTED_GAUGE_V2_FINDINGS.md` and `LIFTED_CAVITY_IMPORT_AUDIT.md`. Next: Beijing eligibility and boundaries;
+its evaluation remains conditional on a new frozen protocol. Original confirmation belongs to version 1.
 
 **Decision made October 6.** Lifted cavity is the main candidate; its branch has been merged locally into
 `codex/mira-research`. MIRA-Circuit and quantum-inspired attention are deferred. A parallel line, MIRA-Circuit,
@@ -34,7 +36,7 @@ multi-sensor data.
 1. **Scope.**
    - Work only on this paper until October 10.
    - No unrelated mechanisms or pilots. A source-validated factor-orientation repair is required before further
-     external evaluation; preserve all original checkpoints and closed-panel scores.
+     external evaluation; version 2 now passes that source check. Preserve all original checkpoints and scores.
    - Earlier probes go into one appendix table.
 2. **Strong controls.**
    - Every comparison includes the support-only EM-Gaussian and FA-Gaussian closed forms.
@@ -79,8 +81,8 @@ the mechanism search.
 
 ## Preconditions for the second dataset
 
-Audit raw identity and natural gaps before committing an endpoint. Resolve the sign/gauge issue without using
-the already scored panels to choose a repair. Freeze data boundaries, preprocessing, checkpoint hashes,
+Audit raw identity and natural gaps before committing an endpoint. Use the source-validated version-2 wrapper
+consistently in fitting and inference; it handles K=1 signs, not general factor rotations. Freeze data boundaries, preprocessing, checkpoint hashes,
 three training seeds, matched supervision/search budgets, applicable width controls and an analysis accounting
 for temporal dependence before evaluation-label access. The original normal-approximation week intervals remain
 descriptive of their protocol. A successful repair creates a new model version; it does not renew old confirmation.

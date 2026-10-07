@@ -1,0 +1,79 @@
+{
+  "protocol_commit": "b8c183aa68b1a8fa800c0b0b25bfa01251156e0f",
+  "config_sha256": "3dd889f93654c819a0dc342b1ed2c11d9eef2bc116215e01169319387bdb1a06",
+  "torch": "2.8.0+cpu",
+  "numpy": "2.3.5",
+  "comparisons": [
+    {
+      "width": 5,
+      "training_seed": 1,
+      "original_nll": -0.14997056126594543,
+      "repaired_nll": -0.15063534677028656,
+      "deterioration": -0.0006647765985690057,
+      "lo": -0.0021353376702695935,
+      "hi": 0.0008057844731315818,
+      "sign_error": 0.0,
+      "passed": true
+    },
+    {
+      "width": 5,
+      "training_seed": 2,
+      "original_nll": -0.15017515420913696,
+      "repaired_nll": -0.1508118063211441,
+      "deterioration": -0.0006366453599184752,
+      "lo": -0.0022493123779313545,
+      "hi": 0.0009760216580944042,
+      "sign_error": 0.0,
+      "passed": true
+    },
+    {
+      "width": 5,
+      "training_seed": 3,
+      "original_nll": -0.14901313185691833,
+      "repaired_nll": -0.14981959760189056,
+      "deterioration": -0.0008064672583714128,
+      "lo": -0.0021136255384017607,
+      "hi": 0.0005006910216589352,
+      "sign_error": 0.0,
+      "passed": true
+    },
+    {
+      "width": 8,
+      "training_seed": 1,
+      "original_nll": -0.5385919809341431,
+      "repaired_nll": -0.5394425988197327,
+      "deterioration": -0.0008506843587383628,
+      "lo": -0.002521060847000385,
+      "hi": 0.0008196921295236595,
+      "sign_error": 0.0,
+      "passed": true
+    },
+    {
+      "width": 8,
+      "training_seed": 2,
+      "original_nll": -0.5420918464660645,
+      "repaired_nll": -0.5429961681365967,
+      "deterioration": -0.0009043329628184438,
+      "lo": -0.002876300932546216,
+      "hi": 0.0010676350069093285,
+      "sign_error": 0.0,
+      "passed": true
+    },
+    {
+      "width": 8,
+      "training_seed": 3,
+      "original_nll": -0.5418839454650879,
+      "repaired_nll": -0.5431507229804993,
+      "deterioration": -0.0012668612180277705,
+      "lo": -0.002930598747883247,
+      "hi": 0.0003968763118277058,
+      "sign_error": 0.0,
+      "passed": true
+    }
+  ],
+  "cloud_calls": 0,
+  "provider_charge_usd": 0,
+  "trained_updates": 0,
+  "passed": true,
+  "seconds": 38.3508571999846
+}

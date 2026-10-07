@@ -1,0 +1,12 @@
+{
+  "aggregation_audit.json": "0c1324b41c15eaa1e7a42f2ba878bbb6724dd26ec23f1b567d10748ea7e20b32",
+  "summary.json": "af806d444e0c75f95b8fba9642d7febc14d0916eb07bf0169349c8f4d8cdb3ce",
+  "w5_anchor.npz": "ad397ab7dbf8c7139ee437e9be90e2a81beea58d6701d7612c6ce9bc2315e96e",
+  "w5_s1.npz": "efea8cb0e849f90440b8aba192f1cc7a3b08b8ec1f19facecba67da70d7b27a5",
+  "w5_s2.npz": "1e58b149600a9ab0287ad3ba7c4f75143cbb4fa883381a62fbc698f2ece62184",
+  "w5_s3.npz": "de00db133f85fcac16c5a0033c9e6b08673904d0d1b196e9a0df28b549a4f2af",
+  "w8_anchor.npz": "21ecdb5d1446387f0c1d39e7bb62e13afe562aaecfe4266ae3cd82c17f3af81a",
+  "w8_s1.npz": "edf114747e2348161196e712debc010bcf352111b98cdcd23906f7d392eac5fb",
+  "w8_s2.npz": "75f83a84ed4703cd46469268c3d595f2519e18be2735cd3441bb98231241b79c",
+  "w8_s3.npz": "007b4dc51dd5fd256abbf3914cdf9a0482b06e4d24d08705e362ea45e0673e9d"
+}

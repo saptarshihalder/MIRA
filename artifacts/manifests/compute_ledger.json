@@ -1185,5 +1185,20 @@
   "training_retries": 0,
   "scientific_gate": "five endpoint decisions reproduced; full cell replay failed for C2; no new efficacy gate",
   "results": "artifacts/reports/lifted_cavity_import_audit"
+},
+{
+  "run_id": "lifted_gauge_v2_source_cpu",
+  "date": "2026-10-07",
+  "status": "completed",
+  "reserved_usd": 0,
+  "provider_charge_usd": 0,
+  "cloud_calls": 0,
+  "total_updates": 0,
+  "trained_checkpoints": 0,
+  "loaded_checkpoints": 3,
+  "seconds": 38.3508571999846,
+  "training_retries": 0,
+  "scientific_gate": "one-factor source engineering noninferiority PASS; no external or novelty claim",
+  "results": "artifacts/reports/lifted_gauge_v2_source"
 }
 ]
