@@ -672,6 +672,21 @@ for tagk, data_, comp, tag, new, base in SROWS:
             any_s2 = True
         m, lo, hi = ci(b, n); cols.append(f'{f3(m, True)} [{f3(lo, True)}, {f3(hi, True)}]')
     lines.append(f'{tagk} & {data_} & {comp} & ' + ' & '.join(cols) + '\\\\')
+# real: Beijing PM2.5 (v2 target), fine-tuned
+bp = panel('real_beijing_s2027')
+if bp is not None:
+    cols = []
+    for sd in (1, 2, 'avg'):
+        b = real_cells('beijing', 'ft', f'pfn_s{sd}_ft', 0) if sd != 'avg' else (
+            np.mean([real_cells('beijing', 'ft', f'pfn_s{s_}_ft', 0) for s_ in (1, 2)], 0)
+            if all(real_cells('beijing', 'ft', f'pfn_s{s_}_ft', 0) is not None for s_ in (1, 2)) else None)
+        n = real_cells('beijing', 'ft', 'lift1_s{1,2,3}_ft', 0)
+        if b is None or n is None:
+            cols.append('--'); continue
+        if sd == 2:
+            any_s2 = True
+        m, lo, hi = week_ci(b, n, bp['pool']['keys']); cols.append(f'{f3(m, True)} [{f3(lo, True)}, {f3(hi, True)}]')
+    lines.append('E4b & Beijing PM$_{2.5}$ & lifted network vs transformer (FT) & ' + ' & '.join(cols) + '\\\\')
 # real: Beijing NO2 (v3 target), fine-tuned
 bj = panel('real_beijing_no2_s3031')
 if bj is not None:
@@ -707,6 +722,11 @@ else:
     (OUT / 'generated' / 'seeds_table.tex').write_text('% second seeds not available yet\n')
 
 
+for ds_ in ('airq_co', 'airq_no2'):
+    for e_ in (0, 2):
+        la2, pa2, lc2 = (real_cells(ds_, 'ft', nm_, e_) for nm_ in ('lift1_s{1,2,3}_ft', 'pfn_s1_ft', 'lct_s1_ft'))
+        if all(v is not None for v in (la2, pa2, lc2)):
+            mac(f'Xplct{ds_.replace("_", "")}e{e_}recovered', f'{100 * (la2.mean() - lc2.mean()) / (la2.mean() - pa2.mean()):.0f}')
 la_, pa_, lc_ = real_cells('beijing', 'ft', 'lift1_s{1,2,3}_ft', 0), real_cells('beijing', 'ft', 'pfn_s1_ft', 0), real_cells('beijing', 'ft', 'lct_s1_ft', 0)
 if all(v is not None for v in (la_, pa_, lc_)):
     mac('Xplctpmrecovered', f'{100 * (la_.mean() - lc_.mean()) / (la_.mean() - pa_.mean()):.0f}')

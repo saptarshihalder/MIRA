@@ -21,18 +21,14 @@ in training. With two missing sensors it closes \GapliftOne\% of the achievable 
 Bayes-optimal predictive. Two comparators close less: the residual MLP, which receives the same anchor and support
 encodings with twice the parameters (\Gapanchormlp\%), and the tuned nonlinear plug-in model NL-FA (\Gapnlfa\%).
 \input{exp_main_pfn}
-EM-Gaussian, BLR and both ridges fall below FA-Gaussian, because they cannot share strength across sensors under
-missingness. Mean imputation of calibration entries is the worst of all.
+EM-Gaussian, BLR and both ridges fall below FA-Gaussian; mean imputation is the worst of all.
 
 \subsection{Generalization beyond the training distribution}
 \label{sec:exp-shift}
 
 \input{generated/shift_table}
 
-Every learned model was trained on five sensors, nonlinearity 0.4 and 48 calibration rows (Table~\ref{tab:shift},
-Figure~\ref{fig:main}b).
-
-\textbf{Width.} The lifted cavity network runs unchanged on 8 and 16 sensors, where it improves on FA-Gaussian by
+\textbf{Width} (Table~\ref{tab:shift}, Figure~\ref{fig:main}b). The lifted cavity network runs unchanged on 8 and 16 sensors, where it improves on FA-Gaussian by
 \SFTwogainfa\ \SFTwogainfaci\ and \SFThreegainfa\ \SFThreegainfaci\ nats with two missing sensors. The residual MLP
 cannot run on these panels, and EM-Gaussian degrades as the covariance grows. \input{exp_shift_pfn}
 \textbf{Support size.} With 16 calibration rows the transformer degrades sharply, while the lifted cavity network keeps
