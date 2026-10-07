@@ -100,6 +100,10 @@ Computed by `experiments/lifted_cavity/confirm4.py`.
        (`realdata.load_beijing(..., dequant=True)`).
      - It is applied identically in the test panels and the fine-tuning episodes.
      - Earlier targets are unchanged. Nothing else in the protocol changes.
+     - *Clarification, same day, before any panel was rebuilt.* In 2013–2015 (the fine-tuning period only), some
+       readings lie on finer grids: 1.8% of SO2 readings (multiples of 0.2856 µg/m³ or of 0.1), 3.5% of O3 (multiples of
+       0.2142 or of 0.1) and 0.06% of PM10 (multiples of 0.1). They are left unchanged, because noise of width 1 could
+       make them non-positive. Every test-period reading is an integer and is dequantized.
    - *What had been seen.* No compared model (PFN-L, LCT-L, TabPFN v2, lift1) had been trained or scored on any new
      target. The only outputs seen were the closed-form references printed while building the undequantized PM10 and
      O3 panels. Those panels are discarded and rebuilt.

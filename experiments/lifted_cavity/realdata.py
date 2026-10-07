@@ -46,8 +46,9 @@ def load_airq(csv, target):
 
 
 def load_beijing(folder, pollutant='PM2.5', dequant=False):
-    """Log concentrations, stations as columns. dequant (protocol v4, amendment 1): readings are integers, so each
-    reading becomes reading + U(-1/2, 1/2) before the log, with noise fixed per pollutant."""
+    """Log concentrations, stations as columns. dequant (protocol v4, amendment 1): each integer reading becomes
+    reading + U(-1/2, 1/2) before the log, with noise fixed per pollutant; the few readings on finer grids (2013-2015
+    only) are left as they are."""
     fs = sorted(glob.glob(str(Path(folder) / 'PRSA_Data_*_20130301-20170228.csv')))
     assert len(fs) == 12, fs
     dfs = [pd.read_csv(f) for f in fs]
@@ -58,9 +59,9 @@ def load_beijing(folder, pollutant='PM2.5', dequant=False):
     V[V <= 0] = np.nan
     seed = None
     if dequant:
-        assert np.allclose(V[np.isfinite(V)], np.round(V[np.isfinite(V)])), 'dequantization assumes integer readings'
         seed = [4041, zlib.crc32(pollutant.encode())]
-        V = V + np.random.default_rng(seed).uniform(-.5, .5, V.shape)
+        noise = np.random.default_rng(seed).uniform(-.5, .5, V.shape)
+        V = np.where(np.isfinite(V) & np.isclose(V, np.round(V)), V + noise, V)
     L = np.log(V)
     return dict(L=L, ts=ts, stations=[d['station'].iloc[0] for d in dfs], files={Path(f).name: sha(f) for f in fs},
                 dequant_seed=seed)
