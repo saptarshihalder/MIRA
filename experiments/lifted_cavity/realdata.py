@@ -13,7 +13,7 @@ Datasets (raw files are not committed; see README for sources and hashes):
 Support rows of airq/gas get 20% simulated per-sensor dropout (as in the synthetic source regime); Beijing support
 rows keep only their natural missingness. Evaluation conditions add k extra dropped sensors per query (seeded).
 """
-import glob, hashlib, os
+import glob, hashlib, os, zlib
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -45,7 +45,9 @@ def load_airq(csv, target):
                 files={Path(csv).name: sha(csv)})
 
 
-def load_beijing(folder, pollutant='PM2.5'):
+def load_beijing(folder, pollutant='PM2.5', dequant=False):
+    """Log concentrations, stations as columns. dequant (protocol v4, amendment 1): readings are integers, so each
+    reading becomes reading + U(-1/2, 1/2) before the log, with noise fixed per pollutant."""
     fs = sorted(glob.glob(str(Path(folder) / 'PRSA_Data_*_20130301-20170228.csv')))
     assert len(fs) == 12, fs
     dfs = [pd.read_csv(f) for f in fs]
@@ -54,8 +56,14 @@ def load_beijing(folder, pollutant='PM2.5'):
         assert (pd.to_datetime(d[['year', 'month', 'day', 'hour']]).to_numpy() == ts).all()
     V = np.column_stack([d[pollutant].to_numpy(float) for d in dfs])
     V[V <= 0] = np.nan
+    seed = None
+    if dequant:
+        assert np.allclose(V[np.isfinite(V)], np.round(V[np.isfinite(V)])), 'dequantization assumes integer readings'
+        seed = [4041, zlib.crc32(pollutant.encode())]
+        V = V + np.random.default_rng(seed).uniform(-.5, .5, V.shape)
     L = np.log(V)
-    return dict(L=L, ts=ts, stations=[d['station'].iloc[0] for d in dfs], files={Path(f).name: sha(f) for f in fs})
+    return dict(L=L, ts=ts, stations=[d['station'].iloc[0] for d in dfs], files={Path(f).name: sha(f) for f in fs},
+                dequant_seed=seed)
 
 
 def load_gas(folder):

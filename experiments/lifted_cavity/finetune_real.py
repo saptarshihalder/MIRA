@@ -14,13 +14,31 @@ from train import build
 RAW = {'airq_co': ('airq', 'CO(GT)'), 'airq_no2': ('airq', 'NO2(GT)'), 'beijing': ('beijing', 'PM2.5'), 'beijing_no2': ('beijing', 'NO2'),
        'beijing_co': ('beijing', 'CO'), 'beijing_pm10': ('beijing', 'PM10'), 'beijing_so2': ('beijing', 'SO2'),
        'beijing_o3': ('beijing', 'O3'), 'gas': ('gas', None)}
+DEQUANT = {'beijing_pm10', 'beijing_so2', 'beijing_o3'}     # protocol v4, amendment 1: integer readings dequantized
 
 
 def load_raw(name, paths):
     kind, target = RAW[name]
     if kind == 'airq':
         return realdata.load_airq(paths['airq'], target)
-    return realdata.load_beijing(paths['beijing'], target) if kind == 'beijing' else realdata.load_gas(paths['gas'])
+    if kind == 'beijing':
+        return realdata.load_beijing(paths['beijing'], target, dequant=name in DEQUANT)
+    return realdata.load_gas(paths['gas'])
+
+
+def source_pool(a):
+    """Source-period episodes and their anchors; optionally cached, since every model fine-tunes on the same pool."""
+    key = f'src_{a.dataset}_s{a.seed}_n{a.episodes}' + (f'_p{a.period[0]}_{a.period[1]}' if a.period else '')
+    path = Path(a.pool_cache) / f'{key}.pt' if a.pool_cache else None
+    if path is not None and path.exists():
+        d = torch.load(path, weights_only=False)
+        return d['pool'], d['files'], d['dequant_seed']
+    raw = load_raw(a.dataset, dict(airq=a.airq, beijing=a.beijing, gas=a.gas))
+    pool = realdata.to_pool(realdata.episodes(a.dataset, raw, 'source', a.seed, n_source=a.episodes, period=a.period))
+    if path is not None:
+        path.parent.mkdir(parents=True, exist_ok=True); tmp = path.with_suffix('.tmp')
+        torch.save(dict(pool=pool, files=raw['files'], dequant_seed=raw.get('dequant_seed')), tmp); os.replace(tmp, path)
+    return pool, raw['files'], raw.get('dequant_seed')
 
 
 def batch_from(pool, rng, B=64, Q=8):
@@ -48,6 +66,8 @@ def main():
     ap.add_argument('--steps', type=int, default=2000); ap.add_argument('--lr', type=float, default=3e-4)
     ap.add_argument('--seed', type=int, default=11); ap.add_argument('--ckpt-every', type=int, default=50)
     ap.add_argument('--device', default='cpu')
+    ap.add_argument('--pool-cache', default=None, help='directory in which to reuse the source pool across models '
+                    '(the pool depends only on dataset, seed, episodes and period, so reuse changes nothing)')
     ap.add_argument('--period', nargs=2, default=None, help='development only: override the source period (beijing)')
     ap.add_argument('--airq', default=realdata.DEFAULT['airq'])
     ap.add_argument('--beijing', default=realdata.DEFAULT['beijing'])
@@ -55,15 +75,14 @@ def main():
     a = ap.parse_args()
     torch.set_num_threads(1); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True); ck = out / 'ckpt.pt'
-    if (out / 'model.pt').exists():
+    if (out / 'model.pt').exists() and not ck.exists():     # with a checkpoint left, the run was cut off: finish it
         raise SystemExit(f'{out} already holds a fine-tuned model')
     meta = json.loads((Path(a.init) / 'train.json').read_text())
     model = build(meta['model'], meta.get('repo'), meta)
     if (Path(a.init) / 'model.pt').exists():
         model.load_state_dict(torch.load(Path(a.init) / 'model.pt', weights_only=True, map_location='cpu'))
     dev = devutil.pick(a.device); model.to(dev)
-    raw = load_raw(a.dataset, dict(airq=a.airq, beijing=a.beijing, gas=a.gas))
-    pool = realdata.to_pool(realdata.episodes(a.dataset, raw, 'source', a.seed, n_source=a.episodes, period=a.period))
+    pool, files, dq = source_pool(a)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: .5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps)))
     run, first, elapsed = None, 0, 0.
@@ -85,7 +104,7 @@ def main():
             raise SystemExit('stopped for resume test')
     torch.save({k: v.detach().cpu() for k, v in model.state_dict().items()}, out / 'model.pt')
     (out / 'train.json').write_text(json.dumps(dict(meta, finetune=dict(vars(a), dataset=a.dataset, seconds=time.time() - start,
-                                                                         final_ema=run, files=raw['files'])), indent=1))
+                                                                         final_ema=run, files=files, dequant_seed=dq)), indent=1))
     print(out.name, a.dataset, f'ema {run:.4f} {time.time() - start:.0f}s')
     ck.unlink(missing_ok=True)
 

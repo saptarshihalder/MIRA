@@ -26,7 +26,7 @@ def build_panel(a):
         qm = realdata.condition_masks(pool, e, a.seed + 100 + e)
         conds[e] = qm
         refs[e] = realdata.closed_forms(pool, qm)
-    meta = dict(dataset=a.dataset, seed=a.seed, episodes=pool['n'], files=raw['files'], seconds=time.time() - t0,
+    meta = dict(dataset=a.dataset, seed=a.seed, episodes=pool['n'], files=raw['files'], dequant_seed=raw.get('dequant_seed'), seconds=time.time() - t0,
                 natural_query_missing_frac=float(1 - pool['qnat'].mean()))
     torch.save(dict(pool=pool, conds=conds, refs=refs, meta=meta), a.out)
     print(json.dumps(meta)[:400])

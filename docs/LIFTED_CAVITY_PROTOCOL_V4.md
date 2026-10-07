@@ -80,3 +80,34 @@ Computed by `experiments/lifted_cavity/confirm4.py`.
 - compute.
 
 ## Execution notes (recorded as they happen)
+
+1. **October 7.** H1 and H3 built as listed (`evaluate2.py panel --seed 20261401 --tasks 256 --sensors 5`;
+   `--seed 20261403 --tasks 128 --sensors 16`). The CPU seed-3 runs of the protocol v2/v3 models (post-hoc robustness,
+   not part of v4) were paused while the panels were built.
+
+2. **Amendment 1 (October 7, before any compared model was trained or scored on a new target).**
+   - *Finding.* Building the Beijing-new test panels showed two problems with the raw readings:
+     - All three new pollutants are reported as integers (µg/m³).
+     - In the test period (2016-01 to 2017-02), SO2 and O3 have large point masses at the floor value 2 µg/m³: 34.2%
+       of all SO2 readings and 12.8% of all O3 readings. For PM10 no single value exceeds 1.1%.
+     - Three of the 719 SO2 test episodes have a constant support target, and the closed-form nonlinear factor
+       reference fails on them (singular system).
+   - *Why it matters.* On such data a continuous NLL rewards putting spikes on grid values. TabPFN's histogram output
+     can do that and Gaussian outputs cannot, so E12 would measure fitting the reporting grid rather than prediction.
+   - *Remedy.* Standard uniform dequantization for continuous likelihoods on discretized data (Theis et al., 2016).
+     - For the three new targets, every reading of every station becomes reading + U(−½, ½) before the log.
+     - The noise is fixed by `np.random.default_rng([4041, crc32(pollutant)])` over the full station-by-hour matrix
+       (`realdata.load_beijing(..., dequant=True)`).
+     - It is applied identically in the test panels and the fine-tuning episodes.
+     - Earlier targets are unchanged. Nothing else in the protocol changes.
+   - *What had been seen.* No compared model (PFN-L, LCT-L, TabPFN v2, lift1) had been trained or scored on any new
+     target. The only outputs seen were the closed-form references printed while building the undequantized PM10 and
+     O3 panels. Those panels are discarded and rebuilt.
+
+3. **GPU execution** (`experiments/lifted_cavity/colab_v4.py`). These choices change speed or robustness only, never
+   results:
+   - LCT-L builds its batches in a background process (`--prefetch 4`), with the same batches in the same order. On a
+     CPU this is bitwise identical to the sequential loop, including after a resume.
+   - Training checkpoints every 1,000 steps.
+   - Fine-tuning reuses one cached source pool per target (`--pool-cache`); the pool is identical.
+   - TabPFN predicts all conditions of an episode in one call, since query rows do not attend to each other.

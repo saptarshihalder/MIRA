@@ -11,11 +11,12 @@ import torch
 ap = argparse.ArgumentParser()
 ap.add_argument('--runs', default='runs'); ap.add_argument('--cache', default='cache'); ap.add_argument('--real', default='runs_real')
 ap.add_argument('--out', default='runs/confirm_v4.json')
+ap.add_argument('--seeds', type=int, nargs='+', default=[1, 2, 3], help='the endpoints use 1 2 3; fewer seeds: early look only')
 a = ap.parse_args()
 R, C, RR = Path(a.runs), Path(a.cache), Path(a.real)
 H1, H3 = 'v2_s20261401_n256_p5_nl0.4_sr48', 'v2_s20261403_n128_p16_nl0.4_sr48'
 NEW = ('beijing_pm10', 'beijing_so2', 'beijing_o3')
-SEEDS = (1, 2, 3)
+SEEDS = tuple(a.seeds)
 
 
 def syn(name, tag, k=2):
@@ -56,6 +57,6 @@ res['E10_bjnew_nat_lctLft_noninf_pfnLft'] = paired(pfn0, lct0, wk, noninf=-.02)
 res['E11_bjnew_plus6_lctLft_vs_pfnLft'] = paired(pfn6, lct6, wk6)
 tab0, _ = real('tabpfn_v2', 0)
 res['E12_bjnew_nat_lctLft_vs_tabpfn'] = paired(tab0, lct0, wk)
-Path(a.out).write_text(json.dumps(res, indent=1))
+Path(a.out).write_text(json.dumps(dict(res, seeds=list(SEEDS)), indent=1))
 for k, v in res.items():
     print(f"{k:40s} gain {v['gain']:+.4f} [{v['lo']:+.4f}, {v['hi']:+.4f}] n={v['n']:4d} -> {'PASS' if v['passed'] else 'FAIL'}")
