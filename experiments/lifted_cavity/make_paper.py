@@ -563,16 +563,22 @@ EP = [('confirm_v2.json', 'v2', {'E1_F1_k2_lift1_vs_nlfa': ('E1', 'F1, $k=2$', '
       ('confirm_v3.json', 'v3', {'E5_G1_k2_lct_vs_pfn': ('E5', 'G1, $k=2$', 'LCT vs transformer'),
                                   'E6_G3_k2_lct_vs_pfn': ('E6', 'G3 (16 sensors), $k=2$', 'LCT vs transformer'),
                                   'E7a_bjno2_lctft_vs_lift1ft': ('E7a', 'Beijing NO$_2$', 'LCT (FT) vs lifted cavity network (FT)'),
-                                  'E7b_bjno2_lctft_noninf_pfnft': ('E7b', 'Beijing NO$_2$', 'LCT (FT) vs transformer (FT), non-inferiority')})]
+                                  'E7b_bjno2_lctft_noninf_pfnft': ('E7b', 'Beijing NO$_2$', 'LCT (FT) vs transformer (FT), non-inferiority')}),
+      ('confirm_v4.json', 'v4', {'E8_H1_k2_lctL_vs_pfnL': ('E8', 'H1, $k=2$', 'LCT-L vs transformer-L'),
+                                  'E9_H3_k2_lctL_vs_pfnL': ('E9', 'H3 (16 sensors), $k=2$', 'LCT-L vs transformer-L'),
+                                  'E10_bjnew_nat_lctLft_noninf_pfnLft': ('E10', 'Beijing-new', 'LCT-L (FT) vs transformer-L (FT), non-inferiority'),
+                                  'E11_bjnew_plus6_lctLft_vs_pfnLft': ('E11', 'Beijing-new, $+6$ removed', 'LCT-L (FT) vs transformer-L (FT)'),
+                                  'E12_bjnew_nat_lctLft_vs_tabpfn': ('E12', 'Beijing-new', 'LCT-L (FT) vs TabPFN v2 (in context)')})]
 lines = ['\\begin{table}[t]', '\\centering\\scriptsize', '\\setlength{\\tabcolsep}{3pt}',
-         '\\caption{\\label{tab:endpoints}Every pre-registered endpoint of protocols v2 and v3, each committed before its panels or targets existed '
+         '\\caption{\\label{tab:endpoints}Every pre-registered endpoint of protocols v2--v4, each committed before its panels or targets existed '
          '(protocol v1: Appendix~\\ref{app:audit}). Gain in nats of NLL, positive when the first-named model is better; paired 95\\% intervals, cluster-robust '
-         'over weeks on Beijing. Pass: gain $\\geq0.01$ and lower bound $>0$, except E7b (lower bound $>-0.02$).}',
+         'over weeks on Beijing. v4 endpoints average three training seeds per task. Pass: gain $\\geq0.01$ and lower bound $>0$, except the '
+         'non-inferiority endpoints E7b and E10 (lower bound $>-0.02$).}',
          '\\begin{tabular}{llllc}', '\\toprule', 'ID & Data & Comparison & Gain [95\\% CI] & Result\\\\', '\\midrule']
 for fname, proto, desc in EP:
     f = R / fname
     res = json.loads(f.read_text()) if f.exists() else {}
-    if proto == 'v3':
+    if proto != 'v2':
         lines.append('\\midrule')
     for k, (tagk, data_, comp) in desc.items():
         v = res.get(k)
@@ -738,6 +744,165 @@ la_, pa_, lc_ = real_cells('beijing', 'ft', 'lift1_s{1,2,3}_ft', 0), real_cells(
 if all(v is not None for v in (la_, pa_, lc_)):
     mac('Xplctpmrecovered', f'{100 * (la_.mean() - lc_.mean()) / (la_.mean() - pa_.mean()):.0f}')
     mac('Xplctpmval', f3(float(lc_.mean())))
+
+# ------------------------------------------------------------------ protocol v4: scale, pretrained TabPFN v2, new real targets
+V4P = dict(H1='v2_s20261401_n256_p5_nl0.4_sr48', H3='v2_s20261403_n128_p16_nl0.4_sr48')
+V4NEW = (('beijing_pm10', 'PM$_{10}$'), ('beijing_so2', 'SO$_2$'), ('beijing_o3', 'O$_3$'))
+V4SEEDS = (1, 2, 3)
+
+
+def v4_syn(name, tag, k):
+    """Per-task NLL on a v4 synthetic panel; learned models average the seeds that exist (v4 models need all three)."""
+    p = panel(tag)
+    if p is None:
+        return None, 0
+    if name in p['refs'][k]:
+        v = p['refs'][k][name]['nll']
+        return (None, 0) if np.isnan(v).all() else (v.mean(1), 0)
+    if name == 'tabpfn_v2':
+        f = R / 'tabpfn_v2' / f'cells_{tag}.npz'
+        return (np.load(f)[f'k{k}_nll'].mean(1), 0) if f.exists() else (None, 0)
+    fs = [R / f'{name}_s{s_}' / f'cells_{tag}.npz' for s_ in V4SEEDS]
+    vs = [np.load(f)[f'k{k}_nll'].mean(1) for f in fs if f.exists()]
+    if name in ('pfn_L', 'lct_L') and len(vs) < len(V4SEEDS):
+        return None, len(vs)
+    return (np.mean(vs, 0), len(vs)) if vs else (None, 0)
+
+
+def v4_real(name, ds, e):
+    """Per-episode NLL on a Beijing-new panel and its week keys; fine-tuned models average three seeds."""
+    tag = f'real_{ds}_s4041'
+    p = panel(tag)
+    if p is None:
+        return None, None
+    keys = [k_.split('|')[0] for k_ in p['pool']['keys']]
+    if name in p['refs'][e]:
+        v = p['refs'][e][name]['nll']
+        return (None if np.isnan(v).all() else v), keys
+    if name == 'tabpfn_v2':
+        f = R / 'tabpfn_v2' / f'cells_{tag}.npz'
+        return (np.load(f)[f'e{e}_nll'] if f.exists() else None), keys
+    fs = [RR / ds / f'{name}_s{s_}_ft' / f'cells_{tag}.npz' for s_ in V4SEEDS]
+    if not all(f.exists() for f in fs):
+        return None, keys
+    return np.mean([np.load(f)[f'e{e}_nll'] for f in fs], 0), keys
+
+
+def v4_pool(name, e):
+    vs, ks = [], []
+    for ds, _ in V4NEW:
+        v, k_ = v4_real(name, ds, e)
+        if v is None:
+            return None, None
+        vs.append(v); ks += k_
+    return np.concatenate(vs), ks
+
+
+V4ROWS = [('Oracle (true parameters)', 'oracle', 'priv', '--'), ('FA-Gaussian', 'fa1', 'cf', '--'), ('NL-FA (cubic, tuned)', 'nlfa', 'cf', '--'),
+          ('Bayesian linear regression', 'blr_cc', 'cf', '--'), ('Ridge (complete case)', 'ridge_cc', 'cf', '--'),
+          ('Lifted cavity network', 'lift1', 'small', '8k'), ('Transformer', 'pfn', 'small', '203k'), ('Lifted cavity transformer', 'lct', 'small', '203k'),
+          ('Transformer-L', 'pfn_L', 'large', '2.1M'), ('\\textbf{Lifted cavity transformer-L (ours)}', 'lct_L', 'large', '2.1M'),
+          ('TabPFN v2, pretrained (in context only)', 'tabpfn_v2', 'pre', '--')]
+V4COLS = [('H1', 0), ('H1', 2), ('H1', 3), ('H3', 2)] + [(ds, 0) for ds, _ in V4NEW] + [('pool', 0), ('pool', 6)]
+
+
+def v4_col(name, col):
+    src, k = col
+    if src in V4P:
+        return v4_syn(name, V4P[src], k)[0]
+    if src == 'pool':
+        return v4_pool(name, k)[0]
+    return v4_real(name, src, k)[0]
+
+
+v4vals = {n: [v4_col(n, c) for c in V4COLS] for _, n, _, _ in V4ROWS}
+if any(v is not None for n in ('pfn_L', 'lct_L', 'tabpfn_v2') for v in v4vals[n]):
+    head = ('Method & Params & \\multicolumn{3}{c}{H1 (5 sensors)} & H3 (16) & \\multicolumn{3}{c}{Beijing-new, natural} & \\multicolumn{2}{c}{pooled}\\\\',
+            ' & & $k{=}0$ & $k{=}2$ & $k{=}3$ & $k{=}2$ & ' + ' & '.join(l for _, l in V4NEW) + ' & natural & $+6$\\\\')
+    nsmall = max(v4_syn('pfn', V4P['H1'], 2)[1], v4_syn('lct', V4P['H1'], 2)[1])
+    lines = ['\\begin{table}[t]', '\\centering\\scriptsize', '\\setlength{\\tabcolsep}{2.2pt}',
+             '\\caption{\\label{tab:v4}Protocol v4: mean test NLL. Synthetic: fresh panels H1 and H3 by number of missing query sensors '
+             '(learned models were trained with at most one). Beijing-new: log PM$_{10}$, SO$_2$ and O$_3$ at each of 12 stations from the other 11 '
+             '(2016--2017, dequantized), natural missingness and six further stations removed; learned models are fine-tuned with one recipe, TabPFN '
+             'is used in context. The -L models average three training seeds, the lifted cavity network three, and the 203k transformers '
+             + ('two' if nsmall == 2 else 'three') + '. Best non-privileged entry per column in bold.}',
+             '\\begin{tabular}{llccccccccc}', '\\toprule', head[0], head[1], '\\midrule']
+    best = {}
+    for i in range(len(V4COLS)):
+        cand = [(round(float(v4vals[n][i].mean()), 3), n) for _, n, g, _ in V4ROWS if g != 'priv' and v4vals[n][i] is not None]
+        best[i] = {n for m, n in cand if m == min(cand)[0]} if cand else set()
+    last = None
+    for label, n, g, par in V4ROWS:
+        if last is not None and g != last:
+            lines.append('\\midrule')
+        last = g
+        row = []
+        for i in range(len(V4COLS)):
+            v = v4vals[n][i]; s_ = f3(None if v is None else float(v.mean()))
+            row.append(f'\\textbf{{{s_}}}' if n in best[i] else s_)
+        lines.append(f'{label} & {par} & ' + ' & '.join(row) + '\\\\')
+    lines += ['\\bottomrule', '\\end{tabular}', '\\end{table}']
+    (OUT / 'generated' / 'v4_table.tex').write_text('\n'.join(lines) + '\n')
+else:
+    (OUT / 'generated' / 'v4_table.tex').write_text('% protocol v4 results pending\n')
+
+# v4 macros: endpoints, scale contrasts, TabPFN contrasts
+cv4 = R / 'confirm_v4.json'
+if cv4.exists():
+    res4 = json.loads(cv4.read_text())
+    for key, short in (('E8_H1_k2_lctL_vs_pfnL', 'Eeight'), ('E9_H3_k2_lctL_vs_pfnL', 'Enine'), ('E10_bjnew_nat_lctLft_noninf_pfnLft', 'Eten'),
+                       ('E11_bjnew_plus6_lctLft_vs_pfnLft', 'Eeleven'), ('E12_bjnew_nat_lctLft_vs_tabpfn', 'Etwelve')):
+        v = res4.get(key)
+        if v:
+            mac(f'Vfour{short}', f3(v['gain'], True)); mac(f'Vfour{short}ci', f"[{f3(v['lo'], True)}, {f3(v['hi'], True)}]")
+            mac(f'Vfour{short}result', 'passes' if v['passed'] else 'fails')
+    mac('Vfourpassed', str(sum(bool(res4.get(k_, {}).get('passed')) for k_ in res4 if k_.startswith('E'))))
+for src in ('H1', 'H3'):
+    for k in ((0, 1, 2, 3) if src == 'H1' else (2,)):
+        tag = V4P[src]
+        got = {n: v4_syn(n, tag, k)[0] for n in ('pfn', 'lct', 'pfn_L', 'lct_L', 'lift1', 'fa1', 'tabpfn_v2', 'oracle')}
+        for a_, b_, key in (('pfn_L', 'lct_L', 'lctLvspfnL'), ('pfn', 'lct', 'lctvspfn'), ('lct', 'lct_L', 'lctLvslct'), ('pfn', 'pfn_L', 'pfnLvspfn'),
+                            ('tabpfn_v2', 'lct_L', 'lctLvstab'), ('tabpfn_v2', 'pfn_L', 'pfnLvstab'), ('lift1', 'lct_L', 'lctLvslift'),
+                            ('fa1', 'lct_L', 'lctLvsfa'), ('fa1', 'tabpfn_v2', 'tabvsfa'), ('lct_L', 'oracle', 'oraclevslctL')):
+            if got[a_] is not None and got[b_] is not None:
+                m, lo, hi = ci(got[a_], got[b_])
+                mac(f'Vfour{src}k{k}{key}', f3(m, True)); mac(f'Vfour{src}k{k}{key}ci', f'[{f3(lo, True)}, {f3(hi, True)}]')
+        for n in got:
+            if got[n] is not None:
+                mac(f'Vfour{src}k{k}val{n.replace("_", "")}', f3(float(got[n].mean())))
+for e in (0, 3, 6):
+    got = {n: v4_pool(n, e) for n in ('pfn_L', 'lct_L', 'lift1', 'tabpfn_v2', 'blr_cc', 'fa1')}
+    for a_, b_, key in (('pfn_L', 'lct_L', 'lctLvspfnL'), ('tabpfn_v2', 'lct_L', 'lctLvstab'), ('tabpfn_v2', 'pfn_L', 'pfnLvstab'),
+                        ('lift1', 'lct_L', 'lctLvslift'), ('blr_cc', 'lct_L', 'lctLvsblr'), ('blr_cc', 'tabpfn_v2', 'tabvsblr'), ('lift1', 'pfn_L', 'pfnLvslift')):
+        if got[a_][0] is not None and got[b_][0] is not None:
+            m, lo, hi = week_ci(got[a_][0], got[b_][0], [k_ + '|' for k_ in got[a_][1]])
+            mac(f'Vfourbjnewe{e}{key}', f3(m, True)); mac(f'Vfourbjnewe{e}{key}ci', f'[{f3(lo, True)}, {f3(hi, True)}]')
+    for n, (v, _) in got.items():
+        if v is not None:
+            mac(f'Vfourbjnewe{e}val{n.replace("_", "")}', f3(float(v.mean())))
+for ds, _ in V4NEW:
+    p_ = panel(f'real_{ds}_s4041')
+    if p_ is not None:
+        mac(f'Vfour{ds.replace("_", "")}episodes', str(p_['meta']['episodes']))
+    for e in (0, 6):
+        got = {n: v4_real(n, ds, e) for n in ('pfn_L', 'lct_L', 'tabpfn_v2', 'lift1')}
+        for a_, b_, key in (('pfn_L', 'lct_L', 'lctLvspfnL'), ('tabpfn_v2', 'lct_L', 'lctLvstab'), ('tabpfn_v2', 'pfn_L', 'pfnLvstab')):
+            if got[a_][0] is not None and got[b_][0] is not None:
+                m, lo, hi = week_ci(got[a_][0], got[b_][0], [k_ + '|' for k_ in got[a_][1]])
+                mac(f'Vfour{ds.replace("_", "")}e{e}{key}', f3(m, True)); mac(f'Vfour{ds.replace("_", "")}e{e}{key}ci', f'[{f3(lo, True)}, {f3(hi, True)}]')
+for nm in ('pfn_L', 'lct_L'):
+    tj = [R / f'{nm}_s{s_}' / 'train.json' for s_ in V4SEEDS]
+    if all(f.exists() for f in tj):
+        js = [json.loads(f.read_text()) for f in tj]
+        mac(f'Vfour{nm.replace("_", "")}params', f"{js[0]['parameters']:,}".replace(',', '{,}'))
+        mac(f'Vfour{nm.replace("_", "")}gpuhours', f"{sum(j_['seconds'] for j_ in js) / 3600:.1f}")
+tj = R / 'tabpfn_v2' / 'train.json'
+if tj.exists():
+    jt = json.loads(tj.read_text())
+    mac('Vfourtabpfnpackage', str(jt.get('package', '?')))
+    if jt.get('gpu'):
+        mac('Vfourgpu', jt['gpu'].replace('Tesla ', '').replace('NVIDIA ', ''))
+
 
 # ------------------------------------------------------------------ compute table (appendix)
 cf = R / 'compute_cost.json'

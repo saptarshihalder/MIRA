@@ -115,3 +115,10 @@ Computed by `experiments/lifted_cavity/confirm4.py`.
    - Training checkpoints every 1,000 steps.
    - Fine-tuning reuses one cached source pool per target (`--pool-cache`); the pool is identical.
    - TabPFN predicts all conditions of an episode in one call, since query rows do not attend to each other.
+
+4. **October 7.** The three dequantized Beijing-new panels were rebuilt (719 PM10, 719 SO2 and 713 O3 test episodes,
+   seed 4041). None has a constant support target. The 19 evaluation panels are frozen on branch
+   `lifted-cavity-panels` with SHA-256 sums.
+   - lift1 (seeds 1–3) was fine-tuned on each new target on a CPU: protocol v2 recipe, one cached source pool per
+     target.
+   - The CPU seed-3 runs were resumed.
