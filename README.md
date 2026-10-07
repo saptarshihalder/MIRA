@@ -1,5 +1,12 @@
 # MIRA
 
+**Current status (October 7):** the lifted cavity paper is drafted in NeurIPS format, with every number regenerated
+from committed per-task scores. The draft is at [paper/lifted_cavity/main.pdf](paper/lifted_cavity/main.pdf) and the
+results are summarized in [docs/LIFTED_CAVITY_RESULTS.md](docs/LIFTED_CAVITY_RESULTS.md).
+- Protocol v2: five of six endpoints pass. The fine-tuned transformer wins on real data.
+- Protocol v3: three of four pass. Lifted sites as the transformer's output layer beat it on synthetic tasks and
+  recover most of the real-data gap; non-inferiority on real data is not established.
+
 **Current status (October 6):** one paper, the lifted cavity network. Exact-oracle audit of the failed cavity gates, a repaired architecture and a frozen confirmation in which all five endpoints pass. See [findings](docs/LIFTED_CAVITY_FINDINGS.md), [confirmation](docs/LIFTED_CAVITY_CONFIRMATION.md) and [plan to October 10](docs/OCT10_PLAN.md).
 
 **Current status (October 4):** The [RL module and reproduction review](docs/RL_COMPLETION.md) are complete as a negative result. The trained-model paper remains partial; native advantage and submission readiness are unproven. [Latest findings](docs/ANNUAL_RL_FINDINGS.md). Current Modal cap is **$20**, superseding historical $26 references below; $16.45 provisions plus $3 protected leave $.55.

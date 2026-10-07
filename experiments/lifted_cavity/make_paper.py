@@ -122,7 +122,7 @@ for k in range(4):
     best[k] = {n for m, n in cand if m == min(cand)[0]} if cand else set()
 lines = ['\\begin{table}[t]', '\\centering\\small', '\\caption{\\label{tab:main}Main synthetic panel (F1: 256 fresh tasks, five sensors). Mean test NLL by number of missing query sensors; '
          'learned models saw at most one missing sensor in training, so $k=2,3$ are unseen patterns. Learned rows average three training seeds '
-         '(seed s.d.\\ $\\leq0.002$) except the transformers (one seed). Last column: share of the achievable gap (FA-Gaussian to Bayes-optimal) closed at $k=2$. '
+         '(seed s.d.\\ $\\leq0.002$) except the transformers (seed 1 as pre-registered; Table~\\ref{tab:seeds} adds a second seed). Last column: share of the achievable gap (FA-Gaussian to Bayes-optimal) closed at $k=2$. '
          'Best non-privileged entry per column in bold. $^\\dagger$Post hoc, scored at $k=2$ only. '
          '$^\\ddagger$Designed after protocol v2 (Section~\\ref{sec:exp-v3}); descriptive on this panel and not bolded.}',
          '\\begin{tabular}{lccccc}', '\\toprule', 'Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & Gap closed\\\\', '\\midrule']
@@ -649,8 +649,8 @@ def seed_cells(name, seed, tag, k=2):
     return np.load(f)[f'k{k}_nll'].mean(1) if f.exists() else None
 
 
-SROWS = [('E2', 'F1, $k=2$', 'lifted cavity network vs transformer', PANEL['F1'], 'lift1', 'pfn'),
-         ('E3b', 'F3, $k=2$', 'lifted cavity network vs transformer', PANEL['F3'], 'lift1', 'pfn'),
+SROWS = [('E2', 'F1, $k=2$', 'lifted network vs transformer', PANEL['F1'], 'lift1', 'pfn'),
+         ('E3b', 'F3, $k=2$', 'lifted network vs transformer', PANEL['F3'], 'lift1', 'pfn'),
          ('E5', 'G1, $k=2$', 'LCT vs transformer', V3P['G1'], 'lct', 'pfn'),
          ('E6', 'G3, $k=2$', 'LCT vs transformer', V3P['G3'], 'lct', 'pfn')]
 lines, any_s2 = [], False
@@ -677,7 +677,7 @@ if bj is not None:
     keys = bj['pool']['keys']
     def rft(nm):
         return real_cells('beijing_no2', 'ft', nm, 0, seed=3031)
-    for tagk, comp, new, base in (('E7a', 'LCT (FT) vs lifted cavity network (FT)', 'lct', 'lift'), ('E7b', 'LCT (FT) vs transformer (FT)', 'lct', 'pfn')):
+    for tagk, comp, new, base in (('E7a', 'LCT vs lifted network (FT)', 'lct', 'lift'), ('E7b', 'LCT vs transformer (FT)', 'lct', 'pfn')):
         cols = []
         for sd in (1, 2, 'avg'):
             def g(nm, sd_):
@@ -695,7 +695,7 @@ if bj is not None:
             m, lo, hi = week_ci(b, n, keys); cols.append(f'{f3(m, True)} [{f3(lo, True)}, {f3(hi, True)}]')
         lines.append(f'{tagk} & Beijing NO$_2$ & {comp} & ' + ' & '.join(cols) + '\\\\')
 if any_s2:
-    tab_ = ['\\begin{table}[h]', '\\centering\\scriptsize', '\\setlength{\\tabcolsep}{3pt}',
+    tab_ = ['\\begin{table}[h]', '\\centering\\scriptsize', '\\setlength{\\tabcolsep}{2pt}',
             '\\caption{\\label{tab:seeds}Second training seeds of the transformer and the lifted cavity transformer (post hoc). Endpoint comparisons '
             'recomputed with each seed and with both averaged; the lifted cavity network always averages its three seeds. Gains in nats, paired 95\\% '
             'intervals (cluster-robust over weeks on Beijing).}',

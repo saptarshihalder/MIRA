@@ -70,9 +70,9 @@ expectation propagation (EP) refines such experts using context from the other s
 \begin{enumerate}
   \item \textbf{When products of experts fail (\S\ref{sec:scalar}--\ref{sec:method}).} Under shared noise, no product
   of mask-independent experts over the target alone is Bayes-consistent across missingness patterns; the optimal
-  weight of a sensor can even change sign with the other sensors present. More generally, Gaussian sites over the
-  target and $K'$ nuisance dimensions are consistent only if $K'$ reaches the rank of the shared noise, and then they
-  are exact. An EP-style network with scalar cavities fails accordingly in practice.
+  weight of a sensor can even change sign with the other sensors present. More generally, static Gaussian sites
+  over the target and $K'$ nuisance dimensions can be consistent for every pattern only if $K'$ reaches the rank of
+  the shared noise, and then they are exact. An EP-style network with scalar cavities fails accordingly in practice.
   \item \textbf{Lifted cavity networks (\S\ref{sec:method}).} Each observed sensor contributes a rank-one Gaussian
   site over the target and a low-dimensional shared nuisance, and missing sensors are omitted exactly. The sites start
   from a factor analysis of the incomplete calibration rows and are refined by a small network that re-linearizes
