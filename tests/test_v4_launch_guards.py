@@ -43,3 +43,33 @@ def test_resume_rejects_changed_identity_and_unbound_results(tmp_path):
     unbound = tmp_path / 'old'; unbound.mkdir(); (unbound / 'model.pt').touch()
     with pytest.raises(ValueError, match='without an identity'):
         bind_manifest(unbound, {}, {})
+
+
+def test_tabpfn_density_handles_double_borders_and_float_logits():
+    torch = pytest.importorskip('torch')
+    from tabpfn_colab import tabpfn_nll
+
+    class Criterion(torch.nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.register_buffer('borders', torch.tensor([0., 1.], dtype=torch.float64))
+
+        def mean(self, logits):
+            return logits.mean(-1)
+
+        def forward(self, logits, y):
+            # This indexed assignment reproduces TabPFN's ignore_init dtype requirement.
+            y[torch.isnan(y)] = self.borders[0]
+            assert logits.dtype == y.dtype == self.borders.dtype
+            return (y - self.mean(logits)) ** 2
+
+    class Regressor:
+        def fit(self, X, y):
+            pass
+
+        def predict(self, X, output_type):
+            return dict(criterion=Criterion(), logits=torch.ones((2, 3), dtype=torch.float32), mean=np.ones(2))
+
+    nll, mean = tabpfn_nll(Regressor(), np.zeros((2, 1)), np.array([0., 1.]), np.zeros((2, 1)), np.array([2., 3.]))
+    np.testing.assert_allclose(nll, [1., 4.])
+    np.testing.assert_allclose(mean, [1., 1.])

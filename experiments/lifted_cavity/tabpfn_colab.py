@@ -40,6 +40,9 @@ def tabpfn_nll(reg, Xs, ys, Xq, yq):
     mean = np.asarray(out['mean'], dtype=float)
     with torch.no_grad():
         crit = crit.to(logits.device)
+        # In v9.1 the raw-unit bar borders can be float64 while logits are float32.
+        # Its forward assigns borders into y in-place: all density inputs must agree.
+        logits = logits.to(dtype=crit.borders.dtype)
         m = crit.mean(logits).double().cpu().numpy().reshape(-1)
         if not np.allclose(m, mean, atol=1e-3 * (1 + np.abs(mean).max())):
             raise RuntimeError('TabPFN criterion is not in raw target units; NLL would be mis-scaled')
