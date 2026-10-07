@@ -17,6 +17,7 @@ Lifted sites, no cavity & $-$0.551 & $-$0.469 & $-$0.369 & $-$0.250\\
 Scalar sites ($K=0$) & $-$0.295 & $-$0.228 & $-$0.148 & $-$0.057\\
 Transformer & $-$0.568 & $-$0.474 & $-$0.362 & $-$0.229\\
 Transformer, all masks & $-$0.545 & $-$0.452 & $-$0.343 & $-$0.212\\
+Lifted cavity transformer (v3) & $-$0.611 & $-$0.526 & $-$0.423 & $-$0.299\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -40,6 +41,7 @@ Lifted sites, no cavity & $-$0.952 & $-$0.916 & $-$0.880 & $-$0.836\\
 Scalar sites ($K=0$) & $-$0.658 & $-$0.627 & $-$0.591 & $-$0.554\\
 Transformer & $-$0.886 & $-$0.846 & $-$0.801 & $-$0.747\\
 Transformer, all masks & $-$0.869 & $-$0.832 & $-$0.790 & $-$0.738\\
+Lifted cavity transformer (v3) & $-$1.020 & $-$0.985 & $-$0.949 & $-$0.905\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -65,6 +67,7 @@ Transformer & $-$0.226 & $-$0.043 & 0.191 & 0.503\\
 Transformer, all masks & $-$0.221 & $-$0.038 & 0.190 & 0.486\\
 Residual MLP & $-$0.107 & 0.039 & 0.235 & 0.508\\
 Scalar-cavity network & 0.133 & 0.256 & 0.416 & 0.635\\
+Lifted cavity transformer (v3) & $-$0.196 & $-$0.037 & 0.179 & 0.482\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -90,6 +93,7 @@ Transformer & $-$0.278 & $-$0.122 & 0.085 & 0.371\\
 Transformer, all masks & $-$0.281 & $-$0.123 & 0.080 & 0.353\\
 Residual MLP & $-$0.304 & $-$0.161 & 0.036 & 0.319\\
 Scalar-cavity network & 0.052 & 0.161 & 0.302 & 0.505\\
+Lifted cavity transformer (v3) & $-$0.319 & $-$0.171 & 0.029 & 0.315\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -157,6 +161,7 @@ NL-FA & 0.144 & 0.120 & 0.091 & 0.124\\
 Bayesian linear regression & 1.037 & 0.433 & 0.216 & 0.202\\
 Ridge (complete case) & 0.824 & 0.337 & 0.208 & 0.210\\
 GP, complete case$^\dagger$ & 3.364 & 1.056 & 0.503 & 0.146\\
+$k$-nearest neighbours$^\dagger$ & 0.571 & 0.391 & 0.353 & 0.274\\
 Lifted cavity, zero-shot & 0.044 & 0.064 & 0.129 & 0.160\\
 Transformer, zero-shot & $-$0.017 & $-$0.006 & 0.081 & 0.154\\
 \textbf{Lifted cavity, fine-tuned (ours)} & $-$0.040 & $-$0.031 & 0.008 & 0.077\\
@@ -181,6 +186,8 @@ FA-Gaussian & $-$0.196 & $-$0.173 & $-$0.155 & $-$0.162\\
 NL-FA & $-$0.090 & $-$0.102 & $-$0.142 & $-$0.169\\
 Bayesian linear regression & $-$0.055 & $-$0.214 & $-$0.178 & $-$0.160\\
 Ridge (complete case) & $-$0.200 & $-$0.230 & $-$0.176 & $-$0.145\\
+GP, complete case$^\dagger$ & 25.217 & 0.696 & $-$0.198 & $-$0.258\\
+$k$-nearest neighbours$^\dagger$ & $-$0.010 & $-$0.020 & $-$0.063 & $-$0.128\\
 Lifted cavity, zero-shot & $-$0.350 & $-$0.295 & $-$0.233 & $-$0.176\\
 Transformer, zero-shot & $-$0.360 & $-$0.310 & $-$0.231 & $-$0.136\\
 \textbf{Lifted cavity, fine-tuned (ours)} & $-$0.412 & $-$0.366 & $-$0.337 & $-$0.273\\

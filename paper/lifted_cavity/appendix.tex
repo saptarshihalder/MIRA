@@ -135,7 +135,16 @@ used exactly as in \eqref{eq:relin} with the linearization point $\bar y$ set to
 mean (one round, $K=1$, gradients not propagated through $\bar y$). Readings of missing sensors are replaced by the
 missing-value token before the backbone and contribute no site, so they never enter the prediction (a unit test
 checks both this and the identity with the anchor's closed form at initialization). Anchors are computed on the fly
-for each training task. Training, masks, seed and evaluation are those of the transformer.
+for each training task. Training, masks, seed and evaluation are those of the transformer. Figure~\ref{fig:training} compares
+the two training curves.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=.72\linewidth]{figures/training.pdf}
+\caption{\label{fig:training}Training NLL (moving average; fresh tasks with at most one missing sensor) of the
+transformer and the lifted cavity transformer, which share backbone, recipe and seed. The lifted output layer starts
+at its anchor's closed form, so it begins far lower; the plain transformer must first learn fusion from scratch.}
+\end{figure}
 
 \section{Baselines and references}
 \label{app:baselines}
@@ -157,6 +166,9 @@ for each training task. Training, masks, seed and evaluation are those of the tr
   \item \textbf{Gaussian process (post hoc):} for each episode and observed-sensor set, an ARD squared-exponential
   kernel plus white noise on the complete-case calibration rows, with hyperparameters by type-II maximum likelihood
   (one restart).
+  \item \textbf{$k$-nearest neighbours (post hoc):} on the standardized observed sensors of complete-case calibration
+  rows, with $k\in\{1,2,3,5,7,10\}$ chosen per episode and sensor set by leave-one-out NLL on the support and the
+  leave-one-out mean squared error as predictive variance.
 \end{itemize}
 EM-Gaussian, FA-Gaussian and ridge inflate their predictive variance by $n/(n-|S|-1)$.
 

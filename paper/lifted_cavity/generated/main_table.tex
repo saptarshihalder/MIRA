@@ -1,6 +1,6 @@
 \begin{table}[t]
 \centering\small
-\caption{\label{tab:main}Main synthetic panel (F1: 256 fresh tasks, five sensors). Mean test NLL by number of missing query sensors; learned models saw at most one missing sensor in training, so $k=2,3$ are unseen patterns. Learned rows average three training seeds (seed s.d.\ $\leq0.002$) except the transformers (one seed). Last column: share of the achievable gap (FA-Gaussian to Bayes-optimal) closed at $k=2$. Best non-privileged entry per column in bold.}
+\caption{\label{tab:main}Main synthetic panel (F1: 256 fresh tasks, five sensors). Mean test NLL by number of missing query sensors; learned models saw at most one missing sensor in training, so $k=2,3$ are unseen patterns. Learned rows average three training seeds (seed s.d.\ $\leq0.002$) except the transformers (one seed). Last column: share of the achievable gap (FA-Gaussian to Bayes-optimal) closed at $k=2$. Best non-privileged entry per column in bold. $^\dagger$Post hoc, scored at $k=2$ only. $^\ddagger$Designed after protocol v2 (Section~\ref{sec:exp-v3}); descriptive on this panel and not bolded.}
 \begin{tabular}{lccccc}
 \toprule
 Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & Gap closed\\
@@ -24,6 +24,7 @@ Transformer (TabPFN-v2 style), 203k & $-$0.246 & $-$0.084 & 0.131 & 0.424 & 34\%
 Residual MLP on FA anchor, 15k & $-$0.236 & $-$0.087 & 0.114 & 0.397 & 46\%\\
 Scalar-cavity network, 3k & 0.055 & 0.178 & 0.336 & 0.555 & $-$115\%\\
 \emph{Transformer, trained on all masks} & $-$0.237 & $-$0.076 & 0.132 & 0.411 & 33\%\\
+\emph{Lifted cavity transformer (v3)}$^\ddagger$, 203k & $-$0.265 & $-$0.112 & 0.095 & 0.387 & 59\%\\
 \bottomrule
 \end{tabular}
 \end{table}

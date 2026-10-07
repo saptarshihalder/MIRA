@@ -110,10 +110,11 @@ ROWS1 = [('Oracle (true parameters)', 'oracle', 'priv'), ('Bayes-optimal (HMC, t
          ('GP, complete case$^\\dagger$', 'gp', 'cf'),
          ('\\textbf{Lifted cavity (ours)}, 8k', 'lift1', 'ic'), ('Transformer (TabPFN-v2 style), 203k', 'pfn', 'ic'),
          ('Residual MLP on FA anchor, 15k', 'anchor_mlp', 'ic'), ('Scalar-cavity network, 3k', 'repo_cavity_fresh', 'ic'),
-         ('\\emph{Transformer, trained on all masks}', 'pfnall', 'ic*'), ('TabPFN v2, pretrained (in context only)', 'tabpfn_v2', 'ic*')]
+         ('\\emph{Transformer, trained on all masks}', 'pfnall', 'ic*'), ('TabPFN v2, pretrained (in context only)', 'tabpfn_v2', 'ic*'),
+         ('\\emph{Lifted cavity transformer (v3)}$^\\ddagger$, 203k', 'lct', 'ic*')]
 T = PANEL['F1']
 vals = {name: [cells(name, T, k) for k in range(4)] for _, name, _ in ROWS1}
-ROWS1 = [r for r in ROWS1 if r[1] != 'tabpfn_v2' or any(v is not None for v in vals['tabpfn_v2'])]
+ROWS1 = [r for r in ROWS1 if r[1] not in ('tabpfn_v2', 'lct') or any(v is not None for v in vals[r[1]])]
 fa2, bop2 = vals['fa1'][2], vals['bop'][2]
 best = {}
 for k in range(4):
@@ -122,7 +123,8 @@ for k in range(4):
 lines = ['\\begin{table}[t]', '\\centering\\small', '\\caption{\\label{tab:main}Main synthetic panel (F1: 256 fresh tasks, five sensors). Mean test NLL by number of missing query sensors; '
          'learned models saw at most one missing sensor in training, so $k=2,3$ are unseen patterns. Learned rows average three training seeds '
          '(seed s.d.\\ $\\leq0.002$) except the transformers (one seed). Last column: share of the achievable gap (FA-Gaussian to Bayes-optimal) closed at $k=2$. '
-         'Best non-privileged entry per column in bold. $^\\dagger$Post hoc, scored at $k=2$ only.}',
+         'Best non-privileged entry per column in bold. $^\\dagger$Post hoc, scored at $k=2$ only. '
+         '$^\\ddagger$Designed after protocol v2 (Section~\\ref{sec:exp-v3}); descriptive on this panel and not bolded.}',
          '\\begin{tabular}{lccccc}', '\\toprule', 'Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & Gap closed\\\\', '\\midrule']
 groups = {'priv': 'Privileged references', 'cf': 'Support-only closed forms', 'ic': 'Learned in context (trained on $k\\leq1$)'}
 last = None
@@ -159,18 +161,19 @@ if fa2 is not None and bop2 is not None:
 # ------------------------------------------------------------------ Table 2: generalisation panels, k=2
 ROWS2 = [('Oracle', 'oracle'), ('FA-Gaussian', 'fa1'), ('EM-Gaussian', 'em_gauss'), ('NL-FA', 'nlfa'), ('BLR', 'blr_cc'),
          ('Lifted cavity (ours)', 'lift1'), ('Transformer', 'pfn'), ('Residual MLP', 'anchor_mlp'), ('\\emph{Transformer, all masks}', 'pfnall'),
-         ('\\emph{TabPFN v2, pretrained}', 'tabpfn_v2')]
+         ('\\emph{TabPFN v2, pretrained}', 'tabpfn_v2'), ('\\emph{Lifted cavity transformer (v3)}', 'lct')]
 cols = ['F2', 'F3', 'F4', 'F5', 'F6', 'F7']
 lines = ['\\begin{table}[t]', '\\centering\\small', '\\setlength{\\tabcolsep}{5pt}', '\\caption{\\label{tab:shift}Generalization beyond the training distribution (fresh panels of 128 tasks). '
          'Mean test NLL with two missing query sensors. Every learned model was trained on $P{=}5$ sensors, nonlinearity 0.4 and $n{=}48$ support rows; '
-         'the residual MLP is defined only for five sensors. Best non-privileged entry per column in bold.}',
+         'the residual MLP is defined only for five sensors. Best non-privileged entry per column in bold; italic rows are '
+         'controls or descriptive (the lifted cavity transformer was designed after protocol v2) and are not bolded.}',
          '\\begin{tabular}{l' + 'c' * len(cols) + '}', '\\toprule',
          'Method & ' + ' & '.join(PHEAD[c] for c in cols) + '\\\\', '\\midrule']
 tab = {n: [cells(n, PANEL[c], 2) for c in cols] for _, n in ROWS2}
-ROWS2 = [r for r in ROWS2 if r[1] != 'tabpfn_v2' or any(v is not None for v in tab['tabpfn_v2'])]
+ROWS2 = [r for r in ROWS2 if r[1] not in ('tabpfn_v2', 'lct') or any(v is not None for v in tab[r[1]])]
 bestc = {}
 for i, c in enumerate(cols):
-    cand = [(round(float(tab[n][i].mean()), 3), n) for _, n in ROWS2 if n not in ('oracle', 'pfnall', 'tabpfn_v2') and tab[n][i] is not None]
+    cand = [(round(float(tab[n][i].mean()), 3), n) for _, n in ROWS2 if n not in ('oracle', 'pfnall', 'tabpfn_v2', 'lct') and tab[n][i] is not None]
     bestc[i] = {n for m, n in cand if m == min(cand)[0]} if cand else set()
 for label, n in ROWS2:
     row = []
@@ -232,7 +235,7 @@ for n1, n2, key in (('lift1', 'lift1_static', 'Cav'), ('lift1', 'lift0', 'Lift')
 # ------------------------------------------------------------------ Table 4: real data
 REAL = [('beijing', 'Beijing PM$_{2.5}$ (11 stations)', (0, 3, 6)), ('airq_co', 'Air Quality CO', (0, 2)), ('airq_no2', 'Air Quality NO$_2$', (0, 2))]
 ROWS4 = [('EM-Gaussian', 'ref', 'em_gauss'), ('FA-Gaussian', 'ref', 'fa1'), ('NL-FA', 'ref', 'nlfa'), ('Bayesian linear regression', 'ref', 'blr_cc'),
-         ('Ridge (complete case)', 'ref', 'ridge_cc'), ('GP, complete case$^\\dagger$', 'ph', 'gp'),
+         ('Ridge (complete case)', 'ref', 'ridge_cc'), ('GP, complete case$^\\dagger$', 'ph', 'gp'), ('$k$-nearest neighbours$^\\dagger$', 'ph', 'knn'),
          ('Lifted cavity, zero-shot', 'zs', 'lift1_s1'), ('Transformer, zero-shot', 'zs', 'pfn_s1'), ('TabPFN v2, pretrained', 'zs', 'tabpfn_v2'),
          ('\\textbf{Lifted cavity, fine-tuned (ours)}', 'ft', 'lift1_s{1,2,3}_ft'), ('\\quad no synthetic pretraining', 'ft', 'lift1_untrained_ft'),
          ('\\quad no cavity input', 'ft', 'lift1_static_s1_ft'), ('\\quad scalar sites ($K=0$)', 'ft', 'lift0_s1_ft'),
@@ -314,7 +317,7 @@ for ds, _, es in REAL:
             b = real_cells(ds, 'ref', other, e)
             if l is not None and b is not None:
                 m, lo, hi = week_ci(b, l, keys); mac(f'R{ds.replace("_", "")}e{e}vs{key}', f3(m, True)); mac(f'R{ds.replace("_", "")}e{e}vs{key}ci', f'[{f3(lo, True)}, {f3(hi, True)}]')
-        for kind_, nm_, key in (('ref', 'fa1', 'fa'), ('ref', 'blr_cc', 'blr'), ('ref', 'em_gauss', 'em'), ('ref', 'nlfa', 'nlfa'), ('ph', 'gp', 'gp'),
+        for kind_, nm_, key in (('ref', 'fa1', 'fa'), ('ref', 'blr_cc', 'blr'), ('ref', 'em_gauss', 'em'), ('ref', 'nlfa', 'nlfa'), ('ph', 'gp', 'gp'), ('ph', 'knn', 'knn'),
                                 ('zs', 'lift1_s1', 'zslift'), ('zs', 'pfn_s1', 'zspfn'), ('ft', 'lift1_s{1,2,3}_ft', 'ftlift'), ('ft', 'pfn_s1_ft', 'ftpfn')):
             v_ = real_cells(ds, kind_, nm_, e)
             if v_ is not None:
@@ -343,6 +346,13 @@ zl, fl = real_cells('beijing', 'zs', 'lift1_s1', 0), real_cells('beijing', 'ft',
 zp, fp = real_cells('beijing', 'zs', 'pfn_s1', 0), real_cells('beijing', 'ft', 'pfn_s1_ft', 0)
 if all(v is not None for v in (zl, fl, zp, fp)):
     mac('FTbeijingliftgain', f'{zl.mean() - fl.mean():.2f}'); mac('FTbeijingpfngain', f'{zp.mean() - fp.mean():.2f}')
+la, pa, ba = real_cells('beijing', 'ft', 'lift1_s{1,2,3}_ft', 0), real_cells('beijing', 'ft', 'pfn_s1_ft', 0), real_cells('beijing', 'ref', 'blr_cc', 0)
+if all(v is not None for v in (la, pa, ba)):
+    d_ = la - pa
+    mac('FTbeijingpfnbetterpct', f'{100 * (d_ > 0).mean():.0f}')
+    qb = np.digitize(ba, np.quantile(ba, [.25, .5, .75]))
+    for i_, nm_ in enumerate(('One', 'Two', 'Three', 'Four')):
+        mac(f'FTbeijinggapqQ{nm_}', f'{d_[qb == i_].mean():.2f}')
 
 # ------------------------------------------------------------------ calibration table (F1 k=2, Beijing natural)
 CAL = [('FA-Gaussian', 'fa1'), ('EM-Gaussian', 'em_gauss'), ('BLR', 'blr_cc'), ('Lifted cavity (ours)', 'lift1'), ('Transformer', 'pfn'), ('Residual MLP', 'anchor_mlp')]
@@ -382,11 +392,11 @@ for fname, key in (('confirm_v2.json', 'V2'), ('confirm_v3.json', 'V3')):
 
 # ------------------------------------------------------------------ figure: gains over FA-Gaussian by k, and width transfer
 INK2 = '#52514e'
-fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.45))
+fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.3))
 ks = np.arange(4)
 SER = [('lift1', 'Lifted cavity (ours)', '#2a78d6', 'o', '-'), ('pfn', 'Transformer', '#eb6834', 's', '-'),
        ('pfnall', 'Transformer, all masks', '#eb6834', 's', ':'), ('anchor_mlp', 'Residual MLP', '#1baf7a', 'D', '-'),
-       ('nlfa', 'NL-FA', '#eda100', 'v', '-')]
+       ('nlfa', 'NL-FA', '#eda100', 'v', '-'), ('lct', 'Lifted cavity transformer (v3)', '#2a78d6', 'o', '--')]
 ax = axes[0]
 fa_k = [vals['fa1'][k].mean() for k in range(4)]
 for name, lab, ls in (('oracle', 'Oracle', '--'), ('bop', 'Bayes-optimal (HMC)', '-.')):
@@ -487,7 +497,7 @@ V3SYN = [('G1', k) for k in range(4)] + [('G3', 2)]
 V3REAL = [('beijing_no2', 0), ('beijing_no2', 6), ('beijing_co', 0), ('beijing_co', 6)]
 ROWS5 = [('FA-Gaussian', 'fa1', ('ref', 'fa1')), ('Bayesian linear regression', 'blr_cc', ('ref', 'blr_cc')),
          ('Lifted cavity network, 8k', 'lift1', ('ft', 'lift1_s{1,2,3}_ft')), ('Transformer, 203k', 'pfn', ('ft', 'pfn_s1_ft')),
-         ('Transformer, all masks, 203k', 'pfnall', (None, None)), ('\\textbf{Lifted cavity transformer}, 203k', 'lct', ('ft', 'lct_s1_ft'))]
+         ('\\textbf{Lifted cavity transformer}, 203k', 'lct', ('ft', 'lct_s1_ft'))]
 v5 = {}
 for label, n, (kind, nm) in ROWS5:
     v5[n] = [cells(n, V3P[p], k) for p, k in V3SYN] + [real_cells(ds, kind, nm, e, seed=3031) if kind else None for ds, e in V3REAL]
@@ -499,7 +509,7 @@ for i in range(ncol5):
 lines = ['\\begin{table}[t]', '\\centering\\scriptsize', '\\setlength{\\tabcolsep}{3pt}',
          '\\caption{\\label{tab:v3}Protocol v3 (new panels and targets). Mean test NLL. G1: 256 fresh five-sensor tasks by number of missing query sensors $k$; '
          'G3: 128 fresh 16-sensor tasks, $k=2$. Beijing: log NO$_2$ and log CO at each station from the other 11 stations, 2016--2017, natural missingness and six '
-         'further sensors removed; learned models fine-tuned with the recipe of protocol v2 (the all-mask transformer was not fine-tuned). Best entry per column in bold.}',
+         'further sensors removed; learned models fine-tuned with the recipe of protocol v2. Best entry per column in bold.}',
          '\\begin{tabular}{l' + 'c' * ncol5 + '}', '\\toprule',
          ' & \\multicolumn{4}{c}{G1, $P{=}5$} & G3 & \\multicolumn{2}{c}{Beijing NO$_2$} & \\multicolumn{2}{c}{Beijing CO}\\\\',
          'Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & $P{=}16$ & natural & $+6$ & natural & $+6$\\\\', '\\midrule']
@@ -534,6 +544,11 @@ for ds in ('beijing_no2', 'beijing_co'):
             if l3 is not None and b is not None:
                 m, lo, hi = week_ci(b, l3, keys); mac(f'Vthree{ds.replace("_", "")}e{e}lctvs{key}', f3(m, True)); mac(f'Vthree{ds.replace("_", "")}e{e}lctvs{key}ci', f'[{f3(lo, True)}, {f3(hi, True)}]')
         a3, p3 = real_cells(ds, 'ft', 'lift1_s{1,2,3}_ft', e, seed=3031), real_cells(ds, 'ft', 'pfn_s1_ft', e, seed=3031)
+        if l3 is not None and a3 is not None and p3 is not None and a3.mean() > p3.mean():
+            mac(f'Vthree{ds.replace("_", "")}e{e}recovered', f'{100 * (a3.mean() - l3.mean()) / (a3.mean() - p3.mean()):.0f}')
+        for v_, key in ((l3, 'lct'), (a3, 'lift'), (p3, 'pfn')):
+            if v_ is not None:
+                mac(f'Vthree{ds.replace("_", "")}e{e}val{key}', f3(float(v_.mean())))
         if a3 is not None and p3 is not None:
             m, lo, hi = week_ci(p3, a3, keys); mac(f'Vthree{ds.replace("_", "")}e{e}liftvspfn', f3(m, True)); mac(f'Vthree{ds.replace("_", "")}e{e}liftvspfnci', f'[{f3(lo, True)}, {f3(hi, True)}]')
 
@@ -609,6 +624,13 @@ for nm, lab, col, ls in (('pfn_s1', 'Transformer, seed 1', '#eb6834', '-'), ('pf
         tr = json.loads(f.read_text()).get('trace', [])
         if tr:
             curves.append((lab, col, ls, [t['step'] for t in tr], [t['ema_loss'] for t in tr]))
+fp_, fl_ = R / 'pfn_s1' / 'train.json', R / 'lct_s1' / 'train.json'
+if fp_.exists() and fl_.exists():
+    tp_, tl_ = json.loads(fp_.read_text())['trace'], json.loads(fl_.read_text())['trace']
+    if tl_ and tl_[-1]['step'] == 30000:
+        pf_ = tp_[-1]['ema_loss']; reach = next(t['step'] for t in tl_ if t['ema_loss'] <= pf_)
+        mac('Trainlctreach', f'{reach:,}'.replace(',', '{,}'))
+        mac('Trainlctgap', f"{np.mean([t['ema_loss'] for t in tp_[-10:]]) - np.mean([t['ema_loss'] for t in tl_[-10:]]):.3f}")
 if curves:
     fig, ax = plt.subplots(figsize=(5.2, 2.6))
     for lab, col, ls, xs, ys in curves:

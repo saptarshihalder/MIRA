@@ -1,11 +1,6 @@
-\textbf{Scope.} The exact and Bayes-optimal references exist only for our generator (one-factor shared noise, a
-sinusoidal response nonlinearity, Gaussian targets), and the shift panels vary width, nonlinearity and support size
-within it. On the Air Quality device, per-sensor dropout is simulated because its own outages remove all sensors at
-once. In Beijing, natural missingness is real but rare (\Rbeijingnatmiss\% of query readings), and larger deletions
-are simulated. The gas-sensor-drift benchmark could not separate methods because heavy outliers dominate Gaussian
-likelihoods (Appendix~\ref{app:audit}).
-\textbf{Model class.} Gaussian sites over a low-dimensional latent cannot represent multimodal posteriors, and on real
-networks they underfit (\S\ref{sec:exp-real}). We used $K=1$ throughout.
-\textbf{Baselines.} Each transformer was trained once, with a CPU budget (203k parameters, 30{,}000 steps). Pretrained
-tabular foundation models (TabPFN~v2, TabICL) could not be run in our sandbox; we provide a script but report no
-numbers for them.
+\textbf{Scope.} Exact and Bayes-optimal references exist only for our generator (one-factor noise, sinusoidal
+nonlinearity, Gaussian targets). Per-sensor dropout is simulated on Air Quality and mostly simulated on Beijing,
+whose natural missingness covers \Rbeijingnatmiss\% of query readings; the gas-drift benchmark could not separate
+methods (Appendix~\ref{app:audit}). \textbf{Model class.} Gaussian sites cannot represent multimodal posteriors; we
+used $K=1$ throughout. \textbf{Baselines.} The transformers were trained on a CPU budget (203k parameters, 30{,}000
+steps). Pretrained tabular foundation models (TabPFN~v2, TabICL) could not be run in our sandbox; we provide a script.

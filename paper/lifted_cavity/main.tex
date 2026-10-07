@@ -19,6 +19,8 @@
 \usepackage{multirow}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
+\usepackage{enumitem}
+\setlist{itemsep=1pt,topsep=3pt,parsep=0pt}
 
 \newtheorem{proposition}{Proposition}
 \newtheorem{remark}{Remark}
@@ -46,7 +48,7 @@
 
 Low-cost sensors now carry much of the world's environmental, industrial and clinical measurement. A typical deployment
 co-locates a few cheap sensors with a reference instrument for a short calibration period, and from then on predicts
-the reference quantity from the sensors alone. Three features make this hard. First, every deployment is different:
+the reference quantity from the sensors alone~\citep{zimmerman2018calibration}. Three features make this hard. First, every deployment is different:
 gains, cross-sensitivities and noise depend on the unit, its placement and its age, and the calibration record is
 short. Second, sensor noise is \emph{shared}: temperature, humidity, local emissions and drift move several sensors at
 once, so sensors are not conditionally independent given the target. Third, sensors fail, are serviced or are added, so
@@ -167,7 +169,8 @@ Proposition~\ref{prop:scalar} disappears: the lifted product differences out $h$
 dimensions cannot suffice, so the lifting dimension must match the rank of the shared noise:
 
 \begin{proposition}[Lifting dimension]\label{prop:rank}
-Let $x=ay+Du+e$ with $D\in\R^{P\times K}$, $u\sim\N(0,I_K)$, independent Gaussian $e$, and every $a_j\neq0$. Suppose
+Let $x=ay+Du+e$ with $y\sim\N(0,1)$, $u\sim\N(0,I_K)$, $D\in\R^{P\times K}$, independent Gaussian $e$, and every
+$a_j\neq0$. Suppose
 that after deleting any row, $L=[a,D]$ still contains two disjoint nonsingular $(1+K)\times(1+K)$ submatrices, which
 holds for almost every $L$ once $P\geq2K+3$. If a product of mask-independent sites of the form \eqref{eq:site} with
 $o_j=x_j-c_j$, over $z=(y,h)$ with $h\in\R^{K'}$ and a Gaussian prior, reproduces $p(y\mid x_S)$ for every $S$ with
@@ -184,7 +187,7 @@ necessary and sufficient.
 Before any learning, we estimate the factor model from $\D$ alone. EM for a Gaussian with missing
 entries~\citep{dempster1977em,little2019statistical} gives the joint mean and covariance of $(x,y)$ from the incomplete
 calibration rows. Then $A=\mathrm{Cov}(x,y)/\mathrm{Var}(y)$, and principal-factor iterations on the residual
-covariance $\mathrm{Cov}(x)-AA^\top\mathrm{Var}(y)$ give $(D,\psi)$~\citep{rubin1982em}. With sensors standardized by
+covariance $\mathrm{Cov}(x)-AA^\top\mathrm{Var}(y)$ give $(D,\psi)$~\citep{rubin1982em,tipping1999ppca}. With sensors standardized by
 their support statistics, $o_j=\tilde x_j+A_j\mu_y$. We call the resulting predictor \emph{FA-Gaussian}; it is exact
 for every mask under the fitted model.
 

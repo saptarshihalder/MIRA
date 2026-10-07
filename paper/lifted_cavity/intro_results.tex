@@ -2,10 +2,12 @@
 flexibility.
 \begin{itemize}
   \item On synthetic tasks, the 8k-parameter lifted cavity network beats a 203k-parameter TabPFN-v2-style transformer
-  trained on the same task distribution for every number of missing sensors. It closes \GapliftOne\% of the
-  achievable gap against \Gappfn\%, and the margin grows when it runs on 16 sensors after training on five.
-  \item The advantage vanishes under strong response nonlinearity and when sensors are linear (\S\ref{sec:exp-shift}).
-  \item On two real sensor networks, the fine-tuned lifted network beats every closed form, but the fine-tuned
-  transformer is better, and one of our pre-registered endpoints fails (\S\ref{sec:exp-real}).
+  trained on the same tasks for every number of missing sensors, closing \GapliftOne\% of the achievable gap against
+  \Gappfn\%; its margin grows on 16 sensors after training on five. It loses its edge under strong response
+  nonlinearity and on linear sensors (\S\ref{sec:exp-shift}).
+  \item On two real sensor networks, the fine-tuned lifted network improves on the closed forms, but a fine-tuned
+  transformer is better, and one pre-registered endpoint fails (\S\ref{sec:exp-real}).
+  \item As the transformer's output layer (\S\ref{sec:exp-v3}), lifted sites beat the plain transformer on fresh
+  synthetic panels and the lifted network on a new real target, recovering \VthreebeijingnoTwoeZerorecovered\% of
+  the real-data gap; non-inferiority to the fine-tuned transformer is not established.
 \end{itemize}
-\input{intro_v3}

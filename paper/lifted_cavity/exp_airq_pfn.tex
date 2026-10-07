@@ -5,13 +5,12 @@ fine-tuned transformer is again better: the lifted network's gain over it is \Ra
 fine-tuning.
 
 \paragraph{Why the transformer wins on real data.}
-The lifted network underfits rather than overfits: on the Beijing fine-tuning episodes, the transformer's final
-training NLL is \FTbeijingtraingap\ nats lower, about the size of the test gap. Post-hoc variants do not close the gap
-on Beijing (Table~\ref{tab:explore}; natural missingness, transformer \RbeijingeZerovalftpfn): a second nuisance dimension scores \Xplifttwo\
-and five times more fine-tuning steps \Xpliftlong, against \Xpliftone\ for the same seed with the standard recipe.
-Nor is the edge that of a flexible per-episode regression: a Gaussian process fitted to each episode's calibration
-rows is the worst method on Air Quality (\RairqcoeZerovalgp\ nats for CO with all sensors observed). These point to
-the Gaussian site family itself. Gaussian sites with per-sensor re-linearization are a strong prior for synthetic
-factor noise, but real stations share structure they cannot express, and a generic model learns it from a few
-thousand real episodes: fine-tuning improves the transformer by \FTbeijingpfngain\ nats on Beijing and the lifted
-network by \FTbeijingliftgain.
+The advantage is broad: the transformer is better on \FTbeijingpfnbetterpct\% of Beijing test episodes, by
+\FTbeijinggapqQOne--\FTbeijinggapqQTwo\ nats in each of the three easier quartiles of closed-form difficulty. The
+lifted network underfits rather than overfits: the transformer's final training NLL is \FTbeijingtraingap\ nats
+lower, about the test gap. Neither a second nuisance dimension (\Xplifttwo) nor five times more fine-tuning steps
+(\Xpliftlong, against \Xpliftone; Table~\ref{tab:explore}) closes the gap to the transformer
+(\RbeijingeZerovalftpfn), and per-episode nonparametrics do worse still ($k$-nearest neighbours \RbeijingeZerovalknn;
+a Gaussian process is the worst method on Air Quality). We therefore hypothesized that the limitation lies in how the
+sites are refined, since each correction sees only its own sensor's reading, calibration scatter and cavity, rather
+than in the site family. Protocol v3 tests this.

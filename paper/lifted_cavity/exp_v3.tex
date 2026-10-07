@@ -1,17 +1,15 @@
 \subsection{Lifted sites as a transformer output layer (protocol v3)}
 \label{sec:exp-v3}
 
-Protocol v2 left a split: structure wins on synthetic tasks and in extrapolation, while the transformer wins on real
-networks after fine-tuning. Protocol v3 tests whether the two combine. The \emph{lifted cavity transformer} (LCT)
-keeps the transformer's backbone and training recipe unchanged and replaces only its output head. A zero-initialized
-linear map turns each observed query cell's final token into a correction
-$(\delta^{\mathrm{off}}_j,\delta^{\mathrm{slope}}_j,\delta^{D}_j,s_j)$ of that sensor's lifted site, linearized at the
-FA-Gaussian posterior mean, and the prediction is the $y$-marginal of the product of observed sites. Missing sensors
-therefore contribute no site, the readings of missing sensors never enter, and at initialization the LCT is the
-FA-Gaussian closed form of its anchor. The hypothesis was formed after seeing the v2 real-data results, so v3 uses
-only new data: two fresh synthetic panels (G1 with five sensors, G3 with sixteen) and two Beijing pollutants that no
-model had been scored on (NO$_2$ and CO, same stations and periods). Its four endpoints were committed before any of
-these existed (Table~\ref{tab:endpoints}).
+Protocol v2 left a split: structure wins on synthetic tasks, the transformer on real networks after fine-tuning. The
+\emph{lifted cavity transformer} (LCT) keeps the transformer's backbone, recipe and seed and replaces only its output
+head: a zero-initialized linear map turns each observed query cell's final token into the correction
+$(\delta^{\mathrm{off}}_j,\delta^{\mathrm{slope}}_j,\delta^{D}_j,s_j)$ of that sensor's site in \eqref{eq:relin},
+linearized at the FA-Gaussian posterior mean, and the prediction is the $y$-marginal of the product of observed sites.
+Missing sensors contribute no site and their readings never enter; at initialization the LCT is its anchor's closed
+form. Because the hypothesis was formed after the v2 results, v3 uses only new data, two fresh synthetic panels (G1,
+five sensors; G3, sixteen) and two Beijing pollutants never scored before (NO$_2$ and CO), and its four endpoints were
+committed before any of these existed (Table~\ref{tab:endpoints}).
 
 \input{generated/v3_results_table}
 

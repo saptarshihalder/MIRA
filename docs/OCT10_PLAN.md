@@ -3,8 +3,13 @@
 This plan supersedes the open-ended "next mechanism" search in `NEXT_TRAINED_MECHANISM_HYPOTHESIS.md` and
 `OCTOBER10_FINALIZATION.md`. Read `LIFTED_CAVITY_FINDINGS.md`, then `LIFTED_CAVITY_CONFIRMATION.md`.
 
-**Status.** All five frozen confirmation endpoints passed on October 6 (fresh synthetic panels, 8-sensor transfer,
-stronger nonlinearity, and a new real target).
+**Status (October 7).**
+- Protocol v1: all five endpoints passed.
+- Protocol v2: five of six passed. E4b failed: a fine-tuned TabPFN-v2-style transformer beats the lifted network on
+  Beijing.
+- The NeurIPS-format draft is compiled at `paper/lifted_cavity/main.pdf`; results are summarized in
+  `LIFTED_CAVITY_RESULTS.md`.
+- Protocol v3 (lifted sites as the transformer's output layer) is running.
 
 **Decision needed first.** A parallel line, MIRA-Circuit, was built in another session on October 6. It is described
 in the Claude project doc `claude/mira_circuit_sprint.md` and is not in this repository. MIRA-Circuit compiles Boolean
