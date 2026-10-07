@@ -1,0 +1,11 @@
+\paragraph{Lifted sites as a transformer output layer.}
+The sites can also terminate a generic in-context model. The \emph{lifted cavity transformer} (LCT) keeps a cell-token
+transformer's backbone and replaces only its output head.
+\begin{itemize}
+  \item A zero-initialized linear map turns the final token of each observed query cell into the correction
+  $(\delta^{\mathrm{off}}_j,\delta^{\mathrm{slope}}_j,\delta^{D}_j,s_j)$ of that sensor's site in~\eqref{eq:relin},
+  linearized at the FA-Gaussian posterior mean.
+  \item The prediction is the $y$-marginal of the product of the observed sites.
+\end{itemize}
+Missing sensors contribute no site and their readings never enter. At initialization the LCT equals the closed form of
+its anchor, so parts (i) and (iii) of Proposition~\ref{prop:struct} carry over.
