@@ -239,7 +239,8 @@ ROWS4 = [('EM-Gaussian', 'ref', 'em_gauss'), ('FA-Gaussian', 'ref', 'fa1'), ('NL
          ('Lifted cavity, zero-shot', 'zs', 'lift1_s1'), ('Transformer, zero-shot', 'zs', 'pfn_s1'), ('TabPFN v2, pretrained', 'zs', 'tabpfn_v2'),
          ('\\textbf{Lifted cavity, fine-tuned (ours)}', 'ft', 'lift1_s{1,2,3}_ft'), ('\\quad no synthetic pretraining', 'ft', 'lift1_untrained_ft'),
          ('\\quad no cavity input', 'ft', 'lift1_static_s1_ft'), ('\\quad scalar sites ($K=0$)', 'ft', 'lift0_s1_ft'),
-         ('Transformer, fine-tuned', 'ft', 'pfn_s1_ft'), ('Residual MLP, fine-tuned', 'ft', 'anchor_mlp_s{1,2,3}_ft')]
+         ('Transformer, fine-tuned', 'ft', 'pfn_s1_ft'), ('Residual MLP, fine-tuned', 'ft', 'anchor_mlp_s{1,2,3}_ft'),
+         ('\\emph{Lifted cavity transformer, fine-tuned}$^\\ddagger$', 'ft', 'lct_s1_ft')]
 
 
 def real_cells(ds, kind, name, e, metric='nll', seed=2027):
@@ -280,16 +281,16 @@ lines = ['\\begin{table}[t]', '\\centering\\scriptsize', '\\setlength{\\tabcolse
          '\\caption{\\label{tab:real}Real sensor networks: mean test NLL on later, held-out periods. Beijing: 12 target stations $\\times$ weekly episodes in '
          '2016--2017 with natural missingness, plus extra dropped sensors. Air Quality: weekly episodes after October 2004, sensor dropout simulated. '
          'Fine-tuning uses only earlier periods and one recipe for every model; lifted-cavity and residual-MLP rows average three seeds. Best entry per column in bold. '
-         '$^\\dagger$Post hoc.}',
+         '$^\\dagger$Post hoc. $^\\ddagger$Designed after protocol v2 (Section~\\ref{sec:exp-v3}); post hoc here and not bolded.}',
          '\\begin{tabular}{' + colspec + '}', '\\toprule', ' & '.join(head1) + '\\\\', ' & '.join(head2) + '\\\\', '\\midrule']
 rv = {}
 for label, kind, name in ROWS4:
     rv[(kind, name)] = [real_cells(ds, kind, name, e) for ds, _, es in REAL for e in es]
-ROWS4 = [r for r in ROWS4 if r[2] != 'tabpfn_v2' or any(v is not None for v in rv[(r[1], r[2])])]
+ROWS4 = [r for r in ROWS4 if r[2] not in ('tabpfn_v2', 'lct_s1_ft') or any(v is not None for v in rv[(r[1], r[2])])]
 ncol = sum(len(es) for _, _, es in REAL)
 bestr = {}
 for i in range(ncol):
-    cand = [(round(float(rv[(k, n)][i].mean()), 3), (k, n)) for _, k, n in ROWS4 if rv[(k, n)][i] is not None]
+    cand = [(round(float(rv[(k, n)][i].mean()), 3), (k, n)) for _, k, n in ROWS4 if rv[(k, n)][i] is not None and n != 'lct_s1_ft']
     bestr[i] = {n for m, n in cand if m == min(cand)[0]} if cand else set()
 for label, kind, name in ROWS4:
     row = []
@@ -704,6 +705,12 @@ if any_s2:
     (OUT / 'generated' / 'seeds_table.tex').write_text('\n'.join(tab_) + '\n')
 else:
     (OUT / 'generated' / 'seeds_table.tex').write_text('% second seeds not available yet\n')
+
+
+la_, pa_, lc_ = real_cells('beijing', 'ft', 'lift1_s{1,2,3}_ft', 0), real_cells('beijing', 'ft', 'pfn_s1_ft', 0), real_cells('beijing', 'ft', 'lct_s1_ft', 0)
+if all(v is not None for v in (la_, pa_, lc_)):
+    mac('Xplctpmrecovered', f'{100 * (la_.mean() - lc_.mean()) / (la_.mean() - pa_.mean()):.0f}')
+    mac('Xplctpmval', f3(float(lc_.mean())))
 
 # ------------------------------------------------------------------ compute table (appendix)
 cf = R / 'compute_cost.json'

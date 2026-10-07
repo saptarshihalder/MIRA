@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering\scriptsize
 \setlength{\tabcolsep}{2.5pt}
-\caption{\label{tab:real}Real sensor networks: mean test NLL on later, held-out periods. Beijing: 12 target stations $\times$ weekly episodes in 2016--2017 with natural missingness, plus extra dropped sensors. Air Quality: weekly episodes after October 2004, sensor dropout simulated. Fine-tuning uses only earlier periods and one recipe for every model; lifted-cavity and residual-MLP rows average three seeds. Best entry per column in bold. $^\dagger$Post hoc.}
+\caption{\label{tab:real}Real sensor networks: mean test NLL on later, held-out periods. Beijing: 12 target stations $\times$ weekly episodes in 2016--2017 with natural missingness, plus extra dropped sensors. Air Quality: weekly episodes after October 2004, sensor dropout simulated. Fine-tuning uses only earlier periods and one recipe for every model; lifted-cavity and residual-MLP rows average three seeds. Best entry per column in bold. $^\dagger$Post hoc. $^\ddagger$Designed after protocol v2 (Section~\ref{sec:exp-v3}); post hoc here and not bolded.}
 \begin{tabular}{lccccccc}
 \toprule
 Method & \multicolumn{3}{c}{Beijing PM$_{2.5}$ (11 stations)} & \multicolumn{2}{c}{Air Quality CO} & \multicolumn{2}{c}{Air Quality NO$_2$}\\
@@ -24,6 +24,7 @@ Transformer, zero-shot & 0.958 & 0.743 & 0.687 & $-$0.017 & 0.081 & $-$0.360 & $
 \quad scalar sites ($K=0$) & 0.215 & 0.252 & 0.347 & $-$0.026 & $-$0.003 & $-$0.359 & $-$0.302\\
 Transformer, fine-tuned & \textbf{0.087} & \textbf{0.121} & \textbf{0.236} & \textbf{$-$0.163} & \textbf{$-$0.052} & \textbf{$-$0.485} & \textbf{$-$0.381}\\
 Residual MLP, fine-tuned & -- & -- & -- & 0.025 & 0.110 & $-$0.246 & $-$0.147\\
+\emph{Lifted cavity transformer, fine-tuned}$^\ddagger$ & 0.122 & 0.160 & 0.259 & -- & -- & -- & --\\
 \bottomrule
 \end{tabular}
 \end{table}
