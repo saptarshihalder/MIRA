@@ -1,4 +1,10 @@
-# MIRA status — October 4, 2026
+# MIRA status — October 7, 2026
+
+## V4 GPU launch audit — October 7
+
+Imported lifted-cavity b614708 and merged as8138ec6. Read docs/LIFTED_V4_LAUNCH_AUDIT.md first. Original v2/v3 results remain mixed on real data; v4 scientific training/results are pending. Fourteen targeted tests pass. Fixed incomplete/nonfinite score reuse, interim endpoint exposure and mutable resume provenance; checkpoint identities are written before scoring. The first free Colab T4 session is source-only smoke,45 minutes maximum after setup; user explicitly authorized Drive checkpoint storage at MyDrive/mira_v4_audited. Code archive83de91ae56b48a70d03832efec10025549f7689b; panels799f473459c99e8decbb39ff9924c86a90cc8dc7. See colab/lifted_cavity_v4_audited.ipynb. GPU allocation and Drive mount verified; setup/run outcome must be read from live logs, not inferred here. Colab account shows no subscription/zero compute units. No Modal spending.
+
+Paper theory statements narrowed to the actual assumptions and official2026 style installed. Native compiler failed before typesetting with Windows sandbox helper setup error; edited PDF/layout unverified. GitHub rejected three pushes with Internal Server Error, including a new branch attempt; local commits are preserved and audited code was transferred through the Colab editor. No NeurIPS/JMLR readiness claim.
 
 ## One-factor orientation repair passes source gate - October 7
 

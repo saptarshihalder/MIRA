@@ -1200,5 +1200,23 @@
   "training_retries": 0,
   "scientific_gate": "one-factor source engineering noninferiority PASS; no external or novelty claim",
   "results": "artifacts/reports/lifted_gauge_v2_source"
+},
+{
+  "run_id": "lifted_v4_colab_source_smoke_20261007",
+  "date": "2026-10-07",
+  "status": "setup_in_progress",
+  "provider": "Google Colab free allocation",
+  "gpu": "T4 (UI allocated; device execution pending)",
+  "reserved_usd": 0,
+  "provider_charge_usd": 0,
+  "paid_purchase": false,
+  "setup_wall_time_cap_seconds": 600,
+  "job_wall_time_cap_seconds": 2700,
+  "training_retries": 0,
+  "scientific_gate": "engineering only; no confirmation scoring",
+  "drive": "MyDrive/mira_v4_audited",
+  "source_commit": "83de91ae56b48a70d03832efec10025549f7689b",
+  "panel_commit": "799f473459c99e8decbb39ff9924c86a90cc8dc7",
+  "provider_evidence": "Colab Resources: not subscribed, zero compute units; free T4 allocated. Modal reservations unchanged."
 }
 ]
