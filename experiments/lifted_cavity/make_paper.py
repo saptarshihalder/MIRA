@@ -650,8 +650,8 @@ def seed_cells(name, seed, tag, k=2):
     return np.load(f)[f'k{k}_nll'].mean(1) if f.exists() else None
 
 
-SROWS = [('E2', 'F1, $k=2$', 'lifted network vs transformer', PANEL['F1'], 'lift1', 'pfn'),
-         ('E3b', 'F3, $k=2$', 'lifted network vs transformer', PANEL['F3'], 'lift1', 'pfn'),
+SROWS = [('E2', 'F1, $k=2$', 'lifted vs transformer', PANEL['F1'], 'lift1', 'pfn'),
+         ('E3b', 'F3, $k=2$', 'lifted vs transformer', PANEL['F3'], 'lift1', 'pfn'),
          ('E5', 'G1, $k=2$', 'LCT vs transformer', V3P['G1'], 'lct', 'pfn'),
          ('E6', 'G3, $k=2$', 'LCT vs transformer', V3P['G3'], 'lct', 'pfn')]
 lines, any_s2 = [], False
@@ -686,14 +686,14 @@ if bp is not None:
         if sd == 2:
             any_s2 = True
         m, lo, hi = week_ci(b, n, bp['pool']['keys']); cols.append(f'{f3(m, True)} [{f3(lo, True)}, {f3(hi, True)}]')
-    lines.append('E4b & Beijing PM$_{2.5}$ & lifted network vs transformer (FT) & ' + ' & '.join(cols) + '\\\\')
+    lines.append('E4b & Beijing PM$_{2.5}$ & lifted vs transformer (FT) & ' + ' & '.join(cols) + '\\\\')
 # real: Beijing NO2 (v3 target), fine-tuned
 bj = panel('real_beijing_no2_s3031')
 if bj is not None:
     keys = bj['pool']['keys']
     def rft(nm):
         return real_cells('beijing_no2', 'ft', nm, 0, seed=3031)
-    for tagk, comp, new, base in (('E7a', 'LCT vs lifted network (FT)', 'lct', 'lift'), ('E7b', 'LCT vs transformer (FT)', 'lct', 'pfn')):
+    for tagk, comp, new, base in (('E7a', 'LCT vs lifted (FT)', 'lct', 'lift'), ('E7b', 'LCT vs transformer (FT)', 'lct', 'pfn')):
         cols = []
         for sd in (1, 2, 'avg'):
             def g(nm, sd_):
@@ -727,6 +727,13 @@ for ds_ in ('airq_co', 'airq_no2'):
         la2, pa2, lc2 = (real_cells(ds_, 'ft', nm_, e_) for nm_ in ('lift1_s{1,2,3}_ft', 'pfn_s1_ft', 'lct_s1_ft'))
         if all(v is not None for v in (la2, pa2, lc2)):
             mac(f'Xplct{ds_.replace("_", "")}e{e_}recovered', f'{100 * (la2.mean() - lc2.mean()) / (la2.mean() - pa2.mean()):.0f}')
+ls_ = [real_cells('beijing_no2', 'ft', f'lct_s{s_}_ft', 0, seed=3031) for s_ in (1, 2)]
+ps_ = [real_cells('beijing_no2', 'ft', f'pfn_s{s_}_ft', 0, seed=3031) for s_ in (1, 2)]
+lf_ = real_cells('beijing_no2', 'ft', 'lift1_s{1,2,3}_ft', 0, seed=3031)
+if lf_ is not None and all(v is not None for v in ls_ + ps_):
+    lm_, pm_ = np.mean(ls_, 0).mean(), np.mean(ps_, 0).mean()
+    mac('Vthreeseedavgrecovered', f'{100 * (lf_.mean() - lm_) / (lf_.mean() - pm_):.0f}')
+    mac('Vthreeseedtworecovered', f'{100 * (lf_.mean() - ls_[1].mean()) / (lf_.mean() - ps_[1].mean()):.0f}')
 la_, pa_, lc_ = real_cells('beijing', 'ft', 'lift1_s{1,2,3}_ft', 0), real_cells('beijing', 'ft', 'pfn_s1_ft', 0), real_cells('beijing', 'ft', 'lct_s1_ft', 0)
 if all(v is not None for v in (la_, pa_, lc_)):
     mac('Xplctpmrecovered', f'{100 * (la_.mean() - lc_.mean()) / (la_.mean() - pa_.mean()):.0f}')

@@ -3,5 +3,7 @@ After fine-tuning on Beijing NO$_2$, it beats the fine-tuned lifted network by \
 between the lifted network (\VthreebeijingnoTwoeZerovallift) and the transformer (\VthreebeijingnoTwoeZerovalpfn).
 Against the transformer the difference is \VthreebeijingnoTwoeZerolctvspfn\ \VthreebeijingnoTwoeZerolctvspfnci; the
 interval includes zero but extends below the margin of $-0.02$, so non-inferiority (E7b) is not established. With six
-more stations missing, the two tie (\VthreebeijingnoTwoeSixlctvspfn\ \VthreebeijingnoTwoeSixlctvspfnci).
+more stations missing, the two tie (\VthreebeijingnoTwoeSixlctvspfn\ \VthreebeijingnoTwoeSixlctvspfnci). The real-data
+gain is seed-sensitive: with second seeds of both transformers (post hoc) the LCT recovers
+\Vthreeseedtworecovered\%, and \Vthreeseedavgrecovered\% averaged over seeds (Table~\ref{tab:seeds}).
 \input{exp_v3_co}

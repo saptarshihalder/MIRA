@@ -61,5 +61,24 @@ LCT) keeps real-data flexibility and gains the lifted model's extrapolation. End
     rows (F6), where it lands between the lifted network and the transformer.
   - It beats both comparators under strong nonlinearity (F4).
 
-Post-hoc robustness runs (second transformer and LCT seeds, LCT on Beijing PM2.5) are listed in the paper's appendix
-as they complete.
+## Post-hoc robustness (paper Appendix F)
+
+**Second training seeds of both transformers.**
+- They reproduce every synthetic comparison: E2 +0.037, E3b +0.155, E5 +0.037, E6 +0.161 with seed 2.
+- E4b also holds: −0.115 with transformer seed 2.
+
+**The LCT's real-data gain depends on the seed.**
+- With seed 2 on Beijing NO2 it recovers 50% of the gap, and E7a falls to +0.042 [−0.023, +0.108].
+- Averaged over both seeds it recovers 62%, and E7a is +0.052 [+0.002, +0.103].
+
+**The LCT on the other real targets** (seed 1), as the share of the lifted network's gap to the transformer it
+recovers:
+
+| Target | Status | Recovered |
+|---|---|---|
+| Beijing PM2.5 | post hoc | 70% |
+| Beijing CO | descriptive | 73% |
+| Air Quality, two missing sensors | post hoc | CO 58%, NO2 50% |
+| Air Quality NO2, all sensors | post hoc | none |
+
+**Per-episode Gaussian process.** It is the worst method on F1 (0.416 at k=2) and on Beijing (1.884).

@@ -3,4 +3,4 @@ nonlinearity, Gaussian targets). Per-sensor dropout is simulated on Air Quality 
 whose natural missingness covers \Rbeijingnatmiss\% of query readings; the gas-drift benchmark could not separate
 methods (Appendix~\ref{app:audit}). \textbf{Model class.} Gaussian sites cannot represent multimodal posteriors; we
 used $K=1$ throughout. \textbf{Baselines.} The transformers were trained on a CPU budget (203k parameters, 30{,}000
-steps). Pretrained tabular foundation models (TabPFN~v2, TabICL) could not be run in our sandbox; we provide a script.
+steps); second seeds reproduce every synthetic comparison, but the LCT's real-data gain varies with the seed. Pretrained tabular foundation models (TabPFN~v2, TabICL) could not be run in our sandbox; we provide a script.
