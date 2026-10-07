@@ -58,7 +58,9 @@ def main():
                     panels={p.name: digest(p) for p in sorted(panels.glob('*.pt'))},
                     panel_manifest=digest(panels / 'SHA256SUMS'), packages=packages,
                     device=torch.cuda.get_device_name(0), cuda=torch.version.cuda)
-    commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=REPO, text=True).strip()
+    archive_identity = REPO / 'MIRA_SOURCE_COMMIT.txt'
+    commit = (archive_identity.read_text().strip() if archive_identity.exists() else
+              subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=REPO, text=True).strip())
     bind_manifest(root, identity, dict(commit=commit, created_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())))
     lock = root / 'RUNNING.lock'
     try:
