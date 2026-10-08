@@ -61,8 +61,10 @@ rows after deleting any row. \hfill$\square$
   \item[(i)] Sites of missing sensors are multiplied by the mask before entering \eqref{eq:product}, and the
   network's per-sensor inputs never include another sensor's raw reading, only cavity statistics built from observed
   sites.
-  \item[(ii)] Every operation is applied per sensor with shared weights. EM and principal factors are equivariant to
-  permutations of the sensor coordinates, and sums over sensors are permutation-invariant. No input encodes a
+  \item[(ii)] Every operation is applied per sensor with shared weights. Conditional on a consistently oriented anchor
+  representation, its fitted sensor parameters permute with the sensor coordinates, and sums over sensors are
+  permutation-invariant. An unconstrained eigensolver can change factor signs or rotations when the anchor is
+  refitted; the original learned network is not invariant to these changes. No input encodes a
   sensor's index or the total number of sensors, except the fraction of observed sensors, which is permutation
   invariant.
   \item[(iii)] With a zero last layer, $\delta^{\mathrm{off}}=\delta^{\mathrm{slope}}=\delta^D=s=0$. Then
@@ -172,17 +174,18 @@ at its anchor's closed form, so it begins far lower; the plain transformer must 
 \end{itemize}
 EM-Gaussian, FA-Gaussian and ridge inflate their predictive variance by $n/(n-|S|-1)$.
 
-\paragraph{Bayes-optimal ceiling.}
-The ceiling is HMC~\citep{neal2011hmc} over the 25 (or $5P$) task parameters. It uses the true priors, transformed to
+\paragraph{Sign-conditioned HMC reference.}
+The reference uses HMC~\citep{neal2011hmc} over the 25 (or $5P$) task parameters. It uses the generator priors, transformed to
 unconstrained coordinates. The shared nuisance is marginalized analytically through a rank-one-plus-diagonal
 covariance, using only the observed entries of each calibration row. The sign of each $a_j$ is fixed by the support
-correlation, which is unambiguous because $|a_j|\geq0.6$.
+correlation. The lower bound $|a_j|\geq0.6$ does not guarantee correct sign identification from a finite noisy support.
+Consequently this reference omits posterior uncertainty over response signs and is not a certified Bayes-optimal ceiling.
 
 The sampler runs 4 chains per task, each started from a MAP fit. Warm-up has two phases: step-size adaptation (target
 acceptance $0.75$) and diagonal mass-matrix estimation from 150 iterations, followed by 150 more adaptation
 iterations. We keep 50 draws per chain, thinned by 4, with 12 leapfrog steps.
 
-The predictive density of a query uses the samples exactly, including the query's own reweighting:
+The predictive density of a query uses the Monte Carlo samples, including the query's own reweighting:
 $p(y\mid x_S,\D)=\sum_m p(y,x_S\mid\theta_m)/\sum_m p(x_S\mid\theta_m)$, with $p(x_S\mid\theta_m)$ by trapezoid
 quadrature on 301 points. On every panel where it was run, R-hat on identifiable parameters was below 1.1 for at
 least 99.9\% of parameters. Run with the true parameters, the predictive formula reproduces the exact oracle to

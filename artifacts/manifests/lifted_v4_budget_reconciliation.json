@@ -1,0 +1,82 @@
+{
+  "observed_at_utc": "2026-10-08T18:39:19.486001+00:00",
+  "summaries": {
+    "2026-09": {
+      "metered_cost": "1.74262620",
+      "billed_cost": "0E-8",
+      "adjustments": {
+        "plan_cost": "0E-8",
+        "credits": "-1.72000000",
+        "reservation_adjustment": "-0E-8",
+        "network_egress_allowance": "0E-8",
+        "free_storage": "-0.02262620"
+      },
+      "metered_cost_breakdown": {
+        "llm_tokens": "0E-8",
+        "deployed_apps": "0.13303168",
+        "volumes": "0.02262620",
+        "ephemeral_apps": "1.58527630"
+      }
+    },
+    "2026-10": {
+      "metered_cost": "0.84263438",
+      "billed_cost": "0E-8",
+      "adjustments": {
+        "plan_cost": "0E-8",
+        "credits": "-0.66000000",
+        "reservation_adjustment": "-0E-8",
+        "network_egress_allowance": "-0.00444727",
+        "free_storage": "-0.17818710"
+      },
+      "metered_cost_breakdown": {
+        "llm_tokens": "0E-8",
+        "deployed_apps": "0.33890367",
+        "volumes": "0.17818710",
+        "ephemeral_apps": "0.32681645"
+      }
+    }
+  },
+  "historical_gross_usd": 2.58526058,
+  "historical_provision_usd": 3.5,
+  "previous_provisions_usd": 16.45,
+  "replaced_run_ids": [
+    "smoke_tabpfn_v2",
+    "smoke_tabicl_v2",
+    "smoke_tabpfn_v35",
+    "development_gaussian",
+    "development_collision",
+    "day3_gaussian_imputed_controls",
+    "day3_zero_collision_imputed_controls",
+    "day3_partial_collision_010",
+    "day3_partial_collision_050",
+    "day3_quantized_step1",
+    "day3_interaction_families",
+    "day3_low_missingness",
+    "confirmation_pairwise_v1",
+    "real_panel_v1_breast_cancer_wisconsin_diagnostic",
+    "real_panel_v1_ionosphere",
+    "real_panel_v1_banknote_authentication",
+    "real_panel_v1_spambase",
+    "real_panel_v1_sonar",
+    "real_panel_v1_statlog_heart",
+    "compiler_validation_v1_tabpfn",
+    "compiler_validation_v2_tabicl",
+    "compiler_gpu_repair_v1_tabicl",
+    "policy_native_gpu_v1",
+    "large_native_a100_v1",
+    "large_native_a100_v2",
+    "large_native_a100_v3",
+    "bridge_v1_a100",
+    "bridge_v2_a100",
+    "recursive_jepa_v1_gpu",
+    "spectral_v1_gpu",
+    "crossfit_v1_gpu"
+  ],
+  "final_invoice_verified": false,
+  "smoke_reservation_usd": 1.0,
+  "conditional_main_max_reservation_usd": 11.5,
+  "reproduction_reserve_usd": 3,
+  "total_cap_usd": 20,
+  "worst_case_all_phases_usd": 19,
+  "rationale": "Provider billing summaries now give actual metered and billed-so-far amounts; keep gross usage plus >$0.91 pending-cost contingency, not zero cost from credits. All listed tasks are zero. Main needs passing smoke and a separate pre-call reservation."
+}

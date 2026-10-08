@@ -18,7 +18,7 @@ lifted cavity network (8k parameters, three seeds); a residual MLP that receives
 encodings (15k parameters, five sensors only); the scalar-cavity network of \S\ref{sec:scalar}; and a TabPFN-v2-style
 cell-token transformer~\citep{hollmann2025tabpfnv2} trained on fresh tasks at every step (203k parameters, 30{,}000
 steps). A second transformer was trained on \emph{all} masks, to separate architecture from training coverage.
-\emph{Privileged references:} the oracle, and the Bayes-optimal predictive estimated by HMC with the shared nuisance
+\emph{Privileged references:} the oracle, and a sign-conditioned HMC approximation to the posterior predictive with the shared nuisance
 marginalized analytically (Appendix~\ref{app:baselines}).
 
 \paragraph{Protocol.}

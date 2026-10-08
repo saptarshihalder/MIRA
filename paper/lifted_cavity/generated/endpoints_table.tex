@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering\scriptsize
 \setlength{\tabcolsep}{3pt}
-\caption{\label{tab:endpoints}Every pre-registered endpoint of protocols v2 and v3, each committed before its panels or targets existed (protocol v1: Appendix~\ref{app:audit}). Gain in nats of NLL, positive when the first-named model is better; paired 95\% intervals, cluster-robust over weeks on Beijing. Pass: gain $\geq0.01$ and lower bound $>0$, except E7b (lower bound $>-0.02$).}
+\caption{\label{tab:endpoints}Every declared endpoint of protocols v2--v4. Protocols v2/v3 preceded their panels; v4 was amended after partial data/reference inspection, before compared-model scoring (protocol v1: Appendix~\ref{app:audit}). Gain in nats of NLL, positive when the first-named model is better; paired 95\% intervals, cluster-robust over weeks on Beijing. v4 endpoints average three training seeds per task. Pass: gain $\geq0.01$ and lower bound $>0$, except the non-inferiority endpoints E7b and E10 (lower bound $>-0.02$).}
 \begin{tabular}{llllc}
 \toprule
 ID & Data & Comparison & Gain [95\% CI] & Result\\
@@ -17,6 +17,12 @@ E5 & G1, $k=2$ & LCT vs transformer & $+$0.035 [$+$0.027, $+$0.042] & pass\\
 E6 & G3 (16 sensors), $k=2$ & LCT vs transformer & $+$0.150 [$+$0.133, $+$0.167] & pass\\
 E7a & Beijing NO$_2$ & LCT (FT) vs lifted cavity network (FT) & $+$0.062 [$+$0.024, $+$0.100] & pass\\
 E7b & Beijing NO$_2$ & LCT (FT) vs transformer (FT), non-inferiority & $-$0.021 [$-$0.093, $+$0.052] & \textbf{fail}\\
+\midrule
+E8 & H1, $k=2$ & LCT-L vs transformer-L & pending & --\\
+E9 & H3 (16 sensors), $k=2$ & LCT-L vs transformer-L & pending & --\\
+E10 & Beijing-new & LCT-L (FT) vs transformer-L (FT), non-inferiority & pending & --\\
+E11 & Beijing-new, $+6$ removed & LCT-L (FT) vs transformer-L (FT) & pending & --\\
+E12 & Beijing-new & LCT-L (FT) vs TabPFN v2 (in context) & pending & --\\
 \bottomrule
 \end{tabular}
 \end{table}

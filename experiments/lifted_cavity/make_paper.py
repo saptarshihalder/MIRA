@@ -104,7 +104,7 @@ def mac(name, val):
 
 
 # ------------------------------------------------------------------ Table 1: main synthetic panel F1
-ROWS1 = [('Oracle (true parameters)', 'oracle', 'priv'), ('Bayes-optimal (HMC, true prior)', 'bop', 'priv'),
+ROWS1 = [('Oracle (true parameters)', 'oracle', 'priv'), ('Sign-conditioned HMC reference', 'bop', 'priv'),
          ('FA-Gaussian', 'fa1', 'cf'), ('EM-Gaussian', 'em_gauss', 'cf'), ('NL-FA (cubic, tuned)', 'nlfa', 'cf'),
          ('Bayesian linear regression', 'blr_cc', 'cf'), ('Ridge (complete case)', 'ridge_cc', 'cf'), ('Ridge (mean-imputed)', 'ridge_repo', 'cf'),
          ('GP, complete case$^\\dagger$', 'gp', 'cf'),
@@ -122,7 +122,7 @@ for k in range(4):
     best[k] = {n for m, n in cand if m == min(cand)[0]} if cand else set()
 lines = ['\\begin{table}[t]', '\\centering\\small', '\\caption{\\label{tab:main}Main synthetic panel (F1: 256 fresh tasks, five sensors). Mean test NLL by number of missing query sensors; '
          'learned models saw at most one missing sensor in training, so $k=2,3$ are unseen patterns. Learned rows average three training seeds '
-         '(seed s.d.\\ $\\leq0.002$) except the transformers (seed 1 as pre-registered; Table~\\ref{tab:seeds} adds a second seed). Last column: share of the achievable gap (FA-Gaussian to Bayes-optimal) closed at $k=2$. '
+         '(seed s.d.\\ $\\leq0.002$) except the transformers (seed 1 as pre-registered; Table~\\ref{tab:seeds} adds a second seed). Last column: share of the reference gap (FA-Gaussian to sign-conditioned HMC) closed at $k=2$. '
          'Best non-privileged entry per column in bold. $^\\dagger$Post hoc, scored at $k=2$ only. '
          '$^\\ddagger$Designed after protocol v2 (Section~\\ref{sec:exp-v3}); descriptive on this panel and not bolded.}',
          '\\begin{tabular}{lccccc}', '\\toprule', 'Method & $k{=}0$ & $k{=}1$ & $k{=}2$ & $k{=}3$ & Gap closed\\\\', '\\midrule']
@@ -400,7 +400,7 @@ SER = [('lift1', 'Lifted cavity (ours)', '#2a78d6', 'o', '-'), ('pfn', 'Transfor
        ('nlfa', 'NL-FA', '#eda100', 'v', '-'), ('lct', 'Lifted cavity transformer (v3)', '#2a78d6', 'o', '--')]
 ax = axes[0]
 fa_k = [vals['fa1'][k].mean() for k in range(4)]
-for name, lab, ls in (('oracle', 'Oracle', '--'), ('bop', 'Bayes-optimal (HMC)', '-.')):
+for name, lab, ls in (('oracle', 'Oracle', '--'), ('bop', 'Sign-conditioned HMC', '-.')):
     if all(vals[name][k] is not None for k in range(4)):
         ax.plot(ks, [fa_k[k] - vals[name][k].mean() for k in range(4)], color=INK2, lw=1.1, ls=ls, label=lab)
 for name, lab, col, mk, ls in SER:
@@ -434,7 +434,7 @@ fig.tight_layout(rect=(0, 0, 1, .88))
 fig.savefig(OUT / 'figures' / 'main.pdf', bbox_inches='tight'); fig.savefig(OUT / 'figures' / 'main.png', dpi=180, bbox_inches='tight')
 
 # ------------------------------------------------------------------ appendix: every panel and k
-ROWSM = [('Oracle', 'oracle'), ('Bayes-optimal (HMC)', 'bop'), ('FA-Gaussian', 'fa1'), ('EM-Gaussian', 'em_gauss'), ('NL-FA', 'nlfa'), ('BLR', 'blr_cc'),
+ROWSM = [('Oracle', 'oracle'), ('Sign-conditioned HMC reference', 'bop'), ('FA-Gaussian', 'fa1'), ('EM-Gaussian', 'em_gauss'), ('NL-FA', 'nlfa'), ('BLR', 'blr_cc'),
          ('Ridge (complete case)', 'ridge_cc'), ('Lifted cavity (ours)', 'lift1'), ('Lifted cavity, $K=2$', 'lift2'), ('Lifted sites, no cavity', 'lift1_static'),
          ('Scalar sites ($K=0$)', 'lift0'), ('Transformer', 'pfn'), ('Transformer, all masks', 'pfnall'), ('Residual MLP', 'anchor_mlp'),
          ('Scalar-cavity network', 'repo_cavity_fresh'), ('Lifted cavity transformer (v3)', 'lct')]
@@ -570,7 +570,7 @@ EP = [('confirm_v2.json', 'v2', {'E1_F1_k2_lift1_vs_nlfa': ('E1', 'F1, $k=2$', '
                                   'E11_bjnew_plus6_lctLft_vs_pfnLft': ('E11', 'Beijing-new, $+6$ removed', 'LCT-L (FT) vs transformer-L (FT)'),
                                   'E12_bjnew_nat_lctLft_vs_tabpfn': ('E12', 'Beijing-new', 'LCT-L (FT) vs TabPFN v2 (in context)')})]
 lines = ['\\begin{table}[t]', '\\centering\\scriptsize', '\\setlength{\\tabcolsep}{3pt}',
-         '\\caption{\\label{tab:endpoints}Every pre-registered endpoint of protocols v2--v4, each committed before its panels or targets existed '
+         '\\caption{\\label{tab:endpoints}Every declared endpoint of protocols v2--v4. Protocols v2/v3 preceded their panels; v4 was amended after partial data/reference inspection, before compared-model scoring '
          '(protocol v1: Appendix~\\ref{app:audit}). Gain in nats of NLL, positive when the first-named model is better; paired 95\\% intervals, cluster-robust '
          'over weeks on Beijing. v4 endpoints average three training seeds per task. Pass: gain $\\geq0.01$ and lower bound $>0$, except the '
          'non-inferiority endpoints E7b and E10 (lower bound $>-0.02$).}',

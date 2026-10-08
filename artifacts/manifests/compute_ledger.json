@@ -2,54 +2,64 @@
  {
   "run_id": "smoke_tabpfn_v2",
   "model": "tabpfn:v2",
-  "reserved_usd": 0.35,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-01",
   "active_seconds": 16.140965567000002,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\smoke_tabpfn_v2"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\smoke_tabpfn_v2",
+  "original_reserved_usd": 0.35,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "smoke_tabicl_v2",
   "model": "tabicl:v2",
-  "reserved_usd": 0.35,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-01",
   "active_seconds": 19.227602083,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\smoke_tabicl_v2"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\smoke_tabicl_v2",
+  "original_reserved_usd": 0.35,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "smoke_tabpfn_v35",
   "model": "tabpfn:v3.5",
-  "reserved_usd": 0.35,
+  "reserved_usd": 0,
   "status": "failed",
   "date": "2026-10-01",
   "active_seconds": 9.878121061,
   "exit_code": 1,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\smoke_tabpfn_v35"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\smoke_tabpfn_v35",
+  "original_reserved_usd": 0.35,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "development_gaussian",
   "model": "tabpfn:v2 tabicl:v2 xgboost",
   "phase": "development",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-09-30T20:11:31.754652+00:00",
   "active_seconds": 99.805382095,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\development_gaussian"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\development_gaussian",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "development_collision",
   "model": "tabpfn:v2 tabicl:v2 xgboost",
   "phase": "collision",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-09-30T20:14:45.980006+00:00",
   "active_seconds": 87.034509533,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\development_collision"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\development_collision",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "matrix_development",
@@ -94,12 +104,14 @@
   "engine": "core",
   "max_seconds": 900,
   "run_id": "day3_gaussian_imputed_controls",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-09-30T20:46:51.786235+00:00",
   "active_seconds": 87.00005791199999,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_gaussian_imputed_controls"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_gaussian_imputed_controls",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "matrix_development",
@@ -144,12 +156,14 @@
   "engine": "core",
   "max_seconds": 900,
   "run_id": "day3_zero_collision_imputed_controls",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-09-30T20:48:30.693962+00:00",
   "active_seconds": 73.053531362,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_zero_collision_imputed_controls"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_zero_collision_imputed_controls",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "matrix_development",
@@ -193,12 +207,14 @@
   "engine": "core",
   "max_seconds": 900,
   "run_id": "day3_partial_collision_010",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-09-30T20:50:24.975171+00:00",
   "active_seconds": 65.389497936,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_partial_collision_010"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_partial_collision_010",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "matrix_development",
@@ -242,12 +258,14 @@
   "engine": "core",
   "max_seconds": 900,
   "run_id": "day3_partial_collision_050",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-09-30T20:53:06.071366+00:00",
   "active_seconds": 77.556726235,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_partial_collision_050"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_partial_collision_050",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "matrix_development",
@@ -291,12 +309,14 @@
   "engine": "core",
   "max_seconds": 900,
   "run_id": "day3_quantized_step1",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-09-30T20:54:40.868576+00:00",
   "active_seconds": 68.766059496,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_quantized_step1"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_quantized_step1",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "matrix_development",
@@ -341,12 +361,14 @@
   "engine": "core",
   "max_seconds": 900,
   "run_id": "day3_interaction_families",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-09-30T20:56:07.773610+00:00",
   "active_seconds": 255.70233359699998,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_interaction_families"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_interaction_families",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "matrix_development",
@@ -390,12 +412,14 @@
   "engine": "core",
   "max_seconds": 900,
   "run_id": "day3_low_missingness",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-09-30T21:00:49.629820+00:00",
   "active_seconds": 151.635552053,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_low_missingness"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\day3_low_missingness",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "confirmation",
@@ -436,12 +460,14 @@
   "engine": "core",
   "max_seconds": 900,
   "run_id": "confirmation_pairwise_v1",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-01T10:33:24.979319+00:00",
   "active_seconds": 295.93225386499995,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\confirmation_pairwise_v1",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "real_covariate_panel",
@@ -455,12 +481,14 @@
   "engine": "panel",
   "max_seconds": 900,
   "run_id": "real_panel_v1_breast_cancer_wisconsin_diagnostic",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-01T11:19:30.699531+00:00",
   "active_seconds": 180.139208755,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_breast_cancer_wisconsin_diagnostic"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_breast_cancer_wisconsin_diagnostic",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "real_covariate_panel",
@@ -474,12 +502,14 @@
   "engine": "panel",
   "max_seconds": 900,
   "run_id": "real_panel_v1_ionosphere",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-01T11:24:07.464418+00:00",
   "active_seconds": 174.142285093,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_ionosphere"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_ionosphere",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "real_covariate_panel",
@@ -493,12 +523,14 @@
   "engine": "panel",
   "max_seconds": 900,
   "run_id": "real_panel_v1_banknote_authentication",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-01T11:27:26.683988+00:00",
   "active_seconds": 103.978087117,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_banknote_authentication"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_banknote_authentication",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "real_covariate_panel",
@@ -512,12 +544,14 @@
   "engine": "panel",
   "max_seconds": 900,
   "run_id": "real_panel_v1_spambase",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-01T11:29:34.855657+00:00",
   "active_seconds": 246.350770022,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_spambase"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_spambase",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "real_covariate_panel",
@@ -531,12 +565,14 @@
   "engine": "panel",
   "max_seconds": 900,
   "run_id": "real_panel_v1_sonar",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-01T11:34:15.031253+00:00",
   "active_seconds": 184.904503528,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_sonar"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_sonar",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "real_covariate_panel",
@@ -550,18 +586,20 @@
   "engine": "panel",
   "max_seconds": 900,
   "run_id": "real_panel_v1_statlog_heart",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-01T11:37:44.647103+00:00",
   "active_seconds": 113.14284195,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_statlog_heart"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\real_panel_v1_statlog_heart",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "compiler_validation_v1_tabpfn",
   "phase": "mask_compiler_backbone",
   "model": "tabpfn:v2",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "failed",
   "max_seconds": 900,
   "protocol_sha256": "7d0f7719304763ce7d5d9d40a575aa6fdeaeffa7e47ac1ad9493b6f349624ed4",
@@ -572,13 +610,15 @@
   "app_id": "ap-lQtXFyZxX4GjloVp7kSOGo",
   "app_stopped": true,
   "model_invocations": 0,
-  "evidence_file": "artifacts/manifests/compiler_validation_v1_startup_failure.json"
+  "evidence_file": "artifacts/manifests/compiler_validation_v1_startup_failure.json",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "compiler_validation_v2_tabicl",
   "phase": "mask_compiler_backbone",
   "model": "tabicl:v2",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "failed",
   "max_seconds": 900,
   "protocol_sha256": "bbd594ff7e8175c33490a908f07d3f95943d6a5a76afadf4c34a3507818caef4",
@@ -590,13 +630,15 @@
   "active_seconds": 3.2710746449999997,
   "exit_code": 1,
   "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\compiler_validation_v2_tabicl",
-  "error": "SystemExit(1)"
+  "error": "SystemExit(1)",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "compiler_gpu_repair_v1_tabicl",
   "phase": "mask_compiler_gpu_repair",
   "model": "tabicl:v2",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "max_seconds": 900,
   "protocol_sha256": "3dee6317629de8567ff70a26f5571108135f804ba0c3eb154d9c91ea4d815f75",
@@ -610,7 +652,9 @@
   "date": "2026-10-01T20:13:21.200945+00:00",
   "active_seconds": 188.009322222,
   "exit_code": 0,
-  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\compiler_gpu_repair_v1_tabicl"
+  "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\compiler_gpu_repair_v1_tabicl",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "phase": "policy_native_gpu",
@@ -620,7 +664,7 @@
   "authorization": "October3 user explicitly requests real GPU viaColabPro orModal after the failedCPU gate; CUDA engineering/native-training feasibility only",
   "freeze_commit": "68f5dcd",
   "run_id": "policy_native_gpu_v1",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-03T06:23:37.717543+00:00",
   "launcher_failures": [
@@ -648,12 +692,14 @@
   "provider_cost_status": "pendingbilling;0.50reservation retained includingclientstartupfailure",
   "active_compute_estimate_usd": 0.0035096467122483605,
   "pricing_verified_date": "2026-10-03",
-  "pricing_url": "https://modal.com/pricing"
+  "pricing_url": "https://modal.com/pricing",
+  "original_reserved_usd": 0.5,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "large_native_a100_v1",
   "phase": "large_native_a100",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "failed",
   "date": "2026-10-03",
   "model": "CUDA XGBoost plus native neural/linear/calibration controls",
@@ -681,12 +727,13 @@
   "provider_cost_status": "Resource-level billing report reconciled; final invoice unverified; $.50 retained per stopped failure including pending-charge contingency",
   "original_reserved_usd": 4.0,
   "provider_reported_resource_cost_usd": 0.03959208,
-  "reconciliation_manifest": "artifacts/manifests/bridge_budget_reconciliation.json"
+  "reconciliation_manifest": "artifacts/manifests/bridge_budget_reconciliation.json",
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "large_native_a100_v2",
   "phase": "large_native_a100_repair",
-  "reserved_usd": 0.5,
+  "reserved_usd": 0,
   "status": "failed",
   "date": "2026-10-03",
   "model": "Same large native CUDA protocol; numerical calibration repair",
@@ -708,12 +755,13 @@
   "provider_cost_status": "Resource-level billing report reconciled; final invoice unverified; $.50 retained per stopped failure including pending-charge contingency",
   "original_reserved_usd": 1.5,
   "provider_reported_resource_cost_usd": 0.0240377,
-  "reconciliation_manifest": "artifacts/manifests/bridge_budget_reconciliation.json"
+  "reconciliation_manifest": "artifacts/manifests/bridge_budget_reconciliation.json",
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "large_native_a100_v3",
   "phase": "large_native_a100_final",
-  "reserved_usd": 0.4,
+  "reserved_usd": 0,
   "status": "completed",
   "date": "2026-10-03",
   "model": "Same large native CUDA evaluation; packaging and numerical repair",
@@ -737,14 +785,16 @@
   "results": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\large_native_a100_v3",
   "app_id": "ap-raKw2bH4mQsaJMMJXkJwvJ",
   "provider_display_usd": 0.05,
-  "provider_cost_status": "rounded/pending final invoice; full reservation retained"
+  "provider_cost_status": "rounded/pending final invoice; full reservation retained",
+  "original_reserved_usd": 0.4,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "bridge_v1_a100",
   "phase": "bridge_architecture_development",
   "date": "2026-10-03T11:45:11.564708+00:00",
   "status": "completed",
-  "reserved_usd": 0.8,
+  "reserved_usd": 0,
   "model": "Bridge20801/Generic20769/linear13 and separately trained ablations",
   "protocol_sha256": "cfd60b1647e852398c74d928a63ad1fd8219457d5cdaae729a37325deba4dc08",
   "gpu": "A100-40GB",
@@ -779,14 +829,16 @@
   "provider_report_source": "artifacts/manifests/modal_billing_after_bridge_v2.json",
   "provider_cost_status": "Reported resource cost; final invoice unverified, full $.80 provision retained",
   "gpu_verified": "NVIDIA A100-SXM4-40GB",
-  "cuda_updates_per_trained_model": 800
+  "cuda_updates_per_trained_model": 800,
+  "original_reserved_usd": 0.8,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "bridge_v2_a100",
   "phase": "bridge_architecture_development",
   "date": "2026-10-03T12:10:05.455765+00:00",
   "status": "completed",
-  "reserved_usd": 0.8,
+  "reserved_usd": 0,
   "model": "Support regularization1857/global1/type1857/target-only1857",
   "protocol_sha256": "0d73b1f071710af4edb9c5780e2d393a91bd059567a47de0b6202179421e5f04",
   "gpu": "A100-40GB",
@@ -813,14 +865,16 @@
   "provider_report_source": "artifacts/manifests/modal_billing_after_bridge_v2.json",
   "provider_cost_status": "Reported resource cost; final invoice unverified, full $.80 provision retained",
   "gpu_verified": "NVIDIA A100-SXM4-40GB",
-  "cuda_updates_per_trained_model": 600
+  "cuda_updates_per_trained_model": 600,
+  "original_reserved_usd": 0.8,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "recursive_jepa_v1_gpu",
   "phase": "recursive_jepa_engineering",
   "date": "2026-10-03T17:14:45.421613+00:00",
   "status": "completed",
-  "reserved_usd": 0.8,
+  "reserved_usd": 0,
   "protocol_sha256": "96258a1fb109381b0e7662850e39753e4c9731a14ef150be3f401e58575f4f1f",
   "gpu": "A100-40GB",
   "max_calls": 1,
@@ -849,14 +903,16 @@
   "provider_reported_resource_cost_usd": null,
   "provider_report_source": "artifacts/manifests/modal_billing_after_recursive_jepa.json",
   "provider_cost_status": "Resource report may lag; no matching rows means unavailable, not zero cost. Final invoice unverified; $.80 provision retained",
-  "active_tasks": 0
+  "active_tasks": 0,
+  "original_reserved_usd": 0.8,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "spectral_v1_gpu",
   "phase": "spectral_development",
   "date": "2026-10-03T17:37:28.247743+00:00",
   "status": "completed",
-  "reserved_usd": 0.8,
+  "reserved_usd": 0,
   "protocol_sha256": "8383e139f668890461045936f98962841f94fb8e08907530033dc90604f68f18",
   "gpu": "A100-40GB",
   "max_calls": 1,
@@ -884,14 +940,16 @@
   "gpu_verified": "NVIDIA A100-SXM4-40GB",
   "cuda_updates_per_trained_model": 500,
   "provider_reported_resource_cost_usd": 0.0225863,
-  "provider_cost_status": "Report may lag; unavailable is not zero; final invoice unverified and full.80 retained"
+  "provider_cost_status": "Report may lag; unavailable is not zero; final invoice unverified and full.80 retained",
+  "original_reserved_usd": 0.8,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "crossfit_v1_gpu",
   "phase": "crossfit_development",
   "date": "2026-10-03T19:24:02.486888+00:00",
   "status": "failed",
-  "reserved_usd": 0.8,
+  "reserved_usd": 0,
   "protocol_sha256": "276095220d847cf279373d84d6c220a8f82dc36d4d1c14763adf2859676f438c",
   "gpu": "A100-40GB",
   "max_calls": 1,
@@ -923,7 +981,9 @@
   "recovery_path": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\crossfit_v1_recovered",
   "provider_reported_resource_cost_usd": 0.04768177,
   "provider_cost_status": "Final invoice unverified; missing resource rows mean unavailable; full.80 retained despite CPU recovery",
-  "failure": "Platt L-BFGS-B ABNORMAL after all training and132predictions; no remote retry"
+  "failure": "Platt L-BFGS-B ABNORMAL after all training and132predictions; no remote retry",
+  "original_reserved_usd": 0.8,
+  "reservation_accounted_by": "historical_modal_account_20261009"
  },
  {
   "run_id": "crossfit_architecture_transfer_cpu",
@@ -1244,5 +1304,28 @@
   "source_scores": 456,
   "training_updates": 0,
   "evidence": "artifacts/reports/lifted_v4_launch/dtype_probe/report.json"
+ },
+ {
+  "run_id": "historical_modal_account_20261009",
+  "date": "2026-10-09",
+  "status": "metered_account_reconciled_with_contingency",
+  "reserved_usd": 3.5,
+  "metered_gross_usd": 2.58526058,
+  "provider_billed_so_far_usd": 0.0,
+  "final_invoice_verified": false,
+  "cloud_calls": 0,
+  "reason": "Count entire September and October account gross, including failures, storage and unrelated usage; retain $3.50 while final invoices remain open.",
+  "evidence": "artifacts/manifests/lifted_v4_budget_reconciliation.json"
+ },
+ {
+  "run_id": "lifted_v4_modal_source_smoke",
+  "date": "2026-10-09",
+  "status": "reserved_not_launched",
+  "reserved_usd": 1.0,
+  "gpu": "A100-40GB",
+  "timeout_seconds": 1200,
+  "startup_timeout_seconds": 120,
+  "automatic_retries": 0,
+  "reason": "Source-only fixed recipe smoke before any external scores; includes build/startup/egress contingency."
  }
 ]

@@ -1,0 +1,810 @@
+[
+  {
+    "object_id": "ap-0gxIvK3ACXtGFW0Zgo9smI",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00017779"
+  },
+  {
+    "object_id": "ap-0gxIvK3ACXtGFW0Zgo9smI",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.00163899"
+  },
+  {
+    "object_id": "ap-0gxIvK3ACXtGFW0Zgo9smI",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00026279"
+  },
+  {
+    "object_id": "ap-9DEEsT9Q7UpadyP0e18VaU",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00124445"
+  },
+  {
+    "object_id": "ap-9DEEsT9Q7UpadyP0e18VaU",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.01147230"
+  },
+  {
+    "object_id": "ap-9DEEsT9Q7UpadyP0e18VaU",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00183946"
+  },
+  {
+    "object_id": "ap-Cn2zflLYfBc8J6zfuoGUWA",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00156446"
+  },
+  {
+    "object_id": "ap-Cn2zflLYfBc8J6zfuoGUWA",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.01442233"
+  },
+  {
+    "object_id": "ap-Cn2zflLYfBc8J6zfuoGUWA",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00231246"
+  },
+  {
+    "object_id": "ap-O5AeTSP3M9XUBSWKmtPPME",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00045433"
+  },
+  {
+    "object_id": "ap-O5AeTSP3M9XUBSWKmtPPME",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.00327789"
+  },
+  {
+    "object_id": "ap-O5AeTSP3M9XUBSWKmtPPME",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00406968"
+  },
+  {
+    "object_id": "ap-OxkDlZNjhQBeM4RQFvYNEr",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00184888"
+  },
+  {
+    "object_id": "ap-OxkDlZNjhQBeM4RQFvYNEr",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.01704435"
+  },
+  {
+    "object_id": "ap-OxkDlZNjhQBeM4RQFvYNEr",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00273287"
+  },
+  {
+    "object_id": "ap-YxXeodVn0RKQ7KNA7oeY7a",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00039111"
+  },
+  {
+    "object_id": "ap-YxXeodVn0RKQ7KNA7oeY7a",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.00360552"
+  },
+  {
+    "object_id": "ap-YxXeodVn0RKQ7KNA7oeY7a",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00058195"
+  },
+  {
+    "object_id": "ap-fugafrVPiRvgmFpE7d89tL",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00142222"
+  },
+  {
+    "object_id": "ap-fugafrVPiRvgmFpE7d89tL",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.01311107"
+  },
+  {
+    "object_id": "ap-fugafrVPiRvgmFpE7d89tL",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00210222"
+  },
+  {
+    "object_id": "ap-pujBzefTZl9A1QK5kYljq7",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00469334"
+  },
+  {
+    "object_id": "ap-pujBzefTZl9A1QK5kYljq7",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.04326669"
+  },
+  {
+    "object_id": "ap-pujBzefTZl9A1QK5kYljq7",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00693734"
+  },
+  {
+    "object_id": "ap-qidELUGzO6TT1B1KoZAiId",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00135112"
+  },
+  {
+    "object_id": "ap-qidELUGzO6TT1B1KoZAiId",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.01245562"
+  },
+  {
+    "object_id": "ap-qidELUGzO6TT1B1KoZAiId",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00199712"
+  },
+  {
+    "object_id": "ap-qketZYlsgqTFqEhubaiEDo",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00124445"
+  },
+  {
+    "object_id": "ap-qketZYlsgqTFqEhubaiEDo",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.01147227"
+  },
+  {
+    "object_id": "ap-qketZYlsgqTFqEhubaiEDo",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00183945"
+  },
+  {
+    "object_id": "ap-t3dvxkWY4V4uBo6Ym9NLbd",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00160000"
+  },
+  {
+    "object_id": "ap-t3dvxkWY4V4uBo6Ym9NLbd",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.01475002"
+  },
+  {
+    "object_id": "ap-t3dvxkWY4V4uBo6Ym9NLbd",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00236500"
+  },
+  {
+    "object_id": "ap-zx9N3EiGQwGgJhcZsviOpj",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00277333"
+  },
+  {
+    "object_id": "ap-zx9N3EiGQwGgJhcZsviOpj",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "T4",
+    "cost": "0.02556665"
+  },
+  {
+    "object_id": "ap-zx9N3EiGQwGgJhcZsviOpj",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-09-30T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00409933"
+  },
+  {
+    "object_id": "ap-29sdBNwyGIJse79T72LRNz",
+    "description": "mira-large-native-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Network Egress",
+    "cost": "0.00102729"
+  },
+  {
+    "object_id": "ap-29sdBNwyGIJse79T72LRNz",
+    "description": "mira-large-native-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00398223"
+  },
+  {
+    "object_id": "ap-29sdBNwyGIJse79T72LRNz",
+    "description": "mira-large-native-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "A100-40GB",
+    "cost": "0.03266673"
+  },
+  {
+    "object_id": "ap-29sdBNwyGIJse79T72LRNz",
+    "description": "mira-large-native-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00294312"
+  },
+  {
+    "object_id": "ap-AayNPNUQps9oJcUVAjaF6B",
+    "description": "mira-spectral-v1",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00064001"
+  },
+  {
+    "object_id": "ap-AayNPNUQps9oJcUVAjaF6B",
+    "description": "mira-spectral-v1",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "A100-40GB",
+    "cost": "0.02100028"
+  },
+  {
+    "object_id": "ap-AayNPNUQps9oJcUVAjaF6B",
+    "description": "mira-spectral-v1",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00094601"
+  },
+  {
+    "object_id": "ap-FGMu0nPPjGLxIT7Ds63p70",
+    "description": "mira-large-native-a100-repair",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00241775"
+  },
+  {
+    "object_id": "ap-FGMu0nPPjGLxIT7Ds63p70",
+    "description": "mira-large-native-a100-repair",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "A100-40GB",
+    "cost": "0.01983308"
+  },
+  {
+    "object_id": "ap-FGMu0nPPjGLxIT7Ds63p70",
+    "description": "mira-large-native-a100-repair",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00178687"
+  },
+  {
+    "object_id": "ap-QI93Lc6YsGv7wnGPHoqVp4",
+    "description": "mira-crossfit-v1",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Network Egress",
+    "cost": "0.00012376"
+  },
+  {
+    "object_id": "ap-QI93Lc6YsGv7wnGPHoqVp4",
+    "description": "mira-crossfit-v1",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00135111"
+  },
+  {
+    "object_id": "ap-QI93Lc6YsGv7wnGPHoqVp4",
+    "description": "mira-crossfit-v1",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "A100-40GB",
+    "cost": "0.04433336"
+  },
+  {
+    "object_id": "ap-QI93Lc6YsGv7wnGPHoqVp4",
+    "description": "mira-crossfit-v1",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00199730"
+  },
+  {
+    "object_id": "ap-ToSEFBbBj2FtA8VpFQFQOP",
+    "description": "mira-recursive-jepa-v1",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00064000"
+  },
+  {
+    "object_id": "ap-ToSEFBbBj2FtA8VpFQFQOP",
+    "description": "mira-recursive-jepa-v1",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "A100-40GB",
+    "cost": "0.02099997"
+  },
+  {
+    "object_id": "ap-ToSEFBbBj2FtA8VpFQFQOP",
+    "description": "mira-recursive-jepa-v1",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00094600"
+  },
+  {
+    "object_id": "ap-raKw2bH4mQsaJMMJXkJwvJ",
+    "description": "mira-large-native-a100-final",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Network Egress",
+    "cost": "0.00167288"
+  },
+  {
+    "object_id": "ap-raKw2bH4mQsaJMMJXkJwvJ",
+    "description": "mira-large-native-a100-final",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00140847"
+  },
+  {
+    "object_id": "ap-raKw2bH4mQsaJMMJXkJwvJ",
+    "description": "mira-large-native-a100-final",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "A100-40GB",
+    "cost": "0.04621538"
+  },
+  {
+    "object_id": "ap-raKw2bH4mQsaJMMJXkJwvJ",
+    "description": "mira-large-native-a100-final",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00208189"
+  },
+  {
+    "object_id": "ap-vCFNSkNvKoLqkVxjHuVjKV",
+    "description": "mira-bridge-v2-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Network Egress",
+    "cost": "0.00026734"
+  },
+  {
+    "object_id": "ap-vCFNSkNvKoLqkVxjHuVjKV",
+    "description": "mira-bridge-v2-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00113779"
+  },
+  {
+    "object_id": "ap-vCFNSkNvKoLqkVxjHuVjKV",
+    "description": "mira-bridge-v2-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "A100-40GB",
+    "cost": "0.03733370"
+  },
+  {
+    "object_id": "ap-vCFNSkNvKoLqkVxjHuVjKV",
+    "description": "mira-bridge-v2-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00168191"
+  },
+  {
+    "object_id": "ap-zOyHMVDKIfs6KtgCCB4EVn",
+    "description": "mira-bridge-v1-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Network Egress",
+    "cost": "0.00027586"
+  },
+  {
+    "object_id": "ap-zOyHMVDKIfs6KtgCCB4EVn",
+    "description": "mira-bridge-v1-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00252740"
+  },
+  {
+    "object_id": "ap-zOyHMVDKIfs6KtgCCB4EVn",
+    "description": "mira-bridge-v1-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "A100-40GB",
+    "cost": "0.08293025"
+  },
+  {
+    "object_id": "ap-zOyHMVDKIfs6KtgCCB4EVn",
+    "description": "mira-bridge-v1-a100",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00373596"
+  },
+  {
+    "object_id": "ap-0BKY31LVWA427ixLjBYvtg",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Network Egress",
+    "cost": "0.00019325"
+  },
+  {
+    "object_id": "ap-0BKY31LVWA427ixLjBYvtg",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00195556"
+  },
+  {
+    "object_id": "ap-0BKY31LVWA427ixLjBYvtg",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "T4",
+    "cost": "0.01802777"
+  },
+  {
+    "object_id": "ap-0BKY31LVWA427ixLjBYvtg",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00289055"
+  },
+  {
+    "object_id": "ap-46gFmLnPQEyisbQPkZnt9W",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Network Egress",
+    "cost": "0.00008384"
+  },
+  {
+    "object_id": "ap-46gFmLnPQEyisbQPkZnt9W",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00316445"
+  },
+  {
+    "object_id": "ap-46gFmLnPQEyisbQPkZnt9W",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "T4",
+    "cost": "0.02917228"
+  },
+  {
+    "object_id": "ap-46gFmLnPQEyisbQPkZnt9W",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00467745"
+  },
+  {
+    "object_id": "ap-5dg5UyrZ8ROZmuPJMtmaWL",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Network Egress",
+    "cost": "0.00011701"
+  },
+  {
+    "object_id": "ap-5dg5UyrZ8ROZmuPJMtmaWL",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00330667"
+  },
+  {
+    "object_id": "ap-5dg5UyrZ8ROZmuPJMtmaWL",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "T4",
+    "cost": "0.03048336"
+  },
+  {
+    "object_id": "ap-5dg5UyrZ8ROZmuPJMtmaWL",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00488767"
+  },
+  {
+    "object_id": "ap-7VztbB5stcNdWqiWhgIa8u",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00341334"
+  },
+  {
+    "object_id": "ap-7VztbB5stcNdWqiWhgIa8u",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "T4",
+    "cost": "0.03146677"
+  },
+  {
+    "object_id": "ap-7VztbB5stcNdWqiWhgIa8u",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00504535"
+  },
+  {
+    "object_id": "ap-E0f5FJ0uCR2kA0Iya8aQ9X",
+    "description": "mira-mask-compiler-v2",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00007111"
+  },
+  {
+    "object_id": "ap-E0f5FJ0uCR2kA0Iya8aQ9X",
+    "description": "mira-mask-compiler-v2",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "T4",
+    "cost": "0.00065553"
+  },
+  {
+    "object_id": "ap-E0f5FJ0uCR2kA0Iya8aQ9X",
+    "description": "mira-mask-compiler-v2",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00010511"
+  },
+  {
+    "object_id": "ap-Z8O54HDXZsq7bHTXnwLX5Q",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Network Egress",
+    "cost": "0.00057913"
+  },
+  {
+    "object_id": "ap-Z8O54HDXZsq7bHTXnwLX5Q",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00465235"
+  },
+  {
+    "object_id": "ap-Z8O54HDXZsq7bHTXnwLX5Q",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "T4",
+    "cost": "0.04288881"
+  },
+  {
+    "object_id": "ap-Z8O54HDXZsq7bHTXnwLX5Q",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00687675"
+  },
+  {
+    "object_id": "ap-rpDp4nsetQ8Ef7hl4JRa30",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00206224"
+  },
+  {
+    "object_id": "ap-rpDp4nsetQ8Ef7hl4JRa30",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "T4",
+    "cost": "0.01901124"
+  },
+  {
+    "object_id": "ap-rpDp4nsetQ8Ef7hl4JRa30",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00304824"
+  },
+  {
+    "object_id": "ap-uafeBpvdQHnia3DQqj0hME",
+    "description": "mira-mask-compiler-gpu-repair",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Network Egress",
+    "cost": "7E-8"
+  },
+  {
+    "object_id": "ap-uafeBpvdQHnia3DQqj0hME",
+    "description": "mira-mask-compiler-gpu-repair",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00337778"
+  },
+  {
+    "object_id": "ap-uafeBpvdQHnia3DQqj0hME",
+    "description": "mira-mask-compiler-gpu-repair",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "T4",
+    "cost": "0.03113894"
+  },
+  {
+    "object_id": "ap-uafeBpvdQHnia3DQqj0hME",
+    "description": "mira-mask-compiler-gpu-repair",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00499279"
+  },
+  {
+    "object_id": "ap-yd9YbpSmYeKwFYgpgepUj5",
+    "description": "mira-policy-native-gpu",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00035556"
+  },
+  {
+    "object_id": "ap-yd9YbpSmYeKwFYgpgepUj5",
+    "description": "mira-policy-native-gpu",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "T4",
+    "cost": "0.00327784"
+  },
+  {
+    "object_id": "ap-yd9YbpSmYeKwFYgpgepUj5",
+    "description": "mira-policy-native-gpu",
+    "environment": "main",
+    "interval_start": "2026-10-03T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00052557"
+  },
+  {
+    "object_id": "ap-zFubqkegN8iE4QwcXSORx3",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Network Egress",
+    "cost": "0.00010684"
+  },
+  {
+    "object_id": "ap-zFubqkegN8iE4QwcXSORx3",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "Memory",
+    "cost": "0.00548909"
+  },
+  {
+    "object_id": "ap-zFubqkegN8iE4QwcXSORx3",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "T4",
+    "cost": "0.05060257"
+  },
+  {
+    "object_id": "ap-zFubqkegN8iE4QwcXSORx3",
+    "description": "mira-mechanism",
+    "environment": "main",
+    "interval_start": "2026-10-01T00:00:00",
+    "resource": "CPU",
+    "cost": "0.00811356"
+  }
+]

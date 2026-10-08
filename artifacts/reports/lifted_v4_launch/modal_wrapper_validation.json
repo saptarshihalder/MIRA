@@ -1,0 +1,12 @@
+{
+  "syntax": "pass",
+  "cli_help": "pass",
+  "source_and_panel_and_raw_hashes": "pass",
+  "serialized_worker_bytes": 14089,
+  "windows_path_globals": 0,
+  "duplicate_submission_guard": "pass",
+  "budget_guard": "pass",
+  "throughput_cap_guard": "pass",
+  "cloud_calls": 0,
+  "wrapper_sha256": "a8887a5c02432c9dc49dbdf0148f9348c9305d4ce55830cb05af583e7abd19f4"
+}

@@ -1,4 +1,22 @@
-# Publication readiness review - October 6, 2026
+# Publication readiness review - October 9, 2026
+
+## Current assessment (supersedes the historical review below)
+
+**Readiness is not established.** The trained lifted information-site head has scoped synthetic evidence; historical real-data comparisons against the transformer fail. The independent audit is in FINAL_READINESS_AUDIT.md. Learned EP, set processing and correlated-noise fusion are prior ingredients, not novelty claims by themselves.
+
+| Gate | Verified state |
+|---|---|
+| Implementation | 15 model/interface tests pass; real T4 source training and TabPFN density probe completed |
+| Frozen v4 efficacy | Pending: three matched 2.1M model seeds plus pretrained TabPFN; no endpoint tuning or early confirmations |
+| Reproducibility | Original factor-orientation failure disclosed; separate source-only repair does not inherit old results |
+| Data provenance | All 12 Beijing CSVs match the official UCI archive after line-ending normalization; all 19 frozen panels hash-verified |
+| Manuscript accuracy | Three overclaims corrected; 854 numeric macros regenerate identically; 39 citation keys resolve locally (not full reference verification) |
+| PDF | Same modular manuscript compiled with official style using Tectonic 0.17.0; 9 main pages, references start page 10, checklist included; no overfull boxes. Native editor compiler remains unavailable |
+| Compute | Entire September/October account metering $2.58526058; retain $3.50 historical provision, $1 smoke, conditional $11.50 main, and $3 reproduction (worst case $19 within $20 cap) |
+
+One-day priority: complete the unchanged v4 comparison if the source-only A100 smoke and bounded throughput gate pass, independently recompute its endpoints, then update the manuscript and reproduce the final package. If any gate remains open, deliver the evidence with that limitation. Do not submit or guarantee venue acceptance.
+
+## Historical review (October 6–7)
 
 October7: the K=1 factor-sign repair passes nine tests and six frozen source comparisons. It costs two forward passes and has not been evaluated on external data. Next prerequisites are Beijing eligibility, matched variable-width/static controls, source learning and a new frozen evaluation protocol. See LIFTED_GAUGE_V2_FINDINGS.md. Overall readiness remains unestablished.
 

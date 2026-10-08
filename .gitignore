@@ -18,3 +18,11 @@ paper/*.pdf
 
 # Outcome-closed HAR transport archive stays local.
 data/raw/har_label_closed_v1/
+
+# Local transport inputs and portable compiler; publish manifests, not raw bundles.
+artifacts/inputs/
+artifacts/tools/
+paper/**/*.aux
+paper/**/*.log
+paper/**/*.blg
+paper/**/*.out

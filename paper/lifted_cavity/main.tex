@@ -78,7 +78,7 @@ expectation propagation (EP) refines such experts using context from the other s
   from a factor analysis of the incomplete calibration rows and are refined by a small network that re-linearizes
   each sensor's response under its cavity.
   \item \textbf{A pre-registered evaluation (\S\ref{sec:experiments})} against exact posteriors, a Hamiltonian Monte
-  Carlo estimate of the Bayes-optimal predictive, tuned closed forms and a TabPFN-v2-style transformer trained on the
+  Carlo reference conditioned on support-inferred response signs, tuned closed forms and a TabPFN-v2-style transformer trained on the
   same task distribution, on synthetic panels and two real sensor networks. Three protocols were committed before
   their test data existed, and every endpoint is reported.
 \end{enumerate}
@@ -99,8 +99,10 @@ prediction is the posterior predictive
 \end{equation}
 and methods are scored by the negative log-likelihood (NLL) of the held-out target. Two privileged references bound
 what is possible on synthetic tasks: the \emph{oracle} $p_\tau(y\mid x_S)$, which knows the task, and the
-\emph{Bayes-optimal predictive}~\eqref{eq:ppd}, which knows only the task prior. We call the NLL difference between
-the closed-form FA-Gaussian of \S\ref{sec:method} and the Bayes-optimal predictive the \emph{achievable gap}.
+\emph{Bayes-optimal predictive}~\eqref{eq:ppd}, which knows only the task prior. Our numerical HMC reference
+approximates the latter after conditioning on response signs inferred from the support; it is not a certified
+Bayes-optimal ceiling. Reported gap-closure percentages use the NLL difference between the closed-form FA-Gaussian
+of \S\ref{sec:method} and this sign-conditioned HMC reference (the \emph{reference gap}).
 
 An in-context method learns a map $(\D,x_S)\mapsto q(y)$ by minimizing NLL over tasks drawn from a training
 distribution~\citep{garnelo2018cnp,muller2022pfn,gershman2014amortized}. Throughout, models are trained only on
@@ -222,12 +224,18 @@ unrolling~\citep{gregor2010lista,monga2021unrolling}.
 For any parameters $\theta$:
 \begin{enumerate}
   \item[(i)] the prediction does not depend on the readings of missing sensors;
-  \item[(ii)] permuting sensors together with their calibration columns leaves the prediction unchanged, and the same
-  $\theta$ applies for every $P$;
+  \item[(ii)] conditional on an anchor representation whose nuisance orientation is consistent under calibration-column
+  permutations, permuting sensors and their calibration columns leaves the prediction unchanged; the same $\theta$
+  applies for every $P$;
   \item[(iii)] when the last layer of $f_\theta$ is zero, the network equals the FA-Gaussian closed form of its
   anchor, so the minimal training risk over $\theta$ is at most that closed form's.
 \end{enumerate}
 \end{proposition}
+
+The original learned model does not enforce invariance to equivalent factor signs. Anchor refitting can therefore
+violate end-to-end sensor-permutation invariance through a changed nuisance orientation. A separately versioned
+one-factor sign-averaging repair passed source-only structural checks; the reported efficacy results remain those
+of the original model and do not establish the repaired model's efficacy.
 
 \paragraph{Training.}
 We minimize the predictive NLL over episodes drawn from a pool of 60{,}000 synthetic tasks (128 tasks $\times$ 8
@@ -252,7 +260,9 @@ processes~\citep{garnelo2018cnp,kim2019anp} and prior-fitted networks such as Ta
 TabICL~\citep{muller2022pfn,hollmann2023tabpfn,hollmann2025tabpfnv2,qu2025tabicl} uses generic set or transformer
 architectures; we compare against such a transformer trained on our task distribution and test lifted sites as its
 output layer. \textbf{Fusion under unknown correlations}~\citep{julier1997ci,wang2025ifnet,dong2025difnet,revach2022kalmannet}
-is learned or bounded per system, with fixed sensor sets.
+includes learned sequential state-space filtering and decentralized network fusion. DIFNet explicitly discusses
+changing sensor nodes and network topologies. Our distinction is episodic prediction with unknown sensor calibration
+inferred from a labeled support set, rather than sequential filtering in a specified state-space model.
 
 %=====================================================================
 \section{Experiments}

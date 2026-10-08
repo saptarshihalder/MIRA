@@ -1,4 +1,10 @@
-# MIRA status — October 8, 2026
+# MIRA status - October 9, 2026
+
+## One-day readiness push - October 9
+
+Read docs/PUBLICATION_READINESS.md and FINAL_READINESS_AUDIT.md. Fifteen targeted tests pass; 854 numeric macros regenerate unchanged. Official Beijing CSV records match all12 used files (line endings differ). The actual paper/lifted_cavity/main.tex compiles with portable official Tectonic0.17.0:9 main pages; native editor compiler still fails. Three theoretical/prior-work overclaims corrected. Scientific readiness remains unestablished.
+
+Modal provider summaries reconcile entire account gross September+October at.58526058; billed-so-far from credits is not called zero compute cost. Historical provision.50 retains pending-invoice contingency. Source-only A100 smoke reserved, conditional fixed v4 main at most.50, protected reproduction; total worst-case under. No cloud job has launched yet. Frozen sourcee1b1d9d, panels799f473; wrappers enforce hard limits, no retries and durable storage.
 
 ## TabPFN GPU interface repaired - October 8
 
