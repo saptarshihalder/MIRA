@@ -1,4 +1,10 @@
-# MIRA status — October 7, 2026
+# MIRA status — October 8, 2026
+
+## TabPFN GPU interface repaired - October 8
+
+Code e1b1d9d and the earlier integration are now pushed to codex/mira-research. First free T4 smoke ran382.798 seconds: both2.1M models completed500-step training,40-step checkpoint recovery and20-step source fine-tuning. TabPFN failed on float64 borders versus float32 targets; that interface bug is fixed. The corrected source-only TabPFN probe passed on a real TeslaT4 in24.028 seconds:8 arrays/456 finite score values, locally revalidated against the saved panel and source hash. It used package9.1.0, modelv2,8estimators,seed0. See artifacts/reports/lifted_v4_launch and docs/LIFTED_V4_LAUNCH_AUDIT.md. No confirmation or new real-data efficacy evidence; no model selection from this probe.
+
+The old free runtime expired. The replacement T4 works, but Drive remount failed; full frozen v4 training is not yet launched. Restore persistent checkpoint storage before starting long jobs. Keep all historical failures and frozen settings. Paper source corrections are pushed; PDF remains stale because the native compiler failed. Modal reservations unchanged, no paid spending.
 
 ## V4 GPU launch audit — October 7
 

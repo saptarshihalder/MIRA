@@ -21,3 +21,11 @@ Native compilation failed before typesetting: Windows sandbox helper setup refre
 ## Validation and remaining work
 
 Initial targeted suite: 14 tests passed in40.57 seconds (11 model tests,3 launch-validation tests). GPU smoke/throughput, TabPFN weight access, exact device resume, all v4 training and endpoints remain pending until their logs exist. T4 allocation is available in the active Colab account; its UI says no subscription and zero compute units. Free allocation is not proof of Pro access. Do not count engineering checks as scientific improvement.
+
+## First T4 execution and density repair
+
+First bounded GPU session ran382.798 seconds: both2.1M models completed500 updates, checkpoint recovery and20-step source fine-tuning. TabPFNv2 downloaded and produced predictions, but its density call failed because raw-unit bar borders were float64 while target/logits were float32. No confirmation panels were scored. Evidence: artifacts/reports/lifted_v4_launch/first_smoke_diagnostics.txt. Repair e1b1d9d casts density logits/targets to the criterion border dtype, retaining raw target units. Four launch guard tests now pass, including this regression. The free runtime later disconnected from inactivity. A manually initiated corrected source-only session on October8 has a separate Drive root and45-minute cap; this is not an automatic retry or efficacy result.
+
+## Corrected GPU interface result - October8
+
+PASS on TeslaT4, torch2.11.0+cu130: TabPFN9.1.0/v2,8estimators,random_state0. Four source tasks at16 sensors, seed90401;16 inference calls. Runtime24.028 seconds,8 validated arrays,456 finite NLL/squared-error cells. The saved zip was recovered locally and panel completeness/source SHA256 checked independently. No confirmation or real-data scoring. Drive remount failed, so this isolated probe used temporary storage; it did not repeat learned-model training. Full v4 remains pending. Before external scoring, also retain the actual pretrained weight identity, not only its package/model-version name.

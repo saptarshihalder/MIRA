@@ -1,0 +1,46 @@
+{
+  "source_commit": "e1b1d9d09e98667dc4590e6f54a6c6641c3e24a9",
+  "gpu": "Tesla T4",
+  "torch": "2.11.0+cu130",
+  "seconds": 24.027567625045776,
+  "exit_code": 0,
+  "source_only": true,
+  "automatic_retries": 0,
+  "fixture_sha256": "2c48efda6a41179e66da446dc32813a630443e31d297e764d72bf8bcbe98ffd3",
+  "dtype_fix_sha256": "2afe48b71ede5ae6eccd57ace22418efbdbbecbf3af2cff9016b6a72e03adf6e",
+  "validated_shapes": {
+    "k0_nll": [
+      4,
+      1
+    ],
+    "k0_se": [
+      4,
+      1
+    ],
+    "k1_nll": [
+      4,
+      16
+    ],
+    "k1_se": [
+      4,
+      16
+    ],
+    "k2_nll": [
+      4,
+      20
+    ],
+    "k2_se": [
+      4,
+      20
+    ],
+    "k3_nll": [
+      4,
+      20
+    ],
+    "k3_se": [
+      4,
+      20
+    ]
+  },
+  "passed": true
+}

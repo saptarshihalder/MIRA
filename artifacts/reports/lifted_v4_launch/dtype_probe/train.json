@@ -1,0 +1,18 @@
+{
+ "model": "tabpfn_v2",
+ "version": "v2",
+ "package": "9.1.0",
+ "n_estimators": 8,
+ "random_state": 0,
+ "device": "cuda",
+ "note": "pretrained TabPFN regressor, in context, no fine-tuning",
+ "gpu": "Tesla T4",
+ "timing": {
+  "source_s90401_p16": {
+   "tag": "source_s90401_p16",
+   "tasks": 4,
+   "calls": 16,
+   "seconds": 15.42232346534729
+  }
+ }
+}

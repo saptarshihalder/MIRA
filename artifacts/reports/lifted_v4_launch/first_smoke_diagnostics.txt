@@ -1,0 +1,88 @@
+CUDA True 2.11.0+cu130
+name, memory.total [MiB]
+Tesla T4, 15360 MiB
+
+ROOT FILES ['run_identity.json', 'data', 'smoke', 'logs', 'cache', 'sessions.jsonl']
+LOG sessions.jsonl 
+ {"start_unix": 1791386240.79822, "seconds": 382.7975878715515, "minutes_cap": 45.0, "stages": ["data", "panels", "smoke", "pack"], "exit_code": 1, "timed_out": false, "automatic_retries": 0}
+
+LOG smoke_lct_L.log 
+ 
+=== 2026-10-07 15:20:46 /usr/bin/python3 -u lct_train.py --seed 1 --out /content/drive/MyDrive/mira_v4_audited/smoke/lct_L_resume --device cuda --batch-tasks 32 --queries 16 --lr 5e-4 --warmup 2000 --d 128 --layers 8 --heads 8 --ff 512 --steps 40 --ckpt-every 20 --save-every 40 --prefetch 4
+stopped for resume test
+
+=== 2026-10-07 15:20:59 /usr/bin/python3 -u lct_train.py --seed 1 --out /content/drive/MyDrive/mira_v4_audited/smoke/lct_L_resume --device cuda --batch-tasks 32 --queries 16 --lr 5e-4 --warmup 2000 --d 128 --layers 8 --heads 8 --ff 512 --steps 40 --ckpt-every 20 --save-every 40 --prefetch 4
+step 40 ema 0.0135 13s
+
+=== 2026-10-07 15:21:10 /usr/bin/python3 -u lct_train.py --seed 1 --out /content/drive/MyDrive/mira_v4_audited/smoke/lct_L --device cuda --batch-tasks 32 --queries 16 --lr 5e-4 --warmup 2000 --d 128 --layers 8 --heads 8 --ff 512 --steps 500 --save-every 500 --ckpt-every 250 --prefetch 4
+step 500 ema -0.0841 107s
+
+=== 2026-10-07 15:23:01 /usr/bin/python3 -u evaluate2.py model --run /content/drive/MyDrive/mira_v4_audited/smoke/lct_L --panel /content/drive/MyDrive/mira_v4_audited/smoke/smoke_source_synthetic.pt --device cuda
+lct_L smoke_source_synthetic {'k0': -0.7373, 'k1': -0.7103, 'k2': -0.6767, 'k3': -0.6545}
+
+=== 2026-10-07 15:23:05 /usr/bin/python3 -u finetune_real.py --dataset beijing_pm10 --init /content/drive/MyDrive/mira_v4_audited/smoke/lct_L --out /content/drive/MyDrive/mira_v4_audited/smoke/lct_L_ft --device cuda --beijing /content/drive/MyDrive/mira_v4_audited/data/beijing --pool-cache /content/drive/MyDrive/mira_v4_audited/cache/src --steps 20 --ckpt-every 10
+stopped for resume test
+
+=== 2026-10-07 15:23:18 /usr/bin/python3 -u finetune_real.py --dataset beijing_pm10 --init /content/drive/MyDrive/mira_v4_audited/smoke/lct_L --out /content/drive/MyDrive/mira_v4_audited/smoke/lct_L_ft --device cuda --beijing /content/drive/MyDrive/mira_v4_audited/data/beijing --pool-cache /content/drive/MyDrive/mira_v4_audited/cache/src --steps 20 --ckpt-every 10
+lct_L_ft beijing_pm10 ema 0.3924 12s
+
+=== 2026-10-07 15:23:28 /usr/bin/python3 -u eval_real.py score --panel /content/drive/MyDrive/mira_v4_audited/smoke/smoke_source_beijing.pt --runs /content/drive/MyDrive/mira_v4_audited/smoke/lct_L_ft --device cuda
+/content/drive/MyDrive/mira_v4_audited/smoke/lct_L_ft {'e0': 0.2148, 'e3': 0.2976, 'e6': 0.3868}
+
+LOG smoke_pfn_L.log 
+ 
+=== 2026-10-07 15:17:29 /usr/bin/python3 -u pfn_train.py --seed 1 --out /content/drive/MyDrive/mira_v4_audited/smoke/pfn_L_resume --device cuda --batch-tasks 32 --queries 16 --lr 5e-4 --warmup 2000 --d 128 --layers 8 --heads 8 --ff 512 --steps 40 --ckpt-every 20 --save-every 40
+stopped for resume test
+
+=== 2026-10-07 15:17:47 /usr/bin/python3 -u pfn_train.py --seed 1 --out /content/drive/MyDrive/mira_v4_audited/smoke/pfn_L_resume --device cuda --batch-tasks 32 --queries 16 --lr 5e-4 --warmup 2000 --d 128 --layers 8 --heads 8 --ff 512 --steps 40 --ckpt-every 20 --save-every 40
+step 40 ema 1.4503 10s
+
+=== 2026-10-07 15:17:55 /usr/bin/python3 -u pfn_train.py --seed 1 --out /content/drive/MyDrive/mira_v4_audited/smoke/pfn_L --device cuda --batch-tasks 32 --queries 16 --lr 5e-4 --warmup 2000 --d 128 --layers 8 --heads 8 --ff 512 --steps 500 --save-every 500 --ckpt-every 250
+step 500 ema 0.8627 97s
+
+=== 2026-10-07 15:19:37 /usr/bin/python3 -u evaluate2.py model --run /content/drive/MyDrive/mira_v4_audited/smoke/pfn_L --panel /content/drive/MyDrive/mira_v4_audited/smoke/smoke_source_synthetic.pt --device cuda
+pfn_L smoke_source_synthetic {'k0': 0.7948, 'k1': 0.8181, 'k2': 0.8504, 'k3': 0.8705}
+
+=== 2026-10-07 15:19:41 /usr/bin/python3 -u finetune_real.py --dataset beijing_pm10 --init /content/drive/MyDrive/mira_v4_audited/smoke/pfn_L --out /content/drive/MyDrive/mira_v4_audited/smoke/pfn_L_ft --device cuda --beijing /content/drive/MyDrive/mira_v4_audited/data/beijing --pool-cache /content/drive/MyDrive/mira_v4_audited/cache/src --steps 20 --ckpt-every 10
+stopped for resume test
+
+=== 2026-10-07 15:20:31 /usr/bin/python3 -u finetune_real.py --dataset beijing_pm10 --init /content/drive/MyDrive/mira_v4_audited/smoke/pfn_L --out /content/drive/MyDrive/mira_v4_audited/smoke/pfn_L_ft --device cuda --beijing /content/drive/MyDrive/mira_v4_audited/data/beijing --pool-cache /content/drive/MyDrive/mira_v4_audited/cache/src --steps 20 --ckpt-every 10
+pfn_L_ft beijing_pm10 ema 1.0399 12s
+
+=== 2026-10-07 15:20:42 /usr/bin/python3 -u eval_real.py score --panel /content/drive/MyDrive/mira_v4_audited/smoke/smoke_source_beijing.pt --runs /content/drive/MyDrive/mira_v4_audited/smoke/pfn_L_ft --device cuda
+/content/drive/MyDrive/mira_v4_audited/smoke/pfn_L_ft {'e0': 0.4201, 'e3': 0.4332, 'e6': 0.6227}
+
+LOG smoke_tabpfn.log 
+ nTransformer configuration, in the future they will be stored as a different type depending on the ColumnTransformer inputs.
+To use the new behavior now and suppress this warning, use ColumnTransformer(force_int_remainder_cols=False).
+
+  warnings.warn(
+/usr/local/lib/python3.13/dist-packages/sklearn/compose/_column_transformer.py:1667: FutureWarning: 
+The format of the columns of the 'remainder' transformer in ColumnTransformer.transformers_ will change in version 1.7 to match the format of the other transformers.
+At the moment the remainder columns are stored as indices (of type int). With the same ColumnTransformer configuration, in the future they will be stored as a different type depending on the ColumnTransformer inputs.
+To use the new behavior now and suppress this warning, use ColumnTransformer(force_int_remainder_cols=False).
+
+  warnings.warn(
+Traceback (most recent call last):
+  File "/content/MIRA_v4_83de91/experiments/lifted_cavity/tabpfn_colab.py", line 130, in <module>
+    main()
+    ~~~~^^
+  File "/content/MIRA_v4_83de91/experiments/lifted_cavity/tabpfn_colab.py", line 122, in main
+    r = score_panel(reg, p, out, a.limit)
+  File "/content/MIRA_v4_83de91/experiments/lifted_cavity/tabpfn_colab.py", line 81, in score_panel
+    l, mu = tabpfn_nll(reg, Xs, ys, Xq, np.tile(qy, M)); calls += 1
+            ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/MIRA_v4_83de91/experiments/lifted_cavity/tabpfn_colab.py", line 46, in tabpfn_nll
+    nll = crit(logits, torch.as_tensor(yq, dtype=logits.dtype, device=logits.device))
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.13/dist-packages/tabpfn/architectures/shared/bar_distribution.py", line 643, in forward
+    ignore_loss_mask = self.ignore_init(y)  # alters y
+  File "/usr/local/lib/python3.13/dist-packages/tabpfn/architectures/shared/bar_distribution.py", line 202, in ignore_init
+    y[ignore_loss_mask] = self.borders[0]
+    ~^^^^^^^^^^^^^^^^^^
+RuntimeError: Index put requires the source and destination dtypes match, got Float for the destination and Double for the source.
+

@@ -206,3 +206,6 @@ Exact checkpoint reloading reproduces all 160 predictions. Independent scoring, 
 ## October7 v4 execution audit
 
 Continue the frozen v4 comparison after the source-only GPU smoke and throughput estimate. Use docs/LIFTED_V4_LAUNCH_AUDIT.md and the immutable audited notebook; preserve all original v2/v3 failures. No new architecture or margin changes. Official style and theory-scope corrections are implemented; compilation and v4 efficacy remain unresolved.
+
+
+October8 update: actual T4 training smoke completed for both2.1M models; TabPFN density dtype repair now passes456 source score checks on GPU. No new efficacy claim. Main v4 training waits for persistent Drive storage. Code through e1b1d9d pushed successfully; see STATUS.md and LIFTED_V4_LAUNCH_AUDIT.md.
