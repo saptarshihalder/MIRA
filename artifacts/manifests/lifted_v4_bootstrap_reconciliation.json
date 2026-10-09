@@ -1,0 +1,13 @@
+{
+  "observed_at_utc": "2026-10-09T17:22:21.482847+00:00",
+  "historical_gross_usd": 2.65766006,
+  "historical_provision_usd": 3.5,
+  "failed_bootstrap_included": true,
+  "active_tasks": 0,
+  "result_volume_empty": true,
+  "smoke_repair_reserved_usd": 1.0,
+  "conditional_main_reservation_usd": 11.5,
+  "reproduction_reserve_usd": 3,
+  "total_worst_case_usd": 19,
+  "final_invoice_verified": false
+}

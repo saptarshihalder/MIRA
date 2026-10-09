@@ -1,0 +1,23 @@
+{
+  "run_id": "lifted_v4_modal_source_smoke_packaging_repair",
+  "date": "2026-10-09",
+  "status": "running",
+  "reserved_usd": 1.0,
+  "automatic_retries": 0,
+  "reason": "Explicit engineering packaging repair after closed bootstrap failure; identical worker, models and panels; no automatic retries",
+  "launch_requested_unix": 1791566548.7889977,
+  "input_identity_sha256": "06c148225e2af07f10736a0390b7ea6c9fdad3bde29f14149b1b1e2413d719af",
+  "bounded_compute_estimate_usd": 0.8516199999999999,
+  "remaining_build_storage_egress_provision_usd": 0.14838000000000007,
+  "function_timeout_seconds": 1200,
+  "startup_timeout_seconds": 120,
+  "root": "/results/lifted_v4_a100_20261009",
+  "function_call_id": "fc-01M4GV07BF1DQ9H5B013EFTSQJ",
+  "packaging_repair": {
+    "worker_module": "infra.modal_lifted_v4",
+    "original_failure": "modal_lifted_v4 not on remote Python import path; no worker body executed",
+    "launcher_sha256": "fd41b0596c4805958320536bbc2be025eb046ce0a69299994883d05ba081fa24",
+    "scientific_code_changed": false,
+    "automatic_retries": 0
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "stage": "smoke",
+  "root": "/results/lifted_v4_a100_20261009",
+  "status": "completed",
+  "exit_code": 0,
+  "requested_gpu": "A100-40GB",
+  "cpu": 2,
+  "memory_mib": 16384,
+  "function_timeout_seconds": 1200,
+  "child_minutes": 18,
+  "automatic_retries": 0,
+  "device": "NVIDIA A100-SXM4-40GB",
+  "cuda": "12.8",
+  "packages": {
+    "torch": "2.8.0",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.3.3",
+    "tabpfn": "9.1.0",
+    "scikit-learn": "1.8.0",
+    "psutil": "7.0.0"
+  },
+  "python": "3.12.10",
+  "command": [
+    "/usr/local/bin/python",
+    "-u",
+    "/opt/mira/experiments/lifted_cavity/bounded_v4.py",
+    "--root",
+    "/results/lifted_v4_a100_20261009",
+    "--panels",
+    "/opt/mira_panels",
+    "--minutes",
+    "18",
+    "smoke"
+  ],
+  "estimated_seconds": 45329.760347530246,
+  "main_fits_cap": false,
+  "seconds": 179.693791187,
+  "periodic_commits": [
+    {
+      "seconds": 63.250310757,
+      "ok": true
+    },
+    {
+      "seconds": 124.839325449,
+      "ok": true
+    }
+  ]
+}

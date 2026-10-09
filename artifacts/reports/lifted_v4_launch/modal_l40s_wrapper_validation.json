@@ -1,0 +1,10 @@
+{
+  "qualified_module_cli": "pass",
+  "serialized_worker_bytes": 16023,
+  "windows_path_globals": 0,
+  "duplicate_budget_profile_guards": "pass",
+  "bound_profiler_sha256": "0721deb6def17bf3c54e0bc94fe37f6abf9aac603edb4aee5cce86164db36f9a",
+  "source_identity_matches_a100": true,
+  "cloud_calls": 0,
+  "wrapper_sha256": "f485d9bc45266492d4399c8c7f6650a2fab0c4fe646844f783cf18645177dc0c"
+}
