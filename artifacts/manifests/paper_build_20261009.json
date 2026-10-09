@@ -1,7 +1,7 @@
 {
-  "pdf_sha256": "97c48ecd7a9cb08679f318b8726e94cf5b3b0045c79f24c6867dd1ff1bf04152",
+  "pdf_sha256": "a1876d0d6bdcaf61111a05d2b08e7b36b95a8534845e82f415ae20835b91ba0c",
   "compiler": "Official Tectonic0.17.0 release; digestverified",
-  "native_compiler": "Windows helper setup failure",
+  "native_compiler": "Isolated compiler runs but cannot resolve local neurips_2026.sty/project inputs",
   "main_pages": 9,
   "total_pages": 28,
   "references_start_page": 10,
@@ -11,5 +11,8 @@
   "model_interface_tests_passed": 15,
   "visual_review": "Final page9 rendered and inspected; limitations and conclusion fit; full endpoint ledger moved to appendix without numerical changes",
   "scientific_readiness": false,
-  "anonymous_supplement": "pending; checklist discloses this"
+  "anonymous_supplement": "pending; checklist discloses this",
+  "result_verifier_collection_tests": 21,
+  "extracted_supplement_model_tests": 14,
+  "closest_primary_references_checked": 8
 }

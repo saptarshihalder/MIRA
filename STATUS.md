@@ -1,4 +1,12 @@
-# MIRA status - October 9, 2026
+# MIRA status - October 10, 2026 (India time)
+
+## Publication checks prepared; frozen GPU comparison still running
+
+PFN-L seed1 completed40,000 updates; LCT-L seed1 is training. Full three-seed outcomes are pending; no early endpoint calculations or model changes. Independent verifier plus safe-collection guards pass21 fixture tests; the extracted deterministic code-only supplement passes14 model tests in the declared NumPy2.3.5/torch2.8.0 environment. Ambient older NumPy failed one test and is not the declared runtime. Do not confuse software tests with scientific success.
+
+After the actual Modal call completes, use infra/collect_lifted_v4_results.py --collect in .venv-modal, then infra/verify_lifted_v4_results.py --root artifacts/runs/lifted_v4_final --panels artifacts/inputs/lifted_v4_panels in .venv-compiler-cpu. Collection requires final completion/no recorded failures and retrieves all24 final model files. Verification requires all35 complete score archives and checks hashes/identities before any independent E8-E12 arithmetic. Archive metadata cannot independently prove pre-score timestamps; disclose this provenance limit.
+
+Eight closest references primary-checked; learned EP reuse, MVAE overlap, informative-mask exactness and classification-only cited TabICL clarified. Same manuscript rebuilds to9main/28total pages; numbers unchanged. Native compiler now reaches LaTeX but cannot resolve local style/project files in isolation; portable same-source compilation succeeds. Supplement remains a local code-only draft with licensing/manual-anonymity/full-reproduction requirements open. See docs/LIFTED_REFERENCE_VERIFICATION.md and LIFTED_SUPPLEMENT.md. Completion review moved to6am India onOctober10. All older status snapshots below are historical. Readiness remains unestablished.
 
 ## Current: full frozen v4 training on Modal L40S
 

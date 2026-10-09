@@ -188,6 +188,8 @@ October8 update: actual T4 training smoke completed for both2.1M models; TabPFN 
 
 ## October 9: bounded hardware and throughput probe
 
+October10 publication-quality update: preserve frozen v4, all seeds and every failed endpoint. Fix software/reproduction defects rather than requiring scientific wins. Independent verifier/collection tests pass21 and extracted code-only supplement model tests pass14 under pinned dependencies. The initial ambient-NumPy failure is documented; no frozen model changed. Eight closest references checked and overclaims narrowed; finalPDF9main/28total. Collect complete artifacts and independently check all endpoints before integration. Complete-result review is scheduled6am IndiaOctober10; no extra paid run authorized by this note.
+
 Latest launch: the explicitly amended main is running on actual NVIDIA L40S, call `fc-01M4GWHKT0728F40X5BM0W5NZ7`. First saved PFN-L seed1 progress is2,500/40,000 steps. Original time gates remain failed; the separate extension changes only execution time. No v4 endpoint result is available. Await complete fixed three-seed sequence and independent confirmation replay; no duplicate or automatic retry.
 
 Superseding execution update: L40S smoke passed178.240s; its original time gate failed at20,520.962s. A separate pre-main execution-time amendment permits350 child minutes with USD13.25 reserved, without changing scientific source/settings. See docs/LIFTED_V4_TIME_AMENDMENT.md. Completed source costs are now covered by historical USD3.50 (provider gross3.03766887); total19.75 includes protected3. Main still unlaunched at this snapshot. Original failures remain archived.

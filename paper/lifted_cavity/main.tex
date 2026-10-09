@@ -162,8 +162,8 @@ The prediction is the $y$-marginal of
 
 \begin{proposition}[Exactness]\label{prop:exact}
 Suppose $x_j=A_jy+D_j^\top h+c_j+e_j$, with independent $e_j\sim\N(0,\psi_j)$ and the priors above. Set $w_j=(A_j,D_j)$
-and $o_j=x_j-c_j$. Then \eqref{eq:product} equals $p(z\mid x_S)$ for every $S\subseteq\{1,\dots,P\}$, and its
-$y$-marginal is the Bayes predictive for every missingness pattern.
+and $o_j=x_j-c_j$. Then \eqref{eq:product} equals $p(z\mid x_S)$ for every fixed $S\subseteq\{1,\dots,P\}$.
+Its $y$-marginal is Bayes predictive for noninformative observation masks; informative masks require a selection model.
 \end{proposition}
 
 Shared noise of rank $K$ is absorbed by $K$ nuisance dimensions, so the obstruction of
@@ -249,17 +249,17 @@ every learned baseline except the transformer, which gets fresh tasks at every s
 %=====================================================================
 
 \textbf{Products of experts} handle missing modalities by omission~\citep{hinton2002poe,wu2018mvae,ma2021smil}; our
-negative result says when experts over the target alone are insufficient. \textbf{Learned message passing}, through
+negative result concerns scalar-target experts; MVAE already uses multivariate latent products. \textbf{Learned message passing}, through
 learned EP messages~\citep{heess2013learning,eslami2014just,jitkrittum2015kernel} or unrolled
-inference~\citep{gregor2010lista,monga2021unrolling}, amortizes inference inside a fixed model; here the model is
-unknown and must be read from a small calibration set, and the cavity is over a lifted latent. \textbf{Supervised
+inference~\citep{gregor2010lista,monga2021unrolling}, learns reusable operators for specified factors; here sensor
+response is inferred from deployment calibration support, with a target/nuisance cavity. \textbf{Supervised
 learning with missing values}~\citep{rubin1976inference,little2019statistical,josse2019consistency} studies one task
 at a time; NeuMiss~\citep{lemorvan2020neumiss} unrolls the Bayes predictor of a Gaussian model but is trained per
 dataset and keyed to feature identities. \textbf{In-context prediction} with neural
 processes~\citep{garnelo2018cnp,kim2019anp} and prior-fitted networks such as TabPFN and
 TabICL~\citep{muller2022pfn,hollmann2023tabpfn,hollmann2025tabpfnv2,qu2025tabicl} uses generic set or transformer
-architectures; we compare against such a transformer trained on our task distribution and test lifted sites as its
-output layer. \textbf{Fusion under unknown correlations}~\citep{julier1997ci,wang2025ifnet,dong2025difnet,revach2022kalmannet}
+architectures (the cited TabICL is classification-only). Our tested transformer is trained on our task distribution;
+pretrained comparisons are pending. \textbf{Fusion under unknown correlations}~\citep{julier1997ci,wang2025ifnet,dong2025difnet,revach2022kalmannet}
 includes learned sequential state-space filtering and decentralized network fusion. DIFNet explicitly discusses
 changing sensor nodes and network topologies. Our distinction is episodic prediction with unknown sensor calibration
 inferred from a labeled support set, rather than sequential filtering in a specified state-space model.

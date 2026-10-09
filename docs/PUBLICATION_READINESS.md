@@ -1,4 +1,4 @@
-# Publication readiness review - October 9, 2026
+# Publication readiness review - October 10, 2026 (India time)
 
 ## Current assessment (supersedes the historical review below)
 
@@ -7,11 +7,13 @@
 | Gate | Verified state |
 |---|---|
 | Implementation | 15 model/interface tests pass; actual T4 and A100 source training and TabPFN density probes completed |
+| Complete-result checks | 21 independent-verifier/collection fixture tests pass; actual v4 results await completion; all24 checkpoint bytes required |
+| Supplement | Deterministic code-only draft passes14 extracted model tests in pinned environment; final results, rights/anonymity review and full reproduction remain pending |
 | Frozen v4 efficacy | Pending: three matched 2.1M model seeds plus pretrained TabPFN; no endpoint tuning or early confirmations |
 | Reproducibility | Original factor-orientation failure disclosed; separate source-only repair does not inherit old results |
 | Data provenance | All 12 Beijing CSVs match the official UCI archive after line-ending normalization; all 19 frozen panels hash-verified |
-| Manuscript accuracy | Three overclaims corrected; 854 numeric macros regenerate identically; 39 citation keys resolve locally (not full reference verification) |
-| PDF | Same modular manuscript compiled with official style using Tectonic 0.17.0; 9 main pages, references start page 10, checklist included; no overfull boxes. Native editor compiler remains unavailable |
+| Manuscript accuracy | Overclaims corrected; 854 numerical macros unchanged;39 citation keys resolve and8 closest references primary-checked; full verification/novelty clearance incomplete |
+| PDF | Same modular manuscript compiled with official style using Tectonic0.17.0;9 main pages, references10, checklist included; no overfull boxes. Native isolated compiler reaches LaTeX but cannot resolve local style/project dependencies |
 | Compute | Latest September/October account gross USD3.03766887; completed source calls covered by USD3.50 historical provision, USD13.25 extended main reserved, and USD3 reproduction protected (USD19.75 within USD20); invoices remain open |
 
 One-day priority: A100 and L40S source checks passed, but both original throughput gates failed. The source-only L40S estimate fits the separately frozen350-minute main extension; see LIFTED_V4_TIME_AMENDMENT.md. Complete the unchanged v4 comparison only under this bounded amendment, independently recompute its endpoints, then update the manuscript and reproduce the final package. The anonymous supplement and exhaustive reference audit remain pending. If any gate remains open, deliver the evidence with that limitation. Do not submit or guarantee venue acceptance.
