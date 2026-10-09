@@ -1,0 +1,21 @@
+{
+  "source_only": true,
+  "tasks": 128,
+  "unique_tasks": 4,
+  "repeated_for_timing": true,
+  "models": {
+    "pfn_L": {
+      "synthetic_seconds": 7.512366168,
+      "real_seconds": 4.325183833000011
+    },
+    "lct_L": {
+      "synthetic_seconds": 7.587895731000003,
+      "real_seconds": 4.521116406000004
+    }
+  },
+  "fixture_sha256": {
+    "synthetic": "1325feec2779aa2b50edf0cdfb2ff3fb54043e95fde434b7fa2769b878521ef6",
+    "real": "fd46912fcc28a782d8005038ecad59544dbc362cb0900cd165001413eedfa59c"
+  },
+  "seconds": 24.007644357000004
+}

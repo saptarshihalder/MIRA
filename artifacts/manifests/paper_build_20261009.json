@@ -1,5 +1,5 @@
 {
-  "pdf_sha256": "4fdf2b5697257dcd03fe025ddcd710f86c1d6251f62f9f5d5e2991751767d289",
+  "pdf_sha256": "97c48ecd7a9cb08679f318b8726e94cf5b3b0045c79f24c6867dd1ff1bf04152",
   "compiler": "Official Tectonic0.17.0 release; digestverified",
   "native_compiler": "Windows helper setup failure",
   "main_pages": 9,
@@ -9,6 +9,7 @@
   "author_identity_strings_found": false,
   "numeric_macros_reproduced": 854,
   "model_interface_tests_passed": 15,
-  "visual_review": "Main nine-page contact sheet inspected; no clipped tables, overlaps, overfull boxes or missing figures observed",
-  "scientific_readiness": false
+  "visual_review": "Final page9 rendered and inspected; limitations and conclusion fit; full endpoint ledger moved to appendix without numerical changes",
+  "scientific_readiness": false,
+  "anonymous_supplement": "pending; checklist discloses this"
 }

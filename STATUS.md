@@ -1,10 +1,24 @@
 # MIRA status - October 9, 2026
 
+## Latest: source checks complete; explicit main time extension reserved
+
+L40S source smoke passed in178.240 seconds, but its20,520.962-second estimate fails the original15,900-second limit. Both original time-gate failures are retained. Before any main fit, a separate engineering amendment reserves USD13.25 for a350-minute child/21,300-second function; frozen scientific settings are unchanged. Main is not launched yet. Read docs/LIFTED_V4_TIME_AMENDMENT.md. All old apps have zero tasks; provider gross USD3.03766887 is covered by USD3.50, with USD3 reproduction protected and USD19.75 total provisions. Final invoices remain open.
+
+Final format check found and corrected main-text spillover: the complete endpoint ledger is now in the appendix. The PDF has nine main pages, references start page10,28 total; the anonymous supplement is explicitly pending in the checklist. Native preview still fails. No new v4 efficacy or readiness claim.
+
+## October 9 update: L40S source timing smoke running
+
+A100 source smoke passed in 179.694 seconds, but its 45,329.76-second main estimate failed the 15,900-second throughput gate. Full v4 main has NOT launched. A separate L40S source-only smoke is running: call `fc-01M4GVXA5GHNNP9XXH3SYM99GY`, app `ap-cLaTyuFLt3p4wRYFiWI2eJ`, $1 reserved. Its scoring profile repeats four source fixtures to 128 tasks to measure runtime; this supplies no independent efficacy evidence. Frozen source e1b1d9d, panels 799f473, models, recipe and margins remain unchanged; zero automatic retries.
+
+Actual TabPFN v2 weight SHA256: `2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736`. Historical gross is $2.82766545 within the $3.50 provision; historical provision + L40S smoke $1 + conditional main $11.50 + reproduction $3 = $19 under the $20 cap. Main remains conditional, not launched.
+
+Native compilation still fails. The existing lifted paper compiles with official portable Tectonic: nine main pages, 28 total. Fifteen targeted tests pass; 854 numerical macros remain unchanged. Scientific readiness remains unestablished. Historical entries below are preserved.
+
 ## One-day readiness push - October 9
 
 Read docs/PUBLICATION_READINESS.md and FINAL_READINESS_AUDIT.md. Fifteen targeted tests pass; 854 numeric macros regenerate unchanged. Official Beijing CSV records match all12 used files (line endings differ). The actual paper/lifted_cavity/main.tex compiles with portable official Tectonic0.17.0:9 main pages; native editor compiler still fails. Three theoretical/prior-work overclaims corrected. Scientific readiness remains unestablished.
 
-Modal provider summaries reconcile entire account gross September+October at.58526058; billed-so-far from credits is not called zero compute cost. Historical provision.50 retains pending-invoice contingency. Source-only A100 smoke reserved, conditional fixed v4 main at most.50, protected reproduction; total worst-case under. No cloud job has launched yet. Frozen sourcee1b1d9d, panels799f473; wrappers enforce hard limits, no retries and durable storage.
+Modal summaries now reconcile entire September+October account gross at $2.65766006, including the failed bootstrap and storage; billed-so-far $0 from credits is not zero compute cost. Retain $3.50 historical provision, $1 explicit packaging-repair smoke, conditional fixed v4 main at most $11.50, and $3 reproduction: $19 worst case under the $20 cap. Final invoices remain open. The original A100 bootstrap failed because its helper module was not importable; its worker body never ran and the result volume was empty. The explicit repaired launch imports the identical frozen worker as infra.modal_lifted_v4. Smoke call fc-01M4GV07BF1DQ9H5B013EFTSQJ, app ap-rhy8yUgRZCMmPCrDj0Ospa; inspect its actual result before any new call. Frozen source e1b1d9d, panels799f473; no model/recipe changes, automatic retries zero. Main is still not launched.
 
 ## TabPFN GPU interface repaired - October 8
 

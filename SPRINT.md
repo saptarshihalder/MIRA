@@ -1,5 +1,15 @@
 # MIRA: October 1â€“20, 2026
 
+## Latest October 9 execution gate
+
+L40S source checks passed178.240s; the20,520.962s padded estimate fails the original15,900s cap. Before main fitting, freeze docs/LIFTED_V4_TIME_AMENDMENT.md and a separate350-minute main launcher. USD13.25 main reserved; gross3.03766887 covered by3.50 plus3 protected gives19.75 worst case. Main not launched yet. No scientific settings or used-panel status changed. Nine-page main format verified after moving the full endpoint ledger to the appendix; anonymous supplement remains pending.
+
+## October 9 execution update
+
+A100 source smoke passed in 179.694 seconds; its 45,329.76-second throughput estimate failed the 265-minute main cap. Full v4 main has NOT launched. L40S source-only smoke is running (`fc-01M4GVXA5GHNNP9XXH3SYM99GY`, app `ap-cLaTyuFLt3p4wRYFiWI2eJ`), with $1 reserved. Its separate timing profile expands four source fixtures to 128 repeated tasks; repetitions measure runtime, not efficacy or independent replication. Read the actual smoke/profile result before considering main; frozen scientific settings remain unchanged.
+
+Historical gross $2.82766545 is covered by $3.50. With smoke $1, conditional main $11.50 and reproduction $3, the provision is $19 under the $20 cap. Actual TabPFN weights are hashed in `docs/LIFTED_V4_LAUNCH_AUDIT.md`. Native compiler failure persists; official portable Tectonic compiles the existing lifted paper to nine main pages/28 total. Fifteen targeted tests pass and 854 numeric macros are unchanged. No publication-readiness promise follows from these engineering checks.
+
 ## One-factor orientation repair passes source gate - October 7
 
 Read docs/LIFTED_GAUGE_V2_FINDINGS.md, then OCT10_PLAN.md. Version-2 sign averaging fixes K=1 orientation dependence with two forward passes and no new parameters. Nine tests and all six frozen source comparisons pass; all three checkpoints at widths5/8 are exactly sign invariant. Slight mean NLL improvements are not significant. Eleven thousand five hundred twenty score cells replay; no training, external evaluation or cloud cost. Original confirmation remains version1 evidence. Next: Beijing eligibility/label boundaries, then frozen matched controls and source learning; no venue-readiness claim. K>1 rotations remain unsupported.

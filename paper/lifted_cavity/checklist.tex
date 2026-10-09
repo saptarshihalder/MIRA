@@ -69,8 +69,8 @@
 
 \item {\bf Open access to data and code}
     \item[] Question: Does the paper provide open access to the data and code, with sufficient instructions to faithfully reproduce the main experimental results, as described in supplemental material?
-    \item[] Answer: \answerYes{}
-    \item[] Justification: Code, checkpoints, per-task scores and the protocols are released with the supplementary material; the real datasets are public (UCI) and their file hashes are recorded.
+    \item[] Answer: \answerNo{}
+    \item[] Justification: Code, checkpoints, per-task scores and protocols are retained in the research repository, and public UCI data have recorded file hashes. An anonymized, independently tested supplementary archive is still pending.
     \item[] Guidelines:
     \begin{itemize}
         \item The answer \answerNA{} means that paper does not include experiments requiring code.
@@ -115,7 +115,7 @@
 \item {\bf Experiments compute resources}
     \item[] Question: For each experiment, does the paper provide sufficient information on the computer resources (type of compute workers, memory, time of execution) needed to reproduce the experiments?
     \item[] Answer: \answerYes{}
-    \item[] Justification: All experiments ran on two CPU cores; parameters, training time and inference cost of every learned model are in Table~\ref{tab:compute} (Appendix~\ref{app:arch}).
+    \item[] Justification: The reported v1--v3 efficacy experiments ran on two CPU cores; parameters, training time and inference cost are in Table~\ref{tab:compute} (Appendix~\ref{app:arch}). Separate GPU engineering probes do not establish v4 efficacy; its full comparison is pending.
     \item[] Guidelines:
     \begin{itemize}
         \item The answer \answerNA{} means that the paper does not include experiments.

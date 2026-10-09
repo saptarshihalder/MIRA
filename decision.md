@@ -185,3 +185,11 @@ Continue the frozen v4 comparison after the source-only GPU smoke and throughput
 
 
 October8 update: actual T4 training smoke completed for both2.1M models; TabPFN density dtype repair now passes456 source score checks on GPU. No new efficacy claim. Main v4 training waits for persistent Drive storage. Code through e1b1d9d pushed successfully; see STATUS.md and LIFTED_V4_LAUNCH_AUDIT.md.
+
+## October 9: bounded hardware and throughput probe
+
+Superseding execution update: L40S smoke passed178.240s; its original time gate failed at20,520.962s. A separate pre-main execution-time amendment permits350 child minutes with USD13.25 reserved, without changing scientific source/settings. See docs/LIFTED_V4_TIME_AMENDMENT.md. Completed source costs are now covered by historical USD3.50 (provider gross3.03766887); total19.75 includes protected3. Main still unlaunched at this snapshot. Original failures remain archived.
+
+A100 source smoke passed in 179.694 seconds, but the 45,329.76-second estimate failed the 15,900-second main gate. Preserve that outcome and the earlier failed bootstrap. A separate L40S source-only smoke is now running: `fc-01M4GVXA5GHNNP9XXH3SYM99GY`, app `ap-cLaTyuFLt3p4wRYFiWI2eJ`. Its 128-task timing profile repeats only four source fixtures; it is a finite engineering probe, with no model/recipe/margin change or automatic retry. Full main has NOT launched and remains conditional on the recorded smoke and throughput gate.
+
+TabPFN weight SHA256 is `2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736`. Historical gross $2.82766545 remains within the $3.50 provision. Historical provision + smoke $1 + conditional main $11.50 + reproduction $3 = $19 against the $20 cap. Native compilation still fails; official portable Tectonic compiles the same lifted paper to nine main pages/28 total. Fifteen targeted tests pass; 854 numeric macros are unchanged. These checks establish engineering progress, not scientific or venue readiness.

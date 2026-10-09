@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-10-09T17:44:30.382770+00:00",
+  "historical_gross_usd": 3.03766887,
+  "historical_provision_usd": 3.5,
+  "main_reservation_usd": 13.25,
+  "reproduction_reserve_usd": 3,
+  "worst_case_all_phases_usd": 19.75,
+  "final_invoice_verified": false,
+  "original_main_time_gate": false,
+  "source_estimated_seconds": 20520.96200275374,
+  "new_child_seconds": 21000,
+  "scientific_recipe_changed": false,
+  "external_evaluation_seen": false,
+  "rationale": "Release the completed source provision only into account-wide gross metering. Retain historical contingency. Amend wall-time before scientific main, without changing models, steps, seeds, panels, margins or checkpoint rules."
+}

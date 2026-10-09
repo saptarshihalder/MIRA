@@ -1,0 +1,59 @@
+{
+  "stage": "smoke",
+  "root": "/results/lifted_v4_l40s_20261009",
+  "status": "completed",
+  "exit_code": 0,
+  "requested_gpu": "L40S",
+  "cpu": 2,
+  "memory_mib": 16384,
+  "function_timeout_seconds": 1200,
+  "child_minutes": 18,
+  "automatic_retries": 0,
+  "device": "NVIDIA L40S",
+  "cuda": "12.8",
+  "packages": {
+    "torch": "2.8.0",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.3.3",
+    "tabpfn": "9.1.0",
+    "scikit-learn": "1.8.0",
+    "psutil": "7.0.0"
+  },
+  "python": "3.12.10",
+  "command": [
+    "/usr/local/bin/python",
+    "-u",
+    "/opt/mira/experiments/lifted_cavity/bounded_v4.py",
+    "--root",
+    "/results/lifted_v4_l40s_20261009",
+    "--panels",
+    "/opt/mira_panels",
+    "--minutes",
+    "18",
+    "smoke"
+  ],
+  "source_profile_command": [
+    "/usr/local/bin/python",
+    "-u",
+    "/opt/mira/infra/profile_lifted_v4_source.py",
+    "--root",
+    "/results/lifted_v4_l40s_20261009",
+    "--out",
+    "/results/lifted_v4_l40s_20261009/source_profile.json"
+  ],
+  "source_profile_timeout_seconds": 180,
+  "estimated_seconds": 20520.96200275374,
+  "main_fits_cap": false,
+  "seconds": 178.24007852699998,
+  "periodic_commits": [
+    {
+      "seconds": 63.06906475099999,
+      "ok": true
+    },
+    {
+      "seconds": 123.98213084999999,
+      "ok": true
+    }
+  ]
+}

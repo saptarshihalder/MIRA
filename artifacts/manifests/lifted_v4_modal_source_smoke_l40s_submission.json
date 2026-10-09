@@ -1,0 +1,16 @@
+{
+  "run_id": "lifted_v4_modal_source_smoke_l40s",
+  "date": "2026-10-09",
+  "status": "running",
+  "reserved_usd": 1.0,
+  "automatic_retries": 0,
+  "reason": "One source-only L40S hardware/128-task inference timing probe; same frozen models, recipe and panels; no evaluation scoring",
+  "launch_requested_unix": 1791567501.9292254,
+  "input_identity_sha256": "e1733e909b4d2f377f04fde05c545ee8b0150c680f8ce4beb807e1609160987f",
+  "bounded_compute_estimate_usd": 0.7966200000000001,
+  "remaining_build_storage_egress_provision_usd": 0.2033799999999999,
+  "function_timeout_seconds": 1200,
+  "startup_timeout_seconds": 120,
+  "root": "/results/lifted_v4_l40s_20261009",
+  "function_call_id": "fc-01M4GVXA5GHNNP9XXH3SYM99GY"
+}

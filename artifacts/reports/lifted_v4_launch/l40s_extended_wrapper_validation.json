@@ -1,0 +1,14 @@
+{
+  "qualified_module_cli": "pass",
+  "serialized_worker_bytes": 62,
+  "windows_path_globals": 0,
+  "unchanged_original_wrapper_and_false_gate": "pass",
+  "modified_estimate_runtime_weight_guard": "pass",
+  "reservation_usd": 13.25,
+  "total_with_reproduction_usd": 19.75,
+  "child_cap_seconds": 21000,
+  "function_cap_seconds": 21300,
+  "source_estimate_seconds": 20520.96200275374,
+  "cloud_calls": 0,
+  "extension_sha256": "0ee50bce2dcf742a450569ac66662ff3689dc9449fcd361aed59f9a5e759ed89"
+}
