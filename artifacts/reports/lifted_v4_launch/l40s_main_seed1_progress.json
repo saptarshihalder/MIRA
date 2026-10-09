@@ -1,0 +1,81 @@
+{
+ "steps": 40000,
+ "seed": 1,
+ "batch_tasks": 32,
+ "queries": 16,
+ "lr": 0.0005,
+ "warmup": 2000,
+ "d": 128,
+ "layers": 8,
+ "heads": 8,
+ "ff": 512,
+ "all_masks": false,
+ "nonlin": 0.4,
+ "threads": 1,
+ "save_every": 2500,
+ "device": "cuda",
+ "ckpt_every": 1000,
+ "out": "/__modal/volumes/vo-ggALlrHY6FSUXOlbwzv0V1/lifted_v4_l40s_20261009/runs/pfn_L_s1",
+ "model": "pfn",
+ "parameters": 2119810,
+ "arch": {
+  "d": 128,
+  "layers": 8,
+  "heads": 8,
+  "ff": 512
+ },
+ "steps_done": 2500,
+ "seconds": 85.36734509468079,
+ "trace": [
+  {
+   "step": 250,
+   "ema_loss": 1.126214771524245,
+   "seconds": 9.652254581451416
+  },
+  {
+   "step": 500,
+   "ema_loss": 0.6474831792405055,
+   "seconds": 18.01125979423523
+  },
+  {
+   "step": 750,
+   "ema_loss": 0.3653622705966961,
+   "seconds": 26.340547800064087
+  },
+  {
+   "step": 1000,
+   "ema_loss": 0.2638916677620933,
+   "seconds": 34.6217257976532
+  },
+  {
+   "step": 1250,
+   "ema_loss": 0.15637552213838235,
+   "seconds": 43.076916217803955
+  },
+  {
+   "step": 1500,
+   "ema_loss": 0.11930716017897196,
+   "seconds": 51.46123671531677
+  },
+  {
+   "step": 1750,
+   "ema_loss": 0.07505056677356324,
+   "seconds": 59.8344087600708
+  },
+  {
+   "step": 2000,
+   "ema_loss": 0.06265249584216435,
+   "seconds": 68.29564714431763
+  },
+  {
+   "step": 2250,
+   "ema_loss": 0.040849226611591224,
+   "seconds": 76.8633439540863
+  },
+  {
+   "step": 2500,
+   "ema_loss": 0.011720629896398509,
+   "seconds": 85.32233881950378
+  }
+ ]
+}

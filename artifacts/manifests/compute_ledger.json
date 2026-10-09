@@ -1397,13 +1397,21 @@
  {
   "run_id": "lifted_v4_modal_main_l40s_extended",
   "date": "2026-10-09",
-  "status": "reserved_not_launched",
+  "status": "running",
   "reserved_usd": 13.25,
   "gpu": "L40S",
   "function_timeout_seconds": 21300,
   "startup_timeout_seconds": 120,
   "child_minutes": 350,
   "automatic_retries": 0,
-  "reason": "One explicit source-timing-based engineering extension; unchanged frozen v4 scientific protocol, all three seeds and all endpoints."
+  "reason": "One explicit source-timing-based engineering extension; unchanged frozen v4 scientific protocol, all three seeds and all endpoints.",
+  "launch_requested_unix": 1791568167.3298657,
+  "amendment_sha256": "86e5cbdb89169e6edf6051fcce749e065cd160cdacd27f02b661ee44fe1f85e5",
+  "bounded_compute_estimate_usd": 12.92697,
+  "remaining_build_storage_egress_provision_usd": 0.32302999999999926,
+  "function_call_id": "fc-01M4GWHKT0728F40X5BM0W5NZ7",
+  "progress_snapshot": "artifacts/reports/lifted_v4_launch/l40s_main_seed1_progress.json",
+  "verified_first_pfn_seed_steps": 2500,
+  "scientific_endpoints": "pending"
  }
 ]

@@ -1,5 +1,11 @@
 # MIRA status - October 9, 2026
 
+## Current: full frozen v4 training on Modal L40S
+
+Main call `fc-01M4GWHKT0728F40X5BM0W5NZ7`, app `ap-Xy7pp9b41uanpikNodQmZz`, is running on actual NVIDIA L40S. First independently downloaded progress snapshot confirms PFN-L seed1 completed2,500/40,000 steps with durable model/recovery checkpoints; this is training progress, not efficacy. Volume `mira-lifted-v4-l40s`, root `lifted_v4_l40s_20261009`, runtime `modal_main_extended_runtime.json`. Do not start another job. All three seeds, fine-tuning, TabPFN and final confirmation remain in the fixed350-minute sequence. Retrieve/verify complete results after completion; no interim endpoints.
+
+USD13.25 main reserved before launch; historical3.50 and reproduction3 protected give19.75 total within20. Same-source corrected PDF and audits were pushed through7cf37cc; native preview still fails. Daily continuation is updated for this actual call and stops afterOctober10. Publication readiness is unestablished.
+
 ## Latest: source checks complete; explicit main time extension reserved
 
 L40S source smoke passed in178.240 seconds, but its20,520.962-second estimate fails the original15,900-second limit. Both original time-gate failures are retained. Before any main fit, a separate engineering amendment reserves USD13.25 for a350-minute child/21,300-second function; frozen scientific settings are unchanged. Main is not launched yet. Read docs/LIFTED_V4_TIME_AMENDMENT.md. All old apps have zero tasks; provider gross USD3.03766887 is covered by USD3.50, with USD3 reproduction protected and USD19.75 total provisions. Final invoices remain open.

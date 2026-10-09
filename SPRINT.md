@@ -2,6 +2,8 @@
 
 ## Latest October 9 execution gate
 
+Full amended main now RUNNING on real L40S: `fc-01M4GWHKT0728F40X5BM0W5NZ7`, volume `mira-lifted-v4-l40s`, root `lifted_v4_l40s_20261009`. Retrieved PFN-L seed1 snapshot verifies2,500/40,000 training steps and persistent checkpoints. Do not duplicate work. Next scheduled continuation must retrieve all three seeds, check hashes/completeness and independently recompute every endpoint before any manuscript efficacy claim. Current nine-page main PDF and audits are pushed; readiness still pending.
+
 L40S source checks passed178.240s; the20,520.962s padded estimate fails the original15,900s cap. Before main fitting, freeze docs/LIFTED_V4_TIME_AMENDMENT.md and a separate350-minute main launcher. USD13.25 main reserved; gross3.03766887 covered by3.50 plus3 protected gives19.75 worst case. Main not launched yet. No scientific settings or used-panel status changed. Nine-page main format verified after moving the full endpoint ledger to the appendix; anonymous supplement remains pending.
 
 ## October 9 execution update

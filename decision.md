@@ -188,6 +188,8 @@ October8 update: actual T4 training smoke completed for both2.1M models; TabPFN 
 
 ## October 9: bounded hardware and throughput probe
 
+Latest launch: the explicitly amended main is running on actual NVIDIA L40S, call `fc-01M4GWHKT0728F40X5BM0W5NZ7`. First saved PFN-L seed1 progress is2,500/40,000 steps. Original time gates remain failed; the separate extension changes only execution time. No v4 endpoint result is available. Await complete fixed three-seed sequence and independent confirmation replay; no duplicate or automatic retry.
+
 Superseding execution update: L40S smoke passed178.240s; its original time gate failed at20,520.962s. A separate pre-main execution-time amendment permits350 child minutes with USD13.25 reserved, without changing scientific source/settings. See docs/LIFTED_V4_TIME_AMENDMENT.md. Completed source costs are now covered by historical USD3.50 (provider gross3.03766887); total19.75 includes protected3. Main still unlaunched at this snapshot. Original failures remain archived.
 
 A100 source smoke passed in 179.694 seconds, but the 45,329.76-second estimate failed the 15,900-second main gate. Preserve that outcome and the earlier failed bootstrap. A separate L40S source-only smoke is now running: `fc-01M4GVXA5GHNNP9XXH3SYM99GY`, app `ap-cLaTyuFLt3p4wRYFiWI2eJ`. Its 128-task timing profile repeats only four source fixtures; it is a finite engineering probe, with no model/recipe/margin change or automatic retry. Full main has NOT launched and remains conditional on the recorded smoke and throughput gate.
