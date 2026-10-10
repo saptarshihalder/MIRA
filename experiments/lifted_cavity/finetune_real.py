@@ -13,7 +13,8 @@ from train import build
 
 RAW = {'airq_co': ('airq', 'CO(GT)'), 'airq_no2': ('airq', 'NO2(GT)'), 'beijing': ('beijing', 'PM2.5'), 'beijing_no2': ('beijing', 'NO2'),
        'beijing_co': ('beijing', 'CO'), 'beijing_pm10': ('beijing', 'PM10'), 'beijing_so2': ('beijing', 'SO2'),
-       'beijing_o3': ('beijing', 'O3'), 'gas': ('gas', None)}
+       'beijing_o3': ('beijing', 'O3'), 'gas': ('gas', None),
+       'metr_la': ('v6', None), 'pems_bay': ('v6', None), 'intel': ('v6', None)}     # protocol v6 (realdata_v6.py)
 DEQUANT = {'beijing_pm10', 'beijing_so2', 'beijing_o3'}     # protocol v4, amendment 1: integer readings dequantized
 
 
@@ -23,6 +24,9 @@ def load_raw(name, paths):
         return realdata.load_airq(paths['airq'], target)
     if kind == 'beijing':
         return realdata.load_beijing(paths['beijing'], target, dequant=name in DEQUANT)
+    if kind == 'v6':
+        import realdata_v6
+        return realdata_v6.load(name, paths['v6'])
     return realdata.load_gas(paths['gas'])
 
 
@@ -33,7 +37,7 @@ def source_pool(a):
     if path is not None and path.exists():
         d = torch.load(path, weights_only=False)
         return d['pool'], d['files'], d['dequant_seed']
-    raw = load_raw(a.dataset, dict(airq=a.airq, beijing=a.beijing, gas=a.gas))
+    raw = load_raw(a.dataset, dict(airq=a.airq, beijing=a.beijing, gas=a.gas, v6=a.v6))
     pool = realdata.to_pool(realdata.episodes(a.dataset, raw, 'source', a.seed, n_source=a.episodes, period=a.period))
     if path is not None:
         path.parent.mkdir(parents=True, exist_ok=True); tmp = path.with_suffix('.tmp')
@@ -72,6 +76,7 @@ def main():
     ap.add_argument('--airq', default=realdata.DEFAULT['airq'])
     ap.add_argument('--beijing', default=realdata.DEFAULT['beijing'])
     ap.add_argument('--gas', default=realdata.DEFAULT['gas'])
+    ap.add_argument('--v6', default=realdata.DEFAULT['v6'])
     a = ap.parse_args()
     torch.set_num_threads(1); torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True); ck = out / 'ckpt.pt'

@@ -13,11 +13,12 @@ from finetune_real import load_raw
 from train import build
 
 EXTRA = {'airq_co': (0, 1, 2, 3), 'airq_no2': (0, 1, 2, 3), 'beijing': (0, 3, 6), 'beijing_no2': (0, 3, 6), 'beijing_co': (0, 3, 6),
-         'beijing_pm10': (0, 3, 6), 'beijing_so2': (0, 3, 6), 'beijing_o3': (0, 3, 6), 'gas': (0, 4, 8, 12)}
+         'beijing_pm10': (0, 3, 6), 'beijing_so2': (0, 3, 6), 'beijing_o3': (0, 3, 6), 'gas': (0, 4, 8, 12),
+         'metr_la': (0, 3, 6), 'pems_bay': (0, 3, 6), 'intel': (0, 3, 6)}
 
 
 def build_panel(a):
-    raw = load_raw(a.dataset, dict(airq=a.airq, beijing=a.beijing, gas=a.gas))
+    raw = load_raw(a.dataset, dict(airq=a.airq, beijing=a.beijing, gas=a.gas, v6=a.v6))
     eps = realdata.episodes(a.dataset, raw, 'test', a.seed)
     pool = realdata.to_pool(eps)
     conds, refs = {}, {}
@@ -57,5 +58,6 @@ if __name__ == '__main__':
     ap.add_argument('--airq', default=realdata.DEFAULT['airq'])
     ap.add_argument('--beijing', default=realdata.DEFAULT['beijing'])
     ap.add_argument('--gas', default=realdata.DEFAULT['gas'])
+    ap.add_argument('--v6', default=realdata.DEFAULT['v6'])
     a = ap.parse_args()
     build_panel(a) if a.what == 'build' else score_runs(a)

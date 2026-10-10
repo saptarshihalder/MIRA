@@ -27,7 +27,8 @@ NS = NQ = 48
 _RAW = Path(__file__).resolve().parents[2] / 'data' / 'raw'
 DEFAULT = dict(airq=os.environ.get('MIRA_AIRQ_CSV', str(_RAW / 'air_quality' / 'AirQualityUCI.csv')),
                beijing=os.environ.get('MIRA_BEIJING_DIR', str(_RAW / 'beijing_multisite' / 'PRSA_Data_20130301-20170228')),
-               gas=os.environ.get('MIRA_GAS_DIR', str(_RAW / 'gas_sensor_drift')))
+               gas=os.environ.get('MIRA_GAS_DIR', str(_RAW / 'gas_sensor_drift')),
+               v6=os.environ.get('MIRA_V6_DIR', str(_RAW / 'v6')))
 AQ_SENSORS = ['PT08.S1(CO)', 'PT08.S2(NMHC)', 'PT08.S3(NOx)', 'PT08.S4(NO2)', 'PT08.S5(O3)']
 
 
@@ -95,6 +96,9 @@ def episodes(name, raw, split, seed, n_source=None, period=None):
     """Return list of (x raw with NaN, y, support mask, natural query mask, key) for one split.
 
     split='test' gives the fixed evaluation episodes; split='source' with n_source draws random training episodes."""
+    if name in ('metr_la', 'pems_bay', 'intel'):                     # protocol v6 networks
+        import realdata_v6
+        return realdata_v6.episodes(name, raw, split, seed, n_source)
     rng = np.random.default_rng(seed)
     out = []
     if name.startswith('airq'):
