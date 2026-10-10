@@ -1,6 +1,28 @@
-# MIRA status - October 10, 2026 (India time)
+# MIRA status - October 11, 2026 (India time)
 
-## Publication checks prepared; frozen GPU comparison still running
+## Current: explicitly authorized continuation after packaging failure
+
+The user asked to complete work despite being one day late. Original GPU call failed at intermediate packaging because Git was absent, after both seed1 source models and six fine-tunes completed. All8 learned checkpoints/15 score archives recovered; no partial efficacy contrasts or full-confirmation claim.
+
+New actual L40S call fc-01M4KMG0FQ3CYTVKSRGQVGC6DF is running; remote packaging preflight passed with Git2.39.5. Frozen source/panels/models remain unchanged, completed seed1 hashes protected, only missing work continues. Child240min/function14700sec/startup120sec/retries0. See docs/LIFTED_V4_RESUME.md. A predeployment image-order validation error was corrected before invocation. No automatic retry or repeated seed1 fit.
+
+Cost reconciled: USD6.33127153 metered gross;7historical+9.5continuation+3protected=19.5 within20. Invoices still open. Complete-result, continuation-proof, collection and replay guards pass52 fabricated-input tests. Actual full verification/replay pending.
+
+After complete exit0 use .venv-modal Python infra/collect_lifted_v4_results.py --collect (new call). Then .venv-compiler-cpu Python infra/verify_lifted_v4_results.py --root artifacts/runs/lifted_v4_final --panels artifacts/inputs/lifted_v4_panels; then infra/replay_lifted_v4_predictions.py with the same root/panels. Require24checkpoint files,35archives, frozen pretrained weight, all endpoint decisions, unchanged seed1 and fixed CPU replay. Preserve every failed endpoint. Integrate verified new files into paper reports without overwriting history; no integration utility exists yet because delegates hit usage limits. Keep existing editor. Native modular-style limitation persists; same-source PDF builds9main/29total pages. No publication-readiness verdict yet.
+
+The expired sprint automation was deleted; mira-final-gpu-result-check performs one completion review at6am IST October11 then stops. All snapshots below are historical.
+
+# Historical October10 status
+
+## October 10 independent readiness checks
+
+All four amended propositions conditionally pass independent review within their stated independence, positive-variance, static-site and anchor-equivariance assumptions. Forty of42 bibliography entries are verified; Gregor pagination and Anderson publication year remain partial. Thirty complete-result/collection fixture tests pass, including exact pretrained TabPFN bytes and hash guards. These are prepared checks; the actual full bundle is still pending.
+
+The same manuscript rebuilds successfully to9 main/29 total pages (references start10), without unresolved references or overfull boxes; pages4,9,18 were visually checked. All854 numerical macros reproduce unchanged after line-ending normalization. The native isolated compiler still cannot access the official local style/project inputs; same-source Tectonic compilation succeeds. Nominal intervals, conditioned-on-seeds uncertainty and E12 unequal fine-tuning are explicit. No scientific loss was removed.
+
+Both PFN-L and LCT-L seed1 completed40,000 source updates on actual CUDA (1352.543s and1577.165s). Full L40S call fc-01M4GWHKT0728F40X5BM0W5NZ7 remains running. Preserve its fixed models and three seeds. Collect all24 learned checkpoints plus the pretrained binary only after completion, independently verify all35 archives/endpoints, then run infra/replay_lifted_v4_predictions.py --root artifacts/runs/lifted_v4_final --panels artifacts/inputs/lifted_v4_panels before integrating results. Replay is fixed to3 selected tasks per panel,24 checkpoints,408 arrays, atol2e-4/rtol2e-5 and900seconds;7 fixture tests pass, no actual replay yet. No v4 efficacy result or publication-readiness verdict is established. Budget remains USD19.75 provisioned within20, including USD3 protected reproduction. Completion continuation is scheduled for6am IST; no duplicate paid job.
+
+## Earlier publication checks prepared; frozen GPU comparison still running
 
 PFN-L seed1 completed40,000 updates; LCT-L seed1 is training. Full three-seed outcomes are pending; no early endpoint calculations or model changes. Independent verifier plus safe-collection guards pass21 fixture tests; the extracted deterministic code-only supplement passes14 model tests in the declared NumPy2.3.5/torch2.8.0 environment. Ambient older NumPy failed one test and is not the declared runtime. Do not confuse software tests with scientific success.
 

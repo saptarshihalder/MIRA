@@ -134,8 +134,39 @@ def test_saved_panel_identity_must_match_bytes_and_bound_manifest(tmp_path):
         v.check_identity(root, panels, expected)
 
 
+def fabricate_pretrained_provenance(root, expected, monkeypatch):
+    """Patch immutable expected hashes ONLY for these fabricated test bytes."""
+    path = root / "cache" / v.PRETRAINED_WEIGHT_PATH
+    path.parent.mkdir(parents=True)
+    path.write_bytes(b"fabricated pretrained checkpoint")
+    monkeypatch.setattr(v, "EXPECTED_WEIGHT_SHA256", v.digest(path))
+    monkeypatch.setattr(v, "EXPECTED_WEIGHT_BYTES", path.stat().st_size)
+    weights = dict(package="9.1.0", version="v2", n_estimators=8, random_state=0,
+                   files={v.PRETRAINED_WEIGHT_PATH: dict(sha256=v.EXPECTED_WEIGHT_SHA256,
+                                                       bytes=v.EXPECTED_WEIGHT_BYTES)})
+    (root / "pretrained_weights.json").write_text(json.dumps(weights))
+    bound = v.read_json(root / "run_identity.json")["identity"]
+    gate = dict(passed=True, pretrained_weights=weights, identity=dict(inputs=expected, bounded_identity=bound))
+    gate_path, smoke_path = root / "modal_smoke_gate.json", root / "modal_smoke_runtime.json"
+    gate_path.write_text(json.dumps(gate))
+    smoke_path.write_text(json.dumps(dict(stage="smoke", status="completed", exit_code=0)))
+    monkeypatch.setattr(v, "EXPECTED_SMOKE_GATE_SHA256", v.digest(gate_path))
+    monkeypatch.setattr(v, "EXPECTED_SMOKE_RUNTIME_SHA256", v.digest(smoke_path))
+    amendment = dict(extension_sha256=v.EXPECTED_EXTENSION_SHA256,
+                     original_wrapper_sha256=v.EXPECTED_WRAPPER_SHA256,
+                     original_gate_sha256=v.EXPECTED_SMOKE_GATE_SHA256,
+                     original_runtime_sha256=v.EXPECTED_SMOKE_RUNTIME_SHA256,
+                     original_inputs=expected, scientific_changes=False,
+                     run_id="lifted_v4_modal_main_l40s_extended", automatic_retries=0)
+    (root / "main_extended_execution_amendment.json").write_text(json.dumps(amendment))
+    runtime = dict(stage="main_extended", status="completed", exit_code=0, extension=amendment,
+                   original_gate_sha256=v.EXPECTED_SMOKE_GATE_SHA256,
+                   confirmation_sha256=v.digest(root / "runs/confirm_v4.json"))
+    (root / "modal_main_extended_runtime.json").write_text(json.dumps(runtime))
+
+
 @pytest.fixture
-def fabricated_bundle(tmp_path):
+def fabricated_bundle(tmp_path, monkeypatch):
     root, panels = tmp_path / "results", tmp_path / "panels"
     root.mkdir(); panels.mkdir()
     panel_data, hashes = {}, {}
@@ -160,6 +191,7 @@ def fabricated_bundle(tmp_path):
     manifest.write_text("".join(f"{sha}  {name}\n" for name, sha in hashes.items()))
     identity = dict(source={"runner": "fabricated"}, source_commit="fixture_commit", panels=hashes,
                     panel_manifest=v.digest(manifest),
+                    wrapper_sha256=v.EXPECTED_WRAPPER_SHA256,
                     packages={name: "fixture" for name in ("torch", "numpy", "scipy", "tabpfn")})
     identity_path = tmp_path / "fixture_identity.json"
     identity_path.write_text(json.dumps(identity))
@@ -200,6 +232,7 @@ def fabricated_bundle(tmp_path):
                        hi=.3 if i == 4 else .1, n=256 if i == 0 else 128 if i == 1 else 60, passed=True)
              for i, key in enumerate(v.ENDPOINTS)}
     (root / "runs/confirm_v4.json").write_text(json.dumps(dict(saved, seeds=[1, 2, 3])))
+    fabricate_pretrained_provenance(root, identity, monkeypatch)
     return root, panels, identity_path, lambda path: panel_data[path.stem]
 
 
@@ -207,6 +240,7 @@ def test_complete_fabricated_bundle_matches_hand_calculated_confirmation(fabrica
     report = v.verify(*fabricated_bundle)
     assert report["verified"] and report["checkpoints"] == 24 and report["score_files"] == 35
     assert report["provenance"]["independent_cryptographic_timestamp"] is False
+    assert report["pretrained_weights"]["n_estimators"] == 8
 
 
 def test_bad_last_array_blocks_every_endpoint(fabricated_bundle, monkeypatch):
@@ -222,3 +256,99 @@ def test_bad_last_array_blocks_every_endpoint(fabricated_bundle, monkeypatch):
     monkeypatch.setattr(v, "recompute", forbidden)
     with pytest.raises(v.VerificationError, match="missing/unexpected"):
         v.verify(root, panels, identity, loader)
+
+
+def test_production_pretrained_identity_is_fixed():
+    assert v.EXPECTED_WEIGHT_SHA256 == "2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736"
+    assert v.EXPECTED_WEIGHT_BYTES == 44390977
+
+
+@pytest.mark.parametrize("problem", [None, "pack", "seed1", "recipe", "code", "prior", "confirmation"])
+def test_manual_continuation_requires_unchanged_seed1_and_completed_proof(fabricated_bundle, problem):
+    root, panels, identity_path, loader = fabricated_bundle
+    previous = root / "modal_main_extended_runtime.json"
+    old = v.read_json(previous)
+    old.update(status="failed", exit_code=1)
+    previous.write_text(json.dumps(old))
+    log = root / "logs/modal_main_extended.log"
+    log.parent.mkdir(exist_ok=True)
+    log.write_text("FileNotFoundError: [Errno 2] No such file or directory: 'git'")
+    checkpoints, scores = v.layout(root)
+    protected = {str((run / "model.pt").relative_to(root)).replace("\\", "/"): v.digest(run / "model.pt")
+                 for run, _, seed, _ in checkpoints if seed == 1}
+    protected.update({path.relative_to(root).as_posix(): v.digest(path) for path, *_ in scores
+                      if "_s1" in path.as_posix() or path.parent.name == "tabpfn_v2"})
+    repair = v.read_json(root / "main_extended_execution_amendment.json")
+    repair.update(extension_sha256=v.EXPECTED_RESUME_SHA256,
+                  previous_runtime_sha256=v.digest(previous), previous_log_sha256=v.digest(log),
+                  manual_continuation=True, run_id="lifted_v4_modal_main_l40s_resume",
+                  child_seconds=14400, function_seconds=14700, startup_seconds=120,
+                  provision_usd=9.5, preserved_seed1_files=protected)
+    resumed = dict(stage="main_resume", status="completed", exit_code=0,
+                   packaging_preflight_passed=True, preserved_seed1_hashes_unchanged=True,
+                   extension=repair, confirmation_sha256=v.digest(root / "runs/confirm_v4.json"))
+    if problem == "pack":
+        resumed["packaging_preflight_passed"] = False
+    elif problem == "seed1":
+        repair["preserved_seed1_files"][next(iter(protected))] = "substitution"
+    elif problem == "recipe":
+        repair["scientific_changes"] = True
+    elif problem == "code":
+        repair["extension_sha256"] = "unbound repair"
+    elif problem == "prior":
+        old.update(timed_out=True)
+        previous.write_text(json.dumps(old))
+    elif problem == "confirmation":
+        resumed["confirmation_sha256"] = "substituted confirmation"
+    (root / "main_resume_execution_amendment.json").write_text(json.dumps(repair))
+    (root / "modal_main_resume_runtime.json").write_text(json.dumps(resumed))
+    if problem is None:
+        assert v.verify(root, panels, identity_path, loader)["verified"] is True
+    else:
+        def forbidden(*args, **kwargs):
+            pytest.fail("Invalid continuation reached panel loading or endpoints")
+        with pytest.raises(v.VerificationError):
+            v.verify(root, panels, identity_path, forbidden)
+
+
+@pytest.mark.parametrize("problem", ["missing_weight", "wrong_hash", "wrong_bytes", "n_estimators",
+                                     "filemap", "smoke_weights", "runtime_incomplete", "runtime_proof"])
+def test_pretrained_failure_blocks_panel_load_and_endpoints(fabricated_bundle, monkeypatch, problem):
+    root, panels, identity, _ = fabricated_bundle
+    weight_path = root / "cache" / v.PRETRAINED_WEIGHT_PATH
+    if problem == "missing_weight":
+        weight_path.unlink()
+    elif problem == "wrong_hash":
+        weight_path.write_bytes(b"X" * v.EXPECTED_WEIGHT_BYTES)
+    elif problem == "wrong_bytes":
+        weight_path.write_bytes(b"short")
+    elif problem in ("n_estimators", "filemap"):
+        path = root / "pretrained_weights.json"
+        meta = v.read_json(path)
+        if problem == "n_estimators":
+            meta["n_estimators"] = 7
+        else:
+            meta["files"]["extra.ckpt"] = dict(sha256="unexpected", bytes=1)
+        path.write_text(json.dumps(meta))
+    elif problem == "smoke_weights":
+        path = root / "modal_smoke_gate.json"
+        gate = v.read_json(path)
+        gate["pretrained_weights"]["random_state"] = 1
+        path.write_text(json.dumps(gate))
+        # Reach the semantic check using a newly bound fabricated gate only.
+        monkeypatch.setattr(v, "EXPECTED_SMOKE_GATE_SHA256", v.digest(path))
+    else:
+        path = root / "modal_main_extended_runtime.json"
+        runtime = v.read_json(path)
+        if problem == "runtime_incomplete":
+            runtime["status"] = "running"
+        else:
+            runtime["extension"]["extension_sha256"] = "substituted code"
+        path.write_text(json.dumps(runtime))
+
+    def forbidden(*args, **kwargs):
+        pytest.fail("A pretrained identity/provenance failure reached panel load or endpoints")
+
+    monkeypatch.setattr(v, "recompute", forbidden)
+    with pytest.raises(v.VerificationError):
+        v.verify(root, panels, identity, forbidden)

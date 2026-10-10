@@ -61,6 +61,10 @@ scored by any model (NO$_2$, primary; CO, descriptive), the fine-tuning recipe o
 from scratch with the same seed, and later runs checkpoint every random state so that a resumed run is bitwise
 identical to an uninterrupted one (a unit test). The protocol document logs both events.
 
+\paragraph{Protocol v4 status.} The larger three-seed comparison and pretrained TabPFN evaluation are still
+in progress. No v4 efficacy endpoint is reported in this version.
+\input{audit_v4}
+
 \paragraph{Post-hoc analyses.} Everything not named in a protocol is post hoc and labeled as such: the per-episode
 Gaussian process and $k$-nearest neighbours, the second training seeds of both transformers, the fine-tuning diagnostics of \S\ref{sec:exp-real}, and the exploratory runs of
 Appendix~\ref{app:more}.

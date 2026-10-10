@@ -1,0 +1,1 @@
+{"stage": "predeployment_image_validation", "status": "failed_then_corrected_before_invocation", "reason": "Build step after add_local mounts; reconstruct identical pinned dependency image with Git before local mounts", "function_invoked": false, "cost_assumed_zero": false, "cost_covered_by": "historical pending-cost contingency"}

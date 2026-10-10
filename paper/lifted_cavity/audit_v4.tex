@@ -2,7 +2,7 @@
 Protocol v4 was committed after protocol v3's results and before any of its panels or targets existed. It fixes:
 \begin{itemize}
   \item two models, each trained on a GPU with three seeds: transformer-L and LCT-L, with identical 2.1M-parameter
-  backbones and recipes (\S\ref{sec:exp-v4});
+  backbones and fixed 40,000-step recipes;
   \item the pretrained TabPFN~v2 regressor, used in context only, with eight estimators and a fixed random state;
   \item two fresh synthetic panels (H1, H3);
   \item three Beijing pollutants never scored by any model (PM$_{10}$, SO$_2$ and O$_3$, pooled as Beijing-new);
@@ -32,3 +32,10 @@ built; those panels were discarded.
 \end{itemize}
 On a CPU these runs are bitwise identical to the original code (unit-tested). TabPFN predicts all conditions of an
 episode in one call; its query rows do not interact. The third training seeds of the 203k transformers are post hoc.
+
+\textbf{Interpretation limits.} The five decisions use nominal endpoint-wise 95\% intervals, without a
+multiplicity correction or global superiority rule. Averaging three fitted seeds within each task conditions on
+those fits; the intervals omit training-randomness uncertainty. Week clustering does not establish independence
+between adjacent weeks. E12 compares target-source-fine-tuned LCT-L with in-context-only TabPFN: episode support
+is matched, but prior target-specific training is unequal, so this comparison cannot isolate the architecture.
+The real-data estimand is contemporaneous within-week adaptation, not forecasting.

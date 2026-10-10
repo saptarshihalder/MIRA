@@ -7,6 +7,8 @@ access, scorer imports, training, or output writes. Nothing is computed or print
 about endpoints until every required input passes validation. Copied file mtimes
 are deliberately ignored: the frozen runner binds hashes before scoring, but its
 identity JSON has no independent cryptographic timestamp.
+The actual pretrained TabPFN bytes and preserved smoke/main provenance must also
+match the fixed comparator before any panel is loaded.
 """
 import argparse
 from datetime import date
@@ -35,6 +37,18 @@ ENDPOINTS = (
     "E12_bjnew_nat_lctLft_vs_tabpfn",
 )
 DEFAULT_IDENTITY = Path(__file__).resolve().parents[1] / "artifacts/manifests/bound_source_identity_l40s.json"
+PRETRAINED_WEIGHT_PATH = "tabpfn/tabpfn-v2-regressor.ckpt"
+EXPECTED_WEIGHT_SHA256 = "2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736"
+EXPECTED_WEIGHT_BYTES = 44390977
+EXPECTED_SMOKE_GATE_SHA256 = "ee9b0c6d074a0ba0f9433c936533b9cf8fce35e53559cd7e4c1dceeec94ae1e3"
+EXPECTED_SMOKE_RUNTIME_SHA256 = "4c627918fdfa3da632bf3ab2ef40aac8ec0eb9c1ed56a66695512b6f7071d268"
+EXPECTED_WRAPPER_SHA256 = "f485d9bc45266492d4399c8c7f6650a2fab0c4fe646844f783cf18645177dc0c"
+# Audited source: completed is set only after the post-main unchanged-weight and
+# original-gate checks. Hashing source never imports its Modal launch machinery.
+EXPECTED_EXTENSION_SHA256 = "0ee50bce2dcf742a450569ac66662ff3689dc9449fcd361aed59f9a5e759ed89"
+EXTENSION_FILE = Path(__file__).with_name("launch_lifted_v4_l40s_extended.py")
+EXPECTED_RESUME_SHA256 = "003a640655eac695d469fec5fccafe801a39ab9444e6d7b8646ae23d87664353"
+RESUME_FILE = Path(__file__).with_name("launch_lifted_v4_l40s_resume.py")
 
 
 class VerificationError(ValueError):
@@ -78,7 +92,11 @@ def preflight(root, panels, identity_path):
     """Check *all* presence before reading panels, scores, or confirm_v4.json."""
     checkpoints, scores = layout(root)
     needed = [identity_path, root / "run_identity.json", root / "runs/confirm_v4.json",
-              root / "runs/tabpfn_v2/train.json", panels / "SHA256SUMS"]
+              root / "runs/tabpfn_v2/train.json", panels / "SHA256SUMS",
+              root / "cache" / PRETRAINED_WEIGHT_PATH, root / "pretrained_weights.json",
+              root / "modal_smoke_gate.json", root / "modal_smoke_runtime.json",
+              root / "modal_main_extended_runtime.json", root / "main_extended_execution_amendment.json",
+              EXTENSION_FILE]
     needed.extend(panels / f"{tag}.pt" for tag in TAGS)
     needed.extend(path for path, _, _ in scores)
     needed.extend(run / filename for run, *_ in checkpoints
@@ -88,6 +106,88 @@ def preflight(root, panels, identity_path):
     require(not any((root / name).exists() for name in ("RUNNING.lock", "MODAL_RUNNING.lock")),
             "Results root is still locked; no endpoint checks")
     return checkpoints, scores
+
+
+def check_pretrained(root, expected):
+    """Verify fixed pretrained bytes and the audited main completion code path."""
+    path = root / "cache" / PRETRAINED_WEIGHT_PATH
+    require(path.is_file() and path.stat().st_size == EXPECTED_WEIGHT_BYTES,
+            "Pretrained TabPFN weight missing or byte count differs")
+    require(digest(path) == EXPECTED_WEIGHT_SHA256, "Pretrained TabPFN weight hash differs")
+    fixed = dict(package="9.1.0", version="v2", n_estimators=8, random_state=0,
+                 files={PRETRAINED_WEIGHT_PATH: dict(sha256=EXPECTED_WEIGHT_SHA256, bytes=EXPECTED_WEIGHT_BYTES)})
+    require(read_json(root / "pretrained_weights.json") == fixed,
+            "Pretrained TabPFN package/version/estimator/file-map identity differs")
+    gate_path, smoke_path = root / "modal_smoke_gate.json", root / "modal_smoke_runtime.json"
+    require(digest(gate_path) == EXPECTED_SMOKE_GATE_SHA256
+            and digest(smoke_path) == EXPECTED_SMOKE_RUNTIME_SHA256,
+            "Original source smoke gate/runtime bytes changed")
+    gate, smoke = read_json(gate_path), read_json(smoke_path)
+    require(gate.get("passed") is True and gate.get("pretrained_weights") == fixed,
+            "Original source smoke pretrained weights differ")
+    require(gate["identity"]["inputs"] == expected
+            and gate["identity"]["bounded_identity"] == read_json(root / "run_identity.json")["identity"],
+            "Original source smoke input identity differs")
+    require(smoke.get("stage") == "smoke" and smoke.get("status") == "completed"
+            and smoke.get("exit_code") == 0, "Original source smoke did not complete")
+    require(digest(EXTENSION_FILE) == EXPECTED_EXTENSION_SHA256
+            and expected.get("wrapper_sha256") == EXPECTED_WRAPPER_SHA256,
+            "Audited main runtime code proof differs")
+    runtime = read_json(root / "modal_main_extended_runtime.json")
+    amendment = read_json(root / "main_extended_execution_amendment.json")
+    if (root / "modal_main_resume_runtime.json").is_file():
+        resumed = read_json(root / "modal_main_resume_runtime.json")
+        repair = read_json(root / "main_resume_execution_amendment.json")
+        require(runtime.get("status") == "failed" and runtime.get("exit_code") == 1
+                and not runtime.get("timed_out") and not runtime.get("final_commit_error"),
+                "Only the recorded packaging failure may precede this manual continuation")
+        require(digest(RESUME_FILE) == EXPECTED_RESUME_SHA256
+                and repair.get("extension_sha256") == EXPECTED_RESUME_SHA256
+                and repair.get("previous_runtime_sha256") == digest(root / "modal_main_extended_runtime.json")
+                and repair.get("previous_log_sha256") == digest(root / "logs/modal_main_extended.log")
+                and "FileNotFoundError: [Errno 2] No such file or directory: 'git'" in (root / "logs/modal_main_extended.log").read_text(),
+                "Continuation does not bind the recorded missing-git failure")
+        require(resumed.get("stage") == "main_resume" and resumed.get("status") == "completed"
+                and resumed.get("exit_code") == 0 and not any(resumed.get(x) for x in ("error", "timed_out", "final_commit_error"))
+                and resumed.get("packaging_preflight_passed") is True
+                and resumed.get("preserved_seed1_hashes_unchanged") is True
+                and resumed.get("extension") == repair,
+                "Manual continuation did not complete all post-main checks")
+        require(repair.get("original_inputs") == expected and repair.get("scientific_changes") is False
+                and repair.get("manual_continuation") is True and repair.get("automatic_retries") == 0
+                and repair.get("run_id") == "lifted_v4_modal_main_l40s_resume"
+                and repair.get("child_seconds") == 14400 and repair.get("function_seconds") == 14700
+                and repair.get("startup_seconds") == 120 and repair.get("provision_usd") == 9.5
+                and repair.get("original_wrapper_sha256") == EXPECTED_WRAPPER_SHA256
+                and repair.get("original_gate_sha256") == EXPECTED_SMOKE_GATE_SHA256
+                and repair.get("original_runtime_sha256") == EXPECTED_SMOKE_RUNTIME_SHA256,
+                "Continuation changed frozen inputs or execution contract")
+        protected = repair.get("preserved_seed1_files", {})
+        require(sum(Path(x).name == "model.pt" for x in protected) == 8
+                and sum(x.endswith(".npz") for x in protected) == 15
+                and all(digest(root / x) == h for x, h in protected.items()),
+                "Preserved seed1 checkpoint/score identities changed")
+        require(resumed.get("confirmation_sha256") == digest(root / "runs/confirm_v4.json"),
+                "Continued main confirmation hash differs")
+    else:
+        require(runtime.get("stage") == "main_extended" and runtime.get("status") == "completed"
+                and runtime.get("exit_code") == 0 and runtime.get("timed_out", False) is False
+                and not any(runtime.get(key) for key in ("error", "final_commit_error")),
+                "Extended main runtime did not complete successfully")
+        require(runtime.get("extension") == amendment
+                and runtime.get("original_gate_sha256") == EXPECTED_SMOKE_GATE_SHA256
+                and amendment.get("extension_sha256") == EXPECTED_EXTENSION_SHA256
+                and amendment.get("original_wrapper_sha256") == EXPECTED_WRAPPER_SHA256
+                and amendment.get("original_gate_sha256") == EXPECTED_SMOKE_GATE_SHA256
+                and amendment.get("original_runtime_sha256") == EXPECTED_SMOKE_RUNTIME_SHA256
+                and amendment.get("original_inputs") == expected
+                and amendment.get("scientific_changes") is False
+                and amendment.get("run_id") == "lifted_v4_modal_main_l40s_extended"
+                and amendment.get("automatic_retries") == 0,
+                "Completed main is not bound to audited unchanged-weight checks")
+        require(runtime.get("confirmation_sha256") == digest(root / "runs/confirm_v4.json"),
+                "Completed main confirmation hash differs")
+    return fixed
 
 
 def check_identity(root, panels, expected):
@@ -291,6 +391,7 @@ def verify(root, panels, identity_path=DEFAULT_IDENTITY, panel_loader=load_panel
     root, panels, identity_path = Path(root), Path(panels), Path(identity_path)
     checkpoints, score_specs = preflight(root, panels, identity_path)
     expected = read_json(identity_path)
+    pretrained = check_pretrained(root, expected)
     check_identity(root, panels, expected)
     hashes = {str(run.relative_to(root)): check_checkpoint(run, model, seed, ds)
               for run, model, seed, ds in checkpoints}
@@ -306,11 +407,12 @@ def verify(root, panels, identity_path=DEFAULT_IDENTITY, panel_loader=load_panel
     endpoints = recompute(root, arrays, weeks)
     compare_confirmation(endpoints, read_json(root / "runs/confirm_v4.json"))
     return dict(verified=True, seeds=list(SEEDS), checkpoints=len(hashes), score_files=len(arrays),
-                endpoints=endpoints, checkpoint_hashes=hashes,
+                endpoints=endpoints, checkpoint_hashes=hashes, pretrained_weights=pretrained,
                 panel_hashes={f"{tag}.pt": expected["panels"][f"{tag}.pt"] for tag in TAGS},
                 provenance=dict(pre_score_binding="Frozen runner binds final hashes before scoring; hashes match",
                                 independent_cryptographic_timestamp=False,
                                 limitation="Source/control-flow provenance is not independent execution-time attestation; copied mtimes ignored",
+                                pretrained_binding="Fixed weight bytes match original smoke; completed audited extension performs post-main unchanged-weight checks",
                                 score_binding="Archives have no embedded panel/checkpoint hashes; binding relies on frozen paths and runner provenance"))
 
 

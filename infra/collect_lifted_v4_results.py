@@ -6,12 +6,13 @@ from pathlib import Path, PurePosixPath
 import stat
 import zipfile
 
-CALL = 'fc-01M4GWHKT0728F40X5BM0W5NZ7'
+CALL = 'fc-01M4KMG0FQ3CYTVKSRGQVGC6DF'
 VOLUME = 'mira-lifted-v4-l40s'
 REMOTE = 'lifted_v4_l40s_20261009'
-SIDECARS = ('modal_main_extended_runtime.json', 'main_extended_execution_amendment.json',
+SIDECARS = ('modal_main_resume_runtime.json', 'main_resume_execution_amendment.json', 'main_resume_execution_gate.json', 'modal_main_extended_runtime.json', 'main_extended_execution_amendment.json',
     'main_extended_execution_gate.json', 'modal_identity.json', 'modal_smoke_gate.json',
-    'modal_smoke_runtime.json', 'pretrained_weights.json', 'source_profile.json')
+    'modal_smoke_runtime.json', 'pretrained_weights.json', 'source_profile.json',
+    'cache/tabpfn/tabpfn-v2-regressor.ckpt')
 
 def validate_members(z):
     names = set()

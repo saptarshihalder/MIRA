@@ -1,0 +1,1 @@
+{"passed": 52, "failed": 0, "scope": "Fabricated inputs only; actual complete verification pending", "command": "pytest tests/test_lifted_v4_result_verifier.py tests/test_v4_collection_guards.py tests/test_lifted_v4_prediction_replay.py -q"}

@@ -45,7 +45,7 @@ $c_j=(V-r_j)/\beta_j$ and $\Sigma_{jj}=c_j/\beta_j$. For $S=\{j,k\}$ the slope v
 $\Sigma_{\{jk\}}b=(c_j,c_k)$, and whichever entry of $b$ is non-zero determines $\Sigma_{jk}$ from one row. Since
 $M_q$ has the same conditionals, the same formulas apply to it, so $\Sigma_q=\Sigma=LL^\top+\mathrm{diag}(\sigma^2)$.
 
-\emph{Step 3: fewer factors cannot reproduce $\Sigma$.} Let $r=1+K$, so $LL^\top$ has rank $r$. Suppose
+\emph{Step 3: fewer factors cannot reproduce $\Sigma$.} Suppose toward contradiction $K'<K$. Let $r=1+K$, so $LL^\top$ has rank $r$. Suppose
 $\Sigma=G+\Psi'$ with $\Psi'$ diagonal and $\mathrm{rank}(G)\leq r$. Fix a row $i$ and two disjoint row sets $I_1,I_2$
 not containing $i$ with $L_{I_1},L_{I_2}$ nonsingular. In the $(r+1)\times(r+1)$ submatrix of $\Sigma$ with rows
 $\{i\}\cup I_1$ and columns $\{i\}\cup I_2$, every entry except $(i,i)$ lies off the diagonal, so it is shared by $G$
@@ -61,7 +61,7 @@ rows after deleting any row. \hfill$\square$
   \item[(i)] Sites of missing sensors are multiplied by the mask before entering \eqref{eq:product}, and the
   network's per-sensor inputs never include another sensor's raw reading, only cavity statistics built from observed
   sites.
-  \item[(ii)] Every operation is applied per sensor with shared weights. Conditional on a consistently oriented anchor
+  \item[(ii)] Every operation is applied per sensor with shared weights. Conditional on a fully equivariant, consistently oriented anchor
   representation, its fitted sensor parameters permute with the sensor coordinates, and sums over sensors are
   permutation-invariant. An unconstrained eigensolver can change factor signs or rotations when the anchor is
   refitted; the original learned network is not invariant to these changes. No input encodes a

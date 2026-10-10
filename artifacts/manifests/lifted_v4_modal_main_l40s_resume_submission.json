@@ -1,0 +1,15 @@
+{
+  "run_id": "lifted_v4_modal_main_l40s_resume",
+  "status": "running",
+  "reserved_usd": 9.5,
+  "child_minutes": 240,
+  "function_timeout_seconds": 14700,
+  "automatic_retries": 0,
+  "reason": "Explicit user continuation after missing-git intermediate packaging failure; same frozen science, seed1 protected",
+  "launch_requested_unix": 1791660391.1878786,
+  "amendment_sha256": "8f6acbe5c993b0a5b5a4f7178c3edb9a6df74b91e9eb3a1ec51e3c447c11eff7",
+  "bounded_compute_estimate_usd": 8.94387,
+  "remaining_build_storage_egress_provision_usd": 0.5561299999999996,
+  "startup_timeout_seconds": 120,
+  "function_call_id": "fc-01M4KMG0FQ3CYTVKSRGQVGC6DF"
+}

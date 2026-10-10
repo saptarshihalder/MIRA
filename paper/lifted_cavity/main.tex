@@ -114,15 +114,15 @@ three-sensor deletions are therefore never seen in training.
 \label{sec:scalar}
 %=====================================================================
 
-Consider the linear-Gaussian model $x_j=a_j y+d_j u+\sigma_j\epsilon_j$ with $y,u,\epsilon_j\sim\N(0,1)$, where $u$ is
+Consider $x_j=a_j y+d_j u+\sigma_j\epsilon_j$ with mutually independent $y,u,\epsilon_j\sim\N(0,1)$, $\sigma_j>0$ and $a_j\neq0$. Here $u$ is
 a nuisance shared by all sensors. A product-of-experts (PoE) predictor gives each sensor a factor $t_j(y;x_j)$ and
 predicts $q(y\mid x_S)\propto p(y)\prod_{j\in S}t_j(y;x_j)$. Omitting missing sensors is what makes the construction
 mask-consistent.
 
 \begin{proposition}[Scalar experts]\label{prop:scalar}
 Let each $t_j$ be Gaussian in $y$ with positive precision, depend on $x_j$, and not depend on $S$. Suppose $q$ equals
-the Bayes posterior for every single-sensor query $S=\{j\}$. Then for a pair $\{j,k\}$ with $a_ja_k\neq0$, $q$ equals
-the Bayes posterior if and only if $d_jd_k=0$. Moreover, $q$'s pair posterior mean gives $x_j$ a coefficient with the
+the Bayes posterior for every reading in each singleton query $S=\{j\}$. For a pair $\{j,k\}$, $q$ equals
+the Bayes posterior for every reading if and only if $d_jd_k=0$. Moreover, $q$'s pair posterior mean gives $x_j$ a coefficient with the
 sign of $a_j$, whereas the Bayes coefficient can have the opposite sign.
 \end{proposition}
 
@@ -145,8 +145,8 @@ failure is visible in practice (\S\ref{sec:audit}).
 \input{figures/method}
 
 \paragraph{Lifted sites.}
-Let $z=(y,h)\in\R^{1+K}$, where $h$ is a $K$-dimensional nuisance with prior $\N(0,I)$ and $y$ has prior
-$\N(\mu_y,v_y)$. Write the prior in natural parameters $(\Lambda_0,\eta_0)$. Each observed sensor contributes a
+Let $z=(y,h)\in\R^{1+K}$, with independent $h\sim\N(0,I)$ and $y\sim\N(\mu_y,v_y)$, $v_y>0$.
+Write the prior in natural parameters $(\Lambda_0,\eta_0)$. Each observed sensor contributes a
 rank-one Gaussian site, which corresponds to a linear-Gaussian measurement $\tilde x_j=w_j^\top z+e_j$ with
 $e_j\sim\N(0,\psi_j)$:
 \begin{equation}
@@ -161,7 +161,7 @@ The prediction is the $y$-marginal of
 \end{equation}
 
 \begin{proposition}[Exactness]\label{prop:exact}
-Suppose $x_j=A_jy+D_j^\top h+c_j+e_j$, with independent $e_j\sim\N(0,\psi_j)$ and the priors above. Set $w_j=(A_j,D_j)$
+Suppose $x_j=A_jy+D_j^\top h+c_j+e_j$, with $\psi_j>0$, mutually independent $e_j\sim\N(0,\psi_j)$ independent of $z$, and the prior above. Set $w_j=(A_j,D_j)$
 and $o_j=x_j-c_j$. Then \eqref{eq:product} equals $p(z\mid x_S)$ for every fixed $S\subseteq\{1,\dots,P\}$.
 Its $y$-marginal is Bayes predictive for noninformative observation masks; informative masks require a selection model.
 \end{proposition}
@@ -171,12 +171,10 @@ Proposition~\ref{prop:scalar} disappears: the lifted product differences out $h$
 generic-rank condition, fewer nuisance dimensions cannot suffice for static linear-Gaussian sites:
 
 \begin{proposition}[Lifting dimension]\label{prop:rank}
-Let $x=ay+Du+e$ with $y\sim\N(0,1)$, $u\sim\N(0,I_K)$, $D\in\R^{P\times K}$, independent Gaussian $e$, and every
-$a_j\neq0$. Suppose
+Let $x=ay+Du+e$ with mutually independent $y\sim\N(0,1)$, $u\sim\N(0,I_K)$ and Gaussian errors $e_j$ of positive variance, $D\in\R^{P\times K}$, and every $a_j\neq0$. Suppose
 that after deleting any row, $L=[a,D]$ still contains two disjoint nonsingular $(1+K)\times(1+K)$ submatrices, which
 holds for almost every $L$ once $P\geq2K+3$. If a product of mask-independent sites of the form \eqref{eq:site} with
-$o_j=x_j-c_j$, over $z=(y,h)$ with $h\in\R^{K'}$ and a Gaussian prior, reproduces $p(y\mid x_S)$ for every $S$ with
-$|S|\leq2$, then $K'\geq K$.
+$o_j=x_j-c_j$, fixed $w_j,c_j$ and fixed $\psi_j>0$ (all independent of readings and subsets), over $z=(y,h)$ with $h\in\R^{K'}$ and a proper nonsingular Gaussian prior, reproduces $p(y\mid x_S)$ for every reading and every $S$ with $|S|\leq2$, then $K'\geq K$.
 \end{proposition}
 
 The proof (Appendix~\ref{app:proofs}) shows that the conditionals on single sensors and pairs identify the covariance
@@ -224,11 +222,11 @@ unrolling~\citep{gregor2010lista,monga2021unrolling}.
 For any parameters $\theta$:
 \begin{enumerate}
   \item[(i)] the prediction does not depend on the readings of missing sensors;
-  \item[(ii)] conditional on an anchor representation whose nuisance orientation is consistent under calibration-column
+  \item[(ii)] conditional on fully equivariant anchor parameters and support statistics with consistent nuisance orientation under calibration-column
   permutations, permuting sensors and their calibration columns leaves the prediction unchanged; the same $\theta$
   applies for every $P$;
   \item[(iii)] when the last layer of $f_\theta$ is zero, the network equals the FA-Gaussian closed form of its
-  anchor, so the minimal training risk over $\theta$ is at most that closed form's.
+  anchor, so the infimum of training risk over $\theta$ is at most that closed form's.
 \end{enumerate}
 \end{proposition}
 

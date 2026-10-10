@@ -1,0 +1,21 @@
+{
+  "scope": "Source-training progress only; no endpoint contrasts",
+  "records": [
+    {
+      "model": "pfn_L_s1",
+      "steps_done": 40000,
+      "planned_steps": 40000,
+      "seconds": 1352.5429074764252,
+      "parameters": 2119810,
+      "device": "cuda"
+    },
+    {
+      "model": "lct_L_s1",
+      "steps_done": 40000,
+      "planned_steps": 40000,
+      "seconds": 1577.1651878356934,
+      "parameters": 2120326,
+      "device": "cuda"
+    }
+  ]
+}

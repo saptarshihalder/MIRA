@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-10",
+  "pdf_sha256": "b469a60c94b55fd659c73f22f98fe5b4cae301b591b4f793603baae755c7c00b",
+  "compiler": "Official Tectonic0.17.0 release; digest verified; exit0",
+  "native_compiler": "Runs but isolated source cannot resolve neurips_2026.sty or project inputs",
+  "main_pages": 9,
+  "total_pages": 29,
+  "references_start_page": 10,
+  "checklist_present": true,
+  "unresolved_reference_markers": 0,
+  "overfull_boxes": 0,
+  "author_identity_strings_found": false,
+  "numeric_macros_reproduced": 854,
+  "numerical_values_unchanged": true,
+  "complete_result_collection_fixture_tests_passed": 30,
+  "proof_audit": "Four conditional passes within amended stated assumptions; not formal verification",
+  "bibliography_entries": 42,
+  "bibliography_metadata_verified": 40,
+  "bibliography_partial": [
+    "Gregor pagination",
+    "Anderson publication year"
+  ],
+  "visual_review_pages": [
+    4,
+    9,
+    18
+  ],
+  "scientific_readiness": false,
+  "full_v4_results": "pending; active L40S run",
+  "anonymous_supplement": "Code-only draft tested; final artifacts, rights and manual anonymity review pending",
+  "prediction_replay_fixture_tests_passed": 7,
+  "actual_prediction_replay": "pending complete v4 bundle"
+}

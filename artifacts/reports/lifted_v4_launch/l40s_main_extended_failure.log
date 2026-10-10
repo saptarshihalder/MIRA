@@ -1,0 +1,93 @@
+pfn_L_s1: trained 0/40000, synthetic panels 0/11, fine-tuned+scored 0/3
+lct_L_s1: trained 0/40000, synthetic panels 0/11, fine-tuned+scored 0/3
+pfn_L_s2: trained 0/40000, synthetic panels 0/11, fine-tuned+scored 0/3
+lct_L_s2: trained 0/40000, synthetic panels 0/11, fine-tuned+scored 0/3
+pfn_L_s3: trained 0/40000, synthetic panels 0/11, fine-tuned+scored 0/3
+lct_L_s3: trained 0/40000, synthetic panels 0/11, fine-tuned+scored 0/3
+tabpfn_v2: 0/19 panels
+endpoints: pending
+
+##### main #####
+[train_pfn_L_s1] step 2500 ema 0.0117 85s
+[train_pfn_L_s1] step 5000 ema -0.0437 170s
+[train_pfn_L_s1] step 7500 ema -0.1060 255s
+[train_pfn_L_s1] step 10000 ema -0.1113 338s
+[train_pfn_L_s1] step 12500 ema -0.1151 422s
+[train_pfn_L_s1] step 15000 ema -0.1335 507s
+[train_pfn_L_s1] step 17500 ema -0.1480 591s
+[train_pfn_L_s1] step 20000 ema -0.1535 675s
+[train_pfn_L_s1] step 22500 ema -0.1514 759s
+[train_pfn_L_s1] step 25000 ema -0.1599 843s
+[train_pfn_L_s1] step 27500 ema -0.1682 927s
+[train_pfn_L_s1] step 30000 ema -0.1688 1011s
+[train_pfn_L_s1] step 32500 ema -0.1744 1095s
+[train_pfn_L_s1] step 35000 ema -0.1807 1178s
+[train_pfn_L_s1] step 37500 ema -0.1760 1269s
+[train_pfn_L_s1] step 40000 ema -0.1776 1353s
+[score_pfn_L_s1] pfn_L_s1 v2_s20261401_n256_p5_nl0.4_sr48 {'k0': -0.3338, 'k1': -0.1706, 'k2': 0.0445, 'k3': 0.355}
+[score_pfn_L_s1] pfn_L_s1 v2_s20261403_n128_p16_nl0.4_sr48 {'k0': -0.9049, 'k1': -0.859, 'k2': -0.8132, 'k3': -0.7629}
+[ft_pfn_L_s1_beijing_pm10] pfn_L_s1_ft beijing_pm10 ema 0.1111 186s
+[ft_pfn_L_s1_beijing_pm10] /__modal/volumes/vo-ggALlrHY6FSUXOlbwzv0V1/lifted_v4_l40s_20261009/runs_real/beijing_pm10/pfn_L_s1_ft {'e0': 0.0957, 'e3': 0.1506, 'e6': 0.2454}
+[ft_pfn_L_s1_beijing_so2] pfn_L_s1_ft beijing_so2 ema 0.1558 187s
+[ft_pfn_L_s1_beijing_so2] /__modal/volumes/vo-ggALlrHY6FSUXOlbwzv0V1/lifted_v4_l40s_20261009/runs_real/beijing_so2/pfn_L_s1_ft {'e0': 0.1688, 'e3': 0.2399, 'e6': 0.3388}
+[ft_pfn_L_s1_beijing_o3] pfn_L_s1_ft beijing_o3 ema 0.1707 185s
+[ft_pfn_L_s1_beijing_o3] /__modal/volumes/vo-ggALlrHY6FSUXOlbwzv0V1/lifted_v4_l40s_20261009/runs_real/beijing_o3/pfn_L_s1_ft {'e0': 0.3136, 'e3': 0.3686, 'e6': 0.4638}
+[train_lct_L_s1] step 2500 ema -0.1090 101s
+[train_lct_L_s1] step 5000 ema -0.1278 199s
+[train_lct_L_s1] step 7500 ema -0.1459 298s
+[train_lct_L_s1] step 10000 ema -0.1470 395s
+[train_lct_L_s1] step 12500 ema -0.1518 494s
+[train_lct_L_s1] step 15000 ema -0.1591 592s
+[train_lct_L_s1] step 17500 ema -0.1551 690s
+[train_lct_L_s1] step 20000 ema -0.1591 788s
+[train_lct_L_s1] step 22500 ema -0.1661 886s
+[train_lct_L_s1] step 25000 ema -0.1642 985s
+[train_lct_L_s1] step 27500 ema -0.1585 1084s
+[train_lct_L_s1] step 30000 ema -0.1663 1183s
+[train_lct_L_s1] step 32500 ema -0.1775 1282s
+[train_lct_L_s1] step 35000 ema -0.1735 1379s
+[train_lct_L_s1] step 37500 ema -0.1802 1480s
+[train_lct_L_s1] step 40000 ema -0.1721 1577s
+[score_lct_L_s1] lct_L_s1 v2_s20261401_n256_p5_nl0.4_sr48 {'k0': -0.3249, 'k1': -0.1666, 'k2': 0.0422, 'k3': 0.3339}
+[score_lct_L_s1] lct_L_s1 v2_s20261403_n128_p16_nl0.4_sr48 {'k0': -1.0336, 'k1': -0.9995, 'k2': -0.9662, 'k3': -0.9225}
+[ft_lct_L_s1_beijing_pm10] lct_L_s1_ft beijing_pm10 ema 0.1065 189s
+[ft_lct_L_s1_beijing_pm10] /__modal/volumes/vo-ggALlrHY6FSUXOlbwzv0V1/lifted_v4_l40s_20261009/runs_real/beijing_pm10/lct_L_s1_ft {'e0': 0.1061, 'e3': 0.1566, 'e6': 0.2735}
+[ft_lct_L_s1_beijing_so2] lct_L_s1_ft beijing_so2 ema 0.1641 190s
+[ft_lct_L_s1_beijing_so2] /__modal/volumes/vo-ggALlrHY6FSUXOlbwzv0V1/lifted_v4_l40s_20261009/runs_real/beijing_so2/lct_L_s1_ft {'e0': 0.1977, 'e3': 0.266, 'e6': 0.3545}
+[ft_lct_L_s1_beijing_o3] lct_L_s1_ft beijing_o3 ema 0.1713 189s
+[ft_lct_L_s1_beijing_o3] /__modal/volumes/vo-ggALlrHY6FSUXOlbwzv0V1/lifted_v4_l40s_20261009/runs_real/beijing_o3/lct_L_s1_ft {'e0': 0.3589, 'e3': 0.3998, 'e6': 0.4813}
+[tabpfn_v2] v2_s20261401_n256_p5_nl0.4_sr48 k 0 -0.0299 86s
+[tabpfn_v2] v2_s20261401_n256_p5_nl0.4_sr48 k 1 0.1427 173s
+[tabpfn_v2] v2_s20261401_n256_p5_nl0.4_sr48 k 2 0.5273 259s
+[tabpfn_v2] v2_s20261401_n256_p5_nl0.4_sr48 k 3 1.1741 345s
+[tabpfn_v2] v2_s20261403_n128_p16_nl0.4_sr48 k 0 -0.3141 51s
+[tabpfn_v2] v2_s20261403_n128_p16_nl0.4_sr48 k 1 -0.4302 104s
+[tabpfn_v2] v2_s20261403_n128_p16_nl0.4_sr48 k 2 -0.4618 158s
+[tabpfn_v2] v2_s20261403_n128_p16_nl0.4_sr48 k 3 -0.4187 212s
+[tabpfn_v2] real_beijing_pm10_s4041 extra 0 0.039
+[tabpfn_v2] real_beijing_pm10_s4041 extra 3 0.4818
+[tabpfn_v2] real_beijing_pm10_s4041 extra 6 1.1577
+[tabpfn_v2] real_beijing_so2_s4041 extra 0 0.1187
+[tabpfn_v2] real_beijing_so2_s4041 extra 3 0.4428
+[tabpfn_v2] real_beijing_so2_s4041 extra 6 0.9228
+[tabpfn_v2] real_beijing_o3_s4041 extra 0 0.003
+[tabpfn_v2] real_beijing_o3_s4041 extra 3 0.4871
+[tabpfn_v2] real_beijing_o3_s4041 extra 6 1.1273
+Traceback (most recent call last):
+  File "/opt/mira/experiments/lifted_cavity/colab_v4.py", line 416, in <module>
+    main()
+  File "/opt/mira/experiments/lifted_cavity/colab_v4.py", line 406, in main
+    dict(data=stage_data, panels=stage_panels, smoke=stage_smoke, main=stage_main, confirm=stage_confirm,
+  File "/opt/mira/experiments/lifted_cavity/colab_v4.py", line 299, in stage_main
+    stage_pack()
+  File "/opt/mira/experiments/lifted_cavity/colab_v4.py", line 333, in stage_pack
+    commit=subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=CODE, capture_output=True, text=True).stdout.strip())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/local/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'git'

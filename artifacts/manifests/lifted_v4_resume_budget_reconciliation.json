@@ -1,0 +1,12 @@
+{
+  "observed_at_utc": "2026-10-10T19:24:31.750139+00:00",
+  "account_gross_usd": 6.33127153,
+  "historical_provision_usd": 7,
+  "resume_provision_usd": 9.5,
+  "reproduction_protected_usd": 3,
+  "total_worst_case_usd": 19.5,
+  "compute_bound_usd": 8.94387,
+  "all_apps_tasks_zero": true,
+  "final_invoice_verified": false,
+  "automatic_retries": 0
+}
