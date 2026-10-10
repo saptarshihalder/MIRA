@@ -235,8 +235,14 @@ def score_model(model, pool, qm, tasks_per_batch=8):
         batch['qx'] = pool['qx'][t].reshape(B * NQ, -1); batch['qy'] = pool['qy'][t].reshape(-1)
         batch['qm'] = qmt[t].reshape(B * NQ, -1); batch['tid'] = torch.arange(B).repeat_interleave(NQ)
         import devutil
-        mu, lv = model(devutil.to_dev(batch, devutil.model_device(model)))
-        mu, lv = mu.detach().cpu(), lv.detach().cpu()
-        g = gauss_metrics(mu.double().numpy(), np.exp(lv.double().numpy()), batch['qy'].double().numpy())
+        if hasattr(model, 'predictive'):                           # mixture output (upt.py): exact mixture metrics
+            import upt
+            la, ma, va, lb, mb, vb = [v.detach().cpu().double().numpy() for v in model.predictive(devutil.to_dev(batch, devutil.model_device(model)))]
+            g = upt.mixture_metrics(np.exp(np.stack((la, lb), 1)), np.stack((ma, mb), 1), np.exp(np.stack((va, vb), 1)),
+                                    batch['qy'].double().numpy())
+        else:
+            mu, lv = model(devutil.to_dev(batch, devutil.model_device(model)))
+            mu, lv = mu.detach().cpu(), lv.detach().cpu()
+            g = gauss_metrics(mu.double().numpy(), np.exp(lv.double().numpy()), batch['qy'].double().numpy())
         res.append({m: v.reshape(B, NQ).mean(1) for m, v in g.items()})
     return {m: np.concatenate([r[m] for r in res]) for m in res[0]}

@@ -92,8 +92,7 @@ def main():
     model.train()
     for step in range(first, a.steps):
         batch = devutil.to_dev(batch_from(pool, rng), dev)
-        mu, lv = model(batch)
-        loss = models.gauss_nll(mu, lv, batch['qy']).mean()
+        loss = model.nll(batch).mean() if hasattr(model, 'nll') else models.gauss_nll(*model(batch), batch['qy']).mean()
         if not torch.isfinite(loss):
             raise FloatingPointError(step)
         opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), 5.); opt.step(); sched.step()
