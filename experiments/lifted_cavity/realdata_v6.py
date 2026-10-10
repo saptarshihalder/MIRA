@@ -1,8 +1,8 @@
 """Protocol v6 sensor networks: in-context virtual sensing (predict one sensor from its 11 nearest neighbours).
 
-  metr_la   METR-LA loop-detector speeds (Li et al. 2018): 207 sensors, 5-min, Mar-Jun 2012. Zero readings are
+  metr_la   METR-LA loop-detector log speeds (Li et al. 2018): 207 sensors, 5-min, Mar-Jun 2012. Zero readings are
             missing (the standard convention); natural missingness in support and query rows.
-  pems_bay  PEMS-BAY speeds (Li et al. 2018): 325 sensors, 5-min, Jan-Jun 2017. No natural missingness, so support
+  pems_bay  PEMS-BAY log speeds (Li et al. 2018): 325 sensors, 5-min, Jan-Jun 2017. No natural missingness, so support
             rows get 20% simulated per-sensor dropout (as for Air Quality); queries are complete at extra = 0.
   intel     Intel Berkeley Research Lab motes (Bodik et al. 2004): temperature of 54 motes, readings averaged into
             5-min bins; readings outside [0, 50] C (failing motes) are missing. Natural missingness.
@@ -38,6 +38,7 @@ def load(name, folder):
         z = np.load(folder / f'{name}.npz')
         V = z['X'].astype(float)
         V[V <= 0] = np.nan
+        V = np.log(V)                                  # log speed, as Beijing uses log concentration (amendment 1)
         ids = [str(i) for i in z['ids']]
         if name == 'metr_la':
             loc = pd.read_csv(folder / 'metr_la' / 'sensor_locations_la.csv')

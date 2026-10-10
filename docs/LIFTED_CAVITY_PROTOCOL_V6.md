@@ -89,3 +89,15 @@ P2 and P4 all to pass. P3 is reported separately.
 
 All endpoint outcomes, including failures, are reported. No hyperparameter, split or comparator changes after the
 first v6 score.
+
+## Amendment 1 (October 11, before any v6 panel, fine-tune or score)
+
+**Change.** Traffic speeds (METR-LA, PEMS-BAY) are log-transformed, both inputs and target.
+
+**Why.** This matches Beijing's log concentrations and keeps every real network on a comparable scale for models
+pretrained on the same prior.
+
+**Unchanged.** Intel temperatures stay in °C. Everything else is as committed.
+
+**What motivated it.** A pre-panel smoke test: 3 fine-tuning steps on 80 Intel source episodes. It checked code
+paths only; no test episode was used.
