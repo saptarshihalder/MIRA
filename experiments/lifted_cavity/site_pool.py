@@ -146,11 +146,14 @@ def cmd_report(a):
                 row[nm] = dict(log_pool=float(lp.mean()), lin_pool=float(mp.mean()), avg_of_experts=float(avg.mean()),
                                holder_slack=float(slack.mean()),
                                vs_transformer=week_ci(single[sb], lp, weeks),
+                               lin_vs_transformer=week_ci(single[sb], mp, weeks),
                                vs_best_single=week_ci(min(single[sa], single[sb], key=np.mean), lp, weeks))
             if controls:                                               # complementarity: site+transformer vs same-family pools
                 for (sa, sb) in pairs:
                     for (ca, cb) in controls:
                         row[f'pool({sa},{sb}) vs pool({ca},{cb})'] = week_ci(pooled(P, ca, cb, e)[0], pooled(P, sa, sb, e)[0], weeks)
+                        row[f'linpool({sa},{sb}) vs linpool({ca},{cb})'] = week_ci(pooled(P, ca, cb, e, 'lin')[0],
+                                                                                   pooled(P, sa, sb, e, 'lin')[0], weeks)
             res[f'{tgt}|e{e}'] = row
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     Path(a.out).write_text(json.dumps(res, indent=1))
@@ -159,8 +162,10 @@ def cmd_report(a):
         for nm, v in row.items():
             if nm.startswith('pool(') and ' vs ' not in nm:
                 t = v['vs_transformer']
+                tl = v['lin_vs_transformer']
                 print(f'  {nm:30s} log {v["log_pool"]:.4f} lin {v["lin_pool"]:.4f} avg {v["avg_of_experts"]:.4f} slack {v["holder_slack"]:.4f}'
-                      f' | vs transformer {t["gain"]:+.4f} [{t["lo"]:+.4f},{t["hi"]:+.4f}]')
+                      f' | vs transformer: log {t["gain"]:+.4f} [{t["lo"]:+.4f},{t["hi"]:+.4f}]'
+                      f' lin {tl["gain"]:+.4f} [{tl["lo"]:+.4f},{tl["hi"]:+.4f}]')
             elif ' vs ' in nm:
                 print(f'  {nm:58s} {v["gain"]:+.4f} [{v["lo"]:+.4f},{v["hi"]:+.4f}]')
 
