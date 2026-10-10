@@ -73,3 +73,28 @@ Gains are in nats of mean NLL, positive when the first-named model is better. Co
 exist). They motivate the method and do not confirm it.
 
 All endpoint outcomes, including failures, are reported.
+
+## Amendment 1: linear-pool endpoints (October 11, before any v5 score)
+
+**State at the amendment.**
+- No v5 target has been scored by any model.
+- The six v5 fine-tunes are still running.
+- No pooled or single-model score exists on Beijing PM10, SO2 or O3.
+
+**Motivation, from used data only.** Post hoc on Beijing NO2 (s3031, natural missingness), the linear pool
+(mixture, weight ½) of fine-tuned LCT s1 and PFN s1 scored 0.126, against 0.183 for the log pool and 0.199 for PFN.
+The paired interval was +0.073 [−0.015, +0.160]. See `artifacts/reports/lifted_cavity_paper/site_pool/`.
+
+**Theory.** The linear pool has its own universal property: it is the pooling that commutes with marginalization
+(McConway 1981). Predicting with a sensor missing marginalizes that sensor out of the joint predictive.
+- The log pool is natural for updating (U2).
+- The linear pool is natural for marginalization.
+- No non-dictatorial pool has both properties (Genest & Zidek 1986).
+
+**What is added.** Endpoints E13L–E16L are E13–E16 with the linear pool in place of the log pool, with the same pass
+conditions. E13–E16 are unchanged and are reported regardless.
+
+**Multiplicity.** Two pooling rules are tested, so a pooled claim needs the endpoint to pass under 97.5% intervals
+(Bonferroni over the two rules). `confirm5.py` reports both the 95% and the 97.5% decisions.
+
+**Reference.** McConway, K. J. (1981). Marginalization and linear opinion pools. *JASA* 76(374), 410–414.
