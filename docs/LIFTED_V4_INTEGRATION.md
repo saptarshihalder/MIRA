@@ -50,3 +50,9 @@ The research report metadata preserves provenance and may contain historical
 machine paths. It is not automatically an anonymous submission supplement.
 Hashes bind local files and checks; they do not supply independent cryptographic
 execution timestamps, prove benchmark independence or reproduce training.
+
+## October 11 one-shot completion worker
+
+infra/finish_lifted_v4_evidence.py is already running locally, waiting on the existing read-only GPU observer. The hash-frozen plan is artifacts/manifests/lifted_v4_completion_worker_plan_20261011.json. Inspect artifacts/runs/lifted_v4_delivery/completion_result.json and worker_started.json before attempting any stage; do not duplicate it. It makes no GPU launch, recipe change, automatic retry, manuscript edit or Git push. Failed-upstream and duplicate-start guards were exercised with temporary inputs; actual scientific completion remains pending.
+
+On complete upstream exit0 it executes collection, full independent verification, fixed selected-cell replay, staging, explicit conflict-preserving merge, all-seed descriptive audit, review export and extracted regeneration/tests. All tools are checked against recorded hashes before each child. Failed stages preserve outputs and stop; they must not be bypassed. A successful result is evidence-ready-manuscript-pending, requiring interpretation of every endpoint, same-source manuscript regeneration/compilation/layout review, final billing reconciliation and authorized Git publication.

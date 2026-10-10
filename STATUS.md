@@ -12,7 +12,7 @@ Cost reconciled: USD6.33127153 metered gross;7historical+9.5continuation+3protec
 
 After complete exit0 use .venv-modal Python infra/collect_lifted_v4_results.py --collect (new call). Then .venv-compiler-cpu Python infra/verify_lifted_v4_results.py --root artifacts/runs/lifted_v4_final --panels artifacts/inputs/lifted_v4_panels; then infra/replay_lifted_v4_predictions.py with the same root/panels. Require24checkpoint files,35archives, frozen pretrained weight, all endpoint decisions, unchanged seed1 and fixed CPU replay. Preserve every failed endpoint. Integrate verified new files into paper reports without overwriting history; infra/integrate_lifted_v4_verified.py now stages only complete verified/replayed evidence and requires explicit --merge; 20 guard tests pass, no actual integration yet. Keep existing editor. Native modular-style limitation persists; same-source PDF builds 9 main/29 total pages. No publication-readiness verdict yet.
 
-The expired sprint automation was deleted; mira-final-gpu-result-check performs one completion review at6am IST October 11 then stops. All snapshots below are historical.
+The expired sprint automation was deleted. A one-shot local completion worker now waits on the existing GPU observer and performs the frozen collection, verification, replay, integration and review-export gates with zero retries. Its plan is artifacts/manifests/lifted_v4_completion_worker_plan_20261011.json; actual completion remains pending. The final agent check runs at03:30/04:30/05:30/06:30 IST October11, stays quiet while unchanged and stops after delivery. It must inspect the worker result before attempting any stage. All snapshots below are historical.
 
 # Historical October10 status
 

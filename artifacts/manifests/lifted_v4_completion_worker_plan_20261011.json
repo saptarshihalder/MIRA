@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-10-10T20:26:19.464979+00:00",
+  "new_gpu_calls": 0,
+  "automatic_retries": 0,
+  "wait_minutes": 240,
+  "tool_hashes": {
+    "infra/collect_lifted_v4_results.py": "14cd92799245113bc3812e9b5c3daf3009a645ba62bc4601693c1f0d0f2c15ee",
+    "infra/verify_lifted_v4_results.py": "f38762a1afaa0aa4c8705335d68f90fe8ca5c125594f691e6d8a9ca9cabd0b4c",
+    "infra/replay_lifted_v4_predictions.py": "61cf15d43a5fda26f896116b86d55bab479ae77c2d0d9645ed19a754ca153be9",
+    "infra/integrate_lifted_v4_verified.py": "5db370a161ac9af834a6ab2c5d9dfee59de9e3be3863d3025fcfae7759600cbc",
+    "infra/summarize_lifted_v4_seed_sensitivity.py": "6ca1e1be6c3fb7b03222424bfb5ad8a89e43c7ca3e8f0d37a548c36c40146690",
+    "infra/build_lifted_review_package.py": "62e55d4b6179c1bcabf30415c1f115c02e0e3cd2f478b798e203c2879d7b2e9b",
+    "infra/reproduce_lifted_paper_exports.py": "95140978f972cb520872f7ee14badcd93cf3982196fea11bf1153fbaffeb97c6",
+    "infra/build_lifted_supplement.py": "2ab51d18ceabddef7f4f1b82a9dd33e6bf072a9821ad4221908cd257c86aa7c3",
+    "experiments/lifted_cavity/make_paper.py": "82d2ef0ad88c5d60b7baed50561739655d31d9e3fb09eeed77bb5e923fa3e971",
+    "infra/finish_lifted_v4_evidence.py": "09681b21a96adad3a97c55450b848f487a22d07be65723cf91cde96cb0d5326b"
+  },
+  "upstream_result": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\reports\\lifted_v4_launch\\resume_function_result_20261011.json",
+  "scope": "Complete already-frozen evidence gates once; manuscript and scientific verdict remain pending",
+  "failure_smoke": "Failed upstream prevents execution; duplicate worker rejected"
+}
