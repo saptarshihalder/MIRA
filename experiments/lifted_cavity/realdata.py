@@ -203,7 +203,11 @@ def closed_forms(pool, qm):
     for t in range(pool['n']):
         sx, sy, sm = (pool[k][t].double().numpy() for k in ('sx', 'sy', 'sm'))
         qx, qy = pool['qx'][t].double().numpy(), pool['qy'][t].double().numpy()
-        mu, sig = fam.em_gaussian(sx, sy, sm, 40); f1 = fa_mod.fit_fa(mu, sig, 1); nm = nlfa.fit(sx, sy, sm)
+        mu, sig = fam.em_gaussian(sx, sy, sm, 40); f1 = fa_mod.fit_fa(mu, sig, 1)
+        try:
+            nm = nlfa.fit(sx, sy, sm)
+        except np.linalg.LinAlgError:                              # singular NL-FA design (e.g. an all-missing sensor):
+            nm = None                                              # undefined, recorded as NaN (protocol v6 amendment 2)
         acc = {k: {m: np.zeros(len(qy)) for m in ('nll', 'se', 'cov', 'crps')} for k in gauss}
         acc_nl = np.zeros(len(qy))
         pats = {}
@@ -216,7 +220,7 @@ def closed_forms(pool, qm):
             for name, (pmu, pvar) in preds.items():
                 for m, v in gauss_metrics(pmu, pvar, qy[idx]).items():
                     acc[name][m][idx] = v
-            acc_nl[idx] = nlfa.predict_nll(nm, qx[idx], qy[idx], S)
+            acc_nl[idx] = nlfa.predict_nll(nm, qx[idx], qy[idx], S) if nm is not None else np.nan
         for k in gauss:
             for m in ('nll', 'se', 'cov', 'crps'):
                 out[k][m][t] = acc[k][m].mean()

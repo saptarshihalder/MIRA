@@ -101,3 +101,13 @@ pretrained on the same prior.
 
 **What motivated it.** A pre-panel smoke test: 3 fine-tuning steps on 80 Intel source episodes. It checked code
 paths only; no test episode was used.
+
+## Amendment 2 (October 11, before any v6 model score)
+
+**What happened.** Building the Intel panel failed. The NL-FA closed form's design matrix was singular on at least one
+episode, for example when an input mote has no readings in that episode's support rows.
+
+**Change.** NL-FA is now recorded as undefined (NaN) on such episodes, and the number of affected episodes is
+reported.
+
+**Scope.** NL-FA is a descriptive comparator and enters no endpoint. No other method is changed.
