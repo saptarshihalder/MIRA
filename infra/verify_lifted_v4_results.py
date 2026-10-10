@@ -103,8 +103,8 @@ def preflight(root, panels, identity_path):
                   for filename in ("model.pt", "train.json", "checkpoint_identity.json"))
     missing = [str(path) for path in needed if not path.is_file() or path.stat().st_size == 0]
     require(not missing, "Required inputs incomplete; no endpoint checks: " + ", ".join(missing))
-    require(not any((root / name).exists() for name in ("RUNNING.lock", "MODAL_RUNNING.lock")),
-            "Results root is still locked; no endpoint checks")
+    require(not any((root / name).exists() for name in ("RUNNING.lock", "MODAL_RUNNING.lock", "INCOMPLETE")),
+            "Results root is still locked or collection incomplete; no endpoint checks")
     return checkpoints, scores
 
 

@@ -1,3 +1,5 @@
+October 11 bibliography update:42/42 bibliographic metadata entries verified, with explicit primary-catalog and contents evidence in LIFTED_REMAINING_REFERENCES.md; not full-text or novelty clearance.
+
 # Bounded mathematical audit — 2026-10-10, amended-text recheck
 
 Scope: the four propositions and their appendix proofs. The initial audit also read the bounded reference-verification memo. No model, data, experimental results, or external services were inspected. All four amended statements receive conditional PASS below; this is not a whole-paper readiness or independent formal-verification declaration.

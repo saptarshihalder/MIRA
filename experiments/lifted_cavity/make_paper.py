@@ -1,6 +1,6 @@
 """Generate every number, table and figure of the paper from saved per-task scores (no model is run here).
 
-python make_paper.py --out /home/claude/mira/paper/lifted_cavity
+python make_paper.py --out paper/lifted_cavity
 Writes generated/numbers.tex (macros), generated/*_table.tex, figures/*.pdf. Missing inputs print as '--'.
 """
 import argparse, json, re
@@ -896,7 +896,9 @@ for nm in ('pfn_L', 'lct_L'):
         js = [json.loads(f.read_text()) for f in tj]
         mac(f'Vfour{nm.replace("_", "")}params', f"{js[0]['parameters']:,}".replace(',', '{,}'))
         mac(f'Vfour{nm.replace("_", "")}gpuhours', f"{sum(j_['seconds'] for j_ in js) / 3600:.1f}")
-tj = R / 'tabpfn_v2' / 'train.json'
+tj = R / 'tabpfn_v2' / 'train_v4.json'
+if not tj.exists():
+    tj = R / 'tabpfn_v2' / 'train.json'
 if tj.exists():
     jt = json.loads(tj.read_text())
     mac('Vfourtabpfnpackage', str(jt.get('package', '?')))

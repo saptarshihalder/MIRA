@@ -1,0 +1,8 @@
+{
+  "scope": "Historical-only isolated export/generator smoke; no v4 efficacy or training reproduction",
+  "historical_macros_unchanged": true,
+  "macro_count": 854,
+  "numeric_export_identity_scan": "passed",
+  "weights_included": false,
+  "normalized_macro_sha256": "fb8fd8e76c839952e48b5688a74c67a2c4062111143d1500e755ef88dbfe8888"
+}

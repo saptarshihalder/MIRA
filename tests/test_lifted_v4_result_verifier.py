@@ -72,6 +72,14 @@ def test_incomplete_inputs_never_load_panels_or_recompute(tmp_path, monkeypatch)
         v.verify(tmp_path / "results", tmp_path / "panels", tmp_path / "identity.json", forbidden)
 
 
+@pytest.mark.parametrize("marker", ["INCOMPLETE", "RUNNING.lock", "MODAL_RUNNING.lock"])
+def test_complete_looking_but_active_collection_is_rejected(fabricated_bundle, marker):
+    root, panels, identity, _ = fabricated_bundle
+    (root / marker).write_text("fabricated active collection")
+    with pytest.raises(v.VerificationError, match="still locked or collection incomplete"):
+        v.preflight(root, panels, identity)
+
+
 def test_recorded_confirmation_must_match_every_value_and_decision():
     row = dict(gain=.02, lo=.01, hi=.03, n=60, passed=True)
     actual = {key: dict(row) for key in v.ENDPOINTS}

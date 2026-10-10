@@ -1,5 +1,7 @@
 # MIRA status - October 11, 2026 (India time)
 
+October 11 completion work: 42/42 bibliography metadata checked; live 93-distribution GPU environment recorded; integration and code/score review package prepared. Historical-only isolated export reproduces 854 macros unchanged. No v4 efficacy, complete verification or prediction replay yet. See docs/LIFTED_V4_INTEGRATION.md and LIFTED_NOVELTY_SCOPE.md.
+
 ## Current: explicitly authorized continuation after packaging failure
 
 The user asked to complete work despite being one day late. Original GPU call failed at intermediate packaging because Git was absent, after both seed1 source models and six fine-tunes completed. All8 learned checkpoints/15 score archives recovered; no partial efficacy contrasts or full-confirmation claim.
@@ -8,9 +10,9 @@ New actual L40S call fc-01M4KMG0FQ3CYTVKSRGQVGC6DF is running; remote packaging 
 
 Cost reconciled: USD6.33127153 metered gross;7historical+9.5continuation+3protected=19.5 within20. Invoices still open. Complete-result, continuation-proof, collection and replay guards pass52 fabricated-input tests. Actual full verification/replay pending.
 
-After complete exit0 use .venv-modal Python infra/collect_lifted_v4_results.py --collect (new call). Then .venv-compiler-cpu Python infra/verify_lifted_v4_results.py --root artifacts/runs/lifted_v4_final --panels artifacts/inputs/lifted_v4_panels; then infra/replay_lifted_v4_predictions.py with the same root/panels. Require24checkpoint files,35archives, frozen pretrained weight, all endpoint decisions, unchanged seed1 and fixed CPU replay. Preserve every failed endpoint. Integrate verified new files into paper reports without overwriting history; no integration utility exists yet because delegates hit usage limits. Keep existing editor. Native modular-style limitation persists; same-source PDF builds9main/29total pages. No publication-readiness verdict yet.
+After complete exit0 use .venv-modal Python infra/collect_lifted_v4_results.py --collect (new call). Then .venv-compiler-cpu Python infra/verify_lifted_v4_results.py --root artifacts/runs/lifted_v4_final --panels artifacts/inputs/lifted_v4_panels; then infra/replay_lifted_v4_predictions.py with the same root/panels. Require24checkpoint files,35archives, frozen pretrained weight, all endpoint decisions, unchanged seed1 and fixed CPU replay. Preserve every failed endpoint. Integrate verified new files into paper reports without overwriting history; infra/integrate_lifted_v4_verified.py now stages only complete verified/replayed evidence and requires explicit --merge; 20 guard tests pass, no actual integration yet. Keep existing editor. Native modular-style limitation persists; same-source PDF builds 9 main/29 total pages. No publication-readiness verdict yet.
 
-The expired sprint automation was deleted; mira-final-gpu-result-check performs one completion review at6am IST October11 then stops. All snapshots below are historical.
+The expired sprint automation was deleted; mira-final-gpu-result-check performs one completion review at6am IST October 11 then stops. All snapshots below are historical.
 
 # Historical October10 status
 

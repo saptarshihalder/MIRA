@@ -1,3 +1,5 @@
+October 11 authorized continuation: the missed October10 delivery is not marked complete. Fixed GPU v4 is running; complete-result integration, score-export reproduction, environment capture and final claim audits are prepared. Follow docs/LIFTED_V4_INTEGRATION.md after full completion, preserving all outcomes.
+
 # MIRA: October 1â€“20, 2026
 
 ## Latest October 9 execution gate

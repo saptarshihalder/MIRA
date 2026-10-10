@@ -17,8 +17,9 @@ Building the Beijing-new panels showed two things:
   2\,$\mu$g\,m$^{-3}$.
   \item Three SO$_2$ support sets were constant.
 \end{itemize}
-A continuous NLL then rewards placing spikes on grid values. TabPFN's histogram output can do this; Gaussian outputs
-cannot. We therefore dequantize~\citep{theis2016note}. Every integer reading of every station becomes reading
+A continuous NLL can reward concentrating density on quantization values. Histogram and Gaussian outputs can
+benefit differently from this, complicating their comparison. We therefore dequantize~\citep{theis2016note}.
+Every integer reading of every station becomes reading
 $+\,\mathcal{U}(-\tfrac12,\tfrac12)$ before the log. The noise is fixed per pollutant and shared by the test and
 fine-tuning episodes. Readings on finer grids, which occur only in 2013--2015, are kept as they are. Before the
 amendment, the only outputs seen were the closed-form reference scores printed while the undequantized panels were
@@ -30,7 +31,8 @@ built; those panels were discarded.
   \item longer checkpoint intervals, with a fallback to the previous checkpoint;
   \item a cached fine-tuning pool.
 \end{itemize}
-On a CPU these runs are bitwise identical to the original code (unit-tested). TabPFN predicts all conditions of an
+An interrupted 12-update LCT CPU run resumes to bitwise-identical weights in the unit test; this does not establish
+bitwise reproducibility of the full GPU runs or every execution optimization. TabPFN predicts all conditions of an
 episode in one call; its query rows do not interact. The third training seeds of the 203k transformers are post hoc.
 
 \textbf{Interpretation limits.} The five decisions use nominal endpoint-wise 95\% intervals, without a

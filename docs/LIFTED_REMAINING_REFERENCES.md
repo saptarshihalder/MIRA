@@ -42,3 +42,11 @@ Scope: the 34 entries in `paper/lifted_cavity/references.bib` outside the eight 
 | `theis2016note` | VERIFIED | [Author-posted conference PDF](https://arxiv.org/pdf/1511.01844), p. 1: Theis/van den Oord/Bethge, title, ICLR 2016 match; 2015 is the initial preprint year. |
 
 Result after the bounded follow-up: **32 VERIFIED, 2 PARTIAL, 0 UNVERIFIED**. The follow-up used exactly two additional source retrievals, one for each unresolved scan; both failed as recorded above, and no retry loop was used. Gregor pagination and Anderson's publication title page remain open checks before bibliography freeze. Optional DOI/volume additions improve traceability but do not establish scientific validity or novelty.
+
+
+## October 11 primary-source closure
+
+- Gregor/LeCun: the official [ICML proceedings contents](https://icml.cc/Conferences/2010/papers/toc.pdf), page 3, lists this paper at 399 and the next paper at 407. The [official paper](https://icml.cc/Conferences/2010/papers/449.pdf) has 8 pages and confirms title, authors, venue and year. Thus 399–406 is verified from the publisher's own contents plus paper extent; no bibliography change is needed.
+- Anderson/Rubin: the UC Berkeley Library's [collection/frontmatter catalog](https://digicoll.lib.berkeley.edu/record/112530?ln=en) explicitly records all 5 volumes as published by University of California Press, Berkeley, 1956. This closes the publication-year metadata question in conjunction with the already inspected article catalog. The retrieved primary search extraction supplies the catalog record; direct full-page retrieval failed and no original title-page scan was inspected. The 1954/55 symposium dates and 1955 technical report are distinct.
+
+The remaining34 entries now have verified bibliographic metadata:34 VERIFIED, 0 PARTIAL. Combined with the8 closest prior works,42/42 metadata entries are checked. This does not mean every source's full text was inspected or establish exhaustive novelty clearance. Previous failed retrievals remain recorded above.

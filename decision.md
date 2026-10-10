@@ -1,3 +1,11 @@
+## October 11: complete-result integration prepared; v4 still running
+
+The explicit GPU continuation is unchanged. PFN-L seed 2 completed 40,000 CUDA updates; LCT-L seed 2 is now training. No partial endpoint contrast is computed. The live Python 3.12.10 environment, 93 installed distributions and L40S with driver 580.95.05 are recorded through a read-only query in the existing bounded container; no new paid function was launched.
+
+Integration now requires complete independent verification and the successful byte-bound CPU replay, stages scores/metadata only, refuses conflicting history, and requires explicit merge. A review code/score package builder is prepared; a historical-only isolated export regenerates all 854 numerical macros unchanged. Model weights/raw observations are excluded, so this is not full training reproduction. The focused novelty audit distinguishes the candidate construction from established EP, PoE, set and information-filter methods and identifies missing component ablations.
+
+All 42 bibliography metadata entries are checked. The same manuscript builds 9 main/29 total pages with no overfull boxes or unresolved references, and the edited audit page was visually inspected. Resume-test and quantization statements were narrowed. Native editor compilation still cannot resolve its local modular style. Final scientific readiness remains unresolved until the full v4 bundle is verified/replayed and incorporated.
+
 # Research decision â€” October 1, 2026
 
 ## One-factor orientation repair passes source gate - October 7

@@ -1,0 +1,13 @@
+{
+  "source": "paper/lifted_cavity/main.tex",
+  "pdf_sha256": "42fa09df252faf854f32abb4d1dc95ba58f2f452094426c4c20aac0c0091518d",
+  "total_pages": 29,
+  "main_pages": 9,
+  "references_start": 10,
+  "undefined_references": false,
+  "overfull": false,
+  "author_identity_strings": false,
+  "compiler": "same-source Tectonic0.17.0",
+  "native_compiler": "Missing local neurips_2026.sty in isolated compiler; remains unresolved",
+  "science": "Historical v2/v3 only; v4 pending"
+}
