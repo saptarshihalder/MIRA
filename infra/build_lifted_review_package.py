@@ -61,6 +61,12 @@ def build(root, panels, replay_path, output):
     installed = json.loads(files["provenance/v4_environment.json"])["packages"]
     files["requirements-v4-observed.txt"] = ("# Observed installed distributions, not wheel hashes or an independently rebuilt environment.\n" +
                                             "\n".join(f"{row['name']}=={row['version']}" for row in installed) + "\n").encode()
+    seed_audit = REPO / "artifacts/reports/lifted_v4_seed_sensitivity.json"
+    sensitivity = json.loads(seed_audit.read_text(encoding="utf-8"))
+    integration.require(sensitivity.get("bindings") == bindings, "Seed sensitivity belongs to other inputs")
+    files["results/v4_audit/seed_sensitivity.json"] = (json.dumps(cleaned(sensitivity), sort_keys=True,
+                                                               indent=2, allow_nan=False) + "\n").encode()
+    files["docs/LIFTED_V4_SEED_AUDIT_PLAN.md"] = (REPO / "docs/LIFTED_V4_SEED_AUDIT_PLAN.md").read_bytes()
     report_root = integration.DEFAULT_TARGET
     stage = integration.DEFAULT_STAGE
     staged = verifier.read_json(stage / "STAGE_MANIFEST.json")

@@ -40,6 +40,12 @@ tables and numbers only after this complete-result barrier. Rebuild and visually
 review the same manuscript source, audit new numerical claims, then create the
 review supplement and verify its inventory and anonymity separately.
 
+After successful replay, also run
+`infra/summarize_lifted_v4_seed_sensitivity.py` with the same `--root` and
+`--panels`. Report all three point gains for every endpoint. This is an added
+descriptive audit, not a replacement for the fixed aggregate decisions;
+see LIFTED_V4_SEED_AUDIT_PLAN.md. The review package requires its hash binding.
+
 The research report metadata preserves provenance and may contain historical
 machine paths. It is not automatically an anonymous submission supplement.
 Hashes bind local files and checks; they do not supply independent cryptographic
