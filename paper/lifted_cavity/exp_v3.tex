@@ -2,12 +2,8 @@
 \label{sec:exp-v3}
 
 Protocol v2 left a split: structure wins on synthetic tasks, the transformer on real networks after fine-tuning. The
-\emph{lifted cavity transformer} (LCT) keeps the transformer's backbone, recipe and seed and replaces only its output
-head: a zero-initialized linear map turns each observed query cell's final token into the correction
-$(\delta^{\mathrm{off}}_j,\delta^{\mathrm{slope}}_j,\delta^{D}_j,s_j)$ of that sensor's site in \eqref{eq:relin},
-linearized at the FA-Gaussian posterior mean, and the prediction is the $y$-marginal of the product of observed sites.
-Missing sensors contribute no site and their readings never enter; at initialization the LCT is its anchor's closed
-form. Because the hypothesis was formed after the v2 results, v3 uses only new data, two fresh synthetic panels (G1,
+\emph{lifted cavity transformer} (LCT; \S\ref{sec:method-lct}) keeps the transformer's backbone, recipe and seed, with
+a lifted probabilistic readout. Because the hypothesis was formed after the v2 results, v3 uses new panels (G1,
 five sensors; G3, sixteen) and two Beijing pollutants never scored before (NO$_2$ and CO), and its four endpoints were
 committed before any of these existed (Table~\ref{tab:endpoints}).
 

@@ -26,8 +26,6 @@ EM-Gaussian, BLR and both ridges fall below FA-Gaussian; mean imputation is the 
 \subsection{Generalization beyond the training distribution}
 \label{sec:exp-shift}
 
-\input{generated/shift_table}
-
 \textbf{Width} (Table~\ref{tab:shift}, Figure~\ref{fig:main}b). The lifted cavity network runs unchanged on 8 and 16 sensors, where it improves on FA-Gaussian by
 \SFTwogainfa\ \SFTwogainfaci\ and \SFThreegainfa\ \SFThreegainfaci\ nats with two missing sensors. The residual MLP
 cannot run on these panels, and EM-Gaussian degrades as the covariance grows. \input{exp_shift_pfn}
@@ -44,7 +42,7 @@ learned re-linearization then costs \SFFivegainfaabs\ nats with two missing sens
 \subsection{What the lifting buys}
 \label{sec:audit}
 
-Ablations on F1 (Table~\ref{tab:ablation}, Appendix~\ref{app:more}) isolate the components. \textbf{Lifting} is the
+Ablations on F1 (Table~\ref{tab:ablation}, Appendix~\ref{app:more}) compare components of the small network. \textbf{Lifting} is the
 largest factor: scalar sites ($K=0$) with otherwise identical machinery and training lose \AblLiftabs\ \AblLiftci\ nats
 with two missing sensors and end up worse than the untrained FA-Gaussian anchor. This supports lifting empirically
 under the tested training regime; Proposition~\ref{prop:scalar} does not cover this context-conditioned ablation.
@@ -59,7 +57,8 @@ design, retrained with the same 60{,}000-task recipe, remains far behind FA-Gaus
 
 \paragraph{Beijing multi-site air quality~\citep{zhang2017beijing}.}
 The task is to predict log PM$_{2.5}$ at each of 12 monitoring stations from the other 11, using hourly data with
-natural missingness. Each episode is one station and one week, with 48 labeled support hours and 48 query hours. The
+natural missingness. This tests contemporaneous missing-station interpolation, rather than low-cost-device calibration
+or future forecasting. Each episode is one station and one week, with 48 labeled support hours and 48 query hours. The
 test period (2016-01 to 2017-02, \Rbeijingepisodes\ episodes) was never examined before protocol v2 was committed.
 Learned models are fine-tuned on episodes from 2013--2015 with one fixed recipe; the protocol's analysis is
 cluster-robust over weeks.

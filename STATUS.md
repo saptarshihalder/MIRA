@@ -1,5 +1,9 @@
 # MIRA status - October 11, 2026 (India time)
 
+User-requested architectural repair implemented separately: gauge-free covariance-transport head and cell-token model wrapper, five source-only structural tests pass, zero cloud. This is untrained; no utility/novelty claim or change to the running v4 experiment. See docs/COVARIANCE_TRANSPORT_SUCCESSOR.md for primary sources, overlap and conditional matched-control gate. The paper title now centers trained Gaussian site layers rather than implying cavity iteration is the only contribution.
+
+October11 strengthening: the transformer site readout is now in Methods; synthetic unseen deletion counts are distinguished from natural-gap fine-tuning, and unsupported accuracy/optimization guarantees removed. Detailed shift results moved to the appendix without changing any number; the same PDF builds with conclusion on page9. A 60-row descriptive accuracy/calibration audit is prepared in docs/LIFTED_V4_SECONDARY_METRIC_PLAN.md; it cannot run before full verification and replay. Actual v4 efficacy remains pending.
+
 October 11 completion work: 42/42 bibliography metadata checked; live 93-distribution GPU environment recorded; integration and code/score review package prepared. Historical-only isolated export reproduces 854 macros unchanged. No v4 efficacy, complete verification or prediction replay yet. See docs/LIFTED_V4_INTEGRATION.md and LIFTED_NOVELTY_SCOPE.md.
 
 ## Current: explicitly authorized continuation after packaging failure

@@ -1,0 +1,30 @@
+{
+  "created_at_utc": "2026-10-10T20:40:10.747133+00:00",
+  "pdf": "paper\\lifted_cavity\\main.pdf",
+  "sha256": "e3267b254858ca25ff73d24bdd075839f71c25637c9be254232046e555cafaa3",
+  "pages": 30,
+  "conclusion_page": 9,
+  "references_page": 10,
+  "main_text_within_nine_pages": true,
+  "native_compiler": "Missing project-local neurips_2026.sty in isolated compiler; same-source Tectonic succeeds",
+  "scientific_results": "Historical v2/v3 only; v4 pending",
+  "numerical_exports_changed": false,
+  "changes": [
+    "Lifted transformer readout in Methods; one joint-anchor linearization rather than three cavity rounds",
+    "No guarantee of unseen-mask accuracy or end-to-end transformer permutation invariance",
+    "Natural-gap fine-tuning distinguished from synthetic unseen deletion counts",
+    "No optimization or test-risk guarantee from zero-head initialization",
+    "Detailed shift table moved to appendix; all values retained"
+  ],
+  "title": "Lifted Gaussian Site Layers for In-Context Sensor Fusion",
+  "metadata": {
+    "/Creator": "LaTeX with hyperref",
+    "/Producer": "xdvipdfmx (0.1)",
+    "/CreationDate": "D:20261010204256-00'00'"
+  },
+  "visually_reviewed_pages": [
+    1,
+    5,
+    9
+  ]
+}

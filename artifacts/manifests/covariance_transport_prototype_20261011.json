@@ -1,0 +1,22 @@
+{
+  "created_at_utc": "2026-10-10T20:52:15.454922+00:00",
+  "scope": "Untrained conditional successor engineering; frozen v4 unchanged",
+  "files": {
+    "experiments/lifted_transport/readout.py": "18c9c18321c84e9a47ab54df941e1e94886a0160a8f72f46b3e22a3715a9443d",
+    "experiments/lifted_transport/model.py": "f922af7ff083297f9d5cf961354034e73efd0650b1fa3ae2d45af99f9af8bcd0",
+    "tests/test_covariance_transport.py": "c83b59cb43c302968d6b1aec3654a56e317689ee60624d64ef02e0528e3a5f29"
+  },
+  "tests": {
+    "command": ".venv-compiler-cpu Python -m pytest tests/test_covariance_transport.py -q",
+    "passed": 5,
+    "seconds": 5.63
+  },
+  "cloud_usd": 0,
+  "scientific_fitting": false,
+  "efficacy_established": false,
+  "regression_checks": {
+    "passed": 19,
+    "seconds": 32.04,
+    "command": ".venv-compiler-cpu Python -m pytest tests/test_covariance_transport.py tests/test_lifted_cavity.py tests/test_lifted_gauge.py -q"
+  }
+}

@@ -30,7 +30,7 @@
 
 \input{generated/numbers}
 
-\title{Lifted Cavity Networks: In-Context Sensor Fusion\\with Missing Sensors and Shared Noise}
+\title{Lifted Gaussian Site Layers\\for In-Context Sensor Fusion}
 
 \author{Anonymous Authors}
 
@@ -60,9 +60,9 @@ returns a predictive distribution for the target. Trained once across many deplo
 one from its calibration rows alone, as conditional neural processes and prior-fitted networks do for regression and
 tabular prediction~\citep{garnelo2018cnp,muller2022pfn,hollmann2025tabpfnv2}.
 
-The problem imposes two structural requirements. The predictor must be \emph{mask-consistent}: defined and accurate for
+The problem imposes two structural requirements. The predictor must be \emph{mask-compatible}: defined for
 every subset of observed sensors, including subsets absent from training. It must also be \emph{width-agnostic}: usable
-for any number of sensors. A product of per-sensor experts over the target meets both by construction, because a
+for any number of sensors. A product of per-sensor experts over the target meets both construction requirements, because a
 missing sensor simply contributes no factor~\citep{hinton2002poe,wu2018mvae}. Learned message passing in the style of
 expectation propagation (EP) refines such experts using context from the other sensors~\citep{minka2001ep,heess2013learning}.
 
@@ -74,9 +74,8 @@ expectation propagation (EP) refines such experts using context from the other s
   Proposition~\ref{prop:rank}, exact static linear-Gaussian sites require at least $K$ nuisance dimensions for rank-$K$
   shared noise. These results do not exclude mask- or cavity-conditioned scalar sites.
   \item \textbf{Lifted cavity networks (\S\ref{sec:method}).} Each observed sensor contributes a rank-one Gaussian
-  site over the target and a low-dimensional shared nuisance, and missing sensors are omitted exactly. The sites start
-  from a factor analysis of the incomplete calibration rows and are refined by a small network that re-linearizes
-  each sensor's response under its cavity.
+  site over the target and a low-dimensional shared nuisance, and missing sensors are omitted exactly. A support-fitted factor-analysis anchor
+  initializes either a small cavity-refinement network or a transformer with a learned site output layer.
   \item \textbf{A pre-registered evaluation (\S\ref{sec:experiments})} against exact posteriors, a Hamiltonian Monte
   Carlo reference conditioned on support-inferred response signs, tuned closed forms and a TabPFN-v2-style transformer trained on the
   same task distribution, on synthetic panels and two real sensor networks. Three protocols were committed before
@@ -105,9 +104,10 @@ Bayes-optimal ceiling. Reported gap-closure percentages use the NLL difference b
 of \S\ref{sec:method} and this sign-conditioned HMC reference (the \emph{reference gap}).
 
 An in-context method learns a map $(\D,x_S)\mapsto q(y)$ by minimizing NLL over tasks drawn from a training
-distribution~\citep{garnelo2018cnp,muller2022pfn,gershman2014amortized}. Throughout, models are trained only on
-queries with \emph{at most one} missing sensor, and evaluated on patterns with up to three missing. Two- and
-three-sensor deletions are therefore never seen in training.
+distribution~\citep{garnelo2018cnp,muller2022pfn,gershman2014amortized}. In synthetic training, query masks omit
+\emph{at most one} sensor; evaluation also deletes two or three. These synthetic deletion counts are unseen in
+training. Real-data fine-tuning retains natural missingness and removes at most one additional sensor, so it can
+contain several missing sensors; unseen-count claims do not apply to those real episodes.
 
 %=====================================================================
 \section{Scalar experts cannot fuse sensors with shared noise}
@@ -117,7 +117,7 @@ three-sensor deletions are therefore never seen in training.
 Consider $x_j=a_j y+d_j u+\sigma_j\epsilon_j$ with mutually independent $y,u,\epsilon_j\sim\N(0,1)$, $\sigma_j>0$ and $a_j\neq0$. Here $u$ is
 a nuisance shared by all sensors. A product-of-experts (PoE) predictor gives each sensor a factor $t_j(y;x_j)$ and
 predicts $q(y\mid x_S)\propto p(y)\prod_{j\in S}t_j(y;x_j)$. Omitting missing sensors is what makes the construction
-mask-consistent.
+mask-compatible.
 
 \begin{proposition}[Scalar experts]\label{prop:scalar}
 Let each $t_j$ be Gaussian in $y$ with positive precision, depend on $x_j$, and not depend on $S$. Suppose $q$ equals
@@ -230,6 +230,8 @@ For any parameters $\theta$:
 \end{enumerate}
 \end{proposition}
 
+The zero-head property is representational: it guarantees neither optimization convergence nor that a trained
+checkpoint improves on the anchor on new tasks.
 The original learned model does not enforce invariance to equivalent factor signs. Anchor refitting can therefore
 violate end-to-end sensor-permutation invariance through a changed nuisance orientation. A separately versioned
 one-factor sign-averaging repair passed source-only structural checks; the reported efficacy results remain those
@@ -241,6 +243,8 @@ queries per step, 20{,}000 AdamW steps with cosine decay, query masks with at mo
 and $R=3$. The model has about 8{,}000 parameters and trains in 15--20 minutes on one CPU core, \Computetrainratio{} times less than the transformer baseline (Table~\ref{tab:compute}). The same recipe trains
 every learned baseline except the transformer, which gets fresh tasks at every step.
 
+\input{method_lct}
+
 %=====================================================================
 \section{Related work}
 \label{sec:related}
@@ -251,8 +255,8 @@ negative result concerns scalar-target experts; MVAE already uses multivariate l
 learned EP messages~\citep{heess2013learning,eslami2014just,jitkrittum2015kernel} or unrolled
 inference~\citep{gregor2010lista,monga2021unrolling}, learns reusable operators for specified factors; here sensor
 response is inferred from deployment calibration support, with a target/nuisance cavity. \textbf{Supervised
-learning with missing values}~\citep{rubin1976inference,little2019statistical,josse2019consistency} studies one task
-at a time; NeuMiss~\citep{lemorvan2020neumiss} unrolls the Bayes predictor of a Gaussian model but is trained per
+learning with missing values}~\citep{rubin1976inference,little2019statistical,josse2019consistency} includes task-specific
+predictors; NeuMiss~\citep{lemorvan2020neumiss} unrolls the Bayes predictor of a Gaussian model but is trained per
 dataset and keyed to feature identities. \textbf{In-context prediction} with neural
 processes~\citep{garnelo2018cnp,kim2019anp} and prior-fitted networks such as TabPFN and
 TabICL~\citep{muller2022pfn,hollmann2023tabpfn,hollmann2025tabpfnv2,qu2025tabicl} uses generic set or transformer

@@ -1,11 +1,12 @@
-\paragraph{Lifted sites as a transformer output layer.}
-The sites can also terminate a generic in-context model. The \emph{lifted cavity transformer} (LCT) keeps a cell-token
-transformer's backbone and replaces only its output head.
-\begin{itemize}
-  \item A zero-initialized linear map turns the final token of each observed query cell into the correction
-  $(\delta^{\mathrm{off}}_j,\delta^{\mathrm{slope}}_j,\delta^{D}_j,s_j)$ of that sensor's site in~\eqref{eq:relin},
-  linearized at the FA-Gaussian posterior mean.
-  \item The prediction is the $y$-marginal of the product of the observed sites.
-\end{itemize}
-Missing sensors contribute no site and their readings never enter. At initialization the LCT equals the closed form of
-its anchor, so parts (i) and (iii) of Proposition~\ref{prop:struct} carry over.
+\paragraph{Lifted sites as a transformer output layer.}\label{sec:method-lct}
+The \emph{lifted cavity transformer} (LCT) uses the same cell-token backbone as the plain transformer, with a
+zero-initialized linear map from each observed query-cell token to the site corrections in~\eqref{eq:relin}.
+It linearizes once at the FA-Gaussian posterior mean, then returns the target marginal of the product of observed
+sites. Unlike the small network, it does not perform three cavity-refinement rounds. The backbone can condition
+site corrections on the full support and query subset; lifting constrains the probabilistic readout, not those
+interactions. Missing readings are excluded and a zero head recovers the anchor, so parts (i) and (iii) of
+Proposition~\ref{prop:struct} carry over; part (ii) is not asserted for the transformer's random column embeddings.
+Given the tokens, site aggregation and the $(K+1)$-dimensional solve cost
+$O(P(K+1)^2+(K+1)^3)$ per query; this excludes the backbone and support-anchor fitting.
+The contrast with a plain transformer tests this readout as a package: it changes both the head parameterization
+and initialization, without separately attributing their effects.
