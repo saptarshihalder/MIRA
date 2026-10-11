@@ -1,0 +1,76 @@
+{
+  "kind": "engineering-only-untrained",
+  "source": "constructed random tensor fixtures",
+  "seed": 20261118,
+  "dtype": "float64",
+  "threads": 1,
+  "repeats": 5,
+  "components": 3,
+  "latent_width": 5,
+  "parameter_count": 1317,
+  "python": "3.11.9",
+  "torch": "2.8.0+cpu",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "rows": [
+    {
+      "sensors": 32,
+      "compositional_seconds": [
+        0.001401799963787198,
+        0.001144199981354177,
+        0.0011112999636679888,
+        0.0010633999481797218,
+        0.001006699982099235
+      ],
+      "dense_seconds": [
+        0.0005259999888949096,
+        0.00047129997983574867,
+        0.0004723999882116914,
+        0.00047989998711273074,
+        0.0005046000005677342
+      ],
+      "dense_over_small_median": 0.43183659030164906,
+      "max_absolute_discrepancy": 1.4210854715202004e-14
+    },
+    {
+      "sensors": 128,
+      "compositional_seconds": [
+        0.0017550999764353037,
+        0.0019333999953232706,
+        0.0024184000212699175,
+        0.0014770000125281513,
+        0.0016151000163517892
+      ],
+      "dense_seconds": [
+        0.002274799975566566,
+        0.0019850999815389514,
+        0.0021778999944217503,
+        0.0020262000034563243,
+        0.001865199999883771
+      ],
+      "dense_over_small_median": 1.1544641505674442,
+      "max_absolute_discrepancy": 5.684341886080802e-14
+    },
+    {
+      "sensors": 512,
+      "compositional_seconds": [
+        0.0026683000032790005,
+        0.002998399955686182,
+        0.0025189999723806977,
+        0.0037474000127986073,
+        0.0026560999685898423
+      ],
+      "dense_seconds": [
+        0.03897360002156347,
+        0.04547359998105094,
+        0.042703499959316105,
+        0.041253000032156706,
+        0.05151680001290515
+      ],
+      "dense_over_small_median": 16.004010008934134,
+      "max_absolute_discrepancy": 2.2737367544323206e-13
+    }
+  ],
+  "training_steps": 0,
+  "cloud_cost_usd": 0,
+  "limitations": "Readout only; no anchor/encoder/training cost or trained-model quality comparison."
+}

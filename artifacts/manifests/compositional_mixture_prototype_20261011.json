@@ -1,0 +1,85 @@
+{
+  "created_at_utc": "2026-10-11T07:27:47.984553+00:00",
+  "scope": "Untrained compositional Gaussian mixture prototype; structural and local CPU readout engineering only.",
+  "parameter_count": 1317,
+  "hash_algorithm": "sha256",
+  "files": {
+    "experiments/compositional_mixture/model.py": "ac9a5a7b688b68b85c3e51913baa41882d1c3fff40933bd821fbdcd6b0947d7f",
+    "experiments/compositional_mixture/__init__.py": "c923d75162822a6ffb5502eba4e7c39970569b78e0eb22ddb18f0124f89a8912",
+    "experiments/compositional_mixture/benchmark.py": "2fa7b4550870abe04ea038ce9aa851d395d06470c01afd757cf6eb4eddf139f3",
+    "tests/test_compositional_mixture.py": "9bcbd46fb96e63b998fe1a02108a151800c016d7b41533ee3dd8424ea4dff6dd",
+    "artifacts/reports/compositional_mixture/engineering_benchmark_20261011.json": "e39c6d70aed9350bf183227229cf34247ab52599ea8525816a46beaec2314264",
+    "docs/UNIVERSAL_PROPERTY_PROTOTYPE.md": "5403493deed75b46ec6a77ed7e77cba81fd1f18077c65396ac44a770d90165ca"
+  },
+  "tests": {
+    "command": "../.venv-compiler-cpu/Scripts/python.exe -m pytest tests/test_compositional_mixture.py -q",
+    "passed": 7,
+    "seconds": 12.17,
+    "result_provenance": "Completed run reported by the parent agent; not rerun during this documentation task.",
+    "scope": "Structural/oracle constructed fixtures, including a gradient check without optimizer steps; not learning-success evidence."
+  },
+  "benchmark": {
+    "report": "artifacts/reports/compositional_mixture/engineering_benchmark_20261011.json",
+    "source": "constructed random tensor fixtures",
+    "seed": 20261118,
+    "dtype": "float64",
+    "threads": 1,
+    "repeats": 5,
+    "warmups_per_path": 1,
+    "components": 3,
+    "latent_width": 5,
+    "python": "3.11.9",
+    "torch": "2.8.0+cpu",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "rows": [
+      {
+        "sensors": 32,
+        "compositional_median_seconds": 0.0011112999636679888,
+        "dense_median_seconds": 0.00047989998711273074,
+        "dense_over_compositional_median": 0.43183659030164906,
+        "compositional_over_dense_median": 2.315690755388454,
+        "max_absolute_discrepancy": 1.4210854715202004e-14
+      },
+      {
+        "sensors": 128,
+        "compositional_median_seconds": 0.0017550999764353037,
+        "dense_median_seconds": 0.0020262000034563243,
+        "dense_over_compositional_median": 1.1544641505674442,
+        "compositional_over_dense_median": 0.8662027309453293,
+        "max_absolute_discrepancy": 5.684341886080802e-14
+      },
+      {
+        "sensors": 512,
+        "compositional_median_seconds": 0.0026683000032790005,
+        "dense_median_seconds": 0.042703499959316105,
+        "dense_over_compositional_median": 16.004010008934134,
+        "compositional_over_dense_median": 0.06248433982744053,
+        "max_absolute_discrepancy": 2.2737367544323206e-13
+      }
+    ],
+    "limitations": [
+      "Readout only; no anchor/encoder/training cost or trained-model quality comparison.",
+      "Local constructed fixture timings at all recorded widths, not a general model speedup; the compositional path is about 2.32 times slower at 32 sensors.",
+      "The compositional timed call also computes mixture weights; the dense reference returns component means, variances and log evidence."
+    ]
+  },
+  "mathematical_audit": {
+    "kind": "Primary-source mathematical and antecedent audit documented in docs/UNIVERSAL_PROPERTY_PROTOTYPE.md, plus read-only implementation review.",
+    "sources": [
+      "https://proceedings.neurips.cc/paper/2017/file/f22e4747da1aa27e363d86d40ff442fe-Paper.pdf",
+      "https://www.cs.utoronto.ca/~hinton/absps/tr-96-1.pdf",
+      "https://www.microsoft.com/en-us/research/publication/mixture-density-networks/",
+      "https://proceedings.mlr.press/v80/garnelo18a/garnelo18a.pdf",
+      "https://arxiv.org/html/2101.03606"
+    ],
+    "implementation_review": "No concrete defects found in likelihood normalizers, masking, factor gauge handling or subset consistency within fixed support, fixed anchors and fixed model parameters.",
+    "novelty_cleared": false,
+    "publication_readiness_established": false,
+    "limitations": "Established additive Gaussian statistics, factor mixtures and support-conditioned covariance are antecedents; this is not comprehensive novelty clearance or evidence of learning success."
+  },
+  "training_steps": 0,
+  "cloud_cost_usd": 0,
+  "scientific_fitting": false,
+  "scientific_evaluation_panels_run": false,
+  "efficacy_established": false
+}
