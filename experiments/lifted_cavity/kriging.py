@@ -89,10 +89,12 @@ def train(name, prep, seed, steps, dev):
         nd = nodes[g]                                                                     # (256, 12)
         x = Z[t_idx[:, None], nd]; m = ~np.isnan(x)
         m[:, 1:] &= rng.random((256, nd.shape[1] - 1)) >= drop
-        k = rng.integers(0, 7, 256)
-        for b in np.flatnonzero(k):
-            o = np.flatnonzero(m[b, 1:]) + 1
-            m[b, rng.choice(o, min(k[b], max(len(o) - 1, 0)), replace=False)] = False
+        k = rng.integers(0, 7, 256)                                       # drop k random observed inputs, keep >= 1
+        nobs = m[:, 1:].sum(1)
+        keff = np.minimum(k, np.maximum(nobs - 1, 0))
+        key = np.where(m[:, 1:], rng.random((256, nd.shape[1] - 1)), np.inf)   # uniform random order of observed inputs
+        rank = key.argsort(1).argsort(1)
+        m[:, 1:] &= ~(rank < keff[:, None])
         y = torch.as_tensor(x[:, 0], dtype=torch.float32, device=dev)
         m[:, 0] = False
         feat = torch.as_tensor(np.stack((np.nan_to_num(x) * m, m), -1), dtype=torch.float32, device=dev)

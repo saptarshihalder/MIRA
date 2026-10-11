@@ -67,3 +67,12 @@ Gains are positive when UPT is better.
 - MAE, RMSE (from `se`), CRPS and 90% coverage for every method.
 
 All outcomes are reported.
+
+## Implementation note (October 11, before any kriging result was read)
+
+The kriging training loop now draws its extra dropped inputs in vectorized form: a uniformly random order of the
+observed inputs, with the first k removed and at least one input always kept. This is the same distribution as
+before, computed about 4× faster. The recipe is unchanged.
+
+All kriging runs are recomputed with this code. The few runs finished earlier, whose results were never read, are
+discarded.
