@@ -26,5 +26,6 @@ if __name__ == '__main__':
         if busy:
             print(name, 'already running'); continue
         subprocess.Popen(['bash', '-c', f': mira_chain_{name}_marker; cd {here} && ({script}) >> {log} 2>&1; echo CHAIN_{name}_EXIT $? >> {log}'],
-                         start_new_session=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                         start_new_session=True, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                         close_fds=True)                       # no terminal handles, so the notebook cell returns at once
         print(name, 'started ->', log)
