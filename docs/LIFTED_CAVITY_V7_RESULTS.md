@@ -22,8 +22,11 @@ air (PM2.5, Beijing stations excluded).
 
 **The headline claim** (Q1 and Q2) **holds**: UPT is more robust to sensor loss than the pretrained TabPFN v2.
 
-**S1 and S2 (UPT-L) are not run yet.** UPT-L training was at step 15,000 of 40,000 when v7 finished. They will be
-reported when it completes.
+**S1 and S2 (UPT-L), run after the main endpoints.**
+- S1, UPT-L vs TabPFN v2: +0.313 [+0.253, +0.372] at extra = 0; +0.505 at 3; +1.073 at 6. All pass.
+- S2, UPT-L vs UPT: +0.230 [+0.174, +0.286]. Pass.
+
+Details are in `LIFTED_CAVITY_V8_RESULTS.md`.
 
 ## Mean test NLL by network (seed averages; lower is better)
 
