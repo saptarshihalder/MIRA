@@ -103,8 +103,10 @@ def mixture_metrics(w, mu, var, y):
     90% central-interval coverage and the exact CRPS (Grimit et al. 2006)."""
     import numpy as np
     from scipy.stats import norm
+    from scipy.special import logsumexp
     yy = y[:, None]
-    nll = -np.log((w * norm.pdf(yy, mu, np.sqrt(var))).sum(1))
+    with np.errstate(divide='ignore'):                         # log-sum-exp: finite even when every density underflows
+        nll = -logsumexp(np.log(w) + norm.logpdf(yy, mu, np.sqrt(var)), axis=1)
     m = (w * mu).sum(1)
     cdf = (w * norm.cdf(yy, mu, np.sqrt(var))).sum(1)
     A = lambda a, s2: 2 * np.sqrt(s2) * norm.pdf(a / np.sqrt(s2)) + a * (2 * norm.cdf(a / np.sqrt(s2)) - 1)

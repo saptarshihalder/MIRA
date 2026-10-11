@@ -69,3 +69,10 @@ def test_upt_trains_a_few_steps(tmp_path):
                         '--warmup', '2', '--out', str(tmp_path / 'u')], cwd=HERE, capture_output=True, text=True)
     assert r.returncode == 0, r.stderr
     assert (tmp_path / 'u' / 'model.pt').exists()
+
+
+def test_mixture_nll_is_finite_for_extreme_outliers():
+    w, mu, var = np.array([[.98, .02]]), np.array([[0., .5]]), np.array([[1e-4, 1e-3]])
+    nll = upt.mixture_metrics(w, mu, var, np.array([30.]))['nll'][0]
+    direct = -math.log(.02) + .5 * (math.log(2 * math.pi * 1e-3) + (30 - .5) ** 2 / 1e-3)
+    assert np.isfinite(nll) and abs(nll - direct) / direct < 1e-9
