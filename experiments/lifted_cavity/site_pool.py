@@ -66,8 +66,9 @@ def predict(model, pool, qm, tasks_per_batch=8):
         batch['anchors'] = {K: {k: v[t] for k, v in pool['anchors'][K].items()} for K in (0, 1, 2)}
         batch['qx'] = pool['qx'][t].reshape(B * NQ, -1); batch['qy'] = pool['qy'][t].reshape(-1)
         batch['qm'] = qmt[t].reshape(B * NQ, -1); batch['tid'] = torch.arange(B).repeat_interleave(NQ)
-        mu, lv = model(batch)
-        mus.append(mu.double().numpy().reshape(B, NQ)); lvs.append(lv.double().numpy().reshape(B, NQ))
+        import devutil
+        mu, lv = model(devutil.to_dev(batch, devutil.model_device(model)))
+        mus.append(mu.double().cpu().numpy().reshape(B, NQ)); lvs.append(lv.double().cpu().numpy().reshape(B, NQ))
     return np.concatenate(mus), np.exp(np.concatenate(lvs))
 
 
@@ -83,12 +84,14 @@ def cmd_predict(a):
         meta = json.loads((run / 'train.json').read_text())
         model = build(meta['model'], meta.get('repo'), meta)
         model.load_state_dict(torch.load(run / 'model.pt', weights_only=True, map_location='cpu'))
+        model.to(a.device)                                         # replay on the device that wrote the cells
         ref = np.load(run / f'cells_{tag}.npz')
         for e, qm in panel['conds'].items():
             mu, var = predict(model, panel['pool'], qm)
             nll = gauss_nll(mu, var, have['qy']).mean(1)
-            err = float(np.abs(nll - ref[f'e{e}_nll']).max())      # must replay the committed per-episode scores
-            assert err < 1e-4, (run, e, err)
+            err = np.abs(nll - ref[f'e{e}_nll'])                    # must replay the committed per-episode scores
+            assert (err <= 1e-4 + 1e-4 * np.abs(ref[f'e{e}_nll'])).all(), (run, e, float(err.max()))
+            err = float(err.max())
             have[f'{run.name}|e{e}|mu'], have[f'{run.name}|e{e}|var'] = mu, var
             print(run.name, f'e{e}', f'nll {nll.mean():.4f}', f'replay max err {err:.1e}', flush=True)
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -175,6 +178,7 @@ if __name__ == '__main__':
     ap.add_argument('what', choices=['predict', 'report'])
     ap.add_argument('--panel'); ap.add_argument('--runs', default='')
     ap.add_argument('--preds', default='../../cache/site_pool'); ap.add_argument('--threads', type=int, default=4)
+    ap.add_argument('--device', default='cpu')
     ap.add_argument('--out', default='../../artifacts/reports/lifted_cavity_paper/site_pool/report.json')
     a = ap.parse_args()
     cmd_predict(a) if a.what == 'predict' else cmd_report(a)

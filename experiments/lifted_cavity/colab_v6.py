@@ -214,7 +214,7 @@ def preds(root):
         runs = ','.join(str(root / 'runs_real' / n / r) for r in ('pfn_s1_ft', 'pfn_s2_ft', 'lct_s1_ft'))
         items.append((f'preds_{n}', lambda n=n: (root / 'preds' / f'preds_real_{n}_s{SEED_PANEL}.npz').exists(),
                       [sys.executable, 'site_pool.py', 'predict', '--panel', root / 'panels' / f'real_{n}_s{SEED_PANEL}.pt',
-                       '--runs', runs, '--preds', root / 'preds', '--threads', '2'], root / 'logs' / f'preds_{n}.log'))
+                       '--runs', runs, '--preds', root / 'preds', '--threads', '2', '--device', 'cuda'], root / 'logs' / f'preds_{n}.log'))
     parallel(items)
 
 
