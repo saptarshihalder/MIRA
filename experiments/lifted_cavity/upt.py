@@ -24,6 +24,7 @@ class UPT(lct.LCT):
     def __init__(self, d=64, layers=4, heads=4, ff=128, femb=16, K=1):
         super().__init__(d=d, layers=layers, heads=heads, ff=ff, femb=femb, K=K)
         self.gate = nn.Linear(d, 1)
+        self.site_dtype = None          # protocol v7: torch.float64 runs the lifted-site algebra in double precision
         nn.init.zeros_(self.gate.weight); nn.init.constant_(self.gate.bias, GATE_BIAS)
 
     def _query_tokens(self, batch):
@@ -66,6 +67,9 @@ class UPT(lct.LCT):
         qx, qm = batch['qx'], batch['qm']
         K = self.K
         out = self.head(h)
+        if self.site_dtype is not None:                            # same parameters, higher-precision site algebra
+            dt = self.site_dtype
+            anc = {k: v.to(dt) for k, v in anc.items()}; qx, qm, out = qx.to(dt), qm.to(dt), out.to(dt)
         A, D, psi0 = anc['A'][tid], anc['D'][tid], anc['psi'][tid]
         mx, my, vy = anc['mx'][tid], anc['my'][tid], anc['vy'][tid]
         xt = qx - mx
@@ -81,7 +85,8 @@ class UPT(lct.LCT):
         prec = torch.diag_embed(torch.cat((1 / vy[:, None], torch.ones(N, K, dtype=vy.dtype, device=vy.device)), -1)) + lam.sum(1)
         nat = torch.cat(((my / vy)[:, None], torch.zeros(N, K, dtype=vy.dtype, device=vy.device)), -1) + (W * (qm * o / psi)[..., None]).sum(1)
         cov = torch.linalg.inv(prec)
-        return (cov @ nat[..., None])[:, 0, 0], cov[:, 0, 0].log()
+        mu, lv = (cov @ nat[..., None])[:, 0, 0], cov[:, 0, 0].log()
+        return (mu.float(), lv.float()) if self.site_dtype is not None else (mu, lv)
 
     def nll(self, batch, y=None):
         y = batch['qy'] if y is None else y

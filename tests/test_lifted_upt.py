@@ -76,3 +76,16 @@ def test_mixture_nll_is_finite_for_extreme_outliers():
     nll = upt.mixture_metrics(w, mu, var, np.array([30.]))['nll'][0]
     direct = -math.log(.02) + .5 * (math.log(2 * math.pi * 1e-3) + (30 - .5) ** 2 / 1e-3)
     assert np.isfinite(nll) and abs(nll - direct) / direct < 1e-9
+
+
+def test_float64_sites_change_precision_not_the_model():
+    torch.manual_seed(5)
+    m = upt.UPT().eval()
+    for p in m.head.parameters():
+        torch.nn.init.normal_(p, std=.05)
+    b = _batch(5)
+    with torch.no_grad():
+        a = m.nll(b)
+        m.site_dtype = torch.float64
+        c = m.nll(b)
+    assert a.dtype == c.dtype and torch.allclose(a, c, atol=1e-3, rtol=1e-4)

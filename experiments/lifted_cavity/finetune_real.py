@@ -14,7 +14,8 @@ from train import build
 RAW = {'airq_co': ('airq', 'CO(GT)'), 'airq_no2': ('airq', 'NO2(GT)'), 'beijing': ('beijing', 'PM2.5'), 'beijing_no2': ('beijing', 'NO2'),
        'beijing_co': ('beijing', 'CO'), 'beijing_pm10': ('beijing', 'PM10'), 'beijing_so2': ('beijing', 'SO2'),
        'beijing_o3': ('beijing', 'O3'), 'gas': ('gas', None),
-       'metr_la': ('v6', None), 'pems_bay': ('v6', None), 'intel': ('v6', None)}     # protocol v6 (realdata_v6.py)
+       'metr_la': ('v6', None), 'pems_bay': ('v6', None), 'intel': ('v6', None),     # protocol v6 (realdata_v6.py)
+       'pems03': ('v7', None), 'pems08': ('v7', None), 'air_cn': ('v7', None)}       # protocol v7 (realdata_v7.py)
 DEQUANT = {'beijing_pm10', 'beijing_so2', 'beijing_o3'}     # protocol v4, amendment 1: integer readings dequantized
 
 
@@ -27,6 +28,9 @@ def load_raw(name, paths):
     if kind == 'v6':
         import realdata_v6
         return realdata_v6.load(name, paths['v6'])
+    if kind == 'v7':
+        import realdata_v7
+        return realdata_v7.load(name, paths['v6'])                 # --v6 names the data folder
     return realdata.load_gas(paths['gas'])
 
 

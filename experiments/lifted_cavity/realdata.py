@@ -99,6 +99,9 @@ def episodes(name, raw, split, seed, n_source=None, period=None):
     if name in ('metr_la', 'pems_bay', 'intel'):                     # protocol v6 networks
         import realdata_v6
         return realdata_v6.episodes(name, raw, split, seed, n_source)
+    if name in ('pems03', 'pems08', 'air_cn'):                       # protocol v7 networks
+        import realdata_v7
+        return realdata_v7.episodes(name, raw, split, seed, n_source)
     rng = np.random.default_rng(seed)
     out = []
     if name.startswith('airq'):
