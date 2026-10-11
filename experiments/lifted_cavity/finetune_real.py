@@ -15,7 +15,8 @@ RAW = {'airq_co': ('airq', 'CO(GT)'), 'airq_no2': ('airq', 'NO2(GT)'), 'beijing'
        'beijing_co': ('beijing', 'CO'), 'beijing_pm10': ('beijing', 'PM10'), 'beijing_so2': ('beijing', 'SO2'),
        'beijing_o3': ('beijing', 'O3'), 'gas': ('gas', None),
        'metr_la': ('v6', None), 'pems_bay': ('v6', None), 'intel': ('v6', None),     # protocol v6 (realdata_v6.py)
-       'pems03': ('v7', None), 'pems08': ('v7', None), 'air_cn': ('v7', None)}       # protocol v7 (realdata_v7.py)
+       'pems03': ('v7', None), 'pems08': ('v7', None), 'air_cn': ('v7', None),       # protocol v7 (realdata_v7.py)
+       'dwd_t2m': ('v9', None), 'aurn_no2': ('v9', None), 'usgs_q': ('v9', None)}     # protocol v9 (realdata_v9.py)
 DEQUANT = {'beijing_pm10', 'beijing_so2', 'beijing_o3'}     # protocol v4, amendment 1: integer readings dequantized
 
 
@@ -31,6 +32,9 @@ def load_raw(name, paths):
     if kind == 'v7':
         import realdata_v7
         return realdata_v7.load(name, paths['v6'])                 # --v6 names the data folder
+    if kind == 'v9':
+        import realdata_v9
+        return realdata_v9.load(name, paths['v6'])
     return realdata.load_gas(paths['gas'])
 
 
@@ -74,6 +78,8 @@ def main():
     ap.add_argument('--steps', type=int, default=2000); ap.add_argument('--lr', type=float, default=3e-4)
     ap.add_argument('--seed', type=int, default=11); ap.add_argument('--ckpt-every', type=int, default=50)
     ap.add_argument('--device', default='cpu')
+    ap.add_argument('--crps', type=float, default=0., help='protocol v9: objective NLL + CRPS x this weight (upt.nll_crps); '
+                    '0 keeps the protocol-v2 NLL objective')
     ap.add_argument('--pool-cache', default=None, help='directory in which to reuse the source pool across models '
                     '(the pool depends only on dataset, seed, episodes and period, so reuse changes nothing)')
     ap.add_argument('--period', nargs=2, default=None, help='development only: override the source period (beijing)')
@@ -101,7 +107,12 @@ def main():
     model.train()
     for step in range(first, a.steps):
         batch = devutil.to_dev(batch_from(pool, rng), dev)
-        loss = model.nll(batch).mean() if hasattr(model, 'nll') else models.gauss_nll(*model(batch), batch['qy']).mean()
+        if a.crps:
+            import upt
+            nll, crps = upt.nll_crps(model, batch)
+            loss = (nll + a.crps * crps).mean()
+        else:
+            loss = model.nll(batch).mean() if hasattr(model, 'nll') else models.gauss_nll(*model(batch), batch['qy']).mean()
         if not torch.isfinite(loss):
             raise FloatingPointError(step)
         opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), 5.); opt.step(); sched.step()

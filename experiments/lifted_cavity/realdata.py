@@ -102,6 +102,9 @@ def episodes(name, raw, split, seed, n_source=None, period=None):
     if name in ('pems03', 'pems08', 'air_cn'):                       # protocol v7 networks
         import realdata_v7
         return realdata_v7.episodes(name, raw, split, seed, n_source)
+    if name in ('dwd_t2m', 'aurn_no2', 'usgs_q'):                   # protocol v9 networks
+        import realdata_v9
+        return realdata_v9.episodes(name, raw, split, seed, n_source)
     rng = np.random.default_rng(seed)
     out = []
     if name.startswith('airq'):
@@ -232,8 +235,11 @@ def closed_forms(pool, qm):
 
 
 @torch.no_grad()
-def score_model(model, pool, qm, tasks_per_batch=8):
-    """Per-episode metrics for a learned model under per-query masks qm."""
+def score_model(model, pool, qm, tasks_per_batch=8, tta=1):
+    """Per-episode metrics for a learned model under per-query masks qm.
+
+    tta > 1 (protocol v9): the predictive is the equal-weight linear pool of the model's predictives under feature-
+    embedding seeds 0..tta-1 (seed 0 is the single-model default), a test-time ensemble like TabPFN's n_estimators."""
     from evaluate2 import gauss_metrics
     model.eval()
     res = []
@@ -246,7 +252,17 @@ def score_model(model, pool, qm, tasks_per_batch=8):
         batch['qx'] = pool['qx'][t].reshape(B * NQ, -1); batch['qy'] = pool['qy'][t].reshape(-1)
         batch['qm'] = qmt[t].reshape(B * NQ, -1); batch['tid'] = torch.arange(B).repeat_interleave(NQ)
         import devutil
-        if hasattr(model, 'predictive'):                           # mixture output (upt.py): exact mixture metrics
+        if tta > 1:
+            import upt
+            dbatch = devutil.to_dev(batch, devutil.model_device(model))
+            W, Mu, Var = [], [], []
+            for k in range(tta):
+                model.feature_seed = k
+                lw, mu, lv = (v.detach().cpu().double().numpy() for v in upt.components(model, dbatch))
+                W.append(np.exp(lw) / tta); Mu.append(mu); Var.append(np.exp(lv))
+            model.feature_seed = 0
+            g = upt.mixture_metrics(np.concatenate(W, 1), np.concatenate(Mu, 1), np.concatenate(Var, 1), batch['qy'].double().numpy())
+        elif hasattr(model, 'predictive'):                         # mixture output (upt.py): exact mixture metrics
             import upt
             la, ma, va, lb, mb, vb = [v.detach().cpu().double().numpy() for v in model.predictive(devutil.to_dev(batch, devutil.model_device(model)))]
             g = upt.mixture_metrics(np.exp(np.stack((la, lb), 1)), np.stack((ma, mb), 1), np.exp(np.stack((va, vb), 1)),

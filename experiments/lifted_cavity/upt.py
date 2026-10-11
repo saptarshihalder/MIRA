@@ -103,6 +103,36 @@ class UPT(lct.LCT):
         return mu, var.clamp_min(1e-12).log()
 
 
+def components(model, batch):
+    """Any model's predictive as a Gaussian mixture: log weights, means and log variances, each (N, M); M = 1 for the
+    Gaussian models (PFN, TNP, CNP) and 2 for UPT."""
+    if hasattr(model, 'predictive'):
+        la, ma, va, lb, mb, vb = model.predictive(batch)
+        return torch.stack((la, lb), 1), torch.stack((ma, mb), 1), torch.stack((va, vb), 1)
+    mu, lv = model(batch)
+    return torch.zeros_like(mu)[:, None], mu[:, None], lv[:, None]
+
+
+def _crps_kernel(m, s):
+    """E|m + s Z| for Z ~ N(0, 1): the building block of the closed-form Gaussian-mixture CRPS (Grimit et al. 2006)."""
+    z = m / s
+    return 2 * s * torch.exp(-.5 * z ** 2) / math.sqrt(2 * math.pi) + m * torch.erf(z / math.sqrt(2))
+
+
+def nll_crps(model, batch):
+    """Per-query NLL and CRPS of the predictive mixture; the CRPS is divided by the episode's support-target standard
+    deviation (the model's own scale, clamped at .1) so that it is unit-free. Protocol v9 fine-tuning objective:
+    NLL + lambda * CRPS, a sum of two strictly proper scoring rules (Gneiting & Raftery 2007)."""
+    lw, mu, lv = components(model, batch)
+    y = batch['qy'][:, None]
+    nll = -torch.logsumexp(lw - .5 * (LOG2PI + lv + (y - mu) ** 2 * torch.exp(-lv)), 1)
+    w, var = lw.exp(), lv.exp()
+    crps = (w * _crps_kernel(y - mu, var.sqrt())).sum(1) - .5 * (w[:, :, None] * w[:, None, :] * _crps_kernel(
+        mu[:, :, None] - mu[:, None, :], (var[:, :, None] + var[:, None, :]).sqrt())).sum((1, 2))
+    ys = batch['sy'].std(1).clamp_min(.1)[batch['tid']]
+    return nll, crps / ys
+
+
 def mixture_metrics(w, mu, var, y):
     """Per-query metrics of a Gaussian mixture (numpy; w, mu, var of shape (N, M)): NLL, squared error of the mean,
     90% central-interval coverage and the exact CRPS (Grimit et al. 2006)."""

@@ -89,3 +89,41 @@ def test_float64_sites_change_precision_not_the_model():
         m.site_dtype = torch.float64
         c = m.nll(b)
     assert a.dtype == c.dtype and torch.allclose(a, c, atol=1e-3, rtol=1e-4)
+
+
+def test_torch_nll_crps_match_the_numpy_mixture_metrics():
+    torch.manual_seed(5)
+    m = upt.UPT().eval()
+    torch.nn.init.constant_(m.gate.bias, 0.)                # both components carry weight
+    b = _batch(5)
+    with torch.no_grad():
+        nll, crps = upt.nll_crps(m, b)
+        la, ma, va, lb, mb, vb = (v.double().numpy() for v in m.predictive(b))
+        assert torch.allclose(nll, m.nll(b), atol=1e-5)
+    ref = upt.mixture_metrics(np.exp(np.stack((la, lb), 1)), np.stack((ma, mb), 1), np.exp(np.stack((va, vb), 1)), b['qy'].double().numpy())
+    ys = b['sy'].std(1).clamp_min(.1)[b['tid']].double().numpy()
+    assert np.allclose(crps.double().numpy(), ref['crps'] / ys, rtol=1e-4, atol=1e-6)
+
+
+def test_test_time_ensemble_is_the_linear_pool_over_feature_seeds():
+    import realdata
+    torch.manual_seed(6)
+    m = upt.UPT().eval()
+    torch.nn.init.constant_(m.gate.bias, 0.)
+    rng = np.random.default_rng(6)
+    T = 3; NS, NQ, P = realdata.NS, realdata.NQ, 5
+    x = rng.normal(size=(T, NS + NQ, P)); y = x.sum(-1) + rng.normal(size=(T, NS + NQ))
+    eps = [(x[t], y[t], np.ones((NS, P)), np.ones((NQ, P)), f'k{t}') for t in range(T)]
+    pool = realdata.to_pool(eps)
+    qm = pool['qnat'].numpy()
+    one = realdata.score_model(m, pool, qm)
+    assert m.feature_seed == 0
+    two = realdata.score_model(m, pool, qm, tta=2)
+    assert m.feature_seed == 0
+    m.feature_seed = 1
+    other = realdata.score_model(m, pool, qm)
+    m.feature_seed = 0
+    # equal-weight pool: -log((p0 + p1) / 2) <= (-log p0 - log p1) / 2 per query (concavity of log), so per episode too
+    assert np.all(two['nll'] <= .5 * (one['nll'] + other['nll']) + 1e-6)
+    assert np.all(two['nll'] >= np.minimum(one['nll'], other['nll']) - np.log(2) - 1e-6)
+    assert not np.allclose(one['nll'], other['nll'])        # the feature seed matters, so the ensemble is not trivial

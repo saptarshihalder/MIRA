@@ -23,13 +23,15 @@ import devutil
 from evaluate2 import gauss_metrics
 from finetune_real import load_raw
 
-SUPPORT_DROP = {'pems_bay': .2, 'pems03': .2, 'pems08': .2}
+SUPPORT_DROP = {'pems_bay': .2, 'pems03': .2, 'pems08': .2, 'dwd_t2m': .2, 'aurn_no2': .2, 'usgs_q': .2}
 
 
 def split(name):
-    import realdata_v6, realdata_v7
+    import realdata_v6, realdata_v7, realdata_v9
     if name in realdata_v6.SPLIT:
         return realdata_v6.SPLIT[name][:2]
+    if name in realdata_v9.NETS:
+        return realdata_v9.NETS[name][1:3]
     return realdata_v7.NETS[name][2:4]
 
 
