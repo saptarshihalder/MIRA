@@ -70,8 +70,11 @@ for net in NETS:
         row = {}
         for m in ('pfn', 'lct', 'upt', 'lift1'):
             row[m] = float(seed_avg(net, m, e).mean())
-        for b in ('tabpfn_v2', 'lgbm', 'mice'):
-            row[b] = float(cells(net, b, e).mean())
+        for b in ('tabpfn_v2', 'lgbm', 'mice'):                       # descriptive; a missing baseline is reported as absent
+            try:
+                row[b] = float(cells(net, b, e).mean())
+            except FileNotFoundError:
+                row[b] = None
         row.update({k: float(np.nanmean(v['nll'])) for k, v in refs[e].items()})
         desc[f'{net}|e{e}'] = row
 res['descriptive'] = desc
@@ -81,4 +84,4 @@ for k, v in res.items():
         print(f"{k:30s} gain {v['gain']:+.4f} [{v['lo']:+.4f}, {v['hi']:+.4f}] n={v['n']:5d} -> {'PASS' if v['passed'] else 'FAIL'}")
 print('headline (P1, P2, P4 all pass):', res['headline_P1_P2_P4'])
 for k, v in desc.items():
-    print(k, {m: round(x, 4) for m, x in v.items()})
+    print(k, {m: (round(x, 4) if x is not None else None) for m, x in v.items()})

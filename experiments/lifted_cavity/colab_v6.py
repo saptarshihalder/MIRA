@@ -199,6 +199,9 @@ def baselines(root):
                           [sys.executable, 'baselines_v6.py', '--panel', panel, '--out', out, '--method', meth],
                           root / 'logs' / f'{meth}_{n}.log'))
     parallel(items)
+
+
+def tabpfn(root):
     tab = [(f'tabpfn_{n}', lambda n=n: (root / 'runs_real' / n / 'tabpfn_v2' / f'cells_real_{n}_s{SEED_PANEL}.npz').exists(),
             [sys.executable, 'tabpfn_colab.py', '--panel', root / 'panels' / f'real_{n}_s{SEED_PANEL}.pt',
              '--out', root / 'runs_real' / n / 'tabpfn_v2'], root / 'logs' / f'tabpfn_{n}.log') for n in NETS]
@@ -231,14 +234,14 @@ def pack(root):
 
 
 STAGES = dict(source=source, status=status, data=data, panels=panels, pools=pools, finetune=finetune, score=score,
-              baselines=baselines, preds=preds, confirm=confirm, pack=pack)
-ORDER = ['data', 'panels', 'pools', 'finetune', 'score', 'baselines', 'preds', 'confirm', 'pack']
+              baselines=baselines, tabpfn=tabpfn, preds=preds, confirm=confirm, pack=pack)
+ORDER = ['data', 'panels', 'pools', 'finetune', 'score', 'preds', 'tabpfn', 'confirm', 'baselines', 'pack']   # endpoints first
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
-    ap.add_argument('--root', required=True); ap.add_argument('stage', choices=list(STAGES) + ['all'])
+    ap.add_argument('--root', required=True); ap.add_argument('stage', nargs='+', choices=list(STAGES) + ['all'])
     a = ap.parse_args()
     r = Path(a.root); r.mkdir(parents=True, exist_ok=True)
-    for st in (ORDER if a.stage == 'all' else [a.stage]):
+    for st in (ORDER if a.stage == ['all'] else a.stage):
         print(f'== {st}', time.strftime('%H:%M:%S'), flush=True)
         STAGES[st](r)
