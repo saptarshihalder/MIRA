@@ -59,7 +59,7 @@ def task_arrays(pool, t):
             pool['qx'][t].numpy().astype(float), pool['qy'][t].numpy().astype(float))
 
 
-def score_panel(reg, path, out, limit=None):
+def score_panel(reg, path, out, limit=None, allow_undefined=False):
     tag = Path(path).stem
     # Limited smoke outputs must never occupy the full-panel result namespace.
     stem = f'cells_{tag}' if limit is None else f'partial_cells_{tag}_limit{limit}'
@@ -87,16 +87,22 @@ def score_panel(reg, path, out, limit=None):
             print(tag, 'k', k, round(float(nll.mean()), 4), f'{time.time() - t0:.0f}s', flush=True)
     else:                                           # real: natural mask x extra dropped sensors, per query
         E = list(panel['conds'])
-        nll = np.zeros((len(E), n)); se = np.zeros_like(nll)
+        nll = np.zeros((len(E), n)); se = np.zeros_like(nll); und = np.zeros(n, bool)
         for t in range(n):
             Xs, ys, qx, qy = task_arrays(pool, t)
             Xq = np.concatenate([np.where(np.asarray(panel['conds'][e][t]) > 0, qx, np.nan) for e in E])
+            if allow_undefined and np.ptp(ys) == 0:             # protocol v6 amendment 3: TabPFN NLL undefined here
+                und[t] = True; nll[:, t] = np.nan; se[:, t] = np.nan; continue
             l, mu = tabpfn_nll(reg, Xs, ys, Xq, np.tile(qy, len(E))); calls += 1
             nll[:, t] = l.reshape(len(E), -1).mean(1); se[:, t] = ((mu.reshape(len(E), -1) - qy) ** 2).mean(1)
         for i, e in enumerate(E):
             res[f'e{e}_nll'] = nll[i]; res[f'e{e}_se'] = se[i]
-            print(tag, 'extra', e, round(float(nll[i].mean()), 4), flush=True)
-    validate_arrays(res, expected)
+            print(tag, 'extra', e, round(float(np.nanmean(nll[i])), 4), f'undefined {int(und.sum())}', flush=True)
+        if allow_undefined:                         # every defined score must still be finite; undefined ones are flagged
+            validate_arrays({k: v[~und] for k, v in res.items()}, {k: (int((~und).sum()),) for k in expected})
+            res['undefined'] = und
+    if 'undefined' not in res:
+        validate_arrays(res, expected)
     tmp = out / f'{stem}.tmp.npz'
     np.savez_compressed(tmp, **res); tmp.replace(dest)
     return dict(tag=tag, tasks=n, calls=calls, seconds=time.time() - t0)
@@ -107,6 +113,8 @@ def main():
     ap.add_argument('--panel', nargs='*', default=[]); ap.add_argument('--panels-dir')
     ap.add_argument('--out', required=True); ap.add_argument('--version', default='v2')
     ap.add_argument('--limit', type=int, default=None, help='smoke test: only the first LIMIT tasks of each panel')
+    ap.add_argument('--allow-constant-support', action='store_true', help='protocol v6 amendment 3: episodes with a constant '
+                    'support target are recorded as undefined (NaN + an "undefined" mask) instead of aborting')
     ap.add_argument('--device', default='cuda' if torch.cuda.is_available() else 'cpu')
     a = ap.parse_args()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
@@ -122,7 +130,7 @@ def main():
     if a.panels_dir:
         paths += sorted(str(p) for p in Path(a.panels_dir).glob('v2_s*.pt')) + sorted(str(p) for p in Path(a.panels_dir).glob('real_*.pt'))
     for p in paths:
-        r = score_panel(reg, p, out, a.limit)
+        r = score_panel(reg, p, out, a.limit, a.allow_constant_support)
         if r is not None:
             meta['timing'][r['tag']] = r
             (out / 'train.json').write_text(json.dumps(meta, indent=1))

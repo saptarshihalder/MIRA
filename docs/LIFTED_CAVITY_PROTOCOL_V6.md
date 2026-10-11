@@ -111,3 +111,18 @@ episode, for example when an input mote has no readings in that episode's suppor
 reported.
 
 **Scope.** NL-FA is a descriptive comparator and enters no endpoint. No other method is changed.
+
+## Amendment 3 (October 11, before any TabPFN v6 score was inspected)
+
+**What happened.** TabPFN v2 aborted on an Intel episode whose 48 support targets are identical (a stuck mote). Its
+predictive is then a point mass, so its NLL is undefined.
+
+**Change.**
+- Such episodes are recorded as undefined: NaN plus an `undefined` mask, via `tabpfn_colab.py
+  --allow-constant-support`.
+- Every defined TabPFN score must still be finite.
+- P3 is computed on the episodes where TabPFN is defined, for both TabPFN and UPT, and the number excluded is
+  reported.
+- P1, P2 and P4 are unchanged.
+
+**What was seen.** TabPFN scores for METR-LA and PEMS-BAY had been written before this amendment but were not read.

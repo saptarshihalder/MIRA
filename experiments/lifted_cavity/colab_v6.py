@@ -204,7 +204,8 @@ def baselines(root):
 def tabpfn(root):
     tab = [(f'tabpfn_{n}', lambda n=n: (root / 'runs_real' / n / 'tabpfn_v2' / f'cells_real_{n}_s{SEED_PANEL}.npz').exists(),
             [sys.executable, 'tabpfn_colab.py', '--panel', root / 'panels' / f'real_{n}_s{SEED_PANEL}.pt',
-             '--out', root / 'runs_real' / n / 'tabpfn_v2'], root / 'logs' / f'tabpfn_{n}.log') for n in NETS]
+             '--out', root / 'runs_real' / n / 'tabpfn_v2', '--allow-constant-support'], root / 'logs' / f'tabpfn_{n}.log')
+           for n in NETS]
     parallel(tab, 1)                                              # one GPU job at a time
 
 

@@ -31,6 +31,9 @@ def paired(base, new, clusters=None, margin=.01, noninf=None):
 def cells(net, run, e=0, metric='nll'):
     z = np.load(R / 'runs_real' / net / run / f'cells_real_{net}_s6061.npz')
     v = z[f'e{e}_{metric}']
+    if 'undefined' in z.files:                                     # TabPFN, amendment 3: NaN exactly where flagged
+        assert np.isfinite(v[~z['undefined']]).all() and np.isnan(v[z['undefined']]).all()
+        return v
     if not np.isfinite(v).all():
         raise ValueError(f'nonfinite cells: {net}/{run}')
     return v
@@ -57,7 +60,8 @@ pfn_pool, _ = real(lambda n, P: pooled(P, 'pfn_s1_ft', 'pfn_s2_ft', 0, 'lin')[0]
 tab, _ = real(lambda n, P: cells(n, 'tabpfn_v2'))
 res['P1_real_upt_vs_pfn'] = paired(pfn, upt, days)
 res['P2_real_upt_noninf_pfn2pool'] = paired(pfn_pool, upt, days, noninf=-.01)
-res['P3_real_upt_vs_tabpfn'] = paired(tab, upt, days)
+ok = np.isfinite(tab)                                              # amendment 3: P3 on episodes where TabPFN is defined
+res['P3_real_upt_vs_tabpfn'] = dict(paired(tab[ok], upt[ok], days[ok]), excluded_undefined=int((~ok).sum()))
 syn = lambda m: np.mean([np.load(R / 'runs' / f'{m}_s{s}' / f'cells_{P4}.npz')['k2_nll'] for s in SEEDS], 0).mean(1)
 res['P4_syn16_upt_vs_pfn'] = paired(syn('pfn'), syn('upt'))
 res['headline_P1_P2_P4'] = all(res[k]['passed'] for k in ('P1_real_upt_vs_pfn', 'P2_real_upt_noninf_pfn2pool', 'P4_syn16_upt_vs_pfn'))
@@ -72,7 +76,7 @@ for net in NETS:
             row[m] = float(seed_avg(net, m, e).mean())
         for b in ('tabpfn_v2', 'lgbm', 'mice'):                       # descriptive; a missing baseline is reported as absent
             try:
-                row[b] = float(cells(net, b, e).mean())
+                row[b] = float(np.nanmean(cells(net, b, e)))
             except FileNotFoundError:
                 row[b] = None
         row.update({k: float(np.nanmean(v['nll'])) for k, v in refs[e].items()})
