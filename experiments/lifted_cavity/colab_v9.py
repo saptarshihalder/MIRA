@@ -2,10 +2,11 @@
 
     D=/content/drive/MyDrive
     python colab_v9.py --root $D/mira_v9 --v4 $D/mira_v4 --v6 $D/mira_v6 --v7 $D/mira_v7 --v8 $D/mira_v8 <stages>
-Chain A (v9 networks): data panels pools ft9 krig9 tabpfn9 wait score9 confirm pack
-Chain B (development, then the selected variant): ftdev scoredev select ft9var
-Every finished item is skipped and fine-tuning resumes from Drive checkpoints, so relaunching after a disconnect resumes.
-Source checkpoints (never retrained here): pfn/upt from v6, UPT-L from v7, PFN-L from v4, CNP/TNP from v8.
+Chain A (v9 networks): data panels pools ft9 krig9 tabpfn9 ft9L wait score9 confirm pack
+Chain B (development, then the selected variant): ftdev scoredev select ft9var ftdevL scoredevL confirm
+Chain C: sourceL (PFN-L source training, amendment 1: the v4 PFN-L checkpoints were not kept)
+Every finished item is skipped and training resumes from Drive checkpoints, so relaunching after a disconnect resumes.
+Source checkpoints: pfn/upt from v6, UPT-L from v7, CNP/TNP from v8 (never retrained); PFN-L trained here (v4 recipe).
 """
 import argparse, json, sys, time
 from pathlib import Path
@@ -18,7 +19,9 @@ SEEDS = (1, 2, 3)
 TTA = ('pfn', 'upt', 'upt_L', 'pfn_L', 'upt_L_crps', 'pfn_L_crps')      # models with random feature embeddings
 BASE9 = ('pfn', 'upt', 'cnp', 'tnp', 'upt_L', 'pfn_L')
 VARIANT = {'upt_L_crps': ('upt_L', ['--crps', '1']), 'pfn_L_crps': ('pfn_L', ['--crps', '1'])}
-PAR_A, PAR_B = 7, 5
+PAR_A, PAR_B = 6, 4
+RECIPE_PFN_L = ['--steps', '40000', '--batch-tasks', '32', '--queries', '16', '--lr', '5e-4', '--warmup', '2000',
+                '--d', '128', '--layers', '8', '--heads', '8', '--ff', '512', '--device', 'cuda', '--ckpt-every', '500']   # = v4 pfn_L
 
 
 def nets(a):
@@ -31,7 +34,7 @@ def nets(a):
 
 def src(a, m, s):
     base = VARIANT.get(m, (m, []))[0]
-    root = {'pfn': a.v6, 'upt': a.v6, 'upt_L': a.v7, 'pfn_L': a.v4, 'cnp': a.v8, 'tnp': a.v8}[base]
+    root = {'pfn': a.v6, 'upt': a.v6, 'upt_L': a.v7, 'pfn_L': a.root, 'cnp': a.v8, 'tnp': a.v8}[base]
     return Path(root) / 'runs' / f'{base}_s{s}'
 
 
@@ -72,9 +75,14 @@ def score_items(a, pairs, ttas=(1, 8)):
     return items
 
 
-def wait_for(paths, what, hours=12):
+def wait_pfn_L(a):
+    wait_for([src(a, 'pfn_L', s) / 'model.pt' for s in SEEDS], 'PFN-L source training (chain C)',
+             check=lambda: all(done_train(src(a, 'pfn_L', s), 40000) for s in SEEDS))
+
+
+def wait_for(paths, what, hours=12, check=None):
     t0 = time.time()
-    while not all(Path(p).exists() for p in paths):
+    while not (all(Path(p).exists() for p in paths) and (check is None or check())):
         if time.time() - t0 > hours * 3600:
             raise TimeoutError(what)
         if int(time.time() - t0) % 1800 < 60:
@@ -105,11 +113,22 @@ def pools(a):
 
 
 def ft9(a):
-    for m in BASE9:
+    order = ('upt_L', 'upt', 'pfn', 'tnp', 'cnp')                              # long runs first; PFN-L in ft9L
+    for m in order:
         for s in SEEDS:
             assert done_train(src(a, m, s), 40000 if m.endswith('_L') else 30000), f'missing source checkpoint {src(a, m, s)}'
-    order = ('upt_L', 'pfn_L', 'upt', 'pfn', 'tnp', 'cnp')                     # long runs first
     parallel(ft_items(a, [(n, m) for m in order for n in N9]), PAR_A)
+
+
+def ft9L(a):
+    wait_pfn_L(a)
+    parallel(ft_items(a, [(n, 'pfn_L') for n in N9]), PAR_A)
+
+
+def sourceL(a):
+    parallel([(f'train_pfn_L_s{s}', lambda s=s: src(a, 'pfn_L', s).exists() and done_train(src(a, 'pfn_L', s), 40000),
+               [sys.executable, 'pfn_train.py', *RECIPE_PFN_L, '--seed', s, '--out', src(a, 'pfn_L', s)],
+               logs(a) / f'train_pfn_L_s{s}.log') for s in SEEDS], 3)
 
 
 def krig9(a):
@@ -163,16 +182,22 @@ def pack(a):
 
 # ------------------------------------------------------------------ chain B
 def ftdev(a):
-    for m in ('upt_L', 'pfn_L'):
-        for s in SEEDS:
-            assert done_train(src(a, m, s), 40000), f'missing source checkpoint {src(a, m, s)}'
-    pairs = [(n, 'upt_L_crps') for n in DEV7] + [(n, 'upt_L') for n in DEV6] + [(n, 'pfn_L') for n in DEV6 + DEV7]
-    parallel(ft_items(a, pairs), PAR_B)
+    for s in SEEDS:
+        assert done_train(src(a, 'upt_L', s), 40000), f'missing source checkpoint {src(a, "upt_L", s)}'
+    parallel(ft_items(a, [(n, 'upt_L_crps') for n in DEV7] + [(n, 'upt_L') for n in DEV6]), PAR_B)
 
 
 def scoredev(a):
-    pairs = [(n, 'upt_L_crps') for n in DEV7] + [(n, 'upt_L') for n in DEV6 + DEV7] + [(n, 'pfn_L') for n in DEV6 + DEV7]
-    parallel(score_items(a, pairs), PAR_B)
+    parallel(score_items(a, [(n, 'upt_L_crps') for n in DEV7] + [(n, 'upt_L') for n in DEV6 + DEV7]), PAR_B)
+
+
+def ftdevL(a):
+    wait_pfn_L(a)
+    parallel(ft_items(a, [(n, 'pfn_L') for n in DEV6 + DEV7]), PAR_B)
+
+
+def scoredevL(a):
+    parallel(score_items(a, [(n, 'pfn_L') for n in DEV6 + DEV7]), PAR_B)
 
 
 def select(a):
@@ -186,14 +211,18 @@ def ft9var(a):
     dev = Path(a.root) / 'dev'
     if json.loads((dev / 'selection.json').read_text())['crps_objective']:
         wait_for([Path(a.root) / 'pools' / f'src_{n}_s11_n4000.pt' for n in N9], 'v9 source pools (chain A)')
-        parallel(ft_items(a, [(n, m) for m in VARIANT for n in N9]), PAR_B)
+        parallel(ft_items(a, [(n, 'upt_L_crps') for n in N9]), PAR_B)
+        wait_pfn_L(a)
+        parallel(ft_items(a, [(n, 'pfn_L_crps') for n in N9]), PAR_B)
     (dev / 'ft9var.done').write_text(time.strftime('%Y-%m-%d %H:%M:%S'))
 
 
-STAGES = dict(data=data, panels=panels, pools=pools, ft9=ft9, krig9=krig9, tabpfn9=tabpfn9, wait=wait, score9=score9, confirm=confirm,
-              pack=pack, ftdev=ftdev, scoredev=scoredev, select=select, ft9var=ft9var)
-CHAIN = dict(A=['data', 'panels', 'pools', 'ft9', 'krig9', 'tabpfn9', 'wait', 'score9', 'confirm', 'pack'],
-             B=['ftdev', 'scoredev', 'select', 'ft9var'])
+STAGES = dict(data=data, panels=panels, pools=pools, ft9=ft9, krig9=krig9, tabpfn9=tabpfn9, ft9L=ft9L, wait=wait, score9=score9,
+              confirm=confirm, pack=pack, ftdev=ftdev, scoredev=scoredev, select=select, ft9var=ft9var, ftdevL=ftdevL,
+              scoredevL=scoredevL, sourceL=sourceL)
+CHAIN = dict(A=['data', 'panels', 'pools', 'ft9', 'krig9', 'tabpfn9', 'ft9L', 'wait', 'score9', 'confirm', 'pack'],
+             B=['ftdev', 'scoredev', 'select', 'ft9var', 'ftdevL', 'scoredevL', 'confirm'],
+             C=['sourceL'])
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()

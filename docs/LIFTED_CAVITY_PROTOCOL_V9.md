@@ -147,3 +147,24 @@ All outcomes are reported, whichever way they go.
 | B9 | development fine-tuning → development scoring → `select9.py` → the selected variant on the v9 networks |
 
 **Amendments:** committed before the affected scores are computed.
+
+## Amendment 1 (October 12, before any v9 panel, fine-tune or score)
+
+**The PFN-L source checkpoints do not exist.** The protocol-v4 PFN-L checkpoints named above were never kept on Drive.
+PFN-L is therefore trained here, seeds 1–3, into `mira_v9/runs`, with the protocol-v4 recipe exactly:
+- `pfn_train.py`;
+- 40,000 steps, batch 32 tasks × 16 queries;
+- lr 5e-4, warm-up 2,000;
+- d = 128, 8 layers, 8 heads, feed-forward width 512.
+
+This is the same size and source-training budget as UPT-L.
+
+**Chain C** trains it. Every PFN-L fine-tune waits for it:
+- PFN-L on the v9 networks, in chain A;
+- PFN-L-CRPS, if selected, in chain B;
+- PFN-L on the development networks, moved to the end of chain B. These are descriptive and not needed by the
+  selection rule.
+
+**Concurrency** changed to 6 and 4 parallel jobs (speed only).
+
+Nothing else changes.

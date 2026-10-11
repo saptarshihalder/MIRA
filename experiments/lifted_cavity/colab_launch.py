@@ -1,7 +1,7 @@
 """Start the remaining Colab GPU work as detached background chains (logs on Drive); returns immediately.
 
     python colab_launch.py [v9|v7v8]   # idempotent: a chain whose marker says it is running is not started twice
-v9 (default): chain A9 = colab_v9.py A (v9 networks), chain B9 = colab_v9.py B (development, selection, variant).
+v9 (default): chains A9, B9, C9 = colab_v9.py A (v9 networks), B (development, selection, variant), C (PFN-L).
 v7v8: chain A = v7 main then v8 baselines; chain B = v7 UPT-L. Every stage skips finished items, so relaunching after a
 disconnect resumes. Status: tail /content/drive/MyDrive/mira_chain_<name>.log
 """
@@ -17,7 +17,8 @@ SETS = {
                    [PY, 'colab_v8.py', '--root', V8, '--v6', V6, '--v7', V7, 'all']],
              'B': [[PY, 'colab_v7.py', '--root', V7, '--v6', V6, 'sourceL', 'finetuneL', 'scoreL', 'confirm', 'pack']]},
     'v9': {'A9': [[PY, 'colab_v9.py', *V9_ARGS, 'A']],          # v9 networks; waits for B9's selection before scoring
-           'B9': [[PY, 'colab_v9.py', *V9_ARGS, 'B']]},         # development fine-tunes, selection, selected variant
+           'B9': [[PY, 'colab_v9.py', *V9_ARGS, 'B']],          # development fine-tunes, selection, selected variant
+           'C9': [[PY, 'colab_v9.py', *V9_ARGS, 'C']]},         # PFN-L source training (amendment 1)
 }
 CHAINS = SETS[sys.argv[1] if len(sys.argv) > 1 else 'v9']
 
