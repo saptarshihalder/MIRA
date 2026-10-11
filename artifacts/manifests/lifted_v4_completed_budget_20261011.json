@@ -1,0 +1,12 @@
+{
+  "gross_usd": 10.9512741,
+  "completed_provider_tasks": 0,
+  "account_provision_usd": 12,
+  "protected_reproduction_usd": 3,
+  "total_provision_usd": 15,
+  "cap_usd": 20,
+  "unallocated_usd": 5,
+  "final_invoice_verified": false,
+  "credits_do_not_erase_compute": true,
+  "new_paid_work_authorized": false
+}

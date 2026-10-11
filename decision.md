@@ -1,3 +1,15 @@
+## October 11 final delivery: GPU complete, provenance gate failed
+
+The 24 checkpoint files and 35 score archives are collected, but the strict verifier stops before endpoints because twelve fine-tuned checkpoint identity sidecars are absent. Seed1 sidecars were also absent in the original recovery and appeared later. No retrospective binding, scoring, gate relaxation or new training was performed. The current development runner is repaired prospectively and four regression tests pass. Full replay/integration/review export did not run. See docs/FINAL_DELIVERY_20261011.md and artifacts/manifests/lifted_v4_checkpoint_binding_failure_20261011.json. Publication readiness is NOT established. Gross compute USD10.95127410; USD3 reproduction reserve remains; final invoices open.
+
+The historical paper now explicitly discloses this failed v4 audit. The separate 1317-parameter universal-property prototype passes seven software/oracle checks and a readout-only benchmark, but remains untrained. No new efficacy or novelty claim. Completion monitoring ends after this honest incomplete research delivery.
+
+## October 11: completed GPU call; evidence handoff recovered
+
+Provider confirms complete exit0, all provider tasks zero. Original local worker expired before collection because no observer status arrived; preserve that failure. The recovered local worker uses the same hash-frozen tools and unchanged scientific identities. No efficacy verdict until full verification and replay. Gross metering USD10.95127410 includes failures; invoices open; USD3 remains protected.
+
+The separate universal-property prototype is an engineering candidate only: cheap support-conditioned mixture fusion, seven tests and dense-equivalent readout timing. Established Deep Sets, mixture-density, mixture-factor and Gaussian-process precedents prevent claiming novelty from the algebra itself. No successor training until current results are audited and the new development protocol/headroom/control gates are frozen.
+
 ## October 11: complete-result integration prepared; v4 still running
 
 The explicit GPU continuation is unchanged. PFN-L seed 2 completed 40,000 CUDA updates; LCT-L seed 2 is now training. No partial endpoint contrast is computed. The live Python 3.12.10 environment, 93 installed distributions and L40S with driver 580.95.05 are recorded through a read-only query in the existing bounded container; no new paid function was launched.

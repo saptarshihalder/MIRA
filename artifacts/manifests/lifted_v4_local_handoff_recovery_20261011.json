@@ -1,0 +1,24 @@
+{
+  "reason": "Observer produced no status file; original local worker expired at wait. Provider now confirms exit0. No evidence stages previously attempted.",
+  "original_completion_result_sha256": "0a708940ad9c03ba179abde4650ecbcc9b6115d0f3cecd06533421fe40cc07c9",
+  "provider_result": {
+    "status": "completed",
+    "result": {
+      "stage": "main_resume",
+      "root": "/results/lifted_v4_l40s_20261009",
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 7647.416759713,
+      "estimated_seconds": 20520.96200275374
+    },
+    "exit_code": 0,
+    "seconds": 7647.416759713,
+    "function_call_id": "fc-01M4KMG0FQ3CYTVKSRGQVGC6DF",
+    "observed_via": "Manual read-only FunctionCall.get after local wait timeout"
+  },
+  "tool_plan_sha256": "4b64bf85744b492d04fbeb0de716309f210386b5ea527cd635a788fc27e6531e",
+  "new_gpu_calls": 0,
+  "scientific_retries": 0,
+  "original_outputs_preserved": true,
+  "delivery": "C:\\Users\\HP\\Documents\\ChatGPT\\Paper in 20days\\MIRA\\artifacts\\runs\\lifted_v4_delivery_recovered_20261011"
+}

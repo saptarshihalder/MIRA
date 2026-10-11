@@ -41,3 +41,15 @@ those fits; the intervals omit training-randomness uncertainty. Week clustering 
 between adjacent weeks. E12 compares target-source-fine-tuned LCT-L with in-context-only TabPFN: episode support
 is matched, but prior target-specific training is unequal, so this comparison cannot isolate the architecture.
 The real-data estimand is contemporaneous within-week adaptation, not forecasting.
+
+\textbf{Execution audit and withheld decisions (October 11).} The bounded GPU continuation completed and
+24 learned checkpoints plus 35 score archives were collected. The strict independent verifier stopped before
+endpoint arithmetic: all 12 fine-tunes from seeds 2 and 3 lacked the required checkpoint-identity sidecar.
+The executed driver checked completion before fine-tuning but omitted the corresponding check after a fresh fit,
+then proceeded to scoring. Revisiting seed 1 created its six sidecars later; these were absent from the initial
+recovery snapshot. Therefore even their later presence does not establish pre-scoring attestation. This is a
+provenance deviation, not an efficacy result. We retain all artifacts and the failed gate, do not backfill historical
+identities, and report no verified v4 decisions, prediction replay or v4 reproduction claim. Entries marked
+``pending'' in Table~\ref{tab:endpoints} mean unverified and withheld. The development driver now binds fresh
+fine-tunes before scoring and refuses existing unbound scores; four orchestration regression tests pass. That
+prospective repair does not repair the executed protocol's history.

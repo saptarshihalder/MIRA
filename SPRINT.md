@@ -1,3 +1,11 @@
+## October 11 final delivery: GPU complete, provenance gate failed
+
+The 24 checkpoint files and 35 score archives are collected, but the strict verifier stops before endpoints because twelve fine-tuned checkpoint identity sidecars are absent. Seed1 sidecars were also absent in the original recovery and appeared later. No retrospective binding, scoring, gate relaxation or new training was performed. The current development runner is repaired prospectively and four regression tests pass. Full replay/integration/review export did not run. See docs/FINAL_DELIVERY_20261011.md and artifacts/manifests/lifted_v4_checkpoint_binding_failure_20261011.json. Publication readiness is NOT established. Gross compute USD10.95127410; USD3 reproduction reserve remains; final invoices open.
+
+The historical paper now explicitly discloses this failed v4 audit. The separate 1317-parameter universal-property prototype passes seven software/oracle checks and a readout-only benchmark, but remains untrained. No new efficacy or novelty claim. Completion monitoring ends after this honest incomplete research delivery.
+
+October 11 handoff recovery: full Modal run completed; identical evidence worker continues locally under artifacts/runs/lifted_v4_delivery_recovered_20261011 after observer timeout. New universal-property prototype is untrained, source-only engineering evidence; no milestone or readiness claim.
+
 October 11 authorized continuation: the missed October10 delivery is not marked complete. Fixed GPU v4 is running; complete-result integration, score-export reproduction, environment capture and final claim audits are prepared. Follow docs/LIFTED_V4_INTEGRATION.md after full completion, preserving all outcomes.
 
 # MIRA: October 1â€“20, 2026

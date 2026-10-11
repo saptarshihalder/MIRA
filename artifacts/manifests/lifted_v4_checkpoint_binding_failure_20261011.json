@@ -1,0 +1,147 @@
+{
+  "observed_at_utc": "2026-10-11T07:32:42.627127+00:00",
+  "status": "strict_verification_failed_before_endpoint_disclosure",
+  "collected_checkpoints": 24,
+  "required_score_archives": 35,
+  "missing_finetune_sidecars": [
+    "runs_real/beijing_pm10/pfn_L_s2_ft",
+    "runs_real/beijing_so2/pfn_L_s2_ft",
+    "runs_real/beijing_o3/pfn_L_s2_ft",
+    "runs_real/beijing_pm10/pfn_L_s3_ft",
+    "runs_real/beijing_so2/pfn_L_s3_ft",
+    "runs_real/beijing_o3/pfn_L_s3_ft",
+    "runs_real/beijing_pm10/lct_L_s2_ft",
+    "runs_real/beijing_so2/lct_L_s2_ft",
+    "runs_real/beijing_o3/lct_L_s2_ft",
+    "runs_real/beijing_pm10/lct_L_s3_ft",
+    "runs_real/beijing_so2/lct_L_s3_ft",
+    "runs_real/beijing_o3/lct_L_s3_ft"
+  ],
+  "remote_directory_check": {
+    "confirmed_absent": "runs_real/beijing_pm10/pfn_L_s2_ft/checkpoint_identity.json",
+    "observed_files": {
+      "cells_real_beijing_pm10_s4041.npz": 53347,
+      "train.json": 18052,
+      "model.pt": 8515147
+    },
+    "broader_listing": "Concurrent read-only listing hit VolumeListFiles rate limit; not retried; no claim of twelve remote listings"
+  },
+  "current_bytes_only": {
+    "runs/pfn_L_s1": {
+      "model.pt": "23e97ff843fc14ba1b337f7ed6d661d5c0d3259ab6086ddafba53e40152c08d8",
+      "train.json": "fe8bf5b879acd89cf4e26738604ae88accfa841cb9d1b1a1a59d357d5d877ded"
+    },
+    "runs/pfn_L_s2": {
+      "model.pt": "ff480c0b826c674a587a3ae23daa94610999639f4840cb692b5aa4572b392751",
+      "train.json": "ee3929139a3a23864526724bdf4ec4f7de9485f3d22ce670716262341e57f1ad"
+    },
+    "runs/pfn_L_s3": {
+      "model.pt": "1ee6ac04db64ba1148ebb72b98fb59db10ae823991ed05757036ce33c5955465",
+      "train.json": "5abb9f011a5fee86a009319303b2e689d01dda333e305523ffb13f53ee1bbd39"
+    },
+    "runs/lct_L_s1": {
+      "model.pt": "827779eb866f92bf8e71f9797d48d596fd200a971ce2f46bd60702bc0e042be9",
+      "train.json": "584dccccae169799f5575e5cf3057e568a6c8d7cd80787399b45b67ad926c87b"
+    },
+    "runs/lct_L_s2": {
+      "model.pt": "4f17b6530af0845f5e91ce0497e598e27ce4e1288be8e69f8cd453aa325dd8c1",
+      "train.json": "a17e1357f5fcbf2d03bc1ea2fa748c21a9f538569c8237fd638f3dada68123cd"
+    },
+    "runs/lct_L_s3": {
+      "model.pt": "4e4c781ca764c6347f02c17ef1dd3686a4eb1a4992f04e0b3a7498c9457fc067",
+      "train.json": "64eab86e62dd6a2d21823f38d8666fdeff63468d476166c161d955bdddbde42d"
+    },
+    "runs_real/beijing_pm10/pfn_L_s1_ft": {
+      "model.pt": "77257e74831cb358310c6039fd56ceafbbf37dd76ceeaff150f166bbb36119cc",
+      "train.json": "7b1ca903adb0b0299938a76be205b1a650bf764970fbc626f4554e0565f8ac44"
+    },
+    "runs_real/beijing_so2/pfn_L_s1_ft": {
+      "model.pt": "29a8b423f079c5187e6e9f242c26e0db76e0debc2a4dc12eb7666ba70affe05c",
+      "train.json": "5768204027839e2abde670fb529a9b914b16fb10f6194c4f3d6d42218a90bf30"
+    },
+    "runs_real/beijing_o3/pfn_L_s1_ft": {
+      "model.pt": "4ec70197df463df5e79dad0a15e8742387c8b4ae9d00ecafcb5e3b1772333f34",
+      "train.json": "7125f04fe3ce31b8c6ae273acd69f533fc77de22c8f1585b1b70991152a11cb6"
+    },
+    "runs_real/beijing_pm10/pfn_L_s2_ft": {
+      "model.pt": "56618c7a18bf101f7e7aa88a405938af945248f5e1a53b50f37d8ab21838fb63",
+      "train.json": "bcd8f613f4d506e9b11f52ea8cbaeb90949a2d3a0e7f61212b66fecdc5e4fa31"
+    },
+    "runs_real/beijing_so2/pfn_L_s2_ft": {
+      "model.pt": "fbb6ead4238c7e21e218c6aa9706e299756075b77aa3fbf2e412dfb3e8c4d710",
+      "train.json": "8e5094b858097e80b5e4e8ca909a896005d5667ad8bedf91444c014a54ed0d2a"
+    },
+    "runs_real/beijing_o3/pfn_L_s2_ft": {
+      "model.pt": "84fbff6ee431a70adeee7ca1594160eb1a0f256ce5e17227960043d03c6c0d51",
+      "train.json": "229250496ddd6ad12e9e6a78cd3c0b29080d56fc92bf9498bfa206009ee9f44b"
+    },
+    "runs_real/beijing_pm10/pfn_L_s3_ft": {
+      "model.pt": "be27de01ec7f3e305c5aab0ec0a9865e20caee2910dff4f1686f8b7fcbe2daae",
+      "train.json": "24b68555c2f42207803ea9122de25672893a2c36211c90a7e34c093ca479686d"
+    },
+    "runs_real/beijing_so2/pfn_L_s3_ft": {
+      "model.pt": "1ffa2c6381a1ad30d714a402bc9303f08100e0be537a6fa910cdd7f0bf89e32b",
+      "train.json": "5548ae2dbee85cf8ba5f2ce87ab5ef94f97593aade27292244244993eec47597"
+    },
+    "runs_real/beijing_o3/pfn_L_s3_ft": {
+      "model.pt": "52e57f568270a83cd3b914802f76623ea95c9ce5e86b81ae97143d66d78b1f55",
+      "train.json": "178da25e1e281c5bd7757ba0560419df07af8a900b1e04fa45f4db5ca9d0c140"
+    },
+    "runs_real/beijing_pm10/lct_L_s1_ft": {
+      "model.pt": "58c60e560298c42576bb776bbbe2dd1c87ac6b019385aa5373a769f104e675b5",
+      "train.json": "78931a203534d5c4d148fcaf43ed3ccea2719aa20b04aeff0d78e1cd65be06ee"
+    },
+    "runs_real/beijing_so2/lct_L_s1_ft": {
+      "model.pt": "1bab9b9ace2ea84837693514b86dff1cf574fb4f4a13fa69bc75a54766dee2e4",
+      "train.json": "7b9fe2b69d53c964734dc41010e64ee0c43c3e6cd4ac5468ca01ce244b24d445"
+    },
+    "runs_real/beijing_o3/lct_L_s1_ft": {
+      "model.pt": "b22a4e5fd1508b218407c7847d694edb81e54be4ea5cdbbaf04d767a896a9576",
+      "train.json": "d414b47cc76ed811ae6b9451c3cd7da831e27298d42a2ef7d394d8bf09dc187a"
+    },
+    "runs_real/beijing_pm10/lct_L_s2_ft": {
+      "model.pt": "c3922f23ccca238daff8aba1d232aa67fb113f1bb4c45524ad7ffecd4d6aa70f",
+      "train.json": "d075b93a0fd242e77d7483a028c4c8245ece3591a3713f31cdbe34fcfda240d3"
+    },
+    "runs_real/beijing_so2/lct_L_s2_ft": {
+      "model.pt": "bdfadf9f9addf87025c7bba3b62fb57f3e8cb697ee5de8df0077f395cf9df563",
+      "train.json": "107c52a5f392a326b3b151dd17599fd913526a5c216ee89566cc23b73445110c"
+    },
+    "runs_real/beijing_o3/lct_L_s2_ft": {
+      "model.pt": "94b48b75aa0e93337f4fed50432a4c20865050f58f0eebb6d7102faa22103941",
+      "train.json": "d57b4b78446325418caf41bd1a97f3aecfc63442868a60eb3cda4fa1448aea00"
+    },
+    "runs_real/beijing_pm10/lct_L_s3_ft": {
+      "model.pt": "1f15053abf891fd37749bfcb99678646655296b31e93e53b10d3f4461cc47624",
+      "train.json": "a4b1d611be6df759a3b2ab692688c9701479f7361f942df6d8afc08d6e380344"
+    },
+    "runs_real/beijing_so2/lct_L_s3_ft": {
+      "model.pt": "821c7eba2f7e116a4dc688689f1932205e968a0c7860997a1c7a2b036f87eb7a",
+      "train.json": "c1a034c79854837aa3622f447b9706ff34a848d2589401de2bc6e71ae52b2ec2"
+    },
+    "runs_real/beijing_o3/lct_L_s3_ft": {
+      "model.pt": "cdc0e10ecae58e2aa19da0b481c514967e446038b215423c782d253b2fe9c322",
+      "train.json": "24bcb773a2a901067e9f02253ffbb1660df96575ee4596a9a608254bf12131f8"
+    }
+  },
+  "current_hashes_are_not_prescore_attestation": true,
+  "original_source_commit": "e1b1d9d09e98667dc4590e6f54a6c6641c3e24a9",
+  "source_driver_sha256": "00fdb4c766d3e1891437753502516d7318a84ba8344988dfa9df3608ed660764",
+  "collector_manifest_sha256": "2cf1cad56efec6158f3372f8851bbfe2eeff985d261b4b1a263a1afca472858f",
+  "original_verification_report_sha256": "92cc81bbb86e44fab937dd520ec671acbe6cdb7726e73e5fc884aced092f21fd",
+  "original_worker_wait_failure_preserved": true,
+  "all_results_preserved": true,
+  "score_arrays_opened_by_forensic_audit": false,
+  "endpoints_disclosed": false,
+  "checkpoint_sidecars_backfilled": false,
+  "scientific_retries": 0,
+  "new_gpu_calls": 0,
+  "root_cause": "Fresh finetune subprocess is not followed by ft_done/bind_checkpoint before score_step. Seed1 was revisited; initial seed1 recovery has no fine-tune sidecars, while final snapshot has six.",
+  "independent_review": "Read-only subagent confirmed missing post-subprocess completion/binding call and retrospective-attestation limitation.",
+  "future_fix": "Current development driver rechecks and binds completion before scoring; existing unbound scores fail. Frozen executed source unchanged.",
+  "regression_tests": {
+    "passed": 4,
+    "seconds": 0.39,
+    "file": "tests/test_v4_finetune_binding.py"
+  }
+}

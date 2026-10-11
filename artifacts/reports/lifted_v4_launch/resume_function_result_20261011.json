@@ -1,0 +1,15 @@
+{
+  "status": "completed",
+  "result": {
+    "stage": "main_resume",
+    "root": "/results/lifted_v4_l40s_20261009",
+    "status": "completed",
+    "exit_code": 0,
+    "seconds": 7647.416759713,
+    "estimated_seconds": 20520.96200275374
+  },
+  "exit_code": 0,
+  "seconds": 7647.416759713,
+  "function_call_id": "fc-01M4KMG0FQ3CYTVKSRGQVGC6DF",
+  "observed_via": "Manual read-only FunctionCall.get after local wait timeout"
+}

@@ -270,10 +270,17 @@ def finetune(name, s):
     good = True
     for ds, tag in zip(NEW, V4_REAL):
         run = REAL / ds / f'{name}_s{s}_ft'
+        if (run / f'cells_{tag}.npz').exists() and not (run / 'checkpoint_identity.json').exists():
+            raise ValueError(f'Existing scores have no pre-score checkpoint binding: {run}; preserve for audit.')
         if not ft_done(run):
             if not sh(f'ft_{name}_s{s}_{ds}', ['finetune_real.py', '--dataset', ds, '--init', init, '--out', run,
                                                 '--device', DEV, '--beijing', DATA / 'beijing', '--pool-cache', POOLS] + FT):
                 good = False; continue
+        # Bind freshly completed outputs BEFORE scoring. A later visit cannot
+        # reconstruct the missing pre-score identity for an already scored run.
+        if not ft_done(run):
+            FAILED.append(f'ft_{name}_s{s}_{ds}_incomplete_checkpoint')
+            good = False; continue
         good &= score_step(f'ft_{name}_s{s}_{ds}', ['eval_real.py', 'score', '--panel', panel(tag), '--runs', run, '--device', DEV],
                            run / f'cells_{tag}.npz', panel(tag))
     return good

@@ -1,0 +1,21 @@
+{
+  "pdf_sha256": "5a6c69ea579031df20e96a21477f86caf49eee59a29f74bdb4d36ae0855b58bd",
+  "total_pages": 30,
+  "references_pages": [
+    10
+  ],
+  "historical_numeric_macros_unchanged": 854,
+  "new_v4_efficiency_or_efficacy_macros": false,
+  "same_source_portable_compile": "success",
+  "native_compile": "fails: isolated compiler cannot resolve local neurips_2026.sty",
+  "overfull_boxes": false,
+  "undefined_references": false,
+  "identity_scan_matches": [],
+  "metadata": {
+    "/Creator": "LaTeX with hyperref",
+    "/Producer": "xdvipdfmx (0.1)",
+    "/CreationDate": "D:20261011073534-00'00'"
+  },
+  "visual_review": "Final same-PDF pages1,9,10,19 inspected: main text ends9, references10, no visible clipping/overlap; prior unchanged appendix table page20 also checked",
+  "paper_status": "historical results with explicit v4 provenance-gate failure; not submission-ready"
+}

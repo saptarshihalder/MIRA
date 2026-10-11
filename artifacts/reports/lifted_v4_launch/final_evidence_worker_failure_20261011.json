@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "automatic_retries": 0,
+  "new_gpu_calls": 0,
+  "stage": "verify",
+  "reason": "RuntimeError: verify exit 1; inspect preserved logs"
+}
