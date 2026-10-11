@@ -46,7 +46,10 @@ res = {}
 for e in (0, 3, 6):
     upt = np.concatenate([method('upt', n, e) for n in NETS])
     for rid, b in (('R1', 'tnp'), ('R2', 'cnp'), ('R3', 'ignnk_cal')):
-        res[f'{rid}_upt_vs_{b}_e{e}'] = paired(np.concatenate([method(b, n, e) for n in NETS]), upt, allk)
+        try:                                                     # an endpoint whose inputs are not finished yet is 'not run'
+            res[f'{rid}_upt_vs_{b}_e{e}'] = paired(np.concatenate([method(b, n, e) for n in NETS]), upt, allk)
+        except FileNotFoundError as err:
+            res[f'{rid}_upt_vs_{b}_e{e}'] = dict(status=f'not run ({Path(err.filename).parent.name})')
 desc = {}
 for n in NETS:
     for e in (0, 3, 6):
@@ -62,6 +65,7 @@ res['descriptive'] = desc
 Path(a.out).write_text(json.dumps(res, indent=1))
 for k, v in res.items():
     if k[0] == 'R':
-        print(f"{k:24s} gain {v['gain']:+.4f} [{v['lo']:+.4f}, {v['hi']:+.4f}] n={v['n']:4d} -> {'PASS' if v['passed'] else 'FAIL'}")
+        print(f"{k:24s} " + (f"gain {v['gain']:+.4f} [{v['lo']:+.4f}, {v['hi']:+.4f}] n={v['n']:4d} -> {'PASS' if v['passed'] else 'FAIL'}"
+                             if 'gain' in v else v['status']))
 for k, v in desc.items():
     print(k, {m: (None if x is None else round(x['nll'], 3)) for m, x in v.items()})
