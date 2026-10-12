@@ -21,11 +21,18 @@ GATE_BIAS = 4.
 
 
 class UPT(lct.LCT):
-    def __init__(self, d=64, layers=4, heads=4, ff=128, femb=16, K=1):
+    def __init__(self, d=64, layers=4, heads=4, ff=128, femb=16, K=1, free_k=1):
         super().__init__(d=d, layers=layers, heads=heads, ff=ff, femb=femb, K=K)
         self.gate = nn.Linear(d, 1)
         self.site_dtype = None          # protocol v7: torch.float64 runs the lifted-site algebra in double precision
         nn.init.zeros_(self.gate.weight); nn.init.constant_(self.gate.bias, GATE_BIAS)
+        self.free_k = free_k
+        if free_k > 1:                  # protocol v10: the free site is a free_k-component mixture (Bishop 1994)
+            self.mdn = nn.Linear(d, 3 * free_k)        # per component: mean, log-variance offsets and a mixing logit
+            nn.init.zeros_(self.mdn.weight)
+            with torch.no_grad():                      # start as a scale mixture around the free head's Gaussian
+                b = torch.zeros(3, free_k); b[1] = torch.linspace(-1.5, 1.5, free_k)
+                self.mdn.bias.copy_(b.reshape(-1))
 
     def _query_tokens(self, batch):
         """Query-row tokens of all P sensor columns and the target column, plus the support target scale."""
@@ -57,9 +64,32 @@ class UPT(lct.LCT):
         t = z[:, :, P]
         o = self.backbone.out(t)
         mu_f = (ym + ys * o[..., 0]).reshape(-1)
-        lv_f = (5 * torch.tanh(o[..., 1] / 5) + 2 * ys.log()).reshape(-1)
+        b = self.backbone.lv_bound
+        lv_f = (b * torch.tanh(o[..., 1] / b) + 2 * ys.log()).reshape(-1)
         g = self.gate(t).reshape(-1)
         return nn.functional.logsigmoid(g), mu_s, lv_s, nn.functional.logsigmoid(-g), mu_f, lv_f
+
+    def mixture(self, batch):
+        """The predictive as a Gaussian mixture: log weights, means, log variances, each (N, 1 + free_k); component 0
+        is the lifted site."""
+        if self.free_k == 1:
+            la, ma, va, lb, mb, vb = self.predictive(batch)
+            return torch.stack((la, lb), 1), torch.stack((ma, mb), 1), torch.stack((va, vb), 1)
+        z, ym, ys = self._query_tokens(batch)
+        B, nq, C, d = z.shape
+        P = C - 1
+        mu_s, lv_s = self._sites(batch, z[:, :, :P].reshape(B * nq, P, d))
+        t = z[:, :, P]
+        o = self.backbone.out(t)
+        e = self.mdn(t).reshape(B, nq, 3, self.free_k)
+        b = self.backbone.lv_bound
+        mu_k = ym[..., None] + ys[..., None] * (o[..., 0, None] + e[:, :, 0])
+        lv_k = b * torch.tanh((o[..., 1, None] + e[:, :, 1]) / b) + 2 * ys.log()[..., None]
+        g = self.gate(t)                                                          # (B, nq, 1)
+        lw_k = nn.functional.logsigmoid(-g) + torch.log_softmax(e[:, :, 2], -1)
+        K = self.free_k
+        return (torch.cat((nn.functional.logsigmoid(g).reshape(-1, 1), lw_k.reshape(-1, K)), 1),
+                torch.cat((mu_s[:, None], mu_k.reshape(-1, K)), 1), torch.cat((lv_s[:, None], lv_k.reshape(-1, K)), 1))
 
     def _sites(self, batch, h):
         """Lifted posterior from site corrections read off the query cell tokens h (N, P, d), exactly as lct.LCT."""
@@ -90,12 +120,19 @@ class UPT(lct.LCT):
 
     def nll(self, batch, y=None):
         y = batch['qy'] if y is None else y
+        if self.free_k > 1:
+            lw, mu, lv = self.mixture(batch)
+            return -torch.logsumexp(lw - .5 * (LOG2PI + lv + (y[:, None] - mu) ** 2 * torch.exp(-lv)), 1)
         la, ma, va, lb, mb, vb = self.predictive(batch)
         ca = la - .5 * (LOG2PI + va + (y - ma) ** 2 * torch.exp(-va))
         cb = lb - .5 * (LOG2PI + vb + (y - mb) ** 2 * torch.exp(-vb))
         return -torch.logaddexp(ca, cb)
 
     def forward(self, batch):
+        if self.free_k > 1:
+            lw, m, lv = self.mixture(batch)
+            w = lw.exp(); mu = (w * m).sum(1)
+            return mu, ((w * (lv.exp() + m ** 2)).sum(1) - mu ** 2).clamp_min(1e-12).log()
         la, ma, va, lb, mb, vb = self.predictive(batch)
         pa, pb = la.exp(), lb.exp()
         mu = pa * ma + pb * mb
@@ -106,9 +143,8 @@ class UPT(lct.LCT):
 def components(model, batch):
     """Any model's predictive as a Gaussian mixture: log weights, means and log variances, each (N, M); M = 1 for the
     Gaussian models (PFN, TNP, CNP) and 2 for UPT."""
-    if hasattr(model, 'predictive'):
-        la, ma, va, lb, mb, vb = model.predictive(batch)
-        return torch.stack((la, lb), 1), torch.stack((ma, mb), 1), torch.stack((va, vb), 1)
+    if hasattr(model, 'mixture'):
+        return model.mixture(batch)
     mu, lv = model(batch)
     return torch.zeros_like(mu)[:, None], mu[:, None], lv[:, None]
 

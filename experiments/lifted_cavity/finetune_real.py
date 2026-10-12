@@ -16,7 +16,8 @@ RAW = {'airq_co': ('airq', 'CO(GT)'), 'airq_no2': ('airq', 'NO2(GT)'), 'beijing'
        'beijing_o3': ('beijing', 'O3'), 'gas': ('gas', None),
        'metr_la': ('v6', None), 'pems_bay': ('v6', None), 'intel': ('v6', None),     # protocol v6 (realdata_v6.py)
        'pems03': ('v7', None), 'pems08': ('v7', None), 'air_cn': ('v7', None),       # protocol v7 (realdata_v7.py)
-       'dwd_t2m': ('v9', None), 'aurn_no2': ('v9', None), 'usgs_q': ('v9', None)}     # protocol v9 (realdata_v9.py)
+       'dwd_t2m': ('v9', None), 'aurn_no2': ('v9', None), 'usgs_q': ('v9', None),     # protocol v9 (realdata_v9.py)
+       'usgs_ny': ('v10', None), 'usgs_wa': ('v10', None), 'dwd_p': ('v10', None), 'aurn_pm25': ('v10', None)}   # v10
 DEQUANT = {'beijing_pm10', 'beijing_so2', 'beijing_o3'}     # protocol v4, amendment 1: integer readings dequantized
 
 
@@ -35,6 +36,9 @@ def load_raw(name, paths):
     if kind == 'v9':
         import realdata_v9
         return realdata_v9.load(name, paths['v6'])
+    if kind == 'v10':
+        import realdata_v10
+        return realdata_v10.load(name, paths['v6'])
     return realdata.load_gas(paths['gas'])
 
 
@@ -51,6 +55,12 @@ def source_pool(a):
         path.parent.mkdir(parents=True, exist_ok=True); tmp = path.with_suffix('.tmp')
         torch.save(dict(pool=pool, files=raw['files'], dequant_seed=raw.get('dequant_seed')), tmp); os.replace(tmp, path)
     return pool, raw['files'], raw.get('dequant_seed')
+
+
+def set_lv_bound(model, b):
+    for mod in model.modules():
+        if hasattr(mod, 'lv_bound'):
+            mod.lv_bound = float(b)
 
 
 def batch_from(pool, rng, B=64, Q=8):
@@ -80,6 +90,9 @@ def main():
     ap.add_argument('--device', default='cpu')
     ap.add_argument('--crps', type=float, default=0., help='protocol v9: objective NLL + CRPS x this weight (upt.nll_crps); '
                     '0 keeps the protocol-v2 NLL objective')
+    ap.add_argument('--free-k', type=int, default=1, help='protocol v10: UPT free site as a free_k-component mixture')
+    ap.add_argument('--yz', action='store_true', help='protocol v10 SF: per-episode target standardization (realdata.zpool)')
+    ap.add_argument('--lv-bound', type=float, default=5., help='protocol v10 SF: |log-variance| bound of the Gaussian head (10)')
     ap.add_argument('--pool-cache', default=None, help='directory in which to reuse the source pool across models '
                     '(the pool depends only on dataset, seed, episodes and period, so reuse changes nothing)')
     ap.add_argument('--period', nargs=2, default=None, help='development only: override the source period (beijing)')
@@ -93,11 +106,19 @@ def main():
     if (out / 'model.pt').exists() and not resume.exists(ck):     # with a checkpoint left, the run was cut off: finish it
         raise SystemExit(f'{out} already holds a fine-tuned model')
     meta = json.loads((Path(a.init) / 'train.json').read_text())
+    if a.free_k > 1:
+        assert meta['model'] == 'upt', 'free_k applies to UPT'
+        meta = dict(meta, arch=dict(meta['arch'], free_k=a.free_k))
     model = build(meta['model'], meta.get('repo'), meta)
     if (Path(a.init) / 'model.pt').exists():
-        model.load_state_dict(torch.load(Path(a.init) / 'model.pt', weights_only=True, map_location='cpu'))
+        missing, unexpected = model.load_state_dict(torch.load(Path(a.init) / 'model.pt', weights_only=True, map_location='cpu'),
+                                                    strict=a.free_k == 1)
+        assert not unexpected and set(missing) <= {'mdn.weight', 'mdn.bias'}, (missing, unexpected)
     dev = devutil.pick(a.device); model.to(dev)
+    set_lv_bound(model, a.lv_bound)
     pool, files, dq = source_pool(a)
+    if a.yz:
+        pool = realdata.zpool(pool)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: .5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps)))
     run, first, elapsed = None, 0, 0.

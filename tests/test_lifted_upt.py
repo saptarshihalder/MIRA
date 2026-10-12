@@ -127,3 +127,46 @@ def test_test_time_ensemble_is_the_linear_pool_over_feature_seeds():
     assert np.all(two['nll'] <= .5 * (one['nll'] + other['nll']) + 1e-6)
     assert np.all(two['nll'] >= np.minimum(one['nll'], other['nll']) - np.log(2) - 1e-6)
     assert not np.allclose(one['nll'], other['nll'])        # the feature seed matters, so the ensemble is not trivial
+
+
+def test_scale_free_pipeline_is_equivariant_to_the_target_scale():
+    """Protocol v10 SF: with per-episode target standardization, rescaling every target by c shifts each episode's NLL
+    by exactly log c and scales CRPS by c and squared error by c^2 (the .1 clamp and absolute ridges no longer bind)."""
+    import realdata
+    torch.manual_seed(7)
+    m = upt.UPT().eval()
+    torch.nn.init.constant_(m.gate.bias, 0.)
+    m.backbone.lv_bound = 10.
+    rng = np.random.default_rng(7)
+    T, NS, NQ, P = 4, realdata.NS, realdata.NQ, 5
+    x = rng.normal(size=(T, NS + NQ, P)); y = x.sum(-1) + .3 * rng.normal(size=(T, NS + NQ)) + 5
+    for c in (1., 1e-3):
+        eps = [(x[t], c * y[t], np.ones((NS, P)), np.ones((NQ, P)), f'k{t}') for t in range(T)]
+        pool = realdata.to_pool(eps)
+        r = realdata.score_model(m, realdata.zpool(pool), pool['qnat'].numpy(), tta=2)
+        if c == 1.:
+            base = r
+        else:
+            assert np.allclose(r['nll'], base['nll'] + np.log(c), atol=2e-3)
+            assert np.allclose(r['crps'], base['crps'] * c, rtol=2e-3)
+            assert np.allclose(r['se'], base['se'] * c * c, rtol=5e-3)
+    raw = realdata.score_model(m, realdata.to_pool([(x[t], 1e-3 * y[t], np.ones((NS, P)), np.ones((NQ, P)), f'k{t}') for t in range(T)]),
+                               pool['qnat'].numpy())
+    assert raw['nll'].mean() > r['nll'].mean() + 1          # without SF the clamp makes tiny-scale targets far worse
+
+
+def test_mixture_free_site_is_a_proper_mixture_and_loads_a_single_gaussian_checkpoint():
+    torch.manual_seed(8)
+    src = upt.UPT().eval()
+    m = upt.UPT(free_k=3).eval()
+    missing, unexpected = m.load_state_dict(src.state_dict(), strict=False)
+    assert set(missing) == {'mdn.weight', 'mdn.bias'} and not unexpected
+    b = _batch(8)
+    with torch.no_grad():
+        lw, mu, lv = m.mixture(b)
+        assert lw.shape[1] == 4 and torch.allclose(lw.exp().sum(1), torch.ones(len(lw)), atol=1e-5)
+        la, ma, va, lb, mb, vb = src.predictive(b)
+        assert torch.allclose(lw[:, 0], la, atol=1e-6) and torch.allclose(mu[:, 0], ma, atol=1e-5)
+        assert torch.allclose(mu[:, 1:], mb[:, None].expand(-1, 3), atol=1e-5)    # same centre, three scales at start
+        nll, _ = upt.nll_crps(m, b)
+        assert torch.allclose(nll, m.nll(b), atol=1e-5)

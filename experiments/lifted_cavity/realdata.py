@@ -105,6 +105,9 @@ def episodes(name, raw, split, seed, n_source=None, period=None):
     if name in ('dwd_t2m', 'aurn_no2', 'usgs_q'):                   # protocol v9 networks
         import realdata_v9
         return realdata_v9.episodes(name, raw, split, seed, n_source)
+    if name in ('usgs_ny', 'usgs_wa', 'dwd_p', 'aurn_pm25'):         # protocol v10 networks
+        import realdata_v10
+        return realdata_v10.episodes(name, raw, split, seed, n_source)
     rng = np.random.default_rng(seed)
     out = []
     if name.startswith('airq'):
@@ -186,6 +189,22 @@ def to_pool(eps):
     return pool
 
 
+def zpool(pool):
+    """Protocol v10 scale-free (SF) pipeline: each episode's target standardized by its support mean and standard
+    deviation (floor 1e-4 (1 + |mean|)), anchors refitted on the standardized target. 'yloc' and 'yscale' map back to raw
+    units (score_model does this, so every reported metric stays in raw units). The inputs are already standardized
+    per episode (to_pool), so the whole predictive becomes equivariant to affine maps of the target: no fixed scale
+    (the .1 clamp of the backbone, the absolute ridges of the anchors) acts on the raw target any more."""
+    sy = pool['sy'].double(); m = sy.mean(1); s = torch.maximum(sy.std(1), 1e-4 * (1 + m.abs()))
+    out = dict(pool)
+    out['sy'] = ((sy - m[:, None]) / s[:, None]).float()
+    out['qy'] = ((pool['qy'].double() - m[:, None]) / s[:, None]).float()
+    mu, sig = an.em_batched(pool['sx'].double().numpy(), out['sy'].double().numpy(), pool['sm'].double().numpy())
+    out['anchors'] = {K: {k: v.float() for k, v in an.fa_batched(mu, sig, K).items()} for K in (0, 1, 2)}
+    out['yloc'], out['yscale'] = m, s
+    return out
+
+
 def condition_masks(pool, extra, seed):
     """Per-query masks: natural mask with `extra` additional observed sensors dropped (never all)."""
     rng = np.random.default_rng(seed)
@@ -262,14 +281,17 @@ def score_model(model, pool, qm, tasks_per_batch=8, tta=1):
                 W.append(np.exp(lw) / tta); Mu.append(mu); Var.append(np.exp(lv))
             model.feature_seed = 0
             g = upt.mixture_metrics(np.concatenate(W, 1), np.concatenate(Mu, 1), np.concatenate(Var, 1), batch['qy'].double().numpy())
-        elif hasattr(model, 'predictive'):                         # mixture output (upt.py): exact mixture metrics
+        elif hasattr(model, 'mixture'):                            # mixture output (upt.py): exact mixture metrics
             import upt
-            la, ma, va, lb, mb, vb = [v.detach().cpu().double().numpy() for v in model.predictive(devutil.to_dev(batch, devutil.model_device(model)))]
-            g = upt.mixture_metrics(np.exp(np.stack((la, lb), 1)), np.stack((ma, mb), 1), np.exp(np.stack((va, vb), 1)),
-                                    batch['qy'].double().numpy())
+            lw, mu, lv = (v.detach().cpu().double().numpy() for v in model.mixture(devutil.to_dev(batch, devutil.model_device(model))))
+            g = upt.mixture_metrics(np.exp(lw), mu, np.exp(lv), batch['qy'].double().numpy())
         else:
             mu, lv = model(devutil.to_dev(batch, devutil.model_device(model)))
             mu, lv = mu.detach().cpu(), lv.detach().cpu()
             g = gauss_metrics(mu.double().numpy(), np.exp(lv.double().numpy()), batch['qy'].double().numpy())
         res.append({m: v.reshape(B, NQ).mean(1) for m, v in g.items()})
-    return {m: np.concatenate([r[m] for r in res]) for m in res[0]}
+    out = {m: np.concatenate([r[m] for r in res]) for m in res[0]}
+    if 'yscale' in pool:                                           # SF pipeline: metrics back in raw target units
+        s = pool['yscale'].double().numpy()
+        out['nll'] = out['nll'] + np.log(s); out['crps'] = out['crps'] * s; out['se'] = out['se'] * s * s
+    return out
