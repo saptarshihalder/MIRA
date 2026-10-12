@@ -117,7 +117,8 @@ def parse_rdb(text):
             cols = f; vi = next(i for i, c in enumerate(f) if c.endswith('_00060')); continue
         if cols is None or f[0] != 'USGS' or len(f) <= vi:
             continue
-        off = {'EST': 5, 'EDT': 4}.get(f[3])
+        off = {'EST': 5, 'EDT': 4, 'CST': 6, 'CDT': 5, 'MST': 7, 'MDT': 6, 'PST': 8, 'PDT': 7, 'AKST': 9, 'AKDT': 8,
+               'HST': 10, 'UTC': 0}.get(f[3])                 # hours behind UTC (v10 amendment 1: all US zones)
         if off is None:
             continue
         try:

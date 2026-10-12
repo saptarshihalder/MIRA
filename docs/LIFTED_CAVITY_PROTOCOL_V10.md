@@ -126,3 +126,14 @@ All outcomes are reported, whichever way they go.
 | O10 | the old-network descriptives |
 
 **Amendments:** committed before the affected scores are computed.
+
+## Amendment 1 (October 12, before any v10 panel or score)
+
+**The bug.** `fetch_v9.parse_rdb` converted only Eastern-time timestamps (EST/EDT) to UTC. Every Washington gauge
+(PST/PDT) was therefore dropped, and the `usgs_wa` download failed with no gauges.
+
+**The fix.** The parser now maps every US time zone. The Eastern-time networks are unaffected: v9 `usgs_q` and v10
+`usgs_ny`.
+
+**Effect.** Chain F10 stopped at its data stage before building any panel. It is relaunched with the fix. Nothing
+else changes.
