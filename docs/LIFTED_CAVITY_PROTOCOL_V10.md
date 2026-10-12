@@ -137,3 +137,22 @@ All outcomes are reported, whichever way they go.
 
 **Effect.** Chain F10 stopped at its data stage before building any panel. It is relaunched with the fix. Nothing
 else changes.
+
+## Amendment 2 (October 12, before any v10 score)
+
+**What happened.** On Colab, the `usgs_ny` download returned data for only 22 of the 304 active gauges. Probing showed
+why: the legacy NWIS instantaneous-value service answers "503 service temporarily unavailable" for New York gauges.
+The Pennsylvania and Washington gauges are unaffected. Only 19 gauges were kept, which is fewer than the 48 test
+targets, so the panel build stopped. No panel of this network, and no score of any v10 network, was produced.
+
+**The fix.** For each gauge, the download first tries the legacy service. If that fails, it falls back to the USGS
+Water Data OGC API (`api.waterdata.usgs.gov`, collection `continuous`, parameter 00060). This is the same continuous
+discharge record in UTC, fetched in one request per gauge, plus a second request when a 5-minute record
+reaches the 50,000-row page limit. The API allows 1,000 requests per hour per address. In addition:
+- requests are sent at most 4 at a time, with back-off;
+- a second, sequential pass retries the gauges that failed;
+- the JSON summary records how many requests still failed;
+- the `usgs_ny` snapshot is deleted and downloaded again.
+
+The network, splits and every other choice are unchanged. The coverage rule (≥ 75% in both periods) still decides
+which gauges are kept.

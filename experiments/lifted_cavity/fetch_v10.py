@@ -19,6 +19,8 @@ DWD_P = 'https://opendata.dwd.de/climate_environment/CDC/observations_germany/cl
 USGS_SITES = ('https://waterservices.usgs.gov/nwis/site/?format=rdb&stateCd={}&parameterCd=00060&siteType=ST'
               '&siteStatus=active&hasDataTypeCd=iv')
 USGS_IV = 'https://nwis.waterservices.usgs.gov/nwis/iv/?format=rdb&parameterCd=00060&startDT=2026-03-01&endDT=2026-09-30&sites='
+USGS_OGC = ('https://api.waterdata.usgs.gov/ogcapi/v0/collections/continuous/items?f=csv&limit=50000&monitoring_location_id=USGS-{site}'
+            '&parameter_code=00060&time={a}T00:00:00Z/{b}T00:00:00Z&properties=time,value')
 GRID = {'usgs_ny': ('2026-03-01', '2026-10-01', '30min'), 'usgs_wa': ('2026-03-01', '2026-10-01', '30min'),
         'dwd_p': ('2025-04-01', '2026-10-11', 'h'), 'aurn_pm25': ('2025-01-01', '2026-10-11', 'h')}
 
@@ -78,19 +80,39 @@ def usgs(ts, state):
     sites = {r[1]: (float(r[4]), float(r[5])) for r in rows}
     ids = sorted(sites)
 
-    def one(site):                                  # one gauge per request; a gauge the service cannot serve is skipped
-        try:
-            return parse_rdb(get(USGS_IV + site, tries=3).decode())
-        except Exception:
-            return {}
+    def one(site):          # v10 amendment 2: legacy NWIS first, then the USGS Water Data OGC API (same data, UTC)
+        for attempt in range(3):
+            try:
+                return site, parse_rdb(get(USGS_IV + site, tries=1).decode())
+            except Exception:
+                pass
+            try:               # one request for the whole period (the API allows 1,000 requests per hour per address);
+                df = pd.read_csv(io.StringIO(get(USGS_OGC.format(site=site, a='2026-03-01', b='2026-10-01'), tries=2).decode()))
+                if len(df) >= 50000:                       # a 5-minute record hit the page limit: fetch the rest
+                    rest = pd.read_csv(io.StringIO(get(USGS_OGC.format(site=site, a='2026-07-01', b='2026-10-01'), tries=2).decode()))
+                    df = pd.concat([df, rest])
+                if len(df):
+                    t = pd.to_datetime(df['time'], utc=True).dt.tz_localize(None).values.astype('datetime64[s]')
+                    v = pd.to_numeric(df['value'], errors='coerce').to_numpy(float).copy()
+                    v[v < 0] = np.nan
+                    return site, {site: (t, v)}
+                return site, {}
+            except Exception:
+                time.sleep(15 * (attempt + 1))
+        return site, None
+    with ThreadPoolExecutor(4) as ex:
+        res = dict(ex.map(one, ids))
+    for site in [k for k, v in res.items() if v is None]:   # second, sequential pass for the gauges that failed
+        res[site] = one(site)[1]
+    FAILED[0] = sum(v is None for v in res.values())
     data = {}
-    with ThreadPoolExecutor(8) as ex:
-        for d in ex.map(one, ids):
-            data.update(d)
+    for v in res.values():
+        data.update(v or {})
     keep = [s for s in ids if s in data and len(data[s][0])]
     return keep, np.stack([place(ts, *data[s]) for s in keep], 1), [sites[s] for s in keep], [USGS_SITES.format(state), USGS_IV]
 
 
+FAILED = [0]
 FETCH = {'usgs_ny': lambda ts: usgs(ts, 'ny'), 'usgs_wa': lambda ts: usgs(ts, 'wa'), 'dwd_p': dwd_pressure,
          'aurn_pm25': lambda ts: aurn(ts, 'PM2.5')}
 
@@ -113,7 +135,7 @@ def main():
         ll = np.array(ll)[k]
         np.savez_compressed(out / f'{name}.npz', V=V[:, k], ts=ts, ids=np.array(ids)[k], lat=ll[:, 0], lon=ll[:, 1])
         info = dict(name=name, urls=urls, downloaded_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), stations_found=n0,
-                    stations_kept=int(k.sum()), observed_frac=float(np.isfinite(V[:, k]).mean()), seconds=round(time.time() - t0))
+                    stations_kept=int(k.sum()), failed_requests=FAILED[0], observed_frac=float(np.isfinite(V[:, k]).mean()), seconds=round(time.time() - t0))
         (out / f'{name}.json').write_text(json.dumps(info, indent=1))
         print(json.dumps(info), flush=True)
 
