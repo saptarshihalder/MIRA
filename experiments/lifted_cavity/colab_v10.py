@@ -25,7 +25,7 @@ VARIANT = {'upt_L_sf': ('upt_L', ['--crps', '1'] + SF), 'upt_L_sfm': ('upt_L', [
            'pfn_L': ('pfn_L', []), 'tnp': ('tnp', [])}                          # pfn_L: the v9 recipe (amendment 4)
 TTA = {'upt_L_sf', 'upt_L_sfm', 'pfn_L_sf', 'pfn_L_sfn', 'upt_L_crps', 'pfn_L'}
 FRESH = ('pfn_L_sf', 'pfn_L', 'tnp')          # amendment 4 (compute budget): pfn_L_sfn and upt_L_crps are not run
-PAR = 6
+PAR = int(__import__('os').environ.get('MIRA_PAR', 6))      # 5 on an L4 (22 GB): six UPT-L-SFM fine-tunes run out of memory
 SNAPSHOT_ONLY = ('usgs_ny',)                  # amendment 3: comes from the committed snapshot, never downloaded on Colab
 
 
@@ -258,7 +258,7 @@ def tabpfn(a):
 # ------------------------------------------------------------------ chain O
 def ftold(a):
     wait_for([Path(a.root) / 'dev' / 'selection10.json'], 'selection (chain D)')
-    parallel(ft_items(a, [(n, m) for m in (selection(a)['model'], 'pfn_L_sf') for n in DEV6 + DEV7]), 4)
+    parallel(ft_items(a, [(n, m) for m in (selection(a)['model'], 'pfn_L_sf') for n in DEV6 + DEV7]), min(4, PAR))
 
 
 def scoreoldsel(a):
