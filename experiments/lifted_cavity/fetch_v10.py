@@ -80,30 +80,47 @@ def usgs(ts, state):
     sites = {r[1]: (float(r[4]), float(r[5])) for r in rows}
     ids = sorted(sites)
 
-    def one(site):          # v10 amendment 2: legacy NWIS first, then the USGS Water Data OGC API (same data, UTC)
-        for attempt in range(3):
-            try:
-                return site, parse_rdb(get(USGS_IV + site, tries=1).decode())
-            except Exception:
-                pass
-            try:               # one request for the whole period (the API allows 1,000 requests per hour per address);
-                df = pd.read_csv(io.StringIO(get(USGS_OGC.format(site=site, a='2026-03-01', b='2026-10-01'), tries=2).decode()))
-                if len(df) >= 50000:                       # a 5-minute record hit the page limit: fetch the rest
-                    rest = pd.read_csv(io.StringIO(get(USGS_OGC.format(site=site, a='2026-07-01', b='2026-10-01'), tries=2).decode()))
-                    df = pd.concat([df, rest])
-                if len(df):
-                    t = pd.to_datetime(df['time'], utc=True).dt.tz_localize(None).values.astype('datetime64[s]')
-                    v = pd.to_numeric(df['value'], errors='coerce').to_numpy(float).copy()
-                    v[v < 0] = np.nan
-                    return site, {site: (t, v)}
-                return site, {}
-            except Exception:
-                time.sleep(15 * (attempt + 1))
-        return site, None
+    def legacy(site):       # legacy NWIS first (v10 amendment 2), one attempt with a short timeout (it can hang)
+        import urllib.request
+        from fetch_v9 import UA
+        try:
+            with urllib.request.urlopen(urllib.request.Request(USGS_IV + site, headers=UA), timeout=20) as r:
+                return site, parse_rdb(r.read().decode())
+        except Exception:
+            return site, None
+
+    cache = Path(CACHE[0]) / f'ogc_{state}' if CACHE[0] else None
+
+    def fetch(site, a, b):  # one OGC response, cached on disk so an interrupted download resumes
+        f = cache / f'{site}_{a}_{b}.csv' if cache else None
+        if f is not None and f.exists():
+            return f.read_bytes()
+        body = get_ogc(USGS_OGC.format(site=site, a=a, b=b))
+        if f is not None:
+            f.parent.mkdir(parents=True, exist_ok=True); f.write_bytes(body)
+        return body
+
+    def ogc(site):          # the USGS Water Data OGC API (same continuous record, UTC), paced (v10 amendment 3)
+        df = pd.read_csv(io.StringIO(fetch(site, '2026-03-01', '2026-10-01').decode()))
+        if len(df) >= 50000:                       # a 5-minute record hit the page limit: fetch the rest
+            df = pd.concat([df, pd.read_csv(io.StringIO(fetch(site, '2026-07-01', '2026-10-01').decode()))])
+        if not len(df):
+            return {}
+        t = pd.to_datetime(df['time'], utc=True).dt.tz_localize(None).values.astype('datetime64[s]')
+        v = pd.to_numeric(df['value'], errors='coerce').to_numpy(float).copy()
+        v[v < 0] = np.nan
+        return {site: (t, v)}
     with ThreadPoolExecutor(4) as ex:
-        res = dict(ex.map(one, ids))
-    for site in [k for k, v in res.items() if v is None]:   # second, sequential pass for the gauges that failed
-        res[site] = one(site)[1]
+        res = dict(ex.map(legacy, ids))
+    todo = [k for k, v in res.items() if v is None]
+    print(f'{state}: legacy service served {len(ids) - len(todo)} of {len(ids)} gauges; OGC API for {len(todo)}', flush=True)
+    for i, site in enumerate(todo):                         # sequential, at most one request per 3.7 s (< 1,000/hour)
+        try:
+            res[site] = ogc(site)
+        except Exception as e:
+            res[site] = None; print('OGC failed', site, repr(e)[:120], flush=True)
+        if (i + 1) % 25 == 0:
+            print(f'  OGC {i + 1}/{len(todo)}', time.strftime('%H:%M:%S'), flush=True)
     FAILED[0] = sum(v is None for v in res.values())
     data = {}
     for v in res.values():
@@ -113,6 +130,31 @@ def usgs(ts, state):
 
 
 FAILED = [0]
+_LAST = [0.]
+CACHE = [None]                      # --cache: a folder for raw OGC responses (resumable downloads)
+
+
+def get_ogc(url, pace=3.7):
+    """GET from the OGC API at most once per `pace` seconds, waiting out 429 responses (Retry-After)."""
+    import urllib.request, urllib.error
+    from fetch_v9 import UA
+    for i in range(40):
+        time.sleep(max(0., _LAST[0] + pace - time.time())); _LAST[0] = time.time()
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=300) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                w = min(int(e.headers.get('Retry-After') or 60) + 5, 1800)
+                print(f'  429: waiting {w}s', time.strftime('%H:%M:%S'), flush=True); time.sleep(w); continue
+            if i >= 3:
+                raise
+            time.sleep(10)
+        except Exception:
+            if i >= 3:
+                raise
+            time.sleep(10)
+    raise RuntimeError('OGC API: still rate limited')
 FETCH = {'usgs_ny': lambda ts: usgs(ts, 'ny'), 'usgs_wa': lambda ts: usgs(ts, 'wa'), 'dwd_p': dwd_pressure,
          'aurn_pm25': lambda ts: aurn(ts, 'PM2.5')}
 
@@ -120,7 +162,9 @@ FETCH = {'usgs_ny': lambda ts: usgs(ts, 'ny'), 'usgs_wa': lambda ts: usgs(ts, 'w
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', required=True); ap.add_argument('names', nargs='*', default=list(GRID))
+    ap.add_argument('--cache', default=None)
     a = ap.parse_args()
+    CACHE[0] = a.cache
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     import realdata_v10
     for name in a.names:

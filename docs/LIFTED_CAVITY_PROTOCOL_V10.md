@@ -156,3 +156,17 @@ reaches the 50,000-row page limit. The API allows 1,000 requests per hour per ad
 
 The network, splits and every other choice are unchanged. The coverage rule (≥ 75% in both periods) still decides
 which gauges are kept.
+
+## Amendment 3 (October 12, before any v10 score)
+
+**What happened.** The OGC fallback of amendment 2 also failed on Colab. The API allows 1,000 requests per hour per
+address, and Colab's shared outbound address had already used the quota (HTTP 429). The relaunched download was
+stopped before it wrote a snapshot. The legacy service still answers 503 for New York gauges.
+
+**The fix.**
+- `usgs_ny` is downloaded from a local machine by `fetch_v10.py`, with the same code, sequentially and paced. It sends
+  at most one OGC request per 3.7 s and waits out any 429.
+- The snapshot is committed to the repository (`data_snapshots/v10/usgs_ny.npz` and `.json`).
+- `colab_v10.py data` copies committed snapshots into the Drive data folder before downloading anything else.
+
+The data source, the network definition and the coverage rule are unchanged.

@@ -116,7 +116,13 @@ def select(a):
 
 # ------------------------------------------------------------------ chain F
 def data(a):
-    sh([sys.executable, 'fetch_v10.py', '--out', Path(a.root) / 'data_v10', *N10], logs(a) / 'fetch_v10.log')
+    import shutil                         # amendment 3: a snapshot committed to the repository is used as is
+    snap, out = Path(__file__).resolve().parents[2] / 'data_snapshots' / 'v10', Path(a.root) / 'data_v10'
+    out.mkdir(parents=True, exist_ok=True)
+    for f in (sorted(snap.glob('*')) if snap.exists() else []):
+        if not (out / f.name).exists():
+            shutil.copy(f, out / f.name)
+    sh([sys.executable, 'fetch_v10.py', '--out', out, *N10], logs(a) / 'fetch_v10.log')
     print((logs(a) / 'fetch_v10.log').read_text()[-3000:])
 
 
