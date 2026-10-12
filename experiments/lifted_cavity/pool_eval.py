@@ -42,17 +42,18 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--root', required=True); ap.add_argument('--net', required=True); ap.add_argument('--panel-seed', type=int, required=True)
     ap.add_argument('--model', default='upt_L_sfm'); ap.add_argument('--sfx', default='_tta8')
+    ap.add_argument('--single', action='store_true', help='protocol v12: --model is one run directory (no seeds), e.g. fa1_closed')
     a = ap.parse_args()
     R = Path(a.root) / 'runs_real' / a.net
     tag = f'real_{a.net}_s{a.panel_seed}'
     pool = torch.load(Path(a.root) / 'panels' / f'{tag}.pt', weights_only=False)['pool']
     qy = pool['qy'].double().numpy()
     T = np.load(R / 'tabpfn_v2' / f'pq_{tag}.npz')
-    U = [np.load(R / f'{a.model}_s{s}_ft' / f'pq_{tag}{a.sfx}.npz') for s in SEEDS]
+    U = [np.load(R / a.model / f'pq_{tag}{a.sfx}.npz')] if a.single else         [np.load(R / f'{a.model}_s{s}_ft' / f'pq_{tag}{a.sfx}.npz') for s in SEEDS]
     E = sorted({int(k.split('_')[0][1:]) for k in T.files if k[0] == 'e'})
     res = {}
     for e in E:
-        nll, se, wts = np.zeros((len(SEEDS), pool['n'])), np.zeros((len(SEEDS), pool['n'])), np.zeros((len(SEEDS), pool['n']))
+        nll, se, wts = np.zeros((len(U), pool['n'])), np.zeros((len(U), pool['n'])), np.zeros((len(U), pool['n']))
         for i, u in enumerate(U):
             for ep in range(pool['n']):
                 w = stack_weight(u[f'cf_e{e}_nll'][ep], T[f'cf_e{e}_nll'][ep])
