@@ -1,0 +1,18 @@
+{
+ "model": "tabpfn_v2",
+ "version": "v2",
+ "package": "9.1.0",
+ "n_estimators": 8,
+ "random_state": 0,
+ "device": "cuda",
+ "note": "pretrained TabPFN regressor, in context, no fine-tuning",
+ "gpu": "NVIDIA A100-SXM4-40GB",
+ "timing": {
+  "real_aurn_pm25_s10101": {
+   "tag": "real_aurn_pm25_s10101",
+   "tasks": 1226,
+   "calls": 3678,
+   "seconds": 2758.035149335861
+  }
+ }
+}
