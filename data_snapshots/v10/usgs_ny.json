@@ -1,0 +1,13 @@
+{
+ "name": "usgs_ny",
+ "urls": [
+  "https://waterservices.usgs.gov/nwis/site/?format=rdb&stateCd=ny&parameterCd=00060&siteType=ST&siteStatus=active&hasDataTypeCd=iv",
+  "https://nwis.waterservices.usgs.gov/nwis/iv/?format=rdb&parameterCd=00060&startDT=2026-03-01&endDT=2026-09-30&sites="
+ ],
+ "downloaded_utc": "2026-10-12T17:52:07Z",
+ "stations_found": 298,
+ "stations_kept": 290,
+ "failed_requests": 6,
+ "observed_frac": 0.9831698490707917,
+ "seconds": 223
+}
