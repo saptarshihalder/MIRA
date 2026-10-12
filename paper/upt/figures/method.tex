@@ -1,0 +1,46 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  font=\footnotesize, >=Stealth,
+  box/.style={draw, rounded corners=2pt, align=center, inner sep=3pt},
+  tok/.style={draw, minimum width=4.2mm, minimum height=4.2mm, inner sep=0pt},
+]
+% cell grid: support rows (3 shown) and one query row; columns x1..x4 and target y
+\foreach \r/\lab in {0/{support}, 1/{}, 2/{}} {
+  \foreach \c in {0,...,3} { \node[tok] at (\c*0.5, -\r*0.5) {}; }
+  \node[tok, fill=blue!12] at (2.2, -\r*0.5) {};
+}
+\node[tok, fill=black!15] at (0.5, -0.5) {};
+\node[tok] at (0, -1.6) {}; \node[tok, fill=black!15] at (0.5, -1.6) {}; \node[tok] at (1.0, -1.6) {}; \node[tok, fill=black!15] at (1.5, -1.6) {};
+\node[tok, fill=orange!25] at (2.2, -1.6) {?};
+\node[left, align=right] at (-0.35, -0.5) {support\\rows};
+\node[left] at (-0.35, -1.6) {query};
+\node[above] at (0.75, 0.25) {sensors $x_1..x_4$};
+\node[above] at (2.2, 0.25) {$y$};
+\draw[decorate, decoration={brace, amplitude=3pt}] (2.55, 0.2) -- (2.55, -1.85);
+% backbone
+\node[box, minimum width=2.1cm, minimum height=1.9cm, fill=gray!8] (bb) at (4.35, -0.8) {cell-token\\transformer\\(rows $\leftrightarrow$ cols)};
+\draw[->] (2.75, -0.8) -- (bb.west);
+% heads
+\node[box, fill=blue!8] (site) at (7.35, 0.25) {lifted sites $\Lambda_j,\eta_j$\\(observed cells only)};
+\node[box, fill=orange!12] (free) at (7.35, -0.8) {free head\\$\N(\mu_f,\sigma_f^2)$ / mixture};
+\node[box, fill=green!10] (gate) at (7.35, -1.8) {gate $\pi=\sigma(g)$};
+\draw[->] (bb.east) -- ++(0.3,0) |- (site.west);
+\draw[->] (bb.east) -- (free.west);
+\draw[->] (bb.east) -- ++(0.3,0) |- (gate.west);
+\node[box, fill=blue!4] (post) at (10.05, 0.25) {$\N(z;\Lambda^{-1}\eta,\Lambda^{-1})$\\$\Lambda{=}\Lambda_0{+}\sum_{j\in S}\Lambda_j$};
+\draw[->] (site) -- (post);
+\node[box, fill=yellow!12] (pool) at (10.05, -1.05) {linear pool\\$\pi\,p_{\mathrm{site}}+(1{-}\pi)\,p_{\mathrm{free}}$};
+\draw[->] (post) -- (pool);
+\draw[->] (free.east) -- (pool.west);
+\draw[->] (gate.east) -| (pool.south);
+\node[box, dashed, fill=white] (fa) at (4.35, 0.7) {FA anchor from support (EM)};
+\draw[->, dashed] (fa.east) -- (site.west |- fa.east) ;
+\end{tikzpicture}
+\caption{\textbf{The Universal Pool Transformer.} One transformer reads every cell of the support and the query
+(grey: missing). The query's observed cells emit corrections to their factor-analysis anchor sites, which combine
+exactly by adding natural parameters, so a missing sensor simply contributes nothing. The target token emits an
+unconstrained predictive and a gate, and the output is their linear opinion pool. With a zero site head the model is
+the closed-form FA posterior (Proposition~\ref{prop:init}).}
+\label{fig:method}
+\end{figure}

@@ -1,0 +1,14 @@
+\begin{itemize}
+  \item \textbf{Inputs.} We predict one target from 11 fixed neighbours per episode. Graph models that use the whole
+  network and its temporal context (GRIN~\citep{cini2022grin}, graph neural processes~\citep{hu2023stgnp}) may do
+  better when a long, stationary history is available. Our kriging baseline is a local-graph adaptation.
+  \item \textbf{Episodes.} Episodes treat rows as exchangeable within a window. They do not exploit temporal order.
+  \item \textbf{Free component.} The structured part is linear-Gaussian with a low-dimensional nuisance. Departures
+  from it are absorbed only by the free head.
+  \item \textbf{Pretraining.} The synthetic prior is narrow (five sensors, one factor). Scaling the prior and the
+  backbone is the obvious next step: the large model already helps substantially.
+  \item \textbf{Provisional data.} The 2026 data are provisional and may be revised. We publish the exact snapshots'
+  hashes, and the code that downloads them.
+  \item \textbf{SF correction.} The scale-free pipeline corrects a weakness that protocol v9 exposed. We report v9's
+  failed endpoints as they are.
+\end{itemize}

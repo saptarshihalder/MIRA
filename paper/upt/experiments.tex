@@ -1,0 +1,51 @@
+\paragraph{Pre-registration.} We ran \NumProtocols{} protocols (v5--v10). Each was committed to a public repository
+before any score on its test data existed. Each fixes:
+\begin{itemize}
+  \item networks, splits and seeded test panels;
+  \item model recipes;
+  \item endpoints, statistics and pass rules.
+\end{itemize}
+Every endpoint is reported, failures included (Table~\ref{tab:all-endpoints}). Model changes were selected on data
+already used by an earlier protocol, by rules written into the next protocol, and then confirmed on networks never
+used before (v9, v10).
+
+\paragraph{Networks.} The thirteen networks are listed in Table~\ref{tab:networks}.
+\begin{itemize}
+  \item \textbf{Traffic:} speed on METR-LA and PEMS-BAY, flow on PeMS03 and PeMS08.
+  \item \textbf{Indoor climate:} Intel Lab temperature.
+  \item \textbf{Air quality:} PM$_{2.5}$ in China and the UK; NO$_2$ in the UK.
+  \item \textbf{Weather:} temperature and pressure from the German weather service.
+  \item \textbf{Hydrology:} river discharge from three US states.
+\end{itemize}
+Seven networks have test periods in April--September 2026, after the release of TabPFN v2 (January 2025).
+
+\paragraph{Episodes and conditions.} Each test episode predicts one held-out sensor from its 11 neighbours. It has
+48 labelled support rows from the same time window, a day to a week. Metrics are computed on 48 query rows, under
+three conditions:
+\begin{itemize}
+  \item the natural mask, ``all sensors'';
+  \item $+3$ further inputs dropped at random;
+  \item $+6$ further inputs dropped at random.
+\end{itemize}
+
+\paragraph{Baselines.}
+\begin{itemize}
+  \item \textbf{TabPFN v2}~\citep{hollmann2025tabpfnv2}, in context with 8 estimators. Missing inputs are passed as
+  NaN.
+  \item \textbf{PFN-L.} A plain cell-token transformer with UPT's backbone, size and training budget, but only the
+  free head: the matched-scale ablation. It is trained with the same SF pipeline and test-time ensemble as UPT.
+  \item \textbf{Neural processes:} TNP-D~\citep{nguyen2022tnp} and CNP~\citep{garnelo2018cnp}, trained on the same
+  prior and fine-tuned with the same recipe.
+  \item \textbf{Deep kriging:} an IGNNK-style inductive kriging model~\citep{wu2021ignnk} trained on each network's
+  source period. Its \emph{calibrated} variant is recalibrated by an affine map on each episode's support, the
+  stronger of the two.
+  \item \textbf{Closed forms:} FA-Gaussian (UPT's anchor) and EM-Gaussian (simple kriging).
+  \item \textbf{Tabular baselines:} LightGBM and multiple imputation (Appendix~\ref{app:results}).
+\end{itemize}
+UPT-SF is UPT-L with the SF pipeline, the CRPS-augmented objective and the 8-member test-time ensemble, chosen by the
+pre-registered rule of protocol v10.
+
+\subsection{Results}
+\label{sec:results}
+
+\input{results_text}
