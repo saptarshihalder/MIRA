@@ -20,7 +20,7 @@ SETS = {
            'B9': [[PY, 'colab_v9.py', *V9_ARGS, 'B']],          # development fine-tunes, selection, selected variant
            'C9': [[PY, 'colab_v9.py', *V9_ARGS, 'C']]},         # PFN-L source training (amendment 1)
     'v10': {k + '10': [[PY, 'colab_v10.py', '--root', f'{D}/mira_v10', '--v9', V9, '--v8', V8, '--v7', V7, '--v6', V6, k]]
-            for k in ('D', 'F', 'T', 'O')},                     # protocol v10: development, fresh networks, TabPFN, old networks
+            for k in ('F', 'T')},        # protocol v10: D finished, O stopped (amendment 4); fresh networks and TabPFN
 }
 CHAINS = SETS[sys.argv[1] if len(sys.argv) > 1 else 'v10']
 

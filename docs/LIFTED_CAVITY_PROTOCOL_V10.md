@@ -170,3 +170,17 @@ stopped before it wrote a snapshot. The legacy service still answers 503 for New
 - `colab_v10.py data` copies committed snapshots into the Drive data folder before downloading anything else.
 
 The data source, the network definition and the coverage rule are unchanged.
+
+## Amendment 4 (October 12, before any v10 score; compute budget)
+
+About 74 Colab compute units remain, roughly 5.5 A100-hours. The remaining work is cut to the endpoints that matter:
+
+1. **Not run:**
+   - `pfn_L_sfn`;
+   - `upt_L_crps` (UPT\*) on the fresh networks. **W7 is therefore not run** and is reported as such.
+2. **Added comparator:** PFN-L with the v9 recipe (`pfn_L`: NLL, no SF, `tta8`). The W3 comparator is the best
+   available PFN-L variant by pooled extra = 0 NLL, now chosen from {PFN-L-SF, PFN-L}.
+   - **Why:** the development cells showed PFN-L-SF failing on near-flat river episodes.
+   - **Effect:** adding the v9 recipe can only make the comparator stronger, so the change is conservative for UPT-SF.
+3. **Chain O10 is stopped** after the UPT-SF fine-tunes on the six v6/v7 networks. Those runs are scored in chain F10
+   (`scoreoldsel`). PFN-L-SF on these networks and the descriptive v9 pool are not run.

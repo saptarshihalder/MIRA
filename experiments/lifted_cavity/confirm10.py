@@ -85,7 +85,7 @@ N10 = tuple(NETS10)
 TAB = ('tabpfn_v2', '')
 TNP, KRIG, UPTSTAR = ('tnp_s{}_ft', ''), ('ignnk_cal_s{}', ''), ('upt_L_crps_s{}_ft', '_tta8')
 avail = []
-for c in (('pfn_L_sf_s{}_ft', '_tta8'), ('pfn_L_sfn_s{}_ft', '_tta8')):
+for c in (('pfn_L_sf_s{}_ft', '_tta8'), ('pfn_L_sfn_s{}_ft', '_tta8'), ('pfn_L_s{}_ft', '_tta8')):   # + v9 recipe (amendment 4)
     try:
         avail.append((pooled(c, N10, 0).mean(), c))
     except FileNotFoundError:

@@ -22,9 +22,16 @@ SEEDS = (1, 2, 3)
 SF = ['--yz', '--lv-bound', '10']
 VARIANT = {'upt_L_sf': ('upt_L', ['--crps', '1'] + SF), 'upt_L_sfm': ('upt_L', ['--crps', '1'] + SF + ['--free-k', '3']),
            'pfn_L_sf': ('pfn_L', ['--crps', '1'] + SF), 'pfn_L_sfn': ('pfn_L', SF), 'upt_L_crps': ('upt_L', ['--crps', '1']),
-           'tnp': ('tnp', [])}
-TTA = {'upt_L_sf', 'upt_L_sfm', 'pfn_L_sf', 'pfn_L_sfn', 'upt_L_crps'}
+           'pfn_L': ('pfn_L', []), 'tnp': ('tnp', [])}                          # pfn_L: the v9 recipe (amendment 4)
+TTA = {'upt_L_sf', 'upt_L_sfm', 'pfn_L_sf', 'pfn_L_sfn', 'upt_L_crps', 'pfn_L'}
+FRESH = ('pfn_L_sf', 'pfn_L', 'tnp')          # amendment 4 (compute budget): pfn_L_sfn and upt_L_crps are not run
 PAR = 6
+SNAPSHOT_ONLY = ('usgs_ny',)                  # amendment 3: comes from the committed snapshot, never downloaded on Colab
+
+
+def ready(a):
+    """Fresh networks whose data snapshot is present (the others wait; relaunching picks them up)."""
+    return tuple(n for n in N10 if (Path(a.root) / 'data_v10' / f'{n}.npz').exists())
 
 
 def nets_(a):
@@ -127,7 +134,10 @@ def data(a):
     for f in (sorted(snap.glob('*')) if snap.exists() else []):
         if not (out / f.name).exists():
             shutil.copy(f, out / f.name)
-    sh([sys.executable, 'fetch_v10.py', '--out', out, *N10], logs(a) / 'fetch_v10.log')
+    todo = [n for n in N10 if n not in SNAPSHOT_ONLY and not (out / f'{n}.npz').exists()]
+    if todo:
+        sh([sys.executable, 'fetch_v10.py', '--out', out, *todo], logs(a) / 'fetch_v10.log')
+    print('ready:', ready(a), 'waiting for snapshots:', [n for n in N10 if n not in ready(a)])
     print((logs(a) / 'fetch_v10.log').read_text()[-3000:])
 
 
@@ -135,7 +145,7 @@ def panels(a):
     (Path(a.root) / 'panels').mkdir(parents=True, exist_ok=True)
     parallel([(f'panel_{n}', lambda n=n: panel(a, n).exists(),
                [sys.executable, 'eval_real.py', 'build', '--dataset', n, '--seed', SEED10, '--v6', Path(a.root) / 'data_v10',
-                '--out', panel(a, n)], logs(a) / f'panel_{n}.log') for n in N10])
+                '--out', panel(a, n)], logs(a) / f'panel_{n}.log') for n in ready(a)])
 
 
 def pools(a):
@@ -144,12 +154,12 @@ def pools(a):
     r = Path(a.root)
     parallel([(f'pool_{n}', lambda n=n: (r / 'pools' / f'src_{n}_s11_n4000.pt').exists(),
                [sys.executable, '-c', code, json.dumps(dict(dataset=n, pool_cache=str(r / 'pools'), v6=str(r / 'data_v10')))],
-               logs(a) / f'pool_{n}.log') for n in N10])
+               logs(a) / f'pool_{n}.log') for n in ready(a)])
 
 
 def krig(a):
     items = []
-    for n in N10:
+    for n in ready(a):
         root, seed, data_ = nets(a)[n]
         for s in SEEDS:
             out = root / 'runs_real' / n / f'ignnk_s{s}'
@@ -161,14 +171,14 @@ def krig(a):
 
 
 def ft(a):
-    models = ('pfn_L_sf', 'pfn_L_sfn', 'upt_L_crps', 'tnp')
+    models = FRESH
     check_sources(a, models)
-    parallel(ft_items(a, [(n, m) for m in models for n in N10]), PAR)
+    parallel(ft_items(a, [(n, m) for m in models for n in ready(a)]), PAR)
 
 
 def ftsel(a):
     wait_for([Path(a.root) / 'dev' / 'selection10.json'], 'selection (chain D)')
-    parallel(ft_items(a, [(n, selection(a)['model']) for n in N10]), PAR)
+    parallel(ft_items(a, [(n, selection(a)['model']) for n in ready(a)]), PAR)
 
 
 def pq_items(a, nets, m):
@@ -184,12 +194,13 @@ def pq_items(a, nets, m):
 
 
 def score(a):
-    models = ('pfn_L_sf', 'pfn_L_sfn', 'upt_L_crps', 'tnp', selection(a)['model'])
-    parallel(score_items(a, [(n, m) for n in N10 for m in models]) + pq_items(a, N10, selection(a)['model']), PAR)
-    wait_for([Path(a.root) / 'runs_real' / n / 'tabpfn_v2' / f'cells_real_{n}_s{SEED10}.npz' for n in N10], 'TabPFN (chain T)')
+    models = FRESH + (selection(a)['model'],)
+    parallel(score_items(a, [(n, m) for n in ready(a) for m in models]) + pq_items(a, ready(a), selection(a)['model']), PAR)
+    wait_for([Path(a.root) / 'runs_real' / n / 'tabpfn_v2' / f'cells_real_{n}_s{SEED10}.npz' for n in ready(a)], 'TabPFN (chain T)')
 
 
-def pool(a, nets=N10):
+def pool(a, nets=None):
+    nets = ready(a) if nets is None else nets
     items = []
     for n in nets:
         root, seed, _ = nets_(a)[n]
@@ -201,6 +212,8 @@ def pool(a, nets=N10):
 
 
 def confirm11(a):
+    if len(ready(a)) < len(N10):
+        print('confirm11 waits for every fresh network; ready:', ready(a)); return
     out = Path(a.root) / 'confirm_v11.json'
     sh([sys.executable, 'confirm11.py', '--v10', a.root, '--v9', a.v9, '--out', out], logs(a) / 'confirm11.log')
     print((logs(a) / 'confirm11.log').read_text()[-6000:])
@@ -216,6 +229,8 @@ def devpool(a):
 
 
 def confirm(a):
+    if len(ready(a)) < len(N10):
+        print('confirm10 waits for every fresh network; ready:', ready(a)); return
     out = Path(a.root) / 'confirm_v10.json'
     sh([sys.executable, 'confirm10.py', '--v10', a.root, '--v9', a.v9, '--v6', a.v6, '--v7', a.v7, '--out', out], logs(a) / 'confirm10.log')
     print((logs(a) / 'confirm10.log').read_text()[-8000:])
@@ -233,11 +248,11 @@ def pack(a):
 
 # ------------------------------------------------------------------ chain T
 def tabpfn(a):
-    wait_for([panel(a, n) for n in N10], 'fresh panels (chain F)')
+    wait_for([panel(a, n) for n in ready(a)], 'fresh panels (chain F)')
     r = Path(a.root)
     parallel([(f'tabpfn_{n}', lambda n=n: (r / 'runs_real' / n / 'tabpfn_v2' / f'cells_real_{n}_s{SEED10}.npz').exists(),
                [sys.executable, 'tabpfn_colab.py', '--panel', panel(a, n), '--out', r / 'runs_real' / n / 'tabpfn_v2',
-                '--allow-constant-support', '--crps'], logs(a) / f'tabpfn_{n}.log') for n in N10], 4)
+                '--allow-constant-support', '--crps'], logs(a) / f'tabpfn_{n}.log') for n in ready(a)], 4)
 
 
 # ------------------------------------------------------------------ chain O
@@ -246,15 +261,20 @@ def ftold(a):
     parallel(ft_items(a, [(n, m) for m in (selection(a)['model'], 'pfn_L_sf') for n in DEV6 + DEV7]), 4)
 
 
+def scoreoldsel(a):
+    """Amendment 4: only the selected model is scored on the six v6/v7 networks (descriptive)."""
+    parallel(score_items(a, [(n, selection(a)['model']) for n in DEV6 + DEV7], ttas=(8,)), PAR)
+
+
 def scoreold(a):
     parallel(score_items(a, [(n, m) for m in (selection(a)['model'], 'pfn_L_sf') for n in DEV6 + DEV7], ttas=(8,)), 4)
 
 
 STAGES = dict(ftdev=ftdev, scoredev=scoredev, select=select, data=data, panels=panels, pools=pools, krig=krig, ft=ft, ftsel=ftsel,
               score=score, pool=pool, confirm=confirm, confirm11=confirm11, pack=pack, tabpfn=tabpfn, ftold=ftold, scoreold=scoreold,
-              devpool=devpool)
+              devpool=devpool, scoreoldsel=scoreoldsel)
 CHAIN = dict(D=['ftdev', 'scoredev', 'select'],
-             F=['data', 'panels', 'pools', 'krig', 'ft', 'ftsel', 'score', 'pool', 'confirm', 'confirm11', 'pack'],
+             F=['data', 'panels', 'pools', 'krig', 'ft', 'ftsel', 'score', 'scoreoldsel', 'pool', 'confirm', 'confirm11', 'pack'],
              T=['tabpfn'], O=['ftold', 'scoreold', 'devpool', 'confirm'])
 
 if __name__ == '__main__':
