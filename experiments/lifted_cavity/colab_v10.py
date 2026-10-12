@@ -176,6 +176,11 @@ def ft(a):
     parallel(ft_items(a, [(n, m) for m in models for n in ready(a)]), PAR)
 
 
+def ftall(a):
+    """The fresh-network fine-tunes of ft and ftsel in one batch (resumes after the L4 out-of-memory failures)."""
+    parallel(ft_items(a, [(n, m) for m in FRESH + (selection(a)['model'],) for n in ready(a)]), PAR)
+
+
 def ftsel(a):
     wait_for([Path(a.root) / 'dev' / 'selection10.json'], 'selection (chain D)')
     parallel(ft_items(a, [(n, selection(a)['model']) for n in ready(a)]), PAR)
@@ -272,7 +277,7 @@ def scoreold(a):
 
 STAGES = dict(ftdev=ftdev, scoredev=scoredev, select=select, data=data, panels=panels, pools=pools, krig=krig, ft=ft, ftsel=ftsel,
               score=score, pool=pool, confirm=confirm, confirm11=confirm11, pack=pack, tabpfn=tabpfn, ftold=ftold, scoreold=scoreold,
-              devpool=devpool, scoreoldsel=scoreoldsel)
+              devpool=devpool, scoreoldsel=scoreoldsel, ftall=ftall)
 CHAIN = dict(D=['ftdev', 'scoredev', 'select'],
              F=['data', 'panels', 'pools', 'krig', 'ft', 'ftsel', 'score', 'scoreoldsel', 'pool', 'confirm', 'confirm11', 'pack'],
              T=['tabpfn'], O=['ftold', 'scoreold', 'devpool', 'confirm'])
