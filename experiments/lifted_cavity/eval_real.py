@@ -53,8 +53,22 @@ def score_runs(a):
         pool = realdata.zpool(panel['pool']) if ft.get('yz') else panel['pool']
         import devutil
         model.to(devutil.pick(a.device))
-        cells = {e: realdata.score_model(model, pool, qm, tta=a.tta) for e, qm in panel['conds'].items()}
+        cells = {} if a.per_query else {e: realdata.score_model(model, pool, qm, tta=a.tta) for e, qm in panel['conds'].items()}
         sfx = ('_f64' if a.site_float64 else '') + (f'_tta{a.tta}' if a.tta > 1 else '')
+        if a.per_query:                                                # protocol v11
+            pq = {}
+            cf = realdata.crossfit_pool(panel['pool'])
+            cf = realdata.zpool(cf) if ft.get('yz') else cf
+            for e, qm in panel['conds'].items():
+                r = realdata.score_model(model, pool, qm, tta=a.tta, per_query=True)
+                pq[f'e{e}_nll'], pq[f'e{e}_mean'] = r['q_nll'], r['q_mean']
+                cqm = realdata.crossfit_query_masks(realdata.crossfit_masks(panel['pool'], e, realdata.CF_SEED + e))
+                r = realdata.score_model(model, cf, cqm, tta=a.tta, per_query=True)
+                pq[f'cf_e{e}_nll'] = r['q_nll'].reshape(panel['pool']['n'], -1)
+                pq[f'cf_e{e}_mean'] = r['q_mean'].reshape(panel['pool']['n'], -1)
+            np.savez_compressed(run / f'pq_{tag}{sfx}.npz', **pq)
+            print(run, 'per-query written', flush=True)
+            continue
         np.savez_compressed(run / f'cells_{tag}{sfx}.npz', **{f'e{e}_{m}': v for e, d in cells.items() for m, v in d.items()})
         print(run, {f'e{e}': round(float(d['nll'].mean()), 4) for e, d in cells.items()}, flush=True)
 
@@ -64,6 +78,8 @@ if __name__ == '__main__':
     ap.add_argument('what', choices=['build', 'score'])
     ap.add_argument('--dataset'); ap.add_argument('--seed', type=int, default=2027); ap.add_argument('--out')
     ap.add_argument('--panel'); ap.add_argument('--runs', default=''); ap.add_argument('--device', default='cpu')
+    ap.add_argument('--per-query', action='store_true', help='protocol v11: also write per-query NLL and mean on the test '
+                    'queries and on the two-fold cross-fit of the support (pq_<tag><sfx>.npz)')
     ap.add_argument('--tta', type=int, default=1, help='protocol v9: test-time ensemble over this many feature-embedding '
                     'seeds (cells_<tag>_tta<k>.npz)')
     ap.add_argument('--site-float64', action='store_true', help='UPT: lifted-site algebra in float64 (cells_<tag>_f64.npz)')

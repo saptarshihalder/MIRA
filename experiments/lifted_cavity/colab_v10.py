@@ -3,9 +3,10 @@
     D=/content/drive/MyDrive
     python colab_v10.py --root $D/mira_v10 --v9 $D/mira_v9 --v8 $D/mira_v8 --v7 $D/mira_v7 --v6 $D/mira_v6 <chain or stages>
 Chain D (development on the v9 networks): ftdev scoredev select
-Chain F (fresh v10 networks): data panels pools krig ft ftsel score confirm pack     (ftsel waits for the selection)
-Chain T (TabPFN v2 on the fresh panels, two at a time): tabpfn
-Chain O (the selected model and PFN-L-SF on the six v6/v7 networks, descriptive): ftold scoreold confirm
+Chain F (fresh v10 networks): data panels pools krig ft ftsel score pool confirm confirm11 pack
+Chain T (TabPFN v2 on the fresh panels, four at a time; also writes the v11 per-query and cross-fit outputs): tabpfn
+Chain O (the selected model and PFN-L-SF on the six v6/v7 networks, descriptive; then the v11 pool on the v9 networks,
+descriptive): ftold scoreold devpool confirm
 Every finished item is skipped and fine-tuning resumes from Drive checkpoints, so relaunching after a disconnect resumes.
 Source checkpoints (never retrained): UPT-L (v7), PFN-L (v9, amendment 1 of v9), TNP-D (v8).
 """
@@ -24,6 +25,10 @@ VARIANT = {'upt_L_sf': ('upt_L', ['--crps', '1'] + SF), 'upt_L_sfm': ('upt_L', [
            'tnp': ('tnp', [])}
 TTA = {'upt_L_sf', 'upt_L_sfm', 'pfn_L_sf', 'pfn_L_sfn', 'upt_L_crps'}
 PAR = 6
+
+
+def nets_(a):
+    return nets(a)
 
 
 def nets(a):
@@ -166,10 +171,48 @@ def ftsel(a):
     parallel(ft_items(a, [(n, selection(a)['model']) for n in N10]), PAR)
 
 
+def pq_items(a, nets, m):
+    items = []
+    for n in nets:
+        root, seed, _ = nets_(a)[n]
+        for s in SEEDS:
+            run = root / 'runs_real' / n / f'{m}_s{s}_ft'
+            items.append((f'pq_{n}_{m}_s{s}', lambda run=run, n=n, seed=seed: (run / f'pq_real_{n}_s{seed}_tta8.npz').exists(),
+                          [sys.executable, 'eval_real.py', 'score', '--panel', panel(a, n), '--runs', run, '--device', 'cuda', '--tta', 8,
+                           '--per-query'], logs(a) / f'pq_{n}_{m}_s{s}.log'))
+    return items
+
+
 def score(a):
     models = ('pfn_L_sf', 'pfn_L_sfn', 'upt_L_crps', 'tnp', selection(a)['model'])
-    parallel(score_items(a, [(n, m) for n in N10 for m in models]), PAR)
+    parallel(score_items(a, [(n, m) for n in N10 for m in models]) + pq_items(a, N10, selection(a)['model']), PAR)
     wait_for([Path(a.root) / 'runs_real' / n / 'tabpfn_v2' / f'cells_real_{n}_s{SEED10}.npz' for n in N10], 'TabPFN (chain T)')
+
+
+def pool(a, nets=N10):
+    items = []
+    for n in nets:
+        root, seed, _ = nets_(a)[n]
+        m = selection(a)['model']
+        items.append((f'pool_{n}', lambda root=root, n=n, seed=seed, m=m: (root / 'runs_real' / n / f'pool_{m}_tabpfn' / f'cells_real_{n}_s{seed}.npz').exists(),
+                      [sys.executable, 'pool_eval.py', '--root', root, '--net', n, '--panel-seed', seed, '--model', m, '--sfx', '_tta8'],
+                      logs(a) / f'pool_{n}.log'))
+    parallel(items, PAR)
+
+
+def confirm11(a):
+    out = Path(a.root) / 'confirm_v11.json'
+    sh([sys.executable, 'confirm11.py', '--v10', a.root, '--v9', a.v9, '--out', out], logs(a) / 'confirm11.log')
+    print((logs(a) / 'confirm11.log').read_text()[-6000:])
+
+
+def devpool(a):
+    """v11 descriptive: the pool on the v9 networks (already used): TabPFN per-query + cross-fit, UPT-SF per-query."""
+    r = Path(a.v9)
+    parallel([(f'tabpfn_pq_{n}', lambda n=n: (r / 'runs_real' / n / 'tabpfn_v2' / f'pq_real_{n}_s9091.npz').exists(),
+               [sys.executable, 'tabpfn_colab.py', '--panel', panel(a, n), '--out', r / 'runs_real' / n / 'tabpfn_v2', '--per-query'],
+               logs(a) / f'tabpfn_pq_{n}.log') for n in N9] + pq_items(a, N9, selection(a)['model']), 4)
+    pool(a, N9)
 
 
 def confirm(a):
@@ -194,7 +237,7 @@ def tabpfn(a):
     r = Path(a.root)
     parallel([(f'tabpfn_{n}', lambda n=n: (r / 'runs_real' / n / 'tabpfn_v2' / f'cells_real_{n}_s{SEED10}.npz').exists(),
                [sys.executable, 'tabpfn_colab.py', '--panel', panel(a, n), '--out', r / 'runs_real' / n / 'tabpfn_v2',
-                '--allow-constant-support', '--crps'], logs(a) / f'tabpfn_{n}.log') for n in N10], 2)
+                '--allow-constant-support', '--crps'], logs(a) / f'tabpfn_{n}.log') for n in N10], 4)
 
 
 # ------------------------------------------------------------------ chain O
@@ -208,9 +251,11 @@ def scoreold(a):
 
 
 STAGES = dict(ftdev=ftdev, scoredev=scoredev, select=select, data=data, panels=panels, pools=pools, krig=krig, ft=ft, ftsel=ftsel,
-              score=score, confirm=confirm, pack=pack, tabpfn=tabpfn, ftold=ftold, scoreold=scoreold)
-CHAIN = dict(D=['ftdev', 'scoredev', 'select'], F=['data', 'panels', 'pools', 'krig', 'ft', 'ftsel', 'score', 'confirm', 'pack'],
-             T=['tabpfn'], O=['ftold', 'scoreold', 'confirm'])
+              score=score, pool=pool, confirm=confirm, confirm11=confirm11, pack=pack, tabpfn=tabpfn, ftold=ftold, scoreold=scoreold,
+              devpool=devpool)
+CHAIN = dict(D=['ftdev', 'scoredev', 'select'],
+             F=['data', 'panels', 'pools', 'krig', 'ft', 'ftsel', 'score', 'pool', 'confirm', 'confirm11', 'pack'],
+             T=['tabpfn'], O=['ftold', 'scoreold', 'devpool', 'confirm'])
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()

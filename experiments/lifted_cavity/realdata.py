@@ -205,6 +205,47 @@ def zpool(pool):
     return out
 
 
+CF = NS // 2
+CF_SEED = 20000                    # protocol v11: seed of the cross-fit masks (plus the condition)
+
+
+def crossfit_masks(pool, extra, seed):
+    """Protocol v11: masks of the support rows when they are predicted in the two-fold cross-fit: the support mask with
+    `extra` further observed inputs dropped per row (never all). Shared by every model, TabPFN included."""
+    rng = np.random.default_rng(seed)
+    m = pool['sm'].numpy().copy()
+    if extra:
+        for t in range(m.shape[0]):
+            for r in range(m.shape[1]):
+                obs = np.flatnonzero(m[t, r])
+                k = min(extra, len(obs) - 1)
+                if k > 0:
+                    m[t, r, rng.choice(obs, k, replace=False)] = 0
+    return m
+
+
+def crossfit_pool(pool):
+    """Protocol v11: two-fold cross-fit of every episode's support. Episode 2t predicts support rows [0, CF) from rows
+    [CF, NS); episode 2t+1 predicts rows [CF, NS) from rows [0, CF). Inputs keep the episode's standardization; the
+    anchors are refitted on each half. Per-query outputs of the two reshape to (n, NS) in the original row order."""
+    n = pool['n']
+    halves = [(slice(CF, NS), slice(0, CF)), (slice(0, CF), slice(CF, NS))]
+    sup = lambda k: torch.stack([pool[k][t, h[0]] for t in range(n) for h in halves], 0)
+    qry = lambda k: torch.stack([pool[k][t, h[1]] for t in range(n) for h in halves], 0)
+    out = dict(sx=sup('sx'), sy=sup('sy'), sm=sup('sm'), qx=qry('sx'), qy=qry('sy'), qnat=qry('sm'))
+    out['c'] = torch.zeros(2 * n, pool['c'].shape[1], dtype=pool['c'].dtype)
+    mu, sig = an.em_batched(out['sx'].double().numpy(), out['sy'].double().numpy(), out['sm'].double().numpy())
+    out['anchors'] = {K: {k: v.float() for k, v in an.fa_batched(mu, sig, K).items()} for K in (0, 1, 2)}
+    out['n'] = 2 * n
+    out['keys'] = [k for k in pool['keys'] for _ in halves]
+    return out
+
+
+def crossfit_query_masks(m):
+    """(n, NS, P) cross-fit masks -> (2n, CF, P) query masks of crossfit_pool's episodes."""
+    return np.stack([m[t, sl] for t in range(m.shape[0]) for sl in (slice(0, CF), slice(CF, NS))], 0)
+
+
 def condition_masks(pool, extra, seed):
     """Per-query masks: natural mask with `extra` additional observed sensors dropped (never all)."""
     rng = np.random.default_rng(seed)
@@ -254,14 +295,16 @@ def closed_forms(pool, qm):
 
 
 @torch.no_grad()
-def score_model(model, pool, qm, tasks_per_batch=8, tta=1):
+def score_model(model, pool, qm, tasks_per_batch=8, tta=1, per_query=False):
     """Per-episode metrics for a learned model under per-query masks qm.
 
     tta > 1 (protocol v9): the predictive is the equal-weight linear pool of the model's predictives under feature-
-    embedding seeds 0..tta-1 (seed 0 is the single-model default), a test-time ensemble like TabPFN's n_estimators."""
+    embedding seeds 0..tta-1 (seed 0 is the single-model default), a test-time ensemble like TabPFN's n_estimators.
+    per_query (protocol v11): also return 'q_nll' and 'q_mean' (n, queries) in raw target units."""
     from evaluate2 import gauss_metrics
     model.eval()
-    res = []
+    res, pq = [], []
+    NQ = pool['qx'].shape[1]                                        # 48 for panels, CF for cross-fit pools
     qmt = torch.as_tensor(qm, dtype=torch.float32)
     for s0 in range(0, pool['n'], tasks_per_batch):
         t = torch.arange(s0, min(pool['n'], s0 + tasks_per_batch))
@@ -280,18 +323,28 @@ def score_model(model, pool, qm, tasks_per_batch=8, tta=1):
                 lw, mu, lv = (v.detach().cpu().double().numpy() for v in upt.components(model, dbatch))
                 W.append(np.exp(lw) / tta); Mu.append(mu); Var.append(np.exp(lv))
             model.feature_seed = 0
-            g = upt.mixture_metrics(np.concatenate(W, 1), np.concatenate(Mu, 1), np.concatenate(Var, 1), batch['qy'].double().numpy())
+            W, Mu = np.concatenate(W, 1), np.concatenate(Mu, 1)
+            g = upt.mixture_metrics(W, Mu, np.concatenate(Var, 1), batch['qy'].double().numpy())
+            mean = (W * Mu).sum(1)
         elif hasattr(model, 'mixture'):                            # mixture output (upt.py): exact mixture metrics
             import upt
             lw, mu, lv = (v.detach().cpu().double().numpy() for v in model.mixture(devutil.to_dev(batch, devutil.model_device(model))))
             g = upt.mixture_metrics(np.exp(lw), mu, np.exp(lv), batch['qy'].double().numpy())
+            mean = (np.exp(lw) * mu).sum(1)
         else:
             mu, lv = model(devutil.to_dev(batch, devutil.model_device(model)))
             mu, lv = mu.detach().cpu(), lv.detach().cpu()
             g = gauss_metrics(mu.double().numpy(), np.exp(lv.double().numpy()), batch['qy'].double().numpy())
+            mean = mu.double().numpy()
         res.append({m: v.reshape(B, NQ).mean(1) for m, v in g.items()})
+        pq.append((g['nll'].reshape(B, NQ), mean.reshape(B, NQ)))
     out = {m: np.concatenate([r[m] for r in res]) for m in res[0]}
+    if per_query:
+        out['q_nll'] = np.concatenate([p[0] for p in pq]); out['q_mean'] = np.concatenate([p[1] for p in pq])
     if 'yscale' in pool:                                           # SF pipeline: metrics back in raw target units
         s = pool['yscale'].double().numpy()
         out['nll'] = out['nll'] + np.log(s); out['crps'] = out['crps'] * s; out['se'] = out['se'] * s * s
+        if per_query:
+            out['q_nll'] = out['q_nll'] + np.log(s)[:, None]
+            out['q_mean'] = pool['yloc'].double().numpy()[:, None] + s[:, None] * out['q_mean']
     return out
