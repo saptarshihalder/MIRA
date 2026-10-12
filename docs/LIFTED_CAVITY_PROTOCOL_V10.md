@@ -184,3 +184,26 @@ About 74 Colab compute units remain, roughly 5.5 A100-hours. The remaining work 
    - **Effect:** adding the v9 recipe can only make the comparator stronger, so the change is conservative for UPT-SF.
 3. **Chain O10 is stopped** after the UPT-SF fine-tunes on the six v6/v7 networks. Those runs are scored in chain F10
    (`scoreoldsel`). PFN-L-SF on these networks and the descriptive v9 pool are not run.
+
+## Amendment 5 (October 12, before any v10 score; compute budget)
+
+**The move.** TabPFN v2 for the fresh panels, together with v11's per-query outputs and cross-fit, runs on Modal
+(`modal_tabpfn.py`) instead of Colab, because Colab compute units are limited. The Colab TabPFN runs were stopped
+before finishing any network; nothing from them was used.
+
+**What stays the same.** Everything that defines the method:
+- the code: `tabpfn_colab.py --allow-constant-support --crps`;
+- the package: `tabpfn` 9.1.0, the same as on Colab;
+- the model: the ungated v2 weights with 8 estimators.
+
+**Panels.** They are rebuilt on Modal by `eval_real.py build` from data snapshots whose array contents are identical to
+the Colab snapshots of record (`npz_digest.py`; the file bytes differ only by zip timestamps). Each rebuilt panel's
+content digest (`panel_digest.py`) is checked against the Colab panel before any TabPFN output is used:
+- `aurn_pm25` 4e52e00b4a28dbac;
+- `dwd_p` 9e6bb60073eaa8d4;
+- `usgs_wa` 7d872e79e0b7ec8e.
+
+The `usgs_ny` panel is built from the committed snapshot on both sides.
+
+**Outputs.** TabPFN's outputs (`cells_*`, `pq_*`) are committed to `artifacts/v10_tabpfn/` and copied into the Drive run
+folders.
