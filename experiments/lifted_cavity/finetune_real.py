@@ -5,6 +5,7 @@ Recipe (fixed before any test score): 4,000 resampled source episodes, 2,000 Ada
 64 episodes x 8 queries per step; query masks = natural mask x at most one extra dropped sensor; seed 11.
 """
 import argparse, json, math, os, time
+os.environ.setdefault('PYTORCH_CUDA_ALLOC_CONF', 'expandable_segments:True')   # less fragmentation on a shared GPU
 from pathlib import Path
 import numpy as np
 import torch
@@ -128,15 +129,23 @@ def main():
     model.train()
     for step in range(first, a.steps):
         batch = devutil.to_dev(batch_from(pool, rng), dev)
-        if a.crps:
-            import upt
-            nll, crps = upt.nll_crps(model, batch)
-            loss = (nll + a.crps * crps).mean()
+        for attempt in range(60):                 # a step that runs out of GPU memory (shared GPU) is retried unchanged
+            try:
+                if a.crps:
+                    import upt
+                    nll, crps = upt.nll_crps(model, batch)
+                    loss = (nll + a.crps * crps).mean()
+                else:
+                    loss = model.nll(batch).mean() if hasattr(model, 'nll') else models.gauss_nll(*model(batch), batch['qy']).mean()
+                if not torch.isfinite(loss):
+                    raise FloatingPointError(step)
+                opt.zero_grad(); loss.backward()
+                break
+            except torch.OutOfMemoryError:
+                opt.zero_grad(set_to_none=True); loss = None; torch.cuda.empty_cache(); time.sleep(30)
         else:
-            loss = model.nll(batch).mean() if hasattr(model, 'nll') else models.gauss_nll(*model(batch), batch['qy']).mean()
-        if not torch.isfinite(loss):
-            raise FloatingPointError(step)
-        opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), 5.); opt.step(); sched.step()
+            raise RuntimeError(f'step {step}: out of GPU memory for 30 minutes')
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 5.); opt.step(); sched.step()
         run = loss.item() if run is None else .98 * run + .02 * loss.item()
         if (step + 1) % a.ckpt_every == 0 and step + 1 < a.steps:
             resume.save(ck, step + 1, model, opt, sched, rng, dict(run=run, seconds=time.time() - start))
