@@ -13,11 +13,12 @@ import modal
 
 HERE = Path(__file__).resolve().parent
 DATA = os.environ.get('MIRA_V10_DATA', '')
+CODE = '/repo/experiments/lifted_cavity'           # realdata.py resolves paths two levels up
 app = modal.App('mira-v10-tabpfn')
 vol = modal.Volume.from_name('mira-v10', create_if_missing=True)
 image = (modal.Image.debian_slim(python_version='3.11')
          .pip_install('tabpfn==9.1.0', 'numpy', 'pandas', 'scipy', 'scikit-learn')
-         .add_local_dir(str(HERE), '/code', ignore=lambda p: p.suffix not in ('.py',)))
+         .add_local_dir(str(HERE), '/repo/experiments/lifted_cavity', ignore=lambda p: p.suffix not in ('.py',)))
 if DATA:
     image = image.add_local_dir(DATA, '/data', ignore=lambda p: p.suffix not in ('.npz', '.json'))
 
@@ -28,11 +29,11 @@ def _panel(net):
 
 @app.function(image=image, volumes={'/vol': vol}, cpu=4, memory=8192, timeout=3 * 3600)
 def build_panel(net):
-    sys.path.insert(0, '/code')
+    sys.path.insert(0, CODE)
     os.makedirs('/vol/panels', exist_ok=True)
     if not os.path.exists(_panel(net)):
         subprocess.run([sys.executable, 'eval_real.py', 'build', '--dataset', net, '--seed', '10101', '--v6', '/data', '--out', _panel(net)],
-                       cwd='/code', check=True)
+                       cwd=CODE, check=True)
         vol.commit()
     import panel_digest
     return net, panel_digest.digest(_panel(net))
@@ -44,7 +45,7 @@ def tabpfn(net):
     out = f'/vol/runs_real/{net}/tabpfn_v2'
     os.makedirs(out, exist_ok=True)
     subprocess.run([sys.executable, 'tabpfn_colab.py', '--panel', _panel(net), '--out', out, '--allow-constant-support', '--crps',
-                    '--device', 'cuda'], cwd='/code', check=True)
+                    '--device', 'cuda'], cwd=CODE, check=True)
     vol.commit()
     return net, sorted(os.listdir(out))
 
