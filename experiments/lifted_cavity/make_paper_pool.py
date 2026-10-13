@@ -1,4 +1,5 @@
-"""Pool tables, numbers and the robustness figure of paper/upt from confirm_v11.json and confirm_v12.json.
+"""Pool tables, numbers and the robustness figure of paper/upt from confirm_v11.json, confirm_v12.json and (when it
+exists) confirm_v13.json (TabPFN-3.5).
 
     python make_paper_pool.py --runs artifacts/reports/lifted_cavity_paper/runs --out paper/upt
 """
@@ -20,6 +21,8 @@ def main():
     c11 = json.loads((R / 'confirm_v11.json').read_text()); c12 = json.loads((R / 'confirm_v12.json').read_text())
     c10 = json.loads((R / 'confirm_v10.json').read_text())
     dd = c12['descriptive_defined_episodes']
+    p13 = R / 'confirm_v13.json'
+    c13 = json.loads(p13.read_text()) if p13.exists() else None
 
     # ---- table: mean NLL of each pool and TabPFN, per network and condition (TabPFN-defined episodes)
     t = [r'\begin{table}[t]\centering\small',
@@ -52,10 +55,14 @@ def main():
             ('v12', 'UPT-SF$\\oplus$TabPFN vs FA$\\oplus$TabPFN', c12,
              ('Y2_uptsfpool_vs_fapool_nll_e0', 'Y2_uptsfpool_vs_fapool_nll_e3', 'Y2_uptsfpool_vs_fapool_nll_e6')),
             ('v10', 'UPT-SF alone vs TabPFN v2', c10, ('W1_sf_vs_tabpfn_nll_e0', 'W2_sf_vs_tabpfn_nll_e3', 'W2_sf_vs_tabpfn_nll_e6'))]
+    if c13:
+        rows[2:2] = [('v13', 'UPT-SF$\oplus$TabPFN-3.5 vs TabPFN-3.5', c13, ('Z1_pool_vs_tabpfn35_nll_e0', 'Z2_pool_vs_tabpfn35_nll_e3', 'Z2_pool_vs_tabpfn35_nll_e6')),
+                     ('v13', 'UPT-SF$\oplus$TabPFN-3.5 vs UPT-SF alone', c13, ('Z3_pool_vs_uptsf_nll_e0', None, None))]
     t = [r'\begin{table}[t]\centering\small',
          r'\caption{\textbf{Pre-registered endpoints on the four fresh 2026 networks.} NLL gain in nats (baseline $-$ ours; '
          r'positive favours the first method), paired 95\% interval clustered by network-window; \checkmark: pass '
-         r'(gain $\geq 0.01$ and lower bound $>0$). Protocol v12 tests the mechanism on the same networks after v11.}',
+         r'(gain $\geq 0.01$ and lower bound $>0$). Protocols v12 and v13 (TabPFN-3.5, September 2026) test the mechanism '
+         r'and a newer foundation model on the same networks after v11.}',
          r'\label{tab:fresh}', r'\setlength{\tabcolsep}{3pt}', r'\begin{tabular}{llccc}', r'\toprule',
          r'Protocol & Comparison & All inputs & 3 dropped & 6 dropped \\', r'\midrule']
     for proto, lab, d, ks in rows:
@@ -78,6 +85,11 @@ def main():
                         ('uptsf', 'UPT-SF $\\oplus$ TabPFN', 'C0')):
         ys = [sum(dd[f'{n}|e{e}'][m] - dd[f'{n}|e0']['tabpfn'] for n, _ in NETS) / len(NETS) for e in (0, 3, 6)]
         ax.plot([0, 3, 6], ys, 'o-', label=lab, color=col, lw=2 if m == 'uptsf' else 1.2)
+    if c13:                                         # TabPFN-3.5 and its pool, on the same reference (TabPFN v2, all inputs)
+        d13 = c13['descriptive_tabpfn35_defined_episodes']
+        for m, lab, col in (('tabpfn35', 'TabPFN-3.5', 'C1'), ('pool35', 'UPT-SF $\oplus$ TabPFN-3.5', 'C9')):
+            ys = [sum(d13[f'{n}|e{e}'][m]['nll'] - dd[f'{n}|e0']['tabpfn'] for n, _ in NETS) / len(NETS) for e in (0, 3, 6)]
+            ax.plot([0, 3, 6], ys, 's--', label=lab, color=col, lw=2 if m == 'pool35' else 1.2)
     ax.set_xticks([0, 3, 6]); ax.set_xlabel('additional input sensors dropped'); ax.set_ylabel('NLL $-$ NLL(TabPFN, all inputs)')
     ax.grid(alpha=.3); ax.legend(fontsize=7, frameon=False)
     fig.tight_layout(); fig.savefig(O / 'figures' / 'pool_robustness.pdf'); plt.close(fig)
@@ -92,6 +104,11 @@ def main():
            r'\newcommand{\YTwoZero}{' + ci(c12['Y2_uptsfpool_vs_fapool_nll_e0']) + '}',
            r'\newcommand{\YTwoSix}{' + ci(c12['Y2_uptsfpool_vs_fapool_nll_e6']) + '}',
            r'\newcommand{\FreshEpisodes}{' + f"{c11['X3_pool_vs_uptsf_nll_e0']['episodes']:,}".replace(',', '{,}') + '}']
+    if c13:
+        num += [r'\newcommand{\ZOne}{' + ci(c13['Z1_pool_vs_tabpfn35_nll_e0']) + '}',
+                r'\newcommand{\ZTwoThree}{' + ci(c13['Z2_pool_vs_tabpfn35_nll_e3']) + '}',
+                r'\newcommand{\ZTwoSix}{' + ci(c13['Z2_pool_vs_tabpfn35_nll_e6']) + '}',
+                r'\newcommand{\ZThree}{' + ci(c13['Z3_pool_vs_uptsf_nll_e0']) + '}']
     (O / 'generated' / 'numbers_pool.tex').write_text('\n'.join(num) + '\n')
     print('\n'.join(num))
 
