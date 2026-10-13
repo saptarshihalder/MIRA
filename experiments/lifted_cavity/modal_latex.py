@@ -5,12 +5,14 @@
 from pathlib import Path
 import modal
 
-PAPER = Path(__file__).resolve().parents[2] / 'paper' / 'upt'
+_here = Path(__file__).resolve()
+PAPER = _here.parents[2] / 'paper' / 'upt' if len(_here.parents) > 2 else None   # local only
 app = modal.App('mira-latex')
 image = (modal.Image.debian_slim(python_version='3.11')
          .apt_install('texlive-latex-base', 'texlive-latex-recommended', 'texlive-latex-extra', 'texlive-fonts-recommended',
-                      'texlive-science', 'texlive-pictures', 'texlive-bibtex-extra', 'latexmk', 'lmodern')
-         .add_local_dir(str(PAPER), '/paper'))
+                      'texlive-science', 'texlive-pictures', 'texlive-bibtex-extra', 'latexmk', 'lmodern', 'poppler-utils'))
+if PAPER is not None and PAPER.exists():
+    image = image.add_local_dir(str(PAPER), '/paper', ignore=lambda q: 'build' in q.parts)
 
 
 @app.function(image=image, cpu=2, memory=4096, timeout=900)
@@ -21,7 +23,8 @@ def build():
                        capture_output=True, text=True)
     log = Path('/tmp/p/main.log').read_text(errors='replace') if Path('/tmp/p/main.log').exists() else ''
     pdf = Path('/tmp/p/main.pdf').read_bytes() if Path('/tmp/p/main.pdf').exists() else b''
-    return r.returncode, r.stdout[-3000:] + r.stderr[-2000:], log, pdf
+    txt = subprocess.run(['pdftotext', '-layout', 'main.pdf', '-'], cwd='/tmp/p', capture_output=True, text=True).stdout if pdf else ''
+    return r.returncode, r.stdout[-3000:] + r.stderr[-2000:], log + '\n=====PDFTEXT=====\n' + txt, pdf
 
 
 @app.local_entrypoint()
