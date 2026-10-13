@@ -82,6 +82,7 @@ def main():
     ap.add_argument('--root', required=True); ap.add_argument('--net', required=True); ap.add_argument('--panel-seed', type=int, required=True)
     ap.add_argument('--tab', default='tabpfn_v3_5'); ap.add_argument('--model', default='upt_L_sfm'); ap.add_argument('--sfx', default='_tta8')
     ap.add_argument('--sfx-out', default=''); ap.add_argument('--variants', default=','.join(VARIANTS))
+    ap.add_argument('--upt-net', default=None, help='protocol v16: network folder of the UPT-SF runs (default: --net)')
     a = ap.parse_args()
     R = Path(a.root) / 'runs_real' / a.net
     tag = f'real_{a.net}_s{a.panel_seed}'
@@ -90,8 +91,9 @@ def main():
     E = sorted({int(k.split('_')[0][1:]) for k in T.files if k[0] == 'e'})
     need4 = any(VARIANTS[v][0] in ('cf4', 'cfx') for v in a.variants.split(','))
     T4 = load_k(R / a.tab, f'pqk4_{tag}') if need4 else None
-    U = [np.load(R / f'{a.model}_s{s}_ft' / f'pq_{tag}{a.sfx}.npz') for s in SEEDS]
-    U4 = [load_k(R / f'{a.model}_s{s}_ft', f'pqk4_{tag}{a.sfx}') for s in SEEDS] if need4 else None
+    RU = Path(a.root) / 'runs_real' / (a.upt_net or a.net)
+    U = [np.load(RU / f'{a.model}_s{s}_ft' / f'pq_{tag}{a.sfx}.npz') for s in SEEDS]
+    U4 = [load_k(RU / f'{a.model}_s{s}_ft', f'pqk4_{tag}{a.sfx}') for s in SEEDS] if need4 else None
     n = qy.shape[0]
     for v in a.variants.split(','):
         cf, grid, ens = VARIANTS[v]
