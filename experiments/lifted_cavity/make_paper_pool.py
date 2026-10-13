@@ -23,6 +23,10 @@ def main():
     dd = c12['descriptive_defined_episodes']
     p13 = R / 'confirm_v13.json'
     c13 = json.loads(p13.read_text()) if p13.exists() else None
+    p14 = R / 'confirm_v14.json'
+    c14 = json.loads(p14.read_text()) if p14.exists() else None
+    V14 = {'uptsite': 'UPT site$\\,\\otimes\\,$TabPFN-3.5', 'uptcol': 'TabPFN-3.5 + UPT column', 'uptcol2': 'TabPFN-3.5 + UPT columns',
+           'uptres': 'TabPFN-3.5 on UPT residual'}
 
     # ---- table: mean NLL of each pool and TabPFN, per network and condition (TabPFN-defined episodes)
     t = [r'\begin{table}[t]\centering\small',
@@ -58,11 +62,18 @@ def main():
     if c13:
         rows[2:2] = [('v13', 'UPT-SF$\oplus$TabPFN-3.5 vs TabPFN-3.5', c13, ('Z1_pool_vs_tabpfn35_nll_e0', 'Z2_pool_vs_tabpfn35_nll_e3', 'Z2_pool_vs_tabpfn35_nll_e6')),
                      ('v13', 'UPT-SF$\oplus$TabPFN-3.5 vs UPT-SF alone', c13, ('Z3_pool_vs_uptsf_nll_e0', None, None))]
+    if c14:                                         # protocol v14: the selected variant (R1, R2) and, secondary, vs the v13 pool
+        lab = V14[c14['selected']['selected']]
+        c14s = dict(c14, **c14['secondary'])
+        rows[4:4] = [('v14', f'{lab} vs TabPFN-3.5', c14s, ('R1_uptcol_vs_tabpfn35_nll_e0', 'R2_uptcol_vs_tabpfn35_nll_e3', 'R2_uptcol_vs_tabpfn35_nll_e6')),
+                     ('v14$^\\dagger$', f'{lab} vs UPT-SF$\\oplus$TabPFN-3.5', c14s,
+                      ('uptcol_vs_pool35_nll_e0', 'uptcol_vs_pool35_nll_e3', 'uptcol_vs_pool35_nll_e6'))]
     t = [r'\begin{table}[t]\centering\small',
          r'\caption{\textbf{Pre-registered endpoints on the four fresh 2026 networks.} NLL gain in nats (baseline $-$ ours; '
          r'positive favours the first method), paired 95\% interval clustered by network-window; \checkmark: pass '
          r'(gain $\geq 0.01$ and lower bound $>0$). Protocols v12 and v13 (TabPFN-3.5, September 2026) test the mechanism '
-         r'and a newer foundation model on the same networks after v11.}',
+         r'and a newer foundation model on the same networks after v11' + (r'; v14 tests the variant selected on development '
+         r'networks, and $^\dagger$ marks a secondary comparison.}' if c14 else '.}'),
          r'\label{tab:fresh}', r'\setlength{\tabcolsep}{3pt}', r'\begin{tabular}{llccc}', r'\toprule',
          r'Protocol & Comparison & All inputs & 3 dropped & 6 dropped \\', r'\midrule']
     for proto, lab, d, ks in rows:
@@ -109,6 +120,12 @@ def main():
                 r'\newcommand{\ZTwoThree}{' + ci(c13['Z2_pool_vs_tabpfn35_nll_e3']) + '}',
                 r'\newcommand{\ZTwoSix}{' + ci(c13['Z2_pool_vs_tabpfn35_nll_e6']) + '}',
                 r'\newcommand{\ZThree}{' + ci(c13['Z3_pool_vs_uptsf_nll_e0']) + '}']
+    if c14:
+        num += [r'\newcommand{\ROne}{' + ci(c14['R1_uptcol_vs_tabpfn35_nll_e0']) + '}',
+                r'\newcommand{\RTwoThree}{' + ci(c14['R2_uptcol_vs_tabpfn35_nll_e3']) + '}',
+                r'\newcommand{\RTwoSix}{' + ci(c14['R2_uptcol_vs_tabpfn35_nll_e6']) + '}',
+                r'\newcommand{\RPoolZero}{' + ci(c14['secondary']['uptcol_vs_pool35_nll_e0']) + '}',
+                r'\newcommand{\RPoolSix}{' + ci(c14['secondary']['uptcol_vs_pool35_nll_e6']) + '}']
     (O / 'generated' / 'numbers_pool.tex').write_text('\n'.join(num) + '\n')
     print('\n'.join(num))
 
