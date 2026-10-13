@@ -42,6 +42,15 @@ pre-registered endpoints pass, Table~\ref{tab:fresh}). On pressure, UPT alone be
 there ($-0.47$), and over the four networks UPT is the better partner by $+0.05$ to $+0.07$ nats. On the rivers,
 TabPFN-3.5 alone is better than the pool by 0.015--0.03 nats.
 
+\paragraph{Beyond averaging fails confirmation (protocol v14).} A linear pool is never sharper than its sharper member
+on a single query. Protocol v14 selected, on the development networks, among combinations that could be: UPT's mean
+(and log standard deviation) as inputs of TabPFN-3.5, TabPFN-3.5 on UPT's residuals, and the logarithmic pool
+$p\propto p_F^a\,\mathcal N(m_{\mathrm{UPT}},v_{\mathrm{UPT}})^b$ on TabPFN's bars, with $(a,b)$ cross-fitted per
+episode. The input variants made TabPFN-3.5 worse; the logarithmic pool beat it at every level and was selected, but
+failed every confirmatory endpoint on the v10 networks (\ROne{}, \RTwoThree{}, \RTwoSix{} nats). It gains 0.12--0.16
+nats on pressure but loses up to 0.12 on the New York rivers, and the linear pool beats it (\RPoolZero{}). Unlike the
+linear pool (Proposition~\ref{prop:pool}), it has no per-query loss bound.
+
 \input{generated/pool_table}
 \input{generated/main_table}
 
@@ -74,7 +83,6 @@ network.
   (15 of 1{,}437 New York episodes; TabPFN is undefined there), UPT's predictive collapses and its NLL explodes. This
   breaks the v10 comparisons of UPT alone against the matched transformer, TNP-D and kriging, which UPT wins on the
   other three networks. The fix is untested.
-  \item \textbf{With all inputs, TabPFN v2 alone remains better on 5 of 13 networks} (v6 P3, v9).
+  \item \textbf{With all inputs, TabPFN v2 alone remains better on 5 of 13 networks} (v6 P3, v9). Ablations from
+  earlier protocols are in Appendix~\ref{app:protocols}.
 \end{enumerate}
-Ablations from earlier protocols (one network vs a pool of two, scale, float32 sites) are in
-Appendix~\ref{app:protocols}.

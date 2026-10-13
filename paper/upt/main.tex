@@ -118,7 +118,8 @@ On four networks recorded in 2026, every pre-registered test of UPT\,$\oplus$\,T
   \item \textbf{UPT is the best partner.} It beats a plain transformer of equal size and training (\YOneZero{}) and
   the closed-form sites (\YTwoZero{}).
   \item \textbf{It also improves TabPFN-3.5} (September 2026), which is far stronger than TabPFN v2: by \ZOne{} nats
-  with all inputs and \ZTwoSix{} with six missing.
+  with all inputs and \ZTwoSix{} with six missing. A logarithmic pool, which can be sharper than both models but has
+  no loss bound, did not survive its confirmatory test.
 \end{itemize}
 
 \textbf{Contributions.}
@@ -266,38 +267,20 @@ With a zero site head and gate bias $+4$, the lifted site equals the FA-Gaussian
 $\NLL_{\mathrm{UPT}}\leq\NLL_{\mathrm{FA}}-\log\sigma(4)=\NLL_{\mathrm{FA}}+0.018$.
 \end{proposition}
 
-\paragraph{Scale-free target pipeline (SF).} In-context transformers standardize the target internally. Our backbone
-inherited two fixed scales from its synthetic prior:
-\begin{itemize}
-  \item a floor of $0.1$ on the support standard deviation;
-  \item a bound of $\pm5$ on the output log-variance.
-\end{itemize}
+\paragraph{Scale-free target pipeline (SF).} Our backbone inherited two fixed scales from its synthetic prior, a floor
+of $0.1$ on the support standard deviation and a bound of $\pm5$ on the output log-variance, and the FA anchor carries
+absolute ridges. On targets that vary little within an episode, these cap how sharp the predictive can be. SF
+standardizes each episode's target by its support mean and standard deviation before the anchor fit and the network,
+widens the bound to $\pm10$, and maps predictions back to raw units ($\NLL+\log s$). The whole predictive is then
+equivariant to affine changes of the target's units, which our test suite checks exactly.
 
-The FA anchor also carries absolute ridges. On targets that vary little within an episode, these floors cap how sharp
-the predictive can be (\S\ref{sec:results}). SF removes them:
-\begin{itemize}
-  \item each episode's target is standardized by its support mean and standard deviation before the anchor fit and the
-  network;
-  \item the log-variance bound is widened to $\pm10$;
-  \item predictions are mapped back to raw units ($\NLL+\log s$).
-\end{itemize}
-
-Because the inputs are already standardized per episode, the whole predictive becomes equivariant to affine changes
-of the target's units. We check this exactly in our test suite.
-
-\paragraph{Training.} We pretrain on synthetic factor-model tasks with nonlinear sensor responses. Query masks remove at most
-one sensor. Then we fine-tune on source-period episodes of each network.
-\begin{itemize}
-  \item \textbf{Pretraining:} 30k steps for small models and 40k for large ones.
-  \item \textbf{Fine-tuning:} 2{,}000 steps, with one recipe for every model.
-  \item \textbf{UPT-L:} 2.1M parameters ($d=128$, 8 layers).
-  \item \textbf{Objective:} NLL, optionally plus the closed-form mixture CRPS~\citep{grimit2006crps}, a sum of strictly proper
-  scores.
-  \item \textbf{Prediction:} we average 8 random feature embeddings by an equal-weight linear pool, the analogue of TabPFN's
-  8-member ensemble.
-  \item \textbf{UPT-SF:} our final configuration. It is UPT-L with the SF pipeline, a three-component free mixture and
-  the CRPS term, selected on development networks by a pre-registered rule.
-\end{itemize}
+\paragraph{Training.} We pretrain on synthetic factor-model tasks with nonlinear sensor responses, whose query masks
+remove at most one sensor (30k steps; 40k for large models), then fine-tune on each network's source-period episodes
+(2{,}000 steps, one recipe for every model). The objective is the NLL, optionally plus the closed-form mixture
+CRPS~\citep{grimit2006crps}. At prediction we pool 8 random feature embeddings equally, the analogue of TabPFN's
+8-member ensemble. UPT-L has 2.1M parameters ($d=128$, 8 layers). \textbf{UPT-SF}, our final configuration, is UPT-L
+with the SF pipeline, a three-component free mixture and the CRPS term, selected on development networks by a
+pre-registered rule.
 
 \subsection{Pooling with a foundation model}
 \label{sec:pool}
@@ -318,7 +301,6 @@ The weight $w$ is chosen per episode by stacking~\citep{yao2018stacking}, withou
 By Proposition~\ref{prop:pool}, the pool can lose at most $-\log(1-w)$ nats to $F$ and $-\log w$ nats to UPT on any
 query. Stacking concentrates $w$ where one of them is reliably better. Nothing is trained, and the cost is two extra
 in-context calls of each model per episode.
-
 %=====================================================================
 \section{Experiments}
 \label{sec:experiments}
