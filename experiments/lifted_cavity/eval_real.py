@@ -53,8 +53,21 @@ def score_runs(a):
         pool = realdata.zpool(panel['pool']) if ft.get('yz') else panel['pool']
         import devutil
         model.to(devutil.pick(a.device))
-        cells = {} if a.per_query else {e: realdata.score_model(model, pool, qm, tta=a.tta) for e, qm in panel['conds'].items()}
         sfx = ('_f64' if a.site_float64 else '') + (f'_tta{a.tta}' if a.tta > 1 else '')
+        if a.cf_k:                                                     # protocol v15: K-fold cross-fit only
+            K, n = a.cf_k, panel['pool']['n']
+            cf = realdata.crossfit_pool_k(panel['pool'], K)
+            cf = realdata.zpool(cf) if ft.get('yz') else cf
+            out = {}
+            for e in panel['conds']:
+                cqm = realdata.crossfit_query_masks_k(realdata.crossfit_masks(panel['pool'], e, realdata.CF_SEED + e), K)
+                r = realdata.score_model(model, cf, cqm, tta=a.tta, per_query=True)
+                for m in ('nll', 'mean', 'var'):
+                    out[f'cf_e{e}_{m}'] = r[f'q_{m}'].reshape(n, -1)
+            np.savez_compressed(run / f'pqk{K}_{tag}{sfx}.npz', **out)
+            print(run, f'{K}-fold cross-fit written', flush=True)
+            continue
+        cells = {} if a.per_query else {e: realdata.score_model(model, pool, qm, tta=a.tta) for e, qm in panel['conds'].items()}
         if a.per_query:                                                # protocol v11
             pq, var = {}, {}
             cf = realdata.crossfit_pool(panel['pool'])
@@ -88,6 +101,8 @@ if __name__ == '__main__':
     ap.add_argument('--panel'); ap.add_argument('--runs', default=''); ap.add_argument('--device', default='cpu')
     ap.add_argument('--per-query', action='store_true', help='protocol v11: also write per-query NLL and mean on the test '
                     'queries and on the two-fold cross-fit of the support (pq_<tag><sfx>.npz)')
+    ap.add_argument('--cf-k', type=int, default=0, help='protocol v15: write only the K-fold cross-fit of the support '
+                    '(per-query NLL, mean, variance) to pqk<K>_<tag><sfx>.npz')
     ap.add_argument('--pq-var', action='store_true', help='protocol v14 (with --per-query): also write the predictive '
                     'variances, to pqv_<tag><sfx>.npz; an existing pq_ file of record is not overwritten')
     ap.add_argument('--tta', type=int, default=1, help='protocol v9: test-time ensemble over this many feature-embedding '

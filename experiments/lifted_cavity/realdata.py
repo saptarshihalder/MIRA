@@ -246,6 +246,35 @@ def crossfit_query_masks(m):
     return np.stack([m[t, sl] for t in range(m.shape[0]) for sl in (slice(0, CF), slice(CF, NS))], 0)
 
 
+def kfolds(K):
+    """Protocol v15: K contiguous folds of the NS support rows, in order: (training rows, held-out rows). K = 2 gives the
+    halves of crossfit_pool, in the same order."""
+    size = NS // K
+    assert size * K == NS, (NS, K)
+    return [(np.r_[0:k * size, (k + 1) * size:NS], slice(k * size, (k + 1) * size)) for k in range(K)]
+
+
+def crossfit_pool_k(pool, K):
+    """Protocol v15: K-fold cross-fit of every episode's support (crossfit_pool for K folds). Episode K t + k predicts
+    fold k from the other K - 1 folds; anchors are refitted on each training part. Per-query outputs reshape to (n, NS)
+    in the original row order."""
+    n, folds = pool['n'], kfolds(K)
+    sup = lambda k: torch.stack([pool[k][t, torch.as_tensor(tr)] for t in range(n) for tr, _ in folds], 0)
+    qry = lambda k: torch.stack([pool[k][t, te] for t in range(n) for _, te in folds], 0)
+    out = dict(sx=sup('sx'), sy=sup('sy'), sm=sup('sm'), qx=qry('sx'), qy=qry('sy'), qnat=qry('sm'))
+    out['c'] = torch.zeros(K * n, pool['c'].shape[1], dtype=pool['c'].dtype)
+    mu, sig = an.em_batched(out['sx'].double().numpy(), out['sy'].double().numpy(), out['sm'].double().numpy())
+    out['anchors'] = {A: {k: v.float() for k, v in an.fa_batched(mu, sig, A).items()} for A in (0, 1, 2)}
+    out['n'] = K * n
+    out['keys'] = [k for k in pool['keys'] for _ in folds]
+    return out
+
+
+def crossfit_query_masks_k(m, K):
+    """(n, NS, P) cross-fit masks -> (K n, NS / K, P) query masks of crossfit_pool_k's episodes."""
+    return np.stack([m[t, te] for t in range(m.shape[0]) for _, te in kfolds(K)], 0)
+
+
 def condition_masks(pool, extra, seed):
     """Per-query masks: natural mask with `extra` additional observed sensors dropped (never all)."""
     rng = np.random.default_rng(seed)
