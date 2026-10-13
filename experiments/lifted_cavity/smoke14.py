@@ -39,7 +39,13 @@ for t in range(a.episodes):
     crit, lg = tf.full_predict(reg, Xs, ys, Xq)
     log('episode', t, 'main call; logits', tuple(lg.shape), lg.device, lg.dtype)
     nll, mu, crps, cov = tf.scores(crit, lg[:48], qy)
-    log('  scores (102 quantiles)', round(float(nll.mean()), 3))
+    log('  scores (102 quantiles, vectorized)', round(float(nll.mean()), 3), 'crps', round(float(crps.mean()), 4))
+    with torch.no_grad():
+        ref = torch.stack([crit.icdf(lg[:48], q) for q in tf.QUANT], -1)
+        vec = tf.quantiles(crit, lg[:48], tf.QUANT)
+    d = float((ref - vec).abs().max())
+    log('  quantiles: max |vectorized - icdf| =', d)
+    assert d < 1e-6 * (1 + float(ref.abs().max())), d
     m, v = (x[t] for x in U['e0'])
     for ab in ((1.0, 0.0), (1.0, .35), (.8, .2)):
         f = tf.fused(crit, lg[:48], m, v, *ab)

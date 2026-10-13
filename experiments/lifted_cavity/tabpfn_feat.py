@@ -84,13 +84,27 @@ def fused(crit, logits, m, v, a, b):
     return out
 
 
+def quantiles(crit, logits, qs):
+    """All quantiles at once: FullSupportBarDistribution.icdf, vectorized over levels (one softmax and cumsum)."""
+    probs = logits.softmax(-1)
+    cum = torch.cumsum(probs, -1)
+    q = torch.as_tensor(qs, dtype=logits.dtype, device=logits.device).expand(cum.shape[0], -1).contiguous()
+    idx = torch.searchsorted(cum, q).clamp(0, crit.num_bars - 1)
+    before = torch.cat((torch.zeros_like(cum[..., :1]), cum[..., :-1]), -1)
+    cond = ((q - before.gather(-1, idx)) / probs.gather(-1, idx)).clamp(0.0, 1.0)
+    values = crit.borders[idx] + crit.bucket_widths[idx] * cond
+    hn = (crit.halfnormal_with_p_weight_before(crit.bucket_widths[0]), crit.halfnormal_with_p_weight_before(crit.bucket_widths[-1]))
+    values = torch.where(idx == 0, crit.borders[1] - hn[0].icdf(1.0 - cond), values)
+    return torch.where(idx == crit.num_bars - 1, crit.borders[-2] + hn[1].icdf(cond), values)
+
+
 def scores(crit, logits, y):
     """Per-row NLL, mean, CRPS, 90% coverage of the bar distribution `logits` at y."""
     with torch.no_grad():
         yt = torch.as_tensor(y, dtype=logits.dtype, device=logits.device)
         nll = crit(logits, yt).double().cpu().numpy().reshape(-1)
         mean = crit.mean(logits).double().cpu().numpy().reshape(-1)
-        Q = torch.stack([crit.icdf(logits, q) for q in QUANT], -1).double().cpu().numpy()
+        Q = quantiles(crit, logits, QUANT).double().cpu().numpy()
     u, p = np.asarray(y, float)[:, None] - Q[:, :QN], np.array(QUANT[:QN])
     crps = 2 * (u * (p - (u < 0))).mean(1)
     cov = ((y >= Q[:, QN]) & (y <= Q[:, QN + 1])).astype(float)
