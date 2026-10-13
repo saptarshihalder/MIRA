@@ -1,4 +1,4 @@
-\paragraph{Pre-registration.} We ran \NumProtocols{} protocols (v5--v12). Each was committed to a public repository
+\paragraph{Pre-registration.} We ran \NumProtocols{} protocols (v5--v13). Each was committed to a public repository
 before any score on its test data existed. Each fixes:
 \begin{itemize}
   \item networks, splits and seeded test panels;
@@ -18,6 +18,8 @@ used before (v9, v10).
   \item \textbf{Hydrology:} river discharge from three US states.
 \end{itemize}
 Seven networks have test periods in April--September 2026, after the release of TabPFN v2 (January 2025).
+TabPFN-3.5 was released on September 9, 2026, near the end of these periods. We cannot rule out that its training
+data include some of these public records; that would favour TabPFN-3.5, not our models.
 
 \paragraph{Episodes and conditions.} Each test episode predicts one held-out sensor from its 11 neighbours. It has
 48 labelled support rows from the same time window, a day to a week. Metrics are computed on 48 query rows, under
@@ -32,6 +34,8 @@ three conditions:
 \begin{itemize}
   \item \textbf{TabPFN v2}~\citep{hollmann2025tabpfnv2}, in context with 8 estimators. Missing inputs are passed as
   NaN.
+  \item \textbf{TabPFN-3.5}~\citep{jaeger2026tabpfn35}, the default model of the \texttt{tabpfn} package since
+  September 2026, run exactly like TabPFN v2 (8 estimators, its default) on the four 2026 networks (protocol v13).
   \item \textbf{PFN-L.} A plain cell-token transformer with UPT's backbone, size and training budget, but only the
   free head: the matched-scale ablation. It is trained with the same SF pipeline and test-time ensemble as UPT.
   \item \textbf{Neural processes:} TNP-D~\citep{nguyen2022tnp} and CNP~\citep{garnelo2018cnp}, trained on the same

@@ -2,10 +2,11 @@
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.62\linewidth]{figures/pool_robustness.pdf}
-\caption{\textbf{Robustness to failing inputs} on the four fresh 2026 networks. Mean NLL relative to TabPFN v2 with all
-inputs, as further input sensors are dropped from each query. TabPFN degrades by 0.86 nats at six dropped inputs.
-Pooling it with any partner helps, and UPT is the best partner at every level.}
+\includegraphics[width=0.56\linewidth]{figures/pool_robustness.pdf}
+\caption{\textbf{Robustness to failing inputs} on the four 2026 networks. Mean NLL relative to TabPFN v2 with all
+inputs, as further input sensors are dropped from each query. TabPFN v2 degrades by 0.86 nats at six dropped inputs.
+Pooling it with any partner helps, and UPT is the best partner at every level. TabPFN-3.5 (dashed) is much stronger
+and more robust; pooling it with UPT still improves it at every level.}
 \label{fig:robust}
 \end{figure}
 
@@ -33,6 +34,14 @@ Both ingredients of UPT therefore contribute: the lifted sites beat the plain tr
 the closed form. The largest margin is on the pressure network: UPT\,$\oplus$\,TabPFN scores $-0.60$ against $-0.12$
 for PFN-L\,$\oplus$\,TabPFN.
 
+\paragraph{The newest foundation model (protocol v13).} TabPFN-3.5 (September 2026) is far stronger than TabPFN v2 on
+these networks (by 0.3--1.3 nats) and degrades much less when inputs fail. The same pool, run unchanged, still
+improves it: \ZOne{} nats with all inputs, \ZTwoThree{} and \ZTwoSix{} with three and six dropped (all
+pre-registered endpoints pass, Table~\ref{tab:fresh}). On pressure, UPT alone beats TabPFN-3.5 at every level
+($-0.57$ vs $-0.47$ with all inputs) and the pool beats both ($-0.64$); a plain transformer of equal size is no help
+there ($-0.47$), and over the four networks UPT is the better partner by $+0.05$ to $+0.07$ nats. On the rivers,
+TabPFN-3.5 alone is better than the pool by 0.015--0.03 nats.
+
 \input{generated/pool_table}
 \input{generated/main_table}
 
@@ -59,20 +68,13 @@ network.
 \begin{enumerate}
   \item \textbf{UPT alone loses to TabPFN v2 on the river networks} (v9, v10). The pre-registered pooled NLL tests of
   UPT alone against TabPFN on the 2026 networks fail. On rivers TabPFN's predictive is far sharper, at about the same
-  RMSE. This is the motivation for pooling, which closes the gap.
-  \item \textbf{A degenerate case of the scale-free pipeline.} When an episode's 48 support targets are all identical
-  (15 of 1{,}437 New York episodes), the scale floor makes UPT's predictive almost a point mass, and its NLL explodes.
-  This breaks the pre-registered v10 comparisons of UPT alone against the matched transformer, TNP-D and kriging,
-  although UPT wins them on the other three networks. TabPFN is undefined on these episodes and they are excluded
-  from every TabPFN comparison. A scale floor tied to the network's typical support scale would avoid the failure; we
-  have not tested it.
+  RMSE; UPT's synthetic prior (five sensors, one factor) is far narrower than TabPFN's. Pooling closes the gap with
+  TabPFN v2, but not with TabPFN-3.5, which stays 0.015--0.03 nats ahead of the pool on rivers.
+  \item \textbf{A degenerate case of the scale-free pipeline.} When all 48 support targets of an episode are identical
+  (15 of 1{,}437 New York episodes; TabPFN is undefined there), UPT's predictive collapses and its NLL explodes. This
+  breaks the v10 comparisons of UPT alone against the matched transformer, TNP-D and kriging, which UPT wins on the
+  other three networks. The fix is untested.
   \item \textbf{With all inputs, TabPFN v2 alone remains better on 5 of 13 networks} (v6 P3, v9).
 \end{enumerate}
-
-\paragraph{Ablations.} The following come from earlier pre-registered protocols (Appendix~\ref{app:protocols}).
-\begin{itemize}
-  \item \textbf{One model vs two.} UPT, a single network, beats the linear pool of two independently trained plain
-  transformers, at half the inference cost (v6 P2: $+0.13$ nats).
-  \item \textbf{Scale.} UPT-L improves on UPT by $+0.23$ nats (v7 S2).
-  \item \textbf{Precision.} Float32 site algebra is non-inferior to float64 (v7 Q4).
-\end{itemize}
+Ablations from earlier protocols (one network vs a pool of two, scale, float32 sites) are in
+Appendix~\ref{app:protocols}.

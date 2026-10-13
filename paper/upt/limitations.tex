@@ -1,16 +1,12 @@
+Beyond the failures reported in \S\ref{sec:results}:
 \begin{itemize}
   \item \textbf{Cost.} UPT\,$\oplus$\,TabPFN runs both models, plus two half-support cross-fit calls per episode for
   the stacking weight.
-  \item \textbf{UPT alone vs TabPFN.} On near-deterministic targets (river discharge), UPT alone is markedly less sharp
-  than TabPFN v2. Its synthetic prior (five sensors, one factor) is far narrower than TabPFN's.
-  \item \textbf{A degenerate case.} UPT's scale-free target standardization breaks down when every support target of
-  an episode is identical (15 of 5{,}346 fresh episodes). This was found after the fact; the fix is untested.
-  \item \textbf{Baselines.} We compare with TabPFN v2, not its later versions, and with a local-graph adaptation of
-  inductive kriging rather than full-graph, temporal models (GRIN~\citep{cini2022grin}, graph neural
-  processes~\citep{hu2023stgnp}). Those models may do better when a long, stationary history is available.
-  \item \textbf{Episodes.} Episodes treat rows within a window as exchangeable and ignore temporal order.
-  \item \textbf{Provisional data.} The 2025--2026 data are provisional and may be revised. We release the snapshots'
-  content digests and the code that downloads them.
-  \item \textbf{Protocol history.} Protocol v12 tests a mechanism on networks already used by v10 and v11. Its
-  endpoints are pre-registered, but the data are not fresh.
+  \item \textbf{Baselines.} TabPFN v2 (all networks) and TabPFN-3.5 (the 2026 networks) run in context without
+  fine-tuning; neither is given the training history that UPT is fine-tuned on. Our kriging baseline is a
+  local-graph adaptation, not a full-graph temporal model (GRIN~\citep{cini2022grin},
+  graph neural processes~\citep{hu2023stgnp}), which may do better with a long, stationary history.
+  \item \textbf{Data.} Episodes ignore temporal order within a window. The 2025--2026 data are provisional; we
+  release content digests and download code. Protocols v12 and v13 reuse the v10 networks, and TabPFN-3.5 was
+  released at the end of their test periods, so its training data may overlap with them.
 \end{itemize}
