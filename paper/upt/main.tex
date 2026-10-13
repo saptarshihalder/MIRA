@@ -29,9 +29,10 @@
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\NLL}{\mathrm{NLL}}
 
-\input{generated/numbers}
+\input{generated/numbers_auto}
+\input{generated/numbers_pool}
 
-\title{Universal Pool Transformers:\\Robust In-Context Virtual Sensing under Sensor Failure}
+\title{Universal Pool Transformers:\\Lifted Sites Make Foundation Models Robust to Sensor Failure}
 
 \author{Anonymous Authors}
 
@@ -47,13 +48,17 @@ characterize the structure that missing sensors require. Products of per-sensor 
 sensors, the only predictors whose natural parameters are additive over observation masks. Scalar experts cannot
 fuse sensors with shared noise, whereas sites \emph{lifted} to a target-plus-nuisance latent are exact for
 factor-structured noise. The \emph{Universal Pool Transformer} (UPT) puts a lifted-site head and an unconstrained
-head on one transformer backbone and combines them by the linear opinion pool. Its log-likelihood is never worse than
-either head's by more than the log of that head's weight, and at initialization it equals the closed-form
-factor-analysis posterior up to $0.018$ nats. A scale-free target pipeline removes the fixed scales that limit the
-sharpness of the predictive distribution. We evaluate under \NumProtocols{} pre-registered protocols on \NumNetworks{}
-real sensor networks in five domains: traffic, indoor climate, air quality, weather and hydrology. \NumFreshNetworks{}
-of them were recorded in 2026, after the release of every pretrained model we compare with.
-\AbstractResults{}
+head on one transformer backbone and combines them by the linear opinion pool, the pooling rule that commutes with
+marginalization. Its log-likelihood is never worse than either head's by more than the log of that head's weight. The
+same rule pools UPT with a foundation model, with weights chosen per episode by cross-fitting the episode's own
+labelled rows.
+
+We tested this under \NumProtocols{} protocols, each committed before its data were scored, on four sensor networks
+recorded in 2026, after the release of every model we compare with. UPT\,$\oplus$\,TabPFN improves TabPFN v2's
+log-likelihood on every network, by \XOne{} nats with all inputs and by \XTwoSix{} nats with six inputs missing.
+UPT is a better partner than a matched-scale transformer (\YOneZero{}) or the closed-form sites (\YTwoZero{}). Across
+\NumNetworks{} networks in five domains, UPT also beats matched-scale transformers, neural processes and kriging. We
+report every failure, including the networks on which UPT alone loses to TabPFN v2.
 \end{abstract}
 
 %=====================================================================
@@ -99,6 +104,19 @@ unseen subsets gracefully.
   each component's (Proposition~\ref{prop:pool}).
 \end{itemize}
 
+\textbf{Foundation models as partners.} The same rule combines a structured model with a \emph{pretrained}
+foundation model. A foundation model is sharp where its vast prior fits; the lifted sites are exact where inputs are
+missing. Weights are chosen per episode by stacking~\citep{yao2018stacking} on a cross-fit of the episode's own
+labelled rows. No test label is used and nothing is retrained.
+
+On four networks recorded in 2026, every pre-registered test of UPT\,$\oplus$\,TabPFN passes (Table~\ref{tab:fresh}).
+\begin{itemize}
+  \item \textbf{It improves TabPFN v2 on every network,} and more as inputs fail. It gains \XOne{} nats with all
+  inputs and \XTwoSix{} with six inputs missing (Figure~\ref{fig:robust}).
+  \item \textbf{UPT is the best partner.} It beats a plain transformer of equal size and training (\YOneZero{}) and
+  the closed-form sites (\YTwoZero{}).
+\end{itemize}
+
 \textbf{Contributions.}
 \begin{enumerate}
   \item \textbf{Theory (\S\ref{sec:theory}).} Products of sites are the free construction on sensors. Scalar
@@ -106,18 +124,19 @@ unseen subsets gracefully.
   log-likelihood guarantee relative to each component.
   \item \textbf{The Universal Pool Transformer (\S\ref{sec:upt}).} One transformer backbone over the cells of the
   support and the query feeds a lifted-site head, a free head and a gate, combined by the linear pool. At
-  initialization UPT is the closed-form factor-analysis (FA) posterior up to $0.018$ nats. A scale-free target
-  pipeline makes the predictive equivariant to affine changes of the target's units.
+  initialization UPT is the closed-form factor-analysis (FA) posterior up to $0.018$ nats.
+  \item \textbf{Pooling with a foundation model (\S\ref{sec:pool}).} UPT\,$\oplus$\,TabPFN applies the same pool,
+  with per-episode cross-fit stacking.
   \item \textbf{A pre-registered evaluation (\S\ref{sec:experiments}).}
   \begin{itemize}
     \item \textbf{Scale:} \NumProtocols{} protocols, each committed before its data were scored, on \NumNetworks{}
-    networks and \NumEpisodes{} test episodes.
+    networks in five domains.
+    \item \textbf{Fresh data:} \NumFreshNetworks{} networks were recorded in 2026.
     \item \textbf{Baselines:} TabPFN v2, a matched-scale transformer, TNP-D, CNP, deep and classical kriging,
     gradient boosting and multiple imputation.
-    \item \textbf{Reporting:} every endpoint is reported, including the failures.
+    \item \textbf{Reporting:} every endpoint is reported, including the failures (Appendix~\ref{app:protocols}).
   \end{itemize}
 \end{enumerate}
-\IntroResults{}
 
 %=====================================================================
 \section{Problem setup}
@@ -272,7 +291,29 @@ one sensor. Then we fine-tune on source-period episodes of each network.
   scores.
   \item \textbf{Prediction:} we average 8 random feature embeddings by an equal-weight linear pool, the analogue of TabPFN's
   8-member ensemble.
+  \item \textbf{UPT-SF:} our final configuration. It is UPT-L with the SF pipeline, a three-component free mixture and
+  the CRPS term, selected on development networks by a pre-registered rule.
 \end{itemize}
+
+\subsection{Pooling with a foundation model}
+\label{sec:pool}
+
+A pretrained foundation model $F$ (here TabPFN v2) and UPT each give a predictive for every query. We pool them with
+the same rule as inside UPT:
+\[
+  p(y\mid x_S,\D)=w\,p_{\mathrm{UPT}}(y\mid x_S,\D)+(1-w)\,p_F(y\mid x_S,\D).
+\]
+The weight $w$ is chosen per episode by stacking~\citep{yao2018stacking}, without test labels:
+\begin{enumerate}
+  \item Split the support into halves $A$ and $B$.
+  \item Fit both models in context on $A$ and predict $B$, then the reverse. The held-out rows' inputs carry the same
+  extra missingness as the test condition.
+  \item Choose $w\in\{0.02,0.04,\dots,0.98\}$ to maximize the summed log density of the pool on the 48 held-out rows.
+\end{enumerate}
+
+By Proposition~\ref{prop:pool}, the pool can lose at most $-\log(1-w)$ nats to $F$ and $-\log w$ nats to UPT on any
+query. Stacking concentrates $w$ where one of them is reliably better. Nothing is trained, and the cost is two extra
+in-context calls of each model per episode.
 
 %=====================================================================
 \section{Experiments}

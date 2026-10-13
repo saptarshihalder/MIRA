@@ -1,0 +1,25 @@
+\begin{table}[t]\centering\small
+\caption{\textbf{Mean test NLL (nats; lower is better)} with all sensors (left of the slash) and with six extra sensors dropped (right). Learned models: mean over three seeds. Best per row in bold. Networks recorded in 2026 are below the rule; the last four are protocol v10, never used before its endpoints were scored. On USGS NY the UPT-SF mean is dominated by 15 episodes with a constant support target (\S\ref{sec:results}).}
+\label{tab:main}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcccccc}
+\toprule
+Network & UPT-SF & PFN-L & TabPFN v2 & TNP-D & Krig.\ (cal.) & FA-Gauss. \\
+\midrule
+METR-LA & \textbf{-1.82}/\textbf{-1.60} & -1.48/-1.09 & -1.79/-1.21 & -1.37/-0.44 & -0.50/+0.30 & -0.15/-0.29 \\
+PEMS-BAY & \textbf{-2.68}/\textbf{-2.34} & -2.42/-2.03 & -2.68/-2.06 & -2.11/-0.92 & -1.46/-0.57 & -0.94/-1.02 \\
+Intel Lab & -0.95/\textbf{-0.02} & -0.32/+0.79 & \textbf{-1.30}/+2.36 & +0.03/+1.75 & +0.94/+2.72 & +0.49/+0.64 \\
+PeMS03 & \textbf{-1.30}/\textbf{-1.00} & -1.03/-0.80 & -1.04/-0.04 & -0.93/-0.16 & -0.42/-0.34 & -0.57/-0.52 \\
+PeMS08 & \textbf{-2.54}/\textbf{-2.12} & -1.12/-1.01 & -1.82/-0.62 & -1.07/-0.43 & -0.68/-0.94 & -1.28/-1.27 \\
+China air & \textbf{-0.25}/\textbf{-0.03} & -0.12/+0.06 & -0.24/+0.92 & -0.05/+0.21 & +0.17/+0.51 & +0.27/+0.26 \\
+\midrule
+DWD temp. & \textbf{+1.02}/\textbf{+1.22} & +1.04/+1.25 & +1.32/+2.14 & +1.19/+1.62 & +1.39/+1.49 & +1.52/+1.45 \\
+AURN NO$_2$ & \textbf{+0.22}/\textbf{+0.41} & +0.23/+0.44 & +0.30/+0.62 & +0.31/+0.55 & +0.37/+0.54 & +0.47/+0.51 \\
+USGS PA & -2.62/-2.27 & -2.26/-1.97 & \textbf{-3.66}/\textbf{-2.72} & -1.82/-0.91 & -0.82/-0.37 & -0.86/-1.08 \\
+USGS NY & +2024.7/+1305.6 & -1.56/-1.34 & \textbf{-3.63}/\textbf{-2.88} & -1.41/-0.75 & +85.3/+85.8 & -0.17/-0.26 \\
+USGS WA & -3.31/-2.98 & -2.73/-2.47 & \textbf{-4.97}/\textbf{-4.41} & -2.51/-2.11 & -1.95/-1.78 & -2.22/-2.24 \\
+DWD pressure & \textbf{-0.57}/\textbf{-0.22} & -0.01/+0.14 & -0.15/+1.46 & +0.09/+1.40 & +0.15/+0.65 & +0.07/+0.03 \\
+AURN PM$_{2.5}$ & -0.40/\textbf{-0.21} & -0.27/-0.10 & \textbf{-0.43}/+0.07 & -0.21/+0.06 & -0.07/+0.08 & +0.13/+0.08 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -25,8 +25,8 @@ NETS = [  # key, label, domain, source of data, test period
 PROTO = {'metr_la': 'v6', 'pems_bay': 'v6', 'intel': 'v6', 'pems03': 'v7', 'pems08': 'v7', 'air_cn': 'v7',
          'dwd_t2m': 'v9', 'aurn_no2': 'v9', 'usgs_q': 'v9', 'usgs_ny': 'v10', 'usgs_wa': 'v10', 'dwd_p': 'v10', 'aurn_pm25': 'v10'}
 FAIL = '\\textbf{fail}'
-COLS = [('sf', 'UPT-SF'), ('upt_star', 'UPT$^\\ast$'), ('pfn_L_sf', 'PFN-L-SF'), ('tabpfn_v2', 'TabPFN v2'), ('tnp', 'TNP-D'),
-        ('ignnk_cal', 'Krig.\\ (cal.)'), ('fa1', 'FA-Gauss.')]
+COLS = [('sf', 'UPT-SF'), ('pfn_L', 'PFN-L'), ('tabpfn_v2', 'TabPFN v2'), ('tnp', 'TNP-D'), ('ignnk_cal', 'Krig.\\ (cal.)'),
+        ('fa1', 'FA-Gauss.')]
 
 
 def f3(x):
@@ -62,7 +62,8 @@ def main():
     lines = ['\\begin{table}[t]\\centering\\small', '\\caption{\\textbf{Mean test NLL (nats; lower is better)} with all sensors '
              '(left of the slash) and with six extra sensors dropped (right). Learned models: mean over three seeds. '
              'Best per row in bold. Networks recorded in 2026 are below the rule; the last four are protocol v10, never used '
-             'before its endpoints were scored.}', '\\label{tab:main}', '\\setlength{\\tabcolsep}{3pt}',
+             'before its endpoints were scored. On USGS NY the UPT-SF mean is dominated by 15 episodes with a constant '
+             'support target (\\S\\ref{sec:results}).}', '\\label{tab:main}', '\\setlength{\\tabcolsep}{3pt}',
              '\\begin{tabular}{l' + 'c' * len(COLS) + '}', '\\toprule', 'Network & ' + ' & '.join(l for _, l in COLS) + ' \\\\', '\\midrule']
     for key, lab, *_ in NETS:
         if key == 'dwd_t2m':
@@ -79,14 +80,14 @@ def main():
     # ---- counts over networks: who wins NLL at each condition
     wins = {}
     for e in (0, 3, 6):
-        w = {'sf_vs_tabpfn': 0, 'sf_vs_pfnLsf': 0, 'n': 0}
+        w = {'sf_vs_tabpfn': 0, 'sf_vs_pfnL': 0, 'n': 0}
         for key, *_ in NETS:
-            s, t, p = row_val(desc, key, e, 'sf'), row_val(desc, key, e, 'tabpfn_v2'), row_val(desc, key, e, 'pfn_L_sf')
+            s, t, p = row_val(desc, key, e, 'sf'), row_val(desc, key, e, 'tabpfn_v2'), row_val(desc, key, e, 'pfn_L')
             if s is None:
                 continue
             w['n'] += 1
             w['sf_vs_tabpfn'] += int(t is not None and s < t)
-            w['sf_vs_pfnLsf'] += int(p is not None and s < p)
+            w['sf_vs_pfnL'] += int(p is not None and s < p)
         wins[e] = w
 
     # ---- robustness figure: pooled-over-networks mean NLL by condition, relative to all sensors
@@ -94,7 +95,7 @@ def main():
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(1, 2, figsize=(7.2, 2.5))
-    for m, lab, col in (('sf', 'UPT-SF', 'C0'), ('pfn_L_sf', 'PFN-L-SF', 'C2'), ('tabpfn_v2', 'TabPFN v2', 'C3'), ('tnp', 'TNP-D', 'C1'),
+    for m, lab, col in (('sf', 'UPT-SF', 'C0'), ('pfn_L', 'PFN-L', 'C2'), ('tabpfn_v2', 'TabPFN v2', 'C3'), ('tnp', 'TNP-D', 'C1'),
                         ('ignnk_cal', 'kriging (cal.)', 'C4')):
         ys = []
         for e in (0, 3, 6):
@@ -144,7 +145,7 @@ def main():
 
     def lab10(k):
         return {'W1_sf_vs_tabpfn_nll_e0': 'UPT-SF vs TabPFN v2, NLL, all sensors', 'W2_sf_vs_tabpfn_nll_e3': 'UPT-SF vs TabPFN v2, NLL, +3',
-                'W2_sf_vs_tabpfn_nll_e6': 'UPT-SF vs TabPFN v2, NLL, +6', 'W3_sf_vs_pfnLsf_nll_e0': 'UPT-SF vs PFN-L-SF (matched), NLL',
+                'W2_sf_vs_tabpfn_nll_e6': 'UPT-SF vs TabPFN v2, NLL, +6', 'W3_sf_vs_pfnLsf_nll_e0': 'UPT-SF vs PFN-L (matched scale), NLL',
                 'W4_sf_vs_tabpfn_crps_e0': 'UPT-SF vs TabPFN v2, CRPS$/\\sigma$', 'W5_sf_vs_tnp_nll_e0': 'UPT-SF vs TNP-D, NLL',
                 'W6_sf_vs_krigcal_nll_e0': 'UPT-SF vs calibrated kriging, NLL', 'W7_sf_vs_uptstar_nll_e0': 'UPT-SF vs UPT$^\\ast$ (effect of SF), NLL'}.get(k)
     rows = []
@@ -181,10 +182,10 @@ def main():
     for e in (0, 3, 6):
         t += ['\\begin{table}[h]\\centering\\scriptsize', f'\\caption{{Per-network metrics, {"all sensors" if e == 0 else f"+{e} sensors dropped"}: '
               'NLL / CRPS$/\\sigma$ / RMSE$/\\sigma$ / 90\\% coverage.}', '\\setlength{\\tabcolsep}{2pt}',
-              '\\begin{tabular}{l' + 'c' * 5 + '}', '\\toprule', 'Network & UPT-SF & PFN-L-SF & TabPFN v2 & TNP-D & Krig.\\ (cal.) \\\\', '\\midrule']
+              '\\begin{tabular}{l' + 'c' * 5 + '}', '\\toprule', 'Network & UPT-SF & PFN-L & TabPFN v2 & TNP-D & Krig.\\ (cal.) \\\\', '\\midrule']
         for key, lab, *_ in NETS:
             cell = []
-            for m in ('sf', 'pfn_L_sf', 'tabpfn_v2', 'tnp', 'ignnk_cal'):
+            for m in ('sf', 'pfn_L', 'tabpfn_v2', 'tnp', 'ignnk_cal'):
                 r = desc.get(f'{key}|e{e}', {}).get(m)
                 if not r:
                     cell.append('--'); continue
@@ -198,12 +199,12 @@ def main():
     eps = sum(int(v[0]) for v in counts.values()) if counts else 0
     W = {k: d10.get(k, {}) for k in ('W1_sf_vs_tabpfn_nll_e0', 'W2_sf_vs_tabpfn_nll_e3', 'W2_sf_vs_tabpfn_nll_e6', 'W3_sf_vs_pfnLsf_nll_e0',
                                      'W4_sf_vs_tabpfn_crps_e0', 'W5_sf_vs_tnp_nll_e0', 'W6_sf_vs_krigcal_nll_e0', 'W7_sf_vs_uptstar_nll_e0')}
-    num = [f'\\newcommand{{\\NumProtocols}}{{six}}', f'\\newcommand{{\\NumNetworks}}{{thirteen}}', f'\\newcommand{{\\NumFreshNetworks}}{{Seven}}',
+    num = [f'\\newcommand{{\\NumProtocols}}{{eight}}', f'\\newcommand{{\\NumNetworks}}{{thirteen}}', f'\\newcommand{{\\NumFreshNetworks}}{{Seven}}',
            f'\\newcommand{{\\NumEpisodes}}{{{eps:,}}}'.replace(',', '{,}'), f'\\newcommand{{\\NumEndpointsPass}}{{{npass}}}',
            f'\\newcommand{{\\NumEndpoints}}{{{ntot}}}']
     for e in (0, 3, 6):
         nm = {0: 'Zero', 3: 'Three', 6: 'Six'}[e]
-        num += [f'\\newcommand{{\\WinsTab{nm}}}{{{wins[e]["sf_vs_tabpfn"]}}}', f'\\newcommand{{\\WinsPfn{nm}}}{{{wins[e]["sf_vs_pfnLsf"]}}}',
+        num += [f'\\newcommand{{\\WinsTab{nm}}}{{{wins[e]["sf_vs_tabpfn"]}}}', f'\\newcommand{{\\WinsPfn{nm}}}{{{wins[e]["sf_vs_pfnL"]}}}',
                 f'\\newcommand{{\\WinsN{nm}}}{{{wins[e]["n"]}}}']
     for k, v in W.items():
         tag = ''.join(ch for ch in k.split('_')[0] if ch.isalnum()) + ('Three' if k.endswith('e3') else 'Six' if k.endswith('e6') else '')
