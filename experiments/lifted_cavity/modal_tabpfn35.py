@@ -35,6 +35,18 @@ def _panel(net):
     return f'/vol/panels/real_{net}_s10101.pt'
 
 
+@app.function(image=image, secrets=[secret], cpu=1, memory=1024, timeout=120)
+def auth_check():
+    """Whether the token is valid and the TabPFN-3.5 license accepted (booleans only; the token is never returned)."""
+    _auth()
+    from tabpfn import browser_auth as ba
+    from tabpfn.settings import settings
+    tok, api = os.environ['TABPFN_TOKEN'], settings.tabpfn.auth_api_url
+    lic = ba._get_license_name('tabpfn_3_5')
+    return dict(token_chars=len(tok), token_valid=ba.verify_token(tok, api), license=lic,
+                license_accepted=ba.check_license_accepted(tok, api, lic))
+
+
 @app.function(image=image, volumes={'/vol': vol}, secrets=[secret], gpu=GPU, cpu=2, memory=8192, timeout=1800)
 def smoke(net):
     """Synthetic inputs shaped like an episode of `net` (no real value is read): the model loads, its predictive is in
