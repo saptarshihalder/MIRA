@@ -56,16 +56,24 @@ def score_runs(a):
         cells = {} if a.per_query else {e: realdata.score_model(model, pool, qm, tta=a.tta) for e, qm in panel['conds'].items()}
         sfx = ('_f64' if a.site_float64 else '') + (f'_tta{a.tta}' if a.tta > 1 else '')
         if a.per_query:                                                # protocol v11
-            pq = {}
+            pq, var = {}, {}
             cf = realdata.crossfit_pool(panel['pool'])
             cf = realdata.zpool(cf) if ft.get('yz') else cf
             for e, qm in panel['conds'].items():
                 r = realdata.score_model(model, pool, qm, tta=a.tta, per_query=True)
-                pq[f'e{e}_nll'], pq[f'e{e}_mean'] = r['q_nll'], r['q_mean']
+                pq[f'e{e}_nll'], pq[f'e{e}_mean'], var[f'e{e}_var'] = r['q_nll'], r['q_mean'], r['q_var']
                 cqm = realdata.crossfit_query_masks(realdata.crossfit_masks(panel['pool'], e, realdata.CF_SEED + e))
                 r = realdata.score_model(model, cf, cqm, tta=a.tta, per_query=True)
                 pq[f'cf_e{e}_nll'] = r['q_nll'].reshape(panel['pool']['n'], -1)
                 pq[f'cf_e{e}_mean'] = r['q_mean'].reshape(panel['pool']['n'], -1)
+                var[f'cf_e{e}_var'] = r['q_var'].reshape(panel['pool']['n'], -1)
+            if a.pq_var:                                               # protocol v14: + variances, in pqv_; pq_ of
+                np.savez_compressed(run / f'pqv_{tag}{sfx}.npz', **pq, **var)   # record is written only if missing
+                if (run / f'pq_{tag}{sfx}.npz').exists():
+                    old = np.load(run / f'pq_{tag}{sfx}.npz')
+                    print(run, 'pq of record kept; max |mean - record| =',
+                          max(float(np.nanmax(np.abs(old[k] - pq[k]))) for k in pq if k.endswith('_mean')), flush=True)
+                    continue
             np.savez_compressed(run / f'pq_{tag}{sfx}.npz', **pq)
             print(run, 'per-query written', flush=True)
             continue
@@ -80,6 +88,8 @@ if __name__ == '__main__':
     ap.add_argument('--panel'); ap.add_argument('--runs', default=''); ap.add_argument('--device', default='cpu')
     ap.add_argument('--per-query', action='store_true', help='protocol v11: also write per-query NLL and mean on the test '
                     'queries and on the two-fold cross-fit of the support (pq_<tag><sfx>.npz)')
+    ap.add_argument('--pq-var', action='store_true', help='protocol v14 (with --per-query): also write the predictive '
+                    'variances, to pqv_<tag><sfx>.npz; an existing pq_ file of record is not overwritten')
     ap.add_argument('--tta', type=int, default=1, help='protocol v9: test-time ensemble over this many feature-embedding '
                     'seeds (cells_<tag>_tta<k>.npz)')
     ap.add_argument('--site-float64', action='store_true', help='UPT: lifted-site algebra in float64 (cells_<tag>_f64.npz)')

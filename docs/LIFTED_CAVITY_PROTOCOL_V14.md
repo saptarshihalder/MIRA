@@ -58,3 +58,28 @@ All outcomes are reported, in the paper as well.
 
 Colab (Drive holds the panels and UPT-SF's per-query outputs; the TabPFN license token is a Colab secret, read into
 the environment and never printed): `run_v14.py dev`, then `run_v14.py confirm` if the selection rule allows it.
+
+## Amendment 1 (October 13, 2026, before any v14 run): more variants, a smaller development set
+
+Nothing of v14 had run. On request, the development stage now compares four ways of combining TabPFN-3.5 with UPT-SF
+beyond a linear pool (code: `tabpfn_feat.py`, `run_v14.py`), and drops F2, which had the least support:
+
+| Variant | Combination |
+|---|---|
+| F1 `uptcol` | UPT-SF's predictive mean as an input column (as above) |
+| F3 `uptcol2` | UPT-SF's predictive mean and log standard deviation as input columns: TabPFN can learn when to trust UPT-SF |
+| F4 `uptres` | TabPFN models the residual y − m with the two columns; the predictive of y is m + residual (TabPFN corrects UPT-SF) |
+| F5 `uptsite` | UPT-SF as a Gaussian site on TabPFN-3.5's predictive: p(y) ∝ p_TabPFN(y)^a · N(y; m, v)^b on TabPFN's bars (half-normal tails kept). (a, b) on {1, .8, .6} × {0, .05, .1, .2, .35, .5, .75, 1} per episode and condition, by the two-fold cross-fit log score of the support. (1, 0) is TabPFN alone and wins ties. |
+
+- m, v: UPT-SF's predictive mean and variance, seed-averaged as the equal mixture of seeds 1–3 (`eval_real.py
+  --per-query --pq-var`, which writes `pqv_*` files and never overwrites a `pq_*` file of record). Support rows always
+  use the two-fold cross-fitted predictive.
+- TabPFN-3.5 alone on the development networks comes from F5's pass (its (1, 0) member: the calls of
+  `tabpfn_colab.py`), in `tabpfn_v3_5_s2`.
+- Development scores every second episode (0, 2, 4, …) of each v9 network, for time. Confirmation scores every
+  episode.
+
+**Selection (replaces the rule above):** the selected variant has the lowest mean development NLL over the three
+networks and three conditions (scored, TabPFN-defined episodes). Go to confirmation only if it beats TabPFN-3.5 alone
+at each of the three conditions, pooled over the development networks. The endpoints R1–R2 are unchanged and test only
+the selected variant.

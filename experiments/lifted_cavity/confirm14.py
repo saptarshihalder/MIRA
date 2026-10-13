@@ -14,7 +14,7 @@ a = ap.parse_args()
 R = Path(a.v10)
 NETS = ('usgs_ny', 'usgs_wa', 'dwd_p', 'aurn_pm25')
 sel = json.loads((R / 'dev' / 'selection14.json').read_text())['selection']
-VAR = {'F1_uptcol': 'tabpfn_v3_5_uptcol', 'F2_uptcol_mirror': 'tabpfn_v3_5_uptcol_mirror'}[sel['selected']]
+VAR = f"tabpfn_v3_5_{sel['selected']}"                       # amendment 1: uptcol, uptcol2, uptres or uptsite
 TAB, POOL = 'tabpfn_v3_5', 'pool_upt_L_sfm_tabpfn_v3_5'
 
 

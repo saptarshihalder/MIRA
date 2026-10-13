@@ -300,7 +300,8 @@ def score_model(model, pool, qm, tasks_per_batch=8, tta=1, per_query=False):
 
     tta > 1 (protocol v9): the predictive is the equal-weight linear pool of the model's predictives under feature-
     embedding seeds 0..tta-1 (seed 0 is the single-model default), a test-time ensemble like TabPFN's n_estimators.
-    per_query (protocol v11): also return 'q_nll' and 'q_mean' (n, queries) in raw target units."""
+    per_query (protocol v11): also return 'q_nll' and 'q_mean' (n, queries) in raw target units, and (protocol v14)
+    'q_var', the predictive variance."""
     from evaluate2 import gauss_metrics
     model.eval()
     res, pq = [], []
@@ -323,28 +324,30 @@ def score_model(model, pool, qm, tasks_per_batch=8, tta=1, per_query=False):
                 lw, mu, lv = (v.detach().cpu().double().numpy() for v in upt.components(model, dbatch))
                 W.append(np.exp(lw) / tta); Mu.append(mu); Var.append(np.exp(lv))
             model.feature_seed = 0
-            W, Mu = np.concatenate(W, 1), np.concatenate(Mu, 1)
-            g = upt.mixture_metrics(W, Mu, np.concatenate(Var, 1), batch['qy'].double().numpy())
-            mean = (W * Mu).sum(1)
+            W, Mu, Var = np.concatenate(W, 1), np.concatenate(Mu, 1), np.concatenate(Var, 1)
+            g = upt.mixture_metrics(W, Mu, Var, batch['qy'].double().numpy())
+            mean = (W * Mu).sum(1); var = (W * (Var + Mu ** 2)).sum(1) - mean ** 2
         elif hasattr(model, 'mixture'):                            # mixture output (upt.py): exact mixture metrics
             import upt
             lw, mu, lv = (v.detach().cpu().double().numpy() for v in model.mixture(devutil.to_dev(batch, devutil.model_device(model))))
             g = upt.mixture_metrics(np.exp(lw), mu, np.exp(lv), batch['qy'].double().numpy())
-            mean = (np.exp(lw) * mu).sum(1)
+            mean = (np.exp(lw) * mu).sum(1); var = (np.exp(lw) * (np.exp(lv) + mu ** 2)).sum(1) - mean ** 2
         else:
             mu, lv = model(devutil.to_dev(batch, devutil.model_device(model)))
             mu, lv = mu.detach().cpu(), lv.detach().cpu()
             g = gauss_metrics(mu.double().numpy(), np.exp(lv.double().numpy()), batch['qy'].double().numpy())
-            mean = mu.double().numpy()
+            mean = mu.double().numpy(); var = np.exp(lv.double().numpy())
         res.append({m: v.reshape(B, NQ).mean(1) for m, v in g.items()})
-        pq.append((g['nll'].reshape(B, NQ), mean.reshape(B, NQ)))
+        pq.append((g['nll'].reshape(B, NQ), mean.reshape(B, NQ), np.maximum(var, 0).reshape(B, NQ)))
     out = {m: np.concatenate([r[m] for r in res]) for m in res[0]}
     if per_query:
         out['q_nll'] = np.concatenate([p[0] for p in pq]); out['q_mean'] = np.concatenate([p[1] for p in pq])
+        out['q_var'] = np.concatenate([p[2] for p in pq])          # protocol v14: predictive variance
     if 'yscale' in pool:                                           # SF pipeline: metrics back in raw target units
         s = pool['yscale'].double().numpy()
         out['nll'] = out['nll'] + np.log(s); out['crps'] = out['crps'] * s; out['se'] = out['se'] * s * s
         if per_query:
             out['q_nll'] = out['q_nll'] + np.log(s)[:, None]
             out['q_mean'] = pool['yloc'].double().numpy()[:, None] + s[:, None] * out['q_mean']
+            out['q_var'] = out['q_var'] * (s ** 2)[:, None]
     return out
