@@ -9,7 +9,8 @@ as NaN, which TabPFN handles natively) and predicts the query rows with unobserv
 attend to each other in TabPFN, so every mask of a task (synthetic panels) or every condition of an episode (real
 panels) is predicted in one call. NLL is TabPFN's own predictive density (bar distribution in raw target units, checked
 against its predictive mean), so it is directly comparable with the NLL of every other method. Results use the cells
-format of every other run. The model version is pinned with --version (default v2, the ungated TabPFN v2 weights).
+format of every other run. The model version is pinned with --version (default v2, the ungated TabPFN v2 weights;
+protocol v13: v3.5, which needs the license token TABPFN_TOKEN).
 """
 import argparse, json, time
 from pathlib import Path
@@ -194,7 +195,7 @@ def main():
     a = ap.parse_args()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     import tabpfn
-    meta = dict(model='tabpfn_v2', version=a.version, package=getattr(tabpfn, '__version__', '?'), n_estimators=N_ESTIMATORS,
+    meta = dict(model='tabpfn_' + a.version.replace('.', '_'), version=a.version, package=getattr(tabpfn, '__version__', '?'), n_estimators=N_ESTIMATORS,
                 random_state=RANDOM_STATE, device=a.device, note='pretrained TabPFN regressor, in context, no fine-tuning')
     if torch.cuda.is_available():
         meta['gpu'] = torch.cuda.get_device_name(0)

@@ -3,7 +3,8 @@ per-episode stacking weights (Yao, Vehtari, Simpson & Gelman 2018) chosen on a t
 labelled support rows (no test label, no other episode, nothing trained).
 
     python pool_eval.py --root <runs root> --net usgs_ny --panel-seed 10101 --model upt_L_sfm --sfx _tta8
-Inputs: pq_<tag><sfx>.npz of runs_real/<net>/<model>_s{1,2,3}_ft and pq_<tag>.npz of runs_real/<net>/tabpfn_v2.
+Inputs: pq_<tag><sfx>.npz of runs_real/<net>/<model>_s{1,2,3}_ft and pq_<tag>.npz of runs_real/<net>/tabpfn_v2
+(protocol v13: --tab tabpfn_v3_5; output pool_<model>_tabpfn_v3_5).
 For each seed, episode and condition: w = argmax over GRID of the cross-fit log score
     sum_rows log(w p_UPT(y_r) + (1 - w) p_TabPFN(y_r)),
 then every test query gets p = w p_UPT + (1 - w) p_TabPFN. Where TabPFN is undefined (constant training target) the
@@ -42,13 +43,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--root', required=True); ap.add_argument('--net', required=True); ap.add_argument('--panel-seed', type=int, required=True)
     ap.add_argument('--model', default='upt_L_sfm'); ap.add_argument('--sfx', default='_tta8')
+    ap.add_argument('--tab', default='tabpfn_v2', help='protocol v13: the foundation-model run, e.g. tabpfn_v3_5')
     ap.add_argument('--single', action='store_true', help='protocol v12: --model is one run directory (no seeds), e.g. fa1_closed')
     a = ap.parse_args()
     R = Path(a.root) / 'runs_real' / a.net
     tag = f'real_{a.net}_s{a.panel_seed}'
     pool = torch.load(Path(a.root) / 'panels' / f'{tag}.pt', weights_only=False)['pool']
     qy = pool['qy'].double().numpy()
-    T = np.load(R / 'tabpfn_v2' / f'pq_{tag}.npz')
+    T = np.load(R / a.tab / f'pq_{tag}.npz')
     U = [np.load(R / a.model / f'pq_{tag}{a.sfx}.npz')] if a.single else         [np.load(R / f'{a.model}_s{s}_ft' / f'pq_{tag}{a.sfx}.npz') for s in SEEDS]
     E = sorted({int(k.split('_')[0][1:]) for k in T.files if k[0] == 'e'})
     res = {}
@@ -63,9 +65,9 @@ def main():
                 nll[i, ep], se[i, ep], wts[i, ep] = p.mean(), ((m - qy[ep]) ** 2).mean(), w
         res[f'e{e}_nll'], res[f'e{e}_se'], res[f'e{e}_w'] = nll.mean(0), se.mean(0), wts.mean(0)
         assert np.isfinite(res[f'e{e}_nll']).all()
-    out = R / f'pool_{a.model}_tabpfn'; out.mkdir(parents=True, exist_ok=True)
+    out = R / (f'pool_{a.model}_tabpfn' if a.tab == 'tabpfn_v2' else f'pool_{a.model}_{a.tab}'); out.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(out / f'cells_{tag}.npz', **res)
-    (out / 'train.json').write_text(json.dumps(dict(model='pool', components=[a.model + a.sfx, 'tabpfn_v2'], grid=[float(GRID[0]), float(GRID[-1]), len(GRID)],
+    (out / 'train.json').write_text(json.dumps(dict(model='pool', components=[a.model + a.sfx, a.tab], grid=[float(GRID[0]), float(GRID[-1]), len(GRID)],
                                                     rule='per-episode two-fold cross-fit stacking (protocol v11)'), indent=1))
     print(a.net, {f'e{e}': (round(float(res[f'e{e}_nll'].mean()), 4), 'w', round(float(res[f'e{e}_w'].mean()), 2)) for e in E})
 
