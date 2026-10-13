@@ -16,6 +16,7 @@ SEED, M = 16161, 'upt_L_sfm'
 ART = Path(__file__).resolve().parents[2] / 'artifacts' / 'v16_tabpfn35'
 
 ap = argparse.ArgumentParser(); ap.add_argument('--v10', required=True); ap.add_argument('--par', type=int, default=8)
+ap.add_argument('stage', choices=('upt', 'final'), help='upt: panels + UPT-SF outputs; final: TabPFN outputs in, pools, confirm16')
 a = ap.parse_args()
 R = Path(a.v10); L = R / 'logs'
 import panel_digest
@@ -26,11 +27,12 @@ for n in NETS:
         shutil.copy2(src, dst)
     got = panel_digest.digest(dst)
     assert got == want[n], (n, got, want[n])
-    tab = R / 'runs_real' / n / 'tabpfn_v3_5'; tab.mkdir(parents=True, exist_ok=True)
-    for f in (ART / n).iterdir():
-        if not (tab / f.name).exists():
-            shutil.copy2(f, tab / f.name)
-print('panels verified; TabPFN-3.5 outputs in place', flush=True)
+    if a.stage == 'final':
+        tab = R / 'runs_real' / n / 'tabpfn_v3_5'; tab.mkdir(parents=True, exist_ok=True)
+        for f in (ART / n).iterdir():
+            if not (tab / f.name).exists():
+                shutil.copy2(f, tab / f.name)
+print('panels verified' + ('; TabPFN-3.5 outputs in place' if a.stage == 'final' else ''), flush=True)
 items = []
 for n, base in NETS.items():
     panel = R / 'panels' / f'real_{n}_s{SEED}.pt'
@@ -43,6 +45,8 @@ for n, base in NETS.items():
                       [sys.executable, 'eval_real.py', 'score', '--panel', panel, '--runs', run, '--device', 'cuda', '--tta', 8, '--cf-k', 4],
                       L / f'cfk16_{n}_s{s}.log'))
 parallel(items, a.par)
+if a.stage == 'upt':
+    sys.exit(0)
 parallel([(f'pool16_{n}', lambda n=n: (R / 'runs_real' / n / 'pool15_P3' / f'cells_real_{n}_s{SEED}.npz').exists(),
            [sys.executable, 'pool_eval15.py', '--root', R, '--net', n, '--panel-seed', SEED, '--tab', 'tabpfn_v3_5', '--upt-net', base,
             '--variants', 'v13ref,P3'], L / f'pool16_{n}.log') for n, base in NETS.items()], a.par)
