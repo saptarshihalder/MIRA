@@ -93,7 +93,7 @@ def main():
             if k is None:
                 cells.append('--'); continue
             v = d[k]
-            cells.append(ci(v) + (r' \checkmark' if v['passed'] else r' $\times$'))
+            cells.append(ci(v, 3 if proto == 'v16' else 2) + (r' \checkmark' if v['passed'] else r' $\times$'))
         t.append(f'{proto} & {lab} & ' + ' & '.join(cells) + r' \\')
     t += [r'\bottomrule', r'\end{tabular}', r'\end{table}']
     (O / 'generated' / 'fresh_endpoints_table.tex').write_text('\n'.join(t))
@@ -148,9 +148,9 @@ def main():
                 r'\newcommand{\VPoolZero}{' + ci(c15['secondary']['sel_vs_pool13_nll_e0'], 3) + '}']
     if c16:
         s16 = c16['secondary']
-        num += [r'\newcommand{\FOne}{' + ci(c16['F1_pool_vs_tabpfn35_nll_e0']) + '}',
-                r'\newcommand{\FTwoThree}{' + ci(c16['F2_pool_vs_tabpfn35_nll_e3']) + '}',
-                r'\newcommand{\FTwoSix}{' + ci(c16['F2_pool_vs_tabpfn35_nll_e6']) + '}',
+        num += [r'\newcommand{\FOne}{' + ci(c16['F1_pool_vs_tabpfn35_nll_e0'], 3) + '}',
+                r'\newcommand{\FTwoThree}{' + ci(c16['F2_pool_vs_tabpfn35_nll_e3'], 3) + '}',
+                r'\newcommand{\FTwoSix}{' + ci(c16['F2_pool_vs_tabpfn35_nll_e6'], 3) + '}',
                 r'\newcommand{\FEpisodes}{' + f"{c16['F1_pool_vs_tabpfn35_nll_e0']['episodes']:,}".replace(',', '{,}') + '}',
                 r'\newcommand{\FUptZero}{' + ci(s16['pool_vs_uptsf_nll_e0']) + '}']
     if c14:

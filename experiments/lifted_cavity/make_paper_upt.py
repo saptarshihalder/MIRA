@@ -199,7 +199,7 @@ def main():
     eps = sum(int(v[0]) for v in counts.values()) if counts else 0
     W = {k: d10.get(k, {}) for k in ('W1_sf_vs_tabpfn_nll_e0', 'W2_sf_vs_tabpfn_nll_e3', 'W2_sf_vs_tabpfn_nll_e6', 'W3_sf_vs_pfnLsf_nll_e0',
                                      'W4_sf_vs_tabpfn_crps_e0', 'W5_sf_vs_tnp_nll_e0', 'W6_sf_vs_krigcal_nll_e0', 'W7_sf_vs_uptstar_nll_e0')}
-    num = [f'\\newcommand{{\\NumProtocols}}{{eleven}}', f'\\newcommand{{\\NumNetworks}}{{thirteen}}', f'\\newcommand{{\\NumFreshNetworks}}{{Seven}}',
+    num = [f'\\newcommand{{\\NumProtocols}}{{twelve}}', f'\\newcommand{{\\NumNetworks}}{{thirteen}}', f'\\newcommand{{\\NumFreshNetworks}}{{Seven}}',
            f'\\newcommand{{\\NumEpisodes}}{{{eps:,}}}'.replace(',', '{,}'), f'\\newcommand{{\\NumEndpointsPass}}{{{npass}}}',
            f'\\newcommand{{\\NumEndpoints}}{{{ntot}}}']
     for e in (0, 3, 6):
