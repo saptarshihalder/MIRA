@@ -29,6 +29,8 @@ def main():
            'uptres': 'TabPFN-3.5 on UPT residual'}
     p15 = R / 'confirm_v15.json'
     c15 = json.loads(p15.read_text()) if p15.exists() else None
+    p16 = R / 'confirm_v16.json'
+    c16 = json.loads(p16.read_text()) if p16.exists() else None
 
     # ---- table: mean NLL of each pool and TabPFN, per network and condition (TabPFN-defined episodes)
     t = [r'\begin{table}[t]\centering\small',
@@ -70,10 +72,13 @@ def main():
     if c14:                                         # protocol v14: the selected variant (R1, R2) and, secondary, vs the v13 pool
         lab = V14[c14['selected']['selected']]
         c14s = dict(c14, **c14['secondary'])
-        at = 5 if c15 else 4
+        at = 4 + (1 if c15 else 0)
         rows[at:at] = [('v14', f'{lab} vs TabPFN-3.5', c14s, ('R1_uptcol_vs_tabpfn35_nll_e0', 'R2_uptcol_vs_tabpfn35_nll_e3', 'R2_uptcol_vs_tabpfn35_nll_e6')),
                      ('v14$^\\dagger$', f'{lab} vs UPT-SF$\\oplus$TabPFN-3.5', c14s,
                       ('uptcol_vs_pool35_nll_e0', 'uptcol_vs_pool35_nll_e3', 'uptcol_vs_pool35_nll_e6'))]
+    if c16:                                         # protocol v16: the frozen v15 rule on fresh tasks after TabPFN-3.5's release
+        rows[0:0] = [('v16', 'UPT-SF$\\oplus$TabPFN-3.5 vs TabPFN-3.5, fresh tasks', c16,
+                      ('F1_pool_vs_tabpfn35_nll_e0', 'F2_pool_vs_tabpfn35_nll_e3', 'F2_pool_vs_tabpfn35_nll_e6'))]
     t = [r'\begin{table}[t]\centering\small',
          r'\caption{\textbf{Pre-registered endpoints on the four fresh 2026 networks.} NLL gain in nats (baseline $-$ ours; '
          r'positive favours the first method), paired 95\% interval clustered by network-window; \checkmark: pass '
@@ -141,6 +146,13 @@ def main():
                 r'\newcommand{\VThreePass}{' + f"{sum(v['passed'] for v in v3.values())}" + '}',
                 r'\newcommand{\VThreeN}{' + f'{len(v3)}' + '}',
                 r'\newcommand{\VPoolZero}{' + ci(c15['secondary']['sel_vs_pool13_nll_e0'], 3) + '}']
+    if c16:
+        s16 = c16['secondary']
+        num += [r'\newcommand{\FOne}{' + ci(c16['F1_pool_vs_tabpfn35_nll_e0']) + '}',
+                r'\newcommand{\FTwoThree}{' + ci(c16['F2_pool_vs_tabpfn35_nll_e3']) + '}',
+                r'\newcommand{\FTwoSix}{' + ci(c16['F2_pool_vs_tabpfn35_nll_e6']) + '}',
+                r'\newcommand{\FEpisodes}{' + f"{c16['F1_pool_vs_tabpfn35_nll_e0']['episodes']:,}".replace(',', '{,}') + '}',
+                r'\newcommand{\FUptZero}{' + ci(s16['pool_vs_uptsf_nll_e0']) + '}']
     if c14:
         num += [r'\newcommand{\ROne}{' + ci(c14['R1_uptcol_vs_tabpfn35_nll_e0']) + '}',
                 r'\newcommand{\RTwoThree}{' + ci(c14['R2_uptcol_vs_tabpfn35_nll_e3']) + '}',
