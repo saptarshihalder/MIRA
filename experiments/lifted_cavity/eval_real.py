@@ -16,7 +16,8 @@ EXTRA = {'airq_co': (0, 1, 2, 3), 'airq_no2': (0, 1, 2, 3), 'beijing': (0, 3, 6)
          'beijing_pm10': (0, 3, 6), 'beijing_so2': (0, 3, 6), 'beijing_o3': (0, 3, 6), 'gas': (0, 4, 8, 12),
          'metr_la': (0, 3, 6), 'pems_bay': (0, 3, 6), 'intel': (0, 3, 6), 'pems03': (0, 3, 6), 'pems08': (0, 3, 6),
          'air_cn': (0, 3, 6), 'dwd_t2m': (0, 3, 6), 'aurn_no2': (0, 3, 6), 'usgs_q': (0, 3, 6),
-         'usgs_ny': (0, 3, 6), 'usgs_wa': (0, 3, 6), 'dwd_p': (0, 3, 6), 'aurn_pm25': (0, 3, 6)}
+         'usgs_ny': (0, 3, 6), 'usgs_wa': (0, 3, 6), 'dwd_p': (0, 3, 6), 'aurn_pm25': (0, 3, 6),
+         'usgs_ny_f': (0, 3, 6), 'usgs_wa_f': (0, 3, 6), 'dwd_p_f': (0, 3, 6), 'aurn_pm25_f': (0, 3, 6)}
 
 
 def build_panel(a):

@@ -18,7 +18,8 @@ RAW = {'airq_co': ('airq', 'CO(GT)'), 'airq_no2': ('airq', 'NO2(GT)'), 'beijing'
        'metr_la': ('v6', None), 'pems_bay': ('v6', None), 'intel': ('v6', None),     # protocol v6 (realdata_v6.py)
        'pems03': ('v7', None), 'pems08': ('v7', None), 'air_cn': ('v7', None),       # protocol v7 (realdata_v7.py)
        'dwd_t2m': ('v9', None), 'aurn_no2': ('v9', None), 'usgs_q': ('v9', None),     # protocol v9 (realdata_v9.py)
-       'usgs_ny': ('v10', None), 'usgs_wa': ('v10', None), 'dwd_p': ('v10', None), 'aurn_pm25': ('v10', None)}   # v10
+       'usgs_ny': ('v10', None), 'usgs_wa': ('v10', None), 'dwd_p': ('v10', None), 'aurn_pm25': ('v10', None),   # v10
+       'usgs_ny_f': ('v16', None), 'usgs_wa_f': ('v16', None), 'dwd_p_f': ('v16', None), 'aurn_pm25_f': ('v16', None)}   # v16
 DEQUANT = {'beijing_pm10', 'beijing_so2', 'beijing_o3'}     # protocol v4, amendment 1: integer readings dequantized
 
 
@@ -40,6 +41,9 @@ def load_raw(name, paths):
     if kind == 'v10':
         import realdata_v10
         return realdata_v10.load(name, paths['v6'])
+    if kind == 'v16':
+        import realdata_v16
+        return realdata_v16.load(name, paths['v6'])
     return realdata.load_gas(paths['gas'])
 
 
