@@ -53,12 +53,13 @@ marginalization. Its log-likelihood is never worse than either head's by more th
 same rule pools UPT with a foundation model, with weights chosen per episode by cross-fitting the episode's own
 labelled rows.
 
-We tested this under \NumProtocols{} protocols, each committed before its data were scored, on four sensor networks
-recorded in 2026, after the release of every model we compare with. UPT\,$\oplus$\,TabPFN improves TabPFN v2's
+Under protocols committed before their data were scored, we tested this on four sensor networks recorded in 2026,
+after the release of every model we compare with. UPT\,$\oplus$\,TabPFN improves TabPFN v2's
 log-likelihood on every network, by \XOne{} nats with all inputs and by \XTwoSix{} nats with six inputs missing.
 UPT is a better partner than a matched-scale transformer (\YOneZero{}) or the closed-form sites (\YTwoZero{}). Across
-\NumNetworks{} networks in five domains, UPT also beats matched-scale transformers, neural processes and kriging. We
-report every failure, including the networks on which UPT alone loses to TabPFN v2.
+\NumNetworks{} networks in five domains and \NumProtocols{} pre-registered protocols, UPT also beats matched-scale
+transformers, neural processes and kriging. We report every failure, including the networks on which UPT alone loses
+to TabPFN v2.
 \end{abstract}
 
 %=====================================================================
