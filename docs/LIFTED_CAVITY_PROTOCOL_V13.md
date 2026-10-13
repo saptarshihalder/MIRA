@@ -82,3 +82,10 @@ All outcomes are reported, in the paper as well.
 | Synthetic smoke test; then TabPFN-3.5 on the four panels, one container each (`modal_tabpfn35.py`, `modal_spawn.py`) | Modal |
 | Outputs (`cells_*`, `pq_*`, `train.json`) copied to `artifacts/v13_tabpfn35/<net>/` and committed | local |
 | `run_v13.py`: copies them to `runs_real/<net>/tabpfn_v3_5`, runs `pool_eval.py --tab tabpfn_v3_5` for `upt_L_sfm` and `pfn_L`, then `confirm13.py` | Colab (Drive holds the UPT-SF and PFN-L outputs) |
+
+## Amendment 1 (October 13, 2026, before any real-data output exists): execution only
+
+The Modal workspace runs one GPU container at a time, so the four networks queued one after another (about 3.4 hours).
+`usgs_ny` runs as planned in its own container. The other three run together in one container
+(`modal_tabpfn35_many.py`): one `tabpfn_colab.py` process per network, with the same arguments, on one L4 (one process
+used about a quarter of it). This changes neither the model, the settings nor the outputs.
