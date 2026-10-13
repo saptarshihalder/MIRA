@@ -104,9 +104,16 @@ def main():
         ax.plot([0, 3, 6], ys, 'o-', label=lab, color=col, lw=2 if m == 'uptsf' else 1.2)
     if c13:                                         # TabPFN-3.5 and its pool, on the same reference (TabPFN v2, all inputs)
         d13 = c13['descriptive_tabpfn35_defined_episodes']
-        for m, lab, col in (('tabpfn35', 'TabPFN-3.5', 'C1'), ('pool35', 'UPT-SF $\oplus$ TabPFN-3.5', 'C9')):
-            ys = [sum(d13[f'{n}|e{e}'][m]['nll'] - dd[f'{n}|e0']['tabpfn'] for n, _ in NETS) / len(NETS) for e in (0, 3, 6)]
-            ax.plot([0, 3, 6], ys, 's--', label=lab, color=col, lw=2 if m == 'pool35' else 1.2)
+        get = {'tabpfn35': lambda n, e: d13[f'{n}|e{e}']['tabpfn35']['nll'], 'pool35': lambda n, e: d13[f'{n}|e{e}']['pool35']['nll']}
+        lines = [('tabpfn35', 'TabPFN-3.5', 'C1')]
+        if c15:                                     # protocol v15: the learning-curve-aware pool replaces the v13 pool
+            get['pool15'] = lambda n, e: c15['descriptive'][f'{n}|e{e}']['selected']
+            lines.append(('pool15', 'UPT-SF $\\oplus$ TabPFN-3.5 (v15)', 'C9'))
+        else:
+            lines.append(('pool35', 'UPT-SF $\\oplus$ TabPFN-3.5', 'C9'))
+        for m, lab, col in lines:
+            ys = [sum(get[m](n, e) - dd[f'{n}|e0']['tabpfn'] for n, _ in NETS) / len(NETS) for e in (0, 3, 6)]
+            ax.plot([0, 3, 6], ys, 's--', label=lab, color=col, lw=1.2 if m == 'tabpfn35' else 2)
     ax.set_xticks([0, 3, 6]); ax.set_xlabel('additional input sensors dropped'); ax.set_ylabel('NLL $-$ NLL(TabPFN, all inputs)')
     ax.grid(alpha=.3); ax.legend(fontsize=7, frameon=False)
     fig.tight_layout(); fig.savefig(O / 'figures' / 'pool_robustness.pdf'); plt.close(fig)
@@ -133,7 +140,7 @@ def main():
                 r'\newcommand{\VTwoSix}{' + ci(c15['V2_sel_vs_tabpfn35_nll_e6']) + '}',
                 r'\newcommand{\VThreePass}{' + f"{sum(v['passed'] for v in v3.values())}" + '}',
                 r'\newcommand{\VThreeN}{' + f'{len(v3)}' + '}',
-                r'\newcommand{\VPoolZero}{' + ci(c15['secondary']['sel_vs_pool13_nll_e0']) + '}']
+                r'\newcommand{\VPoolZero}{' + ci(c15['secondary']['sel_vs_pool13_nll_e0'], 3) + '}']
     if c14:
         num += [r'\newcommand{\ROne}{' + ci(c14['R1_uptcol_vs_tabpfn35_nll_e0']) + '}',
                 r'\newcommand{\RTwoThree}{' + ci(c14['R2_uptcol_vs_tabpfn35_nll_e3']) + '}',

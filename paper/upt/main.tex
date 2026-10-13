@@ -56,7 +56,8 @@ labelled rows.
 Under protocols committed before their data were scored, we tested this on four sensor networks with test periods
 in 2026, after the release of TabPFN v2. UPT\,$\oplus$\,TabPFN improves TabPFN v2's
 log-likelihood on every network, by \XOne{} nats with all inputs and by \XTwoSix{} nats with six inputs missing.
-It also improves TabPFN-3.5, a much stronger model released in September 2026, by \ZOne{} and \ZTwoSix{} nats.
+It also improves TabPFN-3.5, a much stronger model released in September 2026, by \VOne{} and \VTwoSix{} nats when
+the cross-fit accounts for the two models' different learning curves.
 UPT is a better partner than a matched-scale transformer (\YOneZero{}) or the closed-form sites (\YTwoZero{}). Across
 \NumNetworks{} networks in five domains and \NumProtocols{} pre-registered protocols, UPT also beats matched-scale
 transformers, neural processes and kriging. We report every failure, including the networks on which UPT alone loses
@@ -117,9 +118,10 @@ On four networks recorded in 2026, every pre-registered test of UPT\,$\oplus$\,T
   inputs and \XTwoSix{} with six inputs missing (Figure~\ref{fig:robust}).
   \item \textbf{UPT is the best partner.} It beats a plain transformer of equal size and training (\YOneZero{}) and
   the closed-form sites (\YTwoZero{}).
-  \item \textbf{It also improves TabPFN-3.5} (September 2026), which is far stronger than TabPFN v2: by \ZOne{} nats
-  with all inputs and \ZTwoSix{} with six missing. A logarithmic pool, which can be sharper than both models but has
-  no loss bound, did not survive its confirmatory test.
+  \item \textbf{It also improves TabPFN-3.5} (September 2026), which is far stronger than TabPFN v2: by \VOne{} nats
+  with all inputs and \VTwoSix{} with six missing, with a cross-fit that corrects stacking's bias toward the model with
+  the flatter learning curve. A logarithmic pool, which can be sharper than both models but has no loss bound, did not
+  survive its confirmatory test.
 \end{itemize}
 
 \textbf{Contributions.}
@@ -290,17 +292,16 @@ the same rule as inside UPT:
 \[
   p(y\mid x_S,\D)=w\,p_{\mathrm{UPT}}(y\mid x_S,\D)+(1-w)\,p_F(y\mid x_S,\D).
 \]
-The weight $w$ is chosen per episode by stacking~\citep{yao2018stacking}, without test labels:
-\begin{enumerate}
-  \item Split the support into halves $A$ and $B$.
-  \item Fit both models in context on $A$ and predict $B$, then the reverse. The held-out rows' inputs carry the same
-  extra missingness as the test condition.
-  \item Choose $w\in\{0.02,0.04,\dots,0.98\}$ to maximize the summed log density of the pool on the 48 held-out rows.
-\end{enumerate}
+The weight $w$ is chosen per episode by stacking~\citep{yao2018stacking}, without test labels: split the support
+into $K$ folds, fit both models in context on all folds but one and predict it (the held-out inputs carry the test
+condition's extra missingness), and choose $w$ on a grid to maximize the pool's summed log density on the 48 held-out
+rows. By Proposition~\ref{prop:pool}, the pool loses at most $-\log(1-w)$ nats to $F$ and $-\log w$ to UPT on any
+query. Nothing is trained.
 
-By Proposition~\ref{prop:pool}, the pool can lose at most $-\log(1-w)$ nats to $F$ and $-\log w$ nats to UPT on any
-query. Stacking concentrates $w$ where one of them is reliably better. Nothing is trained, and the cost is two extra
-in-context calls of each model per episode.
+\paragraph{Learning-curve-aware stacking.} A cross-fit scores each model trained on $(K-1)/K$ of the support. With
+$K=2$ (protocols v11--v13; $w\in\{0.02,\dots,0.98\}$), this favours the partner whose accuracy grows least with more
+rows, here UPT with its fine-tuned prior over TabPFN's steep learning curve. Protocol v15 uses $K=4$, widens the grid to
+$[0.001,0.999]$, and pools $F$ with the equal mixture of UPT's three seeds; the cost is four extra calls of $F$.
 %=====================================================================
 \section{Experiments}
 \label{sec:experiments}

@@ -1,9 +1,9 @@
 Beyond the failures reported in \S\ref{sec:results}:
 \begin{itemize}
-  \item \textbf{Cost.} UPT\,$\oplus$\,TabPFN runs both models, plus two half-support cross-fit calls per episode.
+  \item \textbf{Cost.} UPT\,$\oplus$\,TabPFN runs both models, plus two (v15: four) cross-fit calls per episode.
   \item \textbf{Baselines.} TabPFN v2 and TabPFN-3.5 run in context, without the training history UPT is fine-tuned
   on. Our kriging baseline is local-graph, not a full-graph temporal model (GRIN~\citep{cini2022grin}, graph neural
   processes~\citep{hu2023stgnp}), which may do better with a long, stationary history.
   \item \textbf{Data.} Episodes ignore temporal order. The 2025--2026 data are provisional (we release digests and
-  download code). Protocols v12--v14 reuse the v10 networks, whose test periods end as TabPFN-3.5 was released.
+  download code). Protocols v12--v15 reuse the v10 networks, whose test periods end as TabPFN-3.5 was released.
 \end{itemize}
