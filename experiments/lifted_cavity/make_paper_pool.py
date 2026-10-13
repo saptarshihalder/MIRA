@@ -27,6 +27,8 @@ def main():
     c14 = json.loads(p14.read_text()) if p14.exists() else None
     V14 = {'uptsite': 'UPT site$\\,\\otimes\\,$TabPFN-3.5', 'uptcol': 'TabPFN-3.5 + UPT column', 'uptcol2': 'TabPFN-3.5 + UPT columns',
            'uptres': 'TabPFN-3.5 on UPT residual'}
+    p15 = R / 'confirm_v15.json'
+    c15 = json.loads(p15.read_text()) if p15.exists() else None
 
     # ---- table: mean NLL of each pool and TabPFN, per network and condition (TabPFN-defined episodes)
     t = [r'\begin{table}[t]\centering\small',
@@ -62,10 +64,14 @@ def main():
     if c13:
         rows[2:2] = [('v13', 'UPT-SF$\oplus$TabPFN-3.5 vs TabPFN-3.5', c13, ('Z1_pool_vs_tabpfn35_nll_e0', 'Z2_pool_vs_tabpfn35_nll_e3', 'Z2_pool_vs_tabpfn35_nll_e6')),
                      ('v13', 'UPT-SF$\oplus$TabPFN-3.5 vs UPT-SF alone', c13, ('Z3_pool_vs_uptsf_nll_e0', None, None))]
+    if c15:                                         # protocol v15: learning-curve-aware stacking (V1, V2), right after v13
+        rows[4:4] = [('v15', 'UPT-SF$\\oplus$TabPFN-3.5, 4-fold stacking, vs TabPFN-3.5', c15,
+                      ('V1_sel_vs_tabpfn35_nll_e0', 'V2_sel_vs_tabpfn35_nll_e3', 'V2_sel_vs_tabpfn35_nll_e6'))]
     if c14:                                         # protocol v14: the selected variant (R1, R2) and, secondary, vs the v13 pool
         lab = V14[c14['selected']['selected']]
         c14s = dict(c14, **c14['secondary'])
-        rows[4:4] = [('v14', f'{lab} vs TabPFN-3.5', c14s, ('R1_uptcol_vs_tabpfn35_nll_e0', 'R2_uptcol_vs_tabpfn35_nll_e3', 'R2_uptcol_vs_tabpfn35_nll_e6')),
+        at = 5 if c15 else 4
+        rows[at:at] = [('v14', f'{lab} vs TabPFN-3.5', c14s, ('R1_uptcol_vs_tabpfn35_nll_e0', 'R2_uptcol_vs_tabpfn35_nll_e3', 'R2_uptcol_vs_tabpfn35_nll_e6')),
                      ('v14$^\\dagger$', f'{lab} vs UPT-SF$\\oplus$TabPFN-3.5', c14s,
                       ('uptcol_vs_pool35_nll_e0', 'uptcol_vs_pool35_nll_e3', 'uptcol_vs_pool35_nll_e6'))]
     t = [r'\begin{table}[t]\centering\small',
@@ -120,6 +126,14 @@ def main():
                 r'\newcommand{\ZTwoThree}{' + ci(c13['Z2_pool_vs_tabpfn35_nll_e3']) + '}',
                 r'\newcommand{\ZTwoSix}{' + ci(c13['Z2_pool_vs_tabpfn35_nll_e6']) + '}',
                 r'\newcommand{\ZThree}{' + ci(c13['Z3_pool_vs_uptsf_nll_e0']) + '}']
+    if c15:
+        v3 = c15['V3_noninferior_every_network']['tests']
+        num += [r'\newcommand{\VOne}{' + ci(c15['V1_sel_vs_tabpfn35_nll_e0']) + '}',
+                r'\newcommand{\VTwoThree}{' + ci(c15['V2_sel_vs_tabpfn35_nll_e3']) + '}',
+                r'\newcommand{\VTwoSix}{' + ci(c15['V2_sel_vs_tabpfn35_nll_e6']) + '}',
+                r'\newcommand{\VThreePass}{' + f"{sum(v['passed'] for v in v3.values())}" + '}',
+                r'\newcommand{\VThreeN}{' + f'{len(v3)}' + '}',
+                r'\newcommand{\VPoolZero}{' + ci(c15['secondary']['sel_vs_pool13_nll_e0']) + '}']
     if c14:
         num += [r'\newcommand{\ROne}{' + ci(c14['R1_uptcol_vs_tabpfn35_nll_e0']) + '}',
                 r'\newcommand{\RTwoThree}{' + ci(c14['R2_uptcol_vs_tabpfn35_nll_e3']) + '}',
