@@ -1,0 +1,10 @@
+{
+ "version": "v3.5",
+ "k": 4,
+ "stride": 2,
+ "offset": 1,
+ "episodes": 613,
+ "calls": 2452,
+ "seconds": 2390.9566452503204,
+ "gpu": "NVIDIA L4"
+}
