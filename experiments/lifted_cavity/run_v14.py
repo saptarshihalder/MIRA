@@ -40,7 +40,20 @@ def nll(path, e):
     return z[f'e{e}_nll'].astype(float)
 
 
+def upt_pq(R, nets, seed):
+    """UPT-SF's per-query and cross-fit outputs (eval_real.py --per-query, as in v11), where they do not exist yet."""
+    out = []
+    for n in nets:
+        for s in (1, 2, 3):
+            run = R / 'runs_real' / n / f'{M}_s{s}_ft'
+            out.append((f'pq_{n}_{M}_s{s}', lambda run=run, n=n: (run / f'pq_real_{n}_s{seed}_tta8.npz').exists(),
+                        [sys.executable, 'eval_real.py', 'score', '--panel', R / 'panels' / f'real_{n}_s{seed}.pt', '--runs', run, '--device', 'cuda',
+                         '--tta', 8, '--per-query'], L / f'pq_{n}_{M}_s{s}.log'))
+    return out
+
+
 if a.stage == 'dev':
+    parallel(upt_pq(V9, N9, S9), a.par)
     parallel(items(V9, N9, S9, True), a.par)
     pools = [(f'pool35_{n}', lambda n=n: (V9 / 'runs_real' / n / f'pool_{M}_tabpfn_v3_5' / f'cells_real_{n}_s{S9}.npz').exists(),
               [sys.executable, 'pool_eval.py', '--root', V9, '--net', n, '--panel-seed', S9, '--model', M, '--sfx', '_tta8', '--tab', 'tabpfn_v3_5'],
