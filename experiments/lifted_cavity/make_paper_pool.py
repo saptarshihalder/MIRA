@@ -1,5 +1,5 @@
-"""Pool tables, numbers and the robustness figure of paper/upt from confirm_v11.json, confirm_v12.json and (when it
-exists) confirm_v13.json (TabPFN-3.5).
+"""Pool tables and numbers of paper/upt from confirm_v11.json, confirm_v12.json and (when they exist) confirm_v13-v17.json
+(TabPFN-3.5). The figures are drawn by make_paper_figs.py.
 
     python make_paper_pool.py --runs artifacts/reports/lifted_cavity_paper/runs --out paper/upt
 """
@@ -106,30 +106,7 @@ def main():
     t += [r'\bottomrule', r'\end{tabular}', r'\end{adjustbox}', r'\end{table}']
     (O / 'generated' / 'fresh_endpoints_table.tex').write_text('\n'.join(t))
 
-    # ---- figure: NLL relative to TabPFN with all inputs, averaged over the four networks, by inputs dropped
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(4.2, 2.6))
-    for m, lab, col in (('tabpfn', 'TabPFN v2', 'C3'), ('fa', 'FA $\\oplus$ TabPFN', 'C4'), ('pfnL', 'PFN-L $\\oplus$ TabPFN', 'C2'),
-                        ('uptsf', 'UPT-SF $\\oplus$ TabPFN', 'C0')):
-        ys = [sum(dd[f'{n}|e{e}'][m] - dd[f'{n}|e0']['tabpfn'] for n, _ in NETS) / len(NETS) for e in (0, 3, 6)]
-        ax.plot([0, 3, 6], ys, 'o-', label=lab, color=col, lw=2 if m == 'uptsf' else 1.2)
-    if c13:                                         # TabPFN-3.5 and its pool, on the same reference (TabPFN v2, all inputs)
-        d13 = c13['descriptive_tabpfn35_defined_episodes']
-        get = {'tabpfn35': lambda n, e: d13[f'{n}|e{e}']['tabpfn35']['nll'], 'pool35': lambda n, e: d13[f'{n}|e{e}']['pool35']['nll']}
-        lines = [('tabpfn35', 'TabPFN-3.5', 'C1')]
-        if c15:                                     # protocol v15: the learning-curve-aware pool replaces the v13 pool
-            get['pool15'] = lambda n, e: c15['descriptive'][f'{n}|e{e}']['selected']
-            lines.append(('pool15', 'UPT-SF $\\oplus$ TabPFN-3.5 (v15)', 'C9'))
-        else:
-            lines.append(('pool35', 'UPT-SF $\\oplus$ TabPFN-3.5', 'C9'))
-        for m, lab, col in lines:
-            ys = [sum(get[m](n, e) - dd[f'{n}|e0']['tabpfn'] for n, _ in NETS) / len(NETS) for e in (0, 3, 6)]
-            ax.plot([0, 3, 6], ys, 's--', label=lab, color=col, lw=1.2 if m == 'tabpfn35' else 2)
-    ax.set_xticks([0, 3, 6]); ax.set_xlabel('additional input sensors dropped'); ax.set_ylabel('NLL $-$ NLL(TabPFN, all inputs)')
-    ax.grid(alpha=.3); ax.legend(fontsize=7, frameon=False)
-    fig.tight_layout(); fig.savefig(O / 'figures' / 'pool_robustness.pdf'); plt.close(fig)
+    # (the figures, including the robustness curves, are drawn by make_paper_figs.py)
 
     # ---- numbers
     num = [r'\newcommand{\XOne}{' + ci(c11['X1_pool_vs_tabpfn_nll_e0']) + '}',

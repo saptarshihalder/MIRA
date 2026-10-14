@@ -133,4 +133,39 @@ $x_j=a_jy+b_j+0.4\sin(f_jy)+d_ju+s_j\epsilon_j$. Support missingness is random.
 
 \section{Additional results}
 \label{app:results}
+\input{generated/pool_table}
 \input{generated/per_network_tables}
+
+\section{Additional figures}
+\label{app:figures}
+
+\begin{figure}[h]
+\centering
+\includegraphics{figures/crossfit.pdf}
+\caption{\textbf{Learning-curve-aware stacking.} The pool's NLL gain over TabPFN-3.5 with the two-fold cross-fit of
+v13 (open) and the four-fold cross-fit of v15 (filled), on every network and condition: (a) the original test periods
+of the four v10 networks, (b) the fresh post-release tasks. The four-fold rule improves on the two-fold rule in all 33
+network-condition cells. It shrinks the river losses, where the two-fold cross-fit over-weighted UPT.}
+\label{fig:crossfit}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics{figures/weights.pdf}
+\caption{\textbf{The stacking weight tracks the two models' relative skill,} with no test label: mean weight on UPT-SF
+against UPT-SF's NLL deficit to TabPFN-3.5 (symmetric log scale), per network and condition, on the original test
+periods (open) and the fresh tasks (filled). Rivers, where TabPFN-3.5 is better by 1.9--2.7 nats, get 2--9\% of the
+weight; air quality, where the pool beats both members, 45--61\%; pressure and temperature, where UPT-SF alone is
+better, 69--88\%.}
+\label{fig:weights}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics{figures/fresh_curves.pdf}
+\caption{\textbf{Each fresh network} (tasks recorded after TabPFN-3.5's release): mean NLL by inputs dropped for
+TabPFN-3.5, UPT-SF alone and their pool (v15 rule). On pressure and temperature UPT-SF alone beats TabPFN-3.5; on
+these and on air quality the pool beats both. On rivers UPT-SF alone is far worse, and the pool stays within 0.009
+nats of TabPFN-3.5.}
+\label{fig:fresh-curves}
+\end{figure}
