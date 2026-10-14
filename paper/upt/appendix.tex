@@ -47,20 +47,24 @@ existed. The repository history is available to reviewers. Each protocol fixes:
   \item the endpoints, and the statistic and pass rule of each.
 \end{itemize}
 
-Amendments were committed before the scores they affect. Table~\ref{tab:all-endpoints} lists every endpoint and its
-outcome. The amendments were:
+Amendments were committed before the scores they affect. Table~\ref{tab:all-endpoints} lists every endpoint of the
+protocols that evaluate UPT and its outcome; the pooling protocols (v11--v17) are in Table~\ref{tab:fresh}, and their
+secondary comparisons in the repository. The amendments were:
 \begin{itemize}
   \item \textbf{v6, amendments 2 and 3:} undefined closed-form and TabPFN scores on degenerate episodes are recorded as NaN.
   \item \textbf{v8:} a vectorized but distributionally identical kriging sampler.
   \item \textbf{v9, amendment 1:} PFN-L was retrained, because the v4 checkpoints had not been kept.
   \item \textbf{v10, amendment 1:} a time-zone bug in the USGS parser was fixed before any panel was built.
+  \item \textbf{v13, amendment 1:} execution only; three networks shared one GPU container, with unchanged settings.
+  \item \textbf{v14, amendment 1:} before any v14 run, development compared four combinations beyond the linear pool.
 \end{itemize}
 
 \paragraph{Statistics.} Endpoints compare per-episode metrics:
 \begin{itemize}
   \item learned models are averaged over three seeds;
   \item episodes are pooled over networks;
-  \item paired 95\% intervals are cluster-robust over network-time-windows;
+  \item paired 95\% intervals are cluster-robust over network-time-windows (v17's combined test, a second look at
+  v16's question, uses 97.5\%, a Bonferroni split of the 5\% level);
   \item NLL endpoints pass when the gain is at least $0.01$ nats and the lower bound is above zero.
 \end{itemize}
 

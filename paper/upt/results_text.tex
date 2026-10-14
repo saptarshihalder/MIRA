@@ -44,13 +44,15 @@ v13 pool at every level (\VPoolZero{} with all inputs), and the river losses shr
 nats. The pre-registered claim that it is never worse than TabPFN-3.5 on any network fails narrowly: \VThreePass{} of
 \VThreeN{} non-inferiority tests pass, the three failures being rivers with inputs dropped.
 
-\paragraph{A fresh test after TabPFN-3.5's release (protocol v16).} Protocols v13--v15 reuse the v10 networks, whose
-test periods precede TabPFN-3.5's release. We therefore froze the v15 rule and scored it once on \FEpisodes{} new
-prediction tasks: the same networks and models, days after the release (September 10 -- October 12), and 48 target
-sensors per network that no protocol had used. With all sensors the pool beats TabPFN-3.5 (\FOne{} nats,
-pre-registered pass). With inputs dropped the gains (\FTwoThree{}, \FTwoSix{}) are as large as v15 predicted but, with
-only 30 clusters of post-release data, their intervals reach zero. The pattern repeats: large gains on pressure, where
-UPT alone again beats TabPFN-3.5, gains on PM$_{2.5}$, and a tie on rivers with all sensors.
+\paragraph{Fresh tests after TabPFN-3.5's release (protocols v16, v17).} The test periods of v13--v15 precede
+TabPFN-3.5's release. We therefore froze the v15 rule and scored it once on new tasks: days after the release
+(September 10 -- October 12) and 48 target sensors per network that no protocol had used. On the four v10 networks
+(v16) the pool beats TabPFN-3.5 with all sensors (\FOne{} nats); with inputs dropped the gains (\FTwoThree{},
+\FTwoSix{}) are as large as v15 predicted, but with 30 clusters their intervals reach zero. v17 added the three v9
+networks and tested all \GEpisodes{} tasks (\GClusters{} clusters) at the 97.5\% level of a second look: the pool wins
+with all sensors (\GOne{}) and with three dropped (\GTwoThree{}); with six dropped (\GTwoSix{}) the interval reaches
+zero. Gains are large where UPT alone beats TabPFN-3.5 (pressure, temperature) and smaller on air quality; rivers tie
+with all sensors and lose at most 0.009 nats with inputs dropped.
 
 \paragraph{Beyond averaging fails confirmation (protocol v14).} A linear pool is never sharper than its sharper member
 on a single query. Of the combinations that could be (UPT's predictive as inputs of TabPFN-3.5, TabPFN-3.5 on UPT's

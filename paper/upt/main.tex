@@ -16,6 +16,7 @@
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{adjustbox}
 \usepackage{multirow}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,decorations.pathreplacing}
@@ -57,8 +58,8 @@ Under protocols committed before their data were scored, we tested this on four 
 in 2026, after the release of TabPFN v2. UPT\,$\oplus$\,TabPFN improves TabPFN v2's
 log-likelihood on every network, by \XOne{} nats with all inputs and by \XTwoSix{} nats with six inputs missing.
 It also improves TabPFN-3.5, a much stronger model released in September 2026, by \VOne{} and \VTwoSix{} nats when
-the cross-fit accounts for the two models' different learning curves, and by \FOne{} nats on new tasks recorded after
-TabPFN-3.5's release.
+the cross-fit accounts for the two models' different learning curves, and by \GOne{} nats with all inputs on
+\GEpisodes{} new tasks recorded after its release.
 UPT is a better partner than a matched-scale transformer (\YOneZero{}) or the closed-form sites (\YTwoZero{}). Across
 \NumNetworks{} networks in five domains and \NumProtocols{} pre-registered protocols, UPT also beats matched-scale
 transformers, neural processes and kriging. We report every failure, including the networks on which UPT alone loses
@@ -113,7 +114,8 @@ foundation model. A foundation model is sharp where its vast prior fits; the lif
 missing. Weights are chosen per episode by stacking~\citep{yao2018stacking} on a cross-fit of the episode's own
 labelled rows. No test label is used and nothing is retrained.
 
-On four networks recorded in 2026, every pre-registered test of UPT\,$\oplus$\,TabPFN passes (Table~\ref{tab:fresh}).
+Of 15 pre-registered superiority tests of UPT\,$\oplus$\,TabPFN against TabPFN, 12 pass; the other three gain
+0.017--0.023 nats, but their intervals reach zero (Table~\ref{tab:fresh}).
 \begin{itemize}
   \item \textbf{It improves TabPFN v2 on every network,} and more as inputs fail. It gains \XOne{} nats with all
   inputs and \XTwoSix{} with six inputs missing (Figure~\ref{fig:robust}).
@@ -205,9 +207,11 @@ $\{j,k\}$ if and only if $d_jd_k=0$, and its weight on $x_j$ can have the wrong 
 \paragraph{Lifted sites.} Let $z=(y,h)\in\R^{1+K}$ with $h\sim\N(0,I)$. A lifted site is the rank-one factor of a
 linear-Gaussian measurement $x_j=w_j^\top z+c_j+e_j$, with $e_j\sim\N(0,\psi_j)$:
 \begin{equation}
-  \Lambda_j=\frac{w_jw_j^\top}{\psi_j},\qquad \eta_j=\frac{w_j(x_j-c_j)}{\psi_j},\qquad
-  q(z\mid x_S)=\N\!\Big(z;\Lambda^{-1}\eta,\Lambda^{-1}\Big),\quad
+  \begin{gathered}
+  \Lambda_j=w_jw_j^\top/\psi_j,\qquad \eta_j=w_j(x_j-c_j)/\psi_j,\\
+  q(z\mid x_S)=\N\big(z;\Lambda^{-1}\eta,\Lambda^{-1}\big),\qquad
   (\Lambda,\eta)=(\Lambda_0,\eta_0)+\textstyle\sum_{j\in S}(\Lambda_j,\eta_j).
+  \end{gathered}
   \label{eq:site}
 \end{equation}
 

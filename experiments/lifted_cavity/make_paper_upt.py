@@ -182,7 +182,8 @@ def main():
     for e in (0, 3, 6):
         t += ['\\begin{table}[h]\\centering\\scriptsize', f'\\caption{{Per-network metrics, {"all sensors" if e == 0 else f"+{e} sensors dropped"}: '
               'NLL / CRPS$/\\sigma$ / RMSE$/\\sigma$ / 90\\% coverage.}', '\\setlength{\\tabcolsep}{2pt}',
-              '\\begin{tabular}{l' + 'c' * 5 + '}', '\\toprule', 'Network & UPT-SF & PFN-L & TabPFN v2 & TNP-D & Krig.\\ (cal.) \\\\', '\\midrule']
+              '\\begin{adjustbox}{max width=\\linewidth}', '\\begin{tabular}{l' + 'c' * 5 + '}', '\\toprule',
+              'Network & UPT-SF & PFN-L & TabPFN v2 & TNP-D & Krig.\\ (cal.) \\\\', '\\midrule']
         for key, lab, *_ in NETS:
             cell = []
             for m in ('sf', 'pfn_L', 'tabpfn_v2', 'tnp', 'ignnk_cal'):
@@ -192,14 +193,14 @@ def main():
                 cell.append(f"{r['nll']:+.2f}/" + (f"{r['crps_std']:.3f}" if 'crps_std' in r else '--') + f"/{r['rmse_std']:.3f}/" +
                             (f"{r['cov90']:.2f}" if 'cov90' in r else '--'))
             t.append(lab + ' & ' + ' & '.join(cell) + ' \\\\')
-        t += ['\\bottomrule', '\\end{tabular}', '\\end{table}']
+        t += ['\\bottomrule', '\\end{tabular}', '\\end{adjustbox}', '\\end{table}']
     (O / 'generated' / 'per_network_tables.tex').write_text('\n'.join(t))
 
     # ---- numbers
     eps = sum(int(v[0]) for v in counts.values()) if counts else 0
     W = {k: d10.get(k, {}) for k in ('W1_sf_vs_tabpfn_nll_e0', 'W2_sf_vs_tabpfn_nll_e3', 'W2_sf_vs_tabpfn_nll_e6', 'W3_sf_vs_pfnLsf_nll_e0',
                                      'W4_sf_vs_tabpfn_crps_e0', 'W5_sf_vs_tnp_nll_e0', 'W6_sf_vs_krigcal_nll_e0', 'W7_sf_vs_uptstar_nll_e0')}
-    num = [f'\\newcommand{{\\NumProtocols}}{{twelve}}', f'\\newcommand{{\\NumNetworks}}{{thirteen}}', f'\\newcommand{{\\NumFreshNetworks}}{{Seven}}',
+    num = [f'\\newcommand{{\\NumProtocols}}{{thirteen}}', f'\\newcommand{{\\NumNetworks}}{{thirteen}}', f'\\newcommand{{\\NumFreshNetworks}}{{Seven}}',
            f'\\newcommand{{\\NumEpisodes}}{{{eps:,}}}'.replace(',', '{,}'), f'\\newcommand{{\\NumEndpointsPass}}{{{npass}}}',
            f'\\newcommand{{\\NumEndpoints}}{{{ntot}}}']
     for e in (0, 3, 6):

@@ -27,6 +27,7 @@ def main():
     c14 = json.loads(p14.read_text()) if p14.exists() else None
     V14 = {'uptsite': 'UPT site$\\,\\otimes\\,$TabPFN-3.5', 'uptcol': 'TabPFN-3.5 + UPT column', 'uptcol2': 'TabPFN-3.5 + UPT columns',
            'uptres': 'TabPFN-3.5 on UPT residual'}
+    V14S = {'uptsite': 'log pool', 'uptcol': 'UPT column', 'uptcol2': 'UPT columns', 'uptres': 'UPT residual'}
     p15 = R / 'confirm_v15.json'
     c15 = json.loads(p15.read_text()) if p15.exists() else None
     p16 = R / 'confirm_v16.json'
@@ -58,49 +59,51 @@ def main():
     (O / 'generated' / 'pool_table.tex').write_text('\n'.join(t))
 
     # ---- table: the pre-registered fresh-data endpoints (v10 W, v11 X, v12 Y)
-    rows = [('v11', 'UPT-SF$\\oplus$TabPFN vs TabPFN v2', c11, ('X1_pool_vs_tabpfn_nll_e0', 'X2_pool_vs_tabpfn_nll_e3', 'X2_pool_vs_tabpfn_nll_e6')),
-            ('v11', 'UPT-SF$\\oplus$TabPFN vs UPT-SF alone', c11, ('X3_pool_vs_uptsf_nll_e0', None, None)),
-            ('v12', 'UPT-SF$\\oplus$TabPFN vs PFN-L$\\oplus$TabPFN', c12,
+    rows = [('v11', 'pool vs TabPFN v2', c11, ('X1_pool_vs_tabpfn_nll_e0', 'X2_pool_vs_tabpfn_nll_e3', 'X2_pool_vs_tabpfn_nll_e6')),
+            ('v11', 'pool vs UPT-SF alone', c11, ('X3_pool_vs_uptsf_nll_e0', None, None)),
+            ('v12', 'pool vs PFN-L$\\oplus$TabPFN', c12,
              ('Y1_uptsfpool_vs_pfnLpool_nll_e0', 'Y1_uptsfpool_vs_pfnLpool_nll_e3', 'Y1_uptsfpool_vs_pfnLpool_nll_e6')),
-            ('v12', 'UPT-SF$\\oplus$TabPFN vs FA$\\oplus$TabPFN', c12,
+            ('v12', 'pool vs FA$\\oplus$TabPFN', c12,
              ('Y2_uptsfpool_vs_fapool_nll_e0', 'Y2_uptsfpool_vs_fapool_nll_e3', 'Y2_uptsfpool_vs_fapool_nll_e6')),
             ('v10', 'UPT-SF alone vs TabPFN v2', c10, ('W1_sf_vs_tabpfn_nll_e0', 'W2_sf_vs_tabpfn_nll_e3', 'W2_sf_vs_tabpfn_nll_e6'))]
     if c13:
-        rows[2:2] = [('v13', 'UPT-SF$\oplus$TabPFN-3.5 vs TabPFN-3.5', c13, ('Z1_pool_vs_tabpfn35_nll_e0', 'Z2_pool_vs_tabpfn35_nll_e3', 'Z2_pool_vs_tabpfn35_nll_e6')),
-                     ('v13', 'UPT-SF$\oplus$TabPFN-3.5 vs UPT-SF alone', c13, ('Z3_pool_vs_uptsf_nll_e0', None, None))]
+        rows[2:2] = [('v13', 'pool vs TabPFN-3.5', c13, ('Z1_pool_vs_tabpfn35_nll_e0', 'Z2_pool_vs_tabpfn35_nll_e3', 'Z2_pool_vs_tabpfn35_nll_e6')),
+                     ('v13', 'pool vs UPT-SF alone', c13, ('Z3_pool_vs_uptsf_nll_e0', None, None))]
     if c15:                                         # protocol v15: learning-curve-aware stacking (V1, V2), right after v13
-        rows[4:4] = [('v15', 'UPT-SF$\\oplus$TabPFN-3.5, 4-fold stacking, vs TabPFN-3.5', c15,
+        rows[4:4] = [('v15', '4-fold pool vs TabPFN-3.5', c15,
                       ('V1_sel_vs_tabpfn35_nll_e0', 'V2_sel_vs_tabpfn35_nll_e3', 'V2_sel_vs_tabpfn35_nll_e6'))]
     if c14:                                         # protocol v14: the selected variant (R1, R2) and, secondary, vs the v13 pool
-        lab = V14[c14['selected']['selected']]
+        lab = V14S[c14['selected']['selected']]
         c14s = dict(c14, **c14['secondary'])
         at = 4 + (1 if c15 else 0)
         rows[at:at] = [('v14', f'{lab} vs TabPFN-3.5', c14s, ('R1_uptcol_vs_tabpfn35_nll_e0', 'R2_uptcol_vs_tabpfn35_nll_e3', 'R2_uptcol_vs_tabpfn35_nll_e6')),
-                     ('v14$^\\dagger$', f'{lab} vs UPT-SF$\\oplus$TabPFN-3.5', c14s,
+                     ('v14$^\\dagger$', f'{lab} vs pool', c14s,
                       ('uptcol_vs_pool35_nll_e0', 'uptcol_vs_pool35_nll_e3', 'uptcol_vs_pool35_nll_e6'))]
     if c17:                                         # protocol v17: all fresh post-release tasks, seven networks, 97.5%
-        rows[0:0] = [('v16+17', 'the same, fresh tasks, seven networks (97.5\\% CI)', c17,
+        rows[0:0] = [('v16+17', 'the same, seven networks', c17,
                       ('G1_pool_vs_tabpfn35_nll_e0_all7', 'G2_pool_vs_tabpfn35_nll_e3_all7', 'G2_pool_vs_tabpfn35_nll_e6_all7'))]
     if c16:                                         # protocol v16: the frozen v15 rule on fresh tasks after TabPFN-3.5's release
-        rows[0:0] = [('v16', 'UPT-SF$\\oplus$TabPFN-3.5 vs TabPFN-3.5, fresh tasks', c16,
+        rows[0:0] = [('v16', '4-fold pool vs TabPFN-3.5, new tasks', c16,
                       ('F1_pool_vs_tabpfn35_nll_e0', 'F2_pool_vs_tabpfn35_nll_e3', 'F2_pool_vs_tabpfn35_nll_e6'))]
     t = [r'\begin{table}[t]\centering\small',
-         r'\caption{\textbf{Pre-registered endpoints on the four fresh 2026 networks.} NLL gain in nats (baseline $-$ ours; '
-         r'positive favours the first method), paired 95\% interval clustered by network-window; \checkmark: pass '
-         r'(gain $\geq 0.01$ and lower bound $>0$). Protocols v12 and v13 (TabPFN-3.5, September 2026) test the mechanism '
-         r'and a newer foundation model on the same networks after v11' + (r'; v14 tests the variant selected on development '
-         r'networks, and $^\dagger$ marks a secondary comparison.}' if c14 else '.}'),
-         r'\label{tab:fresh}', r'\setlength{\tabcolsep}{3pt}', r'\begin{tabular}{llccc}', r'\toprule',
-         r'Protocol & Comparison & All inputs & 3 dropped & 6 dropped \\', r'\midrule']
+         r'\caption{\textbf{Pre-registered endpoints on the fresh 2026 networks.} NLL gain in nats (baseline $-$ ours; '
+         r'positive favours the first method) $\pm$ the half-width of its paired 95\% interval, clustered by '
+         r'network-window; \checkmark: pass (gain $\geq 0.01$ and lower bound $>0$). Pool: UPT-SF$\oplus$TabPFN v2 (v11, '
+         r'v12) or TabPFN-3.5 (September 2026; v13 on). Protocols v11--v15 use the four v10 networks' +
+         (r'; v14 tests the log pool selected on development networks ($^\dagger$: secondary)' if c14 else '') +
+         (r". v16 scores the frozen v15 rule on new tasks recorded after TabPFN-3.5's release; v16+17 adds the three v9 "
+          r'networks and, as a second look, uses 97.5\% intervals.}' if c17 else '.}'),
+         r'\label{tab:fresh}', r'\setlength{\tabcolsep}{3pt}', r'\begin{adjustbox}{max width=\linewidth}',
+         r'\begin{tabular}{llccc}', r'\toprule', r'Protocol & Comparison & All inputs & 3 dropped & 6 dropped \\', r'\midrule']
     for proto, lab, d, ks in rows:
         cells = []
         for k in ks:
             if k is None:
                 cells.append('--'); continue
-            v = d[k]
-            cells.append(ci(v, 3 if proto in ('v16', 'v16+17') else 2) + (r' \checkmark' if v['passed'] else r' $\times$'))
+            v, dg = d[k], 3 if proto in ('v16', 'v16+17') else 2
+            cells.append(f"${v['gain']:+.{dg}f}\\pm{(v['hi'] - v['lo']) / 2:.{dg}f}$" + (r' \checkmark' if v['passed'] else r' $\times$'))
         t.append(f'{proto} & {lab} & ' + ' & '.join(cells) + r' \\')
-    t += [r'\bottomrule', r'\end{tabular}', r'\end{table}']
+    t += [r'\bottomrule', r'\end{tabular}', r'\end{adjustbox}', r'\end{table}']
     (O / 'generated' / 'fresh_endpoints_table.tex').write_text('\n'.join(t))
 
     # ---- figure: NLL relative to TabPFN with all inputs, averaged over the four networks, by inputs dropped
