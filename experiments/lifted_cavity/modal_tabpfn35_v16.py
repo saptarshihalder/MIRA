@@ -37,6 +37,21 @@ def _warm(env):
     raise RuntimeError('TabPFN-3.5 weights could not be downloaded: ' + (r.stdout + r.stderr)[-1200:])
 
 
+@app.function(image=image, volumes={'/vol': vol}, cpu=4, memory=16384, timeout=3 * 3600)
+def build(name, seed, data_dir):
+    """Build one panel on the volume from a snapshot folder on the volume (eval_real.py build); returns its digest."""
+    vol.reload()
+    out = f'/vol/panels/real_{name}_s{seed}.pt'
+    r = subprocess.run([sys.executable, 'eval_real.py', 'build', '--dataset', name, '--seed', str(seed), '--v6', data_dir, '--out', out],
+                       cwd=CODE, capture_output=True, text=True)
+    if r.returncode:
+        raise RuntimeError((r.stdout + r.stderr)[-1500:])
+    vol.commit()
+    sys.path.insert(0, CODE)
+    import panel_digest
+    return panel_digest.digest(out)
+
+
 @app.function(image=image, volumes={'/vol': vol}, secrets=[secret], gpu='L4', cpu=8, memory=32768, timeout=8 * 3600)
 def tab16(nets, seed=16161):
     tok = (os.environ.get('tabpfn_auth') or os.environ.get('TABPFN_TOKEN') or '').strip()
