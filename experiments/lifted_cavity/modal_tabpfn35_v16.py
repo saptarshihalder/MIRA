@@ -1,4 +1,4 @@
-"""Protocol v16: TabPFN-3.5 on the four fresh panels, on Modal, in one L4 container: per network, one tabpfn_colab.py
+"""Protocols v16 and v17 (seed 17171): TabPFN-3.5 on the fresh panels, on Modal, in one L4 container: per network, one tabpfn_colab.py
 process (test predictions, CRPS, per-query outputs and the 2-fold cross-fit, exactly as v13) and one tabpfn_cfk.py
 process (4-fold cross-fit, as v15). Self-contained: only this file is importable inside the container.
 
@@ -38,7 +38,7 @@ def _warm(env):
 
 
 @app.function(image=image, volumes={'/vol': vol}, secrets=[secret], gpu='L4', cpu=8, memory=32768, timeout=8 * 3600)
-def tab16(nets):
+def tab16(nets, seed=16161):
     tok = (os.environ.get('tabpfn_auth') or os.environ.get('TABPFN_TOKEN') or '').strip()
     if not tok:
         raise RuntimeError("Modal secret 'custom-secret' has no key tabpfn_auth")
@@ -48,7 +48,7 @@ def tab16(nets):
     _warm(env)
     procs = {}
     for net in nets:
-        panel, out = f'/vol/panels/real_{net}_s16161.pt', f'/vol/runs_real/{net}/tabpfn_v3_5'
+        panel, out = f'/vol/panels/real_{net}_s{seed}.pt', f'/vol/runs_real/{net}/tabpfn_v3_5'
         os.makedirs(out, exist_ok=True)
         for kind, cmd in (('main', ['tabpfn_colab.py', '--panel', panel, '--out', out, '--version', 'v3.5', '--allow-constant-support',
                                     '--crps', '--device', 'cuda']),

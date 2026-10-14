@@ -111,6 +111,9 @@ def episodes(name, raw, split, seed, n_source=None, period=None):
     if name in ('usgs_ny_f', 'usgs_wa_f', 'dwd_p_f', 'aurn_pm25_f'):  # protocol v16: v10 networks, new days and targets
         import realdata_v16
         return realdata_v16.episodes(name, raw, split, seed, n_source)
+    if name in ('dwd_t2m_f', 'aurn_no2_f', 'usgs_q_f'):              # protocol v17: v9 networks, new days and targets
+        import realdata_v17
+        return realdata_v17.episodes(name, raw, split, seed, n_source)
     rng = np.random.default_rng(seed)
     out = []
     if name.startswith('airq'):
