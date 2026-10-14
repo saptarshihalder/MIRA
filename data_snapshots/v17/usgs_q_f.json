@@ -1,0 +1,18 @@
+{
+ "base": "usgs_q",
+ "base_digest": "cb0c34f9272d5b22",
+ "base_rows": 10272,
+ "extension": [
+  "2026-10-01",
+  "2026-10-13"
+ ],
+ "url": "https://nwis.waterservices.usgs.gov/nwis/iv/?format=rdb&parameterCd=00060&startDT=2026-09-30&endDT=2026-10-13&sites=",
+ "gauges_with_new_data": 303,
+ "gauges": 304,
+ "new_finite_frac": 0.9938779239766082,
+ "seconds": 135.5,
+ "rows": 10848,
+ "first": "2026-03-01T00:00:00",
+ "last": "2026-10-12T23:30:00",
+ "digest": "53c2e70fc42435b7"
+}
