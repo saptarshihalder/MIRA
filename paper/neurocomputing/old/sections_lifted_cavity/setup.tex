@@ -1,0 +1,47 @@
+\section{Problem setup}
+\label{sec:setup}
+
+\subsection{Deployment, support, and query}
+
+A deployment is represented by a task $\tau\sim p(\tau)$ with joint distribution $p_\tau(x,y)$. The sensor vector is $x\in\R^P$ and the target is $y\in\R$. The labeled support is
+\begin{equation}
+  \D=\{(x_i,m_i,y_i)\}_{i=1}^{n},
+  \qquad m_i\in\{0,1\}^{P},
+  \label{meth:support}
+\end{equation}
+where $x_{ij}$ is available only if $m_{ij}=1$. Every support row has an observed target. A query provides readings $x_S$ for a subset $S\subseteq\{1,\ldots,P\}$. Its mask is denoted $m^q$, so $S=\{j:m^q_j=1\}$. The support mask and query mask have different roles: the former determines which calibration observations can be used, and the latter determines the evidence available for the current prediction.
+
+The desired output is a predictive distribution for the hidden query target. Under a task prior and an ignorable observation process, the Bayesian target is
+\begin{equation}
+  p(y\mid x_S,\D)
+  =\int p_\tau(y\mid x_S)\,p(\tau\mid\D,x_S)\,d\tau .
+  \label{meth:predictive}
+\end{equation}
+The query can update beliefs about the task as well as about $y$. Thus integrating $p_\tau(y\mid x_S)$ against $p(\tau\mid\D)$ without query reweighting is generally a different calculation. The learned models approximate Eq.~\eqref{meth:predictive} through training across tasks; they do not explicitly integrate a posterior over all calibration parameters at prediction time.
+
+For the synthetic experiments, the oracle knows $\tau$ and evaluates $p_\tau(y\mid x_S)$. A separate Hamiltonian Monte Carlo reference integrates uncertain task parameters using the generating prior, after fixing response signs inferred from the support. Since those signs can be inferred incorrectly and their uncertainty is excluded, that numerical reference is not a certified Bayes optimal ceiling. Percentages described as closing a reference gap use its NLL difference from the reported FA Gaussian baseline. They should not be interpreted as a fraction of a proven information theoretic limit.
+
+\subsection{What missing sensor compatibility means}
+
+We require a predictor to be defined for any sensor subset and to be insensitive to the numerical contents of unobserved query entries. A stored placeholder in a masked cell must not alter the answer. We also consider whether the same learned parameters can be used for different numbers of sensors. These are architectural requirements. They are distinct from accurate uncertainty, from generalization to a new deletion count, and from consistency with a single joint distribution across all subsets.
+
+The exact inference result in Proposition~\ref{prop:exact} assumes that the observation mask carries no additional information about the target or latent variables after conditioning on the variables in the measurement model. If a sensor disappears because its reading exceeds a threshold, for instance, its absence is itself evidence. Omitting its measurement factor does not encode that evidence. More generally, the target conditional is $p(y\mid x_S,\D,m^q)$ when selection is informative, and a selection model may be necessary. Our synthetic deletion mechanism is independent of readings and targets. Real data contain natural missingness as well as simulated deletion, so architectural compatibility does not by itself justify ignoring every aspect of the real observation process.
+
+The distinction between construction and generalization is also relevant to the evaluation masks. Synthetic training queries omit at most one sensor. Synthetic evaluation additionally considers two or three missing sensors, as well as larger sensor panels. Those deletion counts are absent from the synthetic training queries. Real adaptation episodes retain their natural missing cells and remove at most one additional sensor; several sensors can therefore already be absent during that adaptation. We do not claim that every real evaluation deletion count is unseen during training.
+
+\subsection{Training objective and predictive representation}
+
+The learned predictor returns a Gaussian distribution,
+\[
+q_\theta(y\mid x_S,\D)=\N(y;\mu_\theta,v_\theta),
+\]
+with positive variance $v_\theta$. Its episodic objective is
+\begin{equation}
+  \mathcal L(\theta)
+  =\mathbb E_{\tau,\D,(x,y),m^q}
+   \left[-\log q_\theta(y\mid x_S,\D)\right].
+  \label{meth:population-risk}
+\end{equation}
+The expectation includes the training task prior and observation mechanism. NLL is a proper score for a predictive distribution~\citep{gneiting2007scoring}. Within the Gaussian family, minimizing its population expectation at a fixed observed context matches the conditional mean and variance, when these moments exist. This does not make the resulting Gaussian equal to a non Gaussian conditional density. In particular, multiple plausible target modes cannot be represented by a single Gaussian output.
+
+The target is kept in its physical or episode specific target units at the final output. Sensor normalization is computed from observed support cells only. The models never use held out query targets to choose normalization constants, fit the anchor, or compute a site. The transformer also standardizes support targets internally, and its direct output is transformed back to the original target scale. The lifted readout instead works with a prior whose mean and variance are estimated from the support.

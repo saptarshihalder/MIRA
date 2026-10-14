@@ -1,0 +1,44 @@
+\section{Protocol history and execution audits}
+\label{app:audit}
+\label{app:provenance}
+
+\subsection{Protocol history and all declared outcomes}
+\label{sec:protocol-history}
+
+\input{generated/v1_table}
+\input{generated/endpoints_table}
+
+The development history is retained because it explains why the controls and hypotheses changed. An earlier three round scalar cavity network first collapsed to the prior. After repair with support moment initialization, its best seed scored 0.403 nats with two missing sensors, worse than the ridge control at 0.396; the oracle scored $-0.046$. Strengthening the support fitted references revealed scores of 0.168 for EM and 0.156 for factor analysis on that development panel. A larger training pool did not eliminate the subsequent scalar model deficit. These observations motivated lifting, but the later model's success does not erase the earlier failed configurations.
+
+Protocol v1 was committed before its confirmation panels were generated and declared five endpoints. Every outcome is retained in Table~\ref{tab:v1}: fresh task gains over FA Gaussian and the residual MLP, eight sensor transfer, stronger nonlinearity against the MLP, and Air Quality NO$_2$ against EM. All five recorded gates passed. The first endpoint additionally required every lifted training seed to gain at least 0.01 nats. The Air Quality comparison used 23 later weeks; it is one device and one fine tuning run for that original real endpoint. Git commit ordering and hashes recorded with results document the sequence, but do not independently prove that no earlier data access occurred.
+
+Protocol v2 strengthened the synthetic and real controls and introduced the previously unscored Beijing PM$_{2.5}$ test period. Five of its six endpoints passed. E1 and E2 compare the small model with NL FA and the transformer on F1. E3a and E3b compare it with FA Gaussian and the transformer at sixteen sensors. E4a compares the adapted model with BLR on Beijing. E4b compares it with the adapted transformer and fails, with gain \RbeijingeZerovspfn\ \RbeijingeZerovspfnci. A recorded change before any Beijing score supplied an empty feature fallback for BLR: it predicts the support mean and variance $s^2(1+1/n)$ when no station is observed. This prevented a build failure without changing episodes or other methods.
+
+Protocol v3 followed the real data loss and introduced the lifted transformer readout on new panels and targets. E5 and E6 pass on the five and sixteen sensor synthetic panels. E7a passes against the small adapted network on Beijing NO$_2$. E7b fails to establish the fixed noninferiority margin against the adapted transformer. Beijing CO was declared descriptive. LCT results on F1 and PM$_{2.5}$, additional training seeds, Gaussian processes, nearest neighbours and longer adaptation runs remain post hoc. Training interruptions and restarts were documented before v3 scoring. Checkpoint resume tests establish the tested CPU interruption behavior; they do not certify every subsequent GPU optimization or a full independent training rerun.
+
+\subsection{Factor orientation and historical reproducibility}
+\label{sec:provenance}
+
+An import audit provides a useful distinction between aggregate reproduction and exact prediction replay. It matched nine imported checkpoint hashes, regenerated the three v1 synthetic panels and the NO$_2$ test panel, and replayed the five endpoint decisions without fitting a new model. The largest discrepancy in endpoint interval limits was about $2.3\times10^{-5}$ nats. However, the full cell replay gate failed: the eight sensor C2 panel differed by as much as 0.012804 nats. Reproduction of the pass decisions therefore cannot be reported as complete numerical reproduction of every saved prediction.
+
+The diagnostic identified factor orientation as a cause. A loading vector $D$ and its negative define the same residual covariance, but the original learned site network does not enforce equivalence of those representations. On C2 seed one, comparing both signs reduced the maximum replay discrepancy to less than $2.81\times10^{-6}$ nats. Across tasks, changing sign could alter cell NLL by 0.08460. This explains a numerical vulnerability; selecting a sign using evaluation losses would change the inference rule and is not an acceptable correction to the historical scores. A permutation check that permutes an already fitted anchor likewise does not establish invariance after refitting the factor model.
+
+A separate source gate evaluated a label independent wrapper that predicts under both signs and matches the first two moments. It passed six fixed deterioration checks and made predictions invariant to the sign of one factor. That is an engineering result for a separately identified version, not new real data efficacy evidence. It takes two forward passes, returns a Gaussian rather than the exact mixture density, and does not resolve arbitrary rotations or degenerate eigenspaces for multiple factors. Historical tables retain the original model and scores. The theoretical structural statements must therefore be read with their stated anchor orientation assumptions, rather than as an unconditional reproducibility guarantee for the imported implementation.
+
+\subsection{The v4 audit and withheld endpoints}
+
+The larger continuation fixed two 2.1 million parameter backbones, three training seeds, 40,000 synthetic updates, new H1 and H3 panels, and Beijing PM$_{10}$, SO$_2$ and O$_3$. It also specified pretrained TabPFN v2 for inference in context with eight estimators and a fixed random state. Before compared model scoring, a recorded amendment added uniform dequantization before taking logarithms~\citep{theis2016note}. The reason was discovered during panel construction: 34.2\% of SO$_2$ and 12.8\% of O$_3$ test readings were at the floor of $2\,\mu\mathrm{g}\,\mathrm{m}^{-3}$, and three SO$_2$ support sets were constant. Integer readings received fixed noise in $(-1/2,1/2)$, shared by the constructed source and test episodes. The only prior outputs were closed form references from the discarded undequantized panels. This amendment preceded model comparisons but followed partial data inspection, which limits any claim of an entirely untouched protocol.
+
+The bounded L40S continuation completed, and 24 learned checkpoint files and 35 expected score archives were collected. The strict verifier nevertheless stopped before endpoint arithmetic because twelve fine tuning runs from seeds two and three lacked the required checkpoint identity sidecar. The executed orchestration checked completion before launching a fresh fit, but omitted the completion and binding check after that subprocess returned. It could therefore proceed to scoring without recording the required checkpoint identity first. Six seed one sidecars existed in the final collection but were absent from its initial recovery snapshot, so their later presence does not establish creation before scoring.
+
+All five v4 endpoints, E8 through E12, are withheld. Entries marked pending in the preserved endpoint table mean unverified and undisclosed, not an efficacy pass, failure or a claim that training is still running. CPU prediction replay, endpoint integration and secondary analyses were not executed after the gate failed. Current file hashes establish present byte identities; they cannot supply the missing historical attestation. The development driver now binds a completed fresh fit before scoring and refuses existing unbound scores, with four orchestration regression tests recorded as passing. This prospective repair does not repair the executed scientific record. A forensic replay could answer whether current checkpoints reproduce current score archives, but it could not retrospectively satisfy the failed provenance rule.
+
+Even an eligible future version of E12 would compare a model adapted on target source data with TabPFN used only in context. Matching the episode support would not match prior target specific exposure, so that endpoint could not isolate architecture alone. The present withheld study supplies no evidence of better pretrained system performance.
+
+\section{Additional historical score tables}
+\label{app:more}
+
+The tables below retain the remaining deletion conditions for the v2 width, response and support size panels, together with all reported Air Quality deletion conditions. They supplement the primary comparisons rather than introducing new endpoints. Transformer readout rows on these previously used panels remain descriptive, and device target rows retain their original confirmation or post hoc status.
+
+\input{generated/more}
+

@@ -1,0 +1,93 @@
+{
+  "source_files": 26,
+  "source_word_tokens": 17603,
+  "bibliography_entries": 42,
+  "cited_entries": 39,
+  "missing_citations": [],
+  "missing_labels": [],
+  "duplicate_labels": [],
+  "historical_numeric_macros_unchanged": true,
+  "historical_numbers_sha256": "fb8fd8e76c839952e48b5688a74c67a2c4062111143d1500e755ef88dbfe8888",
+  "table_numeric_tokens_unchanged": {
+    "ablation_table.tex": true,
+    "calib_table.tex": true,
+    "compute_table.tex": true,
+    "endpoints_table.tex": true,
+    "explore_table.tex": true,
+    "main_table.tex": true,
+    "real_table.tex": true,
+    "seeds_table.tex": true,
+    "shift_table.tex": true,
+    "v1_table.tex": true,
+    "v2_table.tex": true,
+    "v3_results_table.tex": true,
+    "v4_table.tex": true
+  },
+  "template_files_unchanged": {
+    "cas-dc.cls": true,
+    "cas-sc.cls": true,
+    "cas-common.sty": true,
+    "cas-model2-names.bst": true
+  },
+  "prose_style_scan": {
+    "main.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\introduction.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\related_work.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\setup.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\theory.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\method.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\experiments.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\results.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\discussion.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\conclusion.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\proofs.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\reference_details.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    },
+    "sections\\audit_appendix.tex": {
+      "unicode_dashes": 0,
+      "tex_prose_double_dash": 0
+    }
+  },
+  "physical_pdf_pages_including_highlights": 28,
+  "pdf_sha256": "ac9019b4a8a8ffcdc34e43ee7d81e3f282c6f6600273fae83c3a2e98a2fe5aff",
+  "pdf_unresolved_reference_markers": 0,
+  "tex_overfull_boxes": 1,
+  "template_sidebar_warning": "CAS places its keyword box in an intentional zero width hbox; the 123.62721pt maketitle warning is inherited and has no visible overflow.",
+  "tex_undefined_reference_warnings": 0,
+  "v4_efficacy": "Withheld. No new endpoint arithmetic, training or inference performed for this manuscript."
+}

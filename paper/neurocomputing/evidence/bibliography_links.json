@@ -1,0 +1,170 @@
+{
+  "minka2001ep": {
+    "primary_url": "https://tminka.github.io/papers/ep/",
+    "doi": null
+  },
+  "heess2013learning": {
+    "primary_url": "https://proceedings.neurips.cc/paper/2013/hash/1714726c817af50457d810aae9d27a2e-Abstract.html",
+    "doi": null
+  },
+  "eslami2014just": {
+    "primary_url": "https://proceedings.neurips.cc/paper_files/paper/2014/hash/c04f25be56ab86371563568dce31808f-Abstract.html",
+    "doi": null
+  },
+  "jitkrittum2015kernel": {
+    "primary_url": "https://auai.org/uai2015/proceedings/papers/235.pdf",
+    "doi": null
+  },
+  "hinton2002poe": {
+    "primary_url": "https://direct.mit.edu/neco/article/14/8/1771/6687/Training-Products-of-Experts-by-Minimizing",
+    "doi": "10.1162/089976602760128018"
+  },
+  "wu2018mvae": {
+    "primary_url": "https://proceedings.neurips.cc/paper/2018/hash/1102a326d5f7c9e04fc3c89d0ede88c9-Abstract.html",
+    "doi": null
+  },
+  "lemorvan2020neumiss": {
+    "primary_url": "https://proceedings.neurips.cc/paper_files/paper/2020/hash/42ae1544956fbe6e09242e6cd752444c-Abstract.html",
+    "doi": null
+  },
+  "josse2019consistency": {
+    "primary_url": "https://arxiv.org/abs/1902.06931v1",
+    "doi": null
+  },
+  "rubin1976inference": {
+    "primary_url": "https://academic.oup.com/biomet/article-abstract/63/3/581/270932",
+    "doi": "10.1093/biomet/63.3.581"
+  },
+  "little2019statistical": {
+    "primary_url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9781119482260",
+    "doi": "10.1002/9781119482260"
+  },
+  "dempster1977em": {
+    "primary_url": "https://academic.oup.com/jrsssb/article/39/1/1/7027539",
+    "doi": "10.1111/j.2517-6161.1977.tb01600.x"
+  },
+  "rubin1982em": {
+    "primary_url": "https://www.cambridge.org/core/journals/psychometrika/article/abs/em-algorithms-for-ml-factor-analysis/A760C8ABF289AADBE118933311FAB24B",
+    "doi": "10.1007/BF02293851"
+  },
+  "garnelo2018cnp": {
+    "primary_url": "https://proceedings.mlr.press/v80/garnelo18a.html",
+    "doi": null
+  },
+  "kim2019anp": {
+    "primary_url": "https://arxiv.org/abs/1901.05761",
+    "doi": null
+  },
+  "muller2022pfn": {
+    "primary_url": "https://arxiv.org/abs/2112.10510",
+    "doi": null
+  },
+  "hollmann2023tabpfn": {
+    "primary_url": "https://arxiv.org/abs/2207.01848",
+    "doi": null
+  },
+  "hollmann2025tabpfnv2": {
+    "primary_url": "https://www.nature.com/articles/s41586-024-08328-6",
+    "doi": "10.1038/s41586-024-08328-6"
+  },
+  "qu2025tabicl": {
+    "primary_url": "https://proceedings.mlr.press/v267/qu25d.html",
+    "doi": null
+  },
+  "zaheer2017deepsets": {
+    "primary_url": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/f22e4747da1aa27e363d86d40ff442fe-Abstract.html",
+    "doi": null
+  },
+  "lee2019settransformer": {
+    "primary_url": "https://proceedings.mlr.press/v97/lee19d.html",
+    "doi": null
+  },
+  "revach2022kalmannet": {
+    "primary_url": "https://doi.org/10.1109/TSP.2022.3158588",
+    "doi": "10.1109/TSP.2022.3158588"
+  },
+  "garciafernandez2015plf": {
+    "primary_url": "https://doi.org/10.1109/TSP.2015.2454485",
+    "doi": "10.1109/TSP.2015.2454485"
+  },
+  "deisenroth2012ep": {
+    "primary_url": "https://proceedings.neurips.cc/paper/2012/hash/e53a0a2978c28872a4505bdb51db06dc-Abstract.html",
+    "doi": null
+  },
+  "gregor2010lista": {
+    "primary_url": "https://icml.cc/2010/papers/449.pdf",
+    "doi": null
+  },
+  "monga2021unrolling": {
+    "primary_url": "https://doi.org/10.1109/MSP.2020.3016905",
+    "doi": "10.1109/MSP.2020.3016905"
+  },
+  "julier1997ci": {
+    "primary_url": "https://doi.org/10.1109/ACC.1997.609105",
+    "doi": "10.1109/ACC.1997.609105"
+  },
+  "wang2025ifnet": {
+    "primary_url": "https://www.sciencedirect.com/science/article/abs/pii/S1566253524005281",
+    "doi": "10.1016/j.inffus.2024.102750"
+  },
+  "dong2025difnet": {
+    "primary_url": "https://arxiv.org/abs/2508.18854v1",
+    "doi": null
+  },
+  "devito2008airquality": {
+    "primary_url": "https://www.sciencedirect.com/science/article/pii/S0925400507007691",
+    "doi": "10.1016/j.snb.2007.09.060"
+  },
+  "zhang2017beijing": {
+    "primary_url": "https://doi.org/10.1098/rspa.2017.0457",
+    "doi": "10.1098/rspa.2017.0457"
+  },
+  "vergara2012drift": {
+    "primary_url": "https://www.sciencedirect.com/science/article/pii/S0925400512002018",
+    "doi": "10.1016/j.snb.2012.01.074"
+  },
+  "neal2011hmc": {
+    "primary_url": "https://doi.org/10.1201/b10905-6",
+    "doi": "10.1201/b10905-6"
+  },
+  "hoffman2014nuts": {
+    "primary_url": "https://www.jmlr.org/papers/v15/hoffman14a.html",
+    "doi": null
+  },
+  "mackay1992bayesian": {
+    "primary_url": "https://direct.mit.edu/neco/article/4/3/415/5639/Bayesian-Interpolation",
+    "doi": "10.1162/neco.1992.4.3.415"
+  },
+  "gneiting2007scoring": {
+    "primary_url": "https://doi.org/10.1198/016214506000001437",
+    "doi": "10.1198/016214506000001437"
+  },
+  "gershman2014amortized": {
+    "primary_url": "https://escholarship.org/content/qt34j1h7k5/qt34j1h7k5_noSplash_8e5b24dd056d61b53b1170a1861e49d1.pdf",
+    "doi": null
+  },
+  "ma2021smil": {
+    "primary_url": "https://ojs.aaai.org/index.php/AAAI/article/view/16330",
+    "doi": "10.1609/aaai.v35i3.16330"
+  },
+  "finn2017maml": {
+    "primary_url": "https://proceedings.mlr.press/v70/finn17a.html",
+    "doi": null
+  },
+  "anderson1956statistical": {
+    "primary_url": "https://digicoll.lib.berkeley.edu/record/112877",
+    "doi": null
+  },
+  "zimmerman2018calibration": {
+    "primary_url": "https://amt.copernicus.org/articles/11/291/2018/index.html",
+    "doi": "10.5194/amt-11-291-2018"
+  },
+  "tipping1999ppca": {
+    "primary_url": "https://academic.oup.com/jrsssb/article/61/3/611/7083217",
+    "doi": "10.1111/1467-9868.00196"
+  },
+  "theis2016note": {
+    "primary_url": "https://arxiv.org/abs/1511.01844",
+    "doi": null
+  }
+}

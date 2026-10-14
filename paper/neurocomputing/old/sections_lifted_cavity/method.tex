@@ -1,0 +1,222 @@
+\section{Lifted Gaussian site layers}
+\label{sec:method}
+
+Figure~\ref{fig:overview} follows a deployment from its incomplete calibration rows to the target distribution. The anchor gives the sites their initial statistical meaning. Learning changes those sites using the available context, while the Gaussian readout keeps the fusion calculation explicit. Figure~\ref{fig:cavity} expands the update used by the compact network.
+
+\subsection{From correlated readings to a small Gaussian state}
+
+We retain the source of shared variation as part of the state used for fusion. Let
+\begin{equation}
+  \begin{gathered}
+  z=(y,h)\in\R^{L},\qquad L=1+K,\\
+  y\sim\N(\mu_y,v_y),\qquad h\sim\N(0,I_K),
+  \end{gathered}
+  \label{meth:latent}
+\end{equation}
+with $y$ and $h$ independent and $v_y>0$. The nuisance vector $h$ is a statistical representation of shared residual variation; its coordinates need not identify a particular physical cause. The prior precision and natural mean parameter are
+\begin{equation}
+  \begin{gathered}
+  \Lambda_0=\operatorname{diag}(v_y^{-1},I_K),\\
+  \eta_0=(\mu_y/v_y,0,\ldots,0)^\top.
+  \end{gathered}
+  \label{meth:prior}
+\end{equation}
+For an observed sensor, a local linear Gaussian measurement with loading $w_j\in\R^L$, effective observation $o_j\in\R$, and variance $\psi_j>0$ gives the site
+\begin{equation}
+  \begin{gathered}
+  t_j(z)\propto\exp\!\left\{
+  -\tfrac12 z^\top\Lambda_jz+\eta_j^\top z\right\},\\
+  \Lambda_j=\frac{w_jw_j^\top}{\psi_j},\qquad
+  \eta_j=\frac{w_jo_j}{\psi_j}.
+  \end{gathered}
+  \label{meth:site}
+\end{equation}
+The site precision is positive semidefinite and has rank at most one. A site need not be a normalized density over the whole state. Its interpretation is the likelihood of one scalar measurement, which constrains one direction in that state.
+
+Aggregation uses only observed sensors:
+\begin{align}
+  \Lambda_S&=\Lambda_0+\sum_{j=1}^{P}m^q_j\Lambda_j,\nonumber\\
+  \eta_S&=\eta_0+\sum_{j=1}^{P}m^q_j\eta_j,\nonumber\\
+  V_S&=\Lambda_S^{-1},\qquad m_S=V_S\eta_S.
+  \label{meth:aggregate}
+\end{align}
+The predictive mean and variance are $m_{S,y}$ and $V_{S,yy}$. Since the prior precision is positive definite and the site contributions are positive semidefinite, the posterior precision is positive definite for every finite network output. If $S$ is empty, Eq.~\eqref{meth:aggregate} returns the fitted target prior. No artificial measurement is introduced for a missing sensor.
+
+The calculation also shows how the nuisance affects target evidence. Partition the aggregate precision as $\Lambda_S=\left[\begin{smallmatrix}\alpha&b^\top\\b&C\end{smallmatrix}\right]$ and its natural parameter as $\eta_S=(\eta_y,\eta_h)$. Integrating $h$ gives
+\begin{equation}
+  \begin{aligned}
+  v_S&=(\alpha-b^\top C^{-1}b)^{-1},\\
+  \mu_S&=v_S(\eta_y-b^\top C^{-1}\eta_h).
+  \end{aligned}
+  \label{meth:schur}
+\end{equation}
+The second term in each expression accounts for shared variation rather than counting each measurement as independent target evidence. Under the linear factor model of Proposition~\ref{prop:exact}, this is the exact target conditional for every fixed observed subset. Proposition~\ref{prop:rank} explains the minimum nuisance dimension needed by fixed sites under its generic rank assumptions. These results establish the anchor calculation on which learned refinement builds.
+
+\subsection{Estimating the anchor from incomplete calibration rows}
+
+The anchor is fitted using the support alone. For sensor $j$, let $n_j=\sum_i m_{ij}$. We compute the observed mean $\bar x_j$ and observed standard deviation $s_j$, with a minimum scale of $0.1$ in the implementation. Both support and query readings are expressed as $x^{s}_{ij}=(x_{ij}-\bar x_j)/s_j$ and $x^{s}_j=(x_j-\bar x_j)/s_j$. Missing support entries are stored as zero together with their masks. The zero is a storage convention: it is not treated as an observed calibration reading.
+
+We fit a joint Gaussian for $r_i=(x^{s}_i,y_i)$ using expectation maximization with incomplete entries~\citep{dempster1977em,little2019statistical}. In each iteration, let $O_i$ denote the coordinates observed in row $i$, including the target coordinate. For the current mean $\mu$ and covariance $\Sigma$, the conditional moments of the complete row are
+\begin{align}
+  G_i&=\Sigma_{:,O_i}\Sigma_{O_i,O_i}^{-1},\nonumber\\
+  \widehat r_i
+  &=\mu+G_i(r_{i,O_i}-\mu_{O_i}),\nonumber\\
+  C_i
+  &=\Sigma-G_i\Sigma_{O_i,:}.
+  \label{meth:em-estep}
+\end{align}
+The covariance $C_i$ is zero in fully observed directions. The next mean and covariance are
+\begin{align}
+  \mu^{\mathrm{new}}&=\frac1n\sum_i\widehat r_i,\nonumber\\
+  d_i&=\widehat r_i-\mu^{\mathrm{new}},\nonumber\\
+  \Sigma^{\mathrm{new}}&=\frac1n\sum_i
+   \left[C_i+d_id_i^\top\right]+10^{-4}I.
+  \label{meth:em-mstep}
+\end{align}
+Including $C_i$ is important: filling a missing entry only by its conditional mean would discard its remaining uncertainty. The implementation begins with observed means and a diagonal covariance, performs eight iterations for learned model anchors, and symmetrizes the covariance after each update. Anchor fitting uses double precision and is outside gradient propagation.
+
+Write the fitted joint moments as $\mu_x,\mu_y$, $\Sigma_{xx},\Sigma_{xy}$, and $v_y$. The supervised target loading and residual covariance are
+\begin{equation}
+  A=\frac{\Sigma_{xy}}{v_y},\qquad
+  R=\Sigma_{xx}-AA^\top v_y.
+  \label{meth:residual-cov}
+\end{equation}
+We approximate $R$ by $DD^\top+\operatorname{diag}(\psi)$ using principal factor iterations, with $D\in\R^{P\times K}$. Starting from half the residual diagonal, floored at $10^{-3}$, each iteration takes the leading $K$ eigenvectors of $R-\operatorname{diag}(\psi)$, scales them by the square roots of their nonnegative eigenvalues, and sets
+\begin{equation}
+  \psi_j=\max\!\left\{R_{jj}-\|D_j\|^2,10^{-3}\right\}.
+  \label{meth:uniqueness}
+\end{equation}
+The batched anchor uses 40 such iterations. This is a concrete principal factor procedure; we do not claim that it finds the globally optimal factor analysis likelihood~\citep{rubin1982em,tipping1999ppca}. The resulting fitted measurement model is
+\begin{equation}
+  \begin{gathered}
+  x^{s}_j=\mu_{x,j}+A_j(y-\mu_y)+D_j^\top h+e_j,\\
+  e_j\sim\N(0,\psi_j).
+  \end{gathered}
+  \label{meth:anchor-model}
+\end{equation}
+Its sites use $w_j^{(0)}=(A_j,D_j)$ and $o_j^{(0)}=\widetilde x_j+A_j\mu_y$, where $\widetilde x_j=x^{s}_j-\mu_{x,j}$. Their target marginal is the FA Gaussian anchor. Exactness refers to this fitted model, not to the unknown deployment distribution. The separately reported FA Gaussian baseline uses a longer 40 iteration Gaussian EM fit and a finite sample variance inflation; the learned anchors use eight EM iterations and no such inflation. They therefore share the same construction without being numerically identical baselines.
+
+\subsection{Encoding a sensor's calibration scatter}
+
+The anchor summarizes first and second moments. To expose departures from a linear response, each sensor also receives an encoding of its observed calibration scatter. Define
+\begin{equation}
+  \begin{aligned}
+  \widetilde x_{ij}&=x^{s}_{ij}-\mu_{x,j},\\
+  r^{\mathrm{cal}}_{ij}&=\widetilde x_{ij}-A_j(y_i-\mu_y),\\
+  u_{ij}&=\left(
+   \frac{y_i-\mu_y}{\sqrt{v_y}},\quad
+   \widetilde x_{ij},\quad
+   \frac{r^{\mathrm{cal}}_{ij}}{\sqrt{\psi_j}}
+   \right).
+  \end{aligned}
+  \label{meth:scatter}
+\end{equation}
+A shared DeepSets encoder~\citep{zaheer2017deepsets} computes
+\begin{equation}
+  e_j=\rho\!\left(
+    \frac{\sum_i m_{ij}\phi(u_{ij})}{\max(n_j,1)},\frac{n_j}{n}
+    \right)\in\R^{16}.
+  \label{meth:encoder}
+\end{equation}
+Here $\phi$ has widths $3,32,32$ with tanh activations, and $\rho$ maps the 32 pooled coordinates and observation rate to 16 coordinates with tanh. Every observed row contributes, while the mask excludes unavailable readings. Averaging makes the scatter encoding invariant to the ordering of the support rows. The observation rate records how much calibration evidence was available for that sensor, which the mean pooled features alone would not reveal.
+
+\subsection{Cavity conditioned site refinement}
+
+The compact model initializes the sites at the anchor and performs $R_{\mathrm{round}}=3$ synchronous refinement rounds. In a round, sensor $j$ removes its current natural parameters from the aggregate to form
+\begin{equation}
+  \begin{aligned}
+  V_{-j}&=(\Lambda_S-m^q_j\Lambda_j)^{-1},\\
+  m_{-j}&=V_{-j}(\eta_S-m^q_j\eta_j).
+  \end{aligned}
+  \label{meth:cavity}
+\end{equation}
+The cavity represents what the remaining observed sites imply about both target and nuisance. All replacements in a round are computed from the current sites before the next aggregation. A missing sensor's replacement is irrelevant because it contributes zero to that aggregation.
+
+Let $\bar y_j=m_{-j,y}$. The anchor predicts the centered reading as
+\begin{equation}
+  \begin{aligned}
+  \widehat x_j&=A_j(\bar y_j-\mu_y)+D_j^\top m_{-j,h},\\
+  r_j&=\widetilde x_j-\widehat x_j.
+  \end{aligned}
+  \label{meth:cavity-reading}
+\end{equation}
+The implementation measures its uncertainty by $v_j=w_j^\top V_{-j}w_j+\psi_j$, using the current site loading and variance. Thus the residual mean uses the anchor response, while its scale can reflect the current refined site. A shared network receives $\widetilde x_j$, $e_j$, $A_j$, $D_j$, $\log\psi_j^{(0)}$, and the observed sensor fraction $|S|/P$. Its cavity features are
+\begin{equation}
+  \begin{gathered}
+  \left(\frac{\bar y_j-\mu_y}{\sqrt{v_y}},\quad
+  \log\frac{V_{-j,yy}}{v_y},\quad m_{-j,h}\right),\\
+  \left(V_{-j,yh},\quad r_j,\quad
+  \frac{r_j}{\sqrt{v_j}},\quad\log v_j\right).
+  \end{gathered}
+  \label{meth:cavity-features}
+\end{equation}
+For $K=1$, these give seven cavity coordinates and 28 total inputs. The nuisance covariance block is not supplied in full. The feature vector is therefore a selected summary of the cavity rather than an unrestricted encoding of every covariance entry.
+
+The site network has widths $28,64,64,4$ for $K=1$, with tanh in its two hidden layers. It outputs response offset $\delta_j^{\mathrm{off}}$, target slope correction $\delta_j^{\mathrm{slope}}$, nuisance loading correction $\delta_j^D$, and noise coordinate $s_j^{\mathrm{noise}}$. In general there are $3+K$ outputs. The replacement site is
+\begin{align}
+  a_j^{\mathrm{new}}&=A_j+\delta_j^{\mathrm{slope}},\nonumber\\
+  d_j^{\mathrm{new}}&=D_j+\delta_j^D,\nonumber\\
+  g_j(\bar y_j)&=A_j(\bar y_j-\mu_y)+\delta_j^{\mathrm{off}},\nonumber\\
+  w_j^{\mathrm{new}}&=(a_j^{\mathrm{new}},d_j^{\mathrm{new}}),\nonumber\\
+  o_j^{\mathrm{new}}&=\widetilde x_j-g_j(\bar y_j)
+                        +a_j^{\mathrm{new}}\bar y_j,\nonumber\\
+  \psi_j^{\mathrm{new}}&=\psi_j^{(0)}
+    \exp\!\left[4\tanh\!\left(s_j^{\mathrm{noise}}/4\right)\right].
+  \label{meth:replacement}
+\end{align}
+This corresponds to the local measurement $\widetilde x_j\approx g_j(\bar y_j)+a_j^{\mathrm{new}}(y-\bar y_j)+(d_j^{\mathrm{new}})^\top h+e_j$. The variance remains positive, with its ratio to the anchor variance between $e^{-4}$ and $e^4$. Each round predicts a replacement relative to the anchor, rather than adding the correction repeatedly to the previous parameters. After the final round, Eq.~\eqref{meth:aggregate} gives the Gaussian output. The encoder and site network together contain 8,004 parameters.
+
+If the corrections came from statistical linear regression of a known response under the cavity, the construction would connect directly to posterior linearization and expectation propagation~\citep{deisenroth2012ep,garciafernandez2015plf}. Here the response is unknown and inferred from a short support. We train the finite sequence through its final predictive NLL. There is no separate loss enforcing expectation propagation moment matching, and no assertion that the rounds converge as their number increases.
+
+\subsection{What zero initialization and omission guarantee}
+
+The final affine layer of the correction network starts at zero. All four correction types therefore vanish initially. In Eq.~\eqref{meth:replacement}, the effective observation reduces to
+\begin{equation}
+  \begin{aligned}
+  o_j^{\mathrm{new}}
+  &=\widetilde x_j-A_j(\bar y_j-\mu_y)+A_j\bar y_j\\
+  &=\widetilde x_j+A_j\mu_y,
+  \end{aligned}
+  \label{meth:zero-head}
+\end{equation}
+and the site equals its anchor in every round. The model family thus contains the anchor exactly, providing a statistical starting point for optimization. The guarantee concerns representation, while improvements after training are measured empirically.
+
+Hidden query readings cannot influence an observed site's cavity because the aggregate includes only observed sites. The support encoder similarly excludes masked support entries. Consequently, changing a placeholder for an unavailable reading leaves the prediction unchanged. The shared encoder, shared site network, and sensor sums also permit the same parameters to operate at different widths. For fixed, consistently oriented anchor parameters, permuting sensor columns permutes the sites and leaves the readout unchanged.
+
+The qualification about orientation matters. Factor analysis identifies $DD^\top$, while $D$ is unchanged statistically by an orthogonal rotation of its columns. For $K=1$ this includes replacing $D$ by $-D$. The original network reads signed nuisance coordinates, so refitting the anchor after a sensor permutation can change its prediction through the eigensolver's orientation choice. Proposition~\ref{prop:struct} states the conditional invariance property. A separately versioned repair averages predictions under both signs for $K=1$ and matches their first two moments. It addresses that sign ambiguity; arbitrary rotations for larger $K$ and predictive evaluation of the repair remain separate questions. The efficacy tables concern the original checkpoints.
+
+Likewise, factor omission must be distinguished from a projective joint model. Holding site parameters fixed, removing a sensor means deleting exactly its likelihood contribution. Once corrections depend on cavities or transformer context, the remaining site parameters can also change. The learned predictions are well defined for every subset but need not be the marginals of one shared joint density. The exactness and rank propositions apply to the fixed linear Gaussian construction within their assumptions, not to every context conditioned replacement.
+
+\subsection{The site layer with a transformer encoder}
+
+The lifted cavity transformer uses the same cell token backbone as the direct Gaussian transformer. Each support or query sensor cell is mapped from its scalar value to a 64 dimensional token; a masked cell uses a learned missing token instead. Every sensor column receives a random 16 dimensional feature vector, projected to token width and shared across rows within its task. The target column has a separate learned embedding. Support target values are standardized using the support mean and standard deviation, with a minimum scale of $0.1$, while query targets receive a learned token.
+
+Each of four transformer blocks first attends across the columns within a row, then across rows within a column. In the row attention operation, keys and values come only from support rows. Queries therefore do not attend to other queries, and adding another query does not supply evidence about the current query target. Each block uses four attention heads, normalization before each residual operation, and a feedforward network of hidden width 128 with GELU. The direct baseline reads the final query target token through a normalization and linear head with outputs $(b_\mu,b_\ell)$. Using support target mean $\bar y_{\D}$ and scale $s_{y,\D}$, it returns
+\begin{equation}
+  \begin{aligned}
+  \mu&=\bar y_{\D}+s_{y,\D}b_\mu,\\
+  \ell&=5\tanh(b_\ell/5)+2\log s_{y,\D}.
+  \end{aligned}
+  \label{meth:direct-head}
+\end{equation}
+It contains 202,562 registered parameters.
+
+For the lifted readout, each final observed query sensor token is mapped linearly to the $3+K$ corrections in Eq.~\eqref{meth:replacement}. The head is initialized at zero. The linearization point is the FA Gaussian posterior mean for that query, with its gradient detached, and there is one replacement and one aggregation. There are no three cavity refinement rounds in this model. The transformer may condition a sensor's correction on the complete support and observed query subset. Lifting constrains the output distribution and initialization, while preserving those context interactions.
+
+For $K=1$, the site head has 260 parameters and the implementation contains 202,822 registered parameters. This count includes the direct readout retained inside the instantiated backbone even though it is not used by the lifted forward calculation. Missing readings are replaced by the learned missing token before attention and their sites are omitted afterward. A missingness pattern can affect predictions, but the hidden numerical values cannot. Random column embeddings make the transformer symmetric in distribution over their draws; we do not assert exact permutation invariance for a fixed draw and reordered columns. Evaluation fixes the embedding seed. The comparison with the direct transformer changes both the output parameterization and its initialization, so their effects are not identified separately.
+
+\subsection{Optimization and deployment calculation}
+
+For predicted mean $\mu$ and log variance $\ell$, the per query loss is
+\begin{equation}
+  \mathcal L_q=\tfrac12\left[\log(2\pi)+\ell
+                   +(y-\mu)^2e^{-\ell}\right].
+  \label{meth:nll}
+\end{equation}
+The compact models train on a pool of 60,000 synthetic tasks, generated with pool seed 5150. A step samples 128 tasks and eight queries per task. The optimizer is AdamW with initial learning rate $1.8\times10^{-3}$, weight decay $10^{-4}$, cosine decay to one tenth of the initial rate, gradient norm clipping at 5, and 20,000 steps. Reported compact runs use seeds 1, 2, and 3. Their main architecture uses $K=1$ and three rounds. Support anchors can be precomputed for this pool because fitting does not depend on the learned parameters or query labels.
+
+The transformer and lifted cavity transformer train on fresh tasks, with 16 tasks and 16 queries per step, learning rate $10^{-3}$, 1,000 warmup steps, cosine decay, weight decay $10^{-4}$, clipping at 1, and 30,000 steps. The lifted transformer fits its anchor for each newly generated task. Both use the same training query masks with at most one missing sensor. An additional direct transformer control sees uniformly sampled deletion counts from zero through four. No hyperparameter search was run for the compact architectures. Differences in task reuse and training budgets are retained in the comparison rather than described as identical optimization conditions across all model classes.
+
+At deployment, observed support cells first determine normalization, the Gaussian EM fit, and the factor anchor. The compact model also computes the calibration scatter encodings once for that support. Each query then initializes its observed sites, performs the three refinement rounds, and returns the target marginal. The lifted transformer encodes support and query cells, predicts its one set of corrections, and performs the same final Gaussian aggregation. No optimizer update is needed for a new synthetic deployment. Real data adaptation, where used in the experiments, is a separate fine tuning stage.
+
+Given the site parameters, aggregation and the dense latent solve cost $O(P L^2+L^3)$ per query. Computing every cavity by dense inversion adds $O(P L^3)$ per compact refinement round. This cost excludes fitting the support covariance, principal factor iterations, calibration encoding, and transformer attention. For the main setting $L=2$, the fusion state is small even when the sensor panel grows. Overall speed also depends on the context encoder and anchor fit, so the experiments report measured costs for the specified implementations.

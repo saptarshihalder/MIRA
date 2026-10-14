@@ -1,0 +1,69 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Synthetic prediction and missing sensor patterns}
+\label{sec:exp-main}
+
+\input{generated/main_table}
+
+Table~\ref{tab:main} reports F1, including the privileged references and controls that did not perform well. Among methods fixed before this panel was scored, the small lifted cavity network has the lowest mean NLL at every tested deletion count. At two missing sensors, its NLL is \FliftOnekc, compared with \FfaOnekc\ for FA Gaussian, \Fnlfakc\ for NL FA, \Fpfnkc\ for the transformer and \Fanchormlpkc\ for the residual MLP. The paired gain over the transformer is \MainkKTwoliftvspfn\ \MainkKTwoliftvspfnci\ nats. Both models were trained with at most one missing sensor, so this comparison includes query patterns absent from training.
+
+Relative to the sign conditioned HMC reference, the lifted network closes \GapliftOne\% of the gap from FA Gaussian at two missing sensors. The residual MLP closes \Gapanchormlp\%, the transformer \Gappfn\% and NL FA \Gapnlfa\%. These ratios summarize this panel and reference; they do not estimate a fraction of all attainable performance. The oracle remains better, with NLL \Foraclekc, demonstrating remaining headroom when the generating parameters are known.
+
+The residual MLP is a useful close control because it receives the same anchor and support encodings. The lifted model improves on it by \MainkKZeroliftvsmlpabs\ \MainkKZeroliftvsmlpci\ nats with every sensor observed, and \MainkKTwoliftvsmlpabs\ \MainkKTwoliftvsmlpci\ with two missing. With three missing sensors the gain is only \MainkKThreeliftvsmlp\ \MainkKThreeliftvsmlpci. This last interval includes zero. The evidence therefore supports a modest benefit over this MLP at the primary condition, rather than a clear separation at every deletion count.
+
+Training the transformer on all masks yields NLL \Fpfnallkc\ at two missing sensors and closes \Gappfnall\% of the same reference gap. Expanded mask coverage does not remove its deficit under this recipe. That finding narrows the explanation beyond unfamiliar deletion patterns, but cannot by itself distinguish optimization, representation and differences in task exposure. EM Gaussian, Bayesian linear regression and both ridge controls are worse than the FA anchor on the primary condition. In particular, the ridge with mean imputation scores \Fridgerepokc, showing why success against the original weaker control would have been insufficient evidence.
+
+\subsection{Changes in width, support size and nonlinearity}
+
+\input{generated/shift_table}
+
+The wider panels provide the clearest transfer result in Table~\ref{tab:shift}. The same lifted checkpoint runs at eight and sixteen sensors, although it was trained on five. At two missing sensors, its gains over FA Gaussian are \SFTwogainfa\ \SFTwogainfaci\ and \SFThreegainfa\ \SFThreegainfaci\ nats, respectively. The gain over the transformer at sixteen sensors is \SFThreegainpfn\ \SFThreegainpfnci. The residual MLP cannot be evaluated at these widths. Its absence establishes an interface limitation of this specific control, not a performance victory over every possible variable width network.
+
+The unconstrained EM covariance fit deteriorates on sixteen sensors, where mean NLL reaches 2.977 compared with \SFThreefaOne\ for the factor anchor. This is consistent with unstable estimation from limited incomplete support. The lifted representation remains competitive in that setting. The transformer also accepts more sensors, but at sixteen its NLL of \SFThreepfn\ is close to the FA anchor and materially worse than the lifted network.
+
+With only sixteen support rows, the lifted network retains a \SFSixgainfa\ \SFSixgainfaci\ nat gain over FA Gaussian, whereas the transformer has NLL \SFSixpfn\ and the anchor \SFSixfaOne. With 96 rows, the lifted model again has the lowest mean NLL among the methods fixed for v2. Stronger response nonlinearity produces a different result. At $\alpha=0.8$ and two missing sensors, the lifted network and transformer have essentially identical means, with paired gain \XFFourkkTwoliftvspfn\ \XFFourkkTwoliftvspfnci. With all sensors observed the transformer is better by \XFFourkkZeroliftvspfnabs\ nats. Conversely, with truly linear sensors, the FA anchor is best: the learned model's gain over it is \SFFivegainfa\ \SFFivegainfaci\ nats at two missing sensors. Structure helps under several tested shifts, but learning a correction is not automatically beneficial when the anchor already matches the response family well.
+
+\subsection{Component ablations}
+
+\input{generated/ablation_table}
+
+Removing the nuisance dimension while retaining the rest of the small model changes NLL from 0.097 to 0.232 at two missing sensors. The paired difference is \AblLiftabs\ \AblLiftci\ nats, and the scalar variant is worse than the untrained FA Gaussian baseline. Removing cavity inputs instead changes NLL to 0.123, a loss of \AblCavabs\ \AblCavci\ nats. Adding a second nuisance dimension gives 0.098 and supplies no material benefit on a generator with one shared noise factor. Table~\ref{tab:ablation} thus supports both lifting and cavity conditioning under the tested learning regime, with lifting accounting for the larger separation.
+
+The scalar cavity architecture from the earlier study remains worse than the anchor after retraining with the larger shared task pool: its two deletion NLL is \Frepocavityfreshkc, or \Ablrepocavityfreshvsfaabs\ nats worse than FA Gaussian. These empirical failures should not be read as a theorem about every scalar predictor. The structural argument concerns fixed local contributions; the context conditioned ablation has a broader input class and is evaluated here experimentally.
+
+\subsection{Real networks and the transformer advantage}
+\label{sec:exp-real}
+
+\input{generated/real_table}
+
+On Beijing PM$_{2.5}$, Bayesian linear regression is the strongest reported closed form under natural missingness, with NLL \RbeijingeZerovalblr. Fine tuning the lifted network reduces this to \RbeijingeZerovalftlift, a paired gain of \RbeijingeZerovsblr\ \RbeijingeZerovsblrci\ nats. Its gain over BLR remains \RbeijingeSixvsblr\ \RbeijingeSixvsblrci\ with six additional deletions. Synthetic pretraining helps relative to adaptation from initialization by \RbeijingeZerovsnopreabs\ \RbeijingeZerovsnopreci\ nats under natural missingness.
+
+The fine tuned transformer is nevertheless better than the lifted network: its NLL is \RbeijingeZerovalftpfn, and the lifted model's gain is \RbeijingeZerovspfn\ \RbeijingeZerovspfnci. This is the failed v2 endpoint E4b. The disadvantage persists after six extra deletions, with gain \RbeijingeSixvspfn\ \RbeijingeSixvspfnci. Before adaptation, the ordering is reversed at that deletion condition: the lifted model is better by \RbeijingeSixzsliftvspfnabs\ \RbeijingeSixzsliftvspfnci. Good transfer from the synthetic source therefore does not imply the best performance after target specific training.
+
+On the Air Quality device, the fine tuned lifted network improves on FA Gaussian at two missing sensors by \RairqcoeTwovsfa\ \RairqcoeTwovsfaci\ nats for CO and \RairqnoTwoeTwovsfa\ \RairqnoTwoeTwovsfaci\ for NO$_2$. Its paired gains over the transformer are negative for both targets: \RairqcoeTwovspfn\ \RairqcoeTwovspfnci\ and \RairqnoTwoeTwovspfn\ \RairqnoTwoeTwovspfnci. Cavity conditioning also ceases to help on adapted CO, where the static lifted variant has lower NLL. These observations constrain any claim that cavity refinement itself reliably improves every real sensor task.
+
+\subsection{Lifted sites as the transformer readout}
+\label{sec:exp-v3}
+
+\input{generated/v3_results_table}
+
+The v3 transformer readout isolates a narrower comparison: identical backbone, training recipe and seed, with a different probabilistic output layer. On the new G1 panel with two missing sensors, LCT gains \VthreeGOnekTwolctvspfn\ \VthreeGOnekTwolctvspfnci\ nats over the ordinary transformer. On G3 with sixteen sensors, the gain is \VthreeGThreekTwolctvspfn\ \VthreeGThreekTwolctvspfnci. Both declared endpoints pass. Relative to the small lifted network, LCT differs by \VthreeGOnekTwolctvslift\ \VthreeGOnekTwolctvsliftci\ on G1 and improves by \VthreeGThreekTwolctvslift\ \VthreeGThreekTwolctvsliftci\ on G3. The descriptive F1 result closes \Gaplct\% of the HMC reference gap, but F1 was already used when this model was designed.
+
+The recorded training curve reaches the ordinary transformer's final training NLL after \Trainlctreach\ of 30,000 updates. Starting at a useful anchor plausibly contributes to this difference, since the ordinary head begins without that predictor. This is an optimization observation for the recorded curves, not a matched accuracy timing benchmark. On the previously used sixteen support row panel, LCT still scores 0.457, worse than the small model's 0.363. Giving the backbone a structured readout does not remove all of its sensitivity to limited calibration support.
+
+On previously unscored Beijing NO$_2$, LCT reduces NLL from \VthreebeijingnoTwoeZerovallift\ for the small model to \VthreebeijingnoTwoeZerovallct. The paired gain is \VthreebeijingnoTwoeZerolctvslift\ \VthreebeijingnoTwoeZerolctvsliftci, so E7a passes. This recovers \VthreebeijingnoTwoeZerorecovered\% of the mean gap between the small network and transformer for the protocol seed. Against the transformer itself, the gain is \VthreebeijingnoTwoeZerolctvspfn\ \VthreebeijingnoTwoeZerolctvspfnci. Although the interval includes zero, its lower bound is below the fixed $-0.02$ margin. E7b therefore fails: absence of a clear superiority difference does not establish noninferiority. With six more stations removed, the paired gain is \VthreebeijingnoTwoeSixlctvspfn\ \VthreebeijingnoTwoeSixlctvspfnci, also too uncertain to establish a general ordering.
+
+On CO, the descriptive comparison recovers \VthreebeijingcoeZerorecovered\% of the small model's gap under natural missingness, and the paired gain over the transformer is \VthreebeijingcoeZerolctvspfn\ \VthreebeijingcoeZerolctvspfnci\ nats. Post hoc PM$_{2.5}$ and device analyses show partial recovery as well: \Xplctpmrecovered\% on Beijing PM$_{2.5}$ and \XplctairqcoeTworecovered\% and \XplctairqnoTwoeTworecovered\% on device CO and NO$_2$ at two deletions. With all device NO$_2$ channels present, LCT does not recover the gap. These results support a useful readout in some settings, while leaving real data superiority unresolved.
+
+\subsection{Calibration, training seeds and computational cost}
+
+\input{generated/calib_table}
+\input{generated/seeds_table}
+\input{generated/compute_table}
+
+Coverage helps distinguish likelihood gains from a predictor that is simply too confident. On F1 at two deletions, the lifted network has central 90\% coverage \CalliftOneFcov, compared with \CalfaOneFcov\ for FA Gaussian. Its CRPS and RMSE are \CalliftOneFcrps\ and \CalliftOneFrmse, against \CalfaOneFcrps\ and \CalfaOneFrmse\ for that anchor. On Beijing, both fine tuned learned models have coverage \CalliftOneBcov, while FA Gaussian has \CalfaOneBcov. The transformer nevertheless has lower Beijing CRPS and RMSE than the lifted network. Near nominal marginal coverage therefore coexists with a meaningful difference in predictive sharpness and point accuracy; it does not establish conditional calibration.
+
+The second transformer seeds in Table~\ref{tab:seeds} were added post hoc. Synthetic gains retain their direction and positive intervals. The real NO$_2$ readout result is less stable: E7a changes from a gain of 0.062 for the protocol seed to 0.042 with an interval that includes zero for seed two. Gap recovery changes from \VthreebeijingnoTwoeZerorecovered\% to \Vthreeseedtworecovered\%, or \Vthreeseedavgrecovered\% after averaging the two seeds. The original E7b remains a failed noninferiority endpoint, and the additional seeds do not renew the confirmation claim.
+
+Table~\ref{tab:compute} records training and inference on one CPU core. The small model uses 0.22 core hours and 7.2 ms per F1 task, compared with 3.11 core hours and 42.9 ms for the transformer. LCT uses 3.15 core hours and 55.7 ms. A task in this timing exercise contains 480 query evaluations. Neural anchor preprocessing is batched and excluded, while the closed form rows include their unbatched NumPy fitting costs. Thus these numbers describe the measured implementation, with an asymmetric preprocessing boundary; they are not a complete deployment cost comparison. The larger v4 run is excluded from efficacy comparisons for the provenance reasons below.

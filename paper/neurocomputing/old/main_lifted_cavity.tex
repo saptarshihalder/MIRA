@@ -1,0 +1,80 @@
+%% Manuscript prepared with the supplied Elsevier CAS double column template.
+%% Class files and bibliography style are distributed unchanged.
+\documentclass[a4paper,fleqn]{cas-dc}
+\usepackage[numbers]{natbib}
+\usepackage{microtype}
+\usepackage{url}
+\newtheorem{proposition}{Proposition}
+\newdefinition{remark}{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\D}{\mathcal{D}}
+\input{generated/numbers}
+
+\begin{document}
+\let\WriteBookmarks\relax
+\let\printorcid\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+\shorttitle{Lifted Gaussian Site Layers for Sensor Fusion}
+\shortauthors{Anonymous Authors}
+\title[mode=title]{Lifted Gaussian Site Layers for In Context Sensor Fusion}
+\author{Anonymous Authors}
+
+\begin{abstract}
+A sensor deployment often has only a short calibration record and must continue to predict when some sensors become unavailable. The difficulty is that the sensors share disturbances, so a useful reading can change its role when another reading becomes available. We study probabilistic prediction from incomplete calibration data and arbitrary subsets of query sensors. We first characterize a limitation of Gaussian experts defined independently over the scalar target: when sensors share noise, experts that reproduce every singleton posterior cannot generally reproduce the posterior for a sensor pair. We then introduce support calibrated Gaussian site layers over the target and a small shared nuisance state. Under a linear Gaussian factor model, their product gives exact inference for each observed subset. A generic rank condition also identifies when the nuisance dimension is necessary for static sites. In the learned model, factor analysis of the support supplies an initial predictor, and a shared network refines each site using the posterior formed by the other sensors. The same construction provides a structured output layer for a transformer. Across the completed synthetic protocols, the compact cavity network improves likelihood under missing sensor counts absent from training and transfers from five sensors to sixteen. On the main panel it closes \GapliftOne\% of the reference gap, compared with \Gappfn\% for the larger transformer trained on the same task distribution. The transformer site layer retains these synthetic benefits and improves the compact model on real sensor networks, while a conventional transformer remains stronger in several real conditions. The results identify a practical role for explicit shared noise structure in context based sensor calibration.
+\end{abstract}
+
+\begin{highlights}
+\item Shared sensor noise can reverse the predictive role of an individual reading.
+\item Gaussian sites over a target and nuisance state support arbitrary sensor subsets.
+\item Support calibration initializes both cavity networks and transformer site layers.
+\item Completed experiments show synthetic gains and a useful real data tradeoff.
+\end{highlights}
+\begin{keywords}
+Sensor fusion \sep In context learning \sep Missing observations \sep Gaussian sites \sep Factor analysis \sep Probabilistic prediction
+\end{keywords}
+\maketitle
+
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/setup}
+\input{sections/theory}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/architecture_overview.pdf}
+\caption{\label{fig:overview}Architecture of the support calibrated Gaussian site predictor. The support matrix and query readings are illustrative; gray cells mark missing entries. A factor analysis anchor estimated from the incomplete support initializes the sites. Either a shared cavity network or a transformer supplies learned corrections. Only observed query sensors contribute natural parameters to the joint Gaussian over the target and nuisance state. Marginalization produces a predictive distribution for the target. The alternative routes are separate tested models.}
+\end{figure*}
+
+\input{sections/method}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/cavity_refinement.pdf}
+\caption{\label{fig:cavity}One round of cavity refinement. Removing sensor \(j\)'s current site forms a joint target and nuisance posterior from the remaining observed sites. Its moments and the support fitted sensor response supply a predicted reading and residual features. The shared network returns corrections to the offset, slope, nuisance loading and log variance. The corrected site remains positive semidefinite in precision. Three synchronous rounds are used in the compact reported model.}
+\end{figure*}
+
+\input{sections/experiments}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\section*{Data and code availability}
+The implementation, historical experiment protocols and score exports are available in the MIRA repository at \url{https://github.com/saptarshihalder/MIRA}. The quantitative tables in this manuscript retain the numerical values of the existing lifted cavity paper. The accompanying source package includes the bibliography, the unchanged Elsevier class and style files, the figure sources and a record connecting the manuscript to the source revision. Public availability of code and score summaries does not by itself establish reproduction of every trained checkpoint. The distinctions between aggregate result checks, prediction replay and the later provenance audit are documented in Appendix~\ref{app:provenance}.
+
+\section*{Declaration of competing interest}
+The authors will supply their affiliations and declarations before submission. Author information in this draft is anonymous.
+
+\bibliographystyle{cas-model2-names}
+\bibliography{references}
+
+\clearpage
+\appendix
+\input{sections/proofs}
+\input{sections/reference_details}
+\input{sections/audit_appendix}
+% Flush deferred tables before the unmodified CAS class records its last page.
+\clearpage
+\addtocounter{page}{-1}
+\end{document}

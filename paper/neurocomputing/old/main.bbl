@@ -1,0 +1,370 @@
+\begin{thebibliography}{39}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Inproceedings
+\bibitem[{Anderson and Rubin(1956)}]{anderson1956statistical}
+\bibinfo{author}{Anderson, T.W.}, \bibinfo{author}{Rubin, H.},
+  \bibinfo{year}{1956}.
+\newblock \bibinfo{title}{Statistical inference in factor analysis}, in:
+  \bibinfo{booktitle}{Proceedings of the Third Berkeley Symposium on
+  Mathematical Statistics and Probability}, \bibinfo{publisher}{University of
+  California Press}. pp. \bibinfo{pages}{111--150}.
+%Type = Article
+\bibitem[{De~Vito et~al.(2008)De~Vito, Massera, Piga, Martinotto and
+  Di~Francia}]{devito2008airquality}
+\bibinfo{author}{De~Vito, S.}, \bibinfo{author}{Massera, E.},
+  \bibinfo{author}{Piga, M.}, \bibinfo{author}{Martinotto, L.},
+  \bibinfo{author}{Di~Francia, G.}, \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{On field calibration of an electronic nose for
+  benzene estimation in an urban pollution monitoring scenario}.
+\newblock \bibinfo{journal}{Sensors and Actuators B: Chemical}
+  \bibinfo{volume}{129}, \bibinfo{pages}{750--757}.
+\newblock \DOIprefix\doi{10.1016/j.snb.2007.09.060}.
+%Type = Inproceedings
+\bibitem[{Deisenroth and Mohamed(2012)}]{deisenroth2012ep}
+\bibinfo{author}{Deisenroth, M.P.}, \bibinfo{author}{Mohamed, S.},
+  \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Expectation propagation in {G}aussian process
+  dynamical systems}, in: \bibinfo{booktitle}{Advances in Neural Information
+  Processing Systems}, \bibinfo{publisher}{Curran Associates, Inc.}
+%Type = Article
+\bibitem[{Dempster et~al.(1977)Dempster, Laird and Rubin}]{dempster1977em}
+\bibinfo{author}{Dempster, A.P.}, \bibinfo{author}{Laird, N.M.},
+  \bibinfo{author}{Rubin, D.B.}, \bibinfo{year}{1977}.
+\newblock \bibinfo{title}{Maximum likelihood from incomplete data via the {EM}
+  algorithm}.
+\newblock \bibinfo{journal}{Journal of the Royal Statistical Society: Series B}
+  \bibinfo{volume}{39}, \bibinfo{pages}{1--22}.
+\newblock \DOIprefix\doi{10.1111/j.2517-6161.1977.tb01600.x}.
+%Type = Article
+\bibitem[{Dong et~al.(2025)Dong, Wang, Liu, Guo, Kang, Shen and
+  Mao}]{dong2025difnet}
+\bibinfo{author}{Dong, R.}, \bibinfo{author}{Wang, M.}, \bibinfo{author}{Liu,
+  N.}, \bibinfo{author}{Guo, T.}, \bibinfo{author}{Kang, J.},
+  \bibinfo{author}{Shen, X.}, \bibinfo{author}{Mao, Y.}, \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{{DIFNet}: Decentralized information filtering fusion
+  neural network with unknown correlation in sensor measurement noises}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2508.18854} \URLprefix
+  \url{https://arxiv.org/abs/2508.18854v1}.
+%Type = Inproceedings
+\bibitem[{Eslami et~al.(2014)Eslami, Tarlow, Kohli and Winn}]{eslami2014just}
+\bibinfo{author}{Eslami, S.M.A.}, \bibinfo{author}{Tarlow, D.},
+  \bibinfo{author}{Kohli, P.}, \bibinfo{author}{Winn, J.},
+  \bibinfo{year}{2014}.
+\newblock \bibinfo{title}{Just-in-time learning for fast and flexible
+  inference}, in: \bibinfo{booktitle}{Advances in Neural Information Processing
+  Systems}, \bibinfo{publisher}{Curran Associates, Inc.}
+%Type = Article
+\bibitem[{Garc{\'i}a-Fern{\'a}ndez et~al.(2015)Garc{\'i}a-Fern{\'a}ndez,
+  Svensson, Morelande and S{\"a}rkk{\"a}}]{garciafernandez2015plf}
+\bibinfo{author}{Garc{\'i}a-Fern{\'a}ndez, {\'A}.F.},
+  \bibinfo{author}{Svensson, L.}, \bibinfo{author}{Morelande, M.R.},
+  \bibinfo{author}{S{\"a}rkk{\"a}, S.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Posterior linearization filter: Principles and
+  implementation using sigma points}.
+\newblock \bibinfo{journal}{IEEE Transactions on Signal Processing}
+  \bibinfo{volume}{63}, \bibinfo{pages}{5561--5573}.
+\newblock \DOIprefix\doi{10.1109/TSP.2015.2454485}.
+%Type = Inproceedings
+\bibitem[{Garnelo et~al.(2018)Garnelo, Rosenbaum, Maddison, Ramalho, Saxton,
+  Shanahan, Teh, Rezende and Eslami}]{garnelo2018cnp}
+\bibinfo{author}{Garnelo, M.}, \bibinfo{author}{Rosenbaum, D.},
+  \bibinfo{author}{Maddison, C.}, \bibinfo{author}{Ramalho, T.},
+  \bibinfo{author}{Saxton, D.}, \bibinfo{author}{Shanahan, M.},
+  \bibinfo{author}{Teh, Y.W.}, \bibinfo{author}{Rezende, D.},
+  \bibinfo{author}{Eslami, S.M.A.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Conditional neural processes}, in:
+  \bibinfo{booktitle}{Proceedings of the 35th International Conference on
+  Machine Learning}, pp. \bibinfo{pages}{1704--1713}.
+%Type = Article
+\bibitem[{Gneiting and Raftery(2007)}]{gneiting2007scoring}
+\bibinfo{author}{Gneiting, T.}, \bibinfo{author}{Raftery, A.E.},
+  \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{Strictly proper scoring rules, prediction, and
+  estimation}.
+\newblock \bibinfo{journal}{Journal of the American Statistical Association}
+  \bibinfo{volume}{102}, \bibinfo{pages}{359--378}.
+\newblock \DOIprefix\doi{10.1198/016214506000001437}.
+%Type = Inproceedings
+\bibitem[{Gregor and LeCun(2010)}]{gregor2010lista}
+\bibinfo{author}{Gregor, K.}, \bibinfo{author}{LeCun, Y.},
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{Learning fast approximations of sparse coding}, in:
+  \bibinfo{booktitle}{Proceedings of the 27th International Conference on
+  Machine Learning}, pp. \bibinfo{pages}{399--406}.
+%Type = Inproceedings
+\bibitem[{Heess et~al.(2013)Heess, Tarlow and Winn}]{heess2013learning}
+\bibinfo{author}{Heess, N.}, \bibinfo{author}{Tarlow, D.},
+  \bibinfo{author}{Winn, J.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Learning to pass expectation propagation messages},
+  in: \bibinfo{booktitle}{Advances in Neural Information Processing Systems},
+  \bibinfo{publisher}{Curran Associates, Inc.}
+%Type = Article
+\bibitem[{Hinton(2002)}]{hinton2002poe}
+\bibinfo{author}{Hinton, G.E.}, \bibinfo{year}{2002}.
+\newblock \bibinfo{title}{Training products of experts by minimizing
+  contrastive divergence}.
+\newblock \bibinfo{journal}{Neural Computation} \bibinfo{volume}{14},
+  \bibinfo{pages}{1771--1800}.
+\newblock \DOIprefix\doi{10.1162/089976602760128018}.
+%Type = Inproceedings
+\bibitem[{Hollmann et~al.(2023)Hollmann, M{\"u}ller, Eggensperger and
+  Hutter}]{hollmann2023tabpfn}
+\bibinfo{author}{Hollmann, N.}, \bibinfo{author}{M{\"u}ller, S.},
+  \bibinfo{author}{Eggensperger, K.}, \bibinfo{author}{Hutter, F.},
+  \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{{TabPFN}: A transformer that solves small tabular
+  classification problems in a second}, in: \bibinfo{booktitle}{International
+  Conference on Learning Representations}.
+%Type = Article
+\bibitem[{Hollmann et~al.(2025)Hollmann, M{\"u}ller, Purucker, Krishnakumar,
+  K{\"o}rfer, Hoo, Schirrmeister and Hutter}]{hollmann2025tabpfnv2}
+\bibinfo{author}{Hollmann, N.}, \bibinfo{author}{M{\"u}ller, S.},
+  \bibinfo{author}{Purucker, L.}, \bibinfo{author}{Krishnakumar, A.},
+  \bibinfo{author}{K{\"o}rfer, M.}, \bibinfo{author}{Hoo, S.B.},
+  \bibinfo{author}{Schirrmeister, R.T.}, \bibinfo{author}{Hutter, F.},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Accurate predictions on small data with a tabular
+  foundation model}.
+\newblock \bibinfo{journal}{Nature} \bibinfo{volume}{637},
+  \bibinfo{pages}{319--326}.
+\newblock \DOIprefix\doi{10.1038/s41586-024-08328-6}.
+%Type = Inproceedings
+\bibitem[{Jitkrittum et~al.(2015)Jitkrittum, Gretton, Heess, Eslami,
+  Lakshminarayanan, Sejdinovic and Szab{\'o}}]{jitkrittum2015kernel}
+\bibinfo{author}{Jitkrittum, W.}, \bibinfo{author}{Gretton, A.},
+  \bibinfo{author}{Heess, N.}, \bibinfo{author}{Eslami, S.M.A.},
+  \bibinfo{author}{Lakshminarayanan, B.}, \bibinfo{author}{Sejdinovic, D.},
+  \bibinfo{author}{Szab{\'o}, Z.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Kernel-based just-in-time learning for passing
+  expectation propagation messages}, in: \bibinfo{booktitle}{Proceedings of the
+  31st Conference on Uncertainty in Artificial Intelligence (UAI)}.
+%Type = Article
+\bibitem[{Josse et~al.(2019)Josse, Prost, Scornet and
+  Varoquaux}]{josse2019consistency}
+\bibinfo{author}{Josse, J.}, \bibinfo{author}{Prost, N.},
+  \bibinfo{author}{Scornet, E.}, \bibinfo{author}{Varoquaux, G.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{On the consistency of supervised learning with
+  missing values}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:1902.06931v1} \URLprefix
+  \url{https://arxiv.org/abs/1902.06931v1}.
+%Type = Inproceedings
+\bibitem[{Julier and Uhlmann(1997)}]{julier1997ci}
+\bibinfo{author}{Julier, S.J.}, \bibinfo{author}{Uhlmann, J.K.},
+  \bibinfo{year}{1997}.
+\newblock \bibinfo{title}{A non-divergent estimation algorithm in the presence
+  of unknown correlations}, in: \bibinfo{booktitle}{Proceedings of the American
+  Control Conference}, pp. \bibinfo{pages}{2369--2373}.
+\newblock \DOIprefix\doi{10.1109/ACC.1997.609105}.
+%Type = Inproceedings
+\bibitem[{Kim et~al.(2019)Kim, Mnih, Schwarz, Garnelo, Eslami, Rosenbaum,
+  Vinyals and Teh}]{kim2019anp}
+\bibinfo{author}{Kim, H.}, \bibinfo{author}{Mnih, A.},
+  \bibinfo{author}{Schwarz, J.}, \bibinfo{author}{Garnelo, M.},
+  \bibinfo{author}{Eslami, A.}, \bibinfo{author}{Rosenbaum, D.},
+  \bibinfo{author}{Vinyals, O.}, \bibinfo{author}{Teh, Y.W.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Attentive neural processes}, in:
+  \bibinfo{booktitle}{International Conference on Learning Representations}.
+%Type = Inproceedings
+\bibitem[{Le~Morvan et~al.(2020)Le~Morvan, Josse, Moreau, Scornet and
+  Varoquaux}]{lemorvan2020neumiss}
+\bibinfo{author}{Le~Morvan, M.}, \bibinfo{author}{Josse, J.},
+  \bibinfo{author}{Moreau, T.}, \bibinfo{author}{Scornet, E.},
+  \bibinfo{author}{Varoquaux, G.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{{NeuMiss} networks: differentiable programming for
+  supervised learning with missing values}, in: \bibinfo{booktitle}{Advances in
+  Neural Information Processing Systems}, \bibinfo{publisher}{Curran
+  Associates, Inc.}. pp. \bibinfo{pages}{5980--5990}.
+%Type = Inproceedings
+\bibitem[{Lee et~al.(2019)Lee, Lee, Kim, Kosiorek, Choi and
+  Teh}]{lee2019settransformer}
+\bibinfo{author}{Lee, J.}, \bibinfo{author}{Lee, Y.}, \bibinfo{author}{Kim,
+  J.}, \bibinfo{author}{Kosiorek, A.}, \bibinfo{author}{Choi, S.},
+  \bibinfo{author}{Teh, Y.W.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Set transformer: A framework for attention-based
+  permutation-invariant neural networks}, in: \bibinfo{booktitle}{Proceedings
+  of the 36th International Conference on Machine Learning}, pp.
+  \bibinfo{pages}{3744--3753}.
+%Type = Book
+\bibitem[{Little and Rubin(2019)}]{little2019statistical}
+\bibinfo{author}{Little, R.J.A.}, \bibinfo{author}{Rubin, D.B.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Statistical Analysis with Missing Data}.
+\newblock \bibinfo{edition}{3} ed., \bibinfo{publisher}{Wiley}.
+\newblock \DOIprefix\doi{10.1002/9781119482260}.
+%Type = Inproceedings
+\bibitem[{Ma et~al.(2021)Ma, Ren, Zhao, Tulyakov, Wu and Peng}]{ma2021smil}
+\bibinfo{author}{Ma, M.}, \bibinfo{author}{Ren, J.}, \bibinfo{author}{Zhao,
+  L.}, \bibinfo{author}{Tulyakov, S.}, \bibinfo{author}{Wu, C.},
+  \bibinfo{author}{Peng, X.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{{SMIL}: Multimodal learning with severely missing
+  modality}, in: \bibinfo{booktitle}{Proceedings of the AAAI Conference on
+  Artificial Intelligence}, pp. \bibinfo{pages}{2302--2310}.
+\newblock \DOIprefix\doi{10.1609/aaai.v35i3.16330}.
+%Type = Article
+\bibitem[{MacKay(1992)}]{mackay1992bayesian}
+\bibinfo{author}{MacKay, D.J.C.}, \bibinfo{year}{1992}.
+\newblock \bibinfo{title}{Bayesian interpolation}.
+\newblock \bibinfo{journal}{Neural Computation} \bibinfo{volume}{4},
+  \bibinfo{pages}{415--447}.
+\newblock \DOIprefix\doi{10.1162/neco.1992.4.3.415}.
+%Type = Inproceedings
+\bibitem[{Minka(2001)}]{minka2001ep}
+\bibinfo{author}{Minka, T.P.}, \bibinfo{year}{2001}.
+\newblock \bibinfo{title}{Expectation propagation for approximate {B}ayesian
+  inference}, in: \bibinfo{booktitle}{Proceedings of the 17th Conference on
+  Uncertainty in Artificial Intelligence (UAI)}, pp. \bibinfo{pages}{362--369}.
+%Type = Article
+\bibitem[{Monga et~al.(2021)Monga, Li and Eldar}]{monga2021unrolling}
+\bibinfo{author}{Monga, V.}, \bibinfo{author}{Li, Y.}, \bibinfo{author}{Eldar,
+  Y.C.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Algorithm unrolling: Interpretable, efficient deep
+  learning for signal and image processing}.
+\newblock \bibinfo{journal}{IEEE Signal Processing Magazine}
+  \bibinfo{volume}{38}, \bibinfo{pages}{18--44}.
+\newblock \DOIprefix\doi{10.1109/MSP.2020.3016905}.
+%Type = Inproceedings
+\bibitem[{M{\"u}ller et~al.(2022)M{\"u}ller, Hollmann, Pineda~Arango, Grabocka
+  and Hutter}]{muller2022pfn}
+\bibinfo{author}{M{\"u}ller, S.}, \bibinfo{author}{Hollmann, N.},
+  \bibinfo{author}{Pineda~Arango, S.}, \bibinfo{author}{Grabocka, J.},
+  \bibinfo{author}{Hutter, F.}, \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{Transformers can do {B}ayesian inference}, in:
+  \bibinfo{booktitle}{International Conference on Learning Representations}.
+%Type = Incollection
+\bibitem[{Neal(2011)}]{neal2011hmc}
+\bibinfo{author}{Neal, R.M.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{MCMC} using {H}amiltonian dynamics}, in:
+  \bibinfo{editor}{Brooks, S.}, \bibinfo{editor}{Gelman, A.},
+  \bibinfo{editor}{Jones, G.}, \bibinfo{editor}{Meng, X.L.} (Eds.),
+  \bibinfo{booktitle}{Handbook of Markov Chain Monte Carlo}.
+  \bibinfo{publisher}{Chapman and Hall/CRC}. chapter~\bibinfo{chapter}{5}, pp.
+  \bibinfo{pages}{113--162}.
+\newblock \DOIprefix\doi{10.1201/b10905-6}.
+%Type = Inproceedings
+\bibitem[{Qu et~al.(2025)Qu, Holzm{\"u}ller, Varoquaux and
+  Le~Morvan}]{qu2025tabicl}
+\bibinfo{author}{Qu, J.}, \bibinfo{author}{Holzm{\"u}ller, D.},
+  \bibinfo{author}{Varoquaux, G.}, \bibinfo{author}{Le~Morvan, M.},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{{TabICL}: A tabular foundation model for in-context
+  learning on large data}, in: \bibinfo{booktitle}{Proceedings of the 42nd
+  International Conference on Machine Learning}, pp.
+  \bibinfo{pages}{50817--50847}.
+%Type = Article
+\bibitem[{Revach et~al.(2022)Revach, Shlezinger, Ni, Escoriza, van Sloun and
+  Eldar}]{revach2022kalmannet}
+\bibinfo{author}{Revach, G.}, \bibinfo{author}{Shlezinger, N.},
+  \bibinfo{author}{Ni, X.}, \bibinfo{author}{Escoriza, A.L.},
+  \bibinfo{author}{van Sloun, R.J.G.}, \bibinfo{author}{Eldar, Y.C.},
+  \bibinfo{year}{2022}.
+\newblock \bibinfo{title}{{KalmanNet}: Neural network aided {K}alman filtering
+  for partially known dynamics}.
+\newblock \bibinfo{journal}{IEEE Transactions on Signal Processing}
+  \bibinfo{volume}{70}, \bibinfo{pages}{1532--1547}.
+\newblock \DOIprefix\doi{10.1109/TSP.2022.3158588}.
+%Type = Article
+\bibitem[{Rubin(1976)}]{rubin1976inference}
+\bibinfo{author}{Rubin, D.B.}, \bibinfo{year}{1976}.
+\newblock \bibinfo{title}{Inference and missing data}.
+\newblock \bibinfo{journal}{Biometrika} \bibinfo{volume}{63},
+  \bibinfo{pages}{581--592}.
+\newblock \DOIprefix\doi{10.1093/biomet/63.3.581}.
+%Type = Article
+\bibitem[{Rubin and Thayer(1982)}]{rubin1982em}
+\bibinfo{author}{Rubin, D.B.}, \bibinfo{author}{Thayer, D.T.},
+  \bibinfo{year}{1982}.
+\newblock \bibinfo{title}{{EM} algorithms for {ML} factor analysis}.
+\newblock \bibinfo{journal}{Psychometrika} \bibinfo{volume}{47},
+  \bibinfo{pages}{69--76}.
+\newblock \DOIprefix\doi{10.1007/BF02293851}.
+%Type = Inproceedings
+\bibitem[{Theis et~al.(2016)Theis, van~den Oord and Bethge}]{theis2016note}
+\bibinfo{author}{Theis, L.}, \bibinfo{author}{van~den Oord, A.},
+  \bibinfo{author}{Bethge, M.}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{A note on the evaluation of generative models}, in:
+  \bibinfo{booktitle}{International Conference on Learning Representations}.
+%Type = Article
+\bibitem[{Tipping and Bishop(1999)}]{tipping1999ppca}
+\bibinfo{author}{Tipping, M.E.}, \bibinfo{author}{Bishop, C.M.},
+  \bibinfo{year}{1999}.
+\newblock \bibinfo{title}{Probabilistic principal component analysis}.
+\newblock \bibinfo{journal}{Journal of the Royal Statistical Society: Series B}
+  \bibinfo{volume}{61}, \bibinfo{pages}{611--622}.
+\newblock \DOIprefix\doi{10.1111/1467-9868.00196}.
+%Type = Article
+\bibitem[{Vergara et~al.(2012)Vergara, Vembu, Ayhan, Ryan, Homer and
+  Huerta}]{vergara2012drift}
+\bibinfo{author}{Vergara, A.}, \bibinfo{author}{Vembu, S.},
+  \bibinfo{author}{Ayhan, T.}, \bibinfo{author}{Ryan, M.A.},
+  \bibinfo{author}{Homer, M.L.}, \bibinfo{author}{Huerta, R.},
+  \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{Chemical gas sensor drift compensation using
+  classifier ensembles}.
+\newblock \bibinfo{journal}{Sensors and Actuators B: Chemical}
+  \bibinfo{volume}{166--167}, \bibinfo{pages}{320--329}.
+\newblock \DOIprefix\doi{10.1016/j.snb.2012.01.074}.
+%Type = Article
+\bibitem[{Wang et~al.(2025)Wang, Liu, Tang, Zhang and Shen}]{wang2025ifnet}
+\bibinfo{author}{Wang, M.}, \bibinfo{author}{Liu, H.}, \bibinfo{author}{Tang,
+  H.}, \bibinfo{author}{Zhang, M.}, \bibinfo{author}{Shen, X.},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{{IFNet}: Data-driven multisensor estimate fusion with
+  unknown correlation in sensor measurement noises}.
+\newblock \bibinfo{journal}{Information Fusion} \bibinfo{volume}{115},
+  \bibinfo{pages}{102750}.
+\newblock \DOIprefix\doi{10.1016/j.inffus.2024.102750}.
+%Type = Inproceedings
+\bibitem[{Wu and Goodman(2018)}]{wu2018mvae}
+\bibinfo{author}{Wu, M.}, \bibinfo{author}{Goodman, N.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{Multimodal generative models for scalable
+  weakly-supervised learning}, in: \bibinfo{booktitle}{Advances in Neural
+  Information Processing Systems}, \bibinfo{publisher}{Curran Associates, Inc.}
+%Type = Inproceedings
+\bibitem[{Zaheer et~al.(2017)Zaheer, Kottur, Ravanbakhsh, P{\'o}czos,
+  Salakhutdinov and Smola}]{zaheer2017deepsets}
+\bibinfo{author}{Zaheer, M.}, \bibinfo{author}{Kottur, S.},
+  \bibinfo{author}{Ravanbakhsh, S.}, \bibinfo{author}{P{\'o}czos, B.},
+  \bibinfo{author}{Salakhutdinov, R.}, \bibinfo{author}{Smola, A.J.},
+  \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Deep sets}, in: \bibinfo{booktitle}{Advances in
+  Neural Information Processing Systems}, \bibinfo{publisher}{Curran
+  Associates, Inc.}
+%Type = Article
+\bibitem[{Zhang et~al.(2017)Zhang, Guo, Dong, He, Xu and
+  Chen}]{zhang2017beijing}
+\bibinfo{author}{Zhang, S.}, \bibinfo{author}{Guo, B.}, \bibinfo{author}{Dong,
+  A.}, \bibinfo{author}{He, J.}, \bibinfo{author}{Xu, Z.},
+  \bibinfo{author}{Chen, S.X.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Cautionary tales on air-quality improvement in
+  {B}eijing}.
+\newblock \bibinfo{journal}{Proceedings of the Royal Society A}
+  \bibinfo{volume}{473}, \bibinfo{pages}{20170457}.
+\newblock \DOIprefix\doi{10.1098/rspa.2017.0457}.
+%Type = Article
+\bibitem[{Zimmerman et~al.(2018)Zimmerman, Presto, Kumar, Gu, Hauryliuk,
+  Robinson, Robinson and Subramanian}]{zimmerman2018calibration}
+\bibinfo{author}{Zimmerman, N.}, \bibinfo{author}{Presto, A.A.},
+  \bibinfo{author}{Kumar, S.P.N.}, \bibinfo{author}{Gu, J.},
+  \bibinfo{author}{Hauryliuk, A.}, \bibinfo{author}{Robinson, E.S.},
+  \bibinfo{author}{Robinson, A.L.}, \bibinfo{author}{Subramanian, R.},
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{A machine learning calibration model using random
+  forests to improve sensor performance for lower-cost air quality monitoring}.
+\newblock \bibinfo{journal}{Atmospheric Measurement Techniques}
+  \bibinfo{volume}{11}, \bibinfo{pages}{291--313}.
+\newblock \DOIprefix\doi{10.5194/amt-11-291-2018}.
+
+\end{thebibliography}

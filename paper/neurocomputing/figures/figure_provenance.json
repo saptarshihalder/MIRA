@@ -1,0 +1,59 @@
+{
+  "source_files": [
+    "paper/lifted_cavity/main.tex",
+    "paper/lifted_cavity/method_lct.tex",
+    "experiments/lifted_cavity/models.py",
+    "experiments/lifted_cavity/lct.py",
+    "experiments/lifted_cavity/anchors.py"
+  ],
+  "notes": [
+    "Calibration cells, query icons and network glyphs are illustrative.",
+    "The analytical figure is computed from the stated Gaussian model, not experimental measurements.",
+    "Cavity updates are synchronous and the site head starts at zero.",
+    "The transformer has one site update, rather than three cavity rounds.",
+    "No sensor permutation claim is made for the transformer.",
+    "Export size is 14.4 inches wide; text is designed for 180 mm reproduction.",
+    "PDF and SVG contain vector shapes; PNG width is 5184 pixels."
+  ],
+  "analytical_values": {
+    "a": [
+      1.0,
+      1.0
+    ],
+    "d": [
+      1.0,
+      0.5
+    ],
+    "sigma": 0.05,
+    "bayes_singleton_weights": [
+      0.4993757802746567,
+      0.7984031936127745
+    ],
+    "bayes_pair_weights": [
+      -0.9588145565482691,
+      1.9466840996586061
+    ],
+    "scalar_site_pair_weights": [
+      0.16742574626711038,
+      0.6647299431001115
+    ],
+    "illustrative_query": [
+      0.6,
+      0.9
+    ],
+    "joint_posterior_mean": [
+      1.1767269557637816,
+      -0.5709304859446477
+    ],
+    "joint_posterior_covariance": [
+      [
+        0.01213045688966368,
+        -0.014527493281034348
+      ],
+      [
+        -0.014527493281034348,
+        0.019394203530180856
+      ]
+    ]
+  }
+}

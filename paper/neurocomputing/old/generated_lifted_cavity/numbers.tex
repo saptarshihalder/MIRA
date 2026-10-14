@@ -1,0 +1,854 @@
+\newcommand{\AblCav}{$+$0.026}
+\newcommand{\AblCavabs}{0.026}
+\newcommand{\AblCavci}{[$+$0.022, $+$0.029]}
+\newcommand{\AblLift}{$+$0.134}
+\newcommand{\AblLiftabs}{0.134}
+\newcommand{\AblLiftci}{[$+$0.120, $+$0.148]}
+\newcommand{\AblliftOnestaticvsfa}{$+$0.054}
+\newcommand{\AblliftOnestaticvsfaabs}{0.054}
+\newcommand{\AblliftOnevsfa}{$+$0.080}
+\newcommand{\AblliftOnevsfaabs}{0.080}
+\newcommand{\AblliftTwovsfa}{$+$0.079}
+\newcommand{\AblliftTwovsfaabs}{0.079}
+\newcommand{\AblliftZerovsfa}{$-$0.054}
+\newcommand{\AblliftZerovsfaabs}{0.054}
+\newcommand{\Ablrepocavityfreshvsfa}{$-$0.159}
+\newcommand{\Ablrepocavityfreshvsfaabs}{0.159}
+\newcommand{\CalanchormlpFcov}{0.902}
+\newcommand{\CalanchormlpFcrps}{0.162}
+\newcommand{\CalanchormlpFrmse}{0.309}
+\newcommand{\CalblrccBcov}{0.861}
+\newcommand{\CalblrccBcrps}{0.182}
+\newcommand{\CalblrccBrmse}{0.374}
+\newcommand{\CalblrccFcov}{0.866}
+\newcommand{\CalblrccFcrps}{0.174}
+\newcommand{\CalblrccFrmse}{0.327}
+\newcommand{\CalemgaussBcov}{0.807}
+\newcommand{\CalemgaussBcrps}{0.207}
+\newcommand{\CalemgaussBrmse}{0.423}
+\newcommand{\CalemgaussFcov}{0.860}
+\newcommand{\CalemgaussFcrps}{0.170}
+\newcommand{\CalemgaussFrmse}{0.318}
+\newcommand{\CalfaOneBcov}{0.824}
+\newcommand{\CalfaOneBcrps}{0.189}
+\newcommand{\CalfaOneBrmse}{0.379}
+\newcommand{\CalfaOneFcov}{0.873}
+\newcommand{\CalfaOneFcrps}{0.168}
+\newcommand{\CalfaOneFrmse}{0.316}
+\newcommand{\CalliftOneBcov}{0.914}
+\newcommand{\CalliftOneBcrps}{0.171}
+\newcommand{\CalliftOneBrmse}{0.357}
+\newcommand{\CalliftOneFcov}{0.901}
+\newcommand{\CalliftOneFcrps}{0.160}
+\newcommand{\CalliftOneFrmse}{0.305}
+\newcommand{\CalpfnBcov}{0.914}
+\newcommand{\CalpfnBcrps}{0.158}
+\newcommand{\CalpfnBrmse}{0.341}
+\newcommand{\CalpfnFcov}{0.902}
+\newcommand{\CalpfnFcrps}{0.165}
+\newcommand{\CalpfnFrmse}{0.314}
+\newcommand{\Computetrainratio}{14}
+\newcommand{\FTbeijinggapqQFour}{0.01}
+\newcommand{\FTbeijinggapqQOne}{0.15}
+\newcommand{\FTbeijinggapqQThree}{0.15}
+\newcommand{\FTbeijinggapqQTwo}{0.16}
+\newcommand{\FTbeijingliftgain}{0.62}
+\newcommand{\FTbeijingpfnbetterpct}{89}
+\newcommand{\FTbeijingpfngain}{0.87}
+\newcommand{\FTbeijingtraingap}{0.19}
+\newcommand{\Fanchormlpka}{$-$0.236}
+\newcommand{\Fanchormlpkaabs}{0.236}
+\newcommand{\Fanchormlpkb}{$-$0.087}
+\newcommand{\Fanchormlpkbabs}{0.087}
+\newcommand{\Fanchormlpkc}{0.114}
+\newcommand{\Fanchormlpkd}{0.397}
+\newcommand{\Fblrccka}{0.111}
+\newcommand{\Fblrcckb}{0.091}
+\newcommand{\Fblrcckc}{0.214}
+\newcommand{\Fblrcckd}{0.450}
+\newcommand{\Fbopka}{$-$0.334}
+\newcommand{\Fbopkaabs}{0.334}
+\newcommand{\Fbopkb}{$-$0.174}
+\newcommand{\Fbopkbabs}{0.174}
+\newcommand{\Fbopkc}{0.039}
+\newcommand{\Fbopkd}{0.337}
+\newcommand{\Femgausska}{$-$0.048}
+\newcommand{\Femgausskaabs}{0.048}
+\newcommand{\Femgausskb}{0.037}
+\newcommand{\Femgausskc}{0.195}
+\newcommand{\Femgausskd}{0.441}
+\newcommand{\FfaOneka}{$-$0.152}
+\newcommand{\FfaOnekaabs}{0.152}
+\newcommand{\FfaOnekb}{$-$0.011}
+\newcommand{\FfaOnekbabs}{0.011}
+\newcommand{\FfaOnekc}{0.177}
+\newcommand{\FfaOnekd}{0.439}
+\newcommand{\Fgpkc}{0.416}
+\newcommand{\Flctka}{$-$0.265}
+\newcommand{\Flctkaabs}{0.265}
+\newcommand{\Flctkb}{$-$0.112}
+\newcommand{\Flctkbabs}{0.112}
+\newcommand{\Flctkc}{0.095}
+\newcommand{\Flctkd}{0.387}
+\newcommand{\FliftOneka}{$-$0.265}
+\newcommand{\FliftOnekaabs}{0.265}
+\newcommand{\FliftOnekb}{$-$0.112}
+\newcommand{\FliftOnekbabs}{0.112}
+\newcommand{\FliftOnekc}{0.097}
+\newcommand{\FliftOnekd}{0.395}
+\newcommand{\Fnlfaka}{$-$0.173}
+\newcommand{\Fnlfakaabs}{0.173}
+\newcommand{\Fnlfakb}{$-$0.036}
+\newcommand{\Fnlfakbabs}{0.036}
+\newcommand{\Fnlfakc}{0.151}
+\newcommand{\Fnlfakd}{0.417}
+\newcommand{\Foracleka}{$-$0.419}
+\newcommand{\Foraclekaabs}{0.419}
+\newcommand{\Foraclekb}{$-$0.250}
+\newcommand{\Foraclekbabs}{0.250}
+\newcommand{\Foraclekc}{$-$0.026}
+\newcommand{\Foraclekcabs}{0.026}
+\newcommand{\Foraclekd}{0.287}
+\newcommand{\Fpfnallka}{$-$0.237}
+\newcommand{\Fpfnallkaabs}{0.237}
+\newcommand{\Fpfnallkb}{$-$0.076}
+\newcommand{\Fpfnallkbabs}{0.076}
+\newcommand{\Fpfnallkc}{0.132}
+\newcommand{\Fpfnallkd}{0.411}
+\newcommand{\Fpfnka}{$-$0.246}
+\newcommand{\Fpfnkaabs}{0.246}
+\newcommand{\Fpfnkb}{$-$0.084}
+\newcommand{\Fpfnkbabs}{0.084}
+\newcommand{\Fpfnkc}{0.131}
+\newcommand{\Fpfnkd}{0.424}
+\newcommand{\Frepocavityfreshka}{0.055}
+\newcommand{\Frepocavityfreshkb}{0.178}
+\newcommand{\Frepocavityfreshkc}{0.336}
+\newcommand{\Frepocavityfreshkd}{0.555}
+\newcommand{\Fridgeccka}{0.026}
+\newcommand{\Fridgecckb}{0.078}
+\newcommand{\Fridgecckc}{0.216}
+\newcommand{\Fridgecckd}{0.451}
+\newcommand{\Fridgerepoka}{0.198}
+\newcommand{\Fridgerepokb}{0.280}
+\newcommand{\Fridgerepokc}{0.399}
+\newcommand{\Fridgerepokd}{0.582}
+\newcommand{\Gapanchormlp}{46}
+\newcommand{\Gaplct}{59}
+\newcommand{\GapliftOne}{58}
+\newcommand{\Gapnlfa}{19}
+\newcommand{\Gappfn}{34}
+\newcommand{\Gappfnall}{33}
+\newcommand{\MainkKOneliftvsmlp}{$+$0.024}
+\newcommand{\MainkKOneliftvsmlpabs}{0.024}
+\newcommand{\MainkKOneliftvsmlpci}{[$+$0.019, $+$0.030]}
+\newcommand{\MainkKOneliftvspfn}{$+$0.028}
+\newcommand{\MainkKOneliftvspfnabs}{0.028}
+\newcommand{\MainkKOneliftvspfnall}{$+$0.036}
+\newcommand{\MainkKOneliftvspfnallabs}{0.036}
+\newcommand{\MainkKOneliftvspfnallci}{[$+$0.028, $+$0.044]}
+\newcommand{\MainkKOneliftvspfnci}{[$+$0.020, $+$0.035]}
+\newcommand{\MainkKThreeliftvsmlp}{$+$0.002}
+\newcommand{\MainkKThreeliftvsmlpabs}{0.002}
+\newcommand{\MainkKThreeliftvsmlpci}{[$-$0.001, $+$0.005]}
+\newcommand{\MainkKThreeliftvspfn}{$+$0.029}
+\newcommand{\MainkKThreeliftvspfnabs}{0.029}
+\newcommand{\MainkKThreeliftvspfnall}{$+$0.017}
+\newcommand{\MainkKThreeliftvspfnallabs}{0.017}
+\newcommand{\MainkKThreeliftvspfnallci}{[$+$0.012, $+$0.022]}
+\newcommand{\MainkKThreeliftvspfnci}{[$+$0.024, $+$0.035]}
+\newcommand{\MainkKTwoliftvsmlp}{$+$0.016}
+\newcommand{\MainkKTwoliftvsmlpabs}{0.016}
+\newcommand{\MainkKTwoliftvsmlpci}{[$+$0.013, $+$0.020]}
+\newcommand{\MainkKTwoliftvspfn}{$+$0.033}
+\newcommand{\MainkKTwoliftvspfnabs}{0.033}
+\newcommand{\MainkKTwoliftvspfnall}{$+$0.035}
+\newcommand{\MainkKTwoliftvspfnallabs}{0.035}
+\newcommand{\MainkKTwoliftvspfnallci}{[$+$0.028, $+$0.042]}
+\newcommand{\MainkKTwoliftvspfnci}{[$+$0.027, $+$0.040]}
+\newcommand{\MainkKZeroliftvsmlp}{$+$0.030}
+\newcommand{\MainkKZeroliftvsmlpabs}{0.030}
+\newcommand{\MainkKZeroliftvsmlpci}{[$+$0.022, $+$0.037]}
+\newcommand{\MainkKZeroliftvspfn}{$+$0.020}
+\newcommand{\MainkKZeroliftvspfnabs}{0.020}
+\newcommand{\MainkKZeroliftvspfnall}{$+$0.028}
+\newcommand{\MainkKZeroliftvspfnallabs}{0.028}
+\newcommand{\MainkKZeroliftvspfnallci}{[$+$0.017, $+$0.039]}
+\newcommand{\MainkKZeroliftvspfnci}{[$+$0.009, $+$0.030]}
+\newcommand{\RairqcoeTwopfnvsblr}{$+$0.268}
+\newcommand{\RairqcoeTwopfnvsblrabs}{0.268}
+\newcommand{\RairqcoeTwopfnvsblrci}{[$+$0.076, $+$0.459]}
+\newcommand{\RairqcoeTwovalblr}{0.216}
+\newcommand{\RairqcoeTwovalem}{0.085}
+\newcommand{\RairqcoeTwovalfa}{0.116}
+\newcommand{\RairqcoeTwovalftlift}{0.008}
+\newcommand{\RairqcoeTwovalftpfn}{$-$0.052}
+\newcommand{\RairqcoeTwovalftpfnabs}{0.052}
+\newcommand{\RairqcoeTwovalgp}{0.503}
+\newcommand{\RairqcoeTwovalknn}{0.353}
+\newcommand{\RairqcoeTwovalnlfa}{0.091}
+\newcommand{\RairqcoeTwovalzslift}{0.129}
+\newcommand{\RairqcoeTwovalzspfn}{0.081}
+\newcommand{\RairqcoeTwovsblr}{$+$0.208}
+\newcommand{\RairqcoeTwovsblrabs}{0.208}
+\newcommand{\RairqcoeTwovsblrci}{[$+$0.036, $+$0.379]}
+\newcommand{\RairqcoeTwovsem}{$+$0.077}
+\newcommand{\RairqcoeTwovsemabs}{0.077}
+\newcommand{\RairqcoeTwovsemci}{[$-$0.013, $+$0.166]}
+\newcommand{\RairqcoeTwovsfa}{$+$0.107}
+\newcommand{\RairqcoeTwovsfaabs}{0.107}
+\newcommand{\RairqcoeTwovsfaci}{[$+$0.015, $+$0.200]}
+\newcommand{\RairqcoeTwovsmlp}{$+$0.102}
+\newcommand{\RairqcoeTwovsmlpabs}{0.102}
+\newcommand{\RairqcoeTwovsmlpci}{[$+$0.007, $+$0.197]}
+\newcommand{\RairqcoeTwovsnopre}{$-$0.015}
+\newcommand{\RairqcoeTwovsnopreabs}{0.015}
+\newcommand{\RairqcoeTwovsnopreci}{[$-$0.044, $+$0.014]}
+\newcommand{\RairqcoeTwovspfn}{$-$0.060}
+\newcommand{\RairqcoeTwovspfnabs}{0.060}
+\newcommand{\RairqcoeTwovspfnci}{[$-$0.106, $-$0.014]}
+\newcommand{\RairqcoeTwovsstatic}{$-$0.037}
+\newcommand{\RairqcoeTwovsstaticabs}{0.037}
+\newcommand{\RairqcoeTwovsstaticci}{[$-$0.078, $+$0.004]}
+\newcommand{\RairqcoeTwozsliftvspfn}{$-$0.048}
+\newcommand{\RairqcoeTwozsliftvspfnabs}{0.048}
+\newcommand{\RairqcoeTwozsliftvspfnci}{[$-$0.084, $-$0.012]}
+\newcommand{\RairqcoeZeropfnvsblr}{$+$1.200}
+\newcommand{\RairqcoeZeropfnvsblrabs}{1.200}
+\newcommand{\RairqcoeZeropfnvsblrci}{[$-$0.155, $+$2.555]}
+\newcommand{\RairqcoeZerovalblr}{1.037}
+\newcommand{\RairqcoeZerovalem}{0.074}
+\newcommand{\RairqcoeZerovalfa}{0.052}
+\newcommand{\RairqcoeZerovalftlift}{$-$0.040}
+\newcommand{\RairqcoeZerovalftliftabs}{0.040}
+\newcommand{\RairqcoeZerovalftpfn}{$-$0.163}
+\newcommand{\RairqcoeZerovalftpfnabs}{0.163}
+\newcommand{\RairqcoeZerovalgp}{3.364}
+\newcommand{\RairqcoeZerovalknn}{0.571}
+\newcommand{\RairqcoeZerovalnlfa}{0.144}
+\newcommand{\RairqcoeZerovalzslift}{0.044}
+\newcommand{\RairqcoeZerovalzspfn}{$-$0.017}
+\newcommand{\RairqcoeZerovalzspfnabs}{0.017}
+\newcommand{\RairqcoeZerovsblr}{$+$1.077}
+\newcommand{\RairqcoeZerovsblrabs}{1.077}
+\newcommand{\RairqcoeZerovsblrci}{[$-$0.278, $+$2.432]}
+\newcommand{\RairqcoeZerovsem}{$+$0.113}
+\newcommand{\RairqcoeZerovsemabs}{0.113}
+\newcommand{\RairqcoeZerovsemci}{[$-$0.061, $+$0.288]}
+\newcommand{\RairqcoeZerovsfa}{$+$0.092}
+\newcommand{\RairqcoeZerovsfaabs}{0.092}
+\newcommand{\RairqcoeZerovsfaci}{[$-$0.034, $+$0.217]}
+\newcommand{\RairqcoeZerovsmlp}{$+$0.064}
+\newcommand{\RairqcoeZerovsmlpabs}{0.064}
+\newcommand{\RairqcoeZerovsmlpci}{[$-$0.063, $+$0.192]}
+\newcommand{\RairqcoeZerovsnopre}{$+$0.039}
+\newcommand{\RairqcoeZerovsnopreabs}{0.039}
+\newcommand{\RairqcoeZerovsnopreci}{[$-$0.029, $+$0.106]}
+\newcommand{\RairqcoeZerovspfn}{$-$0.124}
+\newcommand{\RairqcoeZerovspfnabs}{0.124}
+\newcommand{\RairqcoeZerovspfnci}{[$-$0.202, $-$0.045]}
+\newcommand{\RairqcoeZerovsstatic}{$-$0.046}
+\newcommand{\RairqcoeZerovsstaticabs}{0.046}
+\newcommand{\RairqcoeZerovsstaticci}{[$-$0.131, $+$0.038]}
+\newcommand{\RairqcoeZerozsliftvspfn}{$-$0.061}
+\newcommand{\RairqcoeZerozsliftvspfnabs}{0.061}
+\newcommand{\RairqcoeZerozsliftvspfnci}{[$-$0.130, $+$0.008]}
+\newcommand{\Rairqcoepisodes}{23}
+\newcommand{\Rairqconatmiss}{0.0}
+\newcommand{\RairqnoTwoeTwopfnvsblr}{$+$0.203}
+\newcommand{\RairqnoTwoeTwopfnvsblrabs}{0.203}
+\newcommand{\RairqnoTwoeTwopfnvsblrci}{[$+$0.111, $+$0.295]}
+\newcommand{\RairqnoTwoeTwovalblr}{$-$0.178}
+\newcommand{\RairqnoTwoeTwovalblrabs}{0.178}
+\newcommand{\RairqnoTwoeTwovalem}{$-$0.175}
+\newcommand{\RairqnoTwoeTwovalemabs}{0.175}
+\newcommand{\RairqnoTwoeTwovalfa}{$-$0.155}
+\newcommand{\RairqnoTwoeTwovalfaabs}{0.155}
+\newcommand{\RairqnoTwoeTwovalftlift}{$-$0.337}
+\newcommand{\RairqnoTwoeTwovalftliftabs}{0.337}
+\newcommand{\RairqnoTwoeTwovalftpfn}{$-$0.381}
+\newcommand{\RairqnoTwoeTwovalftpfnabs}{0.381}
+\newcommand{\RairqnoTwoeTwovalgp}{$-$0.198}
+\newcommand{\RairqnoTwoeTwovalgpabs}{0.198}
+\newcommand{\RairqnoTwoeTwovalknn}{$-$0.063}
+\newcommand{\RairqnoTwoeTwovalknnabs}{0.063}
+\newcommand{\RairqnoTwoeTwovalnlfa}{$-$0.142}
+\newcommand{\RairqnoTwoeTwovalnlfaabs}{0.142}
+\newcommand{\RairqnoTwoeTwovalzslift}{$-$0.233}
+\newcommand{\RairqnoTwoeTwovalzsliftabs}{0.233}
+\newcommand{\RairqnoTwoeTwovalzspfn}{$-$0.231}
+\newcommand{\RairqnoTwoeTwovalzspfnabs}{0.231}
+\newcommand{\RairqnoTwoeTwovsblr}{$+$0.159}
+\newcommand{\RairqnoTwoeTwovsblrabs}{0.159}
+\newcommand{\RairqnoTwoeTwovsblrci}{[$+$0.073, $+$0.245]}
+\newcommand{\RairqnoTwoeTwovsem}{$+$0.162}
+\newcommand{\RairqnoTwoeTwovsemabs}{0.162}
+\newcommand{\RairqnoTwoeTwovsemci}{[$+$0.046, $+$0.278]}
+\newcommand{\RairqnoTwoeTwovsfa}{$+$0.181}
+\newcommand{\RairqnoTwoeTwovsfaabs}{0.181}
+\newcommand{\RairqnoTwoeTwovsfaci}{[$+$0.076, $+$0.287]}
+\newcommand{\RairqnoTwoeTwovsmlp}{$+$0.190}
+\newcommand{\RairqnoTwoeTwovsmlpabs}{0.190}
+\newcommand{\RairqnoTwoeTwovsmlpci}{[$+$0.116, $+$0.264]}
+\newcommand{\RairqnoTwoeTwovsnopre}{$+$0.021}
+\newcommand{\RairqnoTwoeTwovsnopreabs}{0.021}
+\newcommand{\RairqnoTwoeTwovsnopreci}{[$+$0.005, $+$0.036]}
+\newcommand{\RairqnoTwoeTwovspfn}{$-$0.044}
+\newcommand{\RairqnoTwoeTwovspfnabs}{0.044}
+\newcommand{\RairqnoTwoeTwovspfnci}{[$-$0.074, $-$0.014]}
+\newcommand{\RairqnoTwoeTwovsstatic}{$+$0.005}
+\newcommand{\RairqnoTwoeTwovsstaticabs}{0.005}
+\newcommand{\RairqnoTwoeTwovsstaticci}{[$-$0.013, $+$0.023]}
+\newcommand{\RairqnoTwoeTwozsliftvspfn}{$+$0.003}
+\newcommand{\RairqnoTwoeTwozsliftvspfnabs}{0.003}
+\newcommand{\RairqnoTwoeTwozsliftvspfnci}{[$-$0.045, $+$0.050]}
+\newcommand{\RairqnoTwoeZeropfnvsblr}{$+$0.430}
+\newcommand{\RairqnoTwoeZeropfnvsblrabs}{0.430}
+\newcommand{\RairqnoTwoeZeropfnvsblrci}{[$+$0.252, $+$0.607]}
+\newcommand{\RairqnoTwoeZerovalblr}{$-$0.055}
+\newcommand{\RairqnoTwoeZerovalblrabs}{0.055}
+\newcommand{\RairqnoTwoeZerovalem}{$-$0.237}
+\newcommand{\RairqnoTwoeZerovalemabs}{0.237}
+\newcommand{\RairqnoTwoeZerovalfa}{$-$0.196}
+\newcommand{\RairqnoTwoeZerovalfaabs}{0.196}
+\newcommand{\RairqnoTwoeZerovalftlift}{$-$0.412}
+\newcommand{\RairqnoTwoeZerovalftliftabs}{0.412}
+\newcommand{\RairqnoTwoeZerovalftpfn}{$-$0.485}
+\newcommand{\RairqnoTwoeZerovalftpfnabs}{0.485}
+\newcommand{\RairqnoTwoeZerovalgp}{25.217}
+\newcommand{\RairqnoTwoeZerovalknn}{$-$0.010}
+\newcommand{\RairqnoTwoeZerovalknnabs}{0.010}
+\newcommand{\RairqnoTwoeZerovalnlfa}{$-$0.090}
+\newcommand{\RairqnoTwoeZerovalnlfaabs}{0.090}
+\newcommand{\RairqnoTwoeZerovalzslift}{$-$0.350}
+\newcommand{\RairqnoTwoeZerovalzsliftabs}{0.350}
+\newcommand{\RairqnoTwoeZerovalzspfn}{$-$0.360}
+\newcommand{\RairqnoTwoeZerovalzspfnabs}{0.360}
+\newcommand{\RairqnoTwoeZerovsblr}{$+$0.357}
+\newcommand{\RairqnoTwoeZerovsblrabs}{0.357}
+\newcommand{\RairqnoTwoeZerovsblrci}{[$+$0.184, $+$0.530]}
+\newcommand{\RairqnoTwoeZerovsem}{$+$0.175}
+\newcommand{\RairqnoTwoeZerovsemabs}{0.175}
+\newcommand{\RairqnoTwoeZerovsemci}{[$-$0.010, $+$0.360]}
+\newcommand{\RairqnoTwoeZerovsfa}{$+$0.216}
+\newcommand{\RairqnoTwoeZerovsfaabs}{0.216}
+\newcommand{\RairqnoTwoeZerovsfaci}{[$+$0.027, $+$0.405]}
+\newcommand{\RairqnoTwoeZerovsmlp}{$+$0.166}
+\newcommand{\RairqnoTwoeZerovsmlpabs}{0.166}
+\newcommand{\RairqnoTwoeZerovsmlpci}{[$+$0.039, $+$0.293]}
+\newcommand{\RairqnoTwoeZerovsnopre}{$-$0.007}
+\newcommand{\RairqnoTwoeZerovsnopreabs}{0.007}
+\newcommand{\RairqnoTwoeZerovsnopreci}{[$-$0.046, $+$0.032]}
+\newcommand{\RairqnoTwoeZerovspfn}{$-$0.072}
+\newcommand{\RairqnoTwoeZerovspfnabs}{0.072}
+\newcommand{\RairqnoTwoeZerovspfnci}{[$-$0.102, $-$0.042]}
+\newcommand{\RairqnoTwoeZerovsstatic}{$-$0.010}
+\newcommand{\RairqnoTwoeZerovsstaticabs}{0.010}
+\newcommand{\RairqnoTwoeZerovsstaticci}{[$-$0.048, $+$0.027]}
+\newcommand{\RairqnoTwoeZerozsliftvspfn}{$-$0.010}
+\newcommand{\RairqnoTwoeZerozsliftvspfnabs}{0.010}
+\newcommand{\RairqnoTwoeZerozsliftvspfnci}{[$-$0.067, $+$0.046]}
+\newcommand{\RairqnoTwoepisodes}{23}
+\newcommand{\RairqnoTwonatmiss}{0.0}
+\newcommand{\RbeijingeSixpfnvsblr}{$+$0.206}
+\newcommand{\RbeijingeSixpfnvsblrabs}{0.206}
+\newcommand{\RbeijingeSixpfnvsblrci}{[$+$0.170, $+$0.241]}
+\newcommand{\RbeijingeSixvalblr}{0.442}
+\newcommand{\RbeijingeSixvalem}{0.569}
+\newcommand{\RbeijingeSixvalfa}{0.562}
+\newcommand{\RbeijingeSixvalftlift}{0.305}
+\newcommand{\RbeijingeSixvalftpfn}{0.236}
+\newcommand{\RbeijingeSixvalgp}{0.934}
+\newcommand{\RbeijingeSixvalknn}{0.540}
+\newcommand{\RbeijingeSixvalnlfa}{0.610}
+\newcommand{\RbeijingeSixvalzslift}{0.561}
+\newcommand{\RbeijingeSixvalzspfn}{0.687}
+\newcommand{\RbeijingeSixvsblr}{$+$0.137}
+\newcommand{\RbeijingeSixvsblrabs}{0.137}
+\newcommand{\RbeijingeSixvsblrci}{[$+$0.104, $+$0.170]}
+\newcommand{\RbeijingeSixvsem}{$+$0.265}
+\newcommand{\RbeijingeSixvsemabs}{0.265}
+\newcommand{\RbeijingeSixvsemci}{[$+$0.207, $+$0.322]}
+\newcommand{\RbeijingeSixvsfa}{$+$0.258}
+\newcommand{\RbeijingeSixvsfaabs}{0.258}
+\newcommand{\RbeijingeSixvsfaci}{[$+$0.202, $+$0.314]}
+\newcommand{\RbeijingeSixvsnopre}{$+$0.040}
+\newcommand{\RbeijingeSixvsnopreabs}{0.040}
+\newcommand{\RbeijingeSixvsnopreci}{[$+$0.032, $+$0.047]}
+\newcommand{\RbeijingeSixvspfn}{$-$0.069}
+\newcommand{\RbeijingeSixvspfnabs}{0.069}
+\newcommand{\RbeijingeSixvspfnci}{[$-$0.080, $-$0.058]}
+\newcommand{\RbeijingeSixvsstatic}{$+$0.044}
+\newcommand{\RbeijingeSixvsstaticabs}{0.044}
+\newcommand{\RbeijingeSixvsstaticci}{[$+$0.028, $+$0.060]}
+\newcommand{\RbeijingeSixzsliftvspfn}{$+$0.127}
+\newcommand{\RbeijingeSixzsliftvspfnabs}{0.127}
+\newcommand{\RbeijingeSixzsliftvspfnci}{[$+$0.057, $+$0.197]}
+\newcommand{\RbeijingeThreepfnvsblr}{$+$0.285}
+\newcommand{\RbeijingeThreepfnvsblrabs}{0.285}
+\newcommand{\RbeijingeThreepfnvsblrci}{[$+$0.240, $+$0.330]}
+\newcommand{\RbeijingeThreevalblr}{0.406}
+\newcommand{\RbeijingeThreevalem}{0.742}
+\newcommand{\RbeijingeThreevalfa}{0.615}
+\newcommand{\RbeijingeThreevalftlift}{0.237}
+\newcommand{\RbeijingeThreevalftpfn}{0.121}
+\newcommand{\RbeijingeThreevalgp}{1.312}
+\newcommand{\RbeijingeThreevalknn}{0.514}
+\newcommand{\RbeijingeThreevalnlfa}{0.744}
+\newcommand{\RbeijingeThreevalzslift}{0.661}
+\newcommand{\RbeijingeThreevalzspfn}{0.743}
+\newcommand{\RbeijingeThreevsblr}{$+$0.169}
+\newcommand{\RbeijingeThreevsblrabs}{0.169}
+\newcommand{\RbeijingeThreevsblrci}{[$+$0.124, $+$0.213]}
+\newcommand{\RbeijingeThreevsem}{$+$0.507}
+\newcommand{\RbeijingeThreevsemabs}{0.507}
+\newcommand{\RbeijingeThreevsemci}{[$+$0.343, $+$0.672]}
+\newcommand{\RbeijingeThreevsfa}{$+$0.378}
+\newcommand{\RbeijingeThreevsfaabs}{0.378}
+\newcommand{\RbeijingeThreevsfaci}{[$+$0.311, $+$0.445]}
+\newcommand{\RbeijingeThreevsnopre}{$+$0.042}
+\newcommand{\RbeijingeThreevsnopreabs}{0.042}
+\newcommand{\RbeijingeThreevsnopreci}{[$+$0.030, $+$0.054]}
+\newcommand{\RbeijingeThreevspfn}{$-$0.116}
+\newcommand{\RbeijingeThreevspfnabs}{0.116}
+\newcommand{\RbeijingeThreevspfnci}{[$-$0.130, $-$0.102]}
+\newcommand{\RbeijingeThreevsstatic}{$+$0.049}
+\newcommand{\RbeijingeThreevsstaticabs}{0.049}
+\newcommand{\RbeijingeThreevsstaticci}{[$+$0.030, $+$0.068]}
+\newcommand{\RbeijingeThreezsliftvspfn}{$+$0.082}
+\newcommand{\RbeijingeThreezsliftvspfnabs}{0.082}
+\newcommand{\RbeijingeThreezsliftvspfnci}{[$-$0.017, $+$0.181]}
+\newcommand{\RbeijingeZeropfnvsblr}{$+$0.312}
+\newcommand{\RbeijingeZeropfnvsblrabs}{0.312}
+\newcommand{\RbeijingeZeropfnvsblrci}{[$+$0.256, $+$0.368]}
+\newcommand{\RbeijingeZerovalblr}{0.399}
+\newcommand{\RbeijingeZerovalem}{1.032}
+\newcommand{\RbeijingeZerovalfa}{0.677}
+\newcommand{\RbeijingeZerovalftlift}{0.205}
+\newcommand{\RbeijingeZerovalftpfn}{0.087}
+\newcommand{\RbeijingeZerovalgp}{1.884}
+\newcommand{\RbeijingeZerovalknn}{0.508}
+\newcommand{\RbeijingeZerovalnlfa}{0.938}
+\newcommand{\RbeijingeZerovalzslift}{0.826}
+\newcommand{\RbeijingeZerovalzspfn}{0.958}
+\newcommand{\RbeijingeZerovsblr}{$+$0.194}
+\newcommand{\RbeijingeZerovsblrabs}{0.194}
+\newcommand{\RbeijingeZerovsblrci}{[$+$0.131, $+$0.257]}
+\newcommand{\RbeijingeZerovsem}{$+$0.839}
+\newcommand{\RbeijingeZerovsemabs}{0.839}
+\newcommand{\RbeijingeZerovsemci}{[$+$0.527, $+$1.150]}
+\newcommand{\RbeijingeZerovsfa}{$+$0.472}
+\newcommand{\RbeijingeZerovsfaabs}{0.472}
+\newcommand{\RbeijingeZerovsfaci}{[$+$0.386, $+$0.558]}
+\newcommand{\RbeijingeZerovsnopre}{$+$0.041}
+\newcommand{\RbeijingeZerovsnopreabs}{0.041}
+\newcommand{\RbeijingeZerovsnopreci}{[$+$0.033, $+$0.050]}
+\newcommand{\RbeijingeZerovspfn}{$-$0.118}
+\newcommand{\RbeijingeZerovspfnabs}{0.118}
+\newcommand{\RbeijingeZerovspfnci}{[$-$0.145, $-$0.091]}
+\newcommand{\RbeijingeZerovsstatic}{$+$0.054}
+\newcommand{\RbeijingeZerovsstaticabs}{0.054}
+\newcommand{\RbeijingeZerovsstaticci}{[$+$0.034, $+$0.074]}
+\newcommand{\RbeijingeZerozsliftvspfn}{$+$0.132}
+\newcommand{\RbeijingeZerozsliftvspfnabs}{0.132}
+\newcommand{\RbeijingeZerozsliftvspfnci}{[$-$0.055, $+$0.318]}
+\newcommand{\Rbeijingepisodes}{718}
+\newcommand{\Rbeijingnatmiss}{1.6}
+\newcommand{\SFFiveanchormlp}{0.036}
+\newcommand{\SFFivefaOne}{0.009}
+\newcommand{\SFFivegainfa}{$-$0.022}
+\newcommand{\SFFivegainfaabs}{0.022}
+\newcommand{\SFFivegainfaci}{[$-$0.029, $-$0.015]}
+\newcommand{\SFFivegainpfn}{$+$0.054}
+\newcommand{\SFFivegainpfnabs}{0.054}
+\newcommand{\SFFivegainpfnci}{[$+$0.041, $+$0.067]}
+\newcommand{\SFFiveliftOne}{0.031}
+\newcommand{\SFFivenlfa}{0.030}
+\newcommand{\SFFiveoracle}{$-$0.066}
+\newcommand{\SFFiveoracleabs}{0.066}
+\newcommand{\SFFivepfn}{0.085}
+\newcommand{\SFFivepfnall}{0.080}
+\newcommand{\SFFouranchormlp}{0.235}
+\newcommand{\SFFourfaOne}{0.334}
+\newcommand{\SFFourgainfa}{$+$0.143}
+\newcommand{\SFFourgainfaabs}{0.143}
+\newcommand{\SFFourgainfaci}{[$+$0.111, $+$0.175]}
+\newcommand{\SFFourgainpfn}{$+$0.000}
+\newcommand{\SFFourgainpfnabs}{0.000}
+\newcommand{\SFFourgainpfnci}{[$-$0.011, $+$0.012]}
+\newcommand{\SFFourliftOne}{0.191}
+\newcommand{\SFFournlfa}{0.258}
+\newcommand{\SFFouroracle}{$-$0.086}
+\newcommand{\SFFouroracleabs}{0.086}
+\newcommand{\SFFourpfn}{0.191}
+\newcommand{\SFFourpfnall}{0.190}
+\newcommand{\SFSevenanchormlp}{0.074}
+\newcommand{\SFSevenfaOne}{0.114}
+\newcommand{\SFSevengainfa}{$+$0.061}
+\newcommand{\SFSevengainfaabs}{0.061}
+\newcommand{\SFSevengainfaci}{[$+$0.050, $+$0.073]}
+\newcommand{\SFSevengainpfn}{$+$0.029}
+\newcommand{\SFSevengainpfnabs}{0.029}
+\newcommand{\SFSevengainpfnci}{[$+$0.023, $+$0.036]}
+\newcommand{\SFSevenliftOne}{0.052}
+\newcommand{\SFSevennlfa}{0.073}
+\newcommand{\SFSevenoracle}{$-$0.043}
+\newcommand{\SFSevenoracleabs}{0.043}
+\newcommand{\SFSevenpfn}{0.081}
+\newcommand{\SFSevenpfnall}{0.080}
+\newcommand{\SFSixanchormlp}{0.371}
+\newcommand{\SFSixfaOne}{0.510}
+\newcommand{\SFSixgainfa}{$+$0.146}
+\newcommand{\SFSixgainfaabs}{0.146}
+\newcommand{\SFSixgainfaci}{[$+$0.073, $+$0.219]}
+\newcommand{\SFSixgainpfn}{$+$0.160}
+\newcommand{\SFSixgainpfnabs}{0.160}
+\newcommand{\SFSixgainpfnci}{[$+$0.062, $+$0.258]}
+\newcommand{\SFSixliftOne}{0.363}
+\newcommand{\SFSixnlfa}{0.496}
+\newcommand{\SFSixoracle}{$-$0.060}
+\newcommand{\SFSixoracleabs}{0.060}
+\newcommand{\SFSixpfn}{0.523}
+\newcommand{\SFSixpfnall}{0.483}
+\newcommand{\SFThreefaOne}{$-$0.797}
+\newcommand{\SFThreefaOneabs}{0.797}
+\newcommand{\SFThreegainfa}{$+$0.148}
+\newcommand{\SFThreegainfaabs}{0.148}
+\newcommand{\SFThreegainfaci}{[$+$0.115, $+$0.181]}
+\newcommand{\SFThreegainpfn}{$+$0.144}
+\newcommand{\SFThreegainpfnabs}{0.144}
+\newcommand{\SFThreegainpfnci}{[$+$0.127, $+$0.161]}
+\newcommand{\SFThreeliftOne}{$-$0.945}
+\newcommand{\SFThreeliftOneabs}{0.945}
+\newcommand{\SFThreenlfa}{$-$0.841}
+\newcommand{\SFThreenlfaabs}{0.841}
+\newcommand{\SFThreeoracle}{$-$1.142}
+\newcommand{\SFThreeoracleabs}{1.142}
+\newcommand{\SFThreepfn}{$-$0.801}
+\newcommand{\SFThreepfnabs}{0.801}
+\newcommand{\SFThreepfnall}{$-$0.790}
+\newcommand{\SFThreepfnallabs}{0.790}
+\newcommand{\SFTwofaOne}{$-$0.296}
+\newcommand{\SFTwofaOneabs}{0.296}
+\newcommand{\SFTwogainfa}{$+$0.131}
+\newcommand{\SFTwogainfaabs}{0.131}
+\newcommand{\SFTwogainfaci}{[$+$0.097, $+$0.165]}
+\newcommand{\SFTwogainpfn}{$+$0.065}
+\newcommand{\SFTwogainpfnabs}{0.065}
+\newcommand{\SFTwogainpfnci}{[$+$0.051, $+$0.078]}
+\newcommand{\SFTwoliftOne}{$-$0.427}
+\newcommand{\SFTwoliftOneabs}{0.427}
+\newcommand{\SFTwonlfa}{$-$0.327}
+\newcommand{\SFTwonlfaabs}{0.327}
+\newcommand{\SFTwooracle}{$-$0.598}
+\newcommand{\SFTwooracleabs}{0.598}
+\newcommand{\SFTwopfn}{$-$0.362}
+\newcommand{\SFTwopfnabs}{0.362}
+\newcommand{\SFTwopfnall}{$-$0.343}
+\newcommand{\SFTwopfnallabs}{0.343}
+\newcommand{\Trainlctgap}{0.025}
+\newcommand{\Trainlctreach}{10{,}750}
+\newcommand{\Untrainedka}{$-$0.133}
+\newcommand{\Untrainedkaabs}{0.133}
+\newcommand{\Untrainedkb}{0.003}
+\newcommand{\Untrainedkc}{0.187}
+\newcommand{\Untrainedkd}{0.445}
+\newcommand{\VThreeEFiveci}{[$+$0.027, $+$0.042]}
+\newcommand{\VThreeEFivegain}{$+$0.035}
+\newcommand{\VThreeEFivegainabs}{0.035}
+\newcommand{\VThreeEFivepass}{pass}
+\newcommand{\VThreeESevenaci}{[$+$0.024, $+$0.100]}
+\newcommand{\VThreeESevenagain}{$+$0.062}
+\newcommand{\VThreeESevenagainabs}{0.062}
+\newcommand{\VThreeESevenapass}{pass}
+\newcommand{\VThreeESevenbci}{[$-$0.093, $+$0.052]}
+\newcommand{\VThreeESevenbgain}{$-$0.021}
+\newcommand{\VThreeESevenbgainabs}{0.021}
+\newcommand{\VThreeESevenbpass}{fail}
+\newcommand{\VThreeESixci}{[$+$0.133, $+$0.167]}
+\newcommand{\VThreeESixgain}{$+$0.150}
+\newcommand{\VThreeESixgainabs}{0.150}
+\newcommand{\VThreeESixpass}{pass}
+\newcommand{\VTwoEFouraci}{[$+$0.131, $+$0.257]}
+\newcommand{\VTwoEFouragain}{$+$0.194}
+\newcommand{\VTwoEFouragainabs}{0.194}
+\newcommand{\VTwoEFourapass}{pass}
+\newcommand{\VTwoEFourbci}{[$-$0.145, $-$0.091]}
+\newcommand{\VTwoEFourbgain}{$-$0.118}
+\newcommand{\VTwoEFourbgainabs}{0.118}
+\newcommand{\VTwoEFourbpass}{fail}
+\newcommand{\VTwoEOneci}{[$+$0.043, $+$0.065]}
+\newcommand{\VTwoEOnegain}{$+$0.054}
+\newcommand{\VTwoEOnegainabs}{0.054}
+\newcommand{\VTwoEOnepass}{pass}
+\newcommand{\VTwoEThreeaci}{[$+$0.115, $+$0.181]}
+\newcommand{\VTwoEThreeagain}{$+$0.148}
+\newcommand{\VTwoEThreeagainabs}{0.148}
+\newcommand{\VTwoEThreeapass}{pass}
+\newcommand{\VTwoEThreebci}{[$+$0.127, $+$0.161]}
+\newcommand{\VTwoEThreebgain}{$+$0.144}
+\newcommand{\VTwoEThreebgainabs}{0.144}
+\newcommand{\VTwoEThreebpass}{pass}
+\newcommand{\VTwoETwoci}{[$+$0.027, $+$0.040]}
+\newcommand{\VTwoETwogain}{$+$0.033}
+\newcommand{\VTwoETwogainabs}{0.033}
+\newcommand{\VTwoETwopass}{pass}
+\newcommand{\VthreeGOnekOnelctvsfa}{$+$0.118}
+\newcommand{\VthreeGOnekOnelctvsfaabs}{0.118}
+\newcommand{\VthreeGOnekOnelctvsfaci}{[$+$0.094, $+$0.141]}
+\newcommand{\VthreeGOnekOnelctvslift}{$-$0.000}
+\newcommand{\VthreeGOnekOnelctvsliftabs}{0.000}
+\newcommand{\VthreeGOnekOnelctvsliftci}{[$-$0.006, $+$0.006]}
+\newcommand{\VthreeGOnekOnelctvspfn}{$+$0.025}
+\newcommand{\VthreeGOnekOnelctvspfnabs}{0.025}
+\newcommand{\VthreeGOnekOnelctvspfnci}{[$+$0.015, $+$0.035]}
+\newcommand{\VthreeGOnekOneliftvspfn}{$+$0.025}
+\newcommand{\VthreeGOnekOneliftvspfnabs}{0.025}
+\newcommand{\VthreeGOnekOneliftvspfnci}{[$+$0.017, $+$0.033]}
+\newcommand{\VthreeGOnekThreelctvsfa}{$+$0.056}
+\newcommand{\VthreeGOnekThreelctvsfaabs}{0.056}
+\newcommand{\VthreeGOnekThreelctvsfaci}{[$+$0.048, $+$0.063]}
+\newcommand{\VthreeGOnekThreelctvslift}{$+$0.008}
+\newcommand{\VthreeGOnekThreelctvsliftabs}{0.008}
+\newcommand{\VthreeGOnekThreelctvsliftci}{[$+$0.005, $+$0.011]}
+\newcommand{\VthreeGOnekThreelctvspfn}{$+$0.038}
+\newcommand{\VthreeGOnekThreelctvspfnabs}{0.038}
+\newcommand{\VthreeGOnekThreelctvspfnci}{[$+$0.031, $+$0.045]}
+\newcommand{\VthreeGOnekThreeliftvspfn}{$+$0.030}
+\newcommand{\VthreeGOnekThreeliftvspfnabs}{0.030}
+\newcommand{\VthreeGOnekThreeliftvspfnci}{[$+$0.023, $+$0.038]}
+\newcommand{\VthreeGOnekTwolctvsfa}{$+$0.091}
+\newcommand{\VthreeGOnekTwolctvsfaabs}{0.091}
+\newcommand{\VthreeGOnekTwolctvsfaci}{[$+$0.077, $+$0.105]}
+\newcommand{\VthreeGOnekTwolctvslift}{$+$0.002}
+\newcommand{\VthreeGOnekTwolctvsliftabs}{0.002}
+\newcommand{\VthreeGOnekTwolctvsliftci}{[$-$0.002, $+$0.006]}
+\newcommand{\VthreeGOnekTwolctvspfn}{$+$0.035}
+\newcommand{\VthreeGOnekTwolctvspfnabs}{0.035}
+\newcommand{\VthreeGOnekTwolctvspfnci}{[$+$0.027, $+$0.042]}
+\newcommand{\VthreeGOnekTwoliftvspfn}{$+$0.033}
+\newcommand{\VthreeGOnekTwoliftvspfnabs}{0.033}
+\newcommand{\VthreeGOnekTwoliftvspfnci}{[$+$0.026, $+$0.040]}
+\newcommand{\VthreeGOnekZerolctvsfa}{$+$0.139}
+\newcommand{\VthreeGOnekZerolctvsfaabs}{0.139}
+\newcommand{\VthreeGOnekZerolctvsfaci}{[$+$0.102, $+$0.176]}
+\newcommand{\VthreeGOnekZerolctvslift}{$-$0.000}
+\newcommand{\VthreeGOnekZerolctvsliftabs}{0.000}
+\newcommand{\VthreeGOnekZerolctvsliftci}{[$-$0.009, $+$0.008]}
+\newcommand{\VthreeGOnekZerolctvspfn}{$+$0.014}
+\newcommand{\VthreeGOnekZerolctvspfnabs}{0.014}
+\newcommand{\VthreeGOnekZerolctvspfnci}{[$+$0.001, $+$0.027]}
+\newcommand{\VthreeGOnekZeroliftvspfn}{$+$0.014}
+\newcommand{\VthreeGOnekZeroliftvspfnabs}{0.014}
+\newcommand{\VthreeGOnekZeroliftvspfnci}{[$+$0.004, $+$0.024]}
+\newcommand{\VthreeGThreekTwolctvsfa}{$+$0.145}
+\newcommand{\VthreeGThreekTwolctvsfaabs}{0.145}
+\newcommand{\VthreeGThreekTwolctvsfaci}{[$+$0.118, $+$0.172]}
+\newcommand{\VthreeGThreekTwolctvslift}{$+$0.017}
+\newcommand{\VthreeGThreekTwolctvsliftabs}{0.017}
+\newcommand{\VthreeGThreekTwolctvsliftci}{[$+$0.004, $+$0.029]}
+\newcommand{\VthreeGThreekTwolctvspfn}{$+$0.150}
+\newcommand{\VthreeGThreekTwolctvspfnabs}{0.150}
+\newcommand{\VthreeGThreekTwolctvspfnci}{[$+$0.133, $+$0.167]}
+\newcommand{\VthreeGThreekTwoliftvspfn}{$+$0.134}
+\newcommand{\VthreeGThreekTwoliftvspfnabs}{0.134}
+\newcommand{\VthreeGThreekTwoliftvspfnci}{[$+$0.119, $+$0.148]}
+\newcommand{\VthreebeijingcoeSixlctvsblr}{$+$0.061}
+\newcommand{\VthreebeijingcoeSixlctvsblrabs}{0.061}
+\newcommand{\VthreebeijingcoeSixlctvsblrci}{[$+$0.044, $+$0.079]}
+\newcommand{\VthreebeijingcoeSixlctvsfa}{$+$0.147}
+\newcommand{\VthreebeijingcoeSixlctvsfaabs}{0.147}
+\newcommand{\VthreebeijingcoeSixlctvsfaci}{[$+$0.120, $+$0.173]}
+\newcommand{\VthreebeijingcoeSixlctvslift}{$+$0.042}
+\newcommand{\VthreebeijingcoeSixlctvsliftabs}{0.042}
+\newcommand{\VthreebeijingcoeSixlctvsliftci}{[$+$0.028, $+$0.056]}
+\newcommand{\VthreebeijingcoeSixlctvspfn}{$-$0.011}
+\newcommand{\VthreebeijingcoeSixlctvspfnabs}{0.011}
+\newcommand{\VthreebeijingcoeSixlctvspfnci}{[$-$0.024, $+$0.003]}
+\newcommand{\VthreebeijingcoeSixliftvspfn}{$-$0.052}
+\newcommand{\VthreebeijingcoeSixliftvspfnabs}{0.052}
+\newcommand{\VthreebeijingcoeSixliftvspfnci}{[$-$0.072, $-$0.033]}
+\newcommand{\VthreebeijingcoeSixrecovered}{80}
+\newcommand{\VthreebeijingcoeSixvallct}{0.187}
+\newcommand{\VthreebeijingcoeSixvallift}{0.229}
+\newcommand{\VthreebeijingcoeSixvalpfn}{0.176}
+\newcommand{\VthreebeijingcoeThreelctvsblr}{$+$0.093}
+\newcommand{\VthreebeijingcoeThreelctvsblrabs}{0.093}
+\newcommand{\VthreebeijingcoeThreelctvsblrci}{[$+$0.067, $+$0.119]}
+\newcommand{\VthreebeijingcoeThreelctvsfa}{$+$0.247}
+\newcommand{\VthreebeijingcoeThreelctvsfaabs}{0.247}
+\newcommand{\VthreebeijingcoeThreelctvsfaci}{[$+$0.198, $+$0.296]}
+\newcommand{\VthreebeijingcoeThreelctvslift}{$+$0.075}
+\newcommand{\VthreebeijingcoeThreelctvsliftabs}{0.075}
+\newcommand{\VthreebeijingcoeThreelctvsliftci}{[$+$0.051, $+$0.099]}
+\newcommand{\VthreebeijingcoeThreelctvspfn}{$-$0.030}
+\newcommand{\VthreebeijingcoeThreelctvspfnabs}{0.030}
+\newcommand{\VthreebeijingcoeThreelctvspfnci}{[$-$0.050, $-$0.010]}
+\newcommand{\VthreebeijingcoeThreeliftvspfn}{$-$0.105}
+\newcommand{\VthreebeijingcoeThreeliftvspfnabs}{0.105}
+\newcommand{\VthreebeijingcoeThreeliftvspfnci}{[$-$0.129, $-$0.081]}
+\newcommand{\VthreebeijingcoeThreerecovered}{71}
+\newcommand{\VthreebeijingcoeThreevallct}{0.100}
+\newcommand{\VthreebeijingcoeThreevallift}{0.176}
+\newcommand{\VthreebeijingcoeThreevalpfn}{0.070}
+\newcommand{\VthreebeijingcoeZerolctvsblr}{$+$0.117}
+\newcommand{\VthreebeijingcoeZerolctvsblrabs}{0.117}
+\newcommand{\VthreebeijingcoeZerolctvsblrci}{[$+$0.083, $+$0.152]}
+\newcommand{\VthreebeijingcoeZerolctvsfa}{$+$0.330}
+\newcommand{\VthreebeijingcoeZerolctvsfaabs}{0.330}
+\newcommand{\VthreebeijingcoeZerolctvsfaci}{[$+$0.267, $+$0.393]}
+\newcommand{\VthreebeijingcoeZerolctvslift}{$+$0.095}
+\newcommand{\VthreebeijingcoeZerolctvsliftabs}{0.095}
+\newcommand{\VthreebeijingcoeZerolctvsliftci}{[$+$0.068, $+$0.122]}
+\newcommand{\VthreebeijingcoeZerolctvspfn}{$-$0.035}
+\newcommand{\VthreebeijingcoeZerolctvspfnabs}{0.035}
+\newcommand{\VthreebeijingcoeZerolctvspfnci}{[$-$0.057, $-$0.014]}
+\newcommand{\VthreebeijingcoeZeroliftvspfn}{$-$0.130}
+\newcommand{\VthreebeijingcoeZeroliftvspfnabs}{0.130}
+\newcommand{\VthreebeijingcoeZeroliftvspfnci}{[$-$0.161, $-$0.100]}
+\newcommand{\VthreebeijingcoeZerorecovered}{73}
+\newcommand{\VthreebeijingcoeZerovallct}{0.054}
+\newcommand{\VthreebeijingcoeZerovallift}{0.149}
+\newcommand{\VthreebeijingcoeZerovalpfn}{0.019}
+\newcommand{\Vthreebeijingcoepisodes}{716}
+\newcommand{\VthreebeijingnoTwoeSixlctvsblr}{$+$0.074}
+\newcommand{\VthreebeijingnoTwoeSixlctvsblrabs}{0.074}
+\newcommand{\VthreebeijingnoTwoeSixlctvsblrci}{[$+$0.039, $+$0.108]}
+\newcommand{\VthreebeijingnoTwoeSixlctvsfa}{$+$0.214}
+\newcommand{\VthreebeijingnoTwoeSixlctvsfaabs}{0.214}
+\newcommand{\VthreebeijingnoTwoeSixlctvsfaci}{[$+$0.141, $+$0.288]}
+\newcommand{\VthreebeijingnoTwoeSixlctvslift}{$+$0.043}
+\newcommand{\VthreebeijingnoTwoeSixlctvsliftabs}{0.043}
+\newcommand{\VthreebeijingnoTwoeSixlctvsliftci}{[$+$0.010, $+$0.076]}
+\newcommand{\VthreebeijingnoTwoeSixlctvspfn}{$+$0.005}
+\newcommand{\VthreebeijingnoTwoeSixlctvspfnabs}{0.005}
+\newcommand{\VthreebeijingnoTwoeSixlctvspfnci}{[$-$0.027, $+$0.037]}
+\newcommand{\VthreebeijingnoTwoeSixliftvspfn}{$-$0.038}
+\newcommand{\VthreebeijingnoTwoeSixliftvspfnabs}{0.038}
+\newcommand{\VthreebeijingnoTwoeSixliftvspfnci}{[$-$0.090, $+$0.014]}
+\newcommand{\VthreebeijingnoTwoeSixrecovered}{114}
+\newcommand{\VthreebeijingnoTwoeSixvallct}{0.291}
+\newcommand{\VthreebeijingnoTwoeSixvallift}{0.334}
+\newcommand{\VthreebeijingnoTwoeSixvalpfn}{0.296}
+\newcommand{\VthreebeijingnoTwoeThreelctvsblr}{$+$0.072}
+\newcommand{\VthreebeijingnoTwoeThreelctvsblrabs}{0.072}
+\newcommand{\VthreebeijingnoTwoeThreelctvsblrci}{[$+$0.035, $+$0.108]}
+\newcommand{\VthreebeijingnoTwoeThreelctvsfa}{$+$0.363}
+\newcommand{\VthreebeijingnoTwoeThreelctvsfaabs}{0.363}
+\newcommand{\VthreebeijingnoTwoeThreelctvsfaci}{[$+$0.243, $+$0.483]}
+\newcommand{\VthreebeijingnoTwoeThreelctvslift}{$+$0.059}
+\newcommand{\VthreebeijingnoTwoeThreelctvsliftabs}{0.059}
+\newcommand{\VthreebeijingnoTwoeThreelctvsliftci}{[$+$0.023, $+$0.094]}
+\newcommand{\VthreebeijingnoTwoeThreelctvspfn}{$-$0.018}
+\newcommand{\VthreebeijingnoTwoeThreelctvspfnabs}{0.018}
+\newcommand{\VthreebeijingnoTwoeThreelctvspfnci}{[$-$0.074, $+$0.037]}
+\newcommand{\VthreebeijingnoTwoeThreeliftvspfn}{$-$0.077}
+\newcommand{\VthreebeijingnoTwoeThreeliftvspfnabs}{0.077}
+\newcommand{\VthreebeijingnoTwoeThreeliftvspfnci}{[$-$0.160, $+$0.006]}
+\newcommand{\VthreebeijingnoTwoeThreerecovered}{76}
+\newcommand{\VthreebeijingnoTwoeThreevallct}{0.233}
+\newcommand{\VthreebeijingnoTwoeThreevallift}{0.292}
+\newcommand{\VthreebeijingnoTwoeThreevalpfn}{0.215}
+\newcommand{\VthreebeijingnoTwoeZerolctvsblr}{$+$0.055}
+\newcommand{\VthreebeijingnoTwoeZerolctvsblrabs}{0.055}
+\newcommand{\VthreebeijingnoTwoeZerolctvsblrci}{[$-$0.013, $+$0.123]}
+\newcommand{\VthreebeijingnoTwoeZerolctvsfa}{$+$0.464}
+\newcommand{\VthreebeijingnoTwoeZerolctvsfaabs}{0.464}
+\newcommand{\VthreebeijingnoTwoeZerolctvsfaci}{[$+$0.313, $+$0.615]}
+\newcommand{\VthreebeijingnoTwoeZerolctvslift}{$+$0.062}
+\newcommand{\VthreebeijingnoTwoeZerolctvsliftabs}{0.062}
+\newcommand{\VthreebeijingnoTwoeZerolctvsliftci}{[$+$0.024, $+$0.100]}
+\newcommand{\VthreebeijingnoTwoeZerolctvspfn}{$-$0.021}
+\newcommand{\VthreebeijingnoTwoeZerolctvspfnabs}{0.021}
+\newcommand{\VthreebeijingnoTwoeZerolctvspfnci}{[$-$0.093, $+$0.052]}
+\newcommand{\VthreebeijingnoTwoeZeroliftvspfn}{$-$0.083}
+\newcommand{\VthreebeijingnoTwoeZeroliftvspfnabs}{0.083}
+\newcommand{\VthreebeijingnoTwoeZeroliftvspfnci}{[$-$0.182, $+$0.017]}
+\newcommand{\VthreebeijingnoTwoeZerorecovered}{75}
+\newcommand{\VthreebeijingnoTwoeZerovallct}{0.220}
+\newcommand{\VthreebeijingnoTwoeZerovallift}{0.282}
+\newcommand{\VthreebeijingnoTwoeZerovalpfn}{0.199}
+\newcommand{\VthreebeijingnoTwoepisodes}{719}
+\newcommand{\Vthreeseedavgrecovered}{62}
+\newcommand{\Vthreeseedtworecovered}{50}
+\newcommand{\XFFivekkTwoliftvspfn}{$+$0.054}
+\newcommand{\XFFivekkTwoliftvspfnabs}{0.054}
+\newcommand{\XFFivekkTwoliftvspfnci}{[$+$0.041, $+$0.067]}
+\newcommand{\XFFivekkTwopfnvsfa}{$-$0.076}
+\newcommand{\XFFivekkTwopfnvsfaabs}{0.076}
+\newcommand{\XFFivekkTwopfnvsfaci}{[$-$0.092, $-$0.060]}
+\newcommand{\XFFivekkZeroliftvspfn}{$+$0.045}
+\newcommand{\XFFivekkZeroliftvspfnabs}{0.045}
+\newcommand{\XFFivekkZeroliftvspfnci}{[$+$0.024, $+$0.066]}
+\newcommand{\XFFivekkZeropfnvsfa}{$-$0.084}
+\newcommand{\XFFivekkZeropfnvsfaabs}{0.084}
+\newcommand{\XFFivekkZeropfnvsfaci}{[$-$0.112, $-$0.056]}
+\newcommand{\XFFourkkTwoliftvspfn}{$+$0.000}
+\newcommand{\XFFourkkTwoliftvspfnabs}{0.000}
+\newcommand{\XFFourkkTwoliftvspfnci}{[$-$0.011, $+$0.012]}
+\newcommand{\XFFourkkTwopfnvsfa}{$+$0.143}
+\newcommand{\XFFourkkTwopfnvsfaabs}{0.143}
+\newcommand{\XFFourkkTwopfnvsfaci}{[$+$0.107, $+$0.179]}
+\newcommand{\XFFourkkZeroliftvspfn}{$-$0.041}
+\newcommand{\XFFourkkZeroliftvspfnabs}{0.041}
+\newcommand{\XFFourkkZeroliftvspfnci}{[$-$0.063, $-$0.020]}
+\newcommand{\XFFourkkZeropfnvsfa}{$+$0.276}
+\newcommand{\XFFourkkZeropfnvsfaabs}{0.276}
+\newcommand{\XFFourkkZeropfnvsfaci}{[$+$0.192, $+$0.361]}
+\newcommand{\XFSevenkkTwoliftvspfn}{$+$0.029}
+\newcommand{\XFSevenkkTwoliftvspfnabs}{0.029}
+\newcommand{\XFSevenkkTwoliftvspfnci}{[$+$0.023, $+$0.036]}
+\newcommand{\XFSevenkkTwopfnvsfa}{$+$0.032}
+\newcommand{\XFSevenkkTwopfnvsfaabs}{0.032}
+\newcommand{\XFSevenkkTwopfnvsfaci}{[$+$0.019, $+$0.045]}
+\newcommand{\XFSevenkkZeroliftvspfn}{$+$0.029}
+\newcommand{\XFSevenkkZeroliftvspfnabs}{0.029}
+\newcommand{\XFSevenkkZeroliftvspfnci}{[$+$0.018, $+$0.039]}
+\newcommand{\XFSevenkkZeropfnvsfa}{$+$0.063}
+\newcommand{\XFSevenkkZeropfnvsfaabs}{0.063}
+\newcommand{\XFSevenkkZeropfnvsfaci}{[$+$0.041, $+$0.085]}
+\newcommand{\XFSixkkTwoliftvspfn}{$+$0.160}
+\newcommand{\XFSixkkTwoliftvspfnabs}{0.160}
+\newcommand{\XFSixkkTwoliftvspfnci}{[$+$0.062, $+$0.258]}
+\newcommand{\XFSixkkTwopfnvsfa}{$-$0.014}
+\newcommand{\XFSixkkTwopfnvsfaabs}{0.014}
+\newcommand{\XFSixkkTwopfnvsfaci}{[$-$0.146, $+$0.118]}
+\newcommand{\XFSixkkZeroliftvspfn}{$+$0.181}
+\newcommand{\XFSixkkZeroliftvspfnabs}{0.181}
+\newcommand{\XFSixkkZeroliftvspfnci}{[$+$0.041, $+$0.320]}
+\newcommand{\XFSixkkZeropfnvsfa}{$+$0.002}
+\newcommand{\XFSixkkZeropfnvsfaabs}{0.002}
+\newcommand{\XFSixkkZeropfnvsfaci}{[$-$0.216, $+$0.221]}
+\newcommand{\XFThreekkTwoliftvspfn}{$+$0.144}
+\newcommand{\XFThreekkTwoliftvspfnabs}{0.144}
+\newcommand{\XFThreekkTwoliftvspfnci}{[$+$0.127, $+$0.161]}
+\newcommand{\XFThreekkTwopfnvsfa}{$+$0.004}
+\newcommand{\XFThreekkTwopfnvsfaabs}{0.004}
+\newcommand{\XFThreekkTwopfnvsfaci}{[$-$0.032, $+$0.041]}
+\newcommand{\XFThreekkZeroliftvspfn}{$+$0.131}
+\newcommand{\XFThreekkZeroliftvspfnabs}{0.131}
+\newcommand{\XFThreekkZeroliftvspfnci}{[$+$0.113, $+$0.150]}
+\newcommand{\XFThreekkZeropfnvsfa}{$+$0.022}
+\newcommand{\XFThreekkZeropfnvsfaabs}{0.022}
+\newcommand{\XFThreekkZeropfnvsfaci}{[$-$0.018, $+$0.063]}
+\newcommand{\XFTwokkTwoliftvspfn}{$+$0.065}
+\newcommand{\XFTwokkTwoliftvspfnabs}{0.065}
+\newcommand{\XFTwokkTwoliftvspfnci}{[$+$0.051, $+$0.078]}
+\newcommand{\XFTwokkTwopfnvsfa}{$+$0.066}
+\newcommand{\XFTwokkTwopfnvsfaabs}{0.066}
+\newcommand{\XFTwokkTwopfnvsfaci}{[$+$0.027, $+$0.106]}
+\newcommand{\XFTwokkZeroliftvspfn}{$+$0.048}
+\newcommand{\XFTwokkZeroliftvspfnabs}{0.048}
+\newcommand{\XFTwokkZeroliftvspfnci}{[$+$0.030, $+$0.066]}
+\newcommand{\XFTwokkZeropfnvsfa}{$+$0.105}
+\newcommand{\XFTwokkZeropfnvsfaabs}{0.105}
+\newcommand{\XFTwokkZeropfnvsfaci}{[$+$0.040, $+$0.170]}
+\newcommand{\XplctairqcoeTworecovered}{58}
+\newcommand{\XplctairqcoeZerorecovered}{48}
+\newcommand{\XplctairqnoTwoeTworecovered}{50}
+\newcommand{\XplctairqnoTwoeZerorecovered}{-11}
+\newcommand{\Xplctpmrecovered}{70}
+\newcommand{\Xplctpmval}{0.122}
+\newcommand{\Xpliftlong}{0.169}
+\newcommand{\Xpliftone}{0.207}
+\newcommand{\Xplifttwo}{0.205}
