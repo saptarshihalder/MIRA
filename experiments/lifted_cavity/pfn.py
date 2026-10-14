@@ -49,6 +49,7 @@ class CellPFN(nn.Module):
         self.blocks = nn.ModuleList([Block(d, heads, ff) for _ in range(layers)])
         self.out = nn.Sequential(nn.LayerNorm(d), nn.Linear(d, 2))
         self.feature_seed = 0          # evaluation uses a fixed seed for the random feature embeddings
+        self.lv_bound = 5.             # |log-variance| bound in target-standardized units (protocol v10 SF: 10)
 
     def core(self, sx, sy, sm, qx, qm, gen=None):
         """sx,sm (B,S,P) standardized/masked; sy (B,S); qx,qm (B,Q,P). Returns mean, log-variance (B,Q)."""
@@ -69,7 +70,7 @@ class CellPFN(nn.Module):
             z = blk(z, S)
         o = self.out(z[:, S:, P])
         mu = ym + ys * o[..., 0]
-        lv = 5 * torch.tanh(o[..., 1] / 5) + 2 * ys.log()
+        lv = self.lv_bound * torch.tanh(o[..., 1] / self.lv_bound) + 2 * ys.log()
         return mu, lv
 
     def forward(self, batch):

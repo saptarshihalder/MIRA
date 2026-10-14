@@ -1,0 +1,18 @@
+{
+ "model": "tabpfn_v3_5",
+ "version": "v3.5",
+ "package": "9.1.0",
+ "n_estimators": 8,
+ "random_state": 0,
+ "device": "cuda",
+ "note": "pretrained TabPFN regressor, in context, no fine-tuning",
+ "gpu": "NVIDIA L4",
+ "timing": {
+  "real_dwd_p_s10101": {
+   "tag": "real_dwd_p_s10101",
+   "tasks": 1244,
+   "calls": 3732,
+   "seconds": 2650.042056798935
+  }
+ }
+}

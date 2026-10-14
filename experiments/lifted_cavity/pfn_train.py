@@ -22,17 +22,20 @@ def main():
     ap.add_argument('--threads', type=int, default=1); ap.add_argument('--save-every', type=int, default=2500)
     ap.add_argument('--device', default='cpu')
     ap.add_argument('--ckpt-every', type=int, default=250)
+    ap.add_argument('--model', default='pfn', choices=['pfn', 'cnp', 'tnp'], help='cnp/tnp: protocol v8 neural processes')
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
     torch.set_num_threads(a.threads); torch.manual_seed(a.seed); rng = np.random.default_rng(10_000 + a.seed)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True); ck = out / 'ckpt.pt'
     dev = devutil.pick(a.device)
-    model = pfn.CellPFN(d=a.d, layers=a.layers, heads=a.heads, ff=a.ff).to(dev)
+    import np_models
+    arch = dict(d=a.d, layers=a.layers, heads=a.heads, ff=a.ff) if a.model != 'cnp' else {}
+    model = dict(pfn=pfn.CellPFN, tnp=np_models.TNP, cnp=np_models.CNP)[a.model](**arch).to(dev)
     nparam = sum(p.numel() for p in model.parameters())
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.LambdaLR(
         opt, lambda s: min(1., (s + 1) / a.warmup) * (.1 + .9 * .5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
-    meta = dict(vars(a), model='pfn', parameters=nparam, arch=dict(d=a.d, layers=a.layers, heads=a.heads, ff=a.ff))
+    meta = dict(vars(a), model=a.model, parameters=nparam, arch=arch)
     trace, run, first, elapsed = [], None, 0, 0.
     if resume.exists(ck):
         first, extra = resume.load(ck, model, opt, sched, rng); trace, run, elapsed = extra['trace'], extra['run'], extra['seconds']

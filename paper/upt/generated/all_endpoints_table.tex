@@ -1,0 +1,50 @@
+\begin{table}[h]\centering\scriptsize
+\caption{\textbf{Every pre-registered endpoint} of the protocols that evaluate UPT. Gain = baseline $-$ UPT (positive favours UPT), paired 95\% interval clustered by network-window.}
+\label{tab:all-endpoints}
+\begin{tabular}{llrcc}
+\toprule
+Protocol & Endpoint & Gain & 95\% CI & Result \\
+\midrule
+\multicolumn{5}{l}{\emph{v6: METR-LA, PEMS-BAY, Intel}} \\
+ & UPT vs transformer (PFN), NLL & +0.170 & [+0.136, +0.205] & pass \\
+ & UPT non-inferior to 2-model pool & +0.126 & [+0.091, +0.161] & pass \\
+ & UPT vs TabPFN v2, NLL, all sensors & -0.255 & [-0.315, -0.195] & \textbf{fail} \\
+ & UPT vs PFN, synthetic, 16 sensors & +0.156 & [+0.136, +0.175] & pass \\
+\multicolumn{5}{l}{\emph{v7: PeMS03, PeMS08, China air}} \\
+ & UPT vs TabPFN v2, NLL, +3 dropped & +0.320 & [+0.302, +0.337] & pass \\
+ & UPT vs TabPFN v2, NLL, +6 dropped & +0.989 & [+0.945, +1.033] & pass \\
+ & UPT vs transformer (PFN), NLL & +0.361 & [+0.283, +0.439] & pass \\
+ & float32 sites non-inferior to float64 & +0.000 & [-0.000, +0.000] & pass \\
+ & (sec.) UPT-L vs TabPFN v2, all sensors & +0.313 & [+0.253, +0.372] & pass \\
+ & (sec.) UPT-L vs TabPFN v2, +3 & +0.505 & [+0.450, +0.561] & pass \\
+ & (sec.) UPT-L vs TabPFN v2, +6 & +1.073 & [+1.017, +1.128] & pass \\
+ & (sec.) UPT-L vs UPT & +0.230 & [+0.174, +0.286] & pass \\
+\multicolumn{5}{l}{\emph{v8: the six networks above}} \\
+ & UPT vs TNP-D, NLL, all sensors & +0.382 & [+0.349, +0.415] & pass \\
+ & UPT vs CNP, NLL, all sensors & +1.521 & [-0.252, +3.294] & \textbf{fail} \\
+ & UPT vs calibrated kriging, NLL, all sensors & +1.014 & [+0.872, +1.156] & pass \\
+ & UPT vs TNP-D, NLL, +3 dropped & +0.526 & [+0.487, +0.566] & pass \\
+ & UPT vs CNP, NLL, +3 dropped & +0.782 & [+0.534, +1.029] & pass \\
+ & UPT vs calibrated kriging, NLL, +3 dropped & +1.037 & [+0.889, +1.184] & pass \\
+ & UPT vs TNP-D, NLL, +6 dropped & +1.046 & [+0.960, +1.132] & pass \\
+ & UPT vs CNP, NLL, +6 dropped & +1.004 & [+0.740, +1.268] & pass \\
+ & UPT vs calibrated kriging, NLL, +6 dropped & +1.324 & [+1.137, +1.511] & pass \\
+\multicolumn{5}{l}{\emph{v9: DWD temp., AURN NO$_2$, USGS PA}} \\
+ & UPT$^\ast$ vs TabPFN v2, NLL, all sensors & -0.374 & [-0.543, -0.205] & \textbf{fail} \\
+ & UPT$^\ast$ vs TabPFN v2, NLL, +3 & -0.284 & [-0.440, -0.127] & \textbf{fail} \\
+ & UPT$^\ast$ vs TabPFN v2, NLL, +6 & +0.077 & [-0.088, +0.243] & \textbf{fail} \\
+ & UPT$^\ast$ vs PFN-L (matched scale), NLL & +0.029 & [+0.011, +0.047] & pass \\
+ & UPT$^\ast$ vs TNP-D, NLL & +0.258 & [+0.194, +0.321] & pass \\
+ & UPT$^\ast$ vs calibrated kriging, NLL & +0.708 & [+0.552, +0.863] & pass \\
+ & UPT$^\ast$ vs TabPFN v2, CRPS$/\sigma$ & +0.012 & [+0.008, +0.016] & pass \\
+\multicolumn{5}{l}{\emph{v10: USGS NY, USGS WA, DWD pressure, AURN PM$_{2.5}$}} \\
+ & UPT-SF vs TabPFN v2, NLL, all sensors & -0.753 & [-0.927, -0.579] & \textbf{fail} \\
+ & UPT-SF vs TabPFN v2, NLL, +3 & -0.631 & [-0.813, -0.449] & \textbf{fail} \\
+ & UPT-SF vs TabPFN v2, NLL, +6 & -0.206 & [-0.442, +0.029] & \textbf{fail} \\
+ & UPT-SF vs PFN-L (matched scale), NLL & -541.299 & [-1603.170, +520.572] & \textbf{fail} \\
+ & UPT-SF vs TabPFN v2, CRPS$/\sigma$ & +0.002 & [-0.001, +0.005] & \textbf{fail} \\
+ & UPT-SF vs TNP-D, NLL & -541.163 & [-1603.032, +520.706] & \textbf{fail} \\
+ & UPT-SF vs calibrated kriging, NLL & -517.787 & [-1534.617, +499.043] & \textbf{fail} \\
+\bottomrule
+\end{tabular}
+\end{table}

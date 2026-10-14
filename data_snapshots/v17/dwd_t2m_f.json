@@ -1,0 +1,9 @@
+{
+ "base": "dwd_t2m",
+ "base_digest": "d08b86189feac292",
+ "base_rows": 13392,
+ "rows": 13392,
+ "first": "2025-04-01T00:00:00",
+ "last": "2026-10-10T23:00:00",
+ "digest": "d08b86189feac292"
+}

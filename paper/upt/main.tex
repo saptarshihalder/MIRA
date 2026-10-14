@@ -1,0 +1,360 @@
+\documentclass{article}
+
+\PassOptionsToPackage{numbers, compress}{natbib}
+\usepackage{neurips_2026}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathreplacing}
+\usepackage{enumitem}
+\setlist{itemsep=1pt,topsep=3pt,parsep=0pt}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\NLL}{\mathrm{NLL}}
+
+\input{generated/numbers_auto}
+\input{generated/numbers_pool}
+
+\title{Universal Pool Transformers:\\Lifted Sites Make Foundation Models Robust to Sensor Failure}
+
+\author{Anonymous Authors}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Virtual sensing predicts the reading of a target sensor from neighbouring sensors. Every deployment is different,
+labelled calibration data are scarce, and sensors fail. In-context learners such as TabPFN adapt to a new deployment
+from a few labelled rows, but their predictive distributions degrade sharply when input sensors go missing. We
+characterize the structure that missing sensors require. Products of per-sensor experts are the free construction on
+sensors, the only predictors whose natural parameters are additive over observation masks. Scalar experts cannot
+fuse sensors with shared noise, whereas sites \emph{lifted} to a target-plus-nuisance latent are exact for
+factor-structured noise. The \emph{Universal Pool Transformer} (UPT) puts a lifted-site head and an unconstrained
+head on one transformer backbone and combines them by the linear opinion pool, the pooling rule that commutes with
+marginalization. Its log-likelihood is never worse than either head's by more than the log of that head's weight. The
+same rule pools UPT with a foundation model, with weights chosen per episode by cross-fitting the episode's own
+labelled rows.
+
+Under protocols committed before their data were scored, we tested this on four sensor networks with test periods
+in 2026, after the release of TabPFN v2. UPT\,$\oplus$\,TabPFN improves TabPFN v2's
+log-likelihood on every network, by \XOne{} nats with all inputs and by \XTwoSix{} nats with six inputs missing.
+It also improves TabPFN-3.5, a much stronger model released in September 2026, by \VOne{} and \VTwoSix{} nats when
+the cross-fit accounts for the two models' different learning curves, and by \GOne{} nats with all inputs on
+\GEpisodes{} new tasks recorded after its release.
+UPT is a better partner than a matched-scale transformer (\YOneZero{}) or the closed-form sites (\YTwoZero{}). Across
+\NumNetworks{} networks in five domains and \NumProtocols{} pre-registered protocols, UPT also beats matched-scale
+transformers, neural processes and kriging. We report every failure, including the networks on which UPT alone loses
+to TabPFN v2.
+\end{abstract}
+
+%=====================================================================
+\section{Introduction}
+%=====================================================================
+
+Sensor networks now measure traffic, air quality, weather and rivers at a density that no maintenance budget can keep
+fully operational. \emph{Virtual sensing}, or spatial kriging, predicts a sensor's reading from the readings of its
+neighbours. Its uses include filling gaps, standing in for failed or decommissioned instruments, and placing
+low-cost virtual sensors where no instrument exists~\citep{wu2021ignnk,cini2022grin}. Three features make the problem
+hard.
+\begin{enumerate}
+  \item \textbf{Deployments differ.} The relation between a target and its neighbours changes from site to site and
+  over time, and only a short labelled record is available for each.
+  \item \textbf{Noise is shared.} Weather, traffic waves and local emissions move several neighbours at once, so
+  neighbours are not conditionally independent given the target.
+  \item \textbf{Sensors fail.} At prediction time an arbitrary subset of the neighbours is available, often a subset
+  never seen together in the labelled record.
+\end{enumerate}
+
+\textbf{In-context virtual sensing.} We cast the problem as in-context probabilistic prediction. A model receives a
+deployment's labelled rows (the support), with their missing entries, and a query made of an arbitrary subset of
+neighbour readings. It returns a predictive distribution for the target. Trained once, such a model adapts to a new
+deployment from its support alone, as neural processes~\citep{garnelo2018cnp,nguyen2022tnp} and prior-fitted networks
+do~\citep{muller2022pfn,hollmann2025tabpfnv2}. The pretrained TabPFN v2~\citep{hollmann2025tabpfnv2} is a strong
+example. As we show, however, its predictive distribution degrades rapidly as input sensors go missing
+(\S\ref{sec:results}).
+
+\textbf{Structure first.} Missing sensors call for a predictor that is defined for every subset of inputs and handles
+unseen subsets gracefully.
+\begin{itemize}
+  \item \textbf{The free construction.} Products of per-sensor experts meet this requirement by construction: a
+  missing sensor contributes no factor~\citep{hinton2002poe,wu2018mvae}. We show that this is a universal property,
+  not a design choice. Natural-parameter additivity over masks characterizes products of sites, the free
+  construction on sensors (Proposition~\ref{prop:free}).
+  \item \textbf{Scalar experts are not enough.} With shared noise, no product of mask-independent experts over the
+  target alone is Bayes-consistent (Proposition~\ref{prop:scalar}). Sites \emph{lifted} to a latent over target and
+  shared nuisance are exact, and need as many nuisance dimensions as the rank of the shared noise
+  (Propositions~\ref{prop:exact}--\ref{prop:rank}).
+  \item \textbf{Combining with a flexible model.} Real sensors are nonlinear, which favours unconstrained
+  transformers. Which rule should combine the structured predictor with a flexible one? The linear opinion pool is
+  the rule that commutes with marginalization~\citep{mcconway1981marginalization}. Its log-likelihood is bounded by
+  each component's (Proposition~\ref{prop:pool}).
+\end{itemize}
+
+\textbf{Foundation models as partners.} The same rule combines a structured model with a \emph{pretrained}
+foundation model. A foundation model is sharp where its vast prior fits; the lifted sites are exact where inputs are
+missing. Weights are chosen per episode by stacking~\citep{yao2018stacking} on a cross-fit of the episode's own
+labelled rows. No test label is used and nothing is retrained.
+
+Of 15 pre-registered superiority tests of UPT\,$\oplus$\,TabPFN against TabPFN, 12 pass; the other three gain
+0.017--0.023 nats, but their intervals reach zero (Table~\ref{tab:fresh}).
+\begin{itemize}
+  \item \textbf{It improves TabPFN v2 on every network,} and more as inputs fail. It gains \XOne{} nats with all
+  inputs and \XTwoSix{} with six inputs missing (Figure~\ref{fig:robust}a).
+  \item \textbf{UPT is the best partner.} It beats a plain transformer of equal size and training (\YOneZero{}) and
+  the closed-form sites (\YTwoZero{}).
+  \item \textbf{It also improves TabPFN-3.5} (September 2026), which is far stronger than TabPFN v2: by \VOne{} nats
+  with all inputs and \VTwoSix{} with six missing, with a cross-fit that corrects stacking's bias toward the model with
+  the flatter learning curve. A logarithmic pool, which can be sharper than both models but has no loss bound, did not
+  survive its confirmatory test.
+\end{itemize}
+
+\textbf{Contributions.}
+\begin{enumerate}
+  \item \textbf{Theory (\S\ref{sec:theory}).} Products of sites are the free construction on sensors. Scalar
+  experts fail under shared noise, while lifted sites are exact and minimal. The linear pool gives a per-query
+  log-likelihood guarantee relative to each component.
+  \item \textbf{The Universal Pool Transformer (\S\ref{sec:upt}).} One transformer backbone over the cells of the
+  support and the query feeds a lifted-site head, a free head and a gate, combined by the linear pool. At
+  initialization UPT is the closed-form factor-analysis (FA) posterior up to $0.018$ nats.
+  \item \textbf{Pooling with a foundation model (\S\ref{sec:pool}).} UPT\,$\oplus$\,TabPFN applies the same pool,
+  with per-episode cross-fit stacking.
+  \item \textbf{A pre-registered evaluation (\S\ref{sec:experiments}).}
+  \begin{itemize}
+    \item \textbf{Scale:} \NumProtocols{} protocols, each committed before its data were scored, on \NumNetworks{}
+    networks in five domains.
+    \item \textbf{Fresh data:} \NumFreshNetworks{} networks were recorded in 2026.
+    \item \textbf{Baselines:} TabPFN v2 and TabPFN-3.5, a matched-scale transformer, TNP-D, CNP, deep and classical kriging,
+    gradient boosting and multiple imputation.
+    \item \textbf{Reporting:} every endpoint is reported, including the failures (Appendix~\ref{app:protocols}).
+  \end{itemize}
+\end{enumerate}
+
+%=====================================================================
+\section{Problem setup}
+\label{sec:setup}
+%=====================================================================
+
+\paragraph{Episodes.} An episode concerns one target sensor and its $P$ input sensors in one time window.
+\begin{itemize}
+  \item The support $\D=\{(x_i,m_i,y_i)\}_{i=1}^{n}$ holds $n=48$ labelled rows. Reading $x_{ij}$ is observed where
+  $m_{ij}=1$.
+  \item A query is the reading $x_S$ of an observed subset $S\subseteq\{1,\dots,P\}$.
+  \item The model returns a predictive density $q(y\mid x_S,\D)$.
+\end{itemize}
+
+\paragraph{Scoring.} Methods are scored by the negative log-likelihood (NLL) of held-out targets, the strictly proper
+logarithmic score~\citep{gneiting2007scoring}. We also report the CRPS, the RMSE of the predictive mean, and the
+coverage of the central 90\% interval.
+
+\paragraph{Training and evaluation splits.} Every learned model is trained on synthetic tasks, then fine-tuned on episodes
+from the network's \emph{source} period with an identical recipe for every model. It is evaluated on fixed episodes
+from a later \emph{test} period.
+
+\paragraph{Sensor-loss conditions.} In the condition ``$+k$ dropped'', $k$ further observed inputs are removed from each query
+at random, on top of the natural missingness.
+
+%=====================================================================
+\section{Theory: what missing sensors require}
+\label{sec:theory}
+%=====================================================================
+
+Write a Gaussian factor over a latent $z\in\R^{L}$ in natural parameters $(\Lambda,\eta)$, where multiplying factors
+adds natural parameters. These pairs form a commutative monoid $G$. A site assignment $s:\{1,\dots,P\}\to G$ gives one
+factor per sensor. A mask $m\in\{0,1\}^P$ lies in the free commutative monoid $\mathbb{N}^P$.
+
+\begin{proposition}[Products of sites are the free construction]\label{prop:free}
+For every site assignment $s$ there is exactly one monoid homomorphism $F:\mathbb{N}^P\to G$ with $F(e_j)=s(j)$,
+namely $F(m)=\sum_j m_j s(j)$. Conversely, a predictor whose posterior natural parameters satisfy
+$F(A\sqcup B)=F(A)+F(B)-F(\emptyset)$ for disjoint masks is a product of the prior and per-sensor sites.
+\end{proposition}
+
+\paragraph{Consequences.} This is the universal property of the free commutative monoid~\citep{maclane1998categories}.
+\begin{itemize}
+  \item \textbf{Unseen masks.} Every mask, including masks never seen in training, follows from the $P$ sites.
+  \item \textbf{New sensors.} A new sensor extends $F$ uniquely.
+  \item \textbf{Limitation.} Cross-sensor interactions can enter only through the latent dimension, the Gaussian analogue of
+  the limits of sum decompositions~\citep{wagstaff2022universal}.
+\end{itemize}
+
+The next two results say how large that latent must be.
+
+\begin{proposition}[Scalar experts]\label{prop:scalar}
+Let $x_j=a_jy+d_ju+\sigma_j\epsilon_j$ with independent standard normal $y,u,\epsilon_j$, $\sigma_j>0$ and
+$a_j\neq0$. Suppose each expert $t_j(y;x_j)$ is Gaussian in $y$ and does not depend on $S$, and that
+$q(y\mid x_S)\propto p(y)\prod_{j\in S}t_j$ is Bayes for all singleton queries. Then $q$ is Bayes for the pair
+$\{j,k\}$ if and only if $d_jd_k=0$, and its weight on $x_j$ can have the wrong sign.
+\end{proposition}
+
+\paragraph{Lifted sites.} Let $z=(y,h)\in\R^{1+K}$ with $h\sim\N(0,I)$. A lifted site is the rank-one factor of a
+linear-Gaussian measurement $x_j=w_j^\top z+c_j+e_j$, with $e_j\sim\N(0,\psi_j)$:
+\begin{equation}
+  \begin{gathered}
+  \Lambda_j=w_jw_j^\top/\psi_j,\qquad \eta_j=w_j(x_j-c_j)/\psi_j,\\
+  q(z\mid x_S)=\N\big(z;\Lambda^{-1}\eta,\Lambda^{-1}\big),\qquad
+  (\Lambda,\eta)=(\Lambda_0,\eta_0)+\textstyle\sum_{j\in S}(\Lambda_j,\eta_j).
+  \end{gathered}
+  \label{eq:site}
+\end{equation}
+
+\begin{proposition}[Exactness and minimal lifting]\label{prop:exact}\label{prop:rank}
+If the sensors follow a $K$-factor model with independent errors, \eqref{eq:site} equals $p(z\mid x_S)$ for every $S$.
+Conversely, under a generic-rank condition, which holds for almost every loading matrix when $P\geq2K+3$, static
+sites over $(y,h)$ with $h\in\R^{K'}$ reproduce $p(y\mid x_S)$ for all $|S|\leq2$ only if $K'\geq K$.
+\end{proposition}
+
+\paragraph{Closed-form anchor.} Fitting the factor model to the support by EM with missing
+entries~\citep{dempster1977em,rubin1982em} gives a closed-form, mask-exact predictor, which we call
+\emph{FA-Gaussian}. Proofs are in Appendix~\ref{app:proofs}.
+
+\paragraph{Pooling with a flexible model.} Real sensors are nonlinear and real noise is not exactly factor-structured, so a
+flexible model fits better. To combine the two, we use the linear opinion pool
+$p=\pi\,p_{\mathrm{site}}+(1-\pi)\,p_{\mathrm{free}}$. It is the pooling rule that commutes with marginalization
+(McConway, 1981)~\citep{mcconway1981marginalization}: pooling joint predictives over $z$ and then marginalizing the
+nuisance $h$ gives the same result as marginalizing first. The logarithmic pool is instead the rule that commutes
+with Bayesian updating~\citep{genest1984characterization}. We tested it in protocol v5 and report it as an ablation.
+
+\begin{proposition}[Pool guarantee]\label{prop:pool}
+For every query and outcome $y$,
+\[\NLL_{\mathrm{pool}}(y)\leq\min\{\NLL_{\mathrm{site}}(y)-\log\pi,\ \NLL_{\mathrm{free}}(y)-\log(1-\pi)\}.\]
+In particular, when the free component fails under sensor loss, the pool loses at most $-\log\pi$ relative to the
+lifted site, which handles any mask exactly.
+\end{proposition}
+
+%=====================================================================
+\section{The Universal Pool Transformer}
+\label{sec:upt}
+%=====================================================================
+
+\input{figures/method}
+
+\paragraph{Backbone.} UPT uses a cell-token transformer over the support and the queries, in the style of
+TabPFN~\citep{hollmann2025tabpfnv2}.
+\begin{itemize}
+  \item \textbf{Tokens.} Every cell (row $i$, column $j$) becomes a token: the embedded value, or a learned \emph{missing}
+  embedding, plus a random feature embedding that distinguishes the columns.
+  \item \textbf{Target column.} It carries the standardized support targets, and a learned query embedding in the query rows.
+  \item \textbf{Attention.} Blocks alternate attention across the columns of a row and across the rows of a column. Query rows
+  attend only to support rows.
+\end{itemize}
+
+\paragraph{Three heads on the query tokens.}
+\begin{enumerate}
+  \item \textbf{Lifted-site head.} Each observed query cell $j$ outputs a correction
+  $(\delta^{\mathrm{off}}_j,\delta^{\mathrm{slope}}_j,\delta^{D}_j,s_j)$ to its FA anchor site. The corrected site is
+  the local linearization of sensor $j$'s response at the anchor's prediction, and the sites combine by
+  \eqref{eq:site}. Missing cells contribute nothing.
+  \item \textbf{Free head.} The target-column token outputs a Gaussian, or a small Gaussian mixture.
+  \item \textbf{Gate.} The same token outputs $\pi=\sigma(g)$. The predictive is the linear pool
+  $\pi\,p_{\mathrm{site}}+(1-\pi)\,p_{\mathrm{free}}$.
+\end{enumerate}
+
+\paragraph{Cost.} The heads add $3d+3$ parameters (about 0.1\%), and inference is one backbone pass.
+
+\begin{proposition}[Initialization]\label{prop:init}
+With a zero site head and gate bias $+4$, the lifted site equals the FA-Gaussian, so for every query and outcome
+$\NLL_{\mathrm{UPT}}\leq\NLL_{\mathrm{FA}}-\log\sigma(4)=\NLL_{\mathrm{FA}}+0.018$.
+\end{proposition}
+
+\paragraph{Scale-free target pipeline (SF).} Our backbone inherited two fixed scales from its synthetic prior, a floor
+of $0.1$ on the support standard deviation and a bound of $\pm5$ on the output log-variance, and the FA anchor carries
+absolute ridges. On targets that vary little within an episode, these cap how sharp the predictive can be. SF
+standardizes each episode's target by its support mean and standard deviation before the anchor fit and the network,
+widens the bound to $\pm10$, and maps predictions back to raw units ($\NLL+\log s$). The whole predictive is then
+equivariant to affine changes of the target's units, which our test suite checks exactly.
+
+\paragraph{Training.} We pretrain on synthetic factor-model tasks with nonlinear sensor responses, whose query masks
+remove at most one sensor (30k steps; 40k for large models), then fine-tune on each network's source-period episodes
+(2{,}000 steps, one recipe for every model). The objective is the NLL, optionally plus the closed-form mixture
+CRPS~\citep{grimit2006crps}. At prediction we pool 8 random feature embeddings equally, the analogue of TabPFN's
+8-member ensemble. UPT-L has 2.1M parameters ($d=128$, 8 layers). \textbf{UPT-SF}, our final configuration, is UPT-L
+with the SF pipeline, a three-component free mixture and the CRPS term, selected on development networks by a
+pre-registered rule.
+
+\subsection{Pooling with a foundation model}
+\label{sec:pool}
+
+A pretrained foundation model $F$ (here TabPFN v2 or TabPFN-3.5) and UPT each give a predictive for every query. We pool them with
+the same rule as inside UPT:
+\[
+  p(y\mid x_S,\D)=w\,p_{\mathrm{UPT}}(y\mid x_S,\D)+(1-w)\,p_F(y\mid x_S,\D).
+\]
+The weight $w$ is chosen per episode by stacking~\citep{yao2018stacking}, without test labels: split the support
+into $K$ folds, fit both models in context on all folds but one and predict it (the held-out inputs carry the test
+condition's extra missingness), and choose $w$ on a grid to maximize the pool's summed log density on the 48 held-out
+rows. By Proposition~\ref{prop:pool}, the pool loses at most $-\log(1-w)$ nats to $F$ and $-\log w$ to UPT on any
+query. Nothing is trained.
+
+\paragraph{Learning-curve-aware stacking.} A cross-fit scores each model trained on $(K-1)/K$ of the support. With
+$K=2$ (protocols v11--v13; $w\in\{0.02,\dots,0.98\}$), this favours the partner whose accuracy grows least with more
+rows, here UPT with its fine-tuned prior over TabPFN's steep learning curve. Protocol v15 uses $K=4$, widens the grid to
+$[0.001,0.999]$, and pools $F$ with the equal mixture of UPT's three seeds; the cost is four extra calls of $F$.
+%=====================================================================
+\section{Experiments}
+\label{sec:experiments}
+%=====================================================================
+
+\input{experiments}
+
+%=====================================================================
+\section{Related work}
+\label{sec:related}
+%=====================================================================
+
+\paragraph{Kriging and virtual sensing.} Graph neural kriging trains on a network's history and transfers to unseen nodes,
+for example IGNNK~\citep{wu2021ignnk}, GRIN~\citep{cini2022grin} and spatio-temporal neural
+processes~\citep{hu2023stgnp}. We compare with an IGNNK-style model, recalibrated in context on each episode's
+support. In-context models avoid retraining under drift.
+
+\paragraph{Neural processes and prior-fitted networks.} CNP~\citep{garnelo2018cnp}, TNP~\citep{nguyen2022tnp},
+PFNs~\citep{muller2022pfn} and TabPFN~v2~\citep{hollmann2025tabpfnv2} learn to predict from a context set. They
+handle missing inputs implicitly. UPT adds an explicit structured component that handles missing inputs exactly.
+
+\paragraph{Products of experts and opinion pools.} Products of experts handle missing modalities by
+omission~\citep{hinton2002poe,wu2018mvae}. Generalized products~\citep{cao2014gpoe} and power EP~\citep{minka2004power}
+temper experts. The axiomatic theory of opinion pools~\citep{mcconway1981marginalization,genest1984characterization}
+characterizes the linear and logarithmic pools.
+
+\paragraph{Learned message passing.} Learned EP~\citep{heess2013learning} and unrolled inference~\citep{gregor2010lista}
+amortize factor updates. Our lifted sites read their corrections from transformer tokens.
+
+\paragraph{Missing values in supervised learning.} NeuMiss~\citep{lemorvan2020neumiss} unrolls the Bayes predictor of a
+Gaussian model, but it is trained per dataset.
+
+%=====================================================================
+\section{Limitations}
+\label{sec:limits}
+%=====================================================================
+\input{limitations}
+
+%=====================================================================
+\section{Conclusion}
+%=====================================================================
+\input{conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\clearpage
+\appendix
+\input{appendix}
+
+\end{document}

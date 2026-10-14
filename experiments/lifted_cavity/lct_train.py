@@ -9,7 +9,7 @@ import torch
 import devutil
 import anchors as an
 import family as fam
-import lct, models, resume
+import lct, models, resume, upt
 
 
 def fresh_batch(rng, B=16, Q=16, nonlin=.4, P=5):
@@ -71,18 +71,19 @@ def main():
     ap.add_argument('--heads', type=int, default=4); ap.add_argument('--ff', type=int, default=128)
     ap.add_argument('--ckpt-every', type=int, default=250)
     ap.add_argument('--prefetch', type=int, default=0, help='batches built ahead in a background process (0: off)')
+    ap.add_argument('--model', default='lct', choices=['lct', 'upt'])
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
     torch.set_num_threads(a.threads); torch.manual_seed(a.seed); rng = np.random.default_rng(20_000 + a.seed)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True); ck = out / 'ckpt.pt'
     dev = devutil.pick(a.device)
     arch = dict(d=a.d, layers=a.layers, heads=a.heads, ff=a.ff, K=1)
-    model = lct.LCT(**arch).to(dev)
+    model = (upt.UPT if a.model == 'upt' else lct.LCT)(**arch).to(dev)
     nparam = sum(p.numel() for p in model.parameters())
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.LambdaLR(
         opt, lambda s: min(1., (s + 1) / a.warmup) * (.1 + .9 * .5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
-    meta = dict(vars(a), model='lct', parameters=nparam, arch=arch)
+    meta = dict(vars(a), model=a.model, parameters=nparam, arch=arch)
     trace, run, first, elapsed = [], None, 0, 0.
     if resume.exists(ck):
         first, extra = resume.load(ck, model, opt, sched, rng); trace, run, elapsed = extra['trace'], extra['run'], extra['seconds']
@@ -94,8 +95,7 @@ def main():
         (lambda: fresh_batch(rng, a.batch_tasks, a.queries))
     for step in range(first, a.steps):
         batch = devutil.to_dev(nxt(), dev)
-        mu, lv = model(batch)
-        loss = models.gauss_nll(mu, lv, batch['qy']).mean()
+        loss = model.nll(batch).mean() if hasattr(model, 'nll') else models.gauss_nll(*model(batch), batch['qy']).mean()
         if not torch.isfinite(loss):
             raise FloatingPointError(step)
         opt.zero_grad(); loss.backward(); torch.nn.utils.clip_grad_norm_(model.parameters(), 1.); opt.step(); sched.step()

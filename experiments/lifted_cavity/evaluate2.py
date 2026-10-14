@@ -88,9 +88,16 @@ def score(model, pool, B):
         acc = {m: [] for m in ('nll', 'se', 'cov', 'crps')}
         dev = devutil.model_device(model)
         for tids, batch in data.eval_batches(pool, bank, tasks_per_batch=8):
-            mu, lv = model(devutil.to_dev(batch, dev))
-            mu, lv = mu.detach().cpu(), lv.detach().cpu()
-            g = gauss_metrics(mu.double().numpy(), np.exp(lv.double().numpy()), batch['qy'].double().numpy())
+            if hasattr(model, 'predictive'):                       # mixture output (upt.py): exact mixture metrics
+                import upt
+                with torch.no_grad():
+                    la, ma, va, lb, mb, vb = [v.cpu().double().numpy() for v in model.predictive(devutil.to_dev(batch, dev))]
+                g = upt.mixture_metrics(np.exp(np.stack((la, lb), 1)), np.stack((ma, mb), 1), np.exp(np.stack((va, vb), 1)),
+                                        batch['qy'].double().numpy())
+            else:
+                mu, lv = model(devutil.to_dev(batch, dev))
+                mu, lv = mu.detach().cpu(), lv.detach().cpu()
+                g = gauss_metrics(mu.double().numpy(), np.exp(lv.double().numpy()), batch['qy'].double().numpy())
             for m, v in g.items():
                 acc[m].append(v.reshape(len(tids), len(bank), -1).mean(-1))
         out[k] = {m: np.concatenate(v) for m, v in acc.items()}

@@ -1,0 +1,465 @@
+{
+ "Y1_uptsfpool_vs_pfnLpool_nll_e0": {
+  "gain": 0.124584247977505,
+  "lo": 0.0847699171335146,
+  "hi": 0.1643985788214954,
+  "n": 112,
+  "episodes": 5303,
+  "excluded": 43,
+  "passed": true
+ },
+ "Y2_uptsfpool_vs_fapool_nll_e0": {
+  "gain": 0.09710947299766391,
+  "lo": 0.07785997950946355,
+  "hi": 0.11635896648586427,
+  "n": 112,
+  "episodes": 5303,
+  "excluded": 43,
+  "passed": true
+ },
+ "Y1_uptsfpool_vs_pfnLpool_nll_e3": {
+  "gain": 0.11989650622299655,
+  "lo": 0.07898504492108974,
+  "hi": 0.16080796752490337,
+  "n": 112,
+  "episodes": 5303,
+  "excluded": 43,
+  "passed": true
+ },
+ "Y2_uptsfpool_vs_fapool_nll_e3": {
+  "gain": 0.11494213212628093,
+  "lo": 0.09928980392465411,
+  "hi": 0.13059446032790775,
+  "n": 112,
+  "episodes": 5303,
+  "excluded": 43,
+  "passed": true
+ },
+ "Y1_uptsfpool_vs_pfnLpool_nll_e6": {
+  "gain": 0.08534215039490897,
+  "lo": 0.05355783639511676,
+  "hi": 0.11712646439470117,
+  "n": 112,
+  "episodes": 5303,
+  "excluded": 43,
+  "passed": true
+ },
+ "Y2_uptsfpool_vs_fapool_nll_e6": {
+  "gain": 0.11674977872793127,
+  "lo": 0.10295677112557614,
+  "hi": 0.1305427863302864,
+  "n": 112,
+  "episodes": 5303,
+  "excluded": 43,
+  "passed": true
+ },
+ "secondary": {
+  "pfnLpool_vs_tabpfn_nll_e0": {
+   "gain": 0.046356628429208145,
+   "lo": 0.02747987720319083,
+   "hi": 0.06523337965522547,
+   "n": 112,
+   "episodes": 5303,
+   "excluded": 43,
+   "passed": true
+  },
+  "fapool_vs_tabpfn_nll_e0": {
+   "gain": 0.07383140340904926,
+   "lo": 0.06019376542721519,
+   "hi": 0.08746904139088332,
+   "n": 112,
+   "episodes": 5303,
+   "excluded": 43,
+   "passed": true
+  },
+  "uptsfpool_vs_pfnLpool_se_e0": {
+   "gain": -6.199012146806851e-05,
+   "lo": -0.0007811028179394,
+   "hi": 0.000657122575003263,
+   "n": 112,
+   "episodes": 5303,
+   "excluded": 43,
+   "passed": false
+  },
+  "usgs_ny|uptsfpool_vs_pfnLpool_nll_e0": {
+   "gain": 0.028500260335612877,
+   "lo": 0.018007087223537784,
+   "hi": 0.03899343344768797,
+   "n": 30,
+   "episodes": 1422,
+   "excluded": 15,
+   "passed": true
+  },
+  "usgs_ny|uptsfpool_vs_fapool_nll_e0": {
+   "gain": 0.024915823696978454,
+   "lo": 0.015116966319376436,
+   "hi": 0.03471468107458047,
+   "n": 30,
+   "episodes": 1422,
+   "excluded": 15,
+   "passed": true
+  },
+  "usgs_wa|uptsfpool_vs_pfnLpool_nll_e0": {
+   "gain": -0.002207680950281474,
+   "lo": -0.00618462205823889,
+   "hi": 0.0017692601576759421,
+   "n": 30,
+   "episodes": 1411,
+   "excluded": 28,
+   "passed": false
+  },
+  "usgs_wa|uptsfpool_vs_fapool_nll_e0": {
+   "gain": 0.006390274571130335,
+   "lo": 0.0012548565332227589,
+   "hi": 0.011525692609037911,
+   "n": 30,
+   "episodes": 1411,
+   "excluded": 28,
+   "passed": false
+  },
+  "dwd_p|uptsfpool_vs_pfnLpool_nll_e0": {
+   "gain": 0.470340916580124,
+   "lo": 0.3924154602031922,
+   "hi": 0.5482663729570558,
+   "n": 26,
+   "episodes": 1244,
+   "excluded": 0,
+   "passed": true
+  },
+  "dwd_p|uptsfpool_vs_fapool_nll_e0": {
+   "gain": 0.26336375836509746,
+   "lo": 0.2509530151924183,
+   "hi": 0.2757745015377766,
+   "n": 26,
+   "episodes": 1244,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25|uptsfpool_vs_pfnLpool_nll_e0": {
+   "gain": 0.03599209849374588,
+   "lo": 0.03225100355444935,
+   "hi": 0.03973319343304241,
+   "n": 26,
+   "episodes": 1226,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25|uptsfpool_vs_fapool_nll_e0": {
+   "gain": 0.11883155039240617,
+   "lo": 0.11070399261123665,
+   "hi": 0.1269591081735757,
+   "n": 26,
+   "episodes": 1226,
+   "excluded": 0,
+   "passed": true
+  },
+  "pfnLpool_vs_tabpfn_nll_e3": {
+   "gain": 0.12477125867385132,
+   "lo": 0.10322520953294476,
+   "hi": 0.14631730781475788,
+   "n": 112,
+   "episodes": 5303,
+   "excluded": 43,
+   "passed": true
+  },
+  "fapool_vs_tabpfn_nll_e3": {
+   "gain": 0.12972563277056695,
+   "lo": 0.0958819039262393,
+   "hi": 0.1635693616148946,
+   "n": 112,
+   "episodes": 5303,
+   "excluded": 43,
+   "passed": true
+  },
+  "uptsfpool_vs_pfnLpool_se_e3": {
+   "gain": -0.0004653247393177111,
+   "lo": -0.0014718826934777543,
+   "hi": 0.0005412332148423322,
+   "n": 112,
+   "episodes": 5303,
+   "excluded": 43,
+   "passed": false
+  },
+  "usgs_ny|uptsfpool_vs_pfnLpool_nll_e3": {
+   "gain": 0.02813745761222543,
+   "lo": 0.015835265050932718,
+   "hi": 0.040439650173518145,
+   "n": 30,
+   "episodes": 1422,
+   "excluded": 15,
+   "passed": true
+  },
+  "usgs_ny|uptsfpool_vs_fapool_nll_e3": {
+   "gain": 0.09025958567377484,
+   "lo": 0.06749396328347762,
+   "hi": 0.11302520806407207,
+   "n": 30,
+   "episodes": 1422,
+   "excluded": 15,
+   "passed": true
+  },
+  "usgs_wa|uptsfpool_vs_pfnLpool_nll_e3": {
+   "gain": -0.006504680407096586,
+   "lo": -0.010481892675066688,
+   "hi": -0.0025274681391264844,
+   "n": 30,
+   "episodes": 1411,
+   "excluded": 28,
+   "passed": false
+  },
+  "usgs_wa|uptsfpool_vs_fapool_nll_e3": {
+   "gain": 0.02579396757693436,
+   "lo": 0.01572014274050052,
+   "hi": 0.035867792413368196,
+   "n": 30,
+   "episodes": 1411,
+   "excluded": 28,
+   "passed": true
+  },
+  "dwd_p|uptsfpool_vs_pfnLpool_nll_e3": {
+   "gain": 0.4567943295646699,
+   "lo": 0.3624755011874919,
+   "hi": 0.5511131579418479,
+   "n": 26,
+   "episodes": 1244,
+   "excluded": 0,
+   "passed": true
+  },
+  "dwd_p|uptsfpool_vs_fapool_nll_e3": {
+   "gain": 0.23257994419626232,
+   "lo": 0.22278262499123677,
+   "hi": 0.24237726340128787,
+   "n": 26,
+   "episodes": 1244,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25|uptsfpool_vs_pfnLpool_nll_e3": {
+   "gain": 0.03472203123616648,
+   "lo": 0.031374604306025906,
+   "hi": 0.03806945816630706,
+   "n": 26,
+   "episodes": 1226,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25|uptsfpool_vs_fapool_nll_e3": {
+   "gain": 0.1286474481353604,
+   "lo": 0.11927635065371898,
+   "hi": 0.1380185456170018,
+   "n": 26,
+   "episodes": 1226,
+   "excluded": 0,
+   "passed": true
+  },
+  "pfnLpool_vs_tabpfn_nll_e6": {
+   "gain": 0.5189330518411506,
+   "lo": 0.43071557692464074,
+   "hi": 0.6071505267576605,
+   "n": 112,
+   "episodes": 5303,
+   "excluded": 43,
+   "passed": true
+  },
+  "fapool_vs_tabpfn_nll_e6": {
+   "gain": 0.4875254235081283,
+   "lo": 0.37558670872081606,
+   "hi": 0.5994641382954404,
+   "n": 112,
+   "episodes": 5303,
+   "excluded": 43,
+   "passed": true
+  },
+  "uptsfpool_vs_pfnLpool_se_e6": {
+   "gain": -0.0005767885703860491,
+   "lo": -0.0021236740222276263,
+   "hi": 0.0009700968814555281,
+   "n": 112,
+   "episodes": 5303,
+   "excluded": 43,
+   "passed": false
+  },
+  "usgs_ny|uptsfpool_vs_pfnLpool_nll_e6": {
+   "gain": 0.006872672997729629,
+   "lo": -0.0012829430600955543,
+   "hi": 0.015028289055554811,
+   "n": 30,
+   "episodes": 1422,
+   "excluded": 15,
+   "passed": false
+  },
+  "usgs_ny|uptsfpool_vs_fapool_nll_e6": {
+   "gain": 0.16550235102351976,
+   "lo": 0.13035358139781805,
+   "hi": 0.20065112064922147,
+   "n": 30,
+   "episodes": 1422,
+   "excluded": 15,
+   "passed": true
+  },
+  "usgs_wa|uptsfpool_vs_pfnLpool_nll_e6": {
+   "gain": -0.010081860375889028,
+   "lo": -0.01248112222919205,
+   "hi": -0.007682598522586006,
+   "n": 30,
+   "episodes": 1411,
+   "excluded": 28,
+   "passed": false
+  },
+  "usgs_wa|uptsfpool_vs_fapool_nll_e6": {
+   "gain": 0.04789336649079143,
+   "lo": 0.02856860950223486,
+   "hi": 0.067218123479348,
+   "n": 30,
+   "episodes": 1411,
+   "excluded": 28,
+   "passed": true
+  },
+  "dwd_p|uptsfpool_vs_pfnLpool_nll_e6": {
+   "gain": 0.3412452698330224,
+   "lo": 0.26392888619450616,
+   "hi": 0.4185616534715386,
+   "n": 26,
+   "episodes": 1244,
+   "excluded": 0,
+   "passed": true
+  },
+  "dwd_p|uptsfpool_vs_fapool_nll_e6": {
+   "gain": 0.13627530874909835,
+   "lo": 0.127394245993365,
+   "hi": 0.1451563715048317,
+   "n": 26,
+   "episodes": 1244,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25|uptsfpool_vs_pfnLpool_nll_e6": {
+   "gain": 0.030085363458307902,
+   "lo": 0.027055861793157422,
+   "hi": 0.03311486512345838,
+   "n": 26,
+   "episodes": 1226,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25|uptsfpool_vs_fapool_nll_e6": {
+   "gain": 0.12042098710086196,
+   "lo": 0.11127321301524092,
+   "hi": 0.12956876118648303,
+   "n": 26,
+   "episodes": 1226,
+   "excluded": 0,
+   "passed": true
+  }
+ },
+ "descriptive_defined_episodes": {
+  "usgs_ny|e0": {
+   "uptsf": -3.6993,
+   "uptsf_w": 0.283,
+   "pfnL": -3.6706,
+   "pfnL_w": 0.285,
+   "fa": -3.6742,
+   "fa_w": 0.145,
+   "tabpfn": -3.6339
+  },
+  "usgs_ny|e3": {
+   "uptsf": -3.4942,
+   "uptsf_w": 0.361,
+   "pfnL": -3.466,
+   "pfnL_w": 0.354,
+   "fa": -3.4037,
+   "fa_w": 0.248,
+   "tabpfn": -3.4013
+  },
+  "usgs_ny|e6": {
+   "uptsf": -3.1455,
+   "uptsf_w": 0.43,
+   "pfnL": -3.1386,
+   "pfnL_w": 0.396,
+   "fa": -2.9795,
+   "fa_w": 0.377,
+   "tabpfn": -2.8789
+  },
+  "usgs_wa|e0": {
+   "uptsf": -5.0484,
+   "uptsf_w": 0.171,
+   "pfnL": -5.0507,
+   "pfnL_w": 0.181,
+   "fa": -5.042,
+   "fa_w": 0.116,
+   "tabpfn": -4.9714
+  },
+  "usgs_wa|e3": {
+   "uptsf": -4.8707,
+   "uptsf_w": 0.216,
+   "pfnL": -4.8772,
+   "pfnL_w": 0.208,
+   "fa": -4.8449,
+   "fa_w": 0.173,
+   "tabpfn": -4.7894
+  },
+  "usgs_wa|e6": {
+   "uptsf": -4.5706,
+   "uptsf_w": 0.267,
+   "pfnL": -4.5807,
+   "pfnL_w": 0.233,
+   "fa": -4.5227,
+   "fa_w": 0.254,
+   "tabpfn": -4.4144
+  },
+  "dwd_p|e0": {
+   "uptsf": -0.5949,
+   "uptsf_w": 0.912,
+   "pfnL": -0.1246,
+   "pfnL_w": 0.877,
+   "fa": -0.3315,
+   "fa_w": 0.841,
+   "tabpfn": -0.1518
+  },
+  "dwd_p|e3": {
+   "uptsf": -0.4685,
+   "uptsf_w": 0.953,
+   "pfnL": -0.0118,
+   "pfnL_w": 0.957,
+   "fa": -0.2359,
+   "fa_w": 0.926,
+   "tabpfn": 0.2109
+  },
+  "dwd_p|e6": {
+   "uptsf": -0.2276,
+   "uptsf_w": 0.969,
+   "pfnL": 0.1135,
+   "pfnL_w": 0.965,
+   "fa": -0.0913,
+   "fa_w": 0.964,
+   "tabpfn": 1.4617
+  },
+  "aurn_pm25|e0": {
+   "uptsf": -0.5609,
+   "uptsf_w": 0.675,
+   "pfnL": -0.5249,
+   "pfnL_w": 0.645,
+   "fa": -0.442,
+   "fa_w": 0.409,
+   "tabpfn": -0.4318
+  },
+  "aurn_pm25|e3": {
+   "uptsf": -0.4896,
+   "uptsf_w": 0.743,
+   "pfnL": -0.4549,
+   "pfnL_w": 0.692,
+   "fa": -0.361,
+   "fa_w": 0.572,
+   "tabpfn": -0.3161
+  },
+  "aurn_pm25|e6": {
+   "uptsf": -0.3517,
+   "uptsf_w": 0.793,
+   "pfnL": -0.3216,
+   "pfnL_w": 0.72,
+   "fa": -0.2312,
+   "fa_w": 0.73,
+   "tabpfn": 0.0743
+  }
+ }
+}

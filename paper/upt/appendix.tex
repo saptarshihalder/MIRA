@@ -1,0 +1,171 @@
+\section{Proofs}
+\label{app:proofs}
+
+\paragraph{Proposition~\ref{prop:free}.}
+$\mathbb{N}^P$ is the free commutative monoid on $\{1,\dots,P\}$: every $m$ is uniquely $\sum_j m_je_j$. A homomorphism
+$F$ with $F(e_j)=s(j)$ must therefore satisfy $F(m)=\sum_jm_jF(e_j)=\sum_jm_js(j)$, and this formula is a
+homomorphism, because addition in $G$ is commutative and associative~\citep{maclane1998categories}.
+
+For the converse, let $F_0=F(\emptyset)$ be the prior's natural parameters and set $s(j)=F(\{j\})-F_0$. If
+$F(A\sqcup B)=F(A)+F(B)-F_0$ for all disjoint $A,B$, induction on $|S|$ gives $F(S)=F_0+\sum_{j\in S}s(j)$. The
+posterior is thus the prior times one factor per observed sensor. \hfill$\square$
+
+\paragraph{Proposition~\ref{prop:pool}.}
+Both mixture components are non-negative. Hence
+$p_{\mathrm{pool}}(y)\geq\pi\,p_{\mathrm{site}}(y)$ and $p_{\mathrm{pool}}(y)\geq(1-\pi)\,p_{\mathrm{free}}(y)$.
+Taking $-\log$ of each gives the two bounds.
+
+Marginalization commutes with the linear pool by linearity of the integral:
+$\int(\pi p_1+(1-\pi)p_2)\,dh=\pi\int p_1\,dh+(1-\pi)\int p_2\,dh$. McConway~\citep{mcconway1981marginalization} shows
+that, under mild conditions, linear pools are the only pooling operators with this property. \hfill$\square$
+
+\paragraph{Proposition~\ref{prop:init}.}
+With a zero site head, every corrected site equals its anchor site. The lifted posterior is then exactly the FA-Gaussian
+posterior of the anchor (Proposition~\ref{prop:exact} applied to the fitted factor model). With gate bias $+4$ and zero
+gate weights, $\pi=\sigma(4)$ for every query. Apply Proposition~\ref{prop:pool}:
+$-\log\sigma(4)=\log(1+e^{-4})=0.0180$. \hfill$\square$
+
+\paragraph{Scale equivariance of SF.}
+Let $y'=ay+b$ with $a>0$ be applied to the support and query targets of an episode. The SF pipeline standardizes by
+the support mean and standard deviation. These transform as $m'=am+b$ and $s'=as$ (the floor
+$10^{-4}(1+|m|)$ is inactive whenever the support target varies). The standardized targets are therefore unchanged.
+The inputs do not depend on the target's units, so the network and the refitted anchor produce the same standardized
+predictive $\tilde q$. The raw-unit predictive is $q'(y')=\tilde q((y'-m')/s')/s'$, so
+$\NLL'=\NLL+\log a$, $\mathrm{CRPS}'=a\,\mathrm{CRPS}$ and the squared error scales by $a^2$. The test suite checks this
+for $a=10^{-3}$ to within $2\times10^{-3}$ nats, including the 8-member test-time ensemble. \hfill$\square$
+
+\input{proofs_old}
+
+\section{Protocols, endpoints and amendments}
+\label{app:protocols}
+
+\paragraph{Pre-registration.} Every protocol was committed to the public repository before any score on its test data
+existed. The repository history is available to reviewers. Each protocol fixes:
+\begin{itemize}
+  \item the networks, splits and test panels (seeded);
+  \item the models and recipes;
+  \item the endpoints, and the statistic and pass rule of each.
+\end{itemize}
+
+Amendments were committed before the scores they affect. Table~\ref{tab:all-endpoints} lists every endpoint of the
+protocols that evaluate UPT and its outcome; the pooling protocols (v11--v17) are in Table~\ref{tab:fresh}, and their
+secondary comparisons in the repository. The amendments were:
+\begin{itemize}
+  \item \textbf{v6, amendments 2 and 3:} undefined closed-form and TabPFN scores on degenerate episodes are recorded as NaN.
+  \item \textbf{v8:} a vectorized but distributionally identical kriging sampler.
+  \item \textbf{v9, amendment 1:} PFN-L was retrained, because the v4 checkpoints had not been kept.
+  \item \textbf{v10, amendment 1:} a time-zone bug in the USGS parser was fixed before any panel was built.
+  \item \textbf{v13, amendment 1:} execution only; three networks shared one GPU container, with unchanged settings.
+  \item \textbf{v14, amendment 1:} before any v14 run, development compared four combinations beyond the linear pool.
+\end{itemize}
+
+\paragraph{Statistics.} Endpoints compare per-episode metrics:
+\begin{itemize}
+  \item learned models are averaged over three seeds;
+  \item episodes are pooled over networks;
+  \item paired 95\% intervals are cluster-robust over network-time-windows (v17's combined test, a second look at
+  v16's question, uses 97.5\%, a Bonferroni split of the 5\% level);
+  \item NLL endpoints pass when the gain is at least $0.01$ nats and the lower bound is above zero.
+\end{itemize}
+
+\input{generated/all_endpoints_table}
+
+\section{Networks and episodes}
+\label{app:data}
+
+\input{generated/networks_table}
+
+\paragraph{Construction.} Every network is processed identically:
+\begin{enumerate}
+  \item \textbf{Inputs:} the target sensor's $P=11$ inputs are its nearest sensors. For traffic flow and river discharge, they
+   are the sensors most correlated with it over the source period.
+  \item \textbf{Episodes:} each episode is one window of one target. It holds $48$ support and $48$ query rows, drawn from the
+   rows where the target is observed.
+  \item \textbf{Support dropout:} networks that are nearly complete receive $20\%$ simulated per-sensor dropout on the support
+   rows.
+  \item \textbf{Test targets:} these are a seeded sample of sensors.
+  \item \textbf{Splits:} the source and test periods are consecutive and do not overlap.
+\end{enumerate}
+
+\paragraph{Snapshots.} The 2025--2026 data are provisional: publishers may revise them. We therefore record the SHA-256 of
+each snapshot.
+
+\section{Implementation}
+\label{app:impl}
+
+\paragraph{Architecture.} Small models use $d=64$, 4 layers, 4 heads and feed-forward width 128 (about 0.2M parameters). The
+large models UPT-L and PFN-L use $d=128$, 8 layers, 8 heads and feed-forward width 512 (2.1M parameters).
+
+\paragraph{Prior.} Synthetic tasks draw $P=5$ sensors from a one-factor model with nonlinear responses
+$x_j=a_jy+b_j+0.4\sin(f_jy)+d_ju+s_j\epsilon_j$. Support missingness is random.
+
+\paragraph{Pretraining.} AdamW with cosine decay.
+\begin{itemize}
+  \item Small models: 30k steps, 16 tasks $\times$ 16 queries, lr $10^{-3}$.
+  \item Large models: 40k steps, 32 tasks $\times$ 16 queries, lr $5\times10^{-4}$.
+\end{itemize}
+
+\paragraph{Fine-tuning.} Identical for every model and network:
+\begin{itemize}
+  \item 4{,}000 source episodes and 2{,}000 AdamW steps;
+  \item lr $3\times10^{-4}$ with cosine decay;
+  \item 64 episodes $\times$ 8 queries per step;
+  \item query masks are the natural mask with at most one extra dropped sensor.
+\end{itemize}
+
+\paragraph{Baselines.}
+\begin{itemize}
+  \item \textbf{TabPFN v2:} \texttt{tabpfn} package, ungated v2 weights, 8 estimators. Missing inputs are passed as NaN, and
+  NLL is computed from its bar distribution in raw units.
+  \item \textbf{TNP-D and CNP:} pretrained and fine-tuned with the same recipe as our models.
+  \item \textbf{IGNNK-style kriging:} trained on the source period of each network. A per-episode affine recalibration on the
+  support gives the calibrated variant.
+  \item \textbf{Others:} LightGBM, MICE with Bayesian linear regression, and the closed forms (FA-Gaussian, EM-Gaussian, ridge
+  and Bayesian linear regression), as defined in the repository.
+\end{itemize}
+
+\paragraph{Compute.}
+\begin{itemize}
+  \item Hardware: one A100 80GB, or an L4, on Colab.
+  \item Fine-tuning UPT-L: about 15 minutes per network and seed.
+  \item TabPFN v2: about 1 to 2 hours per network of 1{,}200--1{,}500 episodes $\times$ 3 conditions under shared load.
+\end{itemize}
+
+\section{Additional results}
+\label{app:results}
+\input{generated/pool_table}
+\input{generated/per_network_tables}
+
+\section{Additional figures}
+\label{app:figures}
+
+\begin{figure}[h]
+\centering
+\includegraphics{figures/crossfit.pdf}
+\caption{\textbf{Learning-curve-aware stacking.} The pool's NLL gain over TabPFN-3.5 with the two-fold cross-fit of
+v13 (open) and the four-fold cross-fit of v15 (filled), on every network and condition: (a) the original test periods
+of the four v10 networks, (b) the fresh post-release tasks. The four-fold rule improves on the two-fold rule in all 33
+network-condition cells. It shrinks the river losses, where the two-fold cross-fit over-weighted UPT.}
+\label{fig:crossfit}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics{figures/weights.pdf}
+\caption{\textbf{The stacking weight tracks the two models' relative skill,} with no test label: mean weight on UPT-SF
+against UPT-SF's NLL deficit to TabPFN-3.5 (symmetric log scale), per network and condition, on the original test
+periods (open) and the fresh tasks (filled). Rivers, where TabPFN-3.5 is better by 1.9--2.7 nats, get 2--9\% of the
+weight; air quality, where the pool beats both members, 45--61\%; pressure and temperature, where UPT-SF alone is
+better, 69--88\%.}
+\label{fig:weights}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics{figures/fresh_curves.pdf}
+\caption{\textbf{Each fresh network} (tasks recorded after TabPFN-3.5's release): mean NLL by inputs dropped for
+TabPFN-3.5, UPT-SF alone and their pool (v15 rule). On pressure and temperature UPT-SF alone beats TabPFN-3.5; on
+these and on air quality the pool beats both. On rivers UPT-SF alone is far worse, and the pool stays within 0.009
+nats of TabPFN-3.5.}
+\label{fig:fresh-curves}
+\end{figure}

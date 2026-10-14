@@ -1,0 +1,172 @@
+"""Universal pool transformer (upt.py): initialization bound, reduction to the LCT, mixture metrics, training smoke."""
+import math
+import subprocess
+import sys
+from pathlib import Path
+import numpy as np
+import torch
+
+HERE = Path(__file__).resolve().parents[1] / 'experiments' / 'lifted_cavity'
+sys.path.insert(0, str(HERE))
+import lct, lct_train, models, upt  # noqa: E402
+from evaluate2 import gauss_metrics  # noqa: E402
+
+
+def _batch(seed=0):
+    return lct_train.fresh_batch(np.random.default_rng(seed), B=4, Q=6)
+
+
+def test_init_is_within_log_sigmoid_of_the_fa_closed_form_for_every_query():
+    torch.manual_seed(0)
+    m = upt.UPT().eval()
+    b = _batch()
+    with torch.no_grad():
+        nll = m.nll(b)
+        mu0, lv0 = models.closed_form(b['anchors'][1], b['qx'], b['qm'], b['tid'])
+        fa = models.gauss_nll(mu0, lv0, b['qy'])
+        _, ms, vs, *_ = m.predictive(b)
+    assert torch.allclose(ms, mu0, atol=1e-5) and torch.allclose(vs, lv0, atol=1e-5)
+    assert (nll <= fa - math.log(1 / (1 + math.exp(-upt.GATE_BIAS))) + 1e-5).all()
+
+
+def test_closed_gate_reduces_to_the_lct_with_shared_weights():
+    torch.manual_seed(1)
+    l = lct.LCT().eval()
+    for p in l.head.parameters():
+        torch.nn.init.normal_(p, std=.05)                       # a non-trivial site head
+    m = upt.UPT().eval()
+    missing, unexpected = m.load_state_dict(l.state_dict(), strict=False)
+    assert set(missing) == {'gate.weight', 'gate.bias'} and not unexpected
+    torch.nn.init.constant_(m.gate.bias, 500.)              # e^-500: the free component carries no weight
+    b = _batch(1)
+    with torch.no_grad():
+        mu, lv = l(b)
+        assert torch.allclose(m.nll(b), models.gauss_nll(mu, lv, b['qy']), atol=1e-4)
+
+
+def test_one_component_mixture_metrics_match_the_gaussian_metrics():
+    rng = np.random.default_rng(3)
+    mu, var, y = rng.normal(size=50), np.exp(rng.normal(size=50)), rng.normal(size=50)
+    g = gauss_metrics(mu, var, y)
+    w = np.stack((np.ones(50), np.zeros(50)), 1)
+    h = upt.mixture_metrics(w, np.stack((mu, mu + 1), 1), np.stack((var, var), 1), y)
+    for k in ('nll', 'se', 'crps'):
+        assert np.allclose(g[k], h[k]), k
+    assert np.array_equal(g['cov'], h['cov'])
+
+
+def test_mixture_crps_matches_monte_carlo():
+    rng = np.random.default_rng(4)
+    w, mu, var, y = np.array([[.3, .7]]), np.array([[-1., 2.]]), np.array([[.5, 2.]]), np.array([.4])
+    comp = rng.random(400000) < .3
+    x = np.where(comp, rng.normal(-1, math.sqrt(.5), comp.size), rng.normal(2, math.sqrt(2.), comp.size))
+    mc = np.abs(x - y[0]).mean() - .5 * np.abs(x - rng.permutation(x)).mean()
+    assert abs(upt.mixture_metrics(w, mu, var, y)['crps'][0] - mc) < 1e-2
+
+
+def test_upt_trains_a_few_steps(tmp_path):
+    r = subprocess.run([sys.executable, 'lct_train.py', '--model', 'upt', '--steps', '6', '--save-every', '3',
+                        '--warmup', '2', '--out', str(tmp_path / 'u')], cwd=HERE, capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr
+    assert (tmp_path / 'u' / 'model.pt').exists()
+
+
+def test_mixture_nll_is_finite_for_extreme_outliers():
+    w, mu, var = np.array([[.98, .02]]), np.array([[0., .5]]), np.array([[1e-4, 1e-3]])
+    nll = upt.mixture_metrics(w, mu, var, np.array([30.]))['nll'][0]
+    direct = -math.log(.02) + .5 * (math.log(2 * math.pi * 1e-3) + (30 - .5) ** 2 / 1e-3)
+    assert np.isfinite(nll) and abs(nll - direct) / direct < 1e-9
+
+
+def test_float64_sites_change_precision_not_the_model():
+    torch.manual_seed(5)
+    m = upt.UPT().eval()
+    for p in m.head.parameters():
+        torch.nn.init.normal_(p, std=.05)
+    b = _batch(5)
+    with torch.no_grad():
+        a = m.nll(b)
+        m.site_dtype = torch.float64
+        c = m.nll(b)
+    assert a.dtype == c.dtype and torch.allclose(a, c, atol=1e-3, rtol=1e-4)
+
+
+def test_torch_nll_crps_match_the_numpy_mixture_metrics():
+    torch.manual_seed(5)
+    m = upt.UPT().eval()
+    torch.nn.init.constant_(m.gate.bias, 0.)                # both components carry weight
+    b = _batch(5)
+    with torch.no_grad():
+        nll, crps = upt.nll_crps(m, b)
+        la, ma, va, lb, mb, vb = (v.double().numpy() for v in m.predictive(b))
+        assert torch.allclose(nll, m.nll(b), atol=1e-5)
+    ref = upt.mixture_metrics(np.exp(np.stack((la, lb), 1)), np.stack((ma, mb), 1), np.exp(np.stack((va, vb), 1)), b['qy'].double().numpy())
+    ys = b['sy'].std(1).clamp_min(.1)[b['tid']].double().numpy()
+    assert np.allclose(crps.double().numpy(), ref['crps'] / ys, rtol=1e-4, atol=1e-6)
+
+
+def test_test_time_ensemble_is_the_linear_pool_over_feature_seeds():
+    import realdata
+    torch.manual_seed(6)
+    m = upt.UPT().eval()
+    torch.nn.init.constant_(m.gate.bias, 0.)
+    rng = np.random.default_rng(6)
+    T = 3; NS, NQ, P = realdata.NS, realdata.NQ, 5
+    x = rng.normal(size=(T, NS + NQ, P)); y = x.sum(-1) + rng.normal(size=(T, NS + NQ))
+    eps = [(x[t], y[t], np.ones((NS, P)), np.ones((NQ, P)), f'k{t}') for t in range(T)]
+    pool = realdata.to_pool(eps)
+    qm = pool['qnat'].numpy()
+    one = realdata.score_model(m, pool, qm)
+    assert m.feature_seed == 0
+    two = realdata.score_model(m, pool, qm, tta=2)
+    assert m.feature_seed == 0
+    m.feature_seed = 1
+    other = realdata.score_model(m, pool, qm)
+    m.feature_seed = 0
+    # equal-weight pool: -log((p0 + p1) / 2) <= (-log p0 - log p1) / 2 per query (concavity of log), so per episode too
+    assert np.all(two['nll'] <= .5 * (one['nll'] + other['nll']) + 1e-6)
+    assert np.all(two['nll'] >= np.minimum(one['nll'], other['nll']) - np.log(2) - 1e-6)
+    assert not np.allclose(one['nll'], other['nll'])        # the feature seed matters, so the ensemble is not trivial
+
+
+def test_scale_free_pipeline_is_equivariant_to_the_target_scale():
+    """Protocol v10 SF: with per-episode target standardization, rescaling every target by c shifts each episode's NLL
+    by exactly log c and scales CRPS by c and squared error by c^2 (the .1 clamp and absolute ridges no longer bind)."""
+    import realdata
+    torch.manual_seed(7)
+    m = upt.UPT().eval()
+    torch.nn.init.constant_(m.gate.bias, 0.)
+    m.backbone.lv_bound = 10.
+    rng = np.random.default_rng(7)
+    T, NS, NQ, P = 4, realdata.NS, realdata.NQ, 5
+    x = rng.normal(size=(T, NS + NQ, P)); y = x.sum(-1) + .3 * rng.normal(size=(T, NS + NQ)) + 5
+    for c in (1., 1e-3):
+        eps = [(x[t], c * y[t], np.ones((NS, P)), np.ones((NQ, P)), f'k{t}') for t in range(T)]
+        pool = realdata.to_pool(eps)
+        r = realdata.score_model(m, realdata.zpool(pool), pool['qnat'].numpy(), tta=2)
+        if c == 1.:
+            base = r
+        else:
+            assert np.allclose(r['nll'], base['nll'] + np.log(c), atol=2e-3)
+            assert np.allclose(r['crps'], base['crps'] * c, rtol=2e-3)
+            assert np.allclose(r['se'], base['se'] * c * c, rtol=5e-3)
+    raw = realdata.score_model(m, realdata.to_pool([(x[t], 1e-3 * y[t], np.ones((NS, P)), np.ones((NQ, P)), f'k{t}') for t in range(T)]),
+                               pool['qnat'].numpy())
+    assert raw['nll'].mean() > r['nll'].mean() + 1          # without SF the clamp makes tiny-scale targets far worse
+
+
+def test_mixture_free_site_is_a_proper_mixture_and_loads_a_single_gaussian_checkpoint():
+    torch.manual_seed(8)
+    src = upt.UPT().eval()
+    m = upt.UPT(free_k=3).eval()
+    missing, unexpected = m.load_state_dict(src.state_dict(), strict=False)
+    assert set(missing) == {'mdn.weight', 'mdn.bias'} and not unexpected
+    b = _batch(8)
+    with torch.no_grad():
+        lw, mu, lv = m.mixture(b)
+        assert lw.shape[1] == 4 and torch.allclose(lw.exp().sum(1), torch.ones(len(lw)), atol=1e-5)
+        la, ma, va, lb, mb, vb = src.predictive(b)
+        assert torch.allclose(lw[:, 0], la, atol=1e-6) and torch.allclose(mu[:, 0], ma, atol=1e-5)
+        assert torch.allclose(mu[:, 1:], mb[:, None].expand(-1, 3), atol=1e-5)    # same centre, three scales at start
+        nll, _ = upt.nll_crps(m, b)
+        assert torch.allclose(nll, m.nll(b), atol=1e-5)

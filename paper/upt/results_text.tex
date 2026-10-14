@@ -1,0 +1,83 @@
+\input{generated/fresh_endpoints_table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/pool_fresh.pdf}
+\caption{\textbf{(a) Robustness to failing inputs} on the four 2026 networks: mean NLL relative to TabPFN v2 with all
+inputs. TabPFN v2 degrades by 0.86 nats at six dropped inputs; pooling it with any partner helps, and UPT is the best
+partner. TabPFN-3.5 (dashed) is far stronger and more robust; pooling it with UPT (v15 rule) still improves it at every
+level. \textbf{(b) Fresh tasks recorded after TabPFN-3.5's release:} NLL gain of the frozen v15 pool over TabPFN-3.5 on
+each network (95\% $t$-intervals over network-windows; descriptive) and on all seven pooled ($^*$the pre-registered
+endpoints, 97.5\% intervals; open marker: the interval reaches zero).}
+\label{fig:robust}
+\end{figure}
+
+\paragraph{UPT\,$\oplus$\,TabPFN on fresh 2026 data (protocols v11, v12).} Every pre-registered endpoint of the
+pooled model passes (Table~\ref{tab:fresh}, pooled over \FreshEpisodes{} episodes on four networks).
+\begin{itemize}
+  \item \textbf{Against TabPFN v2,} the gain grows with the number of failed inputs: \XOne{} nats with all inputs,
+  \XTwoThree{} with three dropped, \XTwoSix{} with six dropped.
+  \item \textbf{On each network separately} the pool beats TabPFN v2 too: by 0.07--0.44 nats with all inputs and by
+  0.16--1.69 with six dropped (Table~\ref{tab:pool}).
+  \item \textbf{The stacking weights are interpretable.} With no test label, they place 72--83\% of the weight on
+  TabPFN for the two river networks with all inputs, whose near-deterministic targets suit its sharp predictive. They place 68--97\%
+  on UPT for pressure and PM$_{2.5}$, rising as inputs fail. With TabPFN-3.5 they track the two models' relative skill
+  in the same way (Figure~\ref{fig:weights}).
+\end{itemize}
+
+\paragraph{Is it the partner or just pooling? (protocol v12).} Pooling TabPFN with any reasonable partner helps under
+input failure: TabPFN alone loses 0.86 nats at six dropped inputs (Figure~\ref{fig:robust}a). The partner still
+matters. With the same stacking rule, UPT is a better partner than:
+\begin{itemize}
+  \item the plain transformer of equal size and training: \YOneZero{} nats with all inputs, \YOneSix{} with six
+  dropped;
+  \item the closed-form lifted sites: \YTwoZero{} and \YTwoSix{}.
+\end{itemize}
+Both ingredients of UPT therefore contribute: the lifted sites beat the plain transformer, and the learning beats
+the closed form. The largest margin is on the pressure network: UPT\,$\oplus$\,TabPFN scores $-0.60$ against $-0.12$
+for PFN-L\,$\oplus$\,TabPFN.
+
+\paragraph{The newest foundation model (protocols v13, v15).} TabPFN-3.5 (September 2026) is far stronger than
+TabPFN v2 on these networks (by 0.3--1.3 nats) and degrades much less when inputs fail. The same pool, run unchanged
+(v13), still improves it: \ZOne{} nats with all inputs, \ZTwoThree{} and \ZTwoSix{} with three and six dropped. On
+pressure, UPT alone beats TabPFN-3.5 at every level ($-0.57$ vs $-0.47$ with all inputs), and UPT is a better partner
+than a plain transformer by $+0.05$ to $+0.07$ nats. On the rivers, however, the pool lost 0.015--0.03 nats. With learning-curve-aware stacking (v15,
+selected on development networks), the gains grow to \VOne{}, \VTwoThree{} and \VTwoSix{} nats, the pool beats the
+v13 pool at every level (\VPoolZero{} with all inputs), and the river losses shrink by 75--95\%, to at most 0.008
+nats (Figure~\ref{fig:crossfit}). The pre-registered claim that it is never worse than TabPFN-3.5 on any network fails narrowly: \VThreePass{} of
+\VThreeN{} non-inferiority tests pass, the three failures being rivers with inputs dropped.
+
+\paragraph{Fresh tests after TabPFN-3.5's release (protocols v16, v17).} The test periods of v13--v15 precede
+TabPFN-3.5's release. We therefore froze the v15 rule and scored it once on new tasks: days after the release
+(September 10 -- October 12) and 48 target sensors per network that no protocol had used. On the four v10 networks
+(v16) the pool beats TabPFN-3.5 with all sensors (\FOne{} nats); with inputs dropped the gains (\FTwoThree{},
+\FTwoSix{}) are as large as v15 predicted, but with 30 clusters their intervals reach zero. v17 added the three v9
+networks and tested all \GEpisodes{} tasks (\GClusters{} clusters) at the 97.5\% level of a second look: the pool wins
+with all sensors (\GOne{}) and with three dropped (\GTwoThree{}); with six dropped (\GTwoSix{}) the interval reaches
+zero. Gains are large where UPT alone beats TabPFN-3.5 (pressure, temperature) and smaller on air quality; rivers tie
+with all sensors and lose at most 0.009 nats with inputs dropped (Figures~\ref{fig:robust}b and~\ref{fig:fresh-curves}).
+
+\paragraph{Beyond averaging fails confirmation (protocol v14).} A linear pool is never sharper than its sharper member
+on a single query. Of the combinations that could be (UPT's predictive as inputs of TabPFN-3.5, TabPFN-3.5 on UPT's
+residuals, the logarithmic pool $p\propto p_F^a\,\mathcal N(m_{\mathrm{UPT}},v_{\mathrm{UPT}})^b$), development
+selected the logarithmic pool, which then failed every confirmatory endpoint (\ROne{}, \RTwoThree{}, \RTwoSix{}),
+losing up to 0.12 nats on rivers: unlike the linear pool (Proposition~\ref{prop:pool}), it has no loss bound.
+
+\input{generated/main_table}
+
+\paragraph{UPT alone across thirteen networks (protocols v6--v10; Table~\ref{tab:main}).} At matched size and
+training, UPT has a lower mean NLL than the plain transformer on 12 of 13 networks at every sensor-loss level. It
+beats TNP-D on all six v6/v7 networks (pre-registered v8: $+0.38$, $+0.53$, $+1.05$ nats at 0, 3, 6 dropped) and
+calibrated deep kriging by more than one nat. Against TabPFN v2 alone it is better on 10 of 13 networks with six
+inputs dropped ($+0.33$ nats pooled, descriptive) and on 8 of 13 with all inputs.
+
+\paragraph{Failures.} We report all of them (Appendix~\ref{app:protocols}).
+\begin{enumerate}
+  \item \textbf{UPT alone loses to TabPFN v2 on the river networks} (v9, v10). The pre-registered pooled NLL tests of
+  UPT alone against TabPFN on the 2026 networks fail. On rivers TabPFN's predictive is far sharper, at about the same
+  RMSE; UPT's synthetic prior (five sensors, one factor) is far narrower than TabPFN's.
+  \item \textbf{A degenerate case.} When all 48 support targets are identical (15 of 1{,}437 New York episodes),
+  UPT's predictive collapses; this breaks v10's comparisons of UPT alone with the transformer, TNP-D and kriging.
+  \item \textbf{With all inputs, TabPFN v2 alone remains better on 5 of 13 networks} (v6 P3, v9). Ablations from
+  earlier protocols are in Appendix~\ref{app:protocols}.
+\end{enumerate}

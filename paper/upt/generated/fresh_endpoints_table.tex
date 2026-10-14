@@ -1,0 +1,25 @@
+\begin{table}[t]\centering\small
+\caption{\textbf{Pre-registered endpoints on the fresh 2026 networks.} NLL gain in nats (baseline $-$ ours; positive favours the first method) $\pm$ the half-width of its paired 95\% interval, clustered by network-window; \checkmark: pass (gain $\geq 0.01$ and lower bound $>0$). Pool: UPT-SF$\oplus$TabPFN v2 (v11, v12) or TabPFN-3.5 (September 2026; v13 on). Protocols v11--v15 use the four v10 networks; v14 tests the log pool selected on development networks ($^\dagger$: secondary). v16 scores the frozen v15 rule on new tasks recorded after TabPFN-3.5's release; v16+17 adds the three v9 networks and, as a second look, uses 97.5\% intervals.}
+\label{tab:fresh}
+\setlength{\tabcolsep}{3pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llccc}
+\toprule
+Protocol & Comparison & All inputs & 3 dropped & 6 dropped \\
+\midrule
+v16 & 4-fold pool vs TabPFN-3.5, new tasks & $+0.034\pm0.027$ \checkmark & $+0.023\pm0.023$ $\times$ & $+0.022\pm0.026$ $\times$ \\
+v16+17 & the same, seven networks & $+0.031\pm0.020$ \checkmark & $+0.020\pm0.017$ \checkmark & $+0.017\pm0.019$ $\times$ \\
+v11 & pool vs TabPFN v2 & $+0.17\pm0.03$ \checkmark & $+0.24\pm0.05$ \checkmark & $+0.60\pm0.11$ \checkmark \\
+v11 & pool vs UPT-SF alone & $+0.91\pm0.15$ \checkmark & -- & -- \\
+v13 & pool vs TabPFN-3.5 & $+0.04\pm0.02$ \checkmark & $+0.03\pm0.01$ \checkmark & $+0.03\pm0.01$ \checkmark \\
+v13 & pool vs UPT-SF alone & $+1.33\pm0.20$ \checkmark & -- & -- \\
+v15 & 4-fold pool vs TabPFN-3.5 & $+0.05\pm0.02$ \checkmark & $+0.04\pm0.01$ \checkmark & $+0.04\pm0.01$ \checkmark \\
+v14 & log pool vs TabPFN-3.5 & $+0.01\pm0.02$ $\times$ & $-0.01\pm0.05$ $\times$ & $+0.01\pm0.03$ $\times$ \\
+v14$^\dagger$ & log pool vs pool & $-0.03\pm0.01$ $\times$ & $-0.04\pm0.05$ $\times$ & $-0.01\pm0.03$ $\times$ \\
+v12 & pool vs PFN-L$\oplus$TabPFN & $+0.12\pm0.04$ \checkmark & $+0.12\pm0.04$ \checkmark & $+0.09\pm0.03$ \checkmark \\
+v12 & pool vs FA$\oplus$TabPFN & $+0.10\pm0.02$ \checkmark & $+0.11\pm0.02$ \checkmark & $+0.12\pm0.01$ \checkmark \\
+v10 & UPT-SF alone vs TabPFN v2 & $-0.75\pm0.17$ $\times$ & $-0.63\pm0.18$ $\times$ & $-0.21\pm0.24$ $\times$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

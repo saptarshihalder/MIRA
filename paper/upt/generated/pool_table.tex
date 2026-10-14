@@ -1,0 +1,26 @@
+\begin{table}[t]\centering\small
+\caption{\textbf{Pooling TabPFN v2 with a partner on four fresh 2026 networks} (mean test NLL, lower is better, on the episodes where TabPFN is defined). In parentheses: the mean stacking weight on the partner, chosen per episode by cross-fitting the episode\textquotesingle s own labelled rows. Every pool uses the same rule; best per row in bold.}
+\label{tab:pool}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{llcccc}
+\toprule
+Network & Inputs & UPT-SF$\,\oplus\,$TabPFN & PFN-L$\,\oplus\,$TabPFN & FA$\,\oplus\,$TabPFN & TabPFN v2 \\
+\midrule
+USGS NY (rivers) & all & \textbf{-3.699} (0.28) & -3.671 (0.28) & -3.674 (0.14) & -3.634 \\
+ & $-3$ & \textbf{-3.494} (0.36) & -3.466 (0.35) & -3.404 (0.25) & -3.401 \\
+ & $-6$ & \textbf{-3.146} (0.43) & -3.139 (0.40) & -2.979 (0.38) & -2.879 \\
+\addlinespace
+USGS WA (rivers) & all & -5.048 (0.17) & \textbf{-5.051} (0.18) & -5.042 (0.12) & -4.971 \\
+ & $-3$ & -4.871 (0.22) & \textbf{-4.877} (0.21) & -4.845 (0.17) & -4.789 \\
+ & $-6$ & -4.571 (0.27) & \textbf{-4.581} (0.23) & -4.523 (0.25) & -4.414 \\
+\addlinespace
+DWD pressure & all & \textbf{-0.595} (0.91) & -0.125 (0.88) & -0.332 (0.84) & -0.152 \\
+ & $-3$ & \textbf{-0.469} (0.95) & -0.012 (0.96) & -0.236 (0.93) & +0.211 \\
+ & $-6$ & \textbf{-0.228} (0.97) & +0.114 (0.96) & -0.091 (0.96) & +1.462 \\
+\addlinespace
+AURN PM$_{2.5}$ & all & \textbf{-0.561} (0.68) & -0.525 (0.65) & -0.442 (0.41) & -0.432 \\
+ & $-3$ & \textbf{-0.490} (0.74) & -0.455 (0.69) & -0.361 (0.57) & -0.316 \\
+ & $-6$ & \textbf{-0.352} (0.79) & -0.322 (0.72) & -0.231 (0.73) & +0.074 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -18,6 +18,13 @@ def build(name, repo_dir=None, meta=None):
         import pfn
         arch = (meta or {}).get('arch', {})
         return pfn.CellPFN(**arch)
+    if name in ('cnp', 'tnp'):
+        import np_models
+        return getattr(np_models, name.upper())(**dict((meta or {}).get('arch', {})))
+    if name == 'upt':
+        import upt
+        arch = dict((meta or {}).get('arch', {}))
+        return upt.UPT(**arch)
     if name == 'lct':
         import lct
         arch = dict((meta or {}).get('arch', {}))

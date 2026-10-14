@@ -1,0 +1,439 @@
+{
+ "F1_pool_vs_tabpfn35_nll_e0": {
+  "gain": 0.033621990398621765,
+  "lo": 0.006525758618059881,
+  "hi": 0.06071822217918365,
+  "n": 30,
+  "episodes": 1420,
+  "excluded": 16,
+  "passed": true
+ },
+ "F2_pool_vs_tabpfn35_nll_e3": {
+  "gain": 0.022576110141531002,
+  "lo": -0.00013756908160984446,
+  "hi": 0.045289789364671845,
+  "n": 30,
+  "episodes": 1420,
+  "excluded": 16,
+  "passed": false
+ },
+ "F2_pool_vs_tabpfn35_nll_e6": {
+  "gain": 0.022094077949218624,
+  "lo": -0.003452856128811476,
+  "hi": 0.04764101202724873,
+  "n": 30,
+  "episodes": 1420,
+  "excluded": 16,
+  "passed": false
+ },
+ "secondary": {
+  "pool_vs_uptsf_nll_e0": {
+   "gain": 1.837178548042853,
+   "lo": 1.47620389792494,
+   "hi": 2.1981531981607665,
+   "n": 30,
+   "episodes": 1436,
+   "excluded": 0,
+   "passed": true
+  },
+  "pool_vs_v13rule_nll_e0": {
+   "gain": 0.0156825442283231,
+   "lo": 0.01329881716155361,
+   "hi": 0.01806627129509259,
+   "n": 30,
+   "episodes": 1420,
+   "excluded": 16,
+   "passed": true
+  },
+  "pool_vs_tabpfn35_se_e0": {
+   "gain": 0.0011511947689240643,
+   "lo": 0.00016968089850080996,
+   "hi": 0.0021327086393473187,
+   "n": 30,
+   "episodes": 1420,
+   "excluded": 16,
+   "passed": true
+  },
+  "usgs_ny_f|pool_vs_tabpfn35_nll_e0": {
+   "gain": 0.0015516460311154822,
+   "lo": -0.0040616118905707965,
+   "hi": 0.0071649039528017605,
+   "n": 11,
+   "episodes": 527,
+   "excluded": 1,
+   "passed": false
+  },
+  "usgs_ny_f|noninf_vs_tabpfn35_e0": {
+   "gain": 0.0015516460311154822,
+   "lo": -0.0040616118905707965,
+   "hi": 0.0071649039528017605,
+   "n": 11,
+   "episodes": 527,
+   "excluded": 1,
+   "passed": true
+  },
+  "usgs_wa_f|pool_vs_tabpfn35_nll_e0": {
+   "gain": -0.00020301978048237174,
+   "lo": -0.003715948529272764,
+   "hi": 0.00330990896830802,
+   "n": 11,
+   "episodes": 512,
+   "excluded": 15,
+   "passed": false
+  },
+  "usgs_wa_f|noninf_vs_tabpfn35_e0": {
+   "gain": -0.00020301978048237174,
+   "lo": -0.003715948529272764,
+   "hi": 0.00330990896830802,
+   "n": 11,
+   "episodes": 512,
+   "excluded": 15,
+   "passed": true
+  },
+  "dwd_p_f|pool_vs_tabpfn35_nll_e0": {
+   "gain": 0.19891427539395007,
+   "lo": 0.10023870605033164,
+   "hi": 0.2975898447375685,
+   "n": 4,
+   "episodes": 190,
+   "excluded": 0,
+   "passed": true
+  },
+  "dwd_p_f|noninf_vs_tabpfn35_e0": {
+   "gain": 0.19891427539395007,
+   "lo": 0.10023870605033164,
+   "hi": 0.2975898447375685,
+   "n": 4,
+   "episodes": 190,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25_f|pool_vs_tabpfn35_nll_e0": {
+   "gain": 0.04954193040647199,
+   "lo": 0.038160405368904006,
+   "hi": 0.06092345544403998,
+   "n": 4,
+   "episodes": 191,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25_f|noninf_vs_tabpfn35_e0": {
+   "gain": 0.04954193040647199,
+   "lo": 0.038160405368904006,
+   "hi": 0.06092345544403998,
+   "n": 4,
+   "episodes": 191,
+   "excluded": 0,
+   "passed": true
+  },
+  "pool_vs_uptsf_nll_e3": {
+   "gain": 1.86875671718674,
+   "lo": 1.5029624377865836,
+   "hi": 2.2345509965868966,
+   "n": 30,
+   "episodes": 1436,
+   "excluded": 0,
+   "passed": true
+  },
+  "pool_vs_v13rule_nll_e3": {
+   "gain": 0.0173390114123075,
+   "lo": 0.015349916948232952,
+   "hi": 0.019328105876382045,
+   "n": 30,
+   "episodes": 1420,
+   "excluded": 16,
+   "passed": true
+  },
+  "pool_vs_tabpfn35_se_e3": {
+   "gain": 0.0012090698316033488,
+   "lo": 0.00017299070299183687,
+   "hi": 0.0022451489602148605,
+   "n": 30,
+   "episodes": 1420,
+   "excluded": 16,
+   "passed": true
+  },
+  "usgs_ny_f|pool_vs_tabpfn35_nll_e3": {
+   "gain": -0.005056350814786801,
+   "lo": -0.008734927473243307,
+   "hi": -0.0013777741563302942,
+   "n": 11,
+   "episodes": 527,
+   "excluded": 1,
+   "passed": false
+  },
+  "usgs_ny_f|noninf_vs_tabpfn35_e3": {
+   "gain": -0.005056350814786801,
+   "lo": -0.008734927473243307,
+   "hi": -0.0013777741563302942,
+   "n": 11,
+   "episodes": 527,
+   "excluded": 1,
+   "passed": false
+  },
+  "usgs_wa_f|pool_vs_tabpfn35_nll_e3": {
+   "gain": -0.003607671344683594,
+   "lo": -0.0055797644175363,
+   "hi": -0.001635578271830888,
+   "n": 11,
+   "episodes": 512,
+   "excluded": 15,
+   "passed": false
+  },
+  "usgs_wa_f|noninf_vs_tabpfn35_e3": {
+   "gain": -0.003607671344683594,
+   "lo": -0.0055797644175363,
+   "hi": -0.001635578271830888,
+   "n": 11,
+   "episodes": 512,
+   "excluded": 15,
+   "passed": false
+  },
+  "dwd_p_f|pool_vs_tabpfn35_nll_e3": {
+   "gain": 0.15884314724587412,
+   "lo": 0.06892999861112029,
+   "hi": 0.24875629588062795,
+   "n": 4,
+   "episodes": 190,
+   "excluded": 0,
+   "passed": true
+  },
+  "dwd_p_f|noninf_vs_tabpfn35_e3": {
+   "gain": 0.15884314724587412,
+   "lo": 0.06892999861112029,
+   "hi": 0.24875629588062795,
+   "n": 4,
+   "episodes": 190,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25_f|pool_vs_tabpfn35_nll_e3": {
+   "gain": 0.03430373975415196,
+   "lo": 0.024183510454792237,
+   "hi": 0.04442396905351169,
+   "n": 4,
+   "episodes": 191,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25_f|noninf_vs_tabpfn35_e3": {
+   "gain": 0.03430373975415196,
+   "lo": 0.024183510454792237,
+   "hi": 0.04442396905351169,
+   "n": 4,
+   "episodes": 191,
+   "excluded": 0,
+   "passed": true
+  },
+  "pool_vs_uptsf_nll_e6": {
+   "gain": 1.9269298620049222,
+   "lo": 1.5482157045536151,
+   "hi": 2.3056440194562295,
+   "n": 30,
+   "episodes": 1436,
+   "excluded": 0,
+   "passed": true
+  },
+  "pool_vs_v13rule_nll_e6": {
+   "gain": 0.019298399845227954,
+   "lo": 0.01599006555743337,
+   "hi": 0.022606734133022537,
+   "n": 30,
+   "episodes": 1420,
+   "excluded": 16,
+   "passed": true
+  },
+  "pool_vs_tabpfn35_se_e6": {
+   "gain": 0.0016861250997852893,
+   "lo": 2.263807770683311e-05,
+   "hi": 0.0033496121218637457,
+   "n": 30,
+   "episodes": 1420,
+   "excluded": 16,
+   "passed": true
+  },
+  "usgs_ny_f|pool_vs_tabpfn35_nll_e6": {
+   "gain": -0.008008653550752028,
+   "lo": -0.011787276559272175,
+   "hi": -0.004230030542231882,
+   "n": 11,
+   "episodes": 527,
+   "excluded": 1,
+   "passed": false
+  },
+  "usgs_ny_f|noninf_vs_tabpfn35_e6": {
+   "gain": -0.008008653550752028,
+   "lo": -0.011787276559272175,
+   "hi": -0.004230030542231882,
+   "n": 11,
+   "episodes": 527,
+   "excluded": 1,
+   "passed": false
+  },
+  "usgs_wa_f|pool_vs_tabpfn35_nll_e6": {
+   "gain": -0.007129042833155291,
+   "lo": -0.010361402403847648,
+   "hi": -0.003896683262462934,
+   "n": 11,
+   "episodes": 512,
+   "excluded": 15,
+   "passed": false
+  },
+  "usgs_wa_f|noninf_vs_tabpfn35_e6": {
+   "gain": -0.007129042833155291,
+   "lo": -0.010361402403847648,
+   "hi": -0.003896683262462934,
+   "n": 11,
+   "episodes": 512,
+   "excluded": 15,
+   "passed": false
+  },
+  "dwd_p_f|pool_vs_tabpfn35_nll_e6": {
+   "gain": 0.17770976611074588,
+   "lo": 0.07904891573212842,
+   "hi": 0.27637061648936334,
+   "n": 4,
+   "episodes": 190,
+   "excluded": 0,
+   "passed": true
+  },
+  "dwd_p_f|noninf_vs_tabpfn35_e6": {
+   "gain": 0.17770976611074588,
+   "lo": 0.07904891573212842,
+   "hi": 0.27637061648936334,
+   "n": 4,
+   "episodes": 190,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25_f|pool_vs_tabpfn35_nll_e6": {
+   "gain": 0.029624483564138913,
+   "lo": 0.020934272804847713,
+   "hi": 0.03831469432343011,
+   "n": 4,
+   "episodes": 191,
+   "excluded": 0,
+   "passed": true
+  },
+  "aurn_pm25_f|noninf_vs_tabpfn35_e6": {
+   "gain": 0.029624483564138913,
+   "lo": 0.020934272804847713,
+   "hi": 0.03831469432343011,
+   "n": 4,
+   "episodes": 191,
+   "excluded": 0,
+   "passed": true
+  }
+ },
+ "noninferior_every_network": false,
+ "descriptive": {
+  "usgs_ny_f|e0": {
+   "episodes": 528,
+   "tabpfn35_undefined": 1,
+   "tabpfn35": -5.1027,
+   "uptsf": -2.7878,
+   "pool_v13rule": -5.0876,
+   "pool_P3": -5.1043,
+   "w_P3": 0.048
+  },
+  "usgs_ny_f|e3": {
+   "episodes": 528,
+   "tabpfn35_undefined": 1,
+   "tabpfn35": -5.0398,
+   "uptsf": -2.6828,
+   "pool_v13rule": -5.0162,
+   "pool_P3": -5.0348,
+   "w_P3": 0.048
+  },
+  "usgs_ny_f|e6": {
+   "episodes": 528,
+   "tabpfn35_undefined": 1,
+   "tabpfn35": -4.8831,
+   "uptsf": -2.4616,
+   "pool_v13rule": -4.8523,
+   "pool_P3": -4.8751,
+   "w_P3": 0.056
+  },
+  "usgs_wa_f|e0": {
+   "episodes": 527,
+   "tabpfn35_undefined": 15,
+   "tabpfn35": -6.0069,
+   "uptsf": -3.4587,
+   "pool_v13rule": -5.9898,
+   "pool_P3": -6.0067,
+   "w_P3": 0.043
+  },
+  "usgs_wa_f|e3": {
+   "episodes": 527,
+   "tabpfn35_undefined": 15,
+   "tabpfn35": -5.9461,
+   "uptsf": -3.3506,
+   "pool_v13rule": -5.9247,
+   "pool_P3": -5.9425,
+   "w_P3": 0.039
+  },
+  "usgs_wa_f|e6": {
+   "episodes": 527,
+   "tabpfn35_undefined": 15,
+   "tabpfn35": -5.796,
+   "uptsf": -3.1008,
+   "pool_v13rule": -5.7677,
+   "pool_P3": -5.7889,
+   "w_P3": 0.039
+  },
+  "dwd_p_f|e0": {
+   "episodes": 190,
+   "tabpfn35_undefined": 0,
+   "tabpfn35": -0.6458,
+   "uptsf": -0.7396,
+   "pool_v13rule": -0.8269,
+   "pool_P3": -0.845,
+   "w_P3": 0.73
+  },
+  "dwd_p_f|e3": {
+   "episodes": 190,
+   "tabpfn35_undefined": 0,
+   "tabpfn35": -0.5733,
+   "uptsf": -0.6127,
+   "pool_v13rule": -0.7127,
+   "pool_P3": -0.7324,
+   "w_P3": 0.763
+  },
+  "dwd_p_f|e6": {
+   "episodes": 190,
+   "tabpfn35_undefined": 0,
+   "tabpfn35": -0.3204,
+   "uptsf": -0.3836,
+   "pool_v13rule": -0.48,
+   "pool_P3": -0.4982,
+   "w_P3": 0.836
+  },
+  "aurn_pm25_f|e0": {
+   "episodes": 191,
+   "tabpfn35_undefined": 0,
+   "tabpfn35": -0.7447,
+   "uptsf": -0.2915,
+   "pool_v13rule": -0.7873,
+   "pool_P3": -0.7942,
+   "w_P3": 0.541
+  },
+  "aurn_pm25_f|e3": {
+   "episodes": 191,
+   "tabpfn35_undefined": 0,
+   "tabpfn35": -0.6833,
+   "uptsf": -0.2096,
+   "pool_v13rule": -0.7074,
+   "pool_P3": -0.7175,
+   "w_P3": 0.504
+  },
+  "aurn_pm25_f|e6": {
+   "episodes": 191,
+   "tabpfn35_undefined": 0,
+   "tabpfn35": -0.5854,
+   "uptsf": -0.1023,
+   "pool_v13rule": -0.6095,
+   "pool_P3": -0.615,
+   "w_P3": 0.447
+  }
+ }
+}
