@@ -31,6 +31,8 @@ def main():
     c15 = json.loads(p15.read_text()) if p15.exists() else None
     p16 = R / 'confirm_v16.json'
     c16 = json.loads(p16.read_text()) if p16.exists() else None
+    p17 = R / 'confirm_v17.json'
+    c17 = json.loads(p17.read_text()) if p17.exists() else None
 
     # ---- table: mean NLL of each pool and TabPFN, per network and condition (TabPFN-defined episodes)
     t = [r'\begin{table}[t]\centering\small',
@@ -76,6 +78,9 @@ def main():
         rows[at:at] = [('v14', f'{lab} vs TabPFN-3.5', c14s, ('R1_uptcol_vs_tabpfn35_nll_e0', 'R2_uptcol_vs_tabpfn35_nll_e3', 'R2_uptcol_vs_tabpfn35_nll_e6')),
                      ('v14$^\\dagger$', f'{lab} vs UPT-SF$\\oplus$TabPFN-3.5', c14s,
                       ('uptcol_vs_pool35_nll_e0', 'uptcol_vs_pool35_nll_e3', 'uptcol_vs_pool35_nll_e6'))]
+    if c17:                                         # protocol v17: all fresh post-release tasks, seven networks, 97.5%
+        rows[0:0] = [('v16+17', 'the same, fresh tasks, seven networks (97.5\\% CI)', c17,
+                      ('G1_pool_vs_tabpfn35_nll_e0_all7', 'G2_pool_vs_tabpfn35_nll_e3_all7', 'G2_pool_vs_tabpfn35_nll_e6_all7'))]
     if c16:                                         # protocol v16: the frozen v15 rule on fresh tasks after TabPFN-3.5's release
         rows[0:0] = [('v16', 'UPT-SF$\\oplus$TabPFN-3.5 vs TabPFN-3.5, fresh tasks', c16,
                       ('F1_pool_vs_tabpfn35_nll_e0', 'F2_pool_vs_tabpfn35_nll_e3', 'F2_pool_vs_tabpfn35_nll_e6'))]
@@ -93,7 +98,7 @@ def main():
             if k is None:
                 cells.append('--'); continue
             v = d[k]
-            cells.append(ci(v, 3 if proto == 'v16' else 2) + (r' \checkmark' if v['passed'] else r' $\times$'))
+            cells.append(ci(v, 3 if proto in ('v16', 'v16+17') else 2) + (r' \checkmark' if v['passed'] else r' $\times$'))
         t.append(f'{proto} & {lab} & ' + ' & '.join(cells) + r' \\')
     t += [r'\bottomrule', r'\end{tabular}', r'\end{table}']
     (O / 'generated' / 'fresh_endpoints_table.tex').write_text('\n'.join(t))
@@ -153,6 +158,13 @@ def main():
                 r'\newcommand{\FTwoSix}{' + ci(c16['F2_pool_vs_tabpfn35_nll_e6'], 3) + '}',
                 r'\newcommand{\FEpisodes}{' + f"{c16['F1_pool_vs_tabpfn35_nll_e0']['episodes']:,}".replace(',', '{,}') + '}',
                 r'\newcommand{\FUptZero}{' + ci(s16['pool_vs_uptsf_nll_e0']) + '}']
+    if c17:
+        g = c17['G1_pool_vs_tabpfn35_nll_e0_all7']
+        num += [r'\newcommand{\GOne}{' + ci(g, 3) + '}',
+                r'\newcommand{\GTwoThree}{' + ci(c17['G2_pool_vs_tabpfn35_nll_e3_all7'], 3) + '}',
+                r'\newcommand{\GTwoSix}{' + ci(c17['G2_pool_vs_tabpfn35_nll_e6_all7'], 3) + '}',
+                r'\newcommand{\GEpisodes}{' + f"{g['episodes']:,}".replace(',', '{,}') + '}',
+                r'\newcommand{\GClusters}{' + f"{g['n']}" + '}']
     if c14:
         num += [r'\newcommand{\ROne}{' + ci(c14['R1_uptcol_vs_tabpfn35_nll_e0']) + '}',
                 r'\newcommand{\RTwoThree}{' + ci(c14['R2_uptcol_vs_tabpfn35_nll_e3']) + '}',
